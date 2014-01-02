@@ -99,8 +99,8 @@ Public Class Form1
             Dim NewObject As New ItemObjects
 
             NewObject.ItemName = Reader.ReadLine
-            NewObject.ItemType = Reader.ReadLine
-            NewObject.ItemClass = Reader.ReadLine
+            NewObject.ItemBase = Reader.ReadLine
+            NewObject.ItemQuality = Reader.ReadLine
             NewObject.RequiredCharacter = Reader.ReadLine
             NewObject.EtherealItem = Reader.ReadLine
             NewObject.Sockets = Reader.ReadLine
@@ -181,10 +181,10 @@ Public Class Form1
         If RowNumber >= 0 Then
             RichTextBox2.Text = ""  'clears form has been some overlap of listings occur - wierd behaviour
 
-            Dim DisplayType As String = Objects(RowNumber).ItemClass
-            Dim count As Integer = Objects(RowNumber).ItemClass.Length
+            Dim DisplayType As String = Objects(RowNumber).ItemQuality
+            Dim count As Integer = Objects(RowNumber).ItemQuality.Length
             If DisplayType = "Normal" Or DisplayType = "Superior" Then
-                If Objects(RowNumber).ItemType = "Rune" Then
+                If Objects(RowNumber).ItemBase = "Rune" Then
                     RichTextBox2.SelectionColor = Color.Orange
                     RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
                 End If
@@ -297,8 +297,8 @@ Public Class Form1
 
                 LogWriter.WriteLine("--------------------")
                 LogWriter.WriteLine(Objects(x).ItemName)
-                LogWriter.WriteLine(Objects(x).ItemType)
-                LogWriter.WriteLine(Objects(x).ItemClass)
+                LogWriter.WriteLine(Objects(x).ItemBase)
+                LogWriter.WriteLine(Objects(x).ItemQuality)
                 LogWriter.WriteLine(Objects(x).RequiredCharacter)
                 LogWriter.WriteLine(Objects(x).EtherealItem)
                 LogWriter.WriteLine(Objects(x).Sockets)
@@ -397,7 +397,7 @@ Public Class Form1
 
         If SearchFieldCOMBOBOX.Text = "Item Base" Then
             For x = y To Objects.Count - 1
-                If Objects(x).ItemType.IndexOf(SearchWordCOMBOBOX.Text) <> -1 Then
+                If Objects(x).ItemBase.IndexOf(SearchWordCOMBOBOX.Text) <> -1 Then
                     AllItemsInDatabaseListBox.SelectedIndex = x
                     Return
 
@@ -408,7 +408,7 @@ Public Class Form1
 
         If SearchFieldCOMBOBOX.Text = "Item Quality" Then
             For x = y To Objects.Count - 1
-                If Objects(x).ItemClass.IndexOf(SearchWordCOMBOBOX.Text) <> -1 Then
+                If Objects(x).ItemQuality.IndexOf(SearchWordCOMBOBOX.Text) <> -1 Then
                     AllItemsInDatabaseListBox.SelectedIndex = x
                     Return
 

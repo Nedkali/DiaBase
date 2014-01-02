@@ -1,7 +1,7 @@
 ﻿Public Class ItemObjects
     Public ItemName As String
-    Public ItemType As String
-    Public ItemClass As String
+    Public ItemBase As String
+    Public ItemQuality As String
     Public RequiredCharacter As String
     Public EtherealItem As Boolean
     Public Sockets As String

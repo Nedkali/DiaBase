@@ -125,9 +125,9 @@ Module AutoLogger
                     Next
                     NewObject.ItemName = temp 'these 5 lines should exist for each item
                     temp = LogFile.ReadLine() : myarray = Split(temp, " ")
-                    NewObject.ItemType = myarray(2)
+                    NewObject.ItemBase = myarray(2)
                     temp = LogFile.ReadLine() : myarray = Split(temp, " ")
-                    NewObject.ItemClass = myarray(2)
+                    NewObject.ItemQuality = myarray(2)
                     temp = LogFile.ReadLine() : myarray = Split(temp, " ")
                     NewObject.ItemImage = myarray(2)
                     NewObject.RuneWord = LogFile.ReadLine()
@@ -203,7 +203,7 @@ Module AutoLogger
                                 myarray = Split(temp, "Class - ", 0)
                                 Dim temp1 = myarray(myarray.Length - 1)
                                 NewObject.AttackSpeed = temp1
-                                NewObject.AttackClass = NewObject.ItemType
+                                NewObject.AttackClass = NewObject.ItemBase
                             End If
 
                             If temp.IndexOf("Socketed") <> -1 Then
@@ -286,7 +286,7 @@ Module AutoLogger
                         NewObject.Stat11 = myarray(11)
 
                     End If
-                    If NewObject.ItemType = "Gem" Then
+                    If NewObject.ItemBase = "Gem" Then
                         temp = GetGemsStats(NewObject.ItemName)
                         myarray = Split(temp, ",")
                         NewObject.RequiredLevel = myarray(0)
@@ -389,8 +389,8 @@ Module AutoLogger
 
                 LogWriter.WriteLine("--------------------")
                 LogWriter.WriteLine(Objects(x).ItemName)
-                LogWriter.WriteLine(Objects(x).ItemType)
-                LogWriter.WriteLine(Objects(x).ItemClass)
+                LogWriter.WriteLine(Objects(x).ItemBase)
+                LogWriter.WriteLine(Objects(x).ItemQuality)
                 LogWriter.WriteLine(Objects(x).RequiredCharacter)
                 LogWriter.WriteLine(Objects(x).EtherealItem)
                 LogWriter.WriteLine(Objects(x).Sockets)

@@ -47,8 +47,8 @@
     Private Sub AutoCompleteForm()
 
         EditItemNameTEXTBOX.Text = Objects(iEdit).ItemName
-        EditItemBaseCOMBOBOX.Text = Objects(iEdit).ItemType
-        EditItemQualityCOMBOBOX.Text = Objects(iEdit).ItemClass
+        EditItemBaseCOMBOBOX.Text = Objects(iEdit).ItemBase
+        EditItemQualityCOMBOBOX.Text = Objects(iEdit).ItemQuality
         EditItemRunewordTEXTBOX.Text = Objects(iEdit).RuneWord
         EditItemSocketsCOMBOBOX.Text = Objects(iEdit).Sockets
         If Objects(iEdit).EtherealItem = True Then EditItemEtherealItemCHECKBOX.Checked = True
@@ -155,8 +155,8 @@
         End If
 
         Objects(iEdit).ItemName = EditItemNameTEXTBOX.Text
-        Objects(iEdit).ItemType = EditItemBaseCOMBOBOX.Text
-        Objects(iEdit).ItemClass = EditItemQualityCOMBOBOX.Text
+        Objects(iEdit).ItemBase = EditItemBaseCOMBOBOX.Text
+        Objects(iEdit).ItemQuality = EditItemQualityCOMBOBOX.Text
         Objects(iEdit).RuneWord = EditItemRunewordTEXTBOX.Text
         Objects(iEdit).Sockets = EditItemSocketsCOMBOBOX.Text
         If EditItemEtherealItemCHECKBOX.Checked = False Then Objects(iEdit).EtherealItem = False

@@ -43,7 +43,7 @@
         'If AddItemMulePassCOMBOBOX.Items.Contains(MulePass(Count)) = False Then AddItemMulePassCOMBOBOX.Items.Add(MulePass(Count))
         'If AddItemPickitAreaCOMBOBOX.Items.Contains(PickitArea(Count)) = False Then AddItemPickitAreaCOMBOBOX.Items.Add(PickitArea(Count))
         'If AddItemPickitBotCOMBOBOX.Items.Contains(PickitBot(Count)) = False Then AddItemPickitBotCOMBOBOX.Items.Add(PickitBot(Count))
-        'If AddItemBaseCOMBOBOX.Items.Contains(ItemClass(Count)) = False Then AddItemBaseCOMBOBOX.Items.Add(ItemClass(Count))
+        'If AddItemBaseCOMBOBOX.Items.Contains(ItemQuality(Count)) = False Then AddItemBaseCOMBOBOX.Items.Add(ItemQuality(Count))
         'If AddItemAttackClassCOMBOBOX.Items.Contains(AttackClass(Count)) = False Then AddItemAttackClassCOMBOBOX.Items.Add(AttackClass(Count))
         'Count = Count + 1
         ' Next
@@ -121,8 +121,8 @@
         Dim AddObject As New ItemObjects
 
         AddObject.ItemName = AddItemNameTEXTBOX.Text
-        AddObject.ItemType = AddItemBaseCOMBOBOX.Text
-        AddObject.ItemClass = AddItemQualityCOMBOBOX.Text
+        AddObject.ItemBase = AddItemBaseCOMBOBOX.Text
+        AddObject.ItemQuality = AddItemQualityCOMBOBOX.Text
         AddObject.RuneWord = AddItemRunewordTEXTBOX.Text
         AddObject.Sockets = AddItemSocketsCOMBOBOX.Text
         If AddItemEtherealItemCHECKBOX.Checked = False Then AddObject.EtherealItem = False
