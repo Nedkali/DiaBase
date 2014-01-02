@@ -50,7 +50,6 @@ Module AutoLogger
         ProcessLogFiles() 'moved rest to a separate sub to cut down on coded lines in a single sub
 
         If Objects.Count - Pretotal > 0 Then SaveLoggedItems(Pretotal)
-        If Objects.Count - Pretotal = 0 Then MessageBox.Show("logged accounts = " & Objects.Count - Pretotal, "check")
 
     End Sub
     Sub GetLogFiles()
@@ -91,6 +90,7 @@ Module AutoLogger
         Dim thislogmulename As String
         Dim thislogmuleacc As String
         Dim thislogpass As String
+        Dim thispickbot As String = ""
         Do Until Tally = LogFilesList.Count
 
             If My.Computer.FileSystem.FileExists(MuleLogPath & LogFilesList(Tally)) = True Then 'Verify the log Exists
@@ -101,7 +101,11 @@ Module AutoLogger
                 thislogmuleacc = LogFile.ReadLine 'these lines should exist for each log
                 thislogmulename = LogFile.ReadLine
                 LogFile.ReadLine()                            'Blank line
-                thislogpass = GetMulePass(thislogmuleacc)
+                temp = GetMulePass(thislogmuleacc)
+                myarray = Split(temp, ",", 0)
+                thislogpass = myarray(0)
+                If myarray.Length > 1 Then thispickbot = myarray(1)
+
                 If KeepPassPrivate = True Then thislogpass = "***********"
 
                 Do
@@ -294,7 +298,7 @@ Module AutoLogger
                         NewObject.Stat1 = "Right-click to reset Stat/Skill Points"
                     End If
 
-                    NewObject.PickitBot = "" 'Still to fix these lines maybe just use current time/date
+                    NewObject.PickitBot = thispickbot
                     Objects.Add(NewObject)
 
                 Loop Until LogFile.EndOfStream
@@ -332,9 +336,9 @@ Module AutoLogger
         Dim counter As Integer = 0
         Dim temp1 As String = ""
         Dim password As String = ""
+        Dim botname As String = ""
 
         Form1.RichTextBox1.AppendText("Account name searching for = " & accname & vbCrLf)
-        Form1.RichTextBox1.AppendText("Search Folder = " & MuleDataPath & PassFiles(counter) & vbCrLf)
 
         For Each item In PassFiles
 
@@ -350,20 +354,30 @@ Module AutoLogger
                 If temp1.IndexOf(accname) <> -1 Then
                     Dim AccAndPass = temp1.Split(New [Char]() {"/"c})
                     password = AccAndPass(1)     'Get mule acc pass from _muleaccount.txt
+                    Dim myarray = Split(PassFiles(counter), "_", 0)
+                    password = password & "," & myarray(0)
+                    ReadPassFiles.Close()
+                    Exit For
                 End If
             End While
             ReadPassFiles.Close()
 
             counter = counter + 1
         Next
-        Form1.RichTextBox1.AppendText("Password found = " & password & vbCrLf)
+
+        If KeepPassPrivate = True And password <> "" Then Form1.RichTextBox1.AppendText("Password found = " & password & vbCrLf)
+        If KeepPassPrivate = False And password <> "" Then Form1.RichTextBox1.AppendText("Password found = " & password & vbCrLf)
+        If password = "" Then Form1.RichTextBox1.AppendText("Password not found = " & vbCrLf)
         Form1.RichTextBox1.ScrollToCaret()
+
         Return password
     End Function
 
     Private Sub SaveLoggedItems(ByVal itemstart)
-        ' MessageBox.Show(DataBaseFile, "Check")
-        ' Return
+
+        Form1.RichTextBox1.AppendText("Saving to file " & DataBaseFile & vbCrLf)
+        Form1.RichTextBox1.AppendText("Items to be saved = " & Objects.Count - itemstart & vbCrLf)
+        Dim count = 0
         Try
 
             Dim LogWriter = My.Computer.FileSystem.OpenTextFileWriter(DataBaseFile, True)
@@ -416,7 +430,7 @@ Module AutoLogger
                 LogWriter.WriteLine(Objects(x).PickitBot)
                 LogWriter.WriteLine(Objects(x).UserReference)
                 LogWriter.WriteLine(Objects(x).ItemImage)
-
+                count = count + 1
             Next
 
             LogWriter.Close()
@@ -425,8 +439,8 @@ Module AutoLogger
             MessageBox.Show(ex.ToString, "File Write Error")
 
         End Try
+        Form1.RichTextBox1.AppendText("Items Saved = " & count & vbCrLf)
 
-        Form1.TextBox2.Text = Objects.Count & " Items"
     End Sub
     Function GetRunes(ByVal runename)
         Dim runestats As String = ""

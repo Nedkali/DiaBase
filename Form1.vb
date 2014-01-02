@@ -249,8 +249,10 @@ Public Class Form1
                 RichTextBox2.AppendText(vbCrLf) ' a few line feeds so we can display muleaccount etc info near bottom
             Next
 
-            If Objects(RowNumber).MuleAccount <> Nothing Then RichTextBox2.AppendText("Mule Account: " & Objects(RowNumber).MuleAccount & vbCrLf)
-            If Objects(RowNumber).MuleName <> Nothing Then RichTextBox2.AppendText("Mule Name: " & Objects(RowNumber).MuleName & vbCrLf)
+            RichTextBox2.AppendText("Mule Account: " & Objects(RowNumber).MuleAccount & vbCrLf)
+            RichTextBox2.AppendText("Mule Name: " & Objects(RowNumber).MuleName & vbCrLf)
+            RichTextBox2.AppendText("Pickit Bot: " & Objects(RowNumber).PickitBot & vbCrLf)
+
         End If
         RichTextBox2.SelectAll()
         RichTextBox2.SelectionAlignment = HorizontalAlignment.Center
