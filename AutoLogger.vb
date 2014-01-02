@@ -501,7 +501,6 @@ Module AutoLogger
             Case "Pul Rune"
                 runestats = "45, Weapons:, +100 To Attack Rating Against Demons, +175% Damage Against Demons , Armour:, +30% Enhanced Defense, Helmets:, +30% Enhanced Defense, Shields:, +30% Enhanced Defense, ,"
 
-
             Case "Um Rune"
                 runestats = "47, Weapons:, +25% Chance Of Open Wounds, Armour:, +20 To All Resistances, Helmets:, +10 To All Resistances, Shields:, +20 To All Resistances, , , "
 
@@ -551,11 +550,99 @@ Module AutoLogger
         Dim gemstats As String = ""
         Select Case gemname
 
+            Case "Chipped Diamond"
+                gemstats = "1,Weapons: +28% Damage to Undead, Armor: +20 to Attack Rating, Helms: +20 to Attack Rating, Shields: All Resistances 6"
+
+            Case "Chipped Ruby"
+                gemstats = "1,Weapons: Adds 3-4 Fire Damage, Armor: +10 to Life, Helms: +10 to Life, Shields: Fire Resist +12%"
+
+            Case "Chipped Sapphire"
+                gemstats = "1,Weapons: Adds 1-3 Cold Damage, Armor: +10 to Mana, Helms: +10 to Mana, Shields: Cold Resist +12%"
+
+            Case "Chipped Emerald"
+                gemstats = "1,Weapons: +10 Poison Damage over 3 Seconds, Armor: +3 to Dexterity, Helms: +3 to Dexterity, Shields: Poison Resist +12%"
+
+            Case "Chipped Topaz"
+                gemstats = "1,Weapons: Adds 1-8 Lightning Damage, Armor: 9% BetterChance of Finding Magic Items, Helms: 9% BetterChance of Finding Magic Items, Shields: Lightning Resist +12%"
+
+            Case "Chipped Amethyst"
+                gemstats = "1,Weapons: +40 To Attack Rating, Armor: +3 To Strength, Helms: +3 To Strength, Shields: +8 Defense"
+
+            Case "Chipped Skull"
+                gemstats = "1,Weapons: 2% Life Stolen Per Hit, 1% Mana Stolen Per Hit, Armor: Regenerate Mana 8%, Replenish life +2, Helms: Regenerate Mana 8%, Replenish life +2, Shields: Attacker Takes Damage of 4"
+
+
+            Case "Flawed Diamond"
+                gemstats = "5,Weapons: +34% Damage to Undead, Armor: +40 to Attack Rating, Helms: +40 to Attack Rating, Shields: All Resistances 8"
+
+            Case "Flawed Ruby"
+                gemstats = "5,Weapons: Adds 5-8 Fire Damage, Armor: +17 to Life, Helms: +17 to Life, Shields: Fire Resist +16%"
+
+            Case "Flawed Sapphire"
+                gemstats = "5,Weapons: Adds 3-5 Cold Damage, Armor: +17 to Mana, Helms: +17 to Mana, Shields: Cold Resist +16%"
+
+            Case "Flawed Emerald"
+                gemstats = "5,Weapons: +20 Poison Damage over 4 Seconds, Armor: +4 to Dexterity, Helms: +4 to Dexterity, Shields: Poison Resist +16%"
+
+            Case "Flawed Topaz"
+                gemstats = "5,Weapons: Adds 1-14 Lightning Damage, Armor: 13% BetterChance of Finding Magic Items, Helms: 13% BetterChance of Finding Magic Items, Shields: Lightning Resist +16%"
+
+            Case "Flawed Amethyst"
+                gemstats = "5,Weapons: +60 To Attack Rating, Armor: +4 To Strength, Helms: +4 To Strength, Shields: +12 Defense"
+
+            Case "Flawed Skull"
+                gemstats = "5,Weapons: 2% Life Stolen Per Hit, 2% Mana Stolen Per Hit, Armor: Regenerate Mana 8%, Replenish life +3, Helms: Regenerate Mana 8%, Replenish life +3, Shields: Attacker Takes Damage of 8"
+
+
+            Case "Diamond"
+                gemstats = "12,Weapons: +44% Damage to Undead, Armor: +60 to Attack Rating, Helms: +60 to Attack Rating, Shields: All Resistances 11"
+
+            Case "Ruby"
+                gemstats = "12,Weapons: Adds 8-12 Fire Damage, Armor: +24 to Life, Helms: +24 to Life, Shields: Fire Resist +22%"
+
+            Case "Sapphire"
+                gemstats = "12,Weapons: Adds 4-7 Cold Damage, Armor: +24 to Mana, Helms: +24 to Mana, Shields: Cold Resist +22%"
+
+            Case "Emerald"
+                gemstats = "12,Weapons: +40 Poison Damage over 5 Seconds, Armor: +6 to Dexterity, Helms: +6 to Dexterity, Shields: Poison Resist +22%"
+
+            Case "Topaz"
+                gemstats = "12,Weapons: Adds 1-22 Lightning Damage, Armor: 16% BetterChance of Finding Magic Items, Helms: 16% BetterChance of Finding Magic Items, Shields: Lightning Resist +22%"
+
+            Case "Amethyst"
+                gemstats = "12,Weapons: +80 To Attack Rating, Armor: +6 To Strength, Helms: +6 To Strength, Shields: +18 Defense"
+
+            Case "Skull"
+                gemstats = "12,Weapons: 3% Life Stolen Per Hit, 2% Mana Stolen Per Hit, Armor: Regenerate Mana 12%, Replenish life +3, Helms: Regenerate Mana 12%, Replenish life +3, Shields: Attacker Takes Damage of 12"
+
+
+            Case "Flawless Diamond"
+                gemstats = "15,Weapons: +54% Damage to Undead, Armor: +80 to Attack Rating, Helms: +80 to Attack Rating, Shields: All Resistances 14"
+
+            Case "Flawless Ruby"
+                gemstats = "15,Weapons: Adds 10-16 Fire Damage, Armor: +31 to Life, Helms: +31 to Life, Shields: Fire Resist +28%"
+
+            Case "Flawless Sapphire"
+                gemstats = "15,Weapons: Adds 6-10 Cold Damage, Armor: +31 to Mana, Helms: +31 to Mana, Shields: Cold Resist +28%"
+
+            Case "Flawless Emerald"
+                gemstats = "15,Weapons: +60 Poison Damage over 6 Seconds, Armor: +8 to Dexterity, Helms: +8 to Dexterity, Shields: Poison Resist +28%"
+
+            Case "Flawless Topaz"
+                gemstats = "15,Weapons: Adds 1-30 Lightning Damage, Armor: 20% BetterChance of Finding Magic Items, Helms: 20% BetterChance of Finding Magic Items, Shields: Lightning Resist +28%"
+
+            Case "Flawless Amethyst"
+                gemstats = "15,Weapons: +100 To Attack Rating, Armor: +8 To Strength, Helms: +8 To Strength, Shields: +24 Defense"
+
+            Case "Flawless Skull"
+                gemstats = "15,Weapons: 3% Life Stolen Per Hit, 3% Mana Stolen Per Hit, Armor: Regenerate Mana 12%, Replenish life +4, Helms: Regenerate Mana 12%, Replenish life +4, Shields: Attacker Takes Damage of 16"
+
+
             Case "Perfect Diamond"
                 gemstats = "18,Weapons: +68% Damage to Undead, Armor: +100 to Attack Rating, Helms: +100 to Attack Rating, Shields: All Resistances 19"
 
             Case "Perfect Ruby"
-                gemstats = "18,Weapons: Adds 16-20 Fire Damage, Armor: +38 to Life, Helms: +38 to Life, Shields: Fire Resist +40%"
+                gemstats = "18,Weapons: Adds 15-20 Fire Damage, Armor: +38 to Life, Helms: +38 to Life, Shields: Fire Resist +40%"
 
             Case "Perfect Sapphire"
                 gemstats = "18,Weapons: Adds 10-14 Cold Damage, Armor: +38 to Mana, Helms: +38 to Mana, Shields: Cold Resist +40%"
@@ -564,13 +651,15 @@ Module AutoLogger
                 gemstats = "18,Weapons: +100 Poison Damage over 7 Seconds, Armor: +10 to Dexterity, Helms: +10 to Dexterity, Shields: Poison Resist +40%"
 
             Case "Perfect Topaz"
-                gemstats = "18,Weapons: Adds 10-14 Lightning Damage, Armor: 24% BetterChance of Finding Magic Items, Helms: 24% BetterChance of Finding Magic Items, Shields: Lightning Resist +40%"
+                gemstats = "18,Weapons: Adds 1-40 Lightning Damage, Armor: 24% BetterChance of Finding Magic Items, Helms: 24% BetterChance of Finding Magic Items, Shields: Lightning Resist +40%"
 
             Case "Perfect Amethyst"
-                gemstats = "18,Weapons: +160 To Attack Rating, Armor: +10 To Strength, Helms: +10 To Strength, Shields: +30 Defense"
+                gemstats = "18,Weapons: +150 To Attack Rating, Armor: +10 To Strength, Helms: +10 To Strength, Shields: +30 Defense"
 
             Case "Perfect Skull"
-                gemstats = "18,Weapons: 4% Life Stolen Per Hit, 4% Mana Stolen Per Hit, Armor: Regenerate Mana 19%, Replenish life +5, Helms: Regenerate Mana 19%, Replenish life +5, Shields: Attacker Takes Damage of 20"
+                gemstats = "18,Weapons: 4% Life Stolen Per Hit, 3% Mana Stolen Per Hit, Armor: Regenerate Mana 19%, Replenish life +5, Helms: Regenerate Mana 19%, Replenish life +5, Shields: Attacker Takes Damage of 20"
+
+
         End Select
 
         If gemstats = "" Then gemstats = "18, Weapons: N/A, Armor: N/A, Helms: N/A, Shields: N/A"
