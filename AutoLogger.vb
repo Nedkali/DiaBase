@@ -97,14 +97,17 @@ Module AutoLogger
                 Dim LogFile = My.Computer.FileSystem.OpenTextFileReader(MuleLogPath & LogFilesList(Tally))
 
 
-
-                thislogmuleacc = LogFile.ReadLine 'these lines should exist for each log
+                thispickbot = LogFile.ReadLine 'these lines should exist for each log
+                thislogmuleacc = LogFile.ReadLine
                 thislogmulename = LogFile.ReadLine
-                LogFile.ReadLine()                            'Blank line
+                LogFile.ReadLine()
                 temp = GetMulePass(thislogmuleacc)
-                myarray = Split(temp, ",", 0)
-                thislogpass = myarray(0)
-                If myarray.Length > 1 Then thispickbot = myarray(1)
+                If temp <> "" Then  ' potential app crash without this check
+                    myarray = Split(temp, ",", 0)
+                    thislogpass = myarray(0)
+                    If myarray.Length > 1 And thispickbot = "" Then thispickbot = myarray(1) 'for manual logs
+                End If
+                
 
                 If KeepPassPrivate = True Then thislogpass = "***********"
 
