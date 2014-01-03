@@ -269,9 +269,10 @@ Module AutoLogger
 
 
                     End While
-                    If NewObject.ItemName.IndexOf("Rune") > -1 Then
+                    If NewObject.ItemBase = "Rune" Then
                         temp = GetRunes(NewObject.ItemName)
                         myarray = Split(temp, ",")
+                        'MessageBox.Show(NewObject.ItemName, "Rune check")
                         NewObject.RequiredLevel = myarray(0)
                         NewObject.Stat1 = myarray(1)
                         NewObject.Stat2 = myarray(2)
@@ -542,6 +543,8 @@ Module AutoLogger
             Case "Sur Rune"
                 runestats = "61, Weapons:, Hit Blinds Target, Armour:, +5% To Max Mana, Helmets:, +5% To Max Mana, Shields:, +50 To Max Mana, , , "
 
+            Case "Jah Rune"
+                runestats = "65, Weapons:, Ignore Target's Defense, Armour:, Increase Maximum Life 5%, Helmets:, Increase Maximum Life 5%, Shields:, +50 To Life, , , "
             Case "Ber Rune"
                 runestats = "63, Weapons:, +20% Chance Of Crushing Blow, Armour:, -8% To Damage Received, Helmets:, -8% To Damage Received, Shields:, -8% To Damage Received, , , "
 
