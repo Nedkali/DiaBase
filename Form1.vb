@@ -452,18 +452,12 @@ Public Class Form1
 
 
 
-
-
-
-
-
-
-
-
-
-
     End Sub
-   
+
+
+
+
+
     Private Sub SearchFieldCOMBOBOX_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SearchFieldCOMBOBOX.SelectedIndexChanged
 
         'turns off string search textbox for value only searches
@@ -480,6 +474,7 @@ Public Class Form1
         If UCase(SearchFieldCOMBOBOX.Text) = "CHANCE TO BLOCK" Then SearchWordCOMBOBOX.Enabled = False
     End Sub
 
+
     ' listed below for reference only till figure out a better search option above
     '   Item Name
     'Item Base
@@ -495,8 +490,6 @@ Public Class Form1
     'Required Level
     'Required Strength
     'Required Dexterity
-
-
 
 
     Private Sub SearchLISTBOX_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SearchLISTBOX.SelectedIndexChanged
