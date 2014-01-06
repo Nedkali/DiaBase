@@ -443,4 +443,6 @@ Public Class Form1
     'Required Level
     'Required Strength
     'Required Dexterity
+
+
 End Class

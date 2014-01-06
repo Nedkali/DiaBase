@@ -62,7 +62,16 @@ Module AutoLogger
             If LogFiles(Tally).IndexOf("delete me.txt") = -1 Then                   'ignore the delete me file (if its still there)
                 If Replace(LogFiles(Tally), ".txt", "").IndexOf("_") > -1 Then
                     LogFilesList.Add(LogFiles(Tally))                               'ADD LOG FILE NAME TO LogFilesList()
+                    LogType.Add("new")
                 End If
+
+                If Replace(LogFiles(Tally), ".txt", "").IndexOf(".") > -1 Then
+                    LogFilesList.Add(LogFiles(Tally))                               'ADD Old LOG FILE NAME TO LogFilesList()
+                    LogType.Add("old")
+                End If
+
+
+
             End If
             Tally = Tally + 1
         Loop
@@ -87,9 +96,9 @@ Module AutoLogger
         Dim mycounter As Integer = 0
         Dim found As Boolean = True
         Dim myarray As Array
-        Dim thislogmulename As String
+        Dim thislogmulename As String = ""
         Dim thislogmuleacc As String
-        Dim thislogpass As String
+        Dim thislogpass As String = ""
         Dim thispickbot As String = ""
         Do Until Tally = LogFilesList.Count
 
@@ -99,7 +108,9 @@ Module AutoLogger
 
                 thispickbot = LogFile.ReadLine 'these lines should exist for each log
                 thislogmuleacc = LogFile.ReadLine
-                thislogmulename = LogFile.ReadLine
+                If LogType(Tally) = "new" Then
+                    thislogmulename = LogFile.ReadLine
+                End If
                 LogFile.ReadLine()
                 temp = GetMulePass(thislogmuleacc)
                 If temp <> "" Then  ' potential app crash without this check
@@ -130,7 +141,10 @@ Module AutoLogger
                     NewObject.ItemQuality = myarray(2)
                     temp = LogFile.ReadLine() : myarray = Split(temp, " ")
                     NewObject.ItemImage = myarray(2)
-                    NewObject.RuneWord = LogFile.ReadLine()
+                    If LogType(Tally) = "new" Then
+                        NewObject.RuneWord = LogFile.ReadLine()
+                    End If
+
 
                     While LogFile.EndOfStream = False   'attempt to read item added information and exit if end of stream/file
                         temp = LogFile.ReadLine()
@@ -685,4 +699,6 @@ Module AutoLogger
         If gemstats = "" Then gemstats = "18, Weapons: N/A, Armor: N/A, Helms: N/A, Shields: N/A"
         Return gemstats
     End Function
+
+
 End Module
