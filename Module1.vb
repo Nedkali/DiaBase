@@ -33,10 +33,10 @@
     Sub LoadConfigFile()
         Dim file As System.IO.StreamReader
         file = My.Computer.FileSystem.OpenTextFileReader(Application.StartupPath + "\Settings.cfg")
-        EtalPath = file.ReadLine()
-        DataBaseFile = file.ReadLine()
-        TimerMins = file.ReadLine()
-        KeepPassPrivate = file.ReadLine()
+        EtalPath = file.ReadLine() : Settings.EtalPathTEXTBOX.Text = EtalPath
+        DataBaseFile = file.ReadLine() : Settings.DatabaseFileTEXTBOX.Text = DataBaseFile
+        TimerMins = file.ReadLine() : Settings.NumericUpDown1.Value = TimerMins
+        KeepPassPrivate = file.ReadLine() : If KeepPassPrivate = True Then Settings.CheckBox3.Checked = True
         file.Close()
     End Sub
     Public Function ItemImageList(sender As Integer)
@@ -1371,4 +1371,31 @@
 
 
     End Function
+
+    Sub SearchRoutine()
+        Dim count = -1 : Form1.SearchLISTBOX.Items.Clear()
+        For Each ItemObjectItem As ItemObjects In Objects
+            count = count + 1
+
+            'search for item name
+            If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM NAME" And UCase(Form1.SearchWordCOMBOBOX.Text) = UCase(ItemObjectItem.ItemName) Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName)
+
+        Next
+
+
+        If Form1.SearchLISTBOX.Items.Count > 0 Then Form1.SearchLISTBOX.SelectedIndex = 0 'select first match
+    End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
 End Module

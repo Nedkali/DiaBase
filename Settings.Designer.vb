@@ -25,13 +25,13 @@ Partial Class Settings
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Settings))
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.SaveDefaultsBUTTON = New System.Windows.Forms.Button()
+        Me.DefaultDatabaseBrowseBUTTON = New System.Windows.Forms.Button()
+        Me.EtalPathBrowseBUTTON = New System.Windows.Forms.Button()
+        Me.CancelDefaultsBUTTON = New System.Windows.Forms.Button()
+        Me.DatabaseFileTEXTBOX = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.EtalPathTEXTBOX = New System.Windows.Forms.TextBox()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
@@ -62,48 +62,48 @@ Partial Class Settings
         Me.Label4.TabIndex = 28
         Me.Label4.Text = "Time between file scans"
         '
-        'Button6
+        'SaveDefaultsBUTTON
         '
-        Me.Button6.Location = New System.Drawing.Point(109, 248)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(75, 23)
-        Me.Button6.TabIndex = 27
-        Me.Button6.Text = "Save"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.SaveDefaultsBUTTON.Location = New System.Drawing.Point(109, 248)
+        Me.SaveDefaultsBUTTON.Name = "SaveDefaultsBUTTON"
+        Me.SaveDefaultsBUTTON.Size = New System.Drawing.Size(75, 23)
+        Me.SaveDefaultsBUTTON.TabIndex = 27
+        Me.SaveDefaultsBUTTON.Text = "Save"
+        Me.SaveDefaultsBUTTON.UseVisualStyleBackColor = True
         '
-        'Button4
+        'DefaultDatabaseBrowseBUTTON
         '
-        Me.Button4.Location = New System.Drawing.Point(354, 114)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 26
-        Me.Button4.Text = "Browse"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.DefaultDatabaseBrowseBUTTON.Location = New System.Drawing.Point(354, 114)
+        Me.DefaultDatabaseBrowseBUTTON.Name = "DefaultDatabaseBrowseBUTTON"
+        Me.DefaultDatabaseBrowseBUTTON.Size = New System.Drawing.Size(75, 23)
+        Me.DefaultDatabaseBrowseBUTTON.TabIndex = 26
+        Me.DefaultDatabaseBrowseBUTTON.Text = "Browse"
+        Me.DefaultDatabaseBrowseBUTTON.UseVisualStyleBackColor = True
         '
-        'Button3
+        'EtalPathBrowseBUTTON
         '
-        Me.Button3.Location = New System.Drawing.Point(354, 40)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 25
-        Me.Button3.Text = "Browse"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.EtalPathBrowseBUTTON.Location = New System.Drawing.Point(354, 40)
+        Me.EtalPathBrowseBUTTON.Name = "EtalPathBrowseBUTTON"
+        Me.EtalPathBrowseBUTTON.Size = New System.Drawing.Size(75, 23)
+        Me.EtalPathBrowseBUTTON.TabIndex = 25
+        Me.EtalPathBrowseBUTTON.Text = "Browse"
+        Me.EtalPathBrowseBUTTON.UseVisualStyleBackColor = True
         '
-        'Button2
+        'CancelDefaultsBUTTON
         '
-        Me.Button2.Location = New System.Drawing.Point(284, 248)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 24
-        Me.Button2.Text = "Cancel"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.CancelDefaultsBUTTON.Location = New System.Drawing.Point(284, 248)
+        Me.CancelDefaultsBUTTON.Name = "CancelDefaultsBUTTON"
+        Me.CancelDefaultsBUTTON.Size = New System.Drawing.Size(75, 23)
+        Me.CancelDefaultsBUTTON.TabIndex = 24
+        Me.CancelDefaultsBUTTON.Text = "Cancel"
+        Me.CancelDefaultsBUTTON.UseVisualStyleBackColor = True
         '
-        'TextBox2
+        'DatabaseFileTEXTBOX
         '
-        Me.TextBox2.Location = New System.Drawing.Point(51, 114)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(275, 20)
-        Me.TextBox2.TabIndex = 22
+        Me.DatabaseFileTEXTBOX.Location = New System.Drawing.Point(51, 114)
+        Me.DatabaseFileTEXTBOX.Name = "DatabaseFileTEXTBOX"
+        Me.DatabaseFileTEXTBOX.Size = New System.Drawing.Size(275, 20)
+        Me.DatabaseFileTEXTBOX.TabIndex = 22
         '
         'Label1
         '
@@ -114,21 +114,21 @@ Partial Class Settings
         Me.Label1.TabIndex = 21
         Me.Label1.Text = "Etal Folder - eg C:\D2NT"
         '
-        'TextBox1
+        'EtalPathTEXTBOX
         '
-        Me.TextBox1.Location = New System.Drawing.Point(51, 40)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(275, 20)
-        Me.TextBox1.TabIndex = 20
+        Me.EtalPathTEXTBOX.Location = New System.Drawing.Point(51, 40)
+        Me.EtalPathTEXTBOX.Name = "EtalPathTEXTBOX"
+        Me.EtalPathTEXTBOX.Size = New System.Drawing.Size(275, 20)
+        Me.EtalPathTEXTBOX.TabIndex = 20
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(48, 98)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(94, 13)
+        Me.Label3.Size = New System.Drawing.Size(90, 13)
         Me.Label3.TabIndex = 32
-        Me.Label3.Text = "Current Data Base"
+        Me.Label3.Text = "Default Database"
         '
         'OpenFileDialog1
         '
@@ -183,13 +183,13 @@ Partial Class Settings
         Me.Controls.Add(Me.CheckBox3)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Button6)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.SaveDefaultsBUTTON)
+        Me.Controls.Add(Me.DefaultDatabaseBrowseBUTTON)
+        Me.Controls.Add(Me.EtalPathBrowseBUTTON)
+        Me.Controls.Add(Me.CancelDefaultsBUTTON)
+        Me.Controls.Add(Me.DatabaseFileTEXTBOX)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.EtalPathTEXTBOX)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.NumericUpDown1)
         Me.Name = "Settings"
@@ -203,13 +203,13 @@ Partial Class Settings
     End Sub
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Button6 As System.Windows.Forms.Button
-    Friend WithEvents Button4 As System.Windows.Forms.Button
-    Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents SaveDefaultsBUTTON As System.Windows.Forms.Button
+    Friend WithEvents DefaultDatabaseBrowseBUTTON As System.Windows.Forms.Button
+    Friend WithEvents EtalPathBrowseBUTTON As System.Windows.Forms.Button
+    Friend WithEvents CancelDefaultsBUTTON As System.Windows.Forms.Button
+    Friend WithEvents DatabaseFileTEXTBOX As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents EtalPathTEXTBOX As System.Windows.Forms.TextBox
     Friend WithEvents FolderBrowserDialog1 As System.Windows.Forms.FolderBrowserDialog
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog

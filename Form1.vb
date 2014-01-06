@@ -170,8 +170,8 @@ Public Class Form1
     End Sub
 
     Private Sub SetDefaultsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetDefaultsToolStripMenuItem.Click
-        Dim MySettings As New Settings
-        MySettings.Show()
+        ' Dim MySettings As New Settings 
+        Settings.Show()
     End Sub
 
 
@@ -251,7 +251,7 @@ Public Class Form1
 
             RichTextBox2.AppendText("Mule Account: " & Objects(RowNumber).MuleAccount & vbCrLf)
             RichTextBox2.AppendText("Mule Name: " & Objects(RowNumber).MuleName & vbCrLf)
-            RichTextBox2.AppendText("Pickit Bot: " & Objects(RowNumber).PickitBot & vbCrLf)
+            RichTextBox2.AppendText("Mule Pass: " & Objects(RowNumber).MulePass & vbCrLf)
 
         End If
         RichTextBox2.SelectAll()
@@ -378,56 +378,108 @@ Public Class Form1
         ItemImageSelector.ShowDialog()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If SearchWordCOMBOBOX.Text = "" Then Return
-        Dim y As Integer = AllItemsInDatabaseListBox.SelectedIndex
-        If y = -1 Then y = 0
-        If y > -1 Then y = y + 1
+    Private Sub SearchBUTTON_Click(sender As Object, e As EventArgs) Handles SearchBUTTON.Click
+        '       If SearchWordCOMBOBOX.Text = "" Then Return
+        '      Dim y As Integer = AllItemsInDatabaseListBox.SelectedIndex
+        '     If y = -1 Then y = 0
+        '    If y > -1 Then y = y + 1
 
-        If SearchFieldCOMBOBOX.Text = "Item Name" Then
-            For x = y To Objects.Count - 1
-                If Objects(x).ItemName.IndexOf(SearchWordCOMBOBOX.Text) <> -1 Then
-                    AllItemsInDatabaseListBox.SelectedIndex = x
-                    Return
+        '        If SearchFieldCOMBOBOX.Text = "Item Name" Then
+        'For x = y To Objects.Count - 1
+        'If Objects(x).ItemName.IndexOf(SearchWordCOMBOBOX.Text) <> -1 Then
+        'AllItemsInDatabaseListBox.SelectedIndex = x
+        'Return
+        '
+        '        End If
+        '        Next
+        '        End If
+        '
+        '
+        '        If SearchFieldCOMBOBOX.Text = "Item Base" Then
+        ' For x = y To Objects.Count - 1
+        ' If Objects(x).ItemBase.IndexOf(SearchWordCOMBOBOX.Text) <> -1 Then
+        ' AllItemsInDatabaseListBox.SelectedIndex = x
+        ' Return
 
-                End If
-            Next
-        End If
+        '        End If
+        '        Next
+        '       End If
 
 
-        If SearchFieldCOMBOBOX.Text = "Item Base" Then
-            For x = y To Objects.Count - 1
-                If Objects(x).ItemBase.IndexOf(SearchWordCOMBOBOX.Text) <> -1 Then
-                    AllItemsInDatabaseListBox.SelectedIndex = x
-                    Return
+        '        If SearchFieldCOMBOBOX.Text = "Item Quality" Then
+        ' For x = y To Objects.Count - 1
+        ' If Objects(x).ItemQuality.IndexOf(SearchWordCOMBOBOX.Text) <> -1 Then
+        ' AllItemsInDatabaseListBox.SelectedIndex = x
+        ' Return
 
-                End If
-            Next
-        End If
+        'End If
+        'Next
+        'End If
+
+        'If SearchFieldCOMBOBOX.Text = "RuneWord" Then
+        ' For x = y To Objects.Count - 1
+        'If Objects(x).RuneWord = True Then
+        'AllItemsInDatabaseListBox.SelectedIndex = x
+        'Return
+
+        'End If
+        'Next
+        'End If
+
+        'AllItemsInDatabaseListBox.SelectedIndex = -1
+        SearchRoutine()
 
 
-        If SearchFieldCOMBOBOX.Text = "Item Quality" Then
-            For x = y To Objects.Count - 1
-                If Objects(x).ItemQuality.IndexOf(SearchWordCOMBOBOX.Text) <> -1 Then
-                    AllItemsInDatabaseListBox.SelectedIndex = x
-                    Return
 
-                End If
-            Next
-        End If
 
-        If SearchFieldCOMBOBOX.Text = "RuneWord" Then
-            For x = y To Objects.Count - 1
-                If Objects(x).RuneWord = True Then
-                    AllItemsInDatabaseListBox.SelectedIndex = x
-                    Return
 
-                End If
-            Next
-        End If
 
-        AllItemsInDatabaseListBox.SelectedIndex = -1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     End Sub
+   
+    Private Sub SearchFieldCOMBOBOX_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SearchFieldCOMBOBOX.SelectedIndexChanged
+
+        'turns off string search textbox for value only searches
+        SearchWordCOMBOBOX.Enabled = True
+        If UCase(SearchFieldCOMBOBOX.Text) = "ONE HAND DAMAGE MAX" Then SearchWordCOMBOBOX.Enabled = False
+        If UCase(SearchFieldCOMBOBOX.Text) = "ONE HAND DAMAGE MIN" Then SearchWordCOMBOBOX.Enabled = False
+        If UCase(SearchFieldCOMBOBOX.Text) = "TWO HAND DAMAGE MAX" Then SearchWordCOMBOBOX.Enabled = False
+        If UCase(SearchFieldCOMBOBOX.Text) = "TWO HAND DAMAGE MIN" Then SearchWordCOMBOBOX.Enabled = False
+        If UCase(SearchFieldCOMBOBOX.Text) = "THROW  DAMAGE MAX" Then SearchWordCOMBOBOX.Enabled = False
+        If UCase(SearchFieldCOMBOBOX.Text) = "THROW  DAMAGE MIN" Then SearchWordCOMBOBOX.Enabled = False
+        If UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED STRENGTH" Then SearchWordCOMBOBOX.Enabled = False
+        If UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED DEXTERITY" Then SearchWordCOMBOBOX.Enabled = False
+        If UCase(SearchFieldCOMBOBOX.Text) = "DEFENSE" Then SearchWordCOMBOBOX.Enabled = False
+        If UCase(SearchFieldCOMBOBOX.Text) = "CHANCE TO BLOCK" Then SearchWordCOMBOBOX.Enabled = False
+    End Sub
+
     ' listed below for reference only till figure out a better search option above
     '   Item Name
     'Item Base
@@ -444,5 +496,12 @@ Public Class Form1
     'Required Strength
     'Required Dexterity
 
+
+
+
+    Private Sub SearchLISTBOX_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SearchLISTBOX.SelectedIndexChanged
+
+        AllItemsInDatabaseListBox.SelectedItem = SearchLISTBOX.SelectedItem
+    End Sub
 
 End Class
