@@ -433,6 +433,17 @@ Public Class Form1
 
 
 
+<<<<<<< HEAD
+
+
+
+
+
+
+
+
+=======
+>>>>>>> f9fcb7f8f2c458208f8c32d2af4d74bfb3ea4d0a
 
 
 
@@ -444,14 +455,7 @@ Public Class Form1
 
 
 
-
-
-
-
-
-
-
-
+<<<<<<< HEAD
     End Sub
 
 
@@ -475,6 +479,44 @@ Public Class Form1
     End Sub
 
 
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    End Sub
+   
+    Private Sub SearchFieldCOMBOBOX_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SearchFieldCOMBOBOX.SelectedIndexChanged
+
+        'turns off string search textbox for value only searches
+        SearchWordCOMBOBOX.Enabled = True
+        If UCase(SearchFieldCOMBOBOX.Text) = "ONE HAND DAMAGE MAX" Then SearchWordCOMBOBOX.Enabled = False
+        If UCase(SearchFieldCOMBOBOX.Text) = "ONE HAND DAMAGE MIN" Then SearchWordCOMBOBOX.Enabled = False
+        If UCase(SearchFieldCOMBOBOX.Text) = "TWO HAND DAMAGE MAX" Then SearchWordCOMBOBOX.Enabled = False
+        If UCase(SearchFieldCOMBOBOX.Text) = "TWO HAND DAMAGE MIN" Then SearchWordCOMBOBOX.Enabled = False
+        If UCase(SearchFieldCOMBOBOX.Text) = "THROW  DAMAGE MAX" Then SearchWordCOMBOBOX.Enabled = False
+        If UCase(SearchFieldCOMBOBOX.Text) = "THROW  DAMAGE MIN" Then SearchWordCOMBOBOX.Enabled = False
+        If UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED STRENGTH" Then SearchWordCOMBOBOX.Enabled = False
+        If UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED DEXTERITY" Then SearchWordCOMBOBOX.Enabled = False
+        If UCase(SearchFieldCOMBOBOX.Text) = "DEFENSE" Then SearchWordCOMBOBOX.Enabled = False
+        If UCase(SearchFieldCOMBOBOX.Text) = "CHANCE TO BLOCK" Then SearchWordCOMBOBOX.Enabled = False
+    End Sub
+
+>>>>>>> f9fcb7f8f2c458208f8c32d2af4d74bfb3ea4d0a
     ' listed below for reference only till figure out a better search option above
     '   Item Name
     'Item Base
@@ -492,9 +534,16 @@ Public Class Form1
     'Required Dexterity
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f9fcb7f8f2c458208f8c32d2af4d74bfb3ea4d0a
     Private Sub SearchLISTBOX_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SearchLISTBOX.SelectedIndexChanged
 
         AllItemsInDatabaseListBox.SelectedItem = SearchLISTBOX.SelectedItem
     End Sub
+<<<<<<< HEAD
 
+=======
+>>>>>>> f9fcb7f8f2c458208f8c32d2af4d74bfb3ea4d0a
 End Class
