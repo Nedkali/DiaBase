@@ -38,12 +38,12 @@ Module AutoLogger
         ' Check Log folder for files to process
         GetLogFiles()
         If LogFilesList.Count = 0 Then
-            Form1.RichTextBox1.AppendText("No Logs to import" & vbCrLf)
+            Form1.RichTextBox1.AppendText(" - No Logs to import" & vbCrLf)
             Return 'If There Are no Log Files - exit
         End If
 
 
-        Form1.RichTextBox1.Text = "Logs to import = " & LogFilesList.Count & vbCrLf
+        Form1.RichTextBox1.Text = " - Logs to import = " & LogFilesList.Count & vbCrLf
         Dim Pretotal = Objects.Count
         GetmuleaccountFiles()
 
@@ -89,7 +89,7 @@ Module AutoLogger
         Dim myarray As Array
         Dim thislogmulename As String
         Dim thislogmuleacc As String
-        Dim thislogpass As String
+        Dim thislogpass As String = ""
         Dim thispickbot As String = ""
         Do Until Tally = LogFilesList.Count
 
@@ -109,7 +109,22 @@ Module AutoLogger
                 End If
                 
 
-                If KeepPassPrivate = True Then thislogpass = "***********"
+              
+                'this repaces the password with the same number of asterix '****' to hide pass information 
+                Select Case KeepPassPrivate
+                    Case "True"
+                        Dim temppass As String = Nothing
+                        Dim count As Integer = 0
+                        Do Until count = Len(thislogpass)
+                            temppass = temppass + "*"
+                            count = count + 1
+                        Loop
+                        thislogpass = temppass
+
+                End Select
+
+
+
 
                 Do
                     Dim NewObject As New ItemObjects
