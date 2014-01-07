@@ -1,23 +1,23 @@
 ﻿Public Class Settings
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles CancelDefaultsBUTTON.Click
+        If PictureBox1.Visible = False Then
+            Mymessages = "Must set correct Etal folder" : MyMessageBox()
+            Return
+        End If
+        If PictureBox2.Visible = False Then
+            Mymessages = "Must Set Database file" : MyMessageBox()
+            Return
+        End If
+
         Me.Close()
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles EtalPathBrowseBUTTON.Click
-        EtalPathTEXTBOX.Text = ""
-        PictureBox1.Visible = False
-        DatabaseFileTEXTBOX.Text = ""
-        'todo - set a variable and set to selected folder
+
         FolderBrowserDialog1.ShowDialog()
-        Dim temp As Array
-        temp = Split(FolderBrowserDialog1.SelectedPath, "\")
-        If temp(temp.Length - 1) = "D2NT" Then EtalPathTEXTBOX.Text = FolderBrowserDialog1.SelectedPath
-        If temp(temp.Length - 1) <> "D2NT" Then
-            MessageBox.Show("not correct folder", "Error")
-            Return
-        End If
-        If EtalPathTEXTBOX.Text <> Nothing Then PictureBox1.Visible = True
+        EtalPathTEXTBOX.Text = FolderBrowserDialog1.SelectedPath
+        SettingsChecker()
 
     End Sub
 
@@ -31,14 +31,18 @@
         OpenFileDialog1.FilterIndex = 2
         OpenFileDialog1.RestoreDirectory = True
         OpenFileDialog1.ShowDialog()
-        If OpenFileDialog1.FileName <> Nothing Then DatabaseFileTEXTBOX.Text = OpenFileDialog1.FileName
-        If DatabaseFileTEXTBOX.Text <> Nothing Then PictureBox2.Visible = True
+        DatabaseFileTEXTBOX.Text = openFileDialog1.FileName
+        SettingsChecker()
     End Sub
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles SaveDefaultsBUTTON.Click
 
-        If PictureBox1.Visible = False And PictureBox2.Visible = False Then
-            MessageBox.Show("Settings incomplete", "Error")
+        If PictureBox1.Visible = False Then
+            Mymessages = "Must set correct Etal folder" : MyMessageBox()
+            Return
+        End If
+        If PictureBox2.Visible = False Then
+            Mymessages = "Must Set Database file" : MyMessageBox()
             Return
         End If
 
@@ -57,11 +61,22 @@
     End Sub
 
     Private Sub Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        
-        If DatabaseFileTEXTBOX.Text <> Nothing Then PictureBox2.Visible = True
-        If EtalPathTEXTBOX.Text <> Nothing Then PictureBox1.Visible = True
-
+        EtalPathTEXTBOX.Text = EtalPath
+        DatabaseFileTEXTBOX.Text = DataBaseFile
+        NumericUpDown1.Value = TimerMins
+        CheckBox3.Checked = KeepPassPrivate
+        SettingsChecker()
 
     End Sub
+
+    Private Sub SettingsChecker()
+
+        If My.Computer.FileSystem.DirectoryExists(EtalPathTEXTBOX.Text) = True Then
+            Dim temp = Split(EtalPathTEXTBOX.Text, "\")
+            If temp(temp.Length - 1) = "D2NT" Then PictureBox1.Visible = True
+        End If
+
+        If My.Computer.FileSystem.FileExists(DatabaseFileTEXTBOX.Text) = True Then PictureBox2.Visible = True
+    End Sub
+
 End Class

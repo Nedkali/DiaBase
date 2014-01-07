@@ -22,7 +22,7 @@ Public Class Form1
             Dim file As System.IO.StreamWriter
             file = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath + "\Settings.cfg", False)
             file.WriteLine("C\D2NT")
-            file.WriteLine(Application.StartupPath + "\Backup\Default.txt")
+            file.WriteLine(Application.StartupPath + "\DataBase\Default.txt")
             file.WriteLine("30")
             file.WriteLine("True")
             file.Close()

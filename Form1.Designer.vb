@@ -99,6 +99,7 @@ Partial Class Form1
         Me.AllItemsInDatabaseListBox.ForeColor = System.Drawing.SystemColors.MenuBar
         Me.AllItemsInDatabaseListBox.FormattingEnabled = True
         Me.AllItemsInDatabaseListBox.Location = New System.Drawing.Point(3, 3)
+        Me.AllItemsInDatabaseListBox.Margin = New System.Windows.Forms.Padding(0)
         Me.AllItemsInDatabaseListBox.Name = "AllItemsInDatabaseListBox"
         Me.AllItemsInDatabaseListBox.Size = New System.Drawing.Size(367, 417)
         Me.AllItemsInDatabaseListBox.TabIndex = 22
@@ -302,7 +303,7 @@ Partial Class Form1
         'SetDefaultsToolStripMenuItem
         '
         Me.SetDefaultsToolStripMenuItem.Name = "SetDefaultsToolStripMenuItem"
-        Me.SetDefaultsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SetDefaultsToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
         Me.SetDefaultsToolStripMenuItem.Text = "Set Defaults"
         '
         'SettingsToolStripMenuItem
@@ -380,7 +381,7 @@ Partial Class Form1
         Me.RichTextBox2.Location = New System.Drawing.Point(473, 358)
         Me.RichTextBox2.Name = "RichTextBox2"
         Me.RichTextBox2.ReadOnly = True
-        Me.RichTextBox2.Size = New System.Drawing.Size(270, 347)
+        Me.RichTextBox2.Size = New System.Drawing.Size(270, 331)
         Me.RichTextBox2.TabIndex = 15
         Me.RichTextBox2.Text = ""
         '
@@ -444,7 +445,9 @@ Partial Class Form1
         Me.ListboxTABCONTROL.Controls.Add(Me.TabPage1)
         Me.ListboxTABCONTROL.Controls.Add(Me.TabPage2)
         Me.ListboxTABCONTROL.Location = New System.Drawing.Point(26, 247)
+        Me.ListboxTABCONTROL.Margin = New System.Windows.Forms.Padding(0)
         Me.ListboxTABCONTROL.Name = "ListboxTABCONTROL"
+        Me.ListboxTABCONTROL.Padding = New System.Drawing.Point(0, 0)
         Me.ListboxTABCONTROL.SelectedIndex = 0
         Me.ListboxTABCONTROL.Size = New System.Drawing.Size(381, 449)
         Me.ListboxTABCONTROL.TabIndex = 123
@@ -485,7 +488,7 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.D2Items.My.Resources.Resources.D2Data
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(794, 742)
         Me.Controls.Add(Me.ListboxTABCONTROL)
         Me.Controls.Add(Me.SearchValueLABEL)

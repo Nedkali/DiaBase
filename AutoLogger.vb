@@ -38,7 +38,7 @@ Module AutoLogger
         ' Check Log folder for files to process
         GetLogFiles()
         If LogFilesList.Count = 0 Then
-            Form1.RichTextBox1.AppendText(" - No Logs to import" & vbCrLf)
+            Form1.RichTextBox1.AppendText("No Logs to import" & vbCrLf)
             Return 'If There Are no Log Files - exit
         End If
 
@@ -469,10 +469,12 @@ Module AutoLogger
             LogWriter.Close()
 
         Catch ex As Exception
-            MessageBox.Show(ex.ToString, "File Write Error")
+            Form1.RichTextBox1.AppendText("File Write Error" & vbCrLf)
 
         End Try
         Form1.RichTextBox1.AppendText("Items Saved = " & count & vbCrLf)
+
+        'probaly need to delete the objects used here likely to cause conflicts with item add & saving database TODO
 
     End Sub
     Function GetRunes(ByVal runename)
