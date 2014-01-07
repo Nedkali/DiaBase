@@ -246,7 +246,7 @@ Partial Class Form1
         'ItemsToolStripMenuItem
         '
         Me.ItemsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2, Me.ToolStripSeparator2, Me.AddNewItemToolStripMenuItem, Me.EditExistingItemToolStripMenuItem, Me.ToolStripSeparator1, Me.DeleteItemToolStripMenuItem})
-        Me.ItemsToolStripMenuItem.ForeColor = System.Drawing.Color.BurlyWood
+        Me.ItemsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.ItemsToolStripMenuItem.Name = "ItemsToolStripMenuItem"
         Me.ItemsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
         Me.ItemsToolStripMenuItem.Text = "Items"
@@ -318,25 +318,25 @@ Partial Class Form1
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(139, 22)
         Me.ToolStripMenuItem1.Text = "Backup Files"
         '
         'CloseToolStripMenuItem
         '
         Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
-        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.CloseToolStripMenuItem.Text = "Save"
         '
         'OpenToolStripMenuItem
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.OpenToolStripMenuItem.Text = "Open"
         '
         'ItemFileToolStripMenuItem
@@ -350,7 +350,7 @@ Partial Class Form1
         'NewToolStripMenuItem1
         '
         Me.NewToolStripMenuItem1.Name = "NewToolStripMenuItem1"
-        Me.NewToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.NewToolStripMenuItem1.Size = New System.Drawing.Size(139, 22)
         Me.NewToolStripMenuItem1.Text = "New"
         '
         'MenuStrip1
