@@ -502,7 +502,7 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.D2Items.My.Resources.Resources.D2Data
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(794, 742)
         Me.Controls.Add(Me.ExactMatchCHECKBOX)
         Me.Controls.Add(Me.ListboxTABCONTROL)
@@ -527,7 +527,7 @@ Partial Class Form1
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(810, 800)
-        Me.MinimumSize = New System.Drawing.Size(810, 736)
+        Me.MinimumSize = New System.Drawing.Size(810, 600)
         Me.Name = "Form1"
         Me.Text = "DiaBase"
         Me.StatusStrip1.ResumeLayout(False)
