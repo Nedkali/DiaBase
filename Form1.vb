@@ -25,6 +25,7 @@ Public Class Form1
             file.WriteLine(Application.StartupPath + "\DataBase\Default.txt")
             file.WriteLine("30")
             file.WriteLine("True")
+            file.WriteLine("False")
             file.Close()
             Mymessages = "Settings file created" : MyMessageBox()
 
@@ -93,75 +94,14 @@ Public Class Form1
 
         Dim DatabaseFilename As String = OpenDatabaseDIALOG.FileName
 
-        OpenDatabaseRoutine(DatabaseFilename)
+        OpenDatabaseRoutine(DatabaseFilename) ' Routine puts saved items ito object arrays as ItemObject class collection
 
-        ' AllItemsInDatabaseListBox.Items.Clear() ' clears items listed
-        ' If Objects.Count > 0 Then               ' had to be done this way - havent figured out a better way for now
-        ' Objects.RemoveRange(1, Objects.Count - 1)
-        ' Objects.RemoveAt(0)
-        ' End If
-        '
-        '        Dim Reader = My.Computer.FileSystem.OpenTextFileReader(DatabaseFilename)
-        '
-        '        Do
-        ' If Reader.EndOfStream = True Then Exit Do
-        ' Reader.ReadLine()
-        ' If Reader.EndOfStream = True Then Exit Do
-        ' Dim NewObject As New ItemObjects
-        '
-        'NewObject.ItemName = Reader.ReadLine
-        'NewObject.ItemBase = Reader.ReadLine
-        'NewObject.ItemQuality = Reader.ReadLine
-        'NewObject.RequiredCharacter = Reader.ReadLine
-        'NewObject.EtherealItem = Reader.ReadLine
-        'NewObject.Sockets = Reader.ReadLine
-        '    NewObject.RuneWord = Reader.ReadLine
-        '    NewObject.ThrowDamageMin = Reader.ReadLine
-        '    NewObject.ThrowDamageMax = Reader.ReadLine
-        '    NewObject.OneHandDamageMin = Reader.ReadLine
-        '    NewObject.OneHandDamageMax = Reader.ReadLine
-        '    NewObject.TwoHandDamageMin = Reader.ReadLine
-        '    NewObject.TwoHandDamageMax = Reader.ReadLine
-        '    NewObject.Defense = Reader.ReadLine
-        '    NewObject.ChanceToBlock = Reader.ReadLine
-        '    NewObject.QuantityMin = Reader.ReadLine
-        '    NewObject.QuantityMax = Reader.ReadLine
-        '    NewObject.DurabilityMin = Reader.ReadLine
-        '    NewObject.DurabilityMax = Reader.ReadLine
-        '    NewObject.RequiredStrength = Reader.ReadLine
-        '    NewObject.RequiredDexterity = Reader.ReadLine
-        '    NewObject.RequiredLevel = Reader.ReadLine
-        '    NewObject.AttackClass = Reader.ReadLine
-        '    NewObject.AttackSpeed = Reader.ReadLine
-        '    NewObject.Stat1 = Reader.ReadLine
-        '    NewObject.Stat2 = Reader.ReadLine
-        '    NewObject.Stat3 = Reader.ReadLine
-        '    NewObject.Stat4 = Reader.ReadLine
-        '    NewObject.Stat5 = Reader.ReadLine
-        '    NewObject.Stat6 = Reader.ReadLine
-        '    NewObject.Stat7 = Reader.ReadLine
-        '    NewObject.Stat8 = Reader.ReadLine
-        '    NewObject.Stat9 = Reader.ReadLine
-        '    NewObject.Stat10 = Reader.ReadLine
-        '    NewObject.Stat11 = Reader.ReadLine
-        '    NewObject.Stat12 = Reader.ReadLine
-        '    NewObject.Stat13 = Reader.ReadLine
-        '    NewObject.Stat14 = Reader.ReadLine
-        '    NewObject.Stat15 = Reader.ReadLine
-        '    NewObject.MuleName = Reader.ReadLine
-        '    NewObject.MuleAccount = Reader.ReadLine
-        '    NewObject.MulePass = Reader.ReadLine
-        '    NewObject.PickitBot = Reader.ReadLine
-        '    NewObject.UserReference = Reader.ReadLine
-        '    NewObject.ItemImage = Reader.ReadLine
-        '
-        '        Objects.Add(NewObject)
-        '       Loop Until Reader.EndOfStream
-        '      Reader.Close()
-
-        Display_Items()
+   
+        Display_Items() '                       Routine Populates all items listbox with, um, all items obviously :)
 
     End Sub
+
+    'Populates all items listbox routine
     Public Sub Display_Items()
         AllItemsInDatabaseListBox.Items.Clear() 'insure old list is definetly clear b4 repoulating
         For x = 0 To Objects.Count - 1
@@ -171,19 +111,20 @@ Public Class Form1
 
         If AllItemsInDatabaseListBox.Items.Count > 0 Then AllItemsInDatabaseListBox.SelectedIndex = 0
     End Sub
+
+    'OPENES THE NEW ITEM FORM TO MANUALLY ADD A NEW ITEM TO THE DATABASE
     Private Sub AddNewItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddNewItemToolStripMenuItem.Click
         If LoggerRunning = True Then
             Mymessages = "Please wait Import in progress" : MyMessageBox()
             Return
         End If
 
-        ImportTimer.Stop() 'stop timer b4 form opens
-
+        ImportTimer.Stop() '        stop timer b4 form opens
         AddItemForm.ShowDialog()
-
-        ImportTimer.Start() ' restart timer after form closes
+        ImportTimer.Start() '       restart timer after form closes
     End Sub
 
+    'OPENS THE EDIT EXISTING ITEM FORM TO MANUALLY EDIT AN ITEMS FIELDS
     Private Sub EditExistingItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditExistingItemToolStripMenuItem.Click
         If LoggerRunning = True Then
             Mymessages = "Please wait Import in progress" : MyMessageBox()
@@ -194,6 +135,7 @@ Public Class Form1
         ImportTimer.Start()
     End Sub
 
+    'dISPLAYS THE SETTINGS FOM SELECTED FROM PULLDOWN MENUES
     Private Sub SetDefaultsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetDefaultsToolStripMenuItem.Click
         If LoggerRunning = True Then
             Mymessages = "Please wait Import in progress" : MyMessageBox()
@@ -388,8 +330,9 @@ Public Class Form1
     End Sub
 
 
-
+    'Refreshes selected database when selected from menu bar
     Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+
         Dim BackupPath = Application.StartupPath & "\Database\Backup\"
         Dim temp As String = ""
         Dim myarray = Split(DataBaseFile, ".txt", 0)

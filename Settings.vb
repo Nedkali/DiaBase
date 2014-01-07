@@ -52,6 +52,7 @@
         file.WriteLine(DatabaseFileTEXTBOX.Text)
         file.WriteLine(NumericUpDown1.Value)
         file.WriteLine(CheckBox3.Checked)
+        file.WriteLine(AutoBackupCHECKBOX.Checked) ' added this for auto backup setting
         file.Close()
         EtalPath = EtalPathTEXTBOX.Text
         DataBaseFile = DatabaseFileTEXTBOX.Text

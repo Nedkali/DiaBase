@@ -42,6 +42,31 @@ Module AutoLogger
             Return 'If There Are no Log Files - exit
         End If
 
+        ' This Backsup the database if logfiles exist to import (above routine checks this is true) and is set to do so in settings auto backup checkbox
+        ' Routine currently will only backup the selected database - linking will have to be considered also b4 routine is complete <---------- [FINISH THIS ROB]
+
+        If Settings.AutoBackupCHECKBOX.Checked = True Then
+
+            
+            'get Backup directory path
+            Dim BackupPath = Application.StartupPath + "\DataBase\Backup\" ' set path to backup folder
+
+            'get name of database name fron databasefile path string
+            Dim DBaseName = DatabaseFile.Replace(Application.StartupPath + "\DataBase\", "")
+
+
+            'if an old backup of this database exists here already then this deletes it
+            If My.Computer.FileSystem.FileExists(BackupPath + DBaseName) = True Then My.Computer.FileSystem.DeleteFile(BackupPath + DBaseName)
+
+            'This saves the new database backup file
+            My.Computer.FileSystem.CopyFile(DatabaseFile, BackupPath + DBaseName)
+
+            Form1.RichTextBox1.AppendText(DBaseName & " Backup Successful" & vbCrLf) '  logger event window entry backup message, REMOVE THIS IF YOU LIKE
+
+        End If
+
+
+
 
         Form1.RichTextBox1.AppendText("Logs to import = " & LogFilesList.Count & vbCrLf)
         Dim Pretotal = Objects.Count

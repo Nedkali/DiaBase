@@ -39,6 +39,7 @@ Partial Class Settings
         Me.CheckBox3 = New System.Windows.Forms.CheckBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.AutoBackupCHECKBOX = New System.Windows.Forms.CheckBox()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -47,18 +48,20 @@ Partial Class Settings
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(355, 180)
+        Me.Label5.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label5.ForeColor = System.Drawing.Color.White
+        Me.Label5.Location = New System.Drawing.Point(407, 188)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(29, 13)
+        Me.Label5.Size = New System.Drawing.Size(46, 13)
         Me.Label5.TabIndex = 29
-        Me.Label5.Text = "Mins"
+        Me.Label5.Text = "Minuites"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.BackColor = System.Drawing.SystemColors.WindowText
         Me.Label4.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.Label4.Location = New System.Drawing.Point(261, 160)
+        Me.Label4.Location = New System.Drawing.Point(332, 160)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(121, 13)
         Me.Label4.TabIndex = 28
@@ -66,7 +69,7 @@ Partial Class Settings
         '
         'SaveDefaultsBUTTON
         '
-        Me.SaveDefaultsBUTTON.Location = New System.Drawing.Point(142, 230)
+        Me.SaveDefaultsBUTTON.Location = New System.Drawing.Point(326, 240)
         Me.SaveDefaultsBUTTON.Name = "SaveDefaultsBUTTON"
         Me.SaveDefaultsBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.SaveDefaultsBUTTON.TabIndex = 27
@@ -93,7 +96,7 @@ Partial Class Settings
         '
         'CancelDefaultsBUTTON
         '
-        Me.CancelDefaultsBUTTON.Location = New System.Drawing.Point(317, 230)
+        Me.CancelDefaultsBUTTON.Location = New System.Drawing.Point(407, 240)
         Me.CancelDefaultsBUTTON.Name = "CancelDefaultsBUTTON"
         Me.CancelDefaultsBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.CancelDefaultsBUTTON.TabIndex = 24
@@ -142,7 +145,7 @@ Partial Class Settings
         '
         'NumericUpDown1
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(293, 176)
+        Me.NumericUpDown1.Location = New System.Drawing.Point(335, 185)
         Me.NumericUpDown1.Minimum = New Decimal(New Integer() {5, 0, 0, 0})
         Me.NumericUpDown1.Name = "NumericUpDown1"
         Me.NumericUpDown1.Size = New System.Drawing.Size(56, 20)
@@ -154,11 +157,11 @@ Partial Class Settings
         Me.CheckBox3.AutoSize = True
         Me.CheckBox3.BackColor = System.Drawing.SystemColors.WindowText
         Me.CheckBox3.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.CheckBox3.Location = New System.Drawing.Point(74, 176)
+        Me.CheckBox3.Location = New System.Drawing.Point(42, 162)
         Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(143, 17)
+        Me.CheckBox3.Size = New System.Drawing.Size(212, 17)
         Me.CheckBox3.TabIndex = 34
-        Me.CheckBox3.Text = "Make Password Invisible"
+        Me.CheckBox3.Text = "Make Mule Account Password Invisible"
         Me.CheckBox3.UseVisualStyleBackColor = False
         '
         'PictureBox1
@@ -183,12 +186,25 @@ Partial Class Settings
         Me.PictureBox2.TabStop = False
         Me.PictureBox2.Visible = False
         '
+        'AutoBackupCHECKBOX
+        '
+        Me.AutoBackupCHECKBOX.AutoSize = True
+        Me.AutoBackupCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.AutoBackupCHECKBOX.ForeColor = System.Drawing.Color.White
+        Me.AutoBackupCHECKBOX.Location = New System.Drawing.Point(42, 193)
+        Me.AutoBackupCHECKBOX.Name = "AutoBackupCHECKBOX"
+        Me.AutoBackupCHECKBOX.Size = New System.Drawing.Size(216, 17)
+        Me.AutoBackupCHECKBOX.TabIndex = 37
+        Me.AutoBackupCHECKBOX.Text = "Backup Database Before Importng Logs"
+        Me.AutoBackupCHECKBOX.UseVisualStyleBackColor = False
+        '
         'Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.D2Items.My.Resources.Resources.Setting
         Me.ClientSize = New System.Drawing.Size(511, 295)
+        Me.Controls.Add(Me.AutoBackupCHECKBOX)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.CheckBox3)
@@ -230,4 +246,5 @@ Partial Class Settings
     Friend WithEvents CheckBox3 As System.Windows.Forms.CheckBox
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents AutoBackupCHECKBOX As System.Windows.Forms.CheckBox
 End Class

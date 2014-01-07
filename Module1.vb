@@ -21,6 +21,7 @@
     Public DataBasePath As String
     Public MuleDataPath As String
     Public ArchiveFolder As String
+    Public AutoBackups As String
     Public SearchReferenceList As List(Of String) = New List(Of String)
     Public ItemNamePulldownList As List(Of String) = New List(Of String)
     Public LogFilesList As List(Of String) = New List(Of String)    'Holds all logs found in log directory
@@ -110,6 +111,8 @@
         DataBaseFile = file.ReadLine() : Settings.DatabaseFileTEXTBOX.Text = DataBaseFile
         TimerMins = file.ReadLine() : Settings.NumericUpDown1.Value = TimerMins
         KeepPassPrivate = file.ReadLine() : If KeepPassPrivate = True Then Settings.CheckBox3.Checked = True
+        AutoBackups = file.ReadLine() : If AutoBackups = True Then Settings.AutoBackupCHECKBOX.Checked = True ' added this for auto backup setting
+
         file.Close()
     End Sub
     Public Function ItemImageList(sender As Integer)
