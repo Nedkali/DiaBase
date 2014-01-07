@@ -43,7 +43,7 @@ Module AutoLogger
         End If
 
 
-        Form1.RichTextBox1.Text = " - Logs to import = " & LogFilesList.Count & vbCrLf
+        Form1.RichTextBox1.AppendText("Logs to import = " & LogFilesList.Count & vbCrLf)
         Dim Pretotal = Objects.Count
         GetmuleaccountFiles()
 

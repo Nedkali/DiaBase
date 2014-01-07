@@ -64,7 +64,7 @@ Public Class Form1
             ImportLogFiles()
             LoggerRunning = False
             StartTimer()
-            RichTextBox1.AppendText("AutoLogging is Idle")
+            RichTextBox1.AppendText("AutoLogging is Idle" & vbCrLf)
         End If
 
         Dim Timerprogress As Integer = Math.Round((Timercount / TimerSecs) * 100)

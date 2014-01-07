@@ -61,7 +61,7 @@
     End Sub
 
     Private Sub Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Left = Form1.Left + 200
+        Me.Left = Form1.Left + 180
         Me.Top = Form1.Top + 300
         EtalPathTEXTBOX.Text = EtalPath
         DatabaseFileTEXTBOX.Text = DatabaseFile

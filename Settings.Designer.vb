@@ -56,6 +56,8 @@ Partial Class Settings
         'Label4
         '
         Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.SystemColors.WindowText
+        Me.Label4.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.Label4.Location = New System.Drawing.Point(261, 160)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(121, 13)
@@ -82,7 +84,7 @@ Partial Class Settings
         '
         'EtalPathBrowseBUTTON
         '
-        Me.EtalPathBrowseBUTTON.Location = New System.Drawing.Point(377, 41)
+        Me.EtalPathBrowseBUTTON.Location = New System.Drawing.Point(377, 53)
         Me.EtalPathBrowseBUTTON.Name = "EtalPathBrowseBUTTON"
         Me.EtalPathBrowseBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.EtalPathBrowseBUTTON.TabIndex = 25
@@ -108,7 +110,9 @@ Partial Class Settings
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(71, 25)
+        Me.Label1.BackColor = System.Drawing.SystemColors.WindowText
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.Label1.Location = New System.Drawing.Point(71, 26)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(125, 13)
         Me.Label1.TabIndex = 21
@@ -116,7 +120,7 @@ Partial Class Settings
         '
         'EtalPathTEXTBOX
         '
-        Me.EtalPathTEXTBOX.Location = New System.Drawing.Point(74, 41)
+        Me.EtalPathTEXTBOX.Location = New System.Drawing.Point(74, 53)
         Me.EtalPathTEXTBOX.Name = "EtalPathTEXTBOX"
         Me.EtalPathTEXTBOX.Size = New System.Drawing.Size(275, 20)
         Me.EtalPathTEXTBOX.TabIndex = 20
@@ -124,7 +128,9 @@ Partial Class Settings
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(71, 99)
+        Me.Label3.BackColor = System.Drawing.SystemColors.WindowText
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.Label3.Location = New System.Drawing.Point(71, 90)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(90, 13)
         Me.Label3.TabIndex = 32
@@ -146,17 +152,20 @@ Partial Class Settings
         'CheckBox3
         '
         Me.CheckBox3.AutoSize = True
+        Me.CheckBox3.BackColor = System.Drawing.SystemColors.WindowText
+        Me.CheckBox3.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.CheckBox3.Location = New System.Drawing.Point(74, 176)
         Me.CheckBox3.Name = "CheckBox3"
         Me.CheckBox3.Size = New System.Drawing.Size(143, 17)
         Me.CheckBox3.TabIndex = 34
         Me.CheckBox3.Text = "Make Password Invisible"
-        Me.CheckBox3.UseVisualStyleBackColor = True
+        Me.CheckBox3.UseVisualStyleBackColor = False
         '
         'PictureBox1
         '
+        Me.PictureBox1.BackColor = System.Drawing.SystemColors.WindowText
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(42, 37)
+        Me.PictureBox1.Location = New System.Drawing.Point(42, 49)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(23, 24)
         Me.PictureBox1.TabIndex = 35
@@ -165,6 +174,7 @@ Partial Class Settings
         '
         'PictureBox2
         '
+        Me.PictureBox2.BackColor = System.Drawing.SystemColors.WindowText
         Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
         Me.PictureBox2.Location = New System.Drawing.Point(42, 111)
         Me.PictureBox2.Name = "PictureBox2"
@@ -177,6 +187,7 @@ Partial Class Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackgroundImage = Global.D2Items.My.Resources.Resources.Setting
         Me.ClientSize = New System.Drawing.Size(511, 295)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.PictureBox1)
@@ -192,6 +203,8 @@ Partial Class Settings
         Me.Controls.Add(Me.EtalPathTEXTBOX)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.NumericUpDown1)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "Settings"
         Me.Text = "Settings"
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
