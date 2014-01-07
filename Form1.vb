@@ -33,6 +33,9 @@ Public Class Form1
     'Stuff to run after program starts
     Private Sub Form1_Shown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Shown
         LoadConfigFile()
+
+        OpenDatabaseRoutine(DataBaseFile)
+
         StartTimer()
         If LoggerRunning = False Then RichTextBox1.Text = "AutoLogging is Idle"
         If My.Computer.FileSystem.DirectoryExists(EtalPath) = False Then
@@ -68,6 +71,8 @@ Public Class Form1
         ToolStripProgressBar1.Value = Timerprogress
         ToolStripStatusLabel2.Text = "< " & Math.Ceiling((TimerSecs - Timercount) / 60) & " mins"
     End Sub
+
+    'Open New Database Button Handler
     Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
 
         If LoggerRunning = True Then ' dont try to open file if auto logger is working - will cause app crash
@@ -75,87 +80,96 @@ Public Class Form1
             Return
         End If
 
-        OpenDatabaseDIALOG.Title = "Open Existing Database" 'set dialog title
-        OpenDatabaseDIALOG.InitialDirectory = Application.StartupPath + "\DataBase\" 'set initial dir
+        OpenDatabaseDIALOG.Title = "Open Existing Database" '                           set dialog title
+        OpenDatabaseDIALOG.InitialDirectory = Application.StartupPath + "\DataBase\" '  set initial dir
         OpenDatabaseDIALOG.Filter = ".txt|*.txt"
         OpenDatabaseDIALOG.FileName = "Default.txt"
 
-        If OpenDatabaseDIALOG.ShowDialog() = DialogResult.Cancel Then Return ' without this if user clicks cancel app crashes
+        If OpenDatabaseDIALOG.ShowDialog() = DialogResult.Cancel Then Return '          without this if user clicks cancel app crashes
+        SearchLISTBOX.Items.Clear() '                                                   clean out old search matches
+        PictureBox1.BackgroundImage = D2Items.My.Resources.Resources.ImageBackground '  clean out old image                 [NOT WORKING]
+        RichTextBox2.Text = "" '                                                        clean out old item stats
+        RichTextBox1.Text = "" '                                                        clean out logging window
 
         Dim DatabaseFilename As String = OpenDatabaseDIALOG.FileName
 
-        AllItemsInDatabaseListBox.Items.Clear() 'clears items listed
-        If Objects.Count > 0 Then ' had to be done this way - havent figured out a better way for now
-            Objects.RemoveRange(1, Objects.Count - 1)
-            Objects.RemoveAt(0)
-        End If
+        OpenDatabaseRoutine(DatabaseFilename)
 
-        Dim Reader = My.Computer.FileSystem.OpenTextFileReader(DatabaseFilename)
-
-        Do
-            If Reader.EndOfStream = True Then Exit Do
-            Reader.ReadLine()
-            If Reader.EndOfStream = True Then Exit Do
-            Dim NewObject As New ItemObjects
-
-            NewObject.ItemName = Reader.ReadLine
-            NewObject.ItemBase = Reader.ReadLine
-            NewObject.ItemQuality = Reader.ReadLine
-            NewObject.RequiredCharacter = Reader.ReadLine
-            NewObject.EtherealItem = Reader.ReadLine
-            NewObject.Sockets = Reader.ReadLine
-            NewObject.RuneWord = Reader.ReadLine
-            NewObject.ThrowDamageMin = Reader.ReadLine
-            NewObject.ThrowDamageMax = Reader.ReadLine
-            NewObject.OneHandDamageMin = Reader.ReadLine
-            NewObject.OneHandDamageMax = Reader.ReadLine
-            NewObject.TwoHandDamageMin = Reader.ReadLine
-            NewObject.TwoHandDamageMax = Reader.ReadLine
-            NewObject.Defense = Reader.ReadLine
-            NewObject.ChanceToBlock = Reader.ReadLine
-            NewObject.QuantityMin = Reader.ReadLine
-            NewObject.QuantityMax = Reader.ReadLine
-            NewObject.DurabilityMin = Reader.ReadLine
-            NewObject.DurabilityMax = Reader.ReadLine
-            NewObject.RequiredStrength = Reader.ReadLine
-            NewObject.RequiredDexterity = Reader.ReadLine
-            NewObject.RequiredLevel = Reader.ReadLine
-            NewObject.AttackClass = Reader.ReadLine
-            NewObject.AttackSpeed = Reader.ReadLine
-            NewObject.Stat1 = Reader.ReadLine
-            NewObject.Stat2 = Reader.ReadLine
-            NewObject.Stat3 = Reader.ReadLine
-            NewObject.Stat4 = Reader.ReadLine
-            NewObject.Stat5 = Reader.ReadLine
-            NewObject.Stat6 = Reader.ReadLine
-            NewObject.Stat7 = Reader.ReadLine
-            NewObject.Stat8 = Reader.ReadLine
-            NewObject.Stat9 = Reader.ReadLine
-            NewObject.Stat10 = Reader.ReadLine
-            NewObject.Stat11 = Reader.ReadLine
-            NewObject.Stat12 = Reader.ReadLine
-            NewObject.Stat13 = Reader.ReadLine
-            NewObject.Stat14 = Reader.ReadLine
-            NewObject.Stat15 = Reader.ReadLine
-            NewObject.MuleName = Reader.ReadLine
-            NewObject.MuleAccount = Reader.ReadLine
-            NewObject.MulePass = Reader.ReadLine
-            NewObject.PickitBot = Reader.ReadLine
-            NewObject.UserReference = Reader.ReadLine
-            NewObject.ItemImage = Reader.ReadLine
-
-            Objects.Add(NewObject)
-        Loop Until Reader.EndOfStream
-        Reader.Close()
+        ' AllItemsInDatabaseListBox.Items.Clear() ' clears items listed
+        ' If Objects.Count > 0 Then               ' had to be done this way - havent figured out a better way for now
+        ' Objects.RemoveRange(1, Objects.Count - 1)
+        ' Objects.RemoveAt(0)
+        ' End If
+        '
+        '        Dim Reader = My.Computer.FileSystem.OpenTextFileReader(DatabaseFilename)
+        '
+        '        Do
+        ' If Reader.EndOfStream = True Then Exit Do
+        ' Reader.ReadLine()
+        ' If Reader.EndOfStream = True Then Exit Do
+        ' Dim NewObject As New ItemObjects
+        '
+        'NewObject.ItemName = Reader.ReadLine
+        'NewObject.ItemBase = Reader.ReadLine
+        'NewObject.ItemQuality = Reader.ReadLine
+        'NewObject.RequiredCharacter = Reader.ReadLine
+        'NewObject.EtherealItem = Reader.ReadLine
+        'NewObject.Sockets = Reader.ReadLine
+        '    NewObject.RuneWord = Reader.ReadLine
+        '    NewObject.ThrowDamageMin = Reader.ReadLine
+        '    NewObject.ThrowDamageMax = Reader.ReadLine
+        '    NewObject.OneHandDamageMin = Reader.ReadLine
+        '    NewObject.OneHandDamageMax = Reader.ReadLine
+        '    NewObject.TwoHandDamageMin = Reader.ReadLine
+        '    NewObject.TwoHandDamageMax = Reader.ReadLine
+        '    NewObject.Defense = Reader.ReadLine
+        '    NewObject.ChanceToBlock = Reader.ReadLine
+        '    NewObject.QuantityMin = Reader.ReadLine
+        '    NewObject.QuantityMax = Reader.ReadLine
+        '    NewObject.DurabilityMin = Reader.ReadLine
+        '    NewObject.DurabilityMax = Reader.ReadLine
+        '    NewObject.RequiredStrength = Reader.ReadLine
+        '    NewObject.RequiredDexterity = Reader.ReadLine
+        '    NewObject.RequiredLevel = Reader.ReadLine
+        '    NewObject.AttackClass = Reader.ReadLine
+        '    NewObject.AttackSpeed = Reader.ReadLine
+        '    NewObject.Stat1 = Reader.ReadLine
+        '    NewObject.Stat2 = Reader.ReadLine
+        '    NewObject.Stat3 = Reader.ReadLine
+        '    NewObject.Stat4 = Reader.ReadLine
+        '    NewObject.Stat5 = Reader.ReadLine
+        '    NewObject.Stat6 = Reader.ReadLine
+        '    NewObject.Stat7 = Reader.ReadLine
+        '    NewObject.Stat8 = Reader.ReadLine
+        '    NewObject.Stat9 = Reader.ReadLine
+        '    NewObject.Stat10 = Reader.ReadLine
+        '    NewObject.Stat11 = Reader.ReadLine
+        '    NewObject.Stat12 = Reader.ReadLine
+        '    NewObject.Stat13 = Reader.ReadLine
+        '    NewObject.Stat14 = Reader.ReadLine
+        '    NewObject.Stat15 = Reader.ReadLine
+        '    NewObject.MuleName = Reader.ReadLine
+        '    NewObject.MuleAccount = Reader.ReadLine
+        '    NewObject.MulePass = Reader.ReadLine
+        '    NewObject.PickitBot = Reader.ReadLine
+        '    NewObject.UserReference = Reader.ReadLine
+        '    NewObject.ItemImage = Reader.ReadLine
+        '
+        '        Objects.Add(NewObject)
+        '       Loop Until Reader.EndOfStream
+        '      Reader.Close()
 
         Display_Items()
 
     End Sub
-    Private Sub Display_Items()
+    Public Sub Display_Items()
+        AllItemsInDatabaseListBox.Items.Clear() 'insure old list is definetly clear b4 repoulating
         For x = 0 To Objects.Count - 1
             AllItemsInDatabaseListBox.Items.Add(Objects(x).ItemName)
         Next
         TextBox2.Text = Objects.Count & " Items"
+
+        If AllItemsInDatabaseListBox.Items.Count > 0 Then AllItemsInDatabaseListBox.SelectedIndex = 0
     End Sub
     Private Sub AddNewItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddNewItemToolStripMenuItem.Click
         ImportTimer.Stop() 'stop timer b4 form opens
@@ -472,7 +486,7 @@ Public Class Form1
 
     Private Sub SearchLISTBOX_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SearchLISTBOX.SelectedIndexChanged
 
-        AllItemsInDatabaseListBox.SelectedItem = SearchLISTBOX.SelectedItem
+        AllItemsInDatabaseListBox.SelectedIndex = SearchReferenceList(SearchLISTBOX.SelectedIndex)
     End Sub
 
 End Class

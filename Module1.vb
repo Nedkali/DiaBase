@@ -5,7 +5,7 @@
     'DataBase variables
     Public iEdit As Integer         'used in item edit form to locate item(array) number being edited
     Public EtalPath As String
-    Public DataBaseFile As String
+    Public DatabaseFile As String
     Public TimerMins As Integer
     Public Timercount As Integer
     Public TimerSecs As Integer
@@ -21,6 +21,7 @@
     Public DataBasePath As String
     Public MuleDataPath As String
     Public ArchiveFolder As String
+    Public SearchReferenceList As List(Of String) = New List(Of String)
     Public LogFilesList As List(Of String) = New List(Of String)    'Holds all logs found in log directory
     Public PassFiles As List(Of String) = New List(Of String)       'Holds all _muleaccount.txt file used to get mule pass and mule account
     Public LogType As List(Of String) = New List(Of String)
@@ -29,6 +30,77 @@
         UserMessaging.ShowDialog()
     End Sub
 
+
+    'This Reads the database from file and puts it in the object database (moved from form1 to allow it to be used at startup to load default database)
+    Sub OpenDatabaseRoutine(DatabaseFile)
+
+        Form1.AllItemsInDatabaseListBox.Items.Clear()   ' clears items listed
+        If Objects.Count > 0 Then                       ' had to be done this way - havent figured out a better way for now
+            Objects.RemoveRange(1, Objects.Count - 1)
+            Objects.RemoveAt(0)
+        End If
+
+        Dim Reader = My.Computer.FileSystem.OpenTextFileReader(DatabaseFile)
+
+        Do
+            If Reader.EndOfStream = True Then Exit Do
+            Reader.ReadLine()
+            If Reader.EndOfStream = True Then Exit Do
+            Dim NewObject As New ItemObjects
+
+            NewObject.ItemName = Reader.ReadLine
+            NewObject.ItemBase = Reader.ReadLine
+            NewObject.ItemQuality = Reader.ReadLine
+            NewObject.RequiredCharacter = Reader.ReadLine
+            NewObject.EtherealItem = Reader.ReadLine
+            NewObject.Sockets = Reader.ReadLine
+            NewObject.RuneWord = Reader.ReadLine
+            NewObject.ThrowDamageMin = Reader.ReadLine
+            NewObject.ThrowDamageMax = Reader.ReadLine
+            NewObject.OneHandDamageMin = Reader.ReadLine
+            NewObject.OneHandDamageMax = Reader.ReadLine
+            NewObject.TwoHandDamageMin = Reader.ReadLine
+            NewObject.TwoHandDamageMax = Reader.ReadLine
+            NewObject.Defense = Reader.ReadLine
+            NewObject.ChanceToBlock = Reader.ReadLine
+            NewObject.QuantityMin = Reader.ReadLine
+            NewObject.QuantityMax = Reader.ReadLine
+            NewObject.DurabilityMin = Reader.ReadLine
+            NewObject.DurabilityMax = Reader.ReadLine
+            NewObject.RequiredStrength = Reader.ReadLine
+            NewObject.RequiredDexterity = Reader.ReadLine
+            NewObject.RequiredLevel = Reader.ReadLine
+            NewObject.AttackClass = Reader.ReadLine
+            NewObject.AttackSpeed = Reader.ReadLine
+            NewObject.Stat1 = Reader.ReadLine
+            NewObject.Stat2 = Reader.ReadLine
+            NewObject.Stat3 = Reader.ReadLine
+            NewObject.Stat4 = Reader.ReadLine
+            NewObject.Stat5 = Reader.ReadLine
+            NewObject.Stat6 = Reader.ReadLine
+            NewObject.Stat7 = Reader.ReadLine
+            NewObject.Stat8 = Reader.ReadLine
+            NewObject.Stat9 = Reader.ReadLine
+            NewObject.Stat10 = Reader.ReadLine
+            NewObject.Stat11 = Reader.ReadLine
+            NewObject.Stat12 = Reader.ReadLine
+            NewObject.Stat13 = Reader.ReadLine
+            NewObject.Stat14 = Reader.ReadLine
+            NewObject.Stat15 = Reader.ReadLine
+            NewObject.MuleName = Reader.ReadLine
+            NewObject.MuleAccount = Reader.ReadLine
+            NewObject.MulePass = Reader.ReadLine
+            NewObject.PickitBot = Reader.ReadLine
+            NewObject.UserReference = Reader.ReadLine
+            NewObject.ItemImage = Reader.ReadLine
+
+            Objects.Add(NewObject)
+        Loop Until Reader.EndOfStream
+        Reader.Close()
+
+        Form1.display_items()
+
+    End Sub
 
     Sub LoadConfigFile()
         Dim file As System.IO.StreamReader
@@ -1373,17 +1445,66 @@
     End Function
 
     Sub SearchRoutine()
-        Dim count = -1 : Form1.SearchLISTBOX.Items.Clear()
-        For Each ItemObjectItem As ItemObjects In Objects
-            count = count + 1
+        Dim count = -1                                          'Used to track items database reference number
+        Form1.SearchLISTBOX.Items.Clear()                       'Clear out old search matches (edit about here for refine search later)
+        SearchReferenceList.Clear()                               'Clear Out old Item Search Reference List (Holds location in database of each matched item)
 
-            'search for item name
-            If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM NAME" And UCase(Form1.SearchWordCOMBOBOX.Text) = UCase(ItemObjectItem.ItemName) Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName)
+        'SEARCH ROUTINE STARTS HERE --->
+        'CAPS LOCK / CAPITAL LETTERS are NOT considered in any search modes - all upper casing is ignored in searches
 
+        'DEBUGGING - WILL DELETE THIS
+        'Dim A = UCase(Form1.SearchFieldCOMBOBOX.Text)
+        'Dim B = UCase(Form1.SearchWordCOMBOBOX.Text)
+        'Dim C As String
+        'Dim D As String
+
+        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
+            count = count + 1                                   ' move item locatino refrence counter onto next item number
+
+            'DEBUGGING - WILL DELETE THIS
+            'A = UCase(Form1.SearchFieldCOMBOBOX.Text)
+            'B = UCase(Form1.SearchWordCOMBOBOX.Text)
+            'C = UCase(ItemObjectItem.ItemName)
+            'D = UCase(Form1.SearchWordCOMBOBOX.Text).IndexOf(UCase(ItemObjectItem.ItemName))
+
+            'search for Word In item name (Equal to / Not Equal to)
+
+            'NOT EXACT MATCH SEARCH FOR ITEM NAME
+            If Form1.ExactMatchCHECKBOX.Checked = False Then
+                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM NAME" And Form1.SearchOperatorCOMBOBOX.Text = "Equal To" And UCase(ItemObjectItem.ItemName).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) ' EqualTo
+                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM NAME" And Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" And UCase(ItemObjectItem.ItemName).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) 'NotEqualTo 
+            End If
+
+            'EXACT MATCH SEARCH FOR ITEM NAME 
+            If Form1.ExactMatchCHECKBOX.Checked = True Then
+                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM NAME" And Form1.SearchOperatorCOMBOBOX.Text = "Equal To" And UCase(Form1.SearchWordCOMBOBOX.Text) = UCase(ItemObjectItem.ItemName) Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) ' EqualTo
+                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM NAME" And Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" And UCase(Form1.SearchWordCOMBOBOX.Text) <> UCase(ItemObjectItem.ItemName) Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) 'NotEqualTo 
+            End If
+
+
+
+            'Search For Word In ItemBase (EqualTo / NotEqualTo)
+
+            'EXACT MATCH SEARCH FOR ITEM BASE 
+            If Form1.ExactMatchCHECKBOX.Checked = True Then
+                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM BASE" And Form1.SearchOperatorCOMBOBOX.Text = "Equal To" And UCase(ItemObjectItem.ItemBase).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) ' EqualTo
+                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM BASE" And Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" And UCase(ItemObjectItem.ItemBase).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) 'NotEqualTo 
+            End If
+
+            'NOT EXACT MATCH SEARCH FOR ITEM BASE
+            If Form1.ExactMatchCHECKBOX.Checked = False Then
+                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM BASE" And Form1.SearchOperatorCOMBOBOX.Text = "Equal To" And UCase(Form1.SearchWordCOMBOBOX.Text) = UCase(ItemObjectItem.ItemBase) Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) ' EqualTo
+                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM BASE" And Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" And UCase(Form1.SearchWordCOMBOBOX.Text) <> UCase(ItemObjectItem.ItemBase) Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) 'NotEqualTo 
+            End If
+
+
+
+
+ItemMatched:  ' Jump point to avoid remaining redundant routine when a match has been found
         Next
 
 
-        If Form1.SearchLISTBOX.Items.Count > 0 Then Form1.SearchLISTBOX.SelectedIndex = 0 'select first match
+        If Form1.SearchLISTBOX.Items.Count > 0 Then Form1.SearchLISTBOX.SelectedIndex = 0 'select first match if matches exist
     End Sub
 
 

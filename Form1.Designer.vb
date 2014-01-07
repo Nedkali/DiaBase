@@ -69,6 +69,7 @@ Partial Class Form1
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.SearchLISTBOX = New System.Windows.Forms.ListBox()
+        Me.ExactMatchCHECKBOX = New System.Windows.Forms.CheckBox()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -152,7 +153,7 @@ Partial Class Form1
         '
         Me.Button2.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.Button2.ForeColor = System.Drawing.Color.Goldenrod
         Me.Button2.Location = New System.Drawing.Point(232, 116)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
@@ -212,9 +213,9 @@ Partial Class Form1
         Me.SearchWordCOMBOBOX.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.SearchWordCOMBOBOX.FormattingEnabled = True
         Me.SearchWordCOMBOBOX.Items.AddRange(New Object() {"Unique", "Set", "RuneWord"})
-        Me.SearchWordCOMBOBOX.Location = New System.Drawing.Point(179, 56)
+        Me.SearchWordCOMBOBOX.Location = New System.Drawing.Point(150, 56)
         Me.SearchWordCOMBOBOX.Name = "SearchWordCOMBOBOX"
-        Me.SearchWordCOMBOBOX.Size = New System.Drawing.Size(221, 21)
+        Me.SearchWordCOMBOBOX.Size = New System.Drawing.Size(157, 21)
         Me.SearchWordCOMBOBOX.TabIndex = 5
         '
         'SearchFieldCOMBOBOX
@@ -226,7 +227,7 @@ Partial Class Form1
         Me.SearchFieldCOMBOBOX.Items.AddRange(New Object() {"Item Name", "Item Base", "Item Quality", "Item Defense", "RuneWord", "Chance To Block", "One Hand Damage Max", "One Hand Damage Min", "Two Hand Damage Max", "Two Hand Damage Min", "Throw Damage Max", "Throw Damage Min", "Required Level", "Required Strength", "Required Dexterity", "Attack Class", "Attack Speed", "Unique Attributes", "Mule Name", "Mule Account", "Pickit Bot", "Pickit Area", "User Reference"})
         Me.SearchFieldCOMBOBOX.Location = New System.Drawing.Point(29, 56)
         Me.SearchFieldCOMBOBOX.Name = "SearchFieldCOMBOBOX"
-        Me.SearchFieldCOMBOBOX.Size = New System.Drawing.Size(140, 21)
+        Me.SearchFieldCOMBOBOX.Size = New System.Drawing.Size(115, 21)
         Me.SearchFieldCOMBOBOX.TabIndex = 3
         Me.SearchFieldCOMBOBOX.Text = "Item Name"
         '
@@ -234,7 +235,7 @@ Partial Class Form1
         '
         Me.SearchBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.SearchBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.SearchBUTTON.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.SearchBUTTON.ForeColor = System.Drawing.Color.Goldenrod
         Me.SearchBUTTON.Location = New System.Drawing.Point(325, 116)
         Me.SearchBUTTON.Name = "SearchBUTTON"
         Me.SearchBUTTON.Size = New System.Drawing.Size(75, 23)
@@ -317,25 +318,25 @@ Partial Class Form1
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(139, 22)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.ToolStripMenuItem1.Text = "Backup Files"
         '
         'CloseToolStripMenuItem
         '
         Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
-        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.CloseToolStripMenuItem.Text = "Save"
         '
         'OpenToolStripMenuItem
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.OpenToolStripMenuItem.Text = "Open"
         '
         'ItemFileToolStripMenuItem
@@ -349,7 +350,7 @@ Partial Class Form1
         'NewToolStripMenuItem1
         '
         Me.NewToolStripMenuItem1.Name = "NewToolStripMenuItem1"
-        Me.NewToolStripMenuItem1.Size = New System.Drawing.Size(139, 22)
+        Me.NewToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.NewToolStripMenuItem1.Text = "New"
         '
         'MenuStrip1
@@ -476,12 +477,26 @@ Partial Class Form1
         '
         'SearchLISTBOX
         '
+        Me.SearchLISTBOX.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.SearchLISTBOX.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SearchLISTBOX.ForeColor = System.Drawing.Color.White
         Me.SearchLISTBOX.FormattingEnabled = True
         Me.SearchLISTBOX.Location = New System.Drawing.Point(3, 3)
         Me.SearchLISTBOX.Name = "SearchLISTBOX"
         Me.SearchLISTBOX.Size = New System.Drawing.Size(367, 417)
         Me.SearchLISTBOX.TabIndex = 0
+        '
+        'ExactMatchCHECKBOX
+        '
+        Me.ExactMatchCHECKBOX.AutoSize = True
+        Me.ExactMatchCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.ExactMatchCHECKBOX.ForeColor = System.Drawing.Color.White
+        Me.ExactMatchCHECKBOX.Location = New System.Drawing.Point(321, 59)
+        Me.ExactMatchCHECKBOX.Name = "ExactMatchCHECKBOX"
+        Me.ExactMatchCHECKBOX.Size = New System.Drawing.Size(86, 17)
+        Me.ExactMatchCHECKBOX.TabIndex = 124
+        Me.ExactMatchCHECKBOX.Text = "Exact Match"
+        Me.ExactMatchCHECKBOX.UseVisualStyleBackColor = False
         '
         'Form1
         '
@@ -490,6 +505,7 @@ Partial Class Form1
         Me.BackgroundImage = Global.D2Items.My.Resources.Resources.D2Data
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(794, 742)
+        Me.Controls.Add(Me.ExactMatchCHECKBOX)
         Me.Controls.Add(Me.ListboxTABCONTROL)
         Me.Controls.Add(Me.SearchValueLABEL)
         Me.Controls.Add(Me.SearchOperatorLABEL)
@@ -574,6 +590,7 @@ Partial Class Form1
     Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
     Friend WithEvents SearchLISTBOX As System.Windows.Forms.ListBox
+    Friend WithEvents ExactMatchCHECKBOX As System.Windows.Forms.CheckBox
 
 
 End Class
