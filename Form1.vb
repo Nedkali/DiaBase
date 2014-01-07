@@ -463,6 +463,37 @@ Public Class Form1
         If UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED DEXTERITY" Then SearchWordCOMBOBOX.Enabled = False
         If UCase(SearchFieldCOMBOBOX.Text) = "DEFENSE" Then SearchWordCOMBOBOX.Enabled = False
         If UCase(SearchFieldCOMBOBOX.Text) = "CHANCE TO BLOCK" Then SearchWordCOMBOBOX.Enabled = False
+
+
+        'ADD ALL ITEM NAMES SEARCHED SINCE STARTUP TO WORD DROP DOWN WHEN ITEM NAME IS SELECTED
+
+        If UCase(SearchFieldCOMBOBOX.Text) = "ITEM NAME" Then
+            SearchWordCOMBOBOX.Items.Clear()
+            For Each item In ItemNamePulldownList
+                SearchWordCOMBOBOX.Items.Add(item)
+            Next
+        End If
+
+        'POPULATE WORD SEARCH DROPDOWN WITH ALL ITEM BASE ENTRYS WHEN ITEM BASE IS SELECTED FOR SEARCH
+        If UCase(SearchFieldCOMBOBOX.Text) = "ITEM BASE" Then
+            SearchWordCOMBOBOX.Items.Clear()
+            For Each ItemObjectItem As ItemObjects In Objects
+                If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.ItemBase) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.ItemBase)
+            Next
+        End If
+
+        'POPULATE WORD SEARCH DROPDOWN WITH ALL ITEM QUALITY ENTRYS WHEN ITEM QUALITY IS SELECTED FOR SEARCH
+        If UCase(SearchFieldCOMBOBOX.Text) = "ITEM QUALITY" Then
+            SearchWordCOMBOBOX.Items.Clear()
+            For Each ItemObjectItem As ItemObjects In Objects
+                If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.ItemQuality) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.ItemQuality)
+            Next
+        End If
+
+
+
+
+
     End Sub
 
 
@@ -489,4 +520,4 @@ Public Class Form1
         AllItemsInDatabaseListBox.SelectedIndex = SearchReferenceList(SearchLISTBOX.SelectedIndex)
     End Sub
 
-End Class
+    End Class

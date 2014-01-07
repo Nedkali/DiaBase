@@ -22,6 +22,7 @@
     Public MuleDataPath As String
     Public ArchiveFolder As String
     Public SearchReferenceList As List(Of String) = New List(Of String)
+    Public ItemNamePulldownList As List(Of String) = New List(Of String)
     Public LogFilesList As List(Of String) = New List(Of String)    'Holds all logs found in log directory
     Public PassFiles As List(Of String) = New List(Of String)       'Holds all _muleaccount.txt file used to get mule pass and mule account
     Public LogType As List(Of String) = New List(Of String)
@@ -1445,9 +1446,10 @@
     End Function
 
     Sub SearchRoutine()
+        Dim MATCHED = 0                                         'FLAG USED TO ADD SUCCESSFUL ITEM NAME SEARCHES TO PULLDOWN
         Dim count = -1                                          'Used to track items database reference number
         Form1.SearchLISTBOX.Items.Clear()                       'Clear out old search matches (edit about here for refine search later)
-        SearchReferenceList.Clear()                               'Clear Out old Item Search Reference List (Holds location in database of each matched item)
+        SearchReferenceList.Clear()                             'Clear Out old Item Search Reference List (Holds location in database of each matched item)
 
         'SEARCH ROUTINE STARTS HERE --->
         'CAPS LOCK / CAPITAL LETTERS are NOT considered in any search modes - all upper casing is ignored in searches
@@ -1469,17 +1471,21 @@
 
             'search for Word In item name (Equal to / Not Equal to)
 
+
+
             'NOT EXACT MATCH SEARCH FOR ITEM NAME
             If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM NAME" And Form1.SearchOperatorCOMBOBOX.Text = "Equal To" And UCase(ItemObjectItem.ItemName).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) ' EqualTo
-                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM NAME" And Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" And UCase(ItemObjectItem.ItemName).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) 'NotEqualTo 
+                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM NAME" And Form1.SearchOperatorCOMBOBOX.Text = "Equal To" And UCase(ItemObjectItem.ItemName).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : MATCHED = 1 ' EqualTo
+                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM NAME" And Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" And UCase(ItemObjectItem.ItemName).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : MATCHED = 1 'NotEqualTo 
             End If
 
             'EXACT MATCH SEARCH FOR ITEM NAME 
             If Form1.ExactMatchCHECKBOX.Checked = True Then
-                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM NAME" And Form1.SearchOperatorCOMBOBOX.Text = "Equal To" And UCase(Form1.SearchWordCOMBOBOX.Text) = UCase(ItemObjectItem.ItemName) Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) ' EqualTo
-                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM NAME" And Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" And UCase(Form1.SearchWordCOMBOBOX.Text) <> UCase(ItemObjectItem.ItemName) Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) 'NotEqualTo 
+                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM NAME" And Form1.SearchOperatorCOMBOBOX.Text = "Equal To" And UCase(Form1.SearchWordCOMBOBOX.Text) = UCase(ItemObjectItem.ItemName) Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : MATCHED = 1 ' EqualTo
+                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM NAME" And Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" And UCase(Form1.SearchWordCOMBOBOX.Text) <> UCase(ItemObjectItem.ItemName) Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : MATCHED = 1 'NotEqualTo 
             End If
+
+
 
 
 
@@ -1500,7 +1506,29 @@
 
 
 
+
+            'Search For Word In ItemQuality (EqualTo / NotEqualTo)
+
+            'EXACT MATCH SEARCH FOR ITEM Quality 
+            If Form1.ExactMatchCHECKBOX.Checked = True Then
+                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM QUALITY" And Form1.SearchOperatorCOMBOBOX.Text = "Equal To" And UCase(ItemObjectItem.ItemQuality).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) ' EqualTo
+                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM QUALITY" And Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" And UCase(ItemObjectItem.ItemQuality).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) 'NotEqualTo 
+            End If
+
+            'NOT EXACT MATCH SEARCH FOR ITEM Quality
+            If Form1.ExactMatchCHECKBOX.Checked = False Then
+                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM QUALITY" And Form1.SearchOperatorCOMBOBOX.Text = "Equal To" And UCase(Form1.SearchWordCOMBOBOX.Text) = UCase(ItemObjectItem.ItemQuality) Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) ' EqualTo
+                If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM QUALITY" And Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" And UCase(Form1.SearchWordCOMBOBOX.Text) <> UCase(ItemObjectItem.ItemQuality) Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) 'NotEqualTo 
+            End If
+
+
+
+
 ItemMatched:  ' Jump point to avoid remaining redundant routine when a match has been found
+
+            'next line puts successfull item name search words in searchword pulldown and collection list for reference
+            If MATCHED = 1 And Form1.SearchWordCOMBOBOX.Items.Contains(Form1.SearchWordCOMBOBOX.Text) = False Then Form1.SearchWordCOMBOBOX.Items.Add(Form1.SearchWordCOMBOBOX.Text) : ItemNamePulldownList.Add(Form1.SearchWordCOMBOBOX.Text)
+            MATCHED = 0
         Next
 
 
