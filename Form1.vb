@@ -189,9 +189,9 @@ Public Class Form1
             Mymessages = "Please wait Import in progress" : MyMessageBox()
             Return
         End If
-        Timer1.Stop()
+        ImportTimer.Stop()
         If AllItemsInDatabaseListBox.SelectedIndex > -1 Then EditItemForm.ShowDialog()
-        Timer1.Start()
+        ImportTimer.Start()
     End Sub
 
     Private Sub SetDefaultsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetDefaultsToolStripMenuItem.Click
@@ -199,9 +199,9 @@ Public Class Form1
             Mymessages = "Please wait Import in progress" : MyMessageBox()
             Return
         End If
-        Timer1.Stop()
+        ImportTimer.Stop()
         Settings.Show()
-        Timer1.Start()
+        ImportTimer.Start()
     End Sub
 
 
@@ -318,9 +318,9 @@ Public Class Form1
         If Objects.Count < 1 Then Return ' nothing to save
         Dim result = MessageBox.Show("Are you sure?", "Save File", MessageBoxButtons.YesNo)
         If result = Windows.Forms.DialogResult.No Then Return
-        Timer1.Stop()
+        ImportTimer.Stop()
         SaveItems()
-        Timer1.Start()
+        ImportTimer.Start()
     End Sub
     Private Sub SaveItems()
 
@@ -410,7 +410,9 @@ Public Class Form1
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs)
+        ImportTimer.Stop()
         ItemImageSelector.ShowDialog()
+        ImportTimer.Start()
     End Sub
 
     Private Sub SearchBUTTON_Click(sender As Object, e As EventArgs) Handles SearchBUTTON.Click
@@ -523,4 +525,15 @@ Public Class Form1
         AllItemsInDatabaseListBox.SelectedIndex = SearchReferenceList(SearchLISTBOX.SelectedIndex)
     End Sub
 
-    End Class
+    Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
+        If Button3.Text = "Timer Stop" Then
+            ImportTimer.Stop()
+            Button3.Text = "Timer Start"
+            Return
+        End If
+        If Button3.Text = "Timer Start" Then
+            ImportTimer.Start()
+            Button3.Text = "Timer Stop"
+        End If
+    End Sub
+End Class

@@ -70,6 +70,7 @@ Partial Class Form1
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.SearchLISTBOX = New System.Windows.Forms.ListBox()
         Me.ExactMatchCHECKBOX = New System.Windows.Forms.CheckBox()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -85,7 +86,7 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label3.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.Label3.ForeColor = System.Drawing.Color.BurlyWood
         Me.Label3.Location = New System.Drawing.Point(466, 39)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(78, 13)
@@ -121,7 +122,7 @@ Partial Class Form1
         'ToolStripStatusLabel1
         '
         Me.ToolStripStatusLabel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.ToolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.Control
+        Me.ToolStripStatusLabel1.ForeColor = System.Drawing.Color.BurlyWood
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(129, 17)
         Me.ToolStripStatusLabel1.Text = "Time untill next update"
@@ -138,7 +139,7 @@ Partial Class Form1
         '
         'ToolStripStatusLabel2
         '
-        Me.ToolStripStatusLabel2.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.ToolStripStatusLabel2.ForeColor = System.Drawing.Color.BurlyWood
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
         Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(15, 17)
         Me.ToolStripStatusLabel2.Text = "<"
@@ -153,7 +154,7 @@ Partial Class Form1
         '
         Me.Button2.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.ForeColor = System.Drawing.Color.Goldenrod
+        Me.Button2.ForeColor = System.Drawing.Color.BurlyWood
         Me.Button2.Location = New System.Drawing.Point(232, 116)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
@@ -165,7 +166,7 @@ Partial Class Form1
         '
         Me.SearchOperatorLABEL.AutoSize = True
         Me.SearchOperatorLABEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.SearchOperatorLABEL.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.SearchOperatorLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.SearchOperatorLABEL.Location = New System.Drawing.Point(96, 101)
         Me.SearchOperatorLABEL.Name = "SearchOperatorLABEL"
         Me.SearchOperatorLABEL.Size = New System.Drawing.Size(48, 13)
@@ -199,7 +200,7 @@ Partial Class Form1
         '
         Me.SearchValueLABEL.AutoSize = True
         Me.SearchValueLABEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.SearchValueLABEL.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.SearchValueLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.SearchValueLABEL.Location = New System.Drawing.Point(26, 101)
         Me.SearchValueLABEL.Name = "SearchValueLABEL"
         Me.SearchValueLABEL.Size = New System.Drawing.Size(34, 13)
@@ -234,7 +235,7 @@ Partial Class Form1
         '
         Me.SearchBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.SearchBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.SearchBUTTON.ForeColor = System.Drawing.Color.Goldenrod
+        Me.SearchBUTTON.ForeColor = System.Drawing.Color.BurlyWood
         Me.SearchBUTTON.Location = New System.Drawing.Point(325, 116)
         Me.SearchBUTTON.Name = "SearchBUTTON"
         Me.SearchBUTTON.Size = New System.Drawing.Size(75, 23)
@@ -245,7 +246,7 @@ Partial Class Form1
         'ItemsToolStripMenuItem
         '
         Me.ItemsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2, Me.ToolStripSeparator2, Me.AddNewItemToolStripMenuItem, Me.EditExistingItemToolStripMenuItem, Me.ToolStripSeparator1, Me.DeleteItemToolStripMenuItem})
-        Me.ItemsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.ItemsToolStripMenuItem.ForeColor = System.Drawing.Color.BurlyWood
         Me.ItemsToolStripMenuItem.Name = "ItemsToolStripMenuItem"
         Me.ItemsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
         Me.ItemsToolStripMenuItem.Text = "Items"
@@ -282,7 +283,7 @@ Partial Class Form1
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.SystemColors.WindowFrame
-        Me.Label2.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.Label2.ForeColor = System.Drawing.Color.BurlyWood
         Me.Label2.Location = New System.Drawing.Point(605, 186)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(62, 13)
@@ -293,8 +294,8 @@ Partial Class Form1
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.SystemColors.WindowFrame
-        Me.Label1.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.Label1.Location = New System.Drawing.Point(64, 186)
+        Me.Label1.ForeColor = System.Drawing.Color.BurlyWood
+        Me.Label1.Location = New System.Drawing.Point(68, 186)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(76, 13)
         Me.Label1.TabIndex = 17
@@ -303,7 +304,7 @@ Partial Class Form1
         'SetDefaultsToolStripMenuItem
         '
         Me.SetDefaultsToolStripMenuItem.Name = "SetDefaultsToolStripMenuItem"
-        Me.SetDefaultsToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
+        Me.SetDefaultsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SetDefaultsToolStripMenuItem.Text = "Set Defaults"
         '
         'SettingsToolStripMenuItem
@@ -317,25 +318,25 @@ Partial Class Form1
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(139, 22)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.ToolStripMenuItem1.Text = "Backup Files"
         '
         'CloseToolStripMenuItem
         '
         Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
-        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.CloseToolStripMenuItem.Text = "Save"
         '
         'OpenToolStripMenuItem
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.OpenToolStripMenuItem.Text = "Open"
         '
         'ItemFileToolStripMenuItem
@@ -349,7 +350,7 @@ Partial Class Form1
         'NewToolStripMenuItem1
         '
         Me.NewToolStripMenuItem1.Name = "NewToolStripMenuItem1"
-        Me.NewToolStripMenuItem1.Size = New System.Drawing.Size(139, 22)
+        Me.NewToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.NewToolStripMenuItem1.Text = "New"
         '
         'MenuStrip1
@@ -389,7 +390,7 @@ Partial Class Form1
         '
         Me.TextBox2.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBox2.ForeColor = System.Drawing.SystemColors.MenuBar
+        Me.TextBox2.ForeColor = System.Drawing.Color.BurlyWood
         Me.TextBox2.Location = New System.Drawing.Point(189, 186)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(81, 13)
@@ -401,7 +402,7 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.SearchLABEL.AutoSize = True
         Me.SearchLABEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.SearchLABEL.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.SearchLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.SearchLABEL.Location = New System.Drawing.Point(26, 39)
         Me.SearchLABEL.Name = "SearchLABEL"
         Me.SearchLABEL.Size = New System.Drawing.Size(64, 13)
@@ -489,13 +490,26 @@ Partial Class Form1
         '
         Me.ExactMatchCHECKBOX.AutoSize = True
         Me.ExactMatchCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.ExactMatchCHECKBOX.ForeColor = System.Drawing.Color.White
+        Me.ExactMatchCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
         Me.ExactMatchCHECKBOX.Location = New System.Drawing.Point(321, 59)
         Me.ExactMatchCHECKBOX.Name = "ExactMatchCHECKBOX"
         Me.ExactMatchCHECKBOX.Size = New System.Drawing.Size(86, 17)
         Me.ExactMatchCHECKBOX.TabIndex = 124
         Me.ExactMatchCHECKBOX.Text = "Exact Match"
         Me.ExactMatchCHECKBOX.UseVisualStyleBackColor = False
+        '
+        'Button3
+        '
+        Me.Button3.BackColor = System.Drawing.SystemColors.WindowText
+        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button3.ForeColor = System.Drawing.Color.BurlyWood
+        Me.Button3.Location = New System.Drawing.Point(387, 720)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 22)
+        Me.Button3.TabIndex = 126
+        Me.Button3.Text = "Timer Stop"
+        Me.Button3.UseVisualStyleBackColor = False
         '
         'Form1
         '
@@ -504,6 +518,7 @@ Partial Class Form1
         Me.BackgroundImage = Global.D2Items.My.Resources.Resources.D2Data
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(794, 742)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.ExactMatchCHECKBOX)
         Me.Controls.Add(Me.ListboxTABCONTROL)
         Me.Controls.Add(Me.SearchValueLABEL)
@@ -590,6 +605,7 @@ Partial Class Form1
     Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
     Friend WithEvents SearchLISTBOX As System.Windows.Forms.ListBox
     Friend WithEvents ExactMatchCHECKBOX As System.Windows.Forms.CheckBox
+    Friend WithEvents Button3 As System.Windows.Forms.Button
 
 
 End Class
