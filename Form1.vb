@@ -38,7 +38,7 @@ Public Class Form1
         OpenDatabaseRoutine(DataBaseFile)
 
         StartTimer()
-        If LoggerRunning = False Then RichTextBox1.Text = "AutoLogging is Idle"
+        If LoggerRunning = False Then RichTextBox1.Text = "AutoLogging is Idle" & vbCrLf
         If My.Computer.FileSystem.DirectoryExists(EtalPath) = False Then
             Dim MySettings As New Settings
             MySettings.Show()
@@ -359,58 +359,8 @@ Public Class Form1
     End Sub
 
     Private Sub SearchBUTTON_Click(sender As Object, e As EventArgs) Handles SearchBUTTON.Click
-        '       If SearchWordCOMBOBOX.Text = "" Then Return
-        '      Dim y As Integer = AllItemsInDatabaseListBox.SelectedIndex
-        '     If y = -1 Then y = 0
-        '    If y > -1 Then y = y + 1
 
-        '        If SearchFieldCOMBOBOX.Text = "Item Name" Then
-        'For x = y To Objects.Count - 1
-        'If Objects(x).ItemName.IndexOf(SearchWordCOMBOBOX.Text) <> -1 Then
-        'AllItemsInDatabaseListBox.SelectedIndex = x
-        'Return
-        '
-        '        End If
-        '        Next
-        '        End If
-        '
-        '
-        '        If SearchFieldCOMBOBOX.Text = "Item Base" Then
-        ' For x = y To Objects.Count - 1
-        ' If Objects(x).ItemBase.IndexOf(SearchWordCOMBOBOX.Text) <> -1 Then
-        ' AllItemsInDatabaseListBox.SelectedIndex = x
-        ' Return
-
-        '        End If
-        '        Next
-        '       End If
-
-
-        '        If SearchFieldCOMBOBOX.Text = "Item Quality" Then
-        ' For x = y To Objects.Count - 1
-        ' If Objects(x).ItemQuality.IndexOf(SearchWordCOMBOBOX.Text) <> -1 Then
-        ' AllItemsInDatabaseListBox.SelectedIndex = x
-        ' Return
-
-        'End If
-        'Next
-        'End If
-
-        'If SearchFieldCOMBOBOX.Text = "RuneWord" Then
-        ' For x = y To Objects.Count - 1
-        'If Objects(x).RuneWord = True Then
-        'AllItemsInDatabaseListBox.SelectedIndex = x
-        'Return
-
-        'End If
-        'Next
-        'End If
-
-        'AllItemsInDatabaseListBox.SelectedIndex = -1
         SearchRoutine()
-
-
-
 
     End Sub
 
@@ -472,11 +422,13 @@ Public Class Form1
         If Button3.Text = "Timer Stop" Then
             ImportTimer.Stop()
             Button3.Text = "Timer Start"
+            RichTextBox1.AppendText("Timer Stopped" & vbCrLf)
             Return
         End If
         If Button3.Text = "Timer Start" Then
             ImportTimer.Start()
             Button3.Text = "Timer Stop"
+            RichTextBox1.AppendText("Timer Running" & vbCrLf)
         End If
     End Sub
 End Class

@@ -87,7 +87,7 @@ Partial Class Form1
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label3.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label3.Location = New System.Drawing.Point(466, 39)
+        Me.Label3.Location = New System.Drawing.Point(466, 34)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(78, 13)
         Me.Label3.TabIndex = 24
@@ -304,7 +304,7 @@ Partial Class Form1
         'SetDefaultsToolStripMenuItem
         '
         Me.SetDefaultsToolStripMenuItem.Name = "SetDefaultsToolStripMenuItem"
-        Me.SetDefaultsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SetDefaultsToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
         Me.SetDefaultsToolStripMenuItem.Text = "Set Defaults"
         '
         'SettingsToolStripMenuItem
@@ -503,7 +503,7 @@ Partial Class Form1
         Me.Button3.BackColor = System.Drawing.SystemColors.WindowText
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button3.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Button3.Location = New System.Drawing.Point(387, 720)
+        Me.Button3.Location = New System.Drawing.Point(626, 29)
         Me.Button3.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(75, 22)
