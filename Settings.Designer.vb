@@ -47,7 +47,7 @@ Partial Class Settings
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(332, 179)
+        Me.Label5.Location = New System.Drawing.Point(355, 180)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(29, 13)
         Me.Label5.TabIndex = 29
@@ -56,7 +56,7 @@ Partial Class Settings
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(238, 159)
+        Me.Label4.Location = New System.Drawing.Point(261, 160)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(121, 13)
         Me.Label4.TabIndex = 28
@@ -64,7 +64,7 @@ Partial Class Settings
         '
         'SaveDefaultsBUTTON
         '
-        Me.SaveDefaultsBUTTON.Location = New System.Drawing.Point(109, 248)
+        Me.SaveDefaultsBUTTON.Location = New System.Drawing.Point(142, 230)
         Me.SaveDefaultsBUTTON.Name = "SaveDefaultsBUTTON"
         Me.SaveDefaultsBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.SaveDefaultsBUTTON.TabIndex = 27
@@ -73,7 +73,7 @@ Partial Class Settings
         '
         'DefaultDatabaseBrowseBUTTON
         '
-        Me.DefaultDatabaseBrowseBUTTON.Location = New System.Drawing.Point(354, 114)
+        Me.DefaultDatabaseBrowseBUTTON.Location = New System.Drawing.Point(377, 115)
         Me.DefaultDatabaseBrowseBUTTON.Name = "DefaultDatabaseBrowseBUTTON"
         Me.DefaultDatabaseBrowseBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.DefaultDatabaseBrowseBUTTON.TabIndex = 26
@@ -82,7 +82,7 @@ Partial Class Settings
         '
         'EtalPathBrowseBUTTON
         '
-        Me.EtalPathBrowseBUTTON.Location = New System.Drawing.Point(354, 40)
+        Me.EtalPathBrowseBUTTON.Location = New System.Drawing.Point(377, 41)
         Me.EtalPathBrowseBUTTON.Name = "EtalPathBrowseBUTTON"
         Me.EtalPathBrowseBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.EtalPathBrowseBUTTON.TabIndex = 25
@@ -91,7 +91,7 @@ Partial Class Settings
         '
         'CancelDefaultsBUTTON
         '
-        Me.CancelDefaultsBUTTON.Location = New System.Drawing.Point(284, 248)
+        Me.CancelDefaultsBUTTON.Location = New System.Drawing.Point(317, 230)
         Me.CancelDefaultsBUTTON.Name = "CancelDefaultsBUTTON"
         Me.CancelDefaultsBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.CancelDefaultsBUTTON.TabIndex = 24
@@ -100,7 +100,7 @@ Partial Class Settings
         '
         'DatabaseFileTEXTBOX
         '
-        Me.DatabaseFileTEXTBOX.Location = New System.Drawing.Point(51, 114)
+        Me.DatabaseFileTEXTBOX.Location = New System.Drawing.Point(74, 115)
         Me.DatabaseFileTEXTBOX.Name = "DatabaseFileTEXTBOX"
         Me.DatabaseFileTEXTBOX.Size = New System.Drawing.Size(275, 20)
         Me.DatabaseFileTEXTBOX.TabIndex = 22
@@ -108,7 +108,7 @@ Partial Class Settings
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(48, 24)
+        Me.Label1.Location = New System.Drawing.Point(71, 25)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(125, 13)
         Me.Label1.TabIndex = 21
@@ -116,7 +116,7 @@ Partial Class Settings
         '
         'EtalPathTEXTBOX
         '
-        Me.EtalPathTEXTBOX.Location = New System.Drawing.Point(51, 40)
+        Me.EtalPathTEXTBOX.Location = New System.Drawing.Point(74, 41)
         Me.EtalPathTEXTBOX.Name = "EtalPathTEXTBOX"
         Me.EtalPathTEXTBOX.Size = New System.Drawing.Size(275, 20)
         Me.EtalPathTEXTBOX.TabIndex = 20
@@ -124,7 +124,7 @@ Partial Class Settings
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(48, 98)
+        Me.Label3.Location = New System.Drawing.Point(71, 99)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(90, 13)
         Me.Label3.TabIndex = 32
@@ -136,7 +136,7 @@ Partial Class Settings
         '
         'NumericUpDown1
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(270, 175)
+        Me.NumericUpDown1.Location = New System.Drawing.Point(293, 176)
         Me.NumericUpDown1.Minimum = New Decimal(New Integer() {5, 0, 0, 0})
         Me.NumericUpDown1.Name = "NumericUpDown1"
         Me.NumericUpDown1.Size = New System.Drawing.Size(56, 20)
@@ -146,7 +146,7 @@ Partial Class Settings
         'CheckBox3
         '
         Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Location = New System.Drawing.Point(51, 175)
+        Me.CheckBox3.Location = New System.Drawing.Point(74, 176)
         Me.CheckBox3.Name = "CheckBox3"
         Me.CheckBox3.Size = New System.Drawing.Size(143, 17)
         Me.CheckBox3.TabIndex = 34
@@ -156,7 +156,7 @@ Partial Class Settings
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(19, 36)
+        Me.PictureBox1.Location = New System.Drawing.Point(42, 37)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(23, 24)
         Me.PictureBox1.TabIndex = 35
@@ -166,7 +166,7 @@ Partial Class Settings
         'PictureBox2
         '
         Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(19, 110)
+        Me.PictureBox2.Location = New System.Drawing.Point(42, 111)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(23, 24)
         Me.PictureBox2.TabIndex = 36
@@ -177,7 +177,7 @@ Partial Class Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(444, 295)
+        Me.ClientSize = New System.Drawing.Size(511, 295)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.CheckBox3)

@@ -475,12 +475,15 @@ Module AutoLogger
         Form1.RichTextBox1.AppendText("Items Saved = " & count & vbCrLf)
 
         'probably need to delete the objects used here likely to cause conflicts with item add & saving database
-        If itemstart > 0 Then
-            For y = itemstart To Objects.Count - 1
-                Objects.RemoveAt(Objects.Count - 1)
-            Next
+        'If itemstart > 0 Then
+        '    For y = itemstart To Objects.Count - 1
+        '        Objects.RemoveAt(Objects.Count - 1)
+        '    Next
 
-        End If
+        'End If
+        For y = itemstart To Objects.Count - 1
+            Form1.AllItemsInDatabaseListBox.Items.Add(Objects(y).ItemName)
+        Next
         Form1.TextBox2.Text = Objects.Count & " Items"
     End Sub
     Function GetRunes(ByVal runename)

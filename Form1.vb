@@ -172,6 +172,11 @@ Public Class Form1
         If AllItemsInDatabaseListBox.Items.Count > 0 Then AllItemsInDatabaseListBox.SelectedIndex = 0
     End Sub
     Private Sub AddNewItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddNewItemToolStripMenuItem.Click
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+
         ImportTimer.Stop() 'stop timer b4 form opens
 
         AddItemForm.ShowDialog()
@@ -180,12 +185,23 @@ Public Class Form1
     End Sub
 
     Private Sub EditExistingItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditExistingItemToolStripMenuItem.Click
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+        Timer1.Stop()
         If AllItemsInDatabaseListBox.SelectedIndex > -1 Then EditItemForm.ShowDialog()
+        Timer1.Start()
     End Sub
 
     Private Sub SetDefaultsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetDefaultsToolStripMenuItem.Click
-        ' Dim MySettings As New Settings 
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+        Timer1.Stop()
         Settings.Show()
+        Timer1.Start()
     End Sub
 
 
@@ -279,6 +295,10 @@ Public Class Form1
 
 
     Private Sub DeleteItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteItemToolStripMenuItem.Click
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
         Dim RowNumber As Integer = AllItemsInDatabaseListBox.SelectedIndex
         If RowNumber = -1 Then Return ' do nothing
         If RowNumber >= 0 Then
@@ -296,10 +316,11 @@ Public Class Form1
 
     Private Sub CloseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseToolStripMenuItem.Click
         If Objects.Count < 1 Then Return ' nothing to save
-
         Dim result = MessageBox.Show("Are you sure?", "Save File", MessageBoxButtons.YesNo)
         If result = Windows.Forms.DialogResult.No Then Return
+        Timer1.Stop()
         SaveItems()
+        Timer1.Start()
     End Sub
     Private Sub SaveItems()
 
@@ -495,24 +516,6 @@ Public Class Form1
 
 
     End Sub
-
-
-    ' listed below for reference only till figure out a better search option above
-    '   Item Name
-    'Item Base
-    'Item Quality
-    'Item Defense
-    'Chance To Block
-    'One Hand Damage Max
-    'One Hand Damage Min
-    'Two Hand Damage Max
-    'Two Hand Damage Min
-    'Throw Damage Max
-    'Throw Damage Min
-    'Required Level
-    'Required Strength
-    'Required Dexterity
-
 
 
     Private Sub SearchLISTBOX_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SearchLISTBOX.SelectedIndexChanged
