@@ -2,6 +2,9 @@
 Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load 'check if required folders exist on startup and create if necessary
+        My.Computer.Audio.Play(My.Resources.BigDLaugh, AudioPlayMode.Background)
+
+
         If My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "\DataBase\Backup") = False Then
             My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "\DataBase\Backup")
             Mymessages = "Database & Backup Folder created" : MyMessageBox()
