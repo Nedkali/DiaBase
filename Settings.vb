@@ -57,6 +57,7 @@
         EtalPath = EtalPathTEXTBOX.Text
         DataBaseFile = DatabaseFileTEXTBOX.Text
         TimerMins = NumericUpDown1.Value
+        TimerSecs = TimerMins * 60
         Me.Close()
 
     End Sub

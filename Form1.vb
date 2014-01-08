@@ -66,7 +66,7 @@ Public Class Form1
         If Timercount > TimerSecs Then
             Timercount = 0
             ImportTimer.Stop()
-            RichTextBox1.Text = "Checking for new Log Files"
+            RichTextBox1.Text = "Checking for new Log Files" & vbCrLf
             LoggerRunning = True
             ImportLogFiles()
             LoggerRunning = False
