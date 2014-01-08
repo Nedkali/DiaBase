@@ -71,6 +71,7 @@ Partial Class Form1
         Me.SearchLISTBOX = New System.Windows.Forms.ListBox()
         Me.ExactMatchCHECKBOX = New System.Windows.Forms.CheckBox()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -78,6 +79,7 @@ Partial Class Form1
         Me.ListboxTABCONTROL.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label3
@@ -511,6 +513,16 @@ Partial Class Form1
         Me.Button3.Text = "Timer Stop"
         Me.Button3.UseVisualStyleBackColor = False
         '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackgroundImage = Global.D2Items.My.Resources.Resources.Gem
+        Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.PictureBox2.Location = New System.Drawing.Point(413, 182)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(24, 24)
+        Me.PictureBox2.TabIndex = 127
+        Me.PictureBox2.TabStop = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -518,6 +530,7 @@ Partial Class Form1
         Me.BackgroundImage = Global.D2Items.My.Resources.Resources.D2Data
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(794, 742)
+        Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.ExactMatchCHECKBOX)
         Me.Controls.Add(Me.ListboxTABCONTROL)
@@ -554,6 +567,7 @@ Partial Class Form1
         Me.ListboxTABCONTROL.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage2.ResumeLayout(False)
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -606,6 +620,7 @@ Partial Class Form1
     Friend WithEvents SearchLISTBOX As System.Windows.Forms.ListBox
     Friend WithEvents ExactMatchCHECKBOX As System.Windows.Forms.CheckBox
     Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
 
 
 End Class

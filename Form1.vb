@@ -30,6 +30,8 @@ Public Class Form1
             Mymessages = "Settings file created" : MyMessageBox()
 
         End If
+
+
     End Sub
     'Stuff to run after program starts
     Private Sub Form1_Shown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Shown
@@ -435,5 +437,10 @@ Public Class Form1
             Button3.Text = "Timer Stop"
             RichTextBox1.AppendText("Timer Running" & vbCrLf)
         End If
+    End Sub
+
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+        My.Computer.Audio.Play(My.Resources.diablotaunt1, AudioPlayMode.Background)
+        PictureBox2.Visible = False
     End Sub
 End Class
