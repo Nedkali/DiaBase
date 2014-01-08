@@ -517,9 +517,9 @@ Partial Class Form1
         '
         Me.PictureBox2.BackgroundImage = Global.D2Items.My.Resources.Resources.Gem
         Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.PictureBox2.Location = New System.Drawing.Point(413, 182)
+        Me.PictureBox2.Location = New System.Drawing.Point(420, 186)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(24, 24)
+        Me.PictureBox2.Size = New System.Drawing.Size(15, 15)
         Me.PictureBox2.TabIndex = 127
         Me.PictureBox2.TabStop = False
         '
