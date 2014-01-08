@@ -500,6 +500,7 @@ Module AutoLogger
         Form1.RichTextBox1.AppendText("Items Saved = " & count & vbCrLf)
 
         'probably need to delete the objects used here likely to cause conflicts with item add & saving database
+        ' leave the following code in case of further app changes - maybe usefull
         'If itemstart > 0 Then
         '    For y = itemstart To Objects.Count - 1
         '        Objects.RemoveAt(Objects.Count - 1)

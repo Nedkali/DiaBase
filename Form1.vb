@@ -52,6 +52,7 @@ Public Class Form1
         ToolStripProgressBar1.Maximum = 100
         ImportTimer.Interval = 1000
         ImportTimer.Start()
+
     End Sub
 
     Private Sub TimerEventProcessor(ByVal myObject As Object, ByVal MyEventArgs As EventArgs) Handles ImportTimer.Tick
@@ -80,13 +81,17 @@ Public Class Form1
             Mymessages = "Please wait File in use, Logger Running" : MyMessageBox()
             Return
         End If
-
+        ImportTimer.Stop() '        stop timer b4 form opens
         OpenDatabaseDIALOG.Title = "Open Existing Database" '                           set dialog title
         OpenDatabaseDIALOG.InitialDirectory = Application.StartupPath + "\DataBase\" '  set initial dir
         OpenDatabaseDIALOG.Filter = ".txt|*.txt"
         OpenDatabaseDIALOG.FileName = "Default.txt"
 
-        If OpenDatabaseDIALOG.ShowDialog() = DialogResult.Cancel Then Return '          without this if user clicks cancel app crashes
+        If OpenDatabaseDIALOG.ShowDialog() = DialogResult.Cancel Then
+            If Button3.Text = "Timer Stop" Then ImportTimer.Start() '       restart timer if not paused
+            Return '          without this if user clicks cancel app crashes
+        End If
+
         SearchLISTBOX.Items.Clear() '                                                   clean out old search matches
         PictureBox1.BackgroundImage = D2Items.My.Resources.Resources.ImageBackground '  clean out old image                 [NOT WORKING]
         RichTextBox2.Text = "" '                                                        clean out old item stats
@@ -98,7 +103,7 @@ Public Class Form1
 
    
         Display_Items() '                       Routine Populates all items listbox with, um, all items obviously :)
-
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start() '       restart timer if not paused
     End Sub
 
     'Populates all items listbox routine
@@ -121,7 +126,7 @@ Public Class Form1
 
         ImportTimer.Stop() '        stop timer b4 form opens
         AddItemForm.ShowDialog()
-        ImportTimer.Start() '       restart timer after form closes
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start() '       restart timer after form closes
     End Sub
 
     'OPENS THE EDIT EXISTING ITEM FORM TO MANUALLY EDIT AN ITEMS FIELDS
@@ -132,7 +137,7 @@ Public Class Form1
         End If
         ImportTimer.Stop()
         If AllItemsInDatabaseListBox.SelectedIndex > -1 Then EditItemForm.ShowDialog()
-        ImportTimer.Start()
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start()
     End Sub
 
     'dISPLAYS THE SETTINGS FOM SELECTED FROM PULLDOWN MENUES
@@ -143,7 +148,7 @@ Public Class Form1
         End If
         ImportTimer.Stop()
         Settings.Show()
-        ImportTimer.Start()
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start()
     End Sub
 
 
@@ -262,7 +267,7 @@ Public Class Form1
         If result = Windows.Forms.DialogResult.No Then Return
         ImportTimer.Stop()
         SaveItems()
-        ImportTimer.Start()
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start()
     End Sub
     Private Sub SaveItems()
 
@@ -355,7 +360,7 @@ Public Class Form1
     Private Sub Button3_Click(sender As Object, e As EventArgs)
         ImportTimer.Stop()
         ItemImageSelector.ShowDialog()
-        ImportTimer.Start()
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start()
     End Sub
 
     Private Sub SearchBUTTON_Click(sender As Object, e As EventArgs) Handles SearchBUTTON.Click
