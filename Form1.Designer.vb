@@ -74,6 +74,13 @@ Partial Class Form1
         Me.HideDuplicatesCHECKBOX = New System.Windows.Forms.CheckBox()
         Me.StringSearchLABEEL = New System.Windows.Forms.Label()
         Me.RefineSearchCHECKBOX = New System.Windows.Forms.CheckBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -107,7 +114,7 @@ Partial Class Form1
         Me.AllItemsInDatabaseListBox.Location = New System.Drawing.Point(3, 3)
         Me.AllItemsInDatabaseListBox.Margin = New System.Windows.Forms.Padding(0)
         Me.AllItemsInDatabaseListBox.Name = "AllItemsInDatabaseListBox"
-        Me.AllItemsInDatabaseListBox.Size = New System.Drawing.Size(367, 417)
+        Me.AllItemsInDatabaseListBox.Size = New System.Drawing.Size(363, 285)
         Me.AllItemsInDatabaseListBox.TabIndex = 22
         '
         'Timer1
@@ -135,7 +142,7 @@ Partial Class Form1
         '
         Me.StatusStrip1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripProgressBar1, Me.ToolStripStatusLabel2})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 720)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 569)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(794, 22)
         Me.StatusStrip1.TabIndex = 20
@@ -181,7 +188,6 @@ Partial Class Form1
         'SearchValueNUMERICUPDWN
         '
         Me.SearchValueNUMERICUPDWN.BackColor = System.Drawing.SystemColors.WindowFrame
-        Me.SearchValueNUMERICUPDWN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.SearchValueNUMERICUPDWN.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.SearchValueNUMERICUPDWN.Location = New System.Drawing.Point(331, 62)
         Me.SearchValueNUMERICUPDWN.Name = "SearchValueNUMERICUPDWN"
@@ -216,7 +222,7 @@ Partial Class Form1
         Me.SearchFieldCOMBOBOX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.SearchFieldCOMBOBOX.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.SearchFieldCOMBOBOX.FormattingEnabled = True
-        Me.SearchFieldCOMBOBOX.Items.AddRange(New Object() {"Item Name", "Item Base", "Item Quality", "Item Defense", "RuneWord", "Chance To Block", "One Hand Damage Max", "One Hand Damage Min", "Two Hand Damage Max", "Two Hand Damage Min", "Throw Damage Max", "Throw Damage Min", "Required Level", "Required Strength", "Required Dexterity", "Attack Class", "Attack Speed", "Unique Attributes", "Mule Name", "Mule Account", "Pickit Bot", "Pickit Area", "User Reference"})
+        Me.SearchFieldCOMBOBOX.Items.AddRange(New Object() {"Item Name", "Item Base", "Item Quality", "Item Defense", "RuneWord", "Chance To Block", "One Hand Damage Max", "One Hand Damage Min", "Two Hand Damage Max", "Two Hand Damage Min", "Throw Damage Max", "Throw Damage Min", "Required Level", "Required Strength", "Required Dexterity", "Attack Class", "Attack Speed", "Unique Attributes", "Mule Name", "Mule Account", "Mule Pass", "User Reference"})
         Me.SearchFieldCOMBOBOX.Location = New System.Drawing.Point(30, 61)
         Me.SearchFieldCOMBOBOX.Name = "SearchFieldCOMBOBOX"
         Me.SearchFieldCOMBOBOX.Size = New System.Drawing.Size(143, 21)
@@ -226,6 +232,7 @@ Partial Class Form1
         'SearchBUTTON
         '
         Me.SearchBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.SearchBUTTON.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
         Me.SearchBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.SearchBUTTON.ForeColor = System.Drawing.Color.BurlyWood
         Me.SearchBUTTON.Location = New System.Drawing.Point(316, 117)
@@ -374,7 +381,7 @@ Partial Class Form1
         Me.RichTextBox2.Location = New System.Drawing.Point(473, 358)
         Me.RichTextBox2.Name = "RichTextBox2"
         Me.RichTextBox2.ReadOnly = True
-        Me.RichTextBox2.Size = New System.Drawing.Size(270, 331)
+        Me.RichTextBox2.Size = New System.Drawing.Size(270, 180)
         Me.RichTextBox2.TabIndex = 15
         Me.RichTextBox2.Text = ""
         '
@@ -407,11 +414,11 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PictureBox1.BackColor = System.Drawing.SystemColors.ControlText
         Me.PictureBox1.BackgroundImage = Global.D2Items.My.Resources.Resources.ImageBackground
-        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PictureBox1.Location = New System.Drawing.Point(560, 224)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Padding = New System.Windows.Forms.Padding(8, 6, 0, 0)
-        Me.PictureBox1.Size = New System.Drawing.Size(103, 128)
+        Me.PictureBox1.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
+        Me.PictureBox1.Size = New System.Drawing.Size(95, 128)
         Me.PictureBox1.TabIndex = 16
         Me.PictureBox1.TabStop = False
         '
@@ -437,32 +444,37 @@ Partial Class Form1
         Me.ListboxTABCONTROL.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.ListboxTABCONTROL.Controls.Add(Me.TabPage1)
         Me.ListboxTABCONTROL.Controls.Add(Me.TabPage2)
-        Me.ListboxTABCONTROL.Location = New System.Drawing.Point(26, 247)
+        Me.ListboxTABCONTROL.Location = New System.Drawing.Point(26, 236)
         Me.ListboxTABCONTROL.Margin = New System.Windows.Forms.Padding(0)
         Me.ListboxTABCONTROL.Name = "ListboxTABCONTROL"
         Me.ListboxTABCONTROL.Padding = New System.Drawing.Point(0, 0)
         Me.ListboxTABCONTROL.SelectedIndex = 0
-        Me.ListboxTABCONTROL.Size = New System.Drawing.Size(381, 449)
+        Me.ListboxTABCONTROL.Size = New System.Drawing.Size(381, 321)
         Me.ListboxTABCONTROL.TabIndex = 123
         '
         'TabPage1
         '
+        Me.TabPage1.BackColor = System.Drawing.Color.Black
+        Me.TabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.TabPage1.Controls.Add(Me.AllItemsInDatabaseListBox)
+        Me.TabPage1.ForeColor = System.Drawing.SystemColors.ControlText
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(373, 423)
+        Me.TabPage1.Size = New System.Drawing.Size(373, 295)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Item List"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
         'TabPage2
         '
+        Me.TabPage2.BackColor = System.Drawing.Color.Black
+        Me.TabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TabPage2.Controls.Add(Me.SearchLISTBOX)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(373, 423)
+        Me.TabPage2.Size = New System.Drawing.Size(373, 295)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Search List"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -475,7 +487,7 @@ Partial Class Form1
         Me.SearchLISTBOX.FormattingEnabled = True
         Me.SearchLISTBOX.Location = New System.Drawing.Point(3, 3)
         Me.SearchLISTBOX.Name = "SearchLISTBOX"
-        Me.SearchLISTBOX.Size = New System.Drawing.Size(367, 417)
+        Me.SearchLISTBOX.Size = New System.Drawing.Size(365, 287)
         Me.SearchLISTBOX.TabIndex = 0
         '
         'ExactMatchCHECKBOX
@@ -493,6 +505,7 @@ Partial Class Form1
         'Button3
         '
         Me.Button3.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.Button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button3.ForeColor = System.Drawing.Color.BurlyWood
         Me.Button3.Location = New System.Drawing.Point(691, 30)
@@ -550,20 +563,104 @@ Partial Class Form1
         Me.RefineSearchCHECKBOX.Text = "Refine Search"
         Me.RefineSearchCHECKBOX.UseVisualStyleBackColor = False
         '
+        'Label4
+        '
+        Me.Label4.BackColor = System.Drawing.Color.Black
+        Me.Label4.Location = New System.Drawing.Point(25, 233)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(383, 22)
+        Me.Label4.TabIndex = 131
+        '
+        'Label5
+        '
+        Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.Label5.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label5.Location = New System.Drawing.Point(25, 256)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(4, 301)
+        Me.Label5.TabIndex = 132
+        '
+        'Label6
+        '
+        Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.Label6.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label6.Location = New System.Drawing.Point(404, 256)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(4, 301)
+        Me.Label6.TabIndex = 23
+        '
+        'Label7
+        '
+        Me.Label7.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label7.Location = New System.Drawing.Point(25, 254)
+        Me.Label7.Name = "Label7"
+        Me.Label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.Label7.Size = New System.Drawing.Size(383, 3)
+        Me.Label7.TabIndex = 133
+        '
+        'Label8
+        '
+        Me.Label8.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.Label8.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label8.Location = New System.Drawing.Point(25, 553)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(383, 4)
+        Me.Label8.TabIndex = 134
+        '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.Black
+        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
+        Me.Button1.FlatAppearance.BorderSize = 2
+        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowFrame
+        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.ForeColor = System.Drawing.Color.BurlyWood
+        Me.Button1.Location = New System.Drawing.Point(102, 229)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 135
+        Me.Button1.Text = "Search List"
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Button1.UseVisualStyleBackColor = False
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.DimGray
+        Me.Button2.FlatAppearance.BorderSize = 2
+        Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowFrame
+        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.ForeColor = System.Drawing.Color.BurlyWood
+        Me.Button2.Location = New System.Drawing.Point(25, 229)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 136
+        Me.Button2.Text = "Item List"
+        Me.Button2.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Button2.UseVisualStyleBackColor = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.Black
         Me.BackgroundImage = Global.D2Items.My.Resources.Resources.D2Data
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.ClientSize = New System.Drawing.Size(794, 742)
+        Me.ClientSize = New System.Drawing.Size(794, 591)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.RefineSearchCHECKBOX)
         Me.Controls.Add(Me.StringSearchLABEEL)
         Me.Controls.Add(Me.HideDuplicatesCHECKBOX)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.ExactMatchCHECKBOX)
-        Me.Controls.Add(Me.ListboxTABCONTROL)
         Me.Controls.Add(Me.SearchValueLABEL)
         Me.Controls.Add(Me.SearchOperatorLABEL)
         Me.Controls.Add(Me.SearchValueNUMERICUPDWN)
@@ -581,6 +678,7 @@ Partial Class Form1
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.RichTextBox2)
+        Me.Controls.Add(Me.ListboxTABCONTROL)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(810, 800)
@@ -652,6 +750,13 @@ Partial Class Form1
     Friend WithEvents HideDuplicatesCHECKBOX As System.Windows.Forms.CheckBox
     Friend WithEvents StringSearchLABEEL As System.Windows.Forms.Label
     Friend WithEvents RefineSearchCHECKBOX As System.Windows.Forms.CheckBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
 
 
 End Class

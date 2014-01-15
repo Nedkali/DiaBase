@@ -516,5 +516,18 @@ Public Class Form1
 
     End Sub
 
-  
+    'this button selects tab page 0 and colors button to show all items listbox on page 0
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        ListboxTABCONTROL.SelectTab(0)
+        Button2.BackColor = Color.DimGray
+        Button1.BackColor = Color.Black
+    End Sub
+
+    'this button selects tab page 1 and colors button to show all search listbox on page 1
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        ListboxTABCONTROL.SelectTab(1)
+        Button1.BackColor = Color.DimGray
+        Button2.BackColor = Color.Black
+
+    End Sub
 End Class
