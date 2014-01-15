@@ -48,6 +48,8 @@ Public Class Form1
             Dim MySettings As New Settings
             MySettings.Show()
         End If
+
+        SearchFieldCOMBOBOX.Text = "Item Name"
     End Sub
     Public WithEvents ImportTimer As New System.Windows.Forms.Timer()
 
@@ -370,28 +372,58 @@ Public Class Form1
 
     Private Sub SearchBUTTON_Click(sender As Object, e As EventArgs) Handles SearchBUTTON.Click
 
-        SearchRoutine()
+        'This next 'if then' checks that the selected search operator is valid if its not set to default equal to, in upper case the emphasise the fix to the user
+
+        'NOTED: Checks for the other comboboxes entry vaildity are IN EACH ENTRY CHANGED EVENT HANDLER. The Search button will remain disabled until the 
+        'minimum ammount of search criteria has been entered. This insures the search routine wont crash due to user input error (i hope)
+
+        If UCase(SearchOperatorCOMBOBOX.Text) = "EQUAL TO" Or UCase(SearchOperatorCOMBOBOX.Text) = "NOT EQUAL TO" Or UCase(SearchOperatorCOMBOBOX.Text) = "GREATER THAN" Or UCase(SearchOperatorCOMBOBOX.Text) = "LESS THAN" Then
+            SearchRoutine() ' If all is good and search seems valid then branch to the search routine sub in Module1
+        End If
+
 
     End Sub
 
 
     Private Sub SearchFieldCOMBOBOX_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SearchFieldCOMBOBOX.SelectedIndexChanged
+        'QUICKLY SETUP SOME SEARCH STUFF FIRST 
+
+        'Turn string and value search contol boxes back on ready for next two code blocks
+        'SearchWordCOMBOBOX.Enabled = True : SearchValueNUMERICUPDWN.Enabled = True
 
         'turns off string search textbox for value only searches
-        SearchWordCOMBOBOX.Enabled = True
-        If UCase(SearchFieldCOMBOBOX.Text) = "ONE HAND DAMAGE MAX" Then SearchWordCOMBOBOX.Enabled = False
-        If UCase(SearchFieldCOMBOBOX.Text) = "ONE HAND DAMAGE MIN" Then SearchWordCOMBOBOX.Enabled = False
-        If UCase(SearchFieldCOMBOBOX.Text) = "TWO HAND DAMAGE MAX" Then SearchWordCOMBOBOX.Enabled = False
-        If UCase(SearchFieldCOMBOBOX.Text) = "TWO HAND DAMAGE MIN" Then SearchWordCOMBOBOX.Enabled = False
-        If UCase(SearchFieldCOMBOBOX.Text) = "THROW  DAMAGE MAX" Then SearchWordCOMBOBOX.Enabled = False
-        If UCase(SearchFieldCOMBOBOX.Text) = "THROW  DAMAGE MIN" Then SearchWordCOMBOBOX.Enabled = False
-        If UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED STRENGTH" Then SearchWordCOMBOBOX.Enabled = False
-        If UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED DEXTERITY" Then SearchWordCOMBOBOX.Enabled = False
-        If UCase(SearchFieldCOMBOBOX.Text) = "DEFENSE" Then SearchWordCOMBOBOX.Enabled = False
-        If UCase(SearchFieldCOMBOBOX.Text) = "CHANCE TO BLOCK" Then SearchWordCOMBOBOX.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "ONE HAND DAMAGE MAX" Then SearchWordCOMBOBOX.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "ONE HAND DAMAGE MIN" Then SearchWordCOMBOBOX.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "TWO HAND DAMAGE MAX" Then SearchWordCOMBOBOX.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "TWO HAND DAMAGE MIN" Then SearchWordCOMBOBOX.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "THROW  DAMAGE MAX" Then SearchWordCOMBOBOX.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "THROW  DAMAGE MIN" Then SearchWordCOMBOBOX.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "DURABILITY MAX" Then SearchWordCOMBOBOX.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "DURABILITY MIN" Then SearchWordCOMBOBOX.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED STRENGTH" Then SearchWordCOMBOBOX.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED DEXTERITY" Then SearchWordCOMBOBOX.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "DEFENSE" Then SearchWordCOMBOBOX.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "CHANCE TO BLOCK" Then SearchWordCOMBOBOX.Enabled = False
+
+        'Turns off NumericUpDown control box for string only searches
+        'If UCase(SearchFieldCOMBOBOX.Text) = "ITEM NAME" Then SearchValueNUMERICUPDWN.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "ITEM BASE" Then SearchValueNUMERICUPDWN.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "ITEM QUALITY" Then SearchValueNUMERICUPDWN.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "USER REFERENCE" Then SearchValueNUMERICUPDWN.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "MULE ACCOUNT" Then SearchValueNUMERICUPDWN.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "MULE NAME" Then SearchValueNUMERICUPDWN.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "MULE PASS" Then SearchValueNUMERICUPDWN.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "ATTACK CLASS" Then SearchValueNUMERICUPDWN.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "ATTACK SPEED" Then SearchValueNUMERICUPDWN.Enabled = False
+        'If UCase(SearchFieldCOMBOBOX.Text) = "ETHEREAL" Then SearchValueNUMERICUPDWN.Enabled = False
+
+        'NOTED: Any search option not covered in the two blocks above implements either or both string and value arguments in search matching
 
 
-        'ADD ALL ITEM NAMES SEARCHED SINCE STARTUP TO WORD DROP DOWN WHEN ITEM NAME IS SELECTED
+        'THIS ADDS ALL ITEM NAME SEARCHED AND MATCHED THIS SESSION (SAVED IN ItemNamePullDownList) TO THE SEARCH STRING  
+        'COMBOBOX DROPDOWN. THIS SYSTEM IS ONLY USED FOR THE  ITEM NAME FIELD... 
+        'As There is no point adding the entire Item Name list to the dropdown this wil be a compromise of sorts
+        'The reference array is not saved so a new list is created each runtime session (could add save to file option as improvment idea l8r)
 
         If UCase(SearchFieldCOMBOBOX.Text) = "ITEM NAME" Then
             SearchWordCOMBOBOX.Items.Clear()
@@ -416,8 +448,70 @@ Public Class Form1
             Next
         End If
 
+        'POPULATE WORD SEARCH DROPDOWN WITH ALL USER REFERENCE ENTRYS WHEN MULE ACCOUNT IS SELECTED FOR SEARCH
+        If UCase(SearchFieldCOMBOBOX.Text) = "USER REFERENCE" Then
+            SearchWordCOMBOBOX.Items.Clear()
+            For Each ItemObjectItem As ItemObjects In Objects
+                If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.UserReference) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.UserReference)
+            Next
+        End If
+
+        'POPULATE WORD SEARCH DROPDOWN WITH ALL MULE ACCOUNT ENTRYS WHEN MULE ACCOUNT IS SELECTED FOR SEARCH
+        If UCase(SearchFieldCOMBOBOX.Text) = "MULE ACCOUNT" Then
+            SearchWordCOMBOBOX.Items.Clear()
+            For Each ItemObjectItem As ItemObjects In Objects
+                If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.MuleAccount) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.MuleAccount)
+            Next
+        End If
+
+        'POPULATE WORD SEARCH DROPDOWN WITH ALL MULE NAME ENTRYS WHEN MULE NAME IS SELECTED FOR SEARCH
+        If UCase(SearchFieldCOMBOBOX.Text) = "MULE NAME" Then
+            SearchWordCOMBOBOX.Items.Clear()
+            For Each ItemObjectItem As ItemObjects In Objects
+                If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.MuleName) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.MuleName)
+            Next
+        End If
+
+        'POPULATE WORD SEARCH DROPDOWN WITH ALL MULE PASS ENTRYS WHEN MULE PASS IS SELECTED FOR SEARCH
+        'BUT ONLY WHEN HIDE PASWORDS CHECKBOX IN SETTINGS IS UNCHECKED. A BLANK DROPDOWN IS RETURNED IF HIDE PASSWORDS IS CHECKED
+        If UCase(SearchFieldCOMBOBOX.Text) = "MULE PASS" Then
+            SearchWordCOMBOBOX.Items.Clear()
+            If Settings.CheckBox3.Checked = False Then
+                For Each ItemObjectItem As ItemObjects In Objects
+                    If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.MulePass) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.MulePass)
+                Next
+            End If
+        End If
+
+        'POPULATE WORD SEARCH DROPDOWN WITH ALL ATTACK CLASS ENTRYS WHEN ATTACK CLASS IS SELECTED FOR SEARCH
+        If UCase(SearchFieldCOMBOBOX.Text) = "ATTACK CLASS" Then
+            SearchWordCOMBOBOX.Items.Clear()
+            If Settings.CheckBox3.Checked = False Then
+                For Each ItemObjectItem As ItemObjects In Objects
+                    If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.AttackClass) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.AttackClass)
+                Next
+            End If
+        End If
+
+        'POPULATE WORD SEARCH DROPDOWN WITH ALL ATTACK SPEED ENTRYS WHEN ATTACK SPEED IS SELECTED FOR SEARCH
+        If UCase(SearchFieldCOMBOBOX.Text) = "ATTACK SPEED" Then
+            SearchWordCOMBOBOX.Items.Clear()
+            If Settings.CheckBox3.Checked = False Then
+                For Each ItemObjectItem As ItemObjects In Objects
+                    If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.AttackSpeed) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.AttackSpeed)
+                Next
+            End If
+        End If
 
 
+
+
+       
+
+
+
+
+        'ENTER SEARCH CRITERIA AND READY TO SEARCH!!!!!!!!!!!!!!!!!!
 
 
     End Sub
@@ -446,4 +540,13 @@ Public Class Form1
         My.Computer.Audio.Play(My.Resources.diablotaunt1, AudioPlayMode.Background)
         PictureBox2.Visible = False
     End Sub
+
+    'This alters the search button from search to refine depending on the chercked state of the refine checkbox
+    Private Sub RefineSearchCHECKBOX_CheckedChanged(sender As Object, e As EventArgs) Handles RefineSearchCHECKBOX.CheckedChanged
+        If RefineSearchCHECKBOX.Checked = True Then SearchBUTTON.Text = "Refine Now"
+        If RefineSearchCHECKBOX.Checked = False Then SearchBUTTON.Text = "Search Now"
+
+    End Sub
+
+  
 End Class

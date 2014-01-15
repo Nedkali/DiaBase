@@ -33,7 +33,6 @@ Partial Class Form1
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.EditExistingItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.SearchOperatorLABEL = New System.Windows.Forms.Label()
         Me.SearchOperatorCOMBOBOX = New System.Windows.Forms.ComboBox()
         Me.SearchValueNUMERICUPDWN = New System.Windows.Forms.NumericUpDown()
@@ -72,6 +71,9 @@ Partial Class Form1
         Me.ExactMatchCHECKBOX = New System.Windows.Forms.CheckBox()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.HideDuplicatesCHECKBOX = New System.Windows.Forms.CheckBox()
+        Me.StringSearchLABEEL = New System.Windows.Forms.Label()
+        Me.RefineSearchCHECKBOX = New System.Windows.Forms.CheckBox()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -152,28 +154,16 @@ Partial Class Form1
         Me.EditExistingItemToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
         Me.EditExistingItemToolStripMenuItem.Text = "Edit"
         '
-        'Button2
-        '
-        Me.Button2.BackColor = System.Drawing.SystemColors.WindowFrame
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Button2.Location = New System.Drawing.Point(232, 116)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 122
-        Me.Button2.Text = "Re-Search"
-        Me.Button2.UseVisualStyleBackColor = False
-        '
         'SearchOperatorLABEL
         '
         Me.SearchOperatorLABEL.AutoSize = True
         Me.SearchOperatorLABEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.SearchOperatorLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.SearchOperatorLABEL.Location = New System.Drawing.Point(96, 101)
+        Me.SearchOperatorLABEL.Location = New System.Drawing.Point(30, 103)
         Me.SearchOperatorLABEL.Name = "SearchOperatorLABEL"
-        Me.SearchOperatorLABEL.Size = New System.Drawing.Size(48, 13)
+        Me.SearchOperatorLABEL.Size = New System.Drawing.Size(86, 13)
         Me.SearchOperatorLABEL.TabIndex = 121
-        Me.SearchOperatorLABEL.Text = "Operator"
+        Me.SearchOperatorLABEL.Text = "Applied Operator"
         '
         'SearchOperatorCOMBOBOX
         '
@@ -182,7 +172,7 @@ Partial Class Form1
         Me.SearchOperatorCOMBOBOX.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.SearchOperatorCOMBOBOX.FormattingEnabled = True
         Me.SearchOperatorCOMBOBOX.Items.AddRange(New Object() {"Equal To", "Not Equal To", "Greater Than", "Less Than"})
-        Me.SearchOperatorCOMBOBOX.Location = New System.Drawing.Point(99, 118)
+        Me.SearchOperatorCOMBOBOX.Location = New System.Drawing.Point(33, 120)
         Me.SearchOperatorCOMBOBOX.Name = "SearchOperatorCOMBOBOX"
         Me.SearchOperatorCOMBOBOX.Size = New System.Drawing.Size(115, 21)
         Me.SearchOperatorCOMBOBOX.TabIndex = 120
@@ -192,10 +182,10 @@ Partial Class Form1
         '
         Me.SearchValueNUMERICUPDWN.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.SearchValueNUMERICUPDWN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.SearchValueNUMERICUPDWN.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.SearchValueNUMERICUPDWN.Location = New System.Drawing.Point(30, 119)
+        Me.SearchValueNUMERICUPDWN.ForeColor = System.Drawing.SystemColors.ControlLightLight
+        Me.SearchValueNUMERICUPDWN.Location = New System.Drawing.Point(325, 61)
         Me.SearchValueNUMERICUPDWN.Name = "SearchValueNUMERICUPDWN"
-        Me.SearchValueNUMERICUPDWN.Size = New System.Drawing.Size(56, 20)
+        Me.SearchValueNUMERICUPDWN.Size = New System.Drawing.Size(72, 20)
         Me.SearchValueNUMERICUPDWN.TabIndex = 118
         '
         'SearchValueLABEL
@@ -203,11 +193,11 @@ Partial Class Form1
         Me.SearchValueLABEL.AutoSize = True
         Me.SearchValueLABEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.SearchValueLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.SearchValueLABEL.Location = New System.Drawing.Point(26, 101)
+        Me.SearchValueLABEL.Location = New System.Drawing.Point(322, 44)
         Me.SearchValueLABEL.Name = "SearchValueLABEL"
-        Me.SearchValueLABEL.Size = New System.Drawing.Size(34, 13)
+        Me.SearchValueLABEL.Size = New System.Drawing.Size(70, 13)
         Me.SearchValueLABEL.TabIndex = 119
-        Me.SearchValueLABEL.Text = "Value"
+        Me.SearchValueLABEL.Text = "And Or Value"
         '
         'SearchWordCOMBOBOX
         '
@@ -215,9 +205,9 @@ Partial Class Form1
         Me.SearchWordCOMBOBOX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.SearchWordCOMBOBOX.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.SearchWordCOMBOBOX.FormattingEnabled = True
-        Me.SearchWordCOMBOBOX.Location = New System.Drawing.Point(150, 56)
+        Me.SearchWordCOMBOBOX.Location = New System.Drawing.Point(156, 61)
         Me.SearchWordCOMBOBOX.Name = "SearchWordCOMBOBOX"
-        Me.SearchWordCOMBOBOX.Size = New System.Drawing.Size(157, 21)
+        Me.SearchWordCOMBOBOX.Size = New System.Drawing.Size(163, 21)
         Me.SearchWordCOMBOBOX.TabIndex = 5
         '
         'SearchFieldCOMBOBOX
@@ -227,7 +217,7 @@ Partial Class Form1
         Me.SearchFieldCOMBOBOX.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.SearchFieldCOMBOBOX.FormattingEnabled = True
         Me.SearchFieldCOMBOBOX.Items.AddRange(New Object() {"Item Name", "Item Base", "Item Quality", "Item Defense", "RuneWord", "Chance To Block", "One Hand Damage Max", "One Hand Damage Min", "Two Hand Damage Max", "Two Hand Damage Min", "Throw Damage Max", "Throw Damage Min", "Required Level", "Required Strength", "Required Dexterity", "Attack Class", "Attack Speed", "Unique Attributes", "Mule Name", "Mule Account", "Pickit Bot", "Pickit Area", "User Reference"})
-        Me.SearchFieldCOMBOBOX.Location = New System.Drawing.Point(29, 56)
+        Me.SearchFieldCOMBOBOX.Location = New System.Drawing.Point(33, 61)
         Me.SearchFieldCOMBOBOX.Name = "SearchFieldCOMBOBOX"
         Me.SearchFieldCOMBOBOX.Size = New System.Drawing.Size(115, 21)
         Me.SearchFieldCOMBOBOX.TabIndex = 3
@@ -238,11 +228,11 @@ Partial Class Form1
         Me.SearchBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.SearchBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.SearchBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.SearchBUTTON.Location = New System.Drawing.Point(325, 116)
+        Me.SearchBUTTON.Location = New System.Drawing.Point(319, 119)
         Me.SearchBUTTON.Name = "SearchBUTTON"
-        Me.SearchBUTTON.Size = New System.Drawing.Size(75, 23)
+        Me.SearchBUTTON.Size = New System.Drawing.Size(78, 23)
         Me.SearchBUTTON.TabIndex = 1
-        Me.SearchBUTTON.Text = "Search"
+        Me.SearchBUTTON.Text = "Search Now"
         Me.SearchBUTTON.UseVisualStyleBackColor = False
         '
         'ItemsToolStripMenuItem
@@ -405,11 +395,11 @@ Partial Class Form1
         Me.SearchLABEL.AutoSize = True
         Me.SearchLABEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.SearchLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.SearchLABEL.Location = New System.Drawing.Point(26, 39)
+        Me.SearchLABEL.Location = New System.Drawing.Point(30, 44)
         Me.SearchLABEL.Name = "SearchLABEL"
-        Me.SearchLABEL.Size = New System.Drawing.Size(64, 13)
+        Me.SearchLABEL.Size = New System.Drawing.Size(89, 13)
         Me.SearchLABEL.TabIndex = 26
-        Me.SearchLABEL.Text = "Item Search"
+        Me.SearchLABEL.Text = "Search This Field"
         '
         'PictureBox1
         '
@@ -434,7 +424,7 @@ Partial Class Form1
         Me.RichTextBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.RichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.RichTextBox1.ForeColor = System.Drawing.SystemColors.MenuBar
-        Me.RichTextBox1.Location = New System.Drawing.Point(469, 55)
+        Me.RichTextBox1.Location = New System.Drawing.Point(468, 58)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.ReadOnly = True
         Me.RichTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
@@ -493,7 +483,7 @@ Partial Class Form1
         Me.ExactMatchCHECKBOX.AutoSize = True
         Me.ExactMatchCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.ExactMatchCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
-        Me.ExactMatchCHECKBOX.Location = New System.Drawing.Point(321, 59)
+        Me.ExactMatchCHECKBOX.Location = New System.Drawing.Point(169, 96)
         Me.ExactMatchCHECKBOX.Name = "ExactMatchCHECKBOX"
         Me.ExactMatchCHECKBOX.Size = New System.Drawing.Size(86, 17)
         Me.ExactMatchCHECKBOX.TabIndex = 124
@@ -502,10 +492,10 @@ Partial Class Form1
         '
         'Button3
         '
-        Me.Button3.BackColor = System.Drawing.SystemColors.WindowText
+        Me.Button3.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button3.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Button3.Location = New System.Drawing.Point(626, 29)
+        Me.Button3.Location = New System.Drawing.Point(691, 30)
         Me.Button3.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(75, 22)
@@ -523,6 +513,43 @@ Partial Class Form1
         Me.PictureBox2.TabIndex = 127
         Me.PictureBox2.TabStop = False
         '
+        'HideDuplicatesCHECKBOX
+        '
+        Me.HideDuplicatesCHECKBOX.AutoSize = True
+        Me.HideDuplicatesCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.HideDuplicatesCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
+        Me.HideDuplicatesCHECKBOX.Location = New System.Drawing.Point(169, 119)
+        Me.HideDuplicatesCHECKBOX.Name = "HideDuplicatesCHECKBOX"
+        Me.HideDuplicatesCHECKBOX.Size = New System.Drawing.Size(82, 17)
+        Me.HideDuplicatesCHECKBOX.TabIndex = 128
+        Me.HideDuplicatesCHECKBOX.Text = "Hide Dupes"
+        Me.HideDuplicatesCHECKBOX.UseVisualStyleBackColor = False
+        '
+        'StringSearchLABEEL
+        '
+        Me.StringSearchLABEEL.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.StringSearchLABEEL.AutoSize = True
+        Me.StringSearchLABEEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.StringSearchLABEEL.ForeColor = System.Drawing.Color.BurlyWood
+        Me.StringSearchLABEEL.Location = New System.Drawing.Point(153, 44)
+        Me.StringSearchLABEEL.Name = "StringSearchLABEEL"
+        Me.StringSearchLABEEL.Size = New System.Drawing.Size(123, 13)
+        Me.StringSearchLABEEL.TabIndex = 129
+        Me.StringSearchLABEEL.Text = "For Word And Or Phrase"
+        '
+        'RefineSearchCHECKBOX
+        '
+        Me.RefineSearchCHECKBOX.AutoSize = True
+        Me.RefineSearchCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RefineSearchCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
+        Me.RefineSearchCHECKBOX.Location = New System.Drawing.Point(169, 142)
+        Me.RefineSearchCHECKBOX.Name = "RefineSearchCHECKBOX"
+        Me.RefineSearchCHECKBOX.Size = New System.Drawing.Size(94, 17)
+        Me.RefineSearchCHECKBOX.TabIndex = 130
+        Me.RefineSearchCHECKBOX.Text = "Refine Search"
+        Me.RefineSearchCHECKBOX.UseVisualStyleBackColor = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -530,13 +557,15 @@ Partial Class Form1
         Me.BackgroundImage = Global.D2Items.My.Resources.Resources.D2Data
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(794, 742)
+        Me.Controls.Add(Me.RefineSearchCHECKBOX)
+        Me.Controls.Add(Me.StringSearchLABEEL)
+        Me.Controls.Add(Me.HideDuplicatesCHECKBOX)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.ExactMatchCHECKBOX)
         Me.Controls.Add(Me.ListboxTABCONTROL)
         Me.Controls.Add(Me.SearchValueLABEL)
         Me.Controls.Add(Me.SearchOperatorLABEL)
-        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.SearchValueNUMERICUPDWN)
         Me.Controls.Add(Me.SearchWordCOMBOBOX)
         Me.Controls.Add(Me.RichTextBox1)
@@ -600,7 +629,6 @@ Partial Class Form1
     Friend WithEvents ToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents SearchBUTTON As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents SearchOperatorLABEL As System.Windows.Forms.Label
     Friend WithEvents SearchOperatorCOMBOBOX As System.Windows.Forms.ComboBox
     Friend WithEvents SearchValueNUMERICUPDWN As System.Windows.Forms.NumericUpDown
@@ -621,6 +649,9 @@ Partial Class Form1
     Friend WithEvents ExactMatchCHECKBOX As System.Windows.Forms.CheckBox
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents HideDuplicatesCHECKBOX As System.Windows.Forms.CheckBox
+    Friend WithEvents StringSearchLABEEL As System.Windows.Forms.Label
+    Friend WithEvents RefineSearchCHECKBOX As System.Windows.Forms.CheckBox
 
 
 End Class
