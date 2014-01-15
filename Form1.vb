@@ -388,38 +388,6 @@ Public Class Form1
     Private Sub SearchFieldCOMBOBOX_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SearchFieldCOMBOBOX.SelectedIndexChanged
         'QUICKLY SETUP SOME SEARCH STUFF FIRST 
 
-        'Turn string and value search contol boxes back on ready for next two code blocks
-        'SearchWordCOMBOBOX.Enabled = True : SearchValueNUMERICUPDWN.Enabled = True
-
-        'turns off string search textbox for value only searches
-        'If UCase(SearchFieldCOMBOBOX.Text) = "ONE HAND DAMAGE MAX" Then SearchWordCOMBOBOX.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "ONE HAND DAMAGE MIN" Then SearchWordCOMBOBOX.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "TWO HAND DAMAGE MAX" Then SearchWordCOMBOBOX.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "TWO HAND DAMAGE MIN" Then SearchWordCOMBOBOX.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "THROW  DAMAGE MAX" Then SearchWordCOMBOBOX.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "THROW  DAMAGE MIN" Then SearchWordCOMBOBOX.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "DURABILITY MAX" Then SearchWordCOMBOBOX.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "DURABILITY MIN" Then SearchWordCOMBOBOX.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED STRENGTH" Then SearchWordCOMBOBOX.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED DEXTERITY" Then SearchWordCOMBOBOX.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "DEFENSE" Then SearchWordCOMBOBOX.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "CHANCE TO BLOCK" Then SearchWordCOMBOBOX.Enabled = False
-
-        'Turns off NumericUpDown control box for string only searches
-        'If UCase(SearchFieldCOMBOBOX.Text) = "ITEM NAME" Then SearchValueNUMERICUPDWN.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "ITEM BASE" Then SearchValueNUMERICUPDWN.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "ITEM QUALITY" Then SearchValueNUMERICUPDWN.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "USER REFERENCE" Then SearchValueNUMERICUPDWN.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "MULE ACCOUNT" Then SearchValueNUMERICUPDWN.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "MULE NAME" Then SearchValueNUMERICUPDWN.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "MULE PASS" Then SearchValueNUMERICUPDWN.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "ATTACK CLASS" Then SearchValueNUMERICUPDWN.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "ATTACK SPEED" Then SearchValueNUMERICUPDWN.Enabled = False
-        'If UCase(SearchFieldCOMBOBOX.Text) = "ETHEREAL" Then SearchValueNUMERICUPDWN.Enabled = False
-
-        'NOTED: Any search option not covered in the two blocks above implements either or both string and value arguments in search matching
-
-
         'THIS ADDS ALL ITEM NAME SEARCHED AND MATCHED THIS SESSION (SAVED IN ItemNamePullDownList) TO THE SEARCH STRING  
         'COMBOBOX DROPDOWN. THIS SYSTEM IS ONLY USED FOR THE  ITEM NAME FIELD... 
         'As There is no point adding the entire Item Name list to the dropdown this wil be a compromise of sorts

@@ -159,7 +159,7 @@ Partial Class Form1
         Me.SearchOperatorLABEL.AutoSize = True
         Me.SearchOperatorLABEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.SearchOperatorLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.SearchOperatorLABEL.Location = New System.Drawing.Point(30, 103)
+        Me.SearchOperatorLABEL.Location = New System.Drawing.Point(27, 103)
         Me.SearchOperatorLABEL.Name = "SearchOperatorLABEL"
         Me.SearchOperatorLABEL.Size = New System.Drawing.Size(86, 13)
         Me.SearchOperatorLABEL.TabIndex = 121
@@ -172,7 +172,7 @@ Partial Class Form1
         Me.SearchOperatorCOMBOBOX.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.SearchOperatorCOMBOBOX.FormattingEnabled = True
         Me.SearchOperatorCOMBOBOX.Items.AddRange(New Object() {"Equal To", "Not Equal To", "Greater Than", "Less Than"})
-        Me.SearchOperatorCOMBOBOX.Location = New System.Drawing.Point(33, 120)
+        Me.SearchOperatorCOMBOBOX.Location = New System.Drawing.Point(30, 120)
         Me.SearchOperatorCOMBOBOX.Name = "SearchOperatorCOMBOBOX"
         Me.SearchOperatorCOMBOBOX.Size = New System.Drawing.Size(115, 21)
         Me.SearchOperatorCOMBOBOX.TabIndex = 120
@@ -183,7 +183,7 @@ Partial Class Form1
         Me.SearchValueNUMERICUPDWN.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.SearchValueNUMERICUPDWN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.SearchValueNUMERICUPDWN.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.SearchValueNUMERICUPDWN.Location = New System.Drawing.Point(325, 61)
+        Me.SearchValueNUMERICUPDWN.Location = New System.Drawing.Point(331, 62)
         Me.SearchValueNUMERICUPDWN.Name = "SearchValueNUMERICUPDWN"
         Me.SearchValueNUMERICUPDWN.Size = New System.Drawing.Size(72, 20)
         Me.SearchValueNUMERICUPDWN.TabIndex = 118
@@ -193,7 +193,7 @@ Partial Class Form1
         Me.SearchValueLABEL.AutoSize = True
         Me.SearchValueLABEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.SearchValueLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.SearchValueLABEL.Location = New System.Drawing.Point(322, 44)
+        Me.SearchValueLABEL.Location = New System.Drawing.Point(328, 44)
         Me.SearchValueLABEL.Name = "SearchValueLABEL"
         Me.SearchValueLABEL.Size = New System.Drawing.Size(70, 13)
         Me.SearchValueLABEL.TabIndex = 119
@@ -205,9 +205,9 @@ Partial Class Form1
         Me.SearchWordCOMBOBOX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.SearchWordCOMBOBOX.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.SearchWordCOMBOBOX.FormattingEnabled = True
-        Me.SearchWordCOMBOBOX.Location = New System.Drawing.Point(156, 61)
+        Me.SearchWordCOMBOBOX.Location = New System.Drawing.Point(176, 61)
         Me.SearchWordCOMBOBOX.Name = "SearchWordCOMBOBOX"
-        Me.SearchWordCOMBOBOX.Size = New System.Drawing.Size(163, 21)
+        Me.SearchWordCOMBOBOX.Size = New System.Drawing.Size(151, 21)
         Me.SearchWordCOMBOBOX.TabIndex = 5
         '
         'SearchFieldCOMBOBOX
@@ -217,9 +217,9 @@ Partial Class Form1
         Me.SearchFieldCOMBOBOX.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.SearchFieldCOMBOBOX.FormattingEnabled = True
         Me.SearchFieldCOMBOBOX.Items.AddRange(New Object() {"Item Name", "Item Base", "Item Quality", "Item Defense", "RuneWord", "Chance To Block", "One Hand Damage Max", "One Hand Damage Min", "Two Hand Damage Max", "Two Hand Damage Min", "Throw Damage Max", "Throw Damage Min", "Required Level", "Required Strength", "Required Dexterity", "Attack Class", "Attack Speed", "Unique Attributes", "Mule Name", "Mule Account", "Pickit Bot", "Pickit Area", "User Reference"})
-        Me.SearchFieldCOMBOBOX.Location = New System.Drawing.Point(33, 61)
+        Me.SearchFieldCOMBOBOX.Location = New System.Drawing.Point(30, 61)
         Me.SearchFieldCOMBOBOX.Name = "SearchFieldCOMBOBOX"
-        Me.SearchFieldCOMBOBOX.Size = New System.Drawing.Size(115, 21)
+        Me.SearchFieldCOMBOBOX.Size = New System.Drawing.Size(143, 21)
         Me.SearchFieldCOMBOBOX.TabIndex = 3
         Me.SearchFieldCOMBOBOX.Text = "Item Name"
         '
@@ -228,7 +228,7 @@ Partial Class Form1
         Me.SearchBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.SearchBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.SearchBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.SearchBUTTON.Location = New System.Drawing.Point(319, 119)
+        Me.SearchBUTTON.Location = New System.Drawing.Point(316, 117)
         Me.SearchBUTTON.Name = "SearchBUTTON"
         Me.SearchBUTTON.Size = New System.Drawing.Size(78, 23)
         Me.SearchBUTTON.TabIndex = 1
@@ -395,7 +395,7 @@ Partial Class Form1
         Me.SearchLABEL.AutoSize = True
         Me.SearchLABEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.SearchLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.SearchLABEL.Location = New System.Drawing.Point(30, 44)
+        Me.SearchLABEL.Location = New System.Drawing.Point(27, 44)
         Me.SearchLABEL.Name = "SearchLABEL"
         Me.SearchLABEL.Size = New System.Drawing.Size(89, 13)
         Me.SearchLABEL.TabIndex = 26
@@ -532,7 +532,7 @@ Partial Class Form1
         Me.StringSearchLABEEL.AutoSize = True
         Me.StringSearchLABEEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.StringSearchLABEEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.StringSearchLABEEL.Location = New System.Drawing.Point(153, 44)
+        Me.StringSearchLABEEL.Location = New System.Drawing.Point(173, 44)
         Me.StringSearchLABEEL.Name = "StringSearchLABEEL"
         Me.StringSearchLABEEL.Size = New System.Drawing.Size(123, 13)
         Me.StringSearchLABEEL.TabIndex = 129
