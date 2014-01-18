@@ -24,6 +24,10 @@
     Public AutoBackups As String
     Public SearchReferenceList As List(Of String) = New List(Of String)
     Public RefineSearchReferenceList As List(Of String) = New List(Of String)
+    Public StringMatches As List(Of String) = New List(Of String)
+    Public IntegerMatches As List(Of String) = New List(Of String)
+
+
     Public ItemNamePulldownList As List(Of String) = New List(Of String)
     Public LogFilesList As List(Of String) = New List(Of String)    'Holds all logs found in log directory
     Public PassFiles As List(Of String) = New List(Of String)       'Holds all _muleaccount.txt file used to get mule pass and mule account
@@ -1471,28 +1475,42 @@
 
 
 
-        Dim MATCHEDITEMNAME = 0                                         'FLAG USED TO ADD SUCCESSFUL ITEM NAME SEARCHES TO PULLDOWN
+        Dim MATCHEDITEMNAME = 0                                 'FLAG USED TO ADD SUCCESSFUL ITEM NAME SEARCHES TO PULLDOWN
         Dim count = -1                                          'Used to track items database reference number
-        Form1.SearchLISTBOX.Items.Clear()                       'Clear out old search matches (edit about here for refine search later)
+        Form1.SearchLISTBOX.Items.Clear()                       'Clear out old search matches
         SearchReferenceList.Clear()                             'Clear Out old Item Search Reference List (Holds location in database of each matched item)
+        StringMatches.Clear() 'for unique attribs block searches
+        IntegerMatches.Clear() 'for unique attribs block searches
+
+
+
 
         'SEARCH ROUTINE STARTS RIGHT HERE --->
-        'CAPS LOCK / CAPITAL LETTERS are NOT considered in any search modes - all upper casing is ignored in searches
 
+        'SEARCH LIMITATIONS:
+        'Exact match considers character casing as well as the string itself.   STRING MATCH MUST BE EXACT TO PASS
+        'Not exact match ignores casing and redundant characters in the string. STRING MATCH MUST EXIST WITHIN THE TEST STRING REGARDLESS OF CASING TO PASS
+        'Hide dupes only considers the items name when testing for duplicates
+        'Refine search only considers items already matched (exists in the search match list already) when testing for matches
+
+        '----------------------------------------------------------------------------------------------------------------------------------------------
         'DEBUGGING - CAN DELETE THIS BUT KEEP FOR NOW FOR DEBUGG (use as var tags pinned on references below for step by step bebugging)
         'Dim A = UCase(Form1.SearchFieldCOMBOBOX.Text)
         'Dim B = UCase(Form1.SearchWordCOMBOBOX.Text)
         'Dim C As String
         'Dim D As String
+        '----------------------------------------------------------------------------------------------------------------------------------------------
 
         For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
             count = count + 1                                   ' move item locatino refrence counter onto next item number
 
+            '----------------------------------------------------------------------------------------------------------------------------------------------
             'DEBUGGING - CAN DELETE THIS BUT KEEP FOR NOW FOR HANDY DEBUGG (use these here as pinned var tags in step by step bebugging)
             'A = UCase(Form1.SearchFieldCOMBOBOX.Text)
             'B = UCase(Form1.SearchWordCOMBOBOX.Text)
             'C = UCase(ItemObjectItem.ItemName)
             'D = UCase(Form1.SearchWordCOMBOBOX.Text).IndexOf(UCase(ItemObjectItem.ItemName))
+            '----------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -1806,7 +1824,7 @@
             '*   I N T E G E R      S E A R C H E S      O N L Y   *
             '*******************************************************
 
-            'Exact match checkbox sets the search routine to ignore character case sets and any redundant text when test matches. 
+            'Exact match checkbox sets the search routine to ignore character case sets and any redundant text when testing matches. 
             'Therefore it really has no relevance when searching integers and so is ignored in the following integer search routines
 
             'Search For Integer In RequiredLevel (EqualTo / NotEqualTo / GreaterThan / LessThan)
@@ -1851,17 +1869,16 @@
 
 
 
-            '**************************************************
-            '*  S E A R C H    U N I Q U E     A T T R I B S  *
-            '**************************************************
+            '****************************************************************************************************************
+            '*  S E A R C H    U N I Q U E     A T T R I B S        F O R       I N T E G E R S    A N D     S T R I N G S  *
+            '****************************************************************************************************************
 
             If UCase(Form1.SearchFieldCOMBOBOX.Text) = "UNIQUE ATTRIBUTES" Then
 
-                Dim StringMatches As List(Of String) = New List(Of String)
-                Dim IntegerMatches As List(Of String) = New List(Of String)
+               
 
 
-                
+                'string match routine
                 If Form1.SearchWordCOMBOBOX.Text <> "" Then
 
                     If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
@@ -1947,49 +1964,26 @@
                             If UCase(ItemObjectItem.Stat15).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And StringMatches.Contains(count) = False Then StringMatches.Add(count)
                         End If
                     End If
-                End If
 
 
 
 
-                    'integer match routine
-
-                    If Form1.SearchValueNUMERICUPDWN.Value <> 0 Then
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-
-                        'integer exact equal to
-                        If Form1.ExactMatchCHECKBOX.Checked = True Then
-
-                        End If
-
-                        'integer not exact equal to
-                        If Form1.ExactMatchCHECKBOX.Checked = False Then
-
-                        End If
-
-
-                    End If
-
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-
-                        'Integer exact not equal to
-                        If Form1.ExactMatchCHECKBOX.Checked = True Then
-
-                        End If
-
-                        'integer not  exact not equal to
-                        If Form1.ExactMatchCHECKBOX.Checked = False Then
-
-                        End If
-                    End If
-                End If
 
 
 
 
-               
+
+                End If '    searchwordcombobox.text <>"" loop point (if then)
+
+
+
+
+
+
+                If Form1.SearchValueNUMERICUPDWN.Value > 0 Then
+
+                    'integer search not exact match
+                    If Form1.ExactMatchCHECKBOX.Checked = False And (ItemObjectItem.Stat1).IndexOf(Str(Form1.SearchValueNUMERICUPDWN.Value)) > -1 Then MessageBox.Show("found the value" & ItemObjectItem.Stat1)
 
                 End If
 
@@ -1999,6 +1993,32 @@
 
 
 
+            End If
+
+
+
+
+
+
+
+
+            'If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
+
+
+
+
+
+
+
+
+
+
+
+            'string match exact Equal To
+            If Form1.ExactMatchCHECKBOX.Checked = True Then
+                'If ItemObjectItem.Stat1 = Form1.SearchWordCOMBOBOX.Text And StringMatches.Contains(count) = False Then StringMatches.Add(count)
+                '
+            End If
 
 
 
@@ -2011,14 +2031,46 @@
 
 
 
-ItemMatched:    ' Jump point to avoid redundant routine once a match has been found (also a potential time saver for searching much larger dbases) 
+
+
+
+
+
+
+            '  End If '        search fields =  "UNIQUE" ATTRIBUTES loop point (if then)
+
+
+
+
+
+
+
+ItemMatched:  ' Jump point to avoid redundant routine once a match has been found (also a potential time saver for searching much larger dbases) 
 
 
 
 
             'this combines string and integer match lists into search list for unique attributes block searches
 
-            'refine search combine (hide / show dupes)
+
+
+            'WHEN INTERS DONT EXIST BUT STRINGS DO
+            If IntegerMatches.Count = 0 And StringMatches.Count > 0 And Form1.RefineSearchCHECKBOX.Checked = True Then
+
+                Dim countSTR As Integer = 0
+                'refine search STRING BUT NO INTEGER combine
+                For Each ITEM In StringMatches
+
+                    If RefineSearchReferenceList.Contains(ItemObjectItem.ItemName(StringMatches(count))) = True Then Form1.SearchLISTBOX.Items.Add(ItemObjectItem.ItemName(StringMatches(countSTR)))
+
+                    countSTR = countSTR + 1
+                Next
+
+
+            End If
+
+
+
 
 
 
@@ -2038,20 +2090,30 @@ ItemMatched:    ' Jump point to avoid redundant routine once a match has been fo
 
 
 
-                '   Next bit puts successfull item name search words into the searchword quickedit pulldown and a array collection list for reference 
-                '   when repopulating dropdown on Item Name reselection. 
+            '   Next bit puts successfull item name search words into the searchword quickedit pulldown and a array collection list for reference 
+            '   when repopulating dropdown on Item Name reselection. 
 
-                '   The Flag Var MATCHEDITEMNAME = 1 or 0 is assigned in above search name routine only. And again only if a match is found. 
-                '   NOTE: This is ONLY used for item name searches (as it would be pointless to put the entire database item name list into the Item Name quick edit dropdown)
+            '   The Flag Var MATCHEDITEMNAME = 1 or 0 is assigned in above search name routine only. And again only if a match is found. 
+            '   NOTE: This is ONLY used for item name searches (as it would be pointless to put the entire database item name list into the Item Name quick edit dropdown)
 
-                If MATCHEDITEMNAME = 1 And Form1.SearchWordCOMBOBOX.Items.Contains(Form1.SearchWordCOMBOBOX.Text) = False Then Form1.SearchWordCOMBOBOX.Items.Add(Form1.SearchWordCOMBOBOX.Text) : ItemNamePulldownList.Add(Form1.SearchWordCOMBOBOX.Text)
-                MATCHEDITEMNAME = 0
-        Next
+            If MATCHEDITEMNAME = 1 And Form1.SearchWordCOMBOBOX.Items.Contains(Form1.SearchWordCOMBOBOX.Text) = False Then Form1.SearchWordCOMBOBOX.Items.Add(Form1.SearchWordCOMBOBOX.Text) : ItemNamePulldownList.Add(Form1.SearchWordCOMBOBOX.Text)
+            MATCHEDITEMNAME = 0
+
+
+
+        Next ' Search all itmes loop point (for next)
+
+
+
+
 
         'if search was successful and matches exist this selects the first match in the searchlist and focuses on the search list tab page to show matches
         If Form1.SearchLISTBOX.Items.Count > 0 Then
             Form1.SearchLISTBOX.SelectedIndex = 0
             Form1.ListboxTABCONTROL.SelectTab(1)
+            Form1.Button1.BackColor = Color.DimGray
+            Form1.Button2.BackColor = Color.Black
+
         End If
 
         End Sub
@@ -2060,7 +2122,7 @@ ItemMatched:    ' Jump point to avoid redundant routine once a match has been fo
 
 
 
-
+   
 
 
 

@@ -119,6 +119,7 @@ Public Class Form1
         For x = 0 To Objects.Count - 1
             AllItemsInDatabaseListBox.Items.Add(Objects(x).ItemName)
         Next
+        ListboxTABCONTROL.SelectTab(0) ' ensure listboxTABCONTROL itset to all items list for repopuleate
         TextBox2.Text = Objects.Count & " Items"
 
         If AllItemsInDatabaseListBox.Items.Count > 0 Then AllItemsInDatabaseListBox.SelectedIndex = 0
@@ -164,6 +165,11 @@ Public Class Form1
         If RowNumber = -1 Then Return ' do nothing
         If RowNumber >= 0 Then
             RichTextBox2.Text = ""  'clears form has been some overlap of listings occur - wierd behaviour
+
+
+            MuleInfoRICHTEXTBOX.Clear() 'clearc mule info textbox
+
+
 
             Dim DisplayType As String = Objects(RowNumber).ItemQuality
             Dim count As Integer = Objects(RowNumber).ItemQuality.Length
@@ -227,19 +233,25 @@ Public Class Form1
             If Objects(RowNumber).Stat15 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat15 & vbCrLf)
 
 
-            RichTextBox2.SelectionStart = RichTextBox2.TextLength 'ensure we are at end of document
-            count = RichTextBox2.GetLineFromCharIndex(RichTextBox2.TextLength)
-            For x = 0 To 20 - count
-                RichTextBox2.AppendText(vbCrLf) ' a few line feeds so we can display muleaccount etc info near bottom
-            Next
+            'ROBS EDIT commented out this bit to test mule info text box <-----------------------------------------------------[ROBS EDIT]
 
-            RichTextBox2.AppendText("Mule Account: " & Objects(RowNumber).MuleAccount & vbCrLf)
-            RichTextBox2.AppendText("Mule Name: " & Objects(RowNumber).MuleName & vbCrLf)
-            RichTextBox2.AppendText("Mule Pass: " & Objects(RowNumber).MulePass & vbCrLf)
+            'RichTextBox2.SelectionStart = RichTextBox2.TextLength 'ensure we are at end of document
+            'count = RichTextBox2.GetLineFromCharIndex(RichTextBox2.TextLength)
+            ' For x = 0 To 20 - count
+            'RichTextBox2.AppendText(vbCrLf) ' a few line feeds so we can display muleaccount etc info near bottom
+            'Next
+
+
+
+            MuleInfoRICHTEXTBOX.AppendText("Mule Account: " & Objects(RowNumber).MuleAccount & vbCrLf) '<----------------[ROBS EDIT]
+            MuleInfoRICHTEXTBOX.AppendText("Mule Name: " & Objects(RowNumber).MuleName & vbCrLf)
+            MuleInfoRICHTEXTBOX.AppendText("Mule Pass: " & Objects(RowNumber).MulePass & vbCrLf)
 
         End If
         RichTextBox2.SelectAll()
         RichTextBox2.SelectionAlignment = HorizontalAlignment.Center
+        MuleInfoRICHTEXTBOX.SelectAll()
+        MuleInfoRICHTEXTBOX.SelectionAlignment = HorizontalAlignment.Center
 
         PictureBox1.Load("Skins\" + ItemImageList(Objects(RowNumber).ItemImage) + ".jpg")
 
@@ -471,16 +483,7 @@ Public Class Form1
             End If
         End If
 
-
-
-
-       
-
-
-
-
         'ENTER SEARCH CRITERIA AND READY TO SEARCH!!!!!!!!!!!!!!!!!!
-
 
     End Sub
 
@@ -516,18 +519,28 @@ Public Class Form1
 
     End Sub
 
-    'this button selects tab page 0 and colors button to show all items listbox on page 0
+    'this button selects tab page 0 and colors button to show all items listbox on page 0 and displays total items value to textbox2
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         ListboxTABCONTROL.SelectTab(0)
         Button2.BackColor = Color.DimGray
         Button1.BackColor = Color.Black
+        If Button2.BackColor = Color.DimGray Then TextBox2.Text = SearchLISTBOX.Items.Count & " - Total Matches" Else TextBox2.Text = SearchLISTBOX.Items.Count & " - Total Items"
+
+
     End Sub
 
-    'this button selects tab page 1 and colors button to show all search listbox on page 1
+    'this button selects tab page 1 and colors button to show all search listbox on page 1 and displays total search matches value to textbox2
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         ListboxTABCONTROL.SelectTab(1)
         Button1.BackColor = Color.DimGray
         Button2.BackColor = Color.Black
+
+        If Button2.BackColor = Color.DimGray Then TextBox2.Text = SearchLISTBOX.Items.Count & " - Total Items" Else TextBox2.Text = SearchLISTBOX.Items.Count & " - Total Matches"
+    End Sub
+
+    
+    'items and matches nuber textbox
+    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
 
     End Sub
 End Class

@@ -81,6 +81,28 @@ Partial Class Form1
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.MuleInfoRICHTEXTBOX = New System.Windows.Forms.RichTextBox()
+        Me.Label29 = New System.Windows.Forms.Label()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -97,12 +119,13 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label3.Location = New System.Drawing.Point(466, 34)
+        Me.Label3.Location = New System.Drawing.Point(464, 24)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(78, 13)
+        Me.Label3.Size = New System.Drawing.Size(191, 24)
         Me.Label3.TabIndex = 24
-        Me.Label3.Text = "Logging Status"
+        Me.Label3.Text = "AutoLogging Status"
         '
         'AllItemsInDatabaseListBox
         '
@@ -114,7 +137,7 @@ Partial Class Form1
         Me.AllItemsInDatabaseListBox.Location = New System.Drawing.Point(3, 3)
         Me.AllItemsInDatabaseListBox.Margin = New System.Windows.Forms.Padding(0)
         Me.AllItemsInDatabaseListBox.Name = "AllItemsInDatabaseListBox"
-        Me.AllItemsInDatabaseListBox.Size = New System.Drawing.Size(363, 285)
+        Me.AllItemsInDatabaseListBox.Size = New System.Drawing.Size(367, 289)
         Me.AllItemsInDatabaseListBox.TabIndex = 22
         '
         'Timer1
@@ -166,40 +189,41 @@ Partial Class Form1
         Me.SearchOperatorLABEL.AutoSize = True
         Me.SearchOperatorLABEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.SearchOperatorLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.SearchOperatorLABEL.Location = New System.Drawing.Point(27, 103)
+        Me.SearchOperatorLABEL.Location = New System.Drawing.Point(174, 54)
         Me.SearchOperatorLABEL.Name = "SearchOperatorLABEL"
-        Me.SearchOperatorLABEL.Size = New System.Drawing.Size(86, 13)
+        Me.SearchOperatorLABEL.Size = New System.Drawing.Size(100, 13)
         Me.SearchOperatorLABEL.TabIndex = 121
-        Me.SearchOperatorLABEL.Text = "Applied Operator"
+        Me.SearchOperatorLABEL.Text = "Using The Operator"
         '
         'SearchOperatorCOMBOBOX
         '
-        Me.SearchOperatorCOMBOBOX.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.SearchOperatorCOMBOBOX.BackColor = System.Drawing.Color.Black
         Me.SearchOperatorCOMBOBOX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.SearchOperatorCOMBOBOX.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.SearchOperatorCOMBOBOX.FormattingEnabled = True
         Me.SearchOperatorCOMBOBOX.Items.AddRange(New Object() {"Equal To", "Not Equal To", "Greater Than", "Less Than"})
-        Me.SearchOperatorCOMBOBOX.Location = New System.Drawing.Point(30, 120)
+        Me.SearchOperatorCOMBOBOX.Location = New System.Drawing.Point(178, 71)
         Me.SearchOperatorCOMBOBOX.Name = "SearchOperatorCOMBOBOX"
-        Me.SearchOperatorCOMBOBOX.Size = New System.Drawing.Size(115, 21)
-        Me.SearchOperatorCOMBOBOX.TabIndex = 120
+        Me.SearchOperatorCOMBOBOX.Size = New System.Drawing.Size(128, 21)
+        Me.SearchOperatorCOMBOBOX.TabIndex = 4
         Me.SearchOperatorCOMBOBOX.Text = "Equal To"
         '
         'SearchValueNUMERICUPDWN
         '
-        Me.SearchValueNUMERICUPDWN.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.SearchValueNUMERICUPDWN.BackColor = System.Drawing.Color.Black
+        Me.SearchValueNUMERICUPDWN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.SearchValueNUMERICUPDWN.ForeColor = System.Drawing.SystemColors.ControlLightLight
-        Me.SearchValueNUMERICUPDWN.Location = New System.Drawing.Point(331, 62)
+        Me.SearchValueNUMERICUPDWN.Location = New System.Drawing.Point(224, 119)
         Me.SearchValueNUMERICUPDWN.Name = "SearchValueNUMERICUPDWN"
-        Me.SearchValueNUMERICUPDWN.Size = New System.Drawing.Size(72, 20)
-        Me.SearchValueNUMERICUPDWN.TabIndex = 118
+        Me.SearchValueNUMERICUPDWN.Size = New System.Drawing.Size(82, 20)
+        Me.SearchValueNUMERICUPDWN.TabIndex = 3
         '
         'SearchValueLABEL
         '
         Me.SearchValueLABEL.AutoSize = True
         Me.SearchValueLABEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.SearchValueLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.SearchValueLABEL.Location = New System.Drawing.Point(328, 44)
+        Me.SearchValueLABEL.Location = New System.Drawing.Point(221, 103)
         Me.SearchValueLABEL.Name = "SearchValueLABEL"
         Me.SearchValueLABEL.Size = New System.Drawing.Size(70, 13)
         Me.SearchValueLABEL.TabIndex = 119
@@ -207,38 +231,39 @@ Partial Class Form1
         '
         'SearchWordCOMBOBOX
         '
-        Me.SearchWordCOMBOBOX.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.SearchWordCOMBOBOX.BackColor = System.Drawing.Color.Black
         Me.SearchWordCOMBOBOX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.SearchWordCOMBOBOX.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.SearchWordCOMBOBOX.FormattingEnabled = True
-        Me.SearchWordCOMBOBOX.Location = New System.Drawing.Point(176, 61)
+        Me.SearchWordCOMBOBOX.Location = New System.Drawing.Point(33, 119)
         Me.SearchWordCOMBOBOX.Name = "SearchWordCOMBOBOX"
-        Me.SearchWordCOMBOBOX.Size = New System.Drawing.Size(151, 21)
-        Me.SearchWordCOMBOBOX.TabIndex = 5
+        Me.SearchWordCOMBOBOX.Size = New System.Drawing.Size(188, 21)
+        Me.SearchWordCOMBOBOX.TabIndex = 2
         '
         'SearchFieldCOMBOBOX
         '
-        Me.SearchFieldCOMBOBOX.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.SearchFieldCOMBOBOX.BackColor = System.Drawing.Color.Black
         Me.SearchFieldCOMBOBOX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.SearchFieldCOMBOBOX.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.SearchFieldCOMBOBOX.FormattingEnabled = True
         Me.SearchFieldCOMBOBOX.Items.AddRange(New Object() {"Item Name", "Item Base", "Item Quality", "Item Defense", "RuneWord", "Chance To Block", "One Hand Damage Max", "One Hand Damage Min", "Two Hand Damage Max", "Two Hand Damage Min", "Throw Damage Max", "Throw Damage Min", "Required Level", "Required Strength", "Required Dexterity", "Attack Class", "Attack Speed", "Unique Attributes", "Mule Name", "Mule Account", "Mule Pass", "User Reference"})
-        Me.SearchFieldCOMBOBOX.Location = New System.Drawing.Point(30, 61)
+        Me.SearchFieldCOMBOBOX.Location = New System.Drawing.Point(33, 71)
         Me.SearchFieldCOMBOBOX.Name = "SearchFieldCOMBOBOX"
         Me.SearchFieldCOMBOBOX.Size = New System.Drawing.Size(143, 21)
-        Me.SearchFieldCOMBOBOX.TabIndex = 3
+        Me.SearchFieldCOMBOBOX.TabIndex = 1
         Me.SearchFieldCOMBOBOX.Text = "Item Name"
         '
         'SearchBUTTON
         '
         Me.SearchBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.SearchBUTTON.FlatAppearance.BorderSize = 2
         Me.SearchBUTTON.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
         Me.SearchBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.SearchBUTTON.ForeColor = System.Drawing.Color.BurlyWood
         Me.SearchBUTTON.Location = New System.Drawing.Point(316, 117)
         Me.SearchBUTTON.Name = "SearchBUTTON"
-        Me.SearchBUTTON.Size = New System.Drawing.Size(78, 23)
-        Me.SearchBUTTON.TabIndex = 1
+        Me.SearchBUTTON.Size = New System.Drawing.Size(78, 24)
+        Me.SearchBUTTON.TabIndex = 8
         Me.SearchBUTTON.Text = "Search Now"
         Me.SearchBUTTON.UseVisualStyleBackColor = False
         '
@@ -281,24 +306,26 @@ Partial Class Form1
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label2.Location = New System.Drawing.Point(605, 186)
+        Me.Label2.Location = New System.Drawing.Point(557, 183)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(62, 13)
+        Me.Label2.Size = New System.Drawing.Size(213, 24)
         Me.Label2.TabIndex = 18
-        Me.Label2.Text = "Item Details"
+        Me.Label2.Text = "Mule And Item Details"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label1.Location = New System.Drawing.Point(68, 186)
+        Me.Label1.Location = New System.Drawing.Point(47, 183)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(76, 13)
+        Me.Label1.Size = New System.Drawing.Size(102, 24)
         Me.Label1.TabIndex = 17
-        Me.Label1.Text = "Data Base List"
+        Me.Label1.Text = " Item Lists"
         '
         'SetDefaultsToolStripMenuItem
         '
@@ -378,31 +405,29 @@ Partial Class Form1
         Me.RichTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.RichTextBox2.CausesValidation = False
         Me.RichTextBox2.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.RichTextBox2.Location = New System.Drawing.Point(473, 358)
+        Me.RichTextBox2.Location = New System.Drawing.Point(456, 380)
         Me.RichTextBox2.Name = "RichTextBox2"
         Me.RichTextBox2.ReadOnly = True
-        Me.RichTextBox2.Size = New System.Drawing.Size(270, 180)
+        Me.RichTextBox2.Size = New System.Drawing.Size(307, 182)
         Me.RichTextBox2.TabIndex = 15
         Me.RichTextBox2.Text = ""
         '
         'TextBox2
         '
         Me.TextBox2.BackColor = System.Drawing.SystemColors.WindowFrame
-        Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TextBox2.ForeColor = System.Drawing.Color.BurlyWood
-        Me.TextBox2.Location = New System.Drawing.Point(189, 186)
+        Me.TextBox2.Location = New System.Drawing.Point(177, 185)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(81, 13)
+        Me.TextBox2.Size = New System.Drawing.Size(99, 20)
         Me.TextBox2.TabIndex = 25
         '
         'SearchLABEL
         '
-        Me.SearchLABEL.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.SearchLABEL.AutoSize = True
         Me.SearchLABEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.SearchLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.SearchLABEL.Location = New System.Drawing.Point(27, 44)
+        Me.SearchLABEL.Location = New System.Drawing.Point(29, 55)
         Me.SearchLABEL.Name = "SearchLABEL"
         Me.SearchLABEL.Size = New System.Drawing.Size(89, 13)
         Me.SearchLABEL.TabIndex = 26
@@ -415,7 +440,7 @@ Partial Class Form1
         Me.PictureBox1.BackColor = System.Drawing.SystemColors.ControlText
         Me.PictureBox1.BackgroundImage = Global.D2Items.My.Resources.Resources.ImageBackground
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox1.Location = New System.Drawing.Point(560, 224)
+        Me.PictureBox1.Location = New System.Drawing.Point(456, 239)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
         Me.PictureBox1.Size = New System.Drawing.Size(95, 128)
@@ -430,12 +455,12 @@ Partial Class Form1
         '
         Me.RichTextBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.RichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.RichTextBox1.ForeColor = System.Drawing.SystemColors.MenuBar
-        Me.RichTextBox1.Location = New System.Drawing.Point(468, 58)
+        Me.RichTextBox1.ForeColor = System.Drawing.Color.White
+        Me.RichTextBox1.Location = New System.Drawing.Point(468, 62)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.ReadOnly = True
         Me.RichTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical
-        Me.RichTextBox1.Size = New System.Drawing.Size(298, 95)
+        Me.RichTextBox1.Size = New System.Drawing.Size(298, 94)
         Me.RichTextBox1.TabIndex = 27
         Me.RichTextBox1.Text = ""
         '
@@ -455,7 +480,6 @@ Partial Class Form1
         'TabPage1
         '
         Me.TabPage1.BackColor = System.Drawing.Color.Black
-        Me.TabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.TabPage1.Controls.Add(Me.AllItemsInDatabaseListBox)
         Me.TabPage1.ForeColor = System.Drawing.SystemColors.ControlText
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
@@ -464,7 +488,6 @@ Partial Class Form1
         Me.TabPage1.Size = New System.Drawing.Size(373, 295)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Item List"
-        Me.TabPage1.UseVisualStyleBackColor = True
         '
         'TabPage2
         '
@@ -477,7 +500,6 @@ Partial Class Form1
         Me.TabPage2.Size = New System.Drawing.Size(373, 295)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Search List"
-        Me.TabPage2.UseVisualStyleBackColor = True
         '
         'SearchLISTBOX
         '
@@ -494,25 +516,27 @@ Partial Class Form1
         '
         Me.ExactMatchCHECKBOX.AutoSize = True
         Me.ExactMatchCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.ExactMatchCHECKBOX.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.ExactMatchCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
-        Me.ExactMatchCHECKBOX.Location = New System.Drawing.Point(169, 96)
+        Me.ExactMatchCHECKBOX.Location = New System.Drawing.Point(315, 68)
         Me.ExactMatchCHECKBOX.Name = "ExactMatchCHECKBOX"
         Me.ExactMatchCHECKBOX.Size = New System.Drawing.Size(86, 17)
-        Me.ExactMatchCHECKBOX.TabIndex = 124
+        Me.ExactMatchCHECKBOX.TabIndex = 5
         Me.ExactMatchCHECKBOX.Text = "Exact Match"
         Me.ExactMatchCHECKBOX.UseVisualStyleBackColor = False
         '
         'Button3
         '
         Me.Button3.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.Button3.FlatAppearance.BorderSize = 2
         Me.Button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button3.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Button3.Location = New System.Drawing.Point(691, 30)
+        Me.Button3.Location = New System.Drawing.Point(691, 29)
         Me.Button3.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 22)
-        Me.Button3.TabIndex = 126
+        Me.Button3.Size = New System.Drawing.Size(75, 25)
+        Me.Button3.TabIndex = 11
         Me.Button3.Text = "Timer Stop"
         Me.Button3.UseVisualStyleBackColor = False
         '
@@ -530,43 +554,43 @@ Partial Class Form1
         '
         Me.HideDuplicatesCHECKBOX.AutoSize = True
         Me.HideDuplicatesCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.HideDuplicatesCHECKBOX.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.HideDuplicatesCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
-        Me.HideDuplicatesCHECKBOX.Location = New System.Drawing.Point(169, 119)
+        Me.HideDuplicatesCHECKBOX.Location = New System.Drawing.Point(33, 154)
         Me.HideDuplicatesCHECKBOX.Name = "HideDuplicatesCHECKBOX"
-        Me.HideDuplicatesCHECKBOX.Size = New System.Drawing.Size(82, 17)
-        Me.HideDuplicatesCHECKBOX.TabIndex = 128
-        Me.HideDuplicatesCHECKBOX.Text = "Hide Dupes"
+        Me.HideDuplicatesCHECKBOX.Size = New System.Drawing.Size(271, 17)
+        Me.HideDuplicatesCHECKBOX.TabIndex = 6
+        Me.HideDuplicatesCHECKBOX.Text = "Do Not Show Duplicated Item Names In Search List"
         Me.HideDuplicatesCHECKBOX.UseVisualStyleBackColor = False
         '
         'StringSearchLABEEL
         '
-        Me.StringSearchLABEEL.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.StringSearchLABEEL.AutoSize = True
         Me.StringSearchLABEEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.StringSearchLABEEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.StringSearchLABEEL.Location = New System.Drawing.Point(173, 44)
+        Me.StringSearchLABEEL.Location = New System.Drawing.Point(31, 103)
         Me.StringSearchLABEEL.Name = "StringSearchLABEEL"
-        Me.StringSearchLABEEL.Size = New System.Drawing.Size(123, 13)
+        Me.StringSearchLABEEL.Size = New System.Drawing.Size(101, 13)
         Me.StringSearchLABEEL.TabIndex = 129
-        Me.StringSearchLABEEL.Text = "For Word And Or Phrase"
+        Me.StringSearchLABEEL.Text = "For Word Or Phrase"
         '
         'RefineSearchCHECKBOX
         '
         Me.RefineSearchCHECKBOX.AutoSize = True
         Me.RefineSearchCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RefineSearchCHECKBOX.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.RefineSearchCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
-        Me.RefineSearchCHECKBOX.Location = New System.Drawing.Point(169, 142)
+        Me.RefineSearchCHECKBOX.Location = New System.Drawing.Point(315, 87)
         Me.RefineSearchCHECKBOX.Name = "RefineSearchCHECKBOX"
         Me.RefineSearchCHECKBOX.Size = New System.Drawing.Size(94, 17)
-        Me.RefineSearchCHECKBOX.TabIndex = 130
+        Me.RefineSearchCHECKBOX.TabIndex = 7
         Me.RefineSearchCHECKBOX.Text = "Refine Search"
         Me.RefineSearchCHECKBOX.UseVisualStyleBackColor = False
         '
         'Label4
         '
         Me.Label4.BackColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(25, 233)
+        Me.Label4.Location = New System.Drawing.Point(26, 233)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(383, 22)
         Me.Label4.TabIndex = 131
@@ -575,7 +599,7 @@ Partial Class Form1
         '
         Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.Label5.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label5.Location = New System.Drawing.Point(25, 256)
+        Me.Label5.Location = New System.Drawing.Point(26, 256)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(4, 301)
         Me.Label5.TabIndex = 132
@@ -584,7 +608,7 @@ Partial Class Form1
         '
         Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.Label6.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label6.Location = New System.Drawing.Point(404, 256)
+        Me.Label6.Location = New System.Drawing.Point(403, 256)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(4, 301)
         Me.Label6.TabIndex = 23
@@ -592,19 +616,19 @@ Partial Class Form1
         'Label7
         '
         Me.Label7.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label7.Location = New System.Drawing.Point(25, 254)
+        Me.Label7.Location = New System.Drawing.Point(26, 255)
         Me.Label7.Name = "Label7"
         Me.Label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.Label7.Size = New System.Drawing.Size(383, 3)
+        Me.Label7.Size = New System.Drawing.Size(381, 3)
         Me.Label7.TabIndex = 133
         '
         'Label8
         '
         Me.Label8.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.Label8.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label8.Location = New System.Drawing.Point(25, 553)
+        Me.Label8.Location = New System.Drawing.Point(26, 553)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(383, 4)
+        Me.Label8.Size = New System.Drawing.Size(381, 4)
         Me.Label8.TabIndex = 134
         '
         'Button1
@@ -616,10 +640,10 @@ Partial Class Form1
         Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Button1.Location = New System.Drawing.Point(102, 229)
+        Me.Button1.Location = New System.Drawing.Point(103, 230)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 135
+        Me.Button1.TabIndex = 10
         Me.Button1.Text = "Search List"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.Button1.UseVisualStyleBackColor = False
@@ -632,13 +656,203 @@ Partial Class Form1
         Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Button2.Location = New System.Drawing.Point(25, 229)
+        Me.Button2.Location = New System.Drawing.Point(26, 230)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 136
+        Me.Button2.TabIndex = 9
         Me.Button2.Text = "Item List"
         Me.Button2.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.Button2.UseVisualStyleBackColor = False
+        '
+        'Label11
+        '
+        Me.Label11.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.Label11.BackColor = System.Drawing.Color.DimGray
+        Me.Label11.Location = New System.Drawing.Point(401, 259)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(2, 293)
+        Me.Label11.TabIndex = 139
+        '
+        'Label12
+        '
+        Me.Label12.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.Label12.BackColor = System.Drawing.Color.Khaki
+        Me.Label12.Location = New System.Drawing.Point(30, 259)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(2, 293)
+        Me.Label12.TabIndex = 140
+        '
+        'Label13
+        '
+        Me.Label13.BackColor = System.Drawing.Color.DarkGoldenrod
+        Me.Label13.Location = New System.Drawing.Point(30, 258)
+        Me.Label13.Name = "Label13"
+        Me.Label13.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.Label13.Size = New System.Drawing.Size(373, 2)
+        Me.Label13.TabIndex = 141
+        '
+        'Label14
+        '
+        Me.Label14.Anchor = System.Windows.Forms.AnchorStyles.Bottom
+        Me.Label14.BackColor = System.Drawing.Color.DarkGoldenrod
+        Me.Label14.Location = New System.Drawing.Point(30, 552)
+        Me.Label14.Name = "Label14"
+        Me.Label14.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.Label14.Size = New System.Drawing.Size(373, 2)
+        Me.Label14.TabIndex = 142
+        '
+        'Label15
+        '
+        Me.Label15.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label15.Location = New System.Drawing.Point(224, 118)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(82, 2)
+        Me.Label15.TabIndex = 143
+        '
+        'Label9
+        '
+        Me.Label9.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label9.Location = New System.Drawing.Point(224, 138)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(82, 2)
+        Me.Label9.TabIndex = 144
+        '
+        'Label10
+        '
+        Me.Label10.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label10.Location = New System.Drawing.Point(304, 118)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(2, 22)
+        Me.Label10.TabIndex = 145
+        '
+        'Label16
+        '
+        Me.Label16.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label16.Location = New System.Drawing.Point(223, 118)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(2, 22)
+        Me.Label16.TabIndex = 146
+        '
+        'Label17
+        '
+        Me.Label17.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label17.Location = New System.Drawing.Point(178, 70)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(128, 2)
+        Me.Label17.TabIndex = 147
+        '
+        'Label18
+        '
+        Me.Label18.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label18.Location = New System.Drawing.Point(178, 90)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(128, 2)
+        Me.Label18.TabIndex = 148
+        '
+        'Label19
+        '
+        Me.Label19.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label19.Location = New System.Drawing.Point(304, 70)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(2, 22)
+        Me.Label19.TabIndex = 149
+        '
+        'Label20
+        '
+        Me.Label20.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label20.Location = New System.Drawing.Point(178, 70)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(2, 22)
+        Me.Label20.TabIndex = 150
+        '
+        'Label21
+        '
+        Me.Label21.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label21.Location = New System.Drawing.Point(33, 70)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(143, 2)
+        Me.Label21.TabIndex = 151
+        '
+        'Label22
+        '
+        Me.Label22.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label22.Location = New System.Drawing.Point(33, 90)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(143, 2)
+        Me.Label22.TabIndex = 152
+        '
+        'Label23
+        '
+        Me.Label23.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label23.Location = New System.Drawing.Point(174, 70)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(2, 22)
+        Me.Label23.TabIndex = 153
+        '
+        'Label24
+        '
+        Me.Label24.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label24.Location = New System.Drawing.Point(219, 118)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(2, 22)
+        Me.Label24.TabIndex = 154
+        '
+        'Label25
+        '
+        Me.Label25.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label25.Location = New System.Drawing.Point(33, 118)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(2, 22)
+        Me.Label25.TabIndex = 155
+        '
+        'Label26
+        '
+        Me.Label26.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label26.Location = New System.Drawing.Point(32, 70)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(2, 22)
+        Me.Label26.TabIndex = 156
+        '
+        'Label27
+        '
+        Me.Label27.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label27.Location = New System.Drawing.Point(34, 138)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(186, 2)
+        Me.Label27.TabIndex = 157
+        '
+        'Label28
+        '
+        Me.Label28.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label28.Location = New System.Drawing.Point(33, 118)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(186, 2)
+        Me.Label28.TabIndex = 158
+        '
+        'MuleInfoRICHTEXTBOX
+        '
+        Me.MuleInfoRICHTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.MuleInfoRICHTEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.MuleInfoRICHTEXTBOX.ForeColor = System.Drawing.Color.BurlyWood
+        Me.MuleInfoRICHTEXTBOX.Location = New System.Drawing.Point(565, 268)
+        Me.MuleInfoRICHTEXTBOX.Name = "MuleInfoRICHTEXTBOX"
+        Me.MuleInfoRICHTEXTBOX.Size = New System.Drawing.Size(197, 71)
+        Me.MuleInfoRICHTEXTBOX.TabIndex = 159
+        Me.MuleInfoRICHTEXTBOX.Text = ""
+        '
+        'Label29
+        '
+        Me.Label29.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label29.AutoSize = True
+        Me.Label29.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label29.ForeColor = System.Drawing.Color.BurlyWood
+        Me.Label29.Location = New System.Drawing.Point(28, 24)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(239, 24)
+        Me.Label29.TabIndex = 160
+        Me.Label29.Text = "Item And Mule Searches"
         '
         'Form1
         '
@@ -648,13 +862,35 @@ Partial Class Form1
         Me.BackgroundImage = Global.D2Items.My.Resources.Resources.D2Data
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(794, 591)
+        Me.Controls.Add(Me.Label29)
+        Me.Controls.Add(Me.MuleInfoRICHTEXTBOX)
+        Me.Controls.Add(Me.Label28)
+        Me.Controls.Add(Me.Label27)
+        Me.Controls.Add(Me.Label26)
+        Me.Controls.Add(Me.Label25)
+        Me.Controls.Add(Me.Label24)
+        Me.Controls.Add(Me.Label23)
+        Me.Controls.Add(Me.Label22)
+        Me.Controls.Add(Me.Label21)
+        Me.Controls.Add(Me.Label20)
+        Me.Controls.Add(Me.Label19)
+        Me.Controls.Add(Me.Label18)
+        Me.Controls.Add(Me.Label17)
+        Me.Controls.Add(Me.Label16)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Label14)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.RefineSearchCHECKBOX)
         Me.Controls.Add(Me.StringSearchLABEEL)
         Me.Controls.Add(Me.HideDuplicatesCHECKBOX)
@@ -679,6 +915,7 @@ Partial Class Form1
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.RichTextBox2)
         Me.Controls.Add(Me.ListboxTABCONTROL)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(810, 800)
@@ -757,6 +994,28 @@ Partial Class Form1
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Label16 As System.Windows.Forms.Label
+    Friend WithEvents Label17 As System.Windows.Forms.Label
+    Friend WithEvents Label18 As System.Windows.Forms.Label
+    Friend WithEvents Label19 As System.Windows.Forms.Label
+    Friend WithEvents Label20 As System.Windows.Forms.Label
+    Friend WithEvents Label21 As System.Windows.Forms.Label
+    Friend WithEvents Label22 As System.Windows.Forms.Label
+    Friend WithEvents Label23 As System.Windows.Forms.Label
+    Friend WithEvents Label24 As System.Windows.Forms.Label
+    Friend WithEvents Label25 As System.Windows.Forms.Label
+    Friend WithEvents Label26 As System.Windows.Forms.Label
+    Friend WithEvents Label27 As System.Windows.Forms.Label
+    Friend WithEvents Label28 As System.Windows.Forms.Label
+    Friend WithEvents MuleInfoRICHTEXTBOX As System.Windows.Forms.RichTextBox
+    Friend WithEvents Label29 As System.Windows.Forms.Label
 
 
 End Class

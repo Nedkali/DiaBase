@@ -8,12 +8,12 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("D2Items")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyTitle("DiaBase")> 
+<Assembly: AssemblyDescription("Diablo2 Item and Mule Database For EtalBot")> 
+<Assembly: AssemblyCompany("AussieHacks & Neds Etalian Coding Group")> 
 <Assembly: AssemblyProduct("D2Items")> 
 <Assembly: AssemblyCopyright("Copyright ©  2013")> 
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyTrademark("Free To Distribute")> 
 
 <Assembly: ComVisible(False)>
 

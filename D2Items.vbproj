@@ -77,6 +77,7 @@
     <Compile Include="AddItemForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ApplicationEvents.vb" />
     <Compile Include="AutoLogger.vb" />
     <Compile Include="EditItemForm.Designer.vb">
       <DependentUpon>EditItemForm.vb</DependentUpon>
