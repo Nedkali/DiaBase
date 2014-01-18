@@ -167,8 +167,10 @@ Public Class Form1
             RichTextBox2.Text = ""  'clears form has been some overlap of listings occur - wierd behaviour
 
 
-            MuleInfoRICHTEXTBOX.Clear() 'clearc mule info textbox
-
+            ' MuleInfoRICHTEXTBOX.Clear() 'clearc mule info textbox
+            MuleAccountTextbox.Clear()
+            MuleNameTextbox.Clear()
+            MulePassTextbox.Clear()
 
 
             Dim DisplayType As String = Objects(RowNumber).ItemQuality
@@ -243,15 +245,20 @@ Public Class Form1
 
 
 
-            MuleInfoRICHTEXTBOX.AppendText("Mule Account: " & Objects(RowNumber).MuleAccount & vbCrLf) '<----------------[ROBS EDIT]
-            MuleInfoRICHTEXTBOX.AppendText("Mule Name: " & Objects(RowNumber).MuleName & vbCrLf)
-            MuleInfoRICHTEXTBOX.AppendText("Mule Pass: " & Objects(RowNumber).MulePass & vbCrLf)
+            ' MuleInfoRICHTEXTBOX.AppendText("Mule Account: " & Objects(RowNumber).MuleAccount & vbCrLf) '<----------------[ROBS EDIT]
+            ' MuleInfoRICHTEXTBOX.AppendText("Mule Name: " & Objects(RowNumber).MuleName & vbCrLf)
+            '  MuleInfoRICHTEXTBOX.AppendText("Mule Pass: " & Objects(RowNumber).MulePass & vbCrLf)
+
+            MuleAccountTextbox.Text = Objects(RowNumber).MuleAccount
+            MuleNameTextbox.Text = Objects(RowNumber).MuleName
+            MulePassTextbox.Text = Objects(RowNumber).MulePass
+
 
         End If
         RichTextBox2.SelectAll()
         RichTextBox2.SelectionAlignment = HorizontalAlignment.Center
-        MuleInfoRICHTEXTBOX.SelectAll()
-        MuleInfoRICHTEXTBOX.SelectionAlignment = HorizontalAlignment.Center
+        ' MuleInfoRICHTEXTBOX.SelectAll()
+        ' MuleInfoRICHTEXTBOX.SelectionAlignment = HorizontalAlignment.Center
 
         PictureBox1.Load("Skins\" + ItemImageList(Objects(RowNumber).ItemImage) + ".jpg")
 

@@ -103,6 +103,12 @@ Partial Class Form1
         Me.Label28 = New System.Windows.Forms.Label()
         Me.MuleInfoRICHTEXTBOX = New System.Windows.Forms.RichTextBox()
         Me.Label29 = New System.Windows.Forms.Label()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.MuleAccountTextbox = New System.Windows.Forms.TextBox()
+        Me.MuleNameTextbox = New System.Windows.Forms.TextBox()
+        Me.MulePassTextbox = New System.Windows.Forms.TextBox()
+        Me.Label32 = New System.Windows.Forms.Label()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -405,10 +411,10 @@ Partial Class Form1
         Me.RichTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.RichTextBox2.CausesValidation = False
         Me.RichTextBox2.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.RichTextBox2.Location = New System.Drawing.Point(456, 380)
+        Me.RichTextBox2.Location = New System.Drawing.Point(585, 236)
         Me.RichTextBox2.Name = "RichTextBox2"
         Me.RichTextBox2.ReadOnly = True
-        Me.RichTextBox2.Size = New System.Drawing.Size(307, 182)
+        Me.RichTextBox2.Size = New System.Drawing.Size(181, 326)
         Me.RichTextBox2.TabIndex = 15
         Me.RichTextBox2.Text = ""
         '
@@ -440,10 +446,10 @@ Partial Class Form1
         Me.PictureBox1.BackColor = System.Drawing.SystemColors.ControlText
         Me.PictureBox1.BackgroundImage = Global.D2Items.My.Resources.Resources.ImageBackground
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.PictureBox1.Location = New System.Drawing.Point(456, 239)
+        Me.PictureBox1.Location = New System.Drawing.Point(456, 236)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Padding = New System.Windows.Forms.Padding(4, 4, 0, 0)
-        Me.PictureBox1.Size = New System.Drawing.Size(95, 128)
+        Me.PictureBox1.Size = New System.Drawing.Size(95, 120)
         Me.PictureBox1.TabIndex = 16
         Me.PictureBox1.TabStop = False
         '
@@ -834,9 +840,9 @@ Partial Class Form1
         Me.MuleInfoRICHTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.MuleInfoRICHTEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.MuleInfoRICHTEXTBOX.ForeColor = System.Drawing.Color.BurlyWood
-        Me.MuleInfoRICHTEXTBOX.Location = New System.Drawing.Point(565, 268)
+        Me.MuleInfoRICHTEXTBOX.Location = New System.Drawing.Point(753, 155)
         Me.MuleInfoRICHTEXTBOX.Name = "MuleInfoRICHTEXTBOX"
-        Me.MuleInfoRICHTEXTBOX.Size = New System.Drawing.Size(197, 71)
+        Me.MuleInfoRICHTEXTBOX.Size = New System.Drawing.Size(29, 31)
         Me.MuleInfoRICHTEXTBOX.TabIndex = 159
         Me.MuleInfoRICHTEXTBOX.Text = ""
         '
@@ -854,6 +860,66 @@ Partial Class Form1
         Me.Label29.TabIndex = 160
         Me.Label29.Text = "Item And Mule Searches"
         '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.ForeColor = System.Drawing.Color.BurlyWood
+        Me.Label30.Location = New System.Drawing.Point(453, 406)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(47, 13)
+        Me.Label30.TabIndex = 161
+        Me.Label30.Text = "Account"
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.ForeColor = System.Drawing.Color.BurlyWood
+        Me.Label31.Location = New System.Drawing.Point(453, 444)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(60, 13)
+        Me.Label31.TabIndex = 162
+        Me.Label31.Text = "Char Name"
+        '
+        'MuleAccountTextbox
+        '
+        Me.MuleAccountTextbox.BackColor = System.Drawing.SystemColors.WindowText
+        Me.MuleAccountTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.MuleAccountTextbox.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.MuleAccountTextbox.Location = New System.Drawing.Point(453, 422)
+        Me.MuleAccountTextbox.Name = "MuleAccountTextbox"
+        Me.MuleAccountTextbox.Size = New System.Drawing.Size(100, 13)
+        Me.MuleAccountTextbox.TabIndex = 163
+        '
+        'MuleNameTextbox
+        '
+        Me.MuleNameTextbox.BackColor = System.Drawing.SystemColors.WindowText
+        Me.MuleNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.MuleNameTextbox.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.MuleNameTextbox.Location = New System.Drawing.Point(453, 460)
+        Me.MuleNameTextbox.Name = "MuleNameTextbox"
+        Me.MuleNameTextbox.Size = New System.Drawing.Size(100, 13)
+        Me.MuleNameTextbox.TabIndex = 164
+        '
+        'MulePassTextbox
+        '
+        Me.MulePassTextbox.BackColor = System.Drawing.SystemColors.WindowText
+        Me.MulePassTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.MulePassTextbox.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.MulePassTextbox.Location = New System.Drawing.Point(453, 502)
+        Me.MulePassTextbox.Name = "MulePassTextbox"
+        Me.MulePassTextbox.Size = New System.Drawing.Size(100, 13)
+        Me.MulePassTextbox.TabIndex = 166
+        '
+        'Label32
+        '
+        Me.Label32.AutoSize = True
+        Me.Label32.ForeColor = System.Drawing.Color.BurlyWood
+        Me.Label32.Location = New System.Drawing.Point(453, 486)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(58, 13)
+        Me.Label32.TabIndex = 165
+        Me.Label32.Text = "AccntPass"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -862,6 +928,12 @@ Partial Class Form1
         Me.BackgroundImage = Global.D2Items.My.Resources.Resources.D2Data
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(794, 591)
+        Me.Controls.Add(Me.MulePassTextbox)
+        Me.Controls.Add(Me.Label32)
+        Me.Controls.Add(Me.MuleNameTextbox)
+        Me.Controls.Add(Me.MuleAccountTextbox)
+        Me.Controls.Add(Me.Label31)
+        Me.Controls.Add(Me.Label30)
         Me.Controls.Add(Me.Label29)
         Me.Controls.Add(Me.MuleInfoRICHTEXTBOX)
         Me.Controls.Add(Me.Label28)
@@ -1016,6 +1088,12 @@ Partial Class Form1
     Friend WithEvents Label28 As System.Windows.Forms.Label
     Friend WithEvents MuleInfoRICHTEXTBOX As System.Windows.Forms.RichTextBox
     Friend WithEvents Label29 As System.Windows.Forms.Label
+    Friend WithEvents Label30 As System.Windows.Forms.Label
+    Friend WithEvents Label31 As System.Windows.Forms.Label
+    Friend WithEvents MuleAccountTextbox As System.Windows.Forms.TextBox
+    Friend WithEvents MuleNameTextbox As System.Windows.Forms.TextBox
+    Friend WithEvents MulePassTextbox As System.Windows.Forms.TextBox
+    Friend WithEvents Label32 As System.Windows.Forms.Label
 
 
 End Class
