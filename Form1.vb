@@ -284,14 +284,21 @@ Public Class Form1
 
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
         RichTextBox1.Text = "Checking for new Logs" & vbCrLf
+        ImportTimer.Stop()
         ImportLogFiles()
         RichTextBox1.AppendText("AutoLogging is Idle")
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start()
     End Sub
 
     Private Sub CloseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseToolStripMenuItem.Click
         If Objects.Count < 1 Then Return ' nothing to save
-        Dim result = MessageBox.Show("Are you sure?", "Save File", MessageBoxButtons.YesNo)
-        If result = Windows.Forms.DialogResult.No Then Return
+        YesNoD2Style.Text = "Save Database"
+        YesNoD2Style.YesNoHeaderLABEL.Text = ""
+        YesNoD2Style.YesNoHeaderLABEL.TextAlign = ContentAlignment.MiddleCenter
+        YesNoD2Style.YesNoMessageLABEL.Text = "This will Overwrite the Database" & vbCrLf & vbCrLf & vbCrLf & "Are you sure you?"
+        YesNoD2Style.ShowDialog()
+        If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.No Then Return
+
         ImportTimer.Stop()
         SaveItems()
         If Button3.Text = "Timer Stop" Then ImportTimer.Start()
@@ -597,7 +604,7 @@ Public Class Form1
 
         'cancel backup rtrstoration
         If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.No Then
-            MessageBox.Show("cancel it")
+            ' MessageBox.Show("cancel it")
 
 
 
