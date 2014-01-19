@@ -26,6 +26,7 @@
     Public RefineSearchReferenceList As List(Of String) = New List(Of String)
     Public StringMatches As List(Of String) = New List(Of String)
     Public IntegerMatches As List(Of String) = New List(Of String)
+    Dim GetAllIntegers As List(Of String) = New List(Of String)
 
 
     Public ItemNamePulldownList As List(Of String) = New List(Of String)
@@ -1877,8 +1878,9 @@
 
                
 
-
+                '---------------------
                 'string match routine
+                '---------------------
                 If Form1.SearchWordCOMBOBOX.Text <> "" Then
 
                     If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
@@ -1976,69 +1978,81 @@
                 End If '    searchwordcombobox.text <>"" loop point (if then)
 
 
-
-
-
+                '---------------------
+                'Integer match routine
+                '---------------------
 
                 If Form1.SearchValueNUMERICUPDWN.Value > 0 Then
 
-                    'integer search not exact match
-                    If Form1.ExactMatchCHECKBOX.Checked = False And (ItemObjectItem.Stat1).IndexOf(Str(Form1.SearchValueNUMERICUPDWN.Value)) > -1 Then MessageBox.Show("found the value" & ItemObjectItem.Stat1)
-
-                End If
-
-
-
-
-
-
-
-            End If
-
-
-
-
-
-
-
-
-            'If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
+                        Dim statcount As Integer = 1
+                        For statcount = 1 To 15
+                            If statcount = 1 Then Dim GetAllIntegers() = System.Text.RegularExpressions.Regex.Split(ItemObjectItem.Stat1, "\D+")
+                            If statcount = 2 Then Dim GetAllIntegers() = System.Text.RegularExpressions.Regex.Split(ItemObjectItem.Stat2, "\D+")
+                            If statcount = 3 Then Dim GetAllIntegers() = System.Text.RegularExpressions.Regex.Split(ItemObjectItem.Stat3, "\D+")
+                            If statcount = 4 Then Dim GetAllIntegers() = System.Text.RegularExpressions.Regex.Split(ItemObjectItem.Stat4, "\D+")
+                            If statcount = 5 Then Dim GetAllIntegers() = System.Text.RegularExpressions.Regex.Split(ItemObjectItem.Stat5, "\D+")
+                            If statcount = 6 Then Dim GetAllIntegers() = System.Text.RegularExpressions.Regex.Split(ItemObjectItem.Stat6, "\D+")
+                            If statcount = 7 Then Dim GetAllIntegers() = System.Text.RegularExpressions.Regex.Split(ItemObjectItem.Stat7, "\D+")
+                            If statcount = 8 Then Dim GetAllIntegers() = System.Text.RegularExpressions.Regex.Split(ItemObjectItem.Stat8, "\D+")
+                            If statcount = 9 Then Dim GetAllIntegers() = System.Text.RegularExpressions.Regex.Split(ItemObjectItem.Stat9, "\D+")
+                            If statcount = 10 Then Dim GetAllIntegers() = System.Text.RegularExpressions.Regex.Split(ItemObjectItem.Stat10, "\D+")
+                            If statcount = 11 Then Dim GetAllIntegers() = System.Text.RegularExpressions.Regex.Split(ItemObjectItem.Stat11, "\D+")
+                            If statcount = 12 Then Dim GetAllIntegers() = System.Text.RegularExpressions.Regex.Split(ItemObjectItem.Stat12, "\D+")
+                            If statcount = 13 Then Dim GetAllIntegers() = System.Text.RegularExpressions.Regex.Split(ItemObjectItem.Stat13, "\D+")
+                            If statcount = 14 Then Dim GetAllIntegers() = System.Text.RegularExpressions.Regex.Split(ItemObjectItem.Stat14, "\D+")
+                            If statcount = 15 Then Dim GetAllIntegers() = System.Text.RegularExpressions.Regex.Split(ItemObjectItem.Stat15, "\D+")
+                       
 
 
+                        'Equal to integer
+                        If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
+                            Dim EachInteger As Integer = 0
 
-
-
-
-
-
-
-
-
-            'string match exact Equal To
-            If Form1.ExactMatchCHECKBOX.Checked = True Then
-                'If ItemObjectItem.Stat1 = Form1.SearchWordCOMBOBOX.Text And StringMatches.Contains(count) = False Then StringMatches.Add(count)
-                '
-            End If
+                            For Each item In GetAllIntegers
+                                If Form1.SearchValueNUMERICUPDWN.Value = GetAllIntegers(EachInteger) = True And IntegerMatches.Contains(count) = False Then IntegerMatches.Add(count)
+                                EachInteger = EachInteger + 1
+                            Next
+                        End If
 
 
 
+                        'Not equal to Integer
+                        If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
+                            Dim EachInteger As Integer = 0
+
+                            For Each item In GetAllIntegers
+                                If Form1.SearchValueNUMERICUPDWN.Value <> GetAllIntegers(EachInteger) = True And IntegerMatches.Contains(count) = False Then IntegerMatches.Add(count)
+                                EachInteger = EachInteger + 1
+                            Next
+                        End If
 
 
 
+                        'Greater than integer
+                        If Form1.SearchOperatorCOMBOBOX.Text = "Greater Than" Then
+                            Dim EachInteger As Integer = 0
+
+                            For Each item In GetAllIntegers
+                                If Form1.SearchValueNUMERICUPDWN.Value > GetAllIntegers(EachInteger) = True And IntegerMatches.Contains(count) = False Then IntegerMatches.Add(count)
+                                EachInteger = EachInteger + 1
+                            Next
+                        End If
 
 
 
+                        'Less than integer
+                        If Form1.SearchOperatorCOMBOBOX.Text = "Less Than" Then
+                            Dim EachInteger As Integer = 0
 
-
-
-
-
-
-
-
-
-            '  End If '        search fields =  "UNIQUE" ATTRIBUTES loop point (if then)
-
+                            For Each item In GetAllIntegers
+                                If Form1.SearchValueNUMERICUPDWN.Value < GetAllIntegers(EachInteger) = True And IntegerMatches.Contains(count) = False Then IntegerMatches.Add(count)
+                                EachInteger = EachInteger + 1
+                            Next
+                        End If
+                        statcount = statcount + 1
+                    Next
+                End If  'numeric not equal to 0
+            End If      'unique attribs check if then
 
 
 
