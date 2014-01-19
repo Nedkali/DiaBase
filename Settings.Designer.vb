@@ -202,7 +202,7 @@ Partial Class Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.D2Items.My.Resources.Resources.Setting
+        Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.Setting
         Me.ClientSize = New System.Drawing.Size(511, 295)
         Me.Controls.Add(Me.AutoBackupCHECKBOX)
         Me.Controls.Add(Me.PictureBox2)

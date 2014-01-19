@@ -450,7 +450,7 @@ Partial Class Form1
         Me.PictureBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PictureBox1.BackColor = System.Drawing.SystemColors.ControlText
-        Me.PictureBox1.BackgroundImage = Global.D2Items.My.Resources.Resources.ImageBackground
+        Me.PictureBox1.BackgroundImage = Global.DiaBase.My.Resources.Resources.ImageBackground
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PictureBox1.Location = New System.Drawing.Point(456, 236)
         Me.PictureBox1.Name = "PictureBox1"
@@ -554,7 +554,7 @@ Partial Class Form1
         '
         'PictureBox2
         '
-        Me.PictureBox2.BackgroundImage = Global.D2Items.My.Resources.Resources.Gem
+        Me.PictureBox2.BackgroundImage = Global.DiaBase.My.Resources.Resources.Gem
         Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.PictureBox2.Location = New System.Drawing.Point(420, 186)
         Me.PictureBox2.Name = "PictureBox2"
@@ -920,7 +920,7 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.BackgroundImage = Global.D2Items.My.Resources.Resources.D2Data
+        Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.D2Data
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(794, 591)
         Me.Controls.Add(Me.MulePassTextbox)

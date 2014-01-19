@@ -53,7 +53,7 @@ Partial Class ItemImageSelector
         Me.PictureBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PictureBox1.BackColor = System.Drawing.SystemColors.ControlText
-        Me.PictureBox1.BackgroundImage = Global.D2Items.My.Resources.Resources.ImageBackground
+        Me.PictureBox1.BackgroundImage = Global.DiaBase.My.Resources.Resources.ImageBackground
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.PictureBox1.Location = New System.Drawing.Point(52, 39)
         Me.PictureBox1.Name = "PictureBox1"
@@ -76,7 +76,7 @@ Partial Class ItemImageSelector
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.D2Items.My.Resources.Resources.d2graphicselect
+        Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.d2graphicselect
         Me.ClientSize = New System.Drawing.Size(350, 220)
         Me.Controls.Add(Me.NumericUpDown1)
         Me.Controls.Add(Me.PictureBox1)

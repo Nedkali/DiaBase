@@ -101,7 +101,7 @@ Public Class Form1
         End If
 
         SearchLISTBOX.Items.Clear() '                                                   clean out old search matches
-        PictureBox1.BackgroundImage = D2Items.My.Resources.Resources.ImageBackground '  clean out old image                 [NOT WORKING]
+        PictureBox1.BackgroundImage = DiaBase.My.Resources.Resources.ImageBackground '  clean out old image                 [NOT WORKING]
         RichTextBox2.Text = "" '                                                        clean out old item stats
         RichTextBox1.Text = "" '                                                        clean out logging window
 

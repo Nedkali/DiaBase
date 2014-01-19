@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{57F716E2-97AA-4F58-B14D-A470E44DD3E6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>D2Items.My.MyApplication</StartupObject>
-    <RootNamespace>D2Items</RootNamespace>
+    <StartupObject>DiaBase.My.MyApplication</StartupObject>
+    <RootNamespace>DiaBase</RootNamespace>
     <AssemblyName>DiaBase</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
