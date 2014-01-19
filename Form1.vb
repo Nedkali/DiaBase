@@ -1,4 +1,5 @@
-﻿
+﻿Imports System.IO
+
 Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load 'check if required folders exist on startup and create if necessary
@@ -120,7 +121,7 @@ Public Class Form1
             AllItemsInDatabaseListBox.Items.Add(Objects(x).ItemName)
         Next
         ListboxTABCONTROL.SelectTab(0) ' ensure listboxTABCONTROL itset to all items list for repopuleate
-        TextBox2.Text = Objects.Count & " Items"
+        TextBox2.Text = Objects.Count & " - Total Items"
 
         If AllItemsInDatabaseListBox.Items.Count > 0 Then AllItemsInDatabaseListBox.SelectedIndex = 0
     End Sub
@@ -366,7 +367,7 @@ Public Class Form1
 
         Dim BackupPath = Application.StartupPath & "\Database\Backup\"
         Dim temp As String = ""
-        Dim myarray = Split(DataBaseFile, ".txt", 0)
+        Dim myarray = Split(DatabaseFile, ".txt", 0)
         Dim tempname = myarray(0) & ".bak"
         myarray = Split(tempname, "\")
         tempname = myarray(myarray.Length - 1)
@@ -374,7 +375,10 @@ Public Class Form1
         If My.Computer.FileSystem.FileExists(BackupPath & tempname) = True Then
             My.Computer.FileSystem.DeleteFile(BackupPath & tempname)
         End If
-        My.Computer.FileSystem.CopyFile(DataBasePath & DataBaseFile, BackupPath & tempname)
+        My.Computer.FileSystem.CopyFile(DataBasePath & DatabaseFile, BackupPath & tempname)
+
+        OpenDatabaseRoutine(DatabaseFile) ' refresh list ( to show backup worked )
+
     End Sub
 
 
@@ -531,7 +535,7 @@ Public Class Form1
         ListboxTABCONTROL.SelectTab(0)
         Button2.BackColor = Color.DimGray
         Button1.BackColor = Color.Black
-        If Button2.BackColor = Color.DimGray Then TextBox2.Text = SearchLISTBOX.Items.Count & " - Total Matches" Else TextBox2.Text = SearchLISTBOX.Items.Count & " - Total Items"
+        TextBox2.Text = AllItemsInDatabaseListBox.Items.Count & " - Total Items"
 
 
     End Sub
@@ -541,13 +545,68 @@ Public Class Form1
         ListboxTABCONTROL.SelectTab(1)
         Button1.BackColor = Color.DimGray
         Button2.BackColor = Color.Black
+        TextBox2.Text = SearchLISTBOX.Items.Count & " - Total Matches"
 
-        If Button2.BackColor = Color.DimGray Then TextBox2.Text = SearchLISTBOX.Items.Count & " - Total Items" Else TextBox2.Text = SearchLISTBOX.Items.Count & " - Total Matches"
     End Sub
 
     
     'items and matches nuber textbox
     Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
+
+    End Sub
+
+    Private Sub RestoreBackupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RestoreBackupToolStripMenuItem.Click
+        'SET D2 DIALOG TITLE AND MESSAGES
+        YesNoD2Style.Text = "Restore Database From Backup"
+        YesNoD2Style.YesNoHeaderLABEL.Text = "PLEASE READ BEFORE RESTORING BACKUP"
+        YesNoD2Style.YesNoHeaderLABEL.TextAlign = ContentAlignment.MiddleCenter
+        YesNoD2Style.YesNoMessageLABEL.Text = "You are about to permanently delete the current database and replace it with its backup file (if one exists)." & vbCrLf & vbCrLf & "Only continue if you are sure you know what you are doing as severe data loss may occur if you dont backup regularly." & vbCrLf & "Most record issues can be fixed manually by editing the faulty item record with the Item / Edit Item function." & vbCrLf & vbCrLf & "Are you sure you wish to restore the backup file?"
+        YesNoD2Style.ShowDialog()
+
+        'Restore form backup
+        If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.Yes Then
+
+            'ty for build backup filename routine Ned - im um borrowing it haha heehe!     
+            ' MessageBox.Show("do it") '<----------------------------------------------------------------------------------ROBS DEBUG
+            Dim BackupPath = Application.StartupPath & "\Database\Backup\"
+            Dim temp As String = ""
+            Dim myarray = Split(DatabaseFile, ".txt", 0)
+            Dim tempname = myarray(0) & ".bak"
+            myarray = Split(tempname, "\")
+            tempname = myarray(myarray.Length - 1)
+
+            If My.Computer.FileSystem.FileExists(BackupPath & tempname) = True Then
+
+                'found a backup file and copying it over to replace current database file, then reload it
+                My.Computer.FileSystem.DeleteFile(DatabaseFile) 'delete old dbase file
+                My.Computer.FileSystem.CopyFile(BackupPath & tempname, DatabaseFile, True) ' copy over new dbase file and rename it
+
+                OpenDatabaseRoutine(DatabaseFile) 'refresh new database file to the lists
+
+
+
+            Else
+                'There is not backup file for this database so cant restore it
+
+            End If
+
+        End If
+
+
+
+
+        'cancel backup rtrstoration
+        If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.No Then
+            MessageBox.Show("cancel it")
+
+
+
+
+        End If
+
+
+
+
 
     End Sub
 End Class

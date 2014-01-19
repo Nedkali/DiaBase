@@ -2113,6 +2113,10 @@ ItemMatched:  ' Jump point to avoid redundant routine once a match has been foun
             Form1.ListboxTABCONTROL.SelectTab(1)
             Form1.Button1.BackColor = Color.DimGray
             Form1.Button2.BackColor = Color.Black
+            Form1.TextBox2.Text = Form1.SearchLISTBOX.Items.Count & " - Total Matches"
+        Else
+            'if there are no matches
+            Form1.TextBox2.Text = Form1.AllItemsInDatabaseListBox.Items.Count & " - Total Items"
 
         End If
 

@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <StartupObject>D2Items.My.MyApplication</StartupObject>
     <RootNamespace>D2Items</RootNamespace>
-    <AssemblyName>D2Items</AssemblyName>
+    <AssemblyName>DiaBase</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -20,7 +20,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>D2Items.xml</DocumentationFile>
+    <DocumentationFile>DiaBase.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -30,7 +30,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>D2Items.xml</DocumentationFile>
+    <DocumentationFile>DiaBase.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -44,6 +44,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>sword_and_Shield.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -133,6 +136,12 @@
     <Compile Include="UserMessaging.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="YesNoDialog.Designer.vb">
+      <DependentUpon>YesNoDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="YesNoDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AddItemForm.resx">
@@ -161,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserMessaging.resx">
       <DependentUpon>UserMessaging.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YesNoDialog.resx">
+      <DependentUpon>YesNoDialog.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +213,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BigDLaugh.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sword_and_Shield.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
