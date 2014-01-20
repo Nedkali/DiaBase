@@ -26,27 +26,37 @@ Partial Class ItemImageSelector
         Me.AddSelectImageCancelBUTTON = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
+        Me.Label128 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'AddSelectImageBUTTON
         '
+        Me.AddSelectImageBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.AddSelectImageBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.AddSelectImageBUTTON.ForeColor = System.Drawing.Color.BurlyWood
         Me.AddSelectImageBUTTON.Location = New System.Drawing.Point(211, 100)
         Me.AddSelectImageBUTTON.Name = "AddSelectImageBUTTON"
         Me.AddSelectImageBUTTON.Size = New System.Drawing.Size(75, 24)
         Me.AddSelectImageBUTTON.TabIndex = 11
         Me.AddSelectImageBUTTON.Text = "Select"
-        Me.AddSelectImageBUTTON.UseVisualStyleBackColor = True
+        Me.AddSelectImageBUTTON.UseVisualStyleBackColor = False
         '
         'AddSelectImageCancelBUTTON
         '
+        Me.AddSelectImageCancelBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.AddSelectImageCancelBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.AddSelectImageCancelBUTTON.ForeColor = System.Drawing.Color.BurlyWood
         Me.AddSelectImageCancelBUTTON.Location = New System.Drawing.Point(211, 147)
         Me.AddSelectImageCancelBUTTON.Name = "AddSelectImageCancelBUTTON"
         Me.AddSelectImageCancelBUTTON.Size = New System.Drawing.Size(75, 24)
         Me.AddSelectImageCancelBUTTON.TabIndex = 10
         Me.AddSelectImageCancelBUTTON.Text = "Cancel"
-        Me.AddSelectImageCancelBUTTON.UseVisualStyleBackColor = True
+        Me.AddSelectImageCancelBUTTON.UseVisualStyleBackColor = False
         '
         'PictureBox1
         '
@@ -64,6 +74,8 @@ Partial Class ItemImageSelector
         '
         'NumericUpDown1
         '
+        Me.NumericUpDown1.BackColor = System.Drawing.Color.Black
+        Me.NumericUpDown1.ForeColor = System.Drawing.Color.White
         Me.NumericUpDown1.Location = New System.Drawing.Point(211, 39)
         Me.NumericUpDown1.Maximum = New Decimal(New Integer() {658, 0, 0, 0})
         Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
@@ -72,12 +84,49 @@ Partial Class ItemImageSelector
         Me.NumericUpDown1.TabIndex = 18
         Me.NumericUpDown1.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
+        'Label128
+        '
+        Me.Label128.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label128.Location = New System.Drawing.Point(211, 38)
+        Me.Label128.Name = "Label128"
+        Me.Label128.Size = New System.Drawing.Size(75, 2)
+        Me.Label128.TabIndex = 870
+        '
+        'Label1
+        '
+        Me.Label1.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label1.Location = New System.Drawing.Point(211, 58)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(75, 2)
+        Me.Label1.TabIndex = 871
+        '
+        'Label8
+        '
+        Me.Label8.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label8.Location = New System.Drawing.Point(210, 38)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(2, 22)
+        Me.Label8.TabIndex = 873
+        '
+        'Label2
+        '
+        Me.Label2.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label2.Location = New System.Drawing.Point(284, 38)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(2, 22)
+        Me.Label2.TabIndex = 874
+        Me.Label2.Text = "0"
+        '
         'ItemImageSelector
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.d2graphicselect
         Me.ClientSize = New System.Drawing.Size(350, 220)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Label128)
         Me.Controls.Add(Me.NumericUpDown1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.AddSelectImageBUTTON)
@@ -95,4 +144,8 @@ Partial Class ItemImageSelector
     Friend WithEvents AddSelectImageCancelBUTTON As System.Windows.Forms.Button
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents NumericUpDown1 As System.Windows.Forms.NumericUpDown
+    Friend WithEvents Label128 As System.Windows.Forms.Label
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
 End Class

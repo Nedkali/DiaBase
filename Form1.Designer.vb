@@ -109,6 +109,10 @@ Partial Class Form1
         Me.MuleNameTextbox = New System.Windows.Forms.TextBox()
         Me.MulePassTextbox = New System.Windows.Forms.TextBox()
         Me.Label32 = New System.Windows.Forms.Label()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.Label36 = New System.Windows.Forms.Label()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -231,9 +235,9 @@ Partial Class Form1
         Me.SearchValueLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.SearchValueLABEL.Location = New System.Drawing.Point(221, 103)
         Me.SearchValueLABEL.Name = "SearchValueLABEL"
-        Me.SearchValueLABEL.Size = New System.Drawing.Size(70, 13)
+        Me.SearchValueLABEL.Size = New System.Drawing.Size(48, 13)
         Me.SearchValueLABEL.TabIndex = 119
-        Me.SearchValueLABEL.Text = "And Or Value"
+        Me.SearchValueLABEL.Text = "Or Value"
         '
         'SearchWordCOMBOBOX
         '
@@ -429,7 +433,7 @@ Partial Class Form1
         Me.TextBox2.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TextBox2.ForeColor = System.Drawing.Color.BurlyWood
-        Me.TextBox2.Location = New System.Drawing.Point(177, 185)
+        Me.TextBox2.Location = New System.Drawing.Point(177, 186)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(99, 20)
         Me.TextBox2.TabIndex = 25
@@ -915,6 +919,38 @@ Partial Class Form1
         Me.Label32.TabIndex = 165
         Me.Label32.Text = "AccntPass"
         '
+        'Label33
+        '
+        Me.Label33.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label33.Location = New System.Drawing.Point(178, 205)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(98, 1)
+        Me.Label33.TabIndex = 167
+        '
+        'Label34
+        '
+        Me.Label34.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label34.Location = New System.Drawing.Point(178, 185)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(98, 1)
+        Me.Label34.TabIndex = 168
+        '
+        'Label35
+        '
+        Me.Label35.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label35.Location = New System.Drawing.Point(276, 185)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(1, 21)
+        Me.Label35.TabIndex = 169
+        '
+        'Label36
+        '
+        Me.Label36.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label36.Location = New System.Drawing.Point(177, 185)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(1, 21)
+        Me.Label36.TabIndex = 170
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -923,6 +959,10 @@ Partial Class Form1
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.D2Data
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(794, 591)
+        Me.Controls.Add(Me.Label36)
+        Me.Controls.Add(Me.Label35)
+        Me.Controls.Add(Me.Label34)
+        Me.Controls.Add(Me.Label33)
         Me.Controls.Add(Me.MulePassTextbox)
         Me.Controls.Add(Me.Label32)
         Me.Controls.Add(Me.MuleNameTextbox)
@@ -1088,6 +1128,10 @@ Partial Class Form1
     Friend WithEvents MulePassTextbox As System.Windows.Forms.TextBox
     Friend WithEvents Label32 As System.Windows.Forms.Label
     Friend WithEvents RestoreBackupToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Label33 As System.Windows.Forms.Label
+    Friend WithEvents Label34 As System.Windows.Forms.Label
+    Friend WithEvents Label35 As System.Windows.Forms.Label
+    Friend WithEvents Label36 As System.Windows.Forms.Label
 
 
 End Class

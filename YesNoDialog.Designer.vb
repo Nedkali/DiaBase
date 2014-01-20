@@ -31,7 +31,7 @@ Partial Class YesNoD2Style
         '
         'YesNoCANCELBUTTON
         '
-        Me.YesNoCANCELBUTTON.BackColor = System.Drawing.Color.DimGray
+        Me.YesNoCANCELBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.YesNoCANCELBUTTON.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.YesNoCANCELBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.YesNoCANCELBUTTON.ForeColor = System.Drawing.Color.BurlyWood
@@ -44,7 +44,7 @@ Partial Class YesNoD2Style
         '
         'YesNoCONFIRMBUTTON
         '
-        Me.YesNoCONFIRMBUTTON.BackColor = System.Drawing.Color.DimGray
+        Me.YesNoCONFIRMBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.YesNoCONFIRMBUTTON.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.YesNoCONFIRMBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.YesNoCONFIRMBUTTON.ForeColor = System.Drawing.Color.BurlyWood
@@ -52,7 +52,7 @@ Partial Class YesNoD2Style
         Me.YesNoCONFIRMBUTTON.Name = "YesNoCONFIRMBUTTON"
         Me.YesNoCONFIRMBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.YesNoCONFIRMBUTTON.TabIndex = 1
-        Me.YesNoCONFIRMBUTTON.Text = "Yes"
+        Me.YesNoCONFIRMBUTTON.Text = "Confirm"
         Me.YesNoCONFIRMBUTTON.UseVisualStyleBackColor = False
         '
         'YesNoMessageLABEL

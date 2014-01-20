@@ -28,10 +28,7 @@ Partial Class EditItemForm
         Me.EditItemPickitBotCOMBOBOX = New System.Windows.Forms.ComboBox()
         Me.EditItemPickitBotLABEL = New System.Windows.Forms.Label()
         Me.EditItemQualityCOMBOBOX = New System.Windows.Forms.ComboBox()
-        Me.EditItemMulePassCOMBOBOX = New System.Windows.Forms.ComboBox()
-        Me.EditItemMuleAccountCOMBOBOX = New System.Windows.Forms.ComboBox()
         Me.EditItemMuleNameCOMBOBOX = New System.Windows.Forms.ComboBox()
-        Me.EditItemAttackClassCOMBOBOX = New System.Windows.Forms.ComboBox()
         Me.EditItemAttackSpeedCOMBOBOX = New System.Windows.Forms.ComboBox()
         Me.EditItemStat15TEXTBOX = New System.Windows.Forms.TextBox()
         Me.EditItemStat14TEXTBOX = New System.Windows.Forms.TextBox()
@@ -101,10 +98,145 @@ Partial Class EditItemForm
         Me.EditItemNameTEXTBOX = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label45 = New System.Windows.Forms.Label()
+        Me.Label46 = New System.Windows.Forms.Label()
+        Me.Label47 = New System.Windows.Forms.Label()
+        Me.Label48 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.Label50 = New System.Windows.Forms.Label()
+        Me.Label51 = New System.Windows.Forms.Label()
+        Me.EditItemAttackClassCOMBOBOX = New System.Windows.Forms.ComboBox()
+        Me.EditItemMulePassCOMBOBOX = New System.Windows.Forms.ComboBox()
+        Me.EditItemMuleAccountCOMBOBOX = New System.Windows.Forms.ComboBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.Label32 = New System.Windows.Forms.Label()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.Label37 = New System.Windows.Forms.Label()
+        Me.Label38 = New System.Windows.Forms.Label()
+        Me.Label39 = New System.Windows.Forms.Label()
+        Me.Label40 = New System.Windows.Forms.Label()
+        Me.Label41 = New System.Windows.Forms.Label()
+        Me.Label42 = New System.Windows.Forms.Label()
+        Me.Label43 = New System.Windows.Forms.Label()
+        Me.Label44 = New System.Windows.Forms.Label()
+        Me.Label52 = New System.Windows.Forms.Label()
+        Me.Label53 = New System.Windows.Forms.Label()
+        Me.Label54 = New System.Windows.Forms.Label()
+        Me.Label55 = New System.Windows.Forms.Label()
+        Me.Label56 = New System.Windows.Forms.Label()
+        Me.Label57 = New System.Windows.Forms.Label()
+        Me.Label58 = New System.Windows.Forms.Label()
+        Me.Label59 = New System.Windows.Forms.Label()
+        Me.Label60 = New System.Windows.Forms.Label()
+        Me.Label61 = New System.Windows.Forms.Label()
+        Me.Label62 = New System.Windows.Forms.Label()
+        Me.Label63 = New System.Windows.Forms.Label()
+        Me.Label64 = New System.Windows.Forms.Label()
+        Me.Label65 = New System.Windows.Forms.Label()
+        Me.Label66 = New System.Windows.Forms.Label()
+        Me.Label67 = New System.Windows.Forms.Label()
+        Me.Label68 = New System.Windows.Forms.Label()
+        Me.Label69 = New System.Windows.Forms.Label()
+        Me.Label70 = New System.Windows.Forms.Label()
+        Me.Label71 = New System.Windows.Forms.Label()
+        Me.Label72 = New System.Windows.Forms.Label()
+        Me.Label73 = New System.Windows.Forms.Label()
+        Me.Label74 = New System.Windows.Forms.Label()
+        Me.Label75 = New System.Windows.Forms.Label()
+        Me.Label76 = New System.Windows.Forms.Label()
+        Me.Label77 = New System.Windows.Forms.Label()
+        Me.Label78 = New System.Windows.Forms.Label()
+        Me.Label79 = New System.Windows.Forms.Label()
+        Me.Label80 = New System.Windows.Forms.Label()
+        Me.Label81 = New System.Windows.Forms.Label()
+        Me.Label82 = New System.Windows.Forms.Label()
+        Me.Label83 = New System.Windows.Forms.Label()
+        Me.Label84 = New System.Windows.Forms.Label()
+        Me.Label85 = New System.Windows.Forms.Label()
+        Me.Label86 = New System.Windows.Forms.Label()
+        Me.Label87 = New System.Windows.Forms.Label()
+        Me.Label88 = New System.Windows.Forms.Label()
+        Me.Label89 = New System.Windows.Forms.Label()
+        Me.Label90 = New System.Windows.Forms.Label()
+        Me.Label91 = New System.Windows.Forms.Label()
+        Me.Label92 = New System.Windows.Forms.Label()
+        Me.Label93 = New System.Windows.Forms.Label()
+        Me.Label94 = New System.Windows.Forms.Label()
+        Me.Label95 = New System.Windows.Forms.Label()
+        Me.Label96 = New System.Windows.Forms.Label()
+        Me.Label97 = New System.Windows.Forms.Label()
+        Me.Label98 = New System.Windows.Forms.Label()
+        Me.Label99 = New System.Windows.Forms.Label()
+        Me.Label100 = New System.Windows.Forms.Label()
+        Me.Label101 = New System.Windows.Forms.Label()
+        Me.Label102 = New System.Windows.Forms.Label()
+        Me.Label103 = New System.Windows.Forms.Label()
+        Me.Label104 = New System.Windows.Forms.Label()
+        Me.Label105 = New System.Windows.Forms.Label()
+        Me.Label106 = New System.Windows.Forms.Label()
+        Me.Label107 = New System.Windows.Forms.Label()
+        Me.Label108 = New System.Windows.Forms.Label()
+        Me.Label111 = New System.Windows.Forms.Label()
+        Me.Label112 = New System.Windows.Forms.Label()
+        Me.Label113 = New System.Windows.Forms.Label()
+        Me.Label114 = New System.Windows.Forms.Label()
+        Me.Label116 = New System.Windows.Forms.Label()
+        Me.Label117 = New System.Windows.Forms.Label()
+        Me.Label118 = New System.Windows.Forms.Label()
+        Me.Label119 = New System.Windows.Forms.Label()
+        Me.Label120 = New System.Windows.Forms.Label()
+        Me.Label121 = New System.Windows.Forms.Label()
+        Me.Label122 = New System.Windows.Forms.Label()
+        Me.Label123 = New System.Windows.Forms.Label()
+        Me.Label125 = New System.Windows.Forms.Label()
+        Me.Label127 = New System.Windows.Forms.Label()
+        Me.Label124 = New System.Windows.Forms.Label()
+        Me.Label126 = New System.Windows.Forms.Label()
+        Me.Label128 = New System.Windows.Forms.Label()
+        Me.Label129 = New System.Windows.Forms.Label()
+        Me.Label130 = New System.Windows.Forms.Label()
+        Me.Label131 = New System.Windows.Forms.Label()
+        Me.Label132 = New System.Windows.Forms.Label()
+        Me.Label133 = New System.Windows.Forms.Label()
+        Me.Label134 = New System.Windows.Forms.Label()
+        Me.Label135 = New System.Windows.Forms.Label()
+        Me.Label136 = New System.Windows.Forms.Label()
+        Me.Label137 = New System.Windows.Forms.Label()
+        Me.Label138 = New System.Windows.Forms.Label()
+        Me.Label139 = New System.Windows.Forms.Label()
+        Me.Label140 = New System.Windows.Forms.Label()
+        Me.Label141 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'EditItemImageTEXTBOX
         '
+        Me.EditItemImageTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemImageTEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemImageTEXTBOX.Location = New System.Drawing.Point(371, 480)
         Me.EditItemImageTEXTBOX.Name = "EditItemImageTEXTBOX"
         Me.EditItemImageTEXTBOX.Size = New System.Drawing.Size(64, 20)
@@ -113,6 +245,7 @@ Partial Class EditItemForm
         'EditItemImageLABEL
         '
         Me.EditItemImageLABEL.AutoSize = True
+        Me.EditItemImageLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemImageLABEL.Location = New System.Drawing.Point(308, 484)
         Me.EditItemImageLABEL.Name = "EditItemImageLABEL"
         Me.EditItemImageLABEL.Size = New System.Drawing.Size(55, 13)
@@ -122,6 +255,8 @@ Partial Class EditItemForm
         'EditItemImageBUTTON
         '
         Me.EditItemImageBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.EditItemImageBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.EditItemImageBUTTON.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemImageBUTTON.Location = New System.Drawing.Point(441, 479)
         Me.EditItemImageBUTTON.Name = "EditItemImageBUTTON"
         Me.EditItemImageBUTTON.Size = New System.Drawing.Size(102, 23)
@@ -131,8 +266,11 @@ Partial Class EditItemForm
         '
         'EditItemPickitBotCOMBOBOX
         '
+        Me.EditItemPickitBotCOMBOBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemPickitBotCOMBOBOX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.EditItemPickitBotCOMBOBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemPickitBotCOMBOBOX.FormattingEnabled = True
-        Me.EditItemPickitBotCOMBOBOX.Location = New System.Drawing.Point(376, 432)
+        Me.EditItemPickitBotCOMBOBOX.Location = New System.Drawing.Point(375, 432)
         Me.EditItemPickitBotCOMBOBOX.Name = "EditItemPickitBotCOMBOBOX"
         Me.EditItemPickitBotCOMBOBOX.Size = New System.Drawing.Size(168, 21)
         Me.EditItemPickitBotCOMBOBOX.TabIndex = 661
@@ -140,6 +278,7 @@ Partial Class EditItemForm
         'EditItemPickitBotLABEL
         '
         Me.EditItemPickitBotLABEL.AutoSize = True
+        Me.EditItemPickitBotLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemPickitBotLABEL.Location = New System.Drawing.Point(318, 435)
         Me.EditItemPickitBotLABEL.Name = "EditItemPickitBotLABEL"
         Me.EditItemPickitBotLABEL.Size = New System.Drawing.Size(52, 13)
@@ -148,6 +287,9 @@ Partial Class EditItemForm
         '
         'EditItemQualityCOMBOBOX
         '
+        Me.EditItemQualityCOMBOBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemQualityCOMBOBOX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.EditItemQualityCOMBOBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemQualityCOMBOBOX.FormattingEnabled = True
         Me.EditItemQualityCOMBOBOX.Items.AddRange(New Object() {"Normal", "Magic", "Rare", "Unique", "Set"})
         Me.EditItemQualityCOMBOBOX.Location = New System.Drawing.Point(96, 62)
@@ -155,40 +297,22 @@ Partial Class EditItemForm
         Me.EditItemQualityCOMBOBOX.Size = New System.Drawing.Size(161, 21)
         Me.EditItemQualityCOMBOBOX.TabIndex = 622
         '
-        'EditItemMulePassCOMBOBOX
-        '
-        Me.EditItemMulePassCOMBOBOX.FormattingEnabled = True
-        Me.EditItemMulePassCOMBOBOX.Location = New System.Drawing.Point(375, 404)
-        Me.EditItemMulePassCOMBOBOX.Name = "EditItemMulePassCOMBOBOX"
-        Me.EditItemMulePassCOMBOBOX.Size = New System.Drawing.Size(168, 21)
-        Me.EditItemMulePassCOMBOBOX.TabIndex = 660
-        '
-        'EditItemMuleAccountCOMBOBOX
-        '
-        Me.EditItemMuleAccountCOMBOBOX.FormattingEnabled = True
-        Me.EditItemMuleAccountCOMBOBOX.Location = New System.Drawing.Point(375, 376)
-        Me.EditItemMuleAccountCOMBOBOX.Name = "EditItemMuleAccountCOMBOBOX"
-        Me.EditItemMuleAccountCOMBOBOX.Size = New System.Drawing.Size(168, 21)
-        Me.EditItemMuleAccountCOMBOBOX.TabIndex = 659
-        '
         'EditItemMuleNameCOMBOBOX
         '
+        Me.EditItemMuleNameCOMBOBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemMuleNameCOMBOBOX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.EditItemMuleNameCOMBOBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemMuleNameCOMBOBOX.FormattingEnabled = True
         Me.EditItemMuleNameCOMBOBOX.Location = New System.Drawing.Point(375, 349)
         Me.EditItemMuleNameCOMBOBOX.Name = "EditItemMuleNameCOMBOBOX"
         Me.EditItemMuleNameCOMBOBOX.Size = New System.Drawing.Size(168, 21)
         Me.EditItemMuleNameCOMBOBOX.TabIndex = 658
         '
-        'EditItemAttackClassCOMBOBOX
-        '
-        Me.EditItemAttackClassCOMBOBOX.FormattingEnabled = True
-        Me.EditItemAttackClassCOMBOBOX.Location = New System.Drawing.Point(95, 456)
-        Me.EditItemAttackClassCOMBOBOX.Name = "EditItemAttackClassCOMBOBOX"
-        Me.EditItemAttackClassCOMBOBOX.Size = New System.Drawing.Size(168, 21)
-        Me.EditItemAttackClassCOMBOBOX.TabIndex = 641
-        '
         'EditItemAttackSpeedCOMBOBOX
         '
+        Me.EditItemAttackSpeedCOMBOBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemAttackSpeedCOMBOBOX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.EditItemAttackSpeedCOMBOBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemAttackSpeedCOMBOBOX.FormattingEnabled = True
         Me.EditItemAttackSpeedCOMBOBOX.Items.AddRange(New Object() {"Very Slow  Attack Speed", "Slow  Attack Speed", "Normal  Attack Speed", "Fast Attack Speed", "Very Fast  Attack Speed"})
         Me.EditItemAttackSpeedCOMBOBOX.Location = New System.Drawing.Point(95, 481)
@@ -198,7 +322,9 @@ Partial Class EditItemForm
         '
         'EditItemStat15TEXTBOX
         '
+        Me.EditItemStat15TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.EditItemStat15TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.EditItemStat15TEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemStat15TEXTBOX.Location = New System.Drawing.Point(265, 318)
         Me.EditItemStat15TEXTBOX.Name = "EditItemStat15TEXTBOX"
         Me.EditItemStat15TEXTBOX.Size = New System.Drawing.Size(278, 20)
@@ -206,7 +332,9 @@ Partial Class EditItemForm
         '
         'EditItemStat14TEXTBOX
         '
+        Me.EditItemStat14TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.EditItemStat14TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.EditItemStat14TEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemStat14TEXTBOX.Location = New System.Drawing.Point(265, 299)
         Me.EditItemStat14TEXTBOX.Name = "EditItemStat14TEXTBOX"
         Me.EditItemStat14TEXTBOX.Size = New System.Drawing.Size(278, 20)
@@ -214,7 +342,9 @@ Partial Class EditItemForm
         '
         'EditItemStat13TEXTBOX
         '
+        Me.EditItemStat13TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.EditItemStat13TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.EditItemStat13TEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemStat13TEXTBOX.Location = New System.Drawing.Point(265, 280)
         Me.EditItemStat13TEXTBOX.Name = "EditItemStat13TEXTBOX"
         Me.EditItemStat13TEXTBOX.Size = New System.Drawing.Size(278, 20)
@@ -223,6 +353,7 @@ Partial Class EditItemForm
         'Label2
         '
         Me.Label2.AutoSize = True
+        Me.Label2.ForeColor = System.Drawing.Color.BurlyWood
         Me.Label2.Location = New System.Drawing.Point(37, 98)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(56, 13)
@@ -231,6 +362,8 @@ Partial Class EditItemForm
         '
         'EditItemRunewordTEXTBOX
         '
+        Me.EditItemRunewordTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemRunewordTEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemRunewordTEXTBOX.Location = New System.Drawing.Point(95, 95)
         Me.EditItemRunewordTEXTBOX.Name = "EditItemRunewordTEXTBOX"
         Me.EditItemRunewordTEXTBOX.Size = New System.Drawing.Size(162, 20)
@@ -238,7 +371,9 @@ Partial Class EditItemForm
         '
         'EditItemRequiredStrengthTEXTBOX
         '
-        Me.EditItemRequiredStrengthTEXTBOX.Location = New System.Drawing.Point(132, 382)
+        Me.EditItemRequiredStrengthTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemRequiredStrengthTEXTBOX.ForeColor = System.Drawing.Color.White
+        Me.EditItemRequiredStrengthTEXTBOX.Location = New System.Drawing.Point(132, 380)
         Me.EditItemRequiredStrengthTEXTBOX.Name = "EditItemRequiredStrengthTEXTBOX"
         Me.EditItemRequiredStrengthTEXTBOX.Size = New System.Drawing.Size(40, 20)
         Me.EditItemRequiredStrengthTEXTBOX.TabIndex = 638
@@ -246,9 +381,11 @@ Partial Class EditItemForm
         'EditItemUndoChangesBUTTON
         '
         Me.EditItemUndoChangesBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.EditItemUndoChangesBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.EditItemUndoChangesBUTTON.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemUndoChangesBUTTON.Location = New System.Drawing.Point(371, 563)
         Me.EditItemUndoChangesBUTTON.Name = "EditItemUndoChangesBUTTON"
-        Me.EditItemUndoChangesBUTTON.Size = New System.Drawing.Size(89, 20)
+        Me.EditItemUndoChangesBUTTON.Size = New System.Drawing.Size(89, 23)
         Me.EditItemUndoChangesBUTTON.TabIndex = 667
         Me.EditItemUndoChangesBUTTON.Text = "Undo Changes"
         Me.EditItemUndoChangesBUTTON.UseVisualStyleBackColor = False
@@ -256,7 +393,8 @@ Partial Class EditItemForm
         'EditItemRequiredStrengthLABEL
         '
         Me.EditItemRequiredStrengthLABEL.AutoSize = True
-        Me.EditItemRequiredStrengthLABEL.Location = New System.Drawing.Point(33, 385)
+        Me.EditItemRequiredStrengthLABEL.ForeColor = System.Drawing.Color.BurlyWood
+        Me.EditItemRequiredStrengthLABEL.Location = New System.Drawing.Point(36, 383)
         Me.EditItemRequiredStrengthLABEL.Name = "EditItemRequiredStrengthLABEL"
         Me.EditItemRequiredStrengthLABEL.Size = New System.Drawing.Size(93, 13)
         Me.EditItemRequiredStrengthLABEL.TabIndex = 696
@@ -266,9 +404,11 @@ Partial Class EditItemForm
         '
         Me.EditItemCancelBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.EditItemCancelBUTTON.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.EditItemCancelBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.EditItemCancelBUTTON.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemCancelBUTTON.Location = New System.Drawing.Point(466, 563)
         Me.EditItemCancelBUTTON.Name = "EditItemCancelBUTTON"
-        Me.EditItemCancelBUTTON.Size = New System.Drawing.Size(75, 20)
+        Me.EditItemCancelBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.EditItemCancelBUTTON.TabIndex = 668
         Me.EditItemCancelBUTTON.Text = "Cancel"
         Me.EditItemCancelBUTTON.UseVisualStyleBackColor = False
@@ -276,6 +416,7 @@ Partial Class EditItemForm
         'EditItemBaseLABEL
         '
         Me.EditItemBaseLABEL.AutoSize = True
+        Me.EditItemBaseLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemBaseLABEL.Location = New System.Drawing.Point(34, 41)
         Me.EditItemBaseLABEL.Name = "EditItemBaseLABEL"
         Me.EditItemBaseLABEL.Size = New System.Drawing.Size(54, 13)
@@ -284,6 +425,9 @@ Partial Class EditItemForm
         '
         'EditItemBaseCOMBOBOX
         '
+        Me.EditItemBaseCOMBOBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemBaseCOMBOBOX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.EditItemBaseCOMBOBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemBaseCOMBOBOX.FormattingEnabled = True
         Me.EditItemBaseCOMBOBOX.Location = New System.Drawing.Point(96, 38)
         Me.EditItemBaseCOMBOBOX.Name = "EditItemBaseCOMBOBOX"
@@ -292,6 +436,8 @@ Partial Class EditItemForm
         '
         'EditItemDurabilityMaxTEXTBOX
         '
+        Me.EditItemDurabilityMaxTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemDurabilityMaxTEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemDurabilityMaxTEXTBOX.Location = New System.Drawing.Point(200, 280)
         Me.EditItemDurabilityMaxTEXTBOX.MaxLength = 4
         Me.EditItemDurabilityMaxTEXTBOX.Name = "EditItemDurabilityMaxTEXTBOX"
@@ -301,6 +447,7 @@ Partial Class EditItemForm
         'EditItemDurabilityOfLABEL
         '
         Me.EditItemDurabilityOfLABEL.AutoSize = True
+        Me.EditItemDurabilityOfLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemDurabilityOfLABEL.Location = New System.Drawing.Point(178, 283)
         Me.EditItemDurabilityOfLABEL.Name = "EditItemDurabilityOfLABEL"
         Me.EditItemDurabilityOfLABEL.Size = New System.Drawing.Size(16, 13)
@@ -310,6 +457,7 @@ Partial Class EditItemForm
         'EditItemQuantityOfLABEL
         '
         Me.EditItemQuantityOfLABEL.AutoSize = True
+        Me.EditItemQuantityOfLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemQuantityOfLABEL.Location = New System.Drawing.Point(178, 258)
         Me.EditItemQuantityOfLABEL.Name = "EditItemQuantityOfLABEL"
         Me.EditItemQuantityOfLABEL.Size = New System.Drawing.Size(16, 13)
@@ -318,7 +466,9 @@ Partial Class EditItemForm
         '
         'EditItemQuantityMaxTEXTBOX
         '
-        Me.EditItemQuantityMaxTEXTBOX.Location = New System.Drawing.Point(200, 257)
+        Me.EditItemQuantityMaxTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemQuantityMaxTEXTBOX.ForeColor = System.Drawing.Color.White
+        Me.EditItemQuantityMaxTEXTBOX.Location = New System.Drawing.Point(200, 256)
         Me.EditItemQuantityMaxTEXTBOX.MaxLength = 4
         Me.EditItemQuantityMaxTEXTBOX.Name = "EditItemQuantityMaxTEXTBOX"
         Me.EditItemQuantityMaxTEXTBOX.Size = New System.Drawing.Size(38, 20)
@@ -327,6 +477,7 @@ Partial Class EditItemForm
         'EditItemUniqueAttributesLABEL
         '
         Me.EditItemUniqueAttributesLABEL.AutoSize = True
+        Me.EditItemUniqueAttributesLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemUniqueAttributesLABEL.Location = New System.Drawing.Point(263, 43)
         Me.EditItemUniqueAttributesLABEL.Name = "EditItemUniqueAttributesLABEL"
         Me.EditItemUniqueAttributesLABEL.Size = New System.Drawing.Size(131, 13)
@@ -336,6 +487,7 @@ Partial Class EditItemForm
         'EditItemUserReferenceLABEL
         '
         Me.EditItemUserReferenceLABEL.AutoSize = True
+        Me.EditItemUserReferenceLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemUserReferenceLABEL.Location = New System.Drawing.Point(8, 539)
         Me.EditItemUserReferenceLABEL.Name = "EditItemUserReferenceLABEL"
         Me.EditItemUserReferenceLABEL.Size = New System.Drawing.Size(82, 13)
@@ -344,6 +496,8 @@ Partial Class EditItemForm
         '
         'EditItemUserReferenceTEXTBOX
         '
+        Me.EditItemUserReferenceTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemUserReferenceTEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemUserReferenceTEXTBOX.Location = New System.Drawing.Point(96, 536)
         Me.EditItemUserReferenceTEXTBOX.Name = "EditItemUserReferenceTEXTBOX"
         Me.EditItemUserReferenceTEXTBOX.Size = New System.Drawing.Size(445, 20)
@@ -352,9 +506,11 @@ Partial Class EditItemForm
         'EditItemSaveChangesBUTTON
         '
         Me.EditItemSaveChangesBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.EditItemSaveChangesBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.EditItemSaveChangesBUTTON.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemSaveChangesBUTTON.Location = New System.Drawing.Point(266, 563)
         Me.EditItemSaveChangesBUTTON.Name = "EditItemSaveChangesBUTTON"
-        Me.EditItemSaveChangesBUTTON.Size = New System.Drawing.Size(99, 20)
+        Me.EditItemSaveChangesBUTTON.Size = New System.Drawing.Size(99, 23)
         Me.EditItemSaveChangesBUTTON.TabIndex = 666
         Me.EditItemSaveChangesBUTTON.Text = "Save Changes"
         Me.EditItemSaveChangesBUTTON.UseVisualStyleBackColor = False
@@ -362,6 +518,7 @@ Partial Class EditItemForm
         'EditItemDefenseLABEL
         '
         Me.EditItemDefenseLABEL.AutoSize = True
+        Me.EditItemDefenseLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemDefenseLABEL.Location = New System.Drawing.Point(53, 322)
         Me.EditItemDefenseLABEL.Name = "EditItemDefenseLABEL"
         Me.EditItemDefenseLABEL.Size = New System.Drawing.Size(73, 13)
@@ -370,6 +527,8 @@ Partial Class EditItemForm
         '
         'EditItemDefenseTEXTBOX
         '
+        Me.EditItemDefenseTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemDefenseTEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemDefenseTEXTBOX.Location = New System.Drawing.Point(132, 318)
         Me.EditItemDefenseTEXTBOX.MaxLength = 4
         Me.EditItemDefenseTEXTBOX.Name = "EditItemDefenseTEXTBOX"
@@ -378,7 +537,9 @@ Partial Class EditItemForm
         '
         'EditItemStat12TEXTBOX
         '
+        Me.EditItemStat12TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.EditItemStat12TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.EditItemStat12TEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemStat12TEXTBOX.Location = New System.Drawing.Point(265, 262)
         Me.EditItemStat12TEXTBOX.Name = "EditItemStat12TEXTBOX"
         Me.EditItemStat12TEXTBOX.Size = New System.Drawing.Size(278, 20)
@@ -386,7 +547,9 @@ Partial Class EditItemForm
         '
         'EditItemStat11TEXTBOX
         '
+        Me.EditItemStat11TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.EditItemStat11TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.EditItemStat11TEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemStat11TEXTBOX.Location = New System.Drawing.Point(265, 243)
         Me.EditItemStat11TEXTBOX.Name = "EditItemStat11TEXTBOX"
         Me.EditItemStat11TEXTBOX.Size = New System.Drawing.Size(278, 20)
@@ -394,7 +557,9 @@ Partial Class EditItemForm
         '
         'EditItemStat10TEXTBOX
         '
+        Me.EditItemStat10TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.EditItemStat10TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.EditItemStat10TEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemStat10TEXTBOX.Location = New System.Drawing.Point(265, 225)
         Me.EditItemStat10TEXTBOX.Name = "EditItemStat10TEXTBOX"
         Me.EditItemStat10TEXTBOX.Size = New System.Drawing.Size(278, 20)
@@ -402,7 +567,9 @@ Partial Class EditItemForm
         '
         'EditItemStat9TEXTBOX
         '
+        Me.EditItemStat9TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.EditItemStat9TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.EditItemStat9TEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemStat9TEXTBOX.Location = New System.Drawing.Point(265, 206)
         Me.EditItemStat9TEXTBOX.Name = "EditItemStat9TEXTBOX"
         Me.EditItemStat9TEXTBOX.Size = New System.Drawing.Size(278, 20)
@@ -410,7 +577,9 @@ Partial Class EditItemForm
         '
         'EditItemStat8TEXTBOX
         '
+        Me.EditItemStat8TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.EditItemStat8TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.EditItemStat8TEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemStat8TEXTBOX.Location = New System.Drawing.Point(265, 187)
         Me.EditItemStat8TEXTBOX.Name = "EditItemStat8TEXTBOX"
         Me.EditItemStat8TEXTBOX.Size = New System.Drawing.Size(278, 20)
@@ -418,7 +587,9 @@ Partial Class EditItemForm
         '
         'EditItemStat7TEXTBOX
         '
+        Me.EditItemStat7TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.EditItemStat7TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.EditItemStat7TEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemStat7TEXTBOX.Location = New System.Drawing.Point(265, 168)
         Me.EditItemStat7TEXTBOX.Name = "EditItemStat7TEXTBOX"
         Me.EditItemStat7TEXTBOX.Size = New System.Drawing.Size(278, 20)
@@ -426,7 +597,9 @@ Partial Class EditItemForm
         '
         'EditItemStat6TEXTBOX
         '
+        Me.EditItemStat6TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.EditItemStat6TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.EditItemStat6TEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemStat6TEXTBOX.Location = New System.Drawing.Point(265, 149)
         Me.EditItemStat6TEXTBOX.Name = "EditItemStat6TEXTBOX"
         Me.EditItemStat6TEXTBOX.Size = New System.Drawing.Size(278, 20)
@@ -434,7 +607,9 @@ Partial Class EditItemForm
         '
         'EditItemStat5TEXTBOX
         '
+        Me.EditItemStat5TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.EditItemStat5TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.EditItemStat5TEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemStat5TEXTBOX.Location = New System.Drawing.Point(265, 130)
         Me.EditItemStat5TEXTBOX.Name = "EditItemStat5TEXTBOX"
         Me.EditItemStat5TEXTBOX.Size = New System.Drawing.Size(278, 20)
@@ -442,7 +617,9 @@ Partial Class EditItemForm
         '
         'EditItemStat4TEXTBOX
         '
+        Me.EditItemStat4TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.EditItemStat4TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.EditItemStat4TEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemStat4TEXTBOX.Location = New System.Drawing.Point(265, 112)
         Me.EditItemStat4TEXTBOX.Name = "EditItemStat4TEXTBOX"
         Me.EditItemStat4TEXTBOX.Size = New System.Drawing.Size(278, 20)
@@ -450,7 +627,9 @@ Partial Class EditItemForm
         '
         'EditItemStat3TEXTBOX
         '
+        Me.EditItemStat3TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.EditItemStat3TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.EditItemStat3TEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemStat3TEXTBOX.Location = New System.Drawing.Point(265, 95)
         Me.EditItemStat3TEXTBOX.Name = "EditItemStat3TEXTBOX"
         Me.EditItemStat3TEXTBOX.Size = New System.Drawing.Size(278, 20)
@@ -458,7 +637,9 @@ Partial Class EditItemForm
         '
         'EditItemStat2TEXTBOX
         '
+        Me.EditItemStat2TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.EditItemStat2TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.EditItemStat2TEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemStat2TEXTBOX.Location = New System.Drawing.Point(265, 77)
         Me.EditItemStat2TEXTBOX.Name = "EditItemStat2TEXTBOX"
         Me.EditItemStat2TEXTBOX.Size = New System.Drawing.Size(278, 20)
@@ -466,7 +647,9 @@ Partial Class EditItemForm
         '
         'EditItemStat1TEXTBOX
         '
+        Me.EditItemStat1TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.EditItemStat1TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.EditItemStat1TEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemStat1TEXTBOX.Location = New System.Drawing.Point(265, 59)
         Me.EditItemStat1TEXTBOX.Name = "EditItemStat1TEXTBOX"
         Me.EditItemStat1TEXTBOX.Size = New System.Drawing.Size(278, 20)
@@ -475,6 +658,7 @@ Partial Class EditItemForm
         'EditMulePassLABEL
         '
         Me.EditMulePassLABEL.AutoSize = True
+        Me.EditMulePassLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditMulePassLABEL.Location = New System.Drawing.Point(291, 407)
         Me.EditMulePassLABEL.Name = "EditMulePassLABEL"
         Me.EditMulePassLABEL.Size = New System.Drawing.Size(79, 13)
@@ -484,6 +668,7 @@ Partial Class EditItemForm
         'EditItemMuleAccountLABEL
         '
         Me.EditItemMuleAccountLABEL.AutoSize = True
+        Me.EditItemMuleAccountLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemMuleAccountLABEL.Location = New System.Drawing.Point(297, 379)
         Me.EditItemMuleAccountLABEL.Name = "EditItemMuleAccountLABEL"
         Me.EditItemMuleAccountLABEL.Size = New System.Drawing.Size(73, 13)
@@ -493,6 +678,7 @@ Partial Class EditItemForm
         'EditItemMuleNameLABEL
         '
         Me.EditItemMuleNameLABEL.AutoSize = True
+        Me.EditItemMuleNameLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemMuleNameLABEL.Location = New System.Drawing.Point(309, 352)
         Me.EditItemMuleNameLABEL.Name = "EditItemMuleNameLABEL"
         Me.EditItemMuleNameLABEL.Size = New System.Drawing.Size(61, 13)
@@ -502,6 +688,7 @@ Partial Class EditItemForm
         'EditItemAttackSpeedLABEL
         '
         Me.EditItemAttackSpeedLABEL.AutoSize = True
+        Me.EditItemAttackSpeedLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemAttackSpeedLABEL.Location = New System.Drawing.Point(18, 483)
         Me.EditItemAttackSpeedLABEL.Name = "EditItemAttackSpeedLABEL"
         Me.EditItemAttackSpeedLABEL.Size = New System.Drawing.Size(72, 13)
@@ -511,6 +698,7 @@ Partial Class EditItemForm
         'EditItemChanceToBlockLABEL
         '
         Me.EditItemChanceToBlockLABEL.AutoSize = True
+        Me.EditItemChanceToBlockLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemChanceToBlockLABEL.Location = New System.Drawing.Point(36, 344)
         Me.EditItemChanceToBlockLABEL.Name = "EditItemChanceToBlockLABEL"
         Me.EditItemChanceToBlockLABEL.Size = New System.Drawing.Size(90, 13)
@@ -519,6 +707,8 @@ Partial Class EditItemForm
         '
         'EditItemChanceToBlockTEXTBOX
         '
+        Me.EditItemChanceToBlockTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemChanceToBlockTEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemChanceToBlockTEXTBOX.Location = New System.Drawing.Point(132, 341)
         Me.EditItemChanceToBlockTEXTBOX.MaxLength = 4
         Me.EditItemChanceToBlockTEXTBOX.Name = "EditItemChanceToBlockTEXTBOX"
@@ -528,6 +718,7 @@ Partial Class EditItemForm
         'EditItemSocketsLABEL
         '
         Me.EditItemSocketsLABEL.AutoSize = True
+        Me.EditItemSocketsLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemSocketsLABEL.Location = New System.Drawing.Point(47, 124)
         Me.EditItemSocketsLABEL.Name = "EditItemSocketsLABEL"
         Me.EditItemSocketsLABEL.Size = New System.Drawing.Size(46, 13)
@@ -536,6 +727,9 @@ Partial Class EditItemForm
         '
         'EditItemSocketsCOMBOBOX
         '
+        Me.EditItemSocketsCOMBOBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemSocketsCOMBOBOX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.EditItemSocketsCOMBOBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemSocketsCOMBOBOX.FormattingEnabled = True
         Me.EditItemSocketsCOMBOBOX.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6"})
         Me.EditItemSocketsCOMBOBOX.Location = New System.Drawing.Point(95, 121)
@@ -546,6 +740,7 @@ Partial Class EditItemForm
         'EditItemEtherealItemCHECKBOX
         '
         Me.EditItemEtherealItemCHECKBOX.AutoSize = True
+        Me.EditItemEtherealItemCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemEtherealItemCHECKBOX.Location = New System.Drawing.Point(166, 123)
         Me.EditItemEtherealItemCHECKBOX.Name = "EditItemEtherealItemCHECKBOX"
         Me.EditItemEtherealItemCHECKBOX.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -557,6 +752,7 @@ Partial Class EditItemForm
         'EditItemDurabilityLABEL
         '
         Me.EditItemDurabilityLABEL.AutoSize = True
+        Me.EditItemDurabilityLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemDurabilityLABEL.Location = New System.Drawing.Point(76, 283)
         Me.EditItemDurabilityLABEL.Name = "EditItemDurabilityLABEL"
         Me.EditItemDurabilityLABEL.Size = New System.Drawing.Size(50, 13)
@@ -565,6 +761,8 @@ Partial Class EditItemForm
         '
         'EditItemDurabilityMinTEXTBOX
         '
+        Me.EditItemDurabilityMinTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemDurabilityMinTEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemDurabilityMinTEXTBOX.Location = New System.Drawing.Point(132, 280)
         Me.EditItemDurabilityMinTEXTBOX.MaxLength = 4
         Me.EditItemDurabilityMinTEXTBOX.Name = "EditItemDurabilityMinTEXTBOX"
@@ -574,6 +772,7 @@ Partial Class EditItemForm
         'EditItemAttackClassLABEL
         '
         Me.EditItemAttackClassLABEL.AutoSize = True
+        Me.EditItemAttackClassLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemAttackClassLABEL.Location = New System.Drawing.Point(24, 460)
         Me.EditItemAttackClassLABEL.Name = "EditItemAttackClassLABEL"
         Me.EditItemAttackClassLABEL.Size = New System.Drawing.Size(66, 13)
@@ -583,7 +782,8 @@ Partial Class EditItemForm
         'EditItemRequiredLevelLABEL
         '
         Me.EditItemRequiredLevelLABEL.AutoSize = True
-        Me.EditItemRequiredLevelLABEL.Location = New System.Drawing.Point(21, 431)
+        Me.EditItemRequiredLevelLABEL.ForeColor = System.Drawing.Color.BurlyWood
+        Me.EditItemRequiredLevelLABEL.Location = New System.Drawing.Point(24, 432)
         Me.EditItemRequiredLevelLABEL.Name = "EditItemRequiredLevelLABEL"
         Me.EditItemRequiredLevelLABEL.Size = New System.Drawing.Size(105, 13)
         Me.EditItemRequiredLevelLABEL.TabIndex = 679
@@ -591,7 +791,9 @@ Partial Class EditItemForm
         '
         'EditItemRequiredLevelTEXTBOX
         '
-        Me.EditItemRequiredLevelTEXTBOX.Location = New System.Drawing.Point(132, 428)
+        Me.EditItemRequiredLevelTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemRequiredLevelTEXTBOX.ForeColor = System.Drawing.Color.White
+        Me.EditItemRequiredLevelTEXTBOX.Location = New System.Drawing.Point(132, 430)
         Me.EditItemRequiredLevelTEXTBOX.MaxLength = 4
         Me.EditItemRequiredLevelTEXTBOX.Name = "EditItemRequiredLevelTEXTBOX"
         Me.EditItemRequiredLevelTEXTBOX.Size = New System.Drawing.Size(40, 20)
@@ -600,6 +802,7 @@ Partial Class EditItemForm
         'EditItemRequiredDexterityLABEL
         '
         Me.EditItemRequiredDexterityLABEL.AutoSize = True
+        Me.EditItemRequiredDexterityLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemRequiredDexterityLABEL.Location = New System.Drawing.Point(35, 408)
         Me.EditItemRequiredDexterityLABEL.Name = "EditItemRequiredDexterityLABEL"
         Me.EditItemRequiredDexterityLABEL.Size = New System.Drawing.Size(94, 13)
@@ -608,6 +811,8 @@ Partial Class EditItemForm
         '
         'EditItemRequiredDexterityTEXTBOX
         '
+        Me.EditItemRequiredDexterityTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemRequiredDexterityTEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemRequiredDexterityTEXTBOX.Location = New System.Drawing.Point(132, 405)
         Me.EditItemRequiredDexterityTEXTBOX.MaxLength = 4
         Me.EditItemRequiredDexterityTEXTBOX.Name = "EditItemRequiredDexterityTEXTBOX"
@@ -617,6 +822,7 @@ Partial Class EditItemForm
         'EditItemQuantityLABEL
         '
         Me.EditItemQuantityLABEL.AutoSize = True
+        Me.EditItemQuantityLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemQuantityLABEL.Location = New System.Drawing.Point(80, 259)
         Me.EditItemQuantityLABEL.Name = "EditItemQuantityLABEL"
         Me.EditItemQuantityLABEL.Size = New System.Drawing.Size(46, 13)
@@ -625,6 +831,8 @@ Partial Class EditItemForm
         '
         'EditItemQuantityMinTEXTBOX
         '
+        Me.EditItemQuantityMinTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemQuantityMinTEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemQuantityMinTEXTBOX.Location = New System.Drawing.Point(132, 256)
         Me.EditItemQuantityMinTEXTBOX.MaxLength = 4
         Me.EditItemQuantityMinTEXTBOX.Name = "EditItemQuantityMinTEXTBOX"
@@ -634,6 +842,7 @@ Partial Class EditItemForm
         'EditItemTwoHandDamageLABEL
         '
         Me.EditItemTwoHandDamageLABEL.AutoSize = True
+        Me.EditItemTwoHandDamageLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemTwoHandDamageLABEL.Location = New System.Drawing.Point(26, 220)
         Me.EditItemTwoHandDamageLABEL.Name = "EditItemTwoHandDamageLABEL"
         Me.EditItemTwoHandDamageLABEL.Size = New System.Drawing.Size(100, 13)
@@ -643,6 +852,7 @@ Partial Class EditItemForm
         'EditItemTwoHandDamageToLABEL
         '
         Me.EditItemTwoHandDamageToLABEL.AutoSize = True
+        Me.EditItemTwoHandDamageToLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemTwoHandDamageToLABEL.Location = New System.Drawing.Point(178, 219)
         Me.EditItemTwoHandDamageToLABEL.Name = "EditItemTwoHandDamageToLABEL"
         Me.EditItemTwoHandDamageToLABEL.Size = New System.Drawing.Size(16, 13)
@@ -651,6 +861,8 @@ Partial Class EditItemForm
         '
         'EditItemTwoHandDamageMaxTEXTBOX
         '
+        Me.EditItemTwoHandDamageMaxTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemTwoHandDamageMaxTEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemTwoHandDamageMaxTEXTBOX.Location = New System.Drawing.Point(200, 216)
         Me.EditItemTwoHandDamageMaxTEXTBOX.MaxLength = 4
         Me.EditItemTwoHandDamageMaxTEXTBOX.Name = "EditItemTwoHandDamageMaxTEXTBOX"
@@ -659,6 +871,8 @@ Partial Class EditItemForm
         '
         'EditItemTwoHandDamageMinTEXTBOX
         '
+        Me.EditItemTwoHandDamageMinTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemTwoHandDamageMinTEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemTwoHandDamageMinTEXTBOX.Location = New System.Drawing.Point(132, 216)
         Me.EditItemTwoHandDamageMinTEXTBOX.MaxLength = 4
         Me.EditItemTwoHandDamageMinTEXTBOX.Name = "EditItemTwoHandDamageMinTEXTBOX"
@@ -668,6 +882,7 @@ Partial Class EditItemForm
         'EditItemOneHandDamageToLABEL
         '
         Me.EditItemOneHandDamageToLABEL.AutoSize = True
+        Me.EditItemOneHandDamageToLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemOneHandDamageToLABEL.Location = New System.Drawing.Point(178, 196)
         Me.EditItemOneHandDamageToLABEL.Name = "EditItemOneHandDamageToLABEL"
         Me.EditItemOneHandDamageToLABEL.Size = New System.Drawing.Size(16, 13)
@@ -677,6 +892,7 @@ Partial Class EditItemForm
         'EditItemOneHamdDamageLABEL
         '
         Me.EditItemOneHamdDamageLABEL.AutoSize = True
+        Me.EditItemOneHamdDamageLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemOneHamdDamageLABEL.Location = New System.Drawing.Point(27, 196)
         Me.EditItemOneHamdDamageLABEL.Name = "EditItemOneHamdDamageLABEL"
         Me.EditItemOneHamdDamageLABEL.Size = New System.Drawing.Size(99, 13)
@@ -685,6 +901,8 @@ Partial Class EditItemForm
         '
         'EditItemOneHandDamageMaxTEXTBOX
         '
+        Me.EditItemOneHandDamageMaxTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemOneHandDamageMaxTEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemOneHandDamageMaxTEXTBOX.Location = New System.Drawing.Point(200, 193)
         Me.EditItemOneHandDamageMaxTEXTBOX.MaxLength = 4
         Me.EditItemOneHandDamageMaxTEXTBOX.Name = "EditItemOneHandDamageMaxTEXTBOX"
@@ -693,6 +911,8 @@ Partial Class EditItemForm
         '
         'EditItemOneHandDamageMinTEXTBOX
         '
+        Me.EditItemOneHandDamageMinTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemOneHandDamageMinTEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemOneHandDamageMinTEXTBOX.Location = New System.Drawing.Point(132, 193)
         Me.EditItemOneHandDamageMinTEXTBOX.MaxLength = 4
         Me.EditItemOneHandDamageMinTEXTBOX.Name = "EditItemOneHandDamageMinTEXTBOX"
@@ -701,6 +921,8 @@ Partial Class EditItemForm
         '
         'EditItemThrowDamageMaxTEXTBOX
         '
+        Me.EditItemThrowDamageMaxTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemThrowDamageMaxTEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemThrowDamageMaxTEXTBOX.Location = New System.Drawing.Point(200, 169)
         Me.EditItemThrowDamageMaxTEXTBOX.MaxLength = 4
         Me.EditItemThrowDamageMaxTEXTBOX.Name = "EditItemThrowDamageMaxTEXTBOX"
@@ -710,6 +932,7 @@ Partial Class EditItemForm
         'EditItemThrowDamageOfLABEL
         '
         Me.EditItemThrowDamageOfLABEL.AutoSize = True
+        Me.EditItemThrowDamageOfLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemThrowDamageOfLABEL.Location = New System.Drawing.Point(178, 172)
         Me.EditItemThrowDamageOfLABEL.Name = "EditItemThrowDamageOfLABEL"
         Me.EditItemThrowDamageOfLABEL.Size = New System.Drawing.Size(16, 13)
@@ -719,6 +942,7 @@ Partial Class EditItemForm
         'EditItemThrowDamageLABEL
         '
         Me.EditItemThrowDamageLABEL.AutoSize = True
+        Me.EditItemThrowDamageLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemThrowDamageLABEL.Location = New System.Drawing.Point(46, 172)
         Me.EditItemThrowDamageLABEL.Name = "EditItemThrowDamageLABEL"
         Me.EditItemThrowDamageLABEL.Size = New System.Drawing.Size(80, 13)
@@ -727,6 +951,8 @@ Partial Class EditItemForm
         '
         'EditItemThrowDamageMinTEXTBOX
         '
+        Me.EditItemThrowDamageMinTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemThrowDamageMinTEXTBOX.ForeColor = System.Drawing.Color.White
         Me.EditItemThrowDamageMinTEXTBOX.Location = New System.Drawing.Point(132, 169)
         Me.EditItemThrowDamageMinTEXTBOX.MaxLength = 4
         Me.EditItemThrowDamageMinTEXTBOX.Name = "EditItemThrowDamageMinTEXTBOX"
@@ -736,6 +962,7 @@ Partial Class EditItemForm
         'EditItemQualityLABEL
         '
         Me.EditItemQualityLABEL.AutoSize = True
+        Me.EditItemQualityLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemQualityLABEL.Location = New System.Drawing.Point(27, 65)
         Me.EditItemQualityLABEL.Name = "EditItemQualityLABEL"
         Me.EditItemQualityLABEL.Size = New System.Drawing.Size(62, 13)
@@ -745,6 +972,7 @@ Partial Class EditItemForm
         'EditItemNameLABEL
         '
         Me.EditItemNameLABEL.AutoSize = True
+        Me.EditItemNameLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemNameLABEL.Location = New System.Drawing.Point(31, 17)
         Me.EditItemNameLABEL.Name = "EditItemNameLABEL"
         Me.EditItemNameLABEL.Size = New System.Drawing.Size(58, 13)
@@ -753,7 +981,9 @@ Partial Class EditItemForm
         '
         'EditItemNameTEXTBOX
         '
-        Me.EditItemNameTEXTBOX.Location = New System.Drawing.Point(95, 12)
+        Me.EditItemNameTEXTBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemNameTEXTBOX.ForeColor = System.Drawing.Color.White
+        Me.EditItemNameTEXTBOX.Location = New System.Drawing.Point(96, 12)
         Me.EditItemNameTEXTBOX.Name = "EditItemNameTEXTBOX"
         Me.EditItemNameTEXTBOX.Size = New System.Drawing.Size(446, 20)
         Me.EditItemNameTEXTBOX.TabIndex = 620
@@ -771,12 +1001,1215 @@ Partial Class EditItemForm
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
+        'Label17
+        '
+        Me.Label17.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label17.Location = New System.Drawing.Point(96, 11)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(446, 3)
+        Me.Label17.TabIndex = 704
+        '
+        'Label3
+        '
+        Me.Label3.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label3.Location = New System.Drawing.Point(96, 30)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(446, 3)
+        Me.Label3.TabIndex = 705
+        '
+        'Label26
+        '
+        Me.Label26.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label26.Location = New System.Drawing.Point(96, 12)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(3, 20)
+        Me.Label26.TabIndex = 706
+        '
+        'Label4
+        '
+        Me.Label4.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label4.Location = New System.Drawing.Point(539, 12)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(3, 20)
+        Me.Label4.TabIndex = 707
+        '
+        'Label5
+        '
+        Me.Label5.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label5.Location = New System.Drawing.Point(96, 38)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(3, 21)
+        Me.Label5.TabIndex = 708
+        '
+        'Label6
+        '
+        Me.Label6.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label6.Location = New System.Drawing.Point(256, 38)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(3, 21)
+        Me.Label6.TabIndex = 709
+        '
+        'Label10
+        '
+        Me.Label10.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label10.Location = New System.Drawing.Point(236, 280)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(3, 20)
+        Me.Label10.TabIndex = 713
+        '
+        'Label11
+        '
+        Me.Label11.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label11.Location = New System.Drawing.Point(199, 280)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(3, 20)
+        Me.Label11.TabIndex = 714
+        '
+        'Label12
+        '
+        Me.Label12.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label12.Location = New System.Drawing.Point(97, 38)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(161, 3)
+        Me.Label12.TabIndex = 715
+        '
+        'Label13
+        '
+        Me.Label13.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label13.Location = New System.Drawing.Point(97, 56)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(161, 3)
+        Me.Label13.TabIndex = 716
+        '
+        'Label45
+        '
+        Me.Label45.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label45.Location = New System.Drawing.Point(539, 536)
+        Me.Label45.Name = "Label45"
+        Me.Label45.Size = New System.Drawing.Size(3, 20)
+        Me.Label45.TabIndex = 752
+        '
+        'Label46
+        '
+        Me.Label46.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label46.Location = New System.Drawing.Point(95, 536)
+        Me.Label46.Name = "Label46"
+        Me.Label46.Size = New System.Drawing.Size(3, 20)
+        Me.Label46.TabIndex = 751
+        '
+        'Label47
+        '
+        Me.Label47.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label47.Location = New System.Drawing.Point(96, 554)
+        Me.Label47.Name = "Label47"
+        Me.Label47.Size = New System.Drawing.Size(445, 3)
+        Me.Label47.TabIndex = 750
+        '
+        'Label48
+        '
+        Me.Label48.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label48.Location = New System.Drawing.Point(95, 535)
+        Me.Label48.Name = "Label48"
+        Me.Label48.Size = New System.Drawing.Size(446, 3)
+        Me.Label48.TabIndex = 749
+        '
+        'Label8
+        '
+        Me.Label8.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label8.Location = New System.Drawing.Point(97, 80)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(161, 3)
+        Me.Label8.TabIndex = 757
+        '
+        'Label9
+        '
+        Me.Label9.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label9.Location = New System.Drawing.Point(97, 62)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(161, 3)
+        Me.Label9.TabIndex = 756
+        '
+        'Label14
+        '
+        Me.Label14.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label14.Location = New System.Drawing.Point(256, 62)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(3, 21)
+        Me.Label14.TabIndex = 755
+        '
+        'Label15
+        '
+        Me.Label15.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label15.Location = New System.Drawing.Point(96, 62)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(3, 21)
+        Me.Label15.TabIndex = 754
+        '
+        'Label18
+        '
+        Me.Label18.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label18.Location = New System.Drawing.Point(96, 112)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(161, 3)
+        Me.Label18.TabIndex = 762
+        '
+        'Label19
+        '
+        Me.Label19.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label19.Location = New System.Drawing.Point(96, 94)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(161, 3)
+        Me.Label19.TabIndex = 761
+        '
+        'Label50
+        '
+        Me.Label50.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label50.Location = New System.Drawing.Point(255, 94)
+        Me.Label50.Name = "Label50"
+        Me.Label50.Size = New System.Drawing.Size(3, 21)
+        Me.Label50.TabIndex = 760
+        '
+        'Label51
+        '
+        Me.Label51.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label51.Location = New System.Drawing.Point(95, 94)
+        Me.Label51.Name = "Label51"
+        Me.Label51.Size = New System.Drawing.Size(3, 21)
+        Me.Label51.TabIndex = 759
+        '
+        'EditItemAttackClassCOMBOBOX
+        '
+        Me.EditItemAttackClassCOMBOBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemAttackClassCOMBOBOX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.EditItemAttackClassCOMBOBOX.ForeColor = System.Drawing.Color.White
+        Me.EditItemAttackClassCOMBOBOX.FormattingEnabled = True
+        Me.EditItemAttackClassCOMBOBOX.Location = New System.Drawing.Point(95, 456)
+        Me.EditItemAttackClassCOMBOBOX.Name = "EditItemAttackClassCOMBOBOX"
+        Me.EditItemAttackClassCOMBOBOX.Size = New System.Drawing.Size(168, 21)
+        Me.EditItemAttackClassCOMBOBOX.TabIndex = 641
+        '
+        'EditItemMulePassCOMBOBOX
+        '
+        Me.EditItemMulePassCOMBOBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemMulePassCOMBOBOX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.EditItemMulePassCOMBOBOX.ForeColor = System.Drawing.Color.White
+        Me.EditItemMulePassCOMBOBOX.FormattingEnabled = True
+        Me.EditItemMulePassCOMBOBOX.Location = New System.Drawing.Point(375, 404)
+        Me.EditItemMulePassCOMBOBOX.Name = "EditItemMulePassCOMBOBOX"
+        Me.EditItemMulePassCOMBOBOX.Size = New System.Drawing.Size(168, 21)
+        Me.EditItemMulePassCOMBOBOX.TabIndex = 660
+        '
+        'EditItemMuleAccountCOMBOBOX
+        '
+        Me.EditItemMuleAccountCOMBOBOX.BackColor = System.Drawing.Color.Black
+        Me.EditItemMuleAccountCOMBOBOX.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.EditItemMuleAccountCOMBOBOX.ForeColor = System.Drawing.Color.White
+        Me.EditItemMuleAccountCOMBOBOX.FormattingEnabled = True
+        Me.EditItemMuleAccountCOMBOBOX.Location = New System.Drawing.Point(375, 376)
+        Me.EditItemMuleAccountCOMBOBOX.Name = "EditItemMuleAccountCOMBOBOX"
+        Me.EditItemMuleAccountCOMBOBOX.Size = New System.Drawing.Size(168, 21)
+        Me.EditItemMuleAccountCOMBOBOX.TabIndex = 659
+        '
+        'Label20
+        '
+        Me.Label20.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label20.Location = New System.Drawing.Point(378, 367)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(165, 3)
+        Me.Label20.TabIndex = 766
+        '
+        'Label21
+        '
+        Me.Label21.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label21.Location = New System.Drawing.Point(378, 349)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(165, 3)
+        Me.Label21.TabIndex = 765
+        '
+        'Label22
+        '
+        Me.Label22.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label22.Location = New System.Drawing.Point(541, 349)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(3, 21)
+        Me.Label22.TabIndex = 764
+        '
+        'Label23
+        '
+        Me.Label23.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label23.Location = New System.Drawing.Point(375, 349)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(3, 21)
+        Me.Label23.TabIndex = 763
+        '
+        'Label25
+        '
+        Me.Label25.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label25.Location = New System.Drawing.Point(378, 394)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(165, 3)
+        Me.Label25.TabIndex = 771
+        '
+        'Label27
+        '
+        Me.Label27.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label27.Location = New System.Drawing.Point(378, 376)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(165, 3)
+        Me.Label27.TabIndex = 770
+        '
+        'Label28
+        '
+        Me.Label28.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label28.Location = New System.Drawing.Point(541, 376)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(3, 21)
+        Me.Label28.TabIndex = 769
+        '
+        'Label29
+        '
+        Me.Label29.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label29.Location = New System.Drawing.Point(375, 376)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(3, 21)
+        Me.Label29.TabIndex = 768
+        '
+        'Label31
+        '
+        Me.Label31.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label31.Location = New System.Drawing.Point(378, 422)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(165, 3)
+        Me.Label31.TabIndex = 776
+        '
+        'Label32
+        '
+        Me.Label32.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label32.Location = New System.Drawing.Point(378, 404)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(165, 3)
+        Me.Label32.TabIndex = 775
+        '
+        'Label33
+        '
+        Me.Label33.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label33.Location = New System.Drawing.Point(541, 404)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(3, 21)
+        Me.Label33.TabIndex = 774
+        '
+        'Label34
+        '
+        Me.Label34.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label34.Location = New System.Drawing.Point(375, 404)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(3, 21)
+        Me.Label34.TabIndex = 773
+        '
+        'Label36
+        '
+        Me.Label36.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label36.Location = New System.Drawing.Point(378, 450)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(165, 3)
+        Me.Label36.TabIndex = 781
+        '
+        'Label37
+        '
+        Me.Label37.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label37.Location = New System.Drawing.Point(378, 432)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(165, 3)
+        Me.Label37.TabIndex = 780
+        '
+        'Label38
+        '
+        Me.Label38.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label38.Location = New System.Drawing.Point(541, 432)
+        Me.Label38.Name = "Label38"
+        Me.Label38.Size = New System.Drawing.Size(3, 21)
+        Me.Label38.TabIndex = 779
+        '
+        'Label39
+        '
+        Me.Label39.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label39.Location = New System.Drawing.Point(375, 432)
+        Me.Label39.Name = "Label39"
+        Me.Label39.Size = New System.Drawing.Size(3, 21)
+        Me.Label39.TabIndex = 778
+        '
+        'Label40
+        '
+        Me.Label40.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label40.Location = New System.Drawing.Point(199, 279)
+        Me.Label40.Name = "Label40"
+        Me.Label40.Size = New System.Drawing.Size(40, 3)
+        Me.Label40.TabIndex = 783
+        '
+        'Label41
+        '
+        Me.Label41.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label41.Location = New System.Drawing.Point(200, 297)
+        Me.Label41.Name = "Label41"
+        Me.Label41.Size = New System.Drawing.Size(39, 3)
+        Me.Label41.TabIndex = 784
+        '
+        'Label42
+        '
+        Me.Label42.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label42.Location = New System.Drawing.Point(200, 274)
+        Me.Label42.Name = "Label42"
+        Me.Label42.Size = New System.Drawing.Size(39, 3)
+        Me.Label42.TabIndex = 788
+        '
+        'Label43
+        '
+        Me.Label43.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label43.Location = New System.Drawing.Point(199, 256)
+        Me.Label43.Name = "Label43"
+        Me.Label43.Size = New System.Drawing.Size(40, 3)
+        Me.Label43.TabIndex = 787
+        '
+        'Label44
+        '
+        Me.Label44.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label44.Location = New System.Drawing.Point(199, 257)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(3, 20)
+        Me.Label44.TabIndex = 786
+        '
+        'Label52
+        '
+        Me.Label52.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label52.Location = New System.Drawing.Point(236, 257)
+        Me.Label52.Name = "Label52"
+        Me.Label52.Size = New System.Drawing.Size(3, 20)
+        Me.Label52.TabIndex = 785
+        '
+        'Label53
+        '
+        Me.Label53.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label53.Location = New System.Drawing.Point(133, 297)
+        Me.Label53.Name = "Label53"
+        Me.Label53.Size = New System.Drawing.Size(39, 3)
+        Me.Label53.TabIndex = 792
+        '
+        'Label54
+        '
+        Me.Label54.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label54.Location = New System.Drawing.Point(132, 279)
+        Me.Label54.Name = "Label54"
+        Me.Label54.Size = New System.Drawing.Size(40, 3)
+        Me.Label54.TabIndex = 791
+        '
+        'Label55
+        '
+        Me.Label55.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label55.Location = New System.Drawing.Point(132, 280)
+        Me.Label55.Name = "Label55"
+        Me.Label55.Size = New System.Drawing.Size(3, 20)
+        Me.Label55.TabIndex = 790
+        '
+        'Label56
+        '
+        Me.Label56.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label56.Location = New System.Drawing.Point(169, 280)
+        Me.Label56.Name = "Label56"
+        Me.Label56.Size = New System.Drawing.Size(3, 20)
+        Me.Label56.TabIndex = 789
+        '
+        'Label57
+        '
+        Me.Label57.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label57.Location = New System.Drawing.Point(133, 274)
+        Me.Label57.Name = "Label57"
+        Me.Label57.Size = New System.Drawing.Size(39, 3)
+        Me.Label57.TabIndex = 796
+        '
+        'Label58
+        '
+        Me.Label58.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label58.Location = New System.Drawing.Point(132, 256)
+        Me.Label58.Name = "Label58"
+        Me.Label58.Size = New System.Drawing.Size(40, 3)
+        Me.Label58.TabIndex = 795
+        '
+        'Label59
+        '
+        Me.Label59.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label59.Location = New System.Drawing.Point(132, 257)
+        Me.Label59.Name = "Label59"
+        Me.Label59.Size = New System.Drawing.Size(3, 20)
+        Me.Label59.TabIndex = 794
+        '
+        'Label60
+        '
+        Me.Label60.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label60.Location = New System.Drawing.Point(169, 257)
+        Me.Label60.Name = "Label60"
+        Me.Label60.Size = New System.Drawing.Size(3, 20)
+        Me.Label60.TabIndex = 793
+        '
+        'Label61
+        '
+        Me.Label61.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label61.Location = New System.Drawing.Point(133, 335)
+        Me.Label61.Name = "Label61"
+        Me.Label61.Size = New System.Drawing.Size(39, 3)
+        Me.Label61.TabIndex = 800
+        '
+        'Label62
+        '
+        Me.Label62.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label62.Location = New System.Drawing.Point(132, 317)
+        Me.Label62.Name = "Label62"
+        Me.Label62.Size = New System.Drawing.Size(40, 3)
+        Me.Label62.TabIndex = 799
+        '
+        'Label63
+        '
+        Me.Label63.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label63.Location = New System.Drawing.Point(132, 318)
+        Me.Label63.Name = "Label63"
+        Me.Label63.Size = New System.Drawing.Size(3, 20)
+        Me.Label63.TabIndex = 798
+        '
+        'Label64
+        '
+        Me.Label64.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label64.Location = New System.Drawing.Point(169, 318)
+        Me.Label64.Name = "Label64"
+        Me.Label64.Size = New System.Drawing.Size(3, 20)
+        Me.Label64.TabIndex = 797
+        '
+        'Label65
+        '
+        Me.Label65.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label65.Location = New System.Drawing.Point(133, 358)
+        Me.Label65.Name = "Label65"
+        Me.Label65.Size = New System.Drawing.Size(39, 3)
+        Me.Label65.TabIndex = 804
+        '
+        'Label66
+        '
+        Me.Label66.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label66.Location = New System.Drawing.Point(132, 340)
+        Me.Label66.Name = "Label66"
+        Me.Label66.Size = New System.Drawing.Size(40, 3)
+        Me.Label66.TabIndex = 803
+        '
+        'Label67
+        '
+        Me.Label67.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label67.Location = New System.Drawing.Point(132, 341)
+        Me.Label67.Name = "Label67"
+        Me.Label67.Size = New System.Drawing.Size(3, 20)
+        Me.Label67.TabIndex = 802
+        '
+        'Label68
+        '
+        Me.Label68.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label68.Location = New System.Drawing.Point(169, 341)
+        Me.Label68.Name = "Label68"
+        Me.Label68.Size = New System.Drawing.Size(3, 20)
+        Me.Label68.TabIndex = 801
+        '
+        'Label69
+        '
+        Me.Label69.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label69.Location = New System.Drawing.Point(133, 397)
+        Me.Label69.Name = "Label69"
+        Me.Label69.Size = New System.Drawing.Size(39, 3)
+        Me.Label69.TabIndex = 808
+        '
+        'Label70
+        '
+        Me.Label70.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label70.Location = New System.Drawing.Point(132, 379)
+        Me.Label70.Name = "Label70"
+        Me.Label70.Size = New System.Drawing.Size(40, 3)
+        Me.Label70.TabIndex = 807
+        '
+        'Label71
+        '
+        Me.Label71.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label71.Location = New System.Drawing.Point(132, 380)
+        Me.Label71.Name = "Label71"
+        Me.Label71.Size = New System.Drawing.Size(3, 20)
+        Me.Label71.TabIndex = 806
+        '
+        'Label72
+        '
+        Me.Label72.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label72.Location = New System.Drawing.Point(169, 380)
+        Me.Label72.Name = "Label72"
+        Me.Label72.Size = New System.Drawing.Size(3, 20)
+        Me.Label72.TabIndex = 805
+        '
+        'Label73
+        '
+        Me.Label73.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label73.Location = New System.Drawing.Point(133, 447)
+        Me.Label73.Name = "Label73"
+        Me.Label73.Size = New System.Drawing.Size(39, 3)
+        Me.Label73.TabIndex = 812
+        '
+        'Label74
+        '
+        Me.Label74.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label74.Location = New System.Drawing.Point(132, 429)
+        Me.Label74.Name = "Label74"
+        Me.Label74.Size = New System.Drawing.Size(40, 3)
+        Me.Label74.TabIndex = 811
+        '
+        'Label75
+        '
+        Me.Label75.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label75.Location = New System.Drawing.Point(132, 430)
+        Me.Label75.Name = "Label75"
+        Me.Label75.Size = New System.Drawing.Size(3, 20)
+        Me.Label75.TabIndex = 810
+        '
+        'Label76
+        '
+        Me.Label76.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label76.Location = New System.Drawing.Point(169, 430)
+        Me.Label76.Name = "Label76"
+        Me.Label76.Size = New System.Drawing.Size(3, 20)
+        Me.Label76.TabIndex = 809
+        '
+        'Label77
+        '
+        Me.Label77.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label77.Location = New System.Drawing.Point(133, 422)
+        Me.Label77.Name = "Label77"
+        Me.Label77.Size = New System.Drawing.Size(39, 3)
+        Me.Label77.TabIndex = 816
+        '
+        'Label78
+        '
+        Me.Label78.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label78.Location = New System.Drawing.Point(132, 404)
+        Me.Label78.Name = "Label78"
+        Me.Label78.Size = New System.Drawing.Size(40, 3)
+        Me.Label78.TabIndex = 815
+        '
+        'Label79
+        '
+        Me.Label79.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label79.Location = New System.Drawing.Point(132, 405)
+        Me.Label79.Name = "Label79"
+        Me.Label79.Size = New System.Drawing.Size(3, 20)
+        Me.Label79.TabIndex = 814
+        '
+        'Label80
+        '
+        Me.Label80.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label80.Location = New System.Drawing.Point(169, 405)
+        Me.Label80.Name = "Label80"
+        Me.Label80.Size = New System.Drawing.Size(3, 20)
+        Me.Label80.TabIndex = 813
+        '
+        'Label81
+        '
+        Me.Label81.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label81.Location = New System.Drawing.Point(200, 233)
+        Me.Label81.Name = "Label81"
+        Me.Label81.Size = New System.Drawing.Size(39, 3)
+        Me.Label81.TabIndex = 820
+        '
+        'Label82
+        '
+        Me.Label82.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label82.Location = New System.Drawing.Point(199, 215)
+        Me.Label82.Name = "Label82"
+        Me.Label82.Size = New System.Drawing.Size(40, 3)
+        Me.Label82.TabIndex = 819
+        '
+        'Label83
+        '
+        Me.Label83.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label83.Location = New System.Drawing.Point(199, 216)
+        Me.Label83.Name = "Label83"
+        Me.Label83.Size = New System.Drawing.Size(3, 20)
+        Me.Label83.TabIndex = 818
+        '
+        'Label84
+        '
+        Me.Label84.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label84.Location = New System.Drawing.Point(236, 216)
+        Me.Label84.Name = "Label84"
+        Me.Label84.Size = New System.Drawing.Size(3, 20)
+        Me.Label84.TabIndex = 817
+        '
+        'Label85
+        '
+        Me.Label85.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label85.Location = New System.Drawing.Point(200, 210)
+        Me.Label85.Name = "Label85"
+        Me.Label85.Size = New System.Drawing.Size(39, 3)
+        Me.Label85.TabIndex = 824
+        '
+        'Label86
+        '
+        Me.Label86.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label86.Location = New System.Drawing.Point(199, 192)
+        Me.Label86.Name = "Label86"
+        Me.Label86.Size = New System.Drawing.Size(40, 3)
+        Me.Label86.TabIndex = 823
+        '
+        'Label87
+        '
+        Me.Label87.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label87.Location = New System.Drawing.Point(199, 193)
+        Me.Label87.Name = "Label87"
+        Me.Label87.Size = New System.Drawing.Size(3, 20)
+        Me.Label87.TabIndex = 822
+        '
+        'Label88
+        '
+        Me.Label88.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label88.Location = New System.Drawing.Point(236, 193)
+        Me.Label88.Name = "Label88"
+        Me.Label88.Size = New System.Drawing.Size(3, 20)
+        Me.Label88.TabIndex = 821
+        '
+        'Label89
+        '
+        Me.Label89.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label89.Location = New System.Drawing.Point(200, 187)
+        Me.Label89.Name = "Label89"
+        Me.Label89.Size = New System.Drawing.Size(39, 3)
+        Me.Label89.TabIndex = 828
+        '
+        'Label90
+        '
+        Me.Label90.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label90.Location = New System.Drawing.Point(199, 169)
+        Me.Label90.Name = "Label90"
+        Me.Label90.Size = New System.Drawing.Size(40, 3)
+        Me.Label90.TabIndex = 827
+        '
+        'Label91
+        '
+        Me.Label91.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label91.Location = New System.Drawing.Point(199, 170)
+        Me.Label91.Name = "Label91"
+        Me.Label91.Size = New System.Drawing.Size(3, 20)
+        Me.Label91.TabIndex = 826
+        '
+        'Label92
+        '
+        Me.Label92.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label92.Location = New System.Drawing.Point(236, 170)
+        Me.Label92.Name = "Label92"
+        Me.Label92.Size = New System.Drawing.Size(3, 20)
+        Me.Label92.TabIndex = 825
+        '
+        'Label93
+        '
+        Me.Label93.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label93.Location = New System.Drawing.Point(133, 234)
+        Me.Label93.Name = "Label93"
+        Me.Label93.Size = New System.Drawing.Size(39, 3)
+        Me.Label93.TabIndex = 832
+        '
+        'Label94
+        '
+        Me.Label94.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label94.Location = New System.Drawing.Point(132, 216)
+        Me.Label94.Name = "Label94"
+        Me.Label94.Size = New System.Drawing.Size(40, 3)
+        Me.Label94.TabIndex = 831
+        '
+        'Label95
+        '
+        Me.Label95.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label95.Location = New System.Drawing.Point(132, 217)
+        Me.Label95.Name = "Label95"
+        Me.Label95.Size = New System.Drawing.Size(3, 20)
+        Me.Label95.TabIndex = 830
+        '
+        'Label96
+        '
+        Me.Label96.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label96.Location = New System.Drawing.Point(169, 217)
+        Me.Label96.Name = "Label96"
+        Me.Label96.Size = New System.Drawing.Size(3, 20)
+        Me.Label96.TabIndex = 829
+        '
+        'Label97
+        '
+        Me.Label97.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label97.Location = New System.Drawing.Point(133, 210)
+        Me.Label97.Name = "Label97"
+        Me.Label97.Size = New System.Drawing.Size(39, 3)
+        Me.Label97.TabIndex = 836
+        '
+        'Label98
+        '
+        Me.Label98.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label98.Location = New System.Drawing.Point(132, 192)
+        Me.Label98.Name = "Label98"
+        Me.Label98.Size = New System.Drawing.Size(40, 3)
+        Me.Label98.TabIndex = 835
+        '
+        'Label99
+        '
+        Me.Label99.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label99.Location = New System.Drawing.Point(132, 193)
+        Me.Label99.Name = "Label99"
+        Me.Label99.Size = New System.Drawing.Size(3, 20)
+        Me.Label99.TabIndex = 834
+        '
+        'Label100
+        '
+        Me.Label100.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label100.Location = New System.Drawing.Point(169, 193)
+        Me.Label100.Name = "Label100"
+        Me.Label100.Size = New System.Drawing.Size(3, 20)
+        Me.Label100.TabIndex = 833
+        '
+        'Label101
+        '
+        Me.Label101.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label101.Location = New System.Drawing.Point(133, 187)
+        Me.Label101.Name = "Label101"
+        Me.Label101.Size = New System.Drawing.Size(39, 3)
+        Me.Label101.TabIndex = 840
+        '
+        'Label102
+        '
+        Me.Label102.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label102.Location = New System.Drawing.Point(132, 169)
+        Me.Label102.Name = "Label102"
+        Me.Label102.Size = New System.Drawing.Size(40, 3)
+        Me.Label102.TabIndex = 839
+        '
+        'Label103
+        '
+        Me.Label103.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label103.Location = New System.Drawing.Point(132, 170)
+        Me.Label103.Name = "Label103"
+        Me.Label103.Size = New System.Drawing.Size(3, 20)
+        Me.Label103.TabIndex = 838
+        '
+        'Label104
+        '
+        Me.Label104.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label104.Location = New System.Drawing.Point(169, 170)
+        Me.Label104.Name = "Label104"
+        Me.Label104.Size = New System.Drawing.Size(3, 20)
+        Me.Label104.TabIndex = 837
+        '
+        'Label105
+        '
+        Me.Label105.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label105.Location = New System.Drawing.Point(95, 139)
+        Me.Label105.Name = "Label105"
+        Me.Label105.Size = New System.Drawing.Size(44, 3)
+        Me.Label105.TabIndex = 844
+        '
+        'Label106
+        '
+        Me.Label106.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label106.Location = New System.Drawing.Point(95, 121)
+        Me.Label106.Name = "Label106"
+        Me.Label106.Size = New System.Drawing.Size(44, 3)
+        Me.Label106.TabIndex = 843
+        '
+        'Label107
+        '
+        Me.Label107.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label107.Location = New System.Drawing.Point(95, 122)
+        Me.Label107.Name = "Label107"
+        Me.Label107.Size = New System.Drawing.Size(3, 20)
+        Me.Label107.TabIndex = 842
+        '
+        'Label108
+        '
+        Me.Label108.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label108.Location = New System.Drawing.Point(139, 121)
+        Me.Label108.Name = "Label108"
+        Me.Label108.Size = New System.Drawing.Size(3, 21)
+        Me.Label108.TabIndex = 841
+        '
+        'Label111
+        '
+        Me.Label111.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label111.Location = New System.Drawing.Point(98, 474)
+        Me.Label111.Name = "Label111"
+        Me.Label111.Size = New System.Drawing.Size(165, 3)
+        Me.Label111.TabIndex = 849
+        '
+        'Label112
+        '
+        Me.Label112.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label112.Location = New System.Drawing.Point(98, 456)
+        Me.Label112.Name = "Label112"
+        Me.Label112.Size = New System.Drawing.Size(165, 3)
+        Me.Label112.TabIndex = 848
+        '
+        'Label113
+        '
+        Me.Label113.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label113.Location = New System.Drawing.Point(262, 456)
+        Me.Label113.Name = "Label113"
+        Me.Label113.Size = New System.Drawing.Size(3, 21)
+        Me.Label113.TabIndex = 847
+        '
+        'Label114
+        '
+        Me.Label114.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label114.Location = New System.Drawing.Point(95, 456)
+        Me.Label114.Name = "Label114"
+        Me.Label114.Size = New System.Drawing.Size(3, 21)
+        Me.Label114.TabIndex = 846
+        '
+        'Label116
+        '
+        Me.Label116.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label116.Location = New System.Drawing.Point(98, 499)
+        Me.Label116.Name = "Label116"
+        Me.Label116.Size = New System.Drawing.Size(165, 3)
+        Me.Label116.TabIndex = 854
+        '
+        'Label117
+        '
+        Me.Label117.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label117.Location = New System.Drawing.Point(98, 481)
+        Me.Label117.Name = "Label117"
+        Me.Label117.Size = New System.Drawing.Size(165, 3)
+        Me.Label117.TabIndex = 853
+        '
+        'Label118
+        '
+        Me.Label118.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label118.Location = New System.Drawing.Point(262, 481)
+        Me.Label118.Name = "Label118"
+        Me.Label118.Size = New System.Drawing.Size(3, 21)
+        Me.Label118.TabIndex = 852
+        '
+        'Label119
+        '
+        Me.Label119.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label119.Location = New System.Drawing.Point(95, 481)
+        Me.Label119.Name = "Label119"
+        Me.Label119.Size = New System.Drawing.Size(3, 21)
+        Me.Label119.TabIndex = 851
+        '
+        'Label120
+        '
+        Me.Label120.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label120.Location = New System.Drawing.Point(372, 497)
+        Me.Label120.Name = "Label120"
+        Me.Label120.Size = New System.Drawing.Size(63, 3)
+        Me.Label120.TabIndex = 859
+        '
+        'Label121
+        '
+        Me.Label121.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label121.Location = New System.Drawing.Point(371, 479)
+        Me.Label121.Name = "Label121"
+        Me.Label121.Size = New System.Drawing.Size(64, 3)
+        Me.Label121.TabIndex = 858
+        '
+        'Label122
+        '
+        Me.Label122.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label122.Location = New System.Drawing.Point(371, 480)
+        Me.Label122.Name = "Label122"
+        Me.Label122.Size = New System.Drawing.Size(3, 20)
+        Me.Label122.TabIndex = 857
+        '
+        'Label123
+        '
+        Me.Label123.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label123.Location = New System.Drawing.Point(434, 479)
+        Me.Label123.Name = "Label123"
+        Me.Label123.Size = New System.Drawing.Size(3, 21)
+        Me.Label123.TabIndex = 856
+        '
+        'Label125
+        '
+        Me.Label125.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label125.Location = New System.Drawing.Point(264, 57)
+        Me.Label125.Name = "Label125"
+        Me.Label125.Size = New System.Drawing.Size(280, 3)
+        Me.Label125.TabIndex = 862
+        '
+        'Label127
+        '
+        Me.Label127.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label127.Location = New System.Drawing.Point(264, 58)
+        Me.Label127.Name = "Label127"
+        Me.Label127.Size = New System.Drawing.Size(3, 280)
+        Me.Label127.TabIndex = 860
+        '
+        'Label124
+        '
+        Me.Label124.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label124.Location = New System.Drawing.Point(541, 58)
+        Me.Label124.Name = "Label124"
+        Me.Label124.Size = New System.Drawing.Size(3, 279)
+        Me.Label124.TabIndex = 863
+        '
+        'Label126
+        '
+        Me.Label126.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label126.Location = New System.Drawing.Point(264, 336)
+        Me.Label126.Name = "Label126"
+        Me.Label126.Size = New System.Drawing.Size(280, 3)
+        Me.Label126.TabIndex = 864
+        '
+        'Label128
+        '
+        Me.Label128.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label128.Location = New System.Drawing.Point(264, 77)
+        Me.Label128.Name = "Label128"
+        Me.Label128.Size = New System.Drawing.Size(280, 1)
+        Me.Label128.TabIndex = 865
+        '
+        'Label129
+        '
+        Me.Label129.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label129.Location = New System.Drawing.Point(264, 95)
+        Me.Label129.Name = "Label129"
+        Me.Label129.Size = New System.Drawing.Size(280, 1)
+        Me.Label129.TabIndex = 866
+        '
+        'Label130
+        '
+        Me.Label130.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label130.Location = New System.Drawing.Point(264, 112)
+        Me.Label130.Name = "Label130"
+        Me.Label130.Size = New System.Drawing.Size(280, 1)
+        Me.Label130.TabIndex = 867
+        '
+        'Label131
+        '
+        Me.Label131.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label131.Location = New System.Drawing.Point(264, 130)
+        Me.Label131.Name = "Label131"
+        Me.Label131.Size = New System.Drawing.Size(280, 1)
+        Me.Label131.TabIndex = 868
+        '
+        'Label132
+        '
+        Me.Label132.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label132.Location = New System.Drawing.Point(264, 149)
+        Me.Label132.Name = "Label132"
+        Me.Label132.Size = New System.Drawing.Size(280, 1)
+        Me.Label132.TabIndex = 869
+        '
+        'Label133
+        '
+        Me.Label133.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label133.Location = New System.Drawing.Point(264, 168)
+        Me.Label133.Name = "Label133"
+        Me.Label133.Size = New System.Drawing.Size(280, 1)
+        Me.Label133.TabIndex = 870
+        '
+        'Label134
+        '
+        Me.Label134.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label134.Location = New System.Drawing.Point(264, 187)
+        Me.Label134.Name = "Label134"
+        Me.Label134.Size = New System.Drawing.Size(280, 1)
+        Me.Label134.TabIndex = 871
+        '
+        'Label135
+        '
+        Me.Label135.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label135.Location = New System.Drawing.Point(264, 206)
+        Me.Label135.Name = "Label135"
+        Me.Label135.Size = New System.Drawing.Size(280, 1)
+        Me.Label135.TabIndex = 872
+        '
+        'Label136
+        '
+        Me.Label136.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label136.Location = New System.Drawing.Point(264, 225)
+        Me.Label136.Name = "Label136"
+        Me.Label136.Size = New System.Drawing.Size(280, 1)
+        Me.Label136.TabIndex = 873
+        '
+        'Label137
+        '
+        Me.Label137.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label137.Location = New System.Drawing.Point(264, 243)
+        Me.Label137.Name = "Label137"
+        Me.Label137.Size = New System.Drawing.Size(280, 1)
+        Me.Label137.TabIndex = 874
+        '
+        'Label138
+        '
+        Me.Label138.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label138.Location = New System.Drawing.Point(264, 262)
+        Me.Label138.Name = "Label138"
+        Me.Label138.Size = New System.Drawing.Size(280, 1)
+        Me.Label138.TabIndex = 875
+        '
+        'Label139
+        '
+        Me.Label139.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label139.Location = New System.Drawing.Point(264, 280)
+        Me.Label139.Name = "Label139"
+        Me.Label139.Size = New System.Drawing.Size(280, 1)
+        Me.Label139.TabIndex = 876
+        '
+        'Label140
+        '
+        Me.Label140.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label140.Location = New System.Drawing.Point(264, 299)
+        Me.Label140.Name = "Label140"
+        Me.Label140.Size = New System.Drawing.Size(280, 1)
+        Me.Label140.TabIndex = 877
+        '
+        'Label141
+        '
+        Me.Label141.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label141.Location = New System.Drawing.Point(264, 318)
+        Me.Label141.Name = "Label141"
+        Me.Label141.Size = New System.Drawing.Size(280, 1)
+        Me.Label141.TabIndex = 878
+        '
         'EditItemForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.WindowText
         Me.ClientSize = New System.Drawing.Size(552, 595)
+        Me.Controls.Add(Me.Label141)
+        Me.Controls.Add(Me.Label140)
+        Me.Controls.Add(Me.Label139)
+        Me.Controls.Add(Me.Label138)
+        Me.Controls.Add(Me.Label137)
+        Me.Controls.Add(Me.Label136)
+        Me.Controls.Add(Me.Label135)
+        Me.Controls.Add(Me.Label134)
+        Me.Controls.Add(Me.Label133)
+        Me.Controls.Add(Me.Label132)
+        Me.Controls.Add(Me.Label131)
+        Me.Controls.Add(Me.Label130)
+        Me.Controls.Add(Me.Label129)
+        Me.Controls.Add(Me.Label128)
+        Me.Controls.Add(Me.Label126)
+        Me.Controls.Add(Me.Label124)
+        Me.Controls.Add(Me.Label125)
+        Me.Controls.Add(Me.Label127)
+        Me.Controls.Add(Me.Label120)
+        Me.Controls.Add(Me.Label121)
+        Me.Controls.Add(Me.Label122)
+        Me.Controls.Add(Me.Label123)
+        Me.Controls.Add(Me.Label116)
+        Me.Controls.Add(Me.Label117)
+        Me.Controls.Add(Me.Label118)
+        Me.Controls.Add(Me.Label119)
+        Me.Controls.Add(Me.Label111)
+        Me.Controls.Add(Me.Label112)
+        Me.Controls.Add(Me.Label113)
+        Me.Controls.Add(Me.Label114)
+        Me.Controls.Add(Me.Label105)
+        Me.Controls.Add(Me.Label106)
+        Me.Controls.Add(Me.Label107)
+        Me.Controls.Add(Me.Label108)
+        Me.Controls.Add(Me.Label101)
+        Me.Controls.Add(Me.Label102)
+        Me.Controls.Add(Me.Label103)
+        Me.Controls.Add(Me.Label104)
+        Me.Controls.Add(Me.Label97)
+        Me.Controls.Add(Me.Label98)
+        Me.Controls.Add(Me.Label99)
+        Me.Controls.Add(Me.Label100)
+        Me.Controls.Add(Me.Label93)
+        Me.Controls.Add(Me.Label94)
+        Me.Controls.Add(Me.Label95)
+        Me.Controls.Add(Me.Label96)
+        Me.Controls.Add(Me.Label89)
+        Me.Controls.Add(Me.Label90)
+        Me.Controls.Add(Me.Label91)
+        Me.Controls.Add(Me.Label92)
+        Me.Controls.Add(Me.Label85)
+        Me.Controls.Add(Me.Label86)
+        Me.Controls.Add(Me.Label87)
+        Me.Controls.Add(Me.Label88)
+        Me.Controls.Add(Me.Label81)
+        Me.Controls.Add(Me.Label82)
+        Me.Controls.Add(Me.Label83)
+        Me.Controls.Add(Me.Label84)
+        Me.Controls.Add(Me.Label77)
+        Me.Controls.Add(Me.Label78)
+        Me.Controls.Add(Me.Label79)
+        Me.Controls.Add(Me.Label80)
+        Me.Controls.Add(Me.Label73)
+        Me.Controls.Add(Me.Label74)
+        Me.Controls.Add(Me.Label75)
+        Me.Controls.Add(Me.Label76)
+        Me.Controls.Add(Me.Label69)
+        Me.Controls.Add(Me.Label70)
+        Me.Controls.Add(Me.Label71)
+        Me.Controls.Add(Me.Label72)
+        Me.Controls.Add(Me.Label65)
+        Me.Controls.Add(Me.Label66)
+        Me.Controls.Add(Me.Label67)
+        Me.Controls.Add(Me.Label68)
+        Me.Controls.Add(Me.Label61)
+        Me.Controls.Add(Me.Label62)
+        Me.Controls.Add(Me.Label63)
+        Me.Controls.Add(Me.Label64)
+        Me.Controls.Add(Me.Label57)
+        Me.Controls.Add(Me.Label58)
+        Me.Controls.Add(Me.Label59)
+        Me.Controls.Add(Me.Label60)
+        Me.Controls.Add(Me.Label53)
+        Me.Controls.Add(Me.Label54)
+        Me.Controls.Add(Me.Label55)
+        Me.Controls.Add(Me.Label56)
+        Me.Controls.Add(Me.Label42)
+        Me.Controls.Add(Me.Label43)
+        Me.Controls.Add(Me.Label44)
+        Me.Controls.Add(Me.Label52)
+        Me.Controls.Add(Me.Label41)
+        Me.Controls.Add(Me.Label40)
+        Me.Controls.Add(Me.Label36)
+        Me.Controls.Add(Me.Label37)
+        Me.Controls.Add(Me.Label38)
+        Me.Controls.Add(Me.Label39)
+        Me.Controls.Add(Me.Label31)
+        Me.Controls.Add(Me.Label32)
+        Me.Controls.Add(Me.Label33)
+        Me.Controls.Add(Me.Label34)
+        Me.Controls.Add(Me.Label25)
+        Me.Controls.Add(Me.Label27)
+        Me.Controls.Add(Me.Label28)
+        Me.Controls.Add(Me.Label29)
+        Me.Controls.Add(Me.Label20)
+        Me.Controls.Add(Me.Label21)
+        Me.Controls.Add(Me.Label22)
+        Me.Controls.Add(Me.Label23)
+        Me.Controls.Add(Me.Label18)
+        Me.Controls.Add(Me.Label19)
+        Me.Controls.Add(Me.Label50)
+        Me.Controls.Add(Me.Label51)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.Label14)
+        Me.Controls.Add(Me.Label15)
+        Me.Controls.Add(Me.Label45)
+        Me.Controls.Add(Me.Label46)
+        Me.Controls.Add(Me.Label47)
+        Me.Controls.Add(Me.Label48)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.Label26)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.EditItemImageTEXTBOX)
         Me.Controls.Add(Me.EditItemImageLABEL)
         Me.Controls.Add(Me.EditItemImageBUTTON)
@@ -869,10 +2302,7 @@ Partial Class EditItemForm
     Friend WithEvents EditItemPickitBotCOMBOBOX As System.Windows.Forms.ComboBox
     Friend WithEvents EditItemPickitBotLABEL As System.Windows.Forms.Label
     Friend WithEvents EditItemQualityCOMBOBOX As System.Windows.Forms.ComboBox
-    Friend WithEvents EditItemMulePassCOMBOBOX As System.Windows.Forms.ComboBox
-    Friend WithEvents EditItemMuleAccountCOMBOBOX As System.Windows.Forms.ComboBox
     Friend WithEvents EditItemMuleNameCOMBOBOX As System.Windows.Forms.ComboBox
-    Friend WithEvents EditItemAttackClassCOMBOBOX As System.Windows.Forms.ComboBox
     Friend WithEvents EditItemAttackSpeedCOMBOBOX As System.Windows.Forms.ComboBox
     Friend WithEvents EditItemStat15TEXTBOX As System.Windows.Forms.TextBox
     Friend WithEvents EditItemStat14TEXTBOX As System.Windows.Forms.TextBox
@@ -942,4 +2372,137 @@ Partial Class EditItemForm
     Friend WithEvents EditItemNameTEXTBOX As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
+    Friend WithEvents Label17 As System.Windows.Forms.Label
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents Label26 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents Label45 As System.Windows.Forms.Label
+    Friend WithEvents Label46 As System.Windows.Forms.Label
+    Friend WithEvents Label47 As System.Windows.Forms.Label
+    Friend WithEvents Label48 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents Label18 As System.Windows.Forms.Label
+    Friend WithEvents Label19 As System.Windows.Forms.Label
+    Friend WithEvents Label50 As System.Windows.Forms.Label
+    Friend WithEvents Label51 As System.Windows.Forms.Label
+    Friend WithEvents EditItemAttackClassCOMBOBOX As System.Windows.Forms.ComboBox
+    Friend WithEvents EditItemMulePassCOMBOBOX As System.Windows.Forms.ComboBox
+    Friend WithEvents EditItemMuleAccountCOMBOBOX As System.Windows.Forms.ComboBox
+    Friend WithEvents Label20 As System.Windows.Forms.Label
+    Friend WithEvents Label21 As System.Windows.Forms.Label
+    Friend WithEvents Label22 As System.Windows.Forms.Label
+    Friend WithEvents Label23 As System.Windows.Forms.Label
+    Friend WithEvents Label25 As System.Windows.Forms.Label
+    Friend WithEvents Label27 As System.Windows.Forms.Label
+    Friend WithEvents Label28 As System.Windows.Forms.Label
+    Friend WithEvents Label29 As System.Windows.Forms.Label
+    Friend WithEvents Label31 As System.Windows.Forms.Label
+    Friend WithEvents Label32 As System.Windows.Forms.Label
+    Friend WithEvents Label33 As System.Windows.Forms.Label
+    Friend WithEvents Label34 As System.Windows.Forms.Label
+    Friend WithEvents Label36 As System.Windows.Forms.Label
+    Friend WithEvents Label37 As System.Windows.Forms.Label
+    Friend WithEvents Label38 As System.Windows.Forms.Label
+    Friend WithEvents Label39 As System.Windows.Forms.Label
+    Friend WithEvents Label40 As System.Windows.Forms.Label
+    Friend WithEvents Label41 As System.Windows.Forms.Label
+    Friend WithEvents Label42 As System.Windows.Forms.Label
+    Friend WithEvents Label43 As System.Windows.Forms.Label
+    Friend WithEvents Label44 As System.Windows.Forms.Label
+    Friend WithEvents Label52 As System.Windows.Forms.Label
+    Friend WithEvents Label53 As System.Windows.Forms.Label
+    Friend WithEvents Label54 As System.Windows.Forms.Label
+    Friend WithEvents Label55 As System.Windows.Forms.Label
+    Friend WithEvents Label56 As System.Windows.Forms.Label
+    Friend WithEvents Label57 As System.Windows.Forms.Label
+    Friend WithEvents Label58 As System.Windows.Forms.Label
+    Friend WithEvents Label59 As System.Windows.Forms.Label
+    Friend WithEvents Label60 As System.Windows.Forms.Label
+    Friend WithEvents Label61 As System.Windows.Forms.Label
+    Friend WithEvents Label62 As System.Windows.Forms.Label
+    Friend WithEvents Label63 As System.Windows.Forms.Label
+    Friend WithEvents Label64 As System.Windows.Forms.Label
+    Friend WithEvents Label65 As System.Windows.Forms.Label
+    Friend WithEvents Label66 As System.Windows.Forms.Label
+    Friend WithEvents Label67 As System.Windows.Forms.Label
+    Friend WithEvents Label68 As System.Windows.Forms.Label
+    Friend WithEvents Label69 As System.Windows.Forms.Label
+    Friend WithEvents Label70 As System.Windows.Forms.Label
+    Friend WithEvents Label71 As System.Windows.Forms.Label
+    Friend WithEvents Label72 As System.Windows.Forms.Label
+    Friend WithEvents Label73 As System.Windows.Forms.Label
+    Friend WithEvents Label74 As System.Windows.Forms.Label
+    Friend WithEvents Label75 As System.Windows.Forms.Label
+    Friend WithEvents Label76 As System.Windows.Forms.Label
+    Friend WithEvents Label77 As System.Windows.Forms.Label
+    Friend WithEvents Label78 As System.Windows.Forms.Label
+    Friend WithEvents Label79 As System.Windows.Forms.Label
+    Friend WithEvents Label80 As System.Windows.Forms.Label
+    Friend WithEvents Label81 As System.Windows.Forms.Label
+    Friend WithEvents Label82 As System.Windows.Forms.Label
+    Friend WithEvents Label83 As System.Windows.Forms.Label
+    Friend WithEvents Label84 As System.Windows.Forms.Label
+    Friend WithEvents Label85 As System.Windows.Forms.Label
+    Friend WithEvents Label86 As System.Windows.Forms.Label
+    Friend WithEvents Label87 As System.Windows.Forms.Label
+    Friend WithEvents Label88 As System.Windows.Forms.Label
+    Friend WithEvents Label89 As System.Windows.Forms.Label
+    Friend WithEvents Label90 As System.Windows.Forms.Label
+    Friend WithEvents Label91 As System.Windows.Forms.Label
+    Friend WithEvents Label92 As System.Windows.Forms.Label
+    Friend WithEvents Label93 As System.Windows.Forms.Label
+    Friend WithEvents Label94 As System.Windows.Forms.Label
+    Friend WithEvents Label95 As System.Windows.Forms.Label
+    Friend WithEvents Label96 As System.Windows.Forms.Label
+    Friend WithEvents Label97 As System.Windows.Forms.Label
+    Friend WithEvents Label98 As System.Windows.Forms.Label
+    Friend WithEvents Label99 As System.Windows.Forms.Label
+    Friend WithEvents Label100 As System.Windows.Forms.Label
+    Friend WithEvents Label101 As System.Windows.Forms.Label
+    Friend WithEvents Label102 As System.Windows.Forms.Label
+    Friend WithEvents Label103 As System.Windows.Forms.Label
+    Friend WithEvents Label104 As System.Windows.Forms.Label
+    Friend WithEvents Label105 As System.Windows.Forms.Label
+    Friend WithEvents Label106 As System.Windows.Forms.Label
+    Friend WithEvents Label107 As System.Windows.Forms.Label
+    Friend WithEvents Label108 As System.Windows.Forms.Label
+    Friend WithEvents Label111 As System.Windows.Forms.Label
+    Friend WithEvents Label112 As System.Windows.Forms.Label
+    Friend WithEvents Label113 As System.Windows.Forms.Label
+    Friend WithEvents Label114 As System.Windows.Forms.Label
+    Friend WithEvents Label116 As System.Windows.Forms.Label
+    Friend WithEvents Label117 As System.Windows.Forms.Label
+    Friend WithEvents Label118 As System.Windows.Forms.Label
+    Friend WithEvents Label119 As System.Windows.Forms.Label
+    Friend WithEvents Label120 As System.Windows.Forms.Label
+    Friend WithEvents Label121 As System.Windows.Forms.Label
+    Friend WithEvents Label122 As System.Windows.Forms.Label
+    Friend WithEvents Label123 As System.Windows.Forms.Label
+    Friend WithEvents Label125 As System.Windows.Forms.Label
+    Friend WithEvents Label127 As System.Windows.Forms.Label
+    Friend WithEvents Label124 As System.Windows.Forms.Label
+    Friend WithEvents Label126 As System.Windows.Forms.Label
+    Friend WithEvents Label128 As System.Windows.Forms.Label
+    Friend WithEvents Label129 As System.Windows.Forms.Label
+    Friend WithEvents Label130 As System.Windows.Forms.Label
+    Friend WithEvents Label131 As System.Windows.Forms.Label
+    Friend WithEvents Label132 As System.Windows.Forms.Label
+    Friend WithEvents Label133 As System.Windows.Forms.Label
+    Friend WithEvents Label134 As System.Windows.Forms.Label
+    Friend WithEvents Label135 As System.Windows.Forms.Label
+    Friend WithEvents Label136 As System.Windows.Forms.Label
+    Friend WithEvents Label137 As System.Windows.Forms.Label
+    Friend WithEvents Label138 As System.Windows.Forms.Label
+    Friend WithEvents Label139 As System.Windows.Forms.Label
+    Friend WithEvents Label140 As System.Windows.Forms.Label
+    Friend WithEvents Label141 As System.Windows.Forms.Label
 End Class
