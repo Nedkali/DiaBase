@@ -22,6 +22,7 @@ Partial Class AddItemForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddItemForm))
         Me.AddItemImageTEXTBOX = New System.Windows.Forms.TextBox()
         Me.AddItemImageLABEL = New System.Windows.Forms.Label()
         Me.AddItemImageBUTTON = New System.Windows.Forms.Button()
@@ -237,7 +238,7 @@ Partial Class AddItemForm
         '
         Me.AddItemImageTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemImageTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemImageTEXTBOX.Location = New System.Drawing.Point(365, 496)
+        Me.AddItemImageTEXTBOX.Location = New System.Drawing.Point(365, 484)
         Me.AddItemImageTEXTBOX.Name = "AddItemImageTEXTBOX"
         Me.AddItemImageTEXTBOX.Size = New System.Drawing.Size(64, 20)
         Me.AddItemImageTEXTBOX.TabIndex = 631
@@ -246,7 +247,7 @@ Partial Class AddItemForm
         '
         Me.AddItemImageLABEL.AutoSize = True
         Me.AddItemImageLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemImageLABEL.Location = New System.Drawing.Point(301, 499)
+        Me.AddItemImageLABEL.Location = New System.Drawing.Point(301, 487)
         Me.AddItemImageLABEL.Name = "AddItemImageLABEL"
         Me.AddItemImageLABEL.Size = New System.Drawing.Size(55, 13)
         Me.AddItemImageLABEL.TabIndex = 630
@@ -258,7 +259,7 @@ Partial Class AddItemForm
         Me.AddItemImageBUTTON.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.AddItemImageBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.AddItemImageBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemImageBUTTON.Location = New System.Drawing.Point(438, 495)
+        Me.AddItemImageBUTTON.Location = New System.Drawing.Point(438, 483)
         Me.AddItemImageBUTTON.Name = "AddItemImageBUTTON"
         Me.AddItemImageBUTTON.Size = New System.Drawing.Size(95, 23)
         Me.AddItemImageBUTTON.TabIndex = 629
@@ -270,7 +271,7 @@ Partial Class AddItemForm
         Me.AddItemPickitBotCOMBOBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemPickitBotCOMBOBOX.ForeColor = System.Drawing.Color.White
         Me.AddItemPickitBotCOMBOBOX.FormattingEnabled = True
-        Me.AddItemPickitBotCOMBOBOX.Location = New System.Drawing.Point(371, 444)
+        Me.AddItemPickitBotCOMBOBOX.Location = New System.Drawing.Point(371, 432)
         Me.AddItemPickitBotCOMBOBOX.Name = "AddItemPickitBotCOMBOBOX"
         Me.AddItemPickitBotCOMBOBOX.Size = New System.Drawing.Size(167, 21)
         Me.AddItemPickitBotCOMBOBOX.TabIndex = 594
@@ -279,7 +280,7 @@ Partial Class AddItemForm
         '
         Me.AddItemPickitBotLABEL.AutoSize = True
         Me.AddItemPickitBotLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemPickitBotLABEL.Location = New System.Drawing.Point(312, 447)
+        Me.AddItemPickitBotLABEL.Location = New System.Drawing.Point(312, 435)
         Me.AddItemPickitBotLABEL.Name = "AddItemPickitBotLABEL"
         Me.AddItemPickitBotLABEL.Size = New System.Drawing.Size(52, 13)
         Me.AddItemPickitBotLABEL.TabIndex = 628
@@ -290,7 +291,7 @@ Partial Class AddItemForm
         Me.AddItemBaseCOMBOBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemBaseCOMBOBOX.ForeColor = System.Drawing.Color.White
         Me.AddItemBaseCOMBOBOX.FormattingEnabled = True
-        Me.AddItemBaseCOMBOBOX.Location = New System.Drawing.Point(89, 54)
+        Me.AddItemBaseCOMBOBOX.Location = New System.Drawing.Point(89, 42)
         Me.AddItemBaseCOMBOBOX.Name = "AddItemBaseCOMBOBOX"
         Me.AddItemBaseCOMBOBOX.Size = New System.Drawing.Size(162, 21)
         Me.AddItemBaseCOMBOBOX.TabIndex = 554
@@ -301,7 +302,7 @@ Partial Class AddItemForm
         Me.AddItemCancelBUTTON.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.AddItemCancelBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.AddItemCancelBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemCancelBUTTON.Location = New System.Drawing.Point(461, 578)
+        Me.AddItemCancelBUTTON.Location = New System.Drawing.Point(461, 566)
         Me.AddItemCancelBUTTON.Name = "AddItemCancelBUTTON"
         Me.AddItemCancelBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.AddItemCancelBUTTON.TabIndex = 599
@@ -312,7 +313,7 @@ Partial Class AddItemForm
         '
         Me.AddAnotherCHECKBOX.AutoSize = True
         Me.AddAnotherCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddAnotherCHECKBOX.Location = New System.Drawing.Point(14, 582)
+        Me.AddAnotherCHECKBOX.Location = New System.Drawing.Point(14, 570)
         Me.AddAnotherCHECKBOX.Name = "AddAnotherCHECKBOX"
         Me.AddAnotherCHECKBOX.Size = New System.Drawing.Size(108, 17)
         Me.AddAnotherCHECKBOX.TabIndex = 597
@@ -324,7 +325,7 @@ Partial Class AddItemForm
         Me.AddItemStat15TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemStat15TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.AddItemStat15TEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemStat15TEXTBOX.Location = New System.Drawing.Point(259, 329)
+        Me.AddItemStat15TEXTBOX.Location = New System.Drawing.Point(259, 317)
         Me.AddItemStat15TEXTBOX.Name = "AddItemStat15TEXTBOX"
         Me.AddItemStat15TEXTBOX.Size = New System.Drawing.Size(278, 20)
         Me.AddItemStat15TEXTBOX.TabIndex = 590
@@ -334,7 +335,7 @@ Partial Class AddItemForm
         Me.AddItemStat14TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemStat14TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.AddItemStat14TEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemStat14TEXTBOX.Location = New System.Drawing.Point(259, 310)
+        Me.AddItemStat14TEXTBOX.Location = New System.Drawing.Point(259, 298)
         Me.AddItemStat14TEXTBOX.Name = "AddItemStat14TEXTBOX"
         Me.AddItemStat14TEXTBOX.Size = New System.Drawing.Size(278, 20)
         Me.AddItemStat14TEXTBOX.TabIndex = 589
@@ -344,7 +345,7 @@ Partial Class AddItemForm
         Me.AddItemStat13TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemStat13TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.AddItemStat13TEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemStat13TEXTBOX.Location = New System.Drawing.Point(259, 291)
+        Me.AddItemStat13TEXTBOX.Location = New System.Drawing.Point(259, 279)
         Me.AddItemStat13TEXTBOX.Name = "AddItemStat13TEXTBOX"
         Me.AddItemStat13TEXTBOX.Size = New System.Drawing.Size(278, 20)
         Me.AddItemStat13TEXTBOX.TabIndex = 588
@@ -355,7 +356,7 @@ Partial Class AddItemForm
         Me.AddItemClearAllBUTTON.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.AddItemClearAllBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.AddItemClearAllBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemClearAllBUTTON.Location = New System.Drawing.Point(380, 578)
+        Me.AddItemClearAllBUTTON.Location = New System.Drawing.Point(380, 566)
         Me.AddItemClearAllBUTTON.Name = "AddItemClearAllBUTTON"
         Me.AddItemClearAllBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.AddItemClearAllBUTTON.TabIndex = 598
@@ -368,7 +369,7 @@ Partial Class AddItemForm
         Me.AddItemSaveBUTTON.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.AddItemSaveBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.AddItemSaveBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemSaveBUTTON.Location = New System.Drawing.Point(299, 578)
+        Me.AddItemSaveBUTTON.Location = New System.Drawing.Point(299, 566)
         Me.AddItemSaveBUTTON.Name = "AddItemSaveBUTTON"
         Me.AddItemSaveBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.AddItemSaveBUTTON.TabIndex = 596
@@ -380,7 +381,7 @@ Partial Class AddItemForm
         Me.AddItemMulePassCOMBOBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemMulePassCOMBOBOX.ForeColor = System.Drawing.Color.White
         Me.AddItemMulePassCOMBOBOX.FormattingEnabled = True
-        Me.AddItemMulePassCOMBOBOX.Location = New System.Drawing.Point(370, 415)
+        Me.AddItemMulePassCOMBOBOX.Location = New System.Drawing.Point(370, 403)
         Me.AddItemMulePassCOMBOBOX.Name = "AddItemMulePassCOMBOBOX"
         Me.AddItemMulePassCOMBOBOX.Size = New System.Drawing.Size(167, 21)
         Me.AddItemMulePassCOMBOBOX.TabIndex = 593
@@ -390,7 +391,7 @@ Partial Class AddItemForm
         Me.AddItemMuleAccountCOMBOBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemMuleAccountCOMBOBOX.ForeColor = System.Drawing.Color.White
         Me.AddItemMuleAccountCOMBOBOX.FormattingEnabled = True
-        Me.AddItemMuleAccountCOMBOBOX.Location = New System.Drawing.Point(370, 387)
+        Me.AddItemMuleAccountCOMBOBOX.Location = New System.Drawing.Point(370, 375)
         Me.AddItemMuleAccountCOMBOBOX.Name = "AddItemMuleAccountCOMBOBOX"
         Me.AddItemMuleAccountCOMBOBOX.Size = New System.Drawing.Size(167, 21)
         Me.AddItemMuleAccountCOMBOBOX.TabIndex = 592
@@ -400,7 +401,7 @@ Partial Class AddItemForm
         Me.AddItemMuleNameCOMBOBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemMuleNameCOMBOBOX.ForeColor = System.Drawing.Color.White
         Me.AddItemMuleNameCOMBOBOX.FormattingEnabled = True
-        Me.AddItemMuleNameCOMBOBOX.Location = New System.Drawing.Point(370, 359)
+        Me.AddItemMuleNameCOMBOBOX.Location = New System.Drawing.Point(370, 347)
         Me.AddItemMuleNameCOMBOBOX.Name = "AddItemMuleNameCOMBOBOX"
         Me.AddItemMuleNameCOMBOBOX.Size = New System.Drawing.Size(167, 21)
         Me.AddItemMuleNameCOMBOBOX.TabIndex = 591
@@ -410,7 +411,7 @@ Partial Class AddItemForm
         Me.AddItemAttackClassCOMBOBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemAttackClassCOMBOBOX.ForeColor = System.Drawing.Color.White
         Me.AddItemAttackClassCOMBOBOX.FormattingEnabled = True
-        Me.AddItemAttackClassCOMBOBOX.Location = New System.Drawing.Point(88, 473)
+        Me.AddItemAttackClassCOMBOBOX.Location = New System.Drawing.Point(88, 461)
         Me.AddItemAttackClassCOMBOBOX.Name = "AddItemAttackClassCOMBOBOX"
         Me.AddItemAttackClassCOMBOBOX.Size = New System.Drawing.Size(168, 21)
         Me.AddItemAttackClassCOMBOBOX.TabIndex = 574
@@ -421,7 +422,7 @@ Partial Class AddItemForm
         Me.AddItemAttackSpeedCOMBOBOX.ForeColor = System.Drawing.Color.White
         Me.AddItemAttackSpeedCOMBOBOX.FormattingEnabled = True
         Me.AddItemAttackSpeedCOMBOBOX.Items.AddRange(New Object() {"Very Slow", "Slow", "Normal", "Fast", "Very Fast"})
-        Me.AddItemAttackSpeedCOMBOBOX.Location = New System.Drawing.Point(88, 498)
+        Me.AddItemAttackSpeedCOMBOBOX.Location = New System.Drawing.Point(88, 486)
         Me.AddItemAttackSpeedCOMBOBOX.Name = "AddItemAttackSpeedCOMBOBOX"
         Me.AddItemAttackSpeedCOMBOBOX.Size = New System.Drawing.Size(167, 21)
         Me.AddItemAttackSpeedCOMBOBOX.TabIndex = 575
@@ -430,7 +431,7 @@ Partial Class AddItemForm
         '
         Me.Label3.AutoSize = True
         Me.Label3.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label3.Location = New System.Drawing.Point(32, 116)
+        Me.Label3.Location = New System.Drawing.Point(32, 104)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(56, 13)
         Me.Label3.TabIndex = 627
@@ -440,7 +441,7 @@ Partial Class AddItemForm
         '
         Me.AddItemRunewordTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemRunewordTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemRunewordTEXTBOX.Location = New System.Drawing.Point(89, 112)
+        Me.AddItemRunewordTEXTBOX.Location = New System.Drawing.Point(89, 100)
         Me.AddItemRunewordTEXTBOX.Name = "AddItemRunewordTEXTBOX"
         Me.AddItemRunewordTEXTBOX.Size = New System.Drawing.Size(160, 20)
         Me.AddItemRunewordTEXTBOX.TabIndex = 556
@@ -449,7 +450,7 @@ Partial Class AddItemForm
         '
         Me.AddItemRequiredStrengthLABEL.AutoSize = True
         Me.AddItemRequiredStrengthLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemRequiredStrengthLABEL.Location = New System.Drawing.Point(31, 394)
+        Me.AddItemRequiredStrengthLABEL.Location = New System.Drawing.Point(31, 382)
         Me.AddItemRequiredStrengthLABEL.Name = "AddItemRequiredStrengthLABEL"
         Me.AddItemRequiredStrengthLABEL.Size = New System.Drawing.Size(93, 13)
         Me.AddItemRequiredStrengthLABEL.TabIndex = 626
@@ -459,7 +460,7 @@ Partial Class AddItemForm
         '
         Me.AddItemRequiredStrengthTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemRequiredStrengthTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemRequiredStrengthTEXTBOX.Location = New System.Drawing.Point(130, 391)
+        Me.AddItemRequiredStrengthTEXTBOX.Location = New System.Drawing.Point(130, 379)
         Me.AddItemRequiredStrengthTEXTBOX.Name = "AddItemRequiredStrengthTEXTBOX"
         Me.AddItemRequiredStrengthTEXTBOX.Size = New System.Drawing.Size(40, 20)
         Me.AddItemRequiredStrengthTEXTBOX.TabIndex = 571
@@ -468,7 +469,7 @@ Partial Class AddItemForm
         '
         Me.AddItemQualityLABEL.AutoSize = True
         Me.AddItemQualityLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemQualityLABEL.Location = New System.Drawing.Point(24, 83)
+        Me.AddItemQualityLABEL.Location = New System.Drawing.Point(24, 71)
         Me.AddItemQualityLABEL.Name = "AddItemQualityLABEL"
         Me.AddItemQualityLABEL.Size = New System.Drawing.Size(62, 13)
         Me.AddItemQualityLABEL.TabIndex = 625
@@ -480,7 +481,7 @@ Partial Class AddItemForm
         Me.AddItemQualityCOMBOBOX.ForeColor = System.Drawing.Color.White
         Me.AddItemQualityCOMBOBOX.FormattingEnabled = True
         Me.AddItemQualityCOMBOBOX.Items.AddRange(New Object() {"Normal", "Superior", "Magic", "Unique", "Rare", "Set", "Crafted"})
-        Me.AddItemQualityCOMBOBOX.Location = New System.Drawing.Point(89, 79)
+        Me.AddItemQualityCOMBOBOX.Location = New System.Drawing.Point(89, 67)
         Me.AddItemQualityCOMBOBOX.Name = "AddItemQualityCOMBOBOX"
         Me.AddItemQualityCOMBOBOX.Size = New System.Drawing.Size(162, 21)
         Me.AddItemQualityCOMBOBOX.TabIndex = 555
@@ -489,7 +490,7 @@ Partial Class AddItemForm
         '
         Me.AddItemDurabilityMaxTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemDurabilityMaxTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemDurabilityMaxTEXTBOX.Location = New System.Drawing.Point(198, 291)
+        Me.AddItemDurabilityMaxTEXTBOX.Location = New System.Drawing.Point(198, 279)
         Me.AddItemDurabilityMaxTEXTBOX.Name = "AddItemDurabilityMaxTEXTBOX"
         Me.AddItemDurabilityMaxTEXTBOX.Size = New System.Drawing.Size(38, 20)
         Me.AddItemDurabilityMaxTEXTBOX.TabIndex = 568
@@ -497,7 +498,7 @@ Partial Class AddItemForm
         'AddItemDurabilityOfLABEL
         '
         Me.AddItemDurabilityOfLABEL.AutoSize = True
-        Me.AddItemDurabilityOfLABEL.Location = New System.Drawing.Point(176, 294)
+        Me.AddItemDurabilityOfLABEL.Location = New System.Drawing.Point(176, 282)
         Me.AddItemDurabilityOfLABEL.Name = "AddItemDurabilityOfLABEL"
         Me.AddItemDurabilityOfLABEL.Size = New System.Drawing.Size(16, 13)
         Me.AddItemDurabilityOfLABEL.TabIndex = 624
@@ -506,7 +507,7 @@ Partial Class AddItemForm
         'AddItemQuantityOfLABEL
         '
         Me.AddItemQuantityOfLABEL.AutoSize = True
-        Me.AddItemQuantityOfLABEL.Location = New System.Drawing.Point(176, 269)
+        Me.AddItemQuantityOfLABEL.Location = New System.Drawing.Point(176, 257)
         Me.AddItemQuantityOfLABEL.Name = "AddItemQuantityOfLABEL"
         Me.AddItemQuantityOfLABEL.Size = New System.Drawing.Size(16, 13)
         Me.AddItemQuantityOfLABEL.TabIndex = 623
@@ -516,7 +517,7 @@ Partial Class AddItemForm
         '
         Me.AddItemQuantityMaxTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemQuantityMaxTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemQuantityMaxTEXTBOX.Location = New System.Drawing.Point(198, 268)
+        Me.AddItemQuantityMaxTEXTBOX.Location = New System.Drawing.Point(198, 256)
         Me.AddItemQuantityMaxTEXTBOX.Name = "AddItemQuantityMaxTEXTBOX"
         Me.AddItemQuantityMaxTEXTBOX.Size = New System.Drawing.Size(38, 20)
         Me.AddItemQuantityMaxTEXTBOX.TabIndex = 566
@@ -525,7 +526,7 @@ Partial Class AddItemForm
         '
         Me.AddItemUniqueAttributesLABEL.AutoSize = True
         Me.AddItemUniqueAttributesLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemUniqueAttributesLABEL.Location = New System.Drawing.Point(256, 55)
+        Me.AddItemUniqueAttributesLABEL.Location = New System.Drawing.Point(256, 43)
         Me.AddItemUniqueAttributesLABEL.Name = "AddItemUniqueAttributesLABEL"
         Me.AddItemUniqueAttributesLABEL.Size = New System.Drawing.Size(131, 13)
         Me.AddItemUniqueAttributesLABEL.TabIndex = 622
@@ -535,7 +536,7 @@ Partial Class AddItemForm
         '
         Me.AddItemUserReferenceLABEL.AutoSize = True
         Me.AddItemUserReferenceLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemUserReferenceLABEL.Location = New System.Drawing.Point(7, 553)
+        Me.AddItemUserReferenceLABEL.Location = New System.Drawing.Point(7, 541)
         Me.AddItemUserReferenceLABEL.Name = "AddItemUserReferenceLABEL"
         Me.AddItemUserReferenceLABEL.Size = New System.Drawing.Size(82, 13)
         Me.AddItemUserReferenceLABEL.TabIndex = 621
@@ -545,7 +546,7 @@ Partial Class AddItemForm
         '
         Me.AddItemUserReferenceTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemUserReferenceTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemUserReferenceTEXTBOX.Location = New System.Drawing.Point(90, 553)
+        Me.AddItemUserReferenceTEXTBOX.Location = New System.Drawing.Point(90, 541)
         Me.AddItemUserReferenceTEXTBOX.Name = "AddItemUserReferenceTEXTBOX"
         Me.AddItemUserReferenceTEXTBOX.Size = New System.Drawing.Size(443, 20)
         Me.AddItemUserReferenceTEXTBOX.TabIndex = 595
@@ -554,7 +555,7 @@ Partial Class AddItemForm
         '
         Me.AddItemDefenseLABEL.AutoSize = True
         Me.AddItemDefenseLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemDefenseLABEL.Location = New System.Drawing.Point(51, 333)
+        Me.AddItemDefenseLABEL.Location = New System.Drawing.Point(51, 321)
         Me.AddItemDefenseLABEL.Name = "AddItemDefenseLABEL"
         Me.AddItemDefenseLABEL.Size = New System.Drawing.Size(73, 13)
         Me.AddItemDefenseLABEL.TabIndex = 620
@@ -564,7 +565,7 @@ Partial Class AddItemForm
         '
         Me.AddItemDefenseTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemDefenseTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemDefenseTEXTBOX.Location = New System.Drawing.Point(130, 329)
+        Me.AddItemDefenseTEXTBOX.Location = New System.Drawing.Point(130, 317)
         Me.AddItemDefenseTEXTBOX.Name = "AddItemDefenseTEXTBOX"
         Me.AddItemDefenseTEXTBOX.Size = New System.Drawing.Size(40, 20)
         Me.AddItemDefenseTEXTBOX.TabIndex = 569
@@ -574,7 +575,7 @@ Partial Class AddItemForm
         Me.AddItemStat12TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemStat12TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.AddItemStat12TEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemStat12TEXTBOX.Location = New System.Drawing.Point(259, 272)
+        Me.AddItemStat12TEXTBOX.Location = New System.Drawing.Point(259, 260)
         Me.AddItemStat12TEXTBOX.Name = "AddItemStat12TEXTBOX"
         Me.AddItemStat12TEXTBOX.Size = New System.Drawing.Size(278, 20)
         Me.AddItemStat12TEXTBOX.TabIndex = 587
@@ -584,7 +585,7 @@ Partial Class AddItemForm
         Me.AddItemStat11TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemStat11TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.AddItemStat11TEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemStat11TEXTBOX.Location = New System.Drawing.Point(259, 254)
+        Me.AddItemStat11TEXTBOX.Location = New System.Drawing.Point(259, 242)
         Me.AddItemStat11TEXTBOX.Name = "AddItemStat11TEXTBOX"
         Me.AddItemStat11TEXTBOX.Size = New System.Drawing.Size(278, 20)
         Me.AddItemStat11TEXTBOX.TabIndex = 586
@@ -594,7 +595,7 @@ Partial Class AddItemForm
         Me.AddItemStat10TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemStat10TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.AddItemStat10TEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemStat10TEXTBOX.Location = New System.Drawing.Point(259, 236)
+        Me.AddItemStat10TEXTBOX.Location = New System.Drawing.Point(259, 224)
         Me.AddItemStat10TEXTBOX.Name = "AddItemStat10TEXTBOX"
         Me.AddItemStat10TEXTBOX.Size = New System.Drawing.Size(278, 20)
         Me.AddItemStat10TEXTBOX.TabIndex = 585
@@ -604,7 +605,7 @@ Partial Class AddItemForm
         Me.AddItemStat9TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemStat9TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.AddItemStat9TEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemStat9TEXTBOX.Location = New System.Drawing.Point(259, 217)
+        Me.AddItemStat9TEXTBOX.Location = New System.Drawing.Point(259, 205)
         Me.AddItemStat9TEXTBOX.Name = "AddItemStat9TEXTBOX"
         Me.AddItemStat9TEXTBOX.Size = New System.Drawing.Size(278, 20)
         Me.AddItemStat9TEXTBOX.TabIndex = 584
@@ -614,7 +615,7 @@ Partial Class AddItemForm
         Me.AddItemStat8TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemStat8TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.AddItemStat8TEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemStat8TEXTBOX.Location = New System.Drawing.Point(259, 198)
+        Me.AddItemStat8TEXTBOX.Location = New System.Drawing.Point(259, 186)
         Me.AddItemStat8TEXTBOX.Name = "AddItemStat8TEXTBOX"
         Me.AddItemStat8TEXTBOX.Size = New System.Drawing.Size(278, 20)
         Me.AddItemStat8TEXTBOX.TabIndex = 583
@@ -624,7 +625,7 @@ Partial Class AddItemForm
         Me.AddItemStat7TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemStat7TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.AddItemStat7TEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemStat7TEXTBOX.Location = New System.Drawing.Point(259, 179)
+        Me.AddItemStat7TEXTBOX.Location = New System.Drawing.Point(259, 167)
         Me.AddItemStat7TEXTBOX.Name = "AddItemStat7TEXTBOX"
         Me.AddItemStat7TEXTBOX.Size = New System.Drawing.Size(278, 20)
         Me.AddItemStat7TEXTBOX.TabIndex = 582
@@ -634,7 +635,7 @@ Partial Class AddItemForm
         Me.AddItemStat6TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemStat6TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.AddItemStat6TEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemStat6TEXTBOX.Location = New System.Drawing.Point(259, 160)
+        Me.AddItemStat6TEXTBOX.Location = New System.Drawing.Point(259, 148)
         Me.AddItemStat6TEXTBOX.Name = "AddItemStat6TEXTBOX"
         Me.AddItemStat6TEXTBOX.Size = New System.Drawing.Size(278, 20)
         Me.AddItemStat6TEXTBOX.TabIndex = 581
@@ -644,7 +645,7 @@ Partial Class AddItemForm
         Me.AddItemStat5TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemStat5TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.AddItemStat5TEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemStat5TEXTBOX.Location = New System.Drawing.Point(259, 141)
+        Me.AddItemStat5TEXTBOX.Location = New System.Drawing.Point(259, 129)
         Me.AddItemStat5TEXTBOX.Name = "AddItemStat5TEXTBOX"
         Me.AddItemStat5TEXTBOX.Size = New System.Drawing.Size(278, 20)
         Me.AddItemStat5TEXTBOX.TabIndex = 580
@@ -654,7 +655,7 @@ Partial Class AddItemForm
         Me.AddItemStat4TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemStat4TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.AddItemStat4TEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemStat4TEXTBOX.Location = New System.Drawing.Point(259, 123)
+        Me.AddItemStat4TEXTBOX.Location = New System.Drawing.Point(259, 111)
         Me.AddItemStat4TEXTBOX.Name = "AddItemStat4TEXTBOX"
         Me.AddItemStat4TEXTBOX.Size = New System.Drawing.Size(278, 20)
         Me.AddItemStat4TEXTBOX.TabIndex = 579
@@ -664,7 +665,7 @@ Partial Class AddItemForm
         Me.AddItemStat3TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemStat3TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.AddItemStat3TEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemStat3TEXTBOX.Location = New System.Drawing.Point(259, 106)
+        Me.AddItemStat3TEXTBOX.Location = New System.Drawing.Point(259, 94)
         Me.AddItemStat3TEXTBOX.Name = "AddItemStat3TEXTBOX"
         Me.AddItemStat3TEXTBOX.Size = New System.Drawing.Size(278, 20)
         Me.AddItemStat3TEXTBOX.TabIndex = 578
@@ -674,7 +675,7 @@ Partial Class AddItemForm
         Me.AddItemStat2TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemStat2TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.AddItemStat2TEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemStat2TEXTBOX.Location = New System.Drawing.Point(259, 88)
+        Me.AddItemStat2TEXTBOX.Location = New System.Drawing.Point(259, 76)
         Me.AddItemStat2TEXTBOX.Name = "AddItemStat2TEXTBOX"
         Me.AddItemStat2TEXTBOX.Size = New System.Drawing.Size(278, 20)
         Me.AddItemStat2TEXTBOX.TabIndex = 577
@@ -684,7 +685,7 @@ Partial Class AddItemForm
         Me.AddItemStat1TEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemStat1TEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.AddItemStat1TEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemStat1TEXTBOX.Location = New System.Drawing.Point(259, 71)
+        Me.AddItemStat1TEXTBOX.Location = New System.Drawing.Point(259, 59)
         Me.AddItemStat1TEXTBOX.Name = "AddItemStat1TEXTBOX"
         Me.AddItemStat1TEXTBOX.Size = New System.Drawing.Size(278, 20)
         Me.AddItemStat1TEXTBOX.TabIndex = 576
@@ -693,7 +694,7 @@ Partial Class AddItemForm
         '
         Me.AddIMulePassLABEL.AutoSize = True
         Me.AddIMulePassLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddIMulePassLABEL.Location = New System.Drawing.Point(286, 417)
+        Me.AddIMulePassLABEL.Location = New System.Drawing.Point(286, 405)
         Me.AddIMulePassLABEL.Name = "AddIMulePassLABEL"
         Me.AddIMulePassLABEL.Size = New System.Drawing.Size(79, 13)
         Me.AddIMulePassLABEL.TabIndex = 618
@@ -703,7 +704,7 @@ Partial Class AddItemForm
         '
         Me.AddItemMuleAccountLABEL.AutoSize = True
         Me.AddItemMuleAccountLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemMuleAccountLABEL.Location = New System.Drawing.Point(292, 389)
+        Me.AddItemMuleAccountLABEL.Location = New System.Drawing.Point(292, 377)
         Me.AddItemMuleAccountLABEL.Name = "AddItemMuleAccountLABEL"
         Me.AddItemMuleAccountLABEL.Size = New System.Drawing.Size(73, 13)
         Me.AddItemMuleAccountLABEL.TabIndex = 617
@@ -713,7 +714,7 @@ Partial Class AddItemForm
         '
         Me.AddItemMuleNameLABEL.AutoSize = True
         Me.AddItemMuleNameLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemMuleNameLABEL.Location = New System.Drawing.Point(304, 363)
+        Me.AddItemMuleNameLABEL.Location = New System.Drawing.Point(304, 351)
         Me.AddItemMuleNameLABEL.Name = "AddItemMuleNameLABEL"
         Me.AddItemMuleNameLABEL.Size = New System.Drawing.Size(61, 13)
         Me.AddItemMuleNameLABEL.TabIndex = 616
@@ -723,7 +724,7 @@ Partial Class AddItemForm
         '
         Me.AddItemAttackSpeedLABEL.AutoSize = True
         Me.AddItemAttackSpeedLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemAttackSpeedLABEL.Location = New System.Drawing.Point(15, 500)
+        Me.AddItemAttackSpeedLABEL.Location = New System.Drawing.Point(15, 488)
         Me.AddItemAttackSpeedLABEL.Name = "AddItemAttackSpeedLABEL"
         Me.AddItemAttackSpeedLABEL.Size = New System.Drawing.Size(72, 13)
         Me.AddItemAttackSpeedLABEL.TabIndex = 615
@@ -733,7 +734,7 @@ Partial Class AddItemForm
         '
         Me.AddItemChanceToBlockLABEL.AutoSize = True
         Me.AddItemChanceToBlockLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemChanceToBlockLABEL.Location = New System.Drawing.Point(34, 355)
+        Me.AddItemChanceToBlockLABEL.Location = New System.Drawing.Point(34, 343)
         Me.AddItemChanceToBlockLABEL.Name = "AddItemChanceToBlockLABEL"
         Me.AddItemChanceToBlockLABEL.Size = New System.Drawing.Size(90, 13)
         Me.AddItemChanceToBlockLABEL.TabIndex = 614
@@ -743,7 +744,7 @@ Partial Class AddItemForm
         '
         Me.AddItemChanceToBlockTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemChanceToBlockTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemChanceToBlockTEXTBOX.Location = New System.Drawing.Point(130, 352)
+        Me.AddItemChanceToBlockTEXTBOX.Location = New System.Drawing.Point(130, 340)
         Me.AddItemChanceToBlockTEXTBOX.Name = "AddItemChanceToBlockTEXTBOX"
         Me.AddItemChanceToBlockTEXTBOX.Size = New System.Drawing.Size(40, 20)
         Me.AddItemChanceToBlockTEXTBOX.TabIndex = 570
@@ -752,7 +753,7 @@ Partial Class AddItemForm
         '
         Me.AddItemSocketsLABEL.AutoSize = True
         Me.AddItemSocketsLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemSocketsLABEL.Location = New System.Drawing.Point(41, 142)
+        Me.AddItemSocketsLABEL.Location = New System.Drawing.Point(41, 130)
         Me.AddItemSocketsLABEL.Name = "AddItemSocketsLABEL"
         Me.AddItemSocketsLABEL.Size = New System.Drawing.Size(46, 13)
         Me.AddItemSocketsLABEL.TabIndex = 613
@@ -764,7 +765,7 @@ Partial Class AddItemForm
         Me.AddItemSocketsCOMBOBOX.ForeColor = System.Drawing.Color.White
         Me.AddItemSocketsCOMBOBOX.FormattingEnabled = True
         Me.AddItemSocketsCOMBOBOX.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6"})
-        Me.AddItemSocketsCOMBOBOX.Location = New System.Drawing.Point(88, 138)
+        Me.AddItemSocketsCOMBOBOX.Location = New System.Drawing.Point(88, 126)
         Me.AddItemSocketsCOMBOBOX.Name = "AddItemSocketsCOMBOBOX"
         Me.AddItemSocketsCOMBOBOX.Size = New System.Drawing.Size(44, 21)
         Me.AddItemSocketsCOMBOBOX.TabIndex = 557
@@ -773,7 +774,7 @@ Partial Class AddItemForm
         '
         Me.AddItemEtherealItemCHECKBOX.AutoSize = True
         Me.AddItemEtherealItemCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemEtherealItemCHECKBOX.Location = New System.Drawing.Point(165, 141)
+        Me.AddItemEtherealItemCHECKBOX.Location = New System.Drawing.Point(165, 129)
         Me.AddItemEtherealItemCHECKBOX.Name = "AddItemEtherealItemCHECKBOX"
         Me.AddItemEtherealItemCHECKBOX.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.AddItemEtherealItemCHECKBOX.Size = New System.Drawing.Size(88, 17)
@@ -785,7 +786,7 @@ Partial Class AddItemForm
         '
         Me.AddItemDurabilityLABEL.AutoSize = True
         Me.AddItemDurabilityLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemDurabilityLABEL.Location = New System.Drawing.Point(74, 294)
+        Me.AddItemDurabilityLABEL.Location = New System.Drawing.Point(74, 282)
         Me.AddItemDurabilityLABEL.Name = "AddItemDurabilityLABEL"
         Me.AddItemDurabilityLABEL.Size = New System.Drawing.Size(50, 13)
         Me.AddItemDurabilityLABEL.TabIndex = 612
@@ -795,7 +796,7 @@ Partial Class AddItemForm
         '
         Me.AddItemDurabilityMinTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemDurabilityMinTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemDurabilityMinTEXTBOX.Location = New System.Drawing.Point(130, 291)
+        Me.AddItemDurabilityMinTEXTBOX.Location = New System.Drawing.Point(130, 279)
         Me.AddItemDurabilityMinTEXTBOX.Name = "AddItemDurabilityMinTEXTBOX"
         Me.AddItemDurabilityMinTEXTBOX.Size = New System.Drawing.Size(40, 20)
         Me.AddItemDurabilityMinTEXTBOX.TabIndex = 567
@@ -804,7 +805,7 @@ Partial Class AddItemForm
         '
         Me.AddItemAttackClassLABEL.AutoSize = True
         Me.AddItemAttackClassLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemAttackClassLABEL.Location = New System.Drawing.Point(21, 475)
+        Me.AddItemAttackClassLABEL.Location = New System.Drawing.Point(21, 463)
         Me.AddItemAttackClassLABEL.Name = "AddItemAttackClassLABEL"
         Me.AddItemAttackClassLABEL.Size = New System.Drawing.Size(66, 13)
         Me.AddItemAttackClassLABEL.TabIndex = 611
@@ -814,7 +815,7 @@ Partial Class AddItemForm
         '
         Me.AddItemRequiredLevelLABEL.AutoSize = True
         Me.AddItemRequiredLevelLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemRequiredLevelLABEL.Location = New System.Drawing.Point(19, 444)
+        Me.AddItemRequiredLevelLABEL.Location = New System.Drawing.Point(19, 432)
         Me.AddItemRequiredLevelLABEL.Name = "AddItemRequiredLevelLABEL"
         Me.AddItemRequiredLevelLABEL.Size = New System.Drawing.Size(105, 13)
         Me.AddItemRequiredLevelLABEL.TabIndex = 610
@@ -824,7 +825,7 @@ Partial Class AddItemForm
         '
         Me.AddItemRequiredLevelTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemRequiredLevelTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemRequiredLevelTEXTBOX.Location = New System.Drawing.Point(130, 440)
+        Me.AddItemRequiredLevelTEXTBOX.Location = New System.Drawing.Point(130, 428)
         Me.AddItemRequiredLevelTEXTBOX.Name = "AddItemRequiredLevelTEXTBOX"
         Me.AddItemRequiredLevelTEXTBOX.Size = New System.Drawing.Size(40, 20)
         Me.AddItemRequiredLevelTEXTBOX.TabIndex = 573
@@ -833,7 +834,7 @@ Partial Class AddItemForm
         '
         Me.AddItemRequiredDexterityLABEL.AutoSize = True
         Me.AddItemRequiredDexterityLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemRequiredDexterityLABEL.Location = New System.Drawing.Point(30, 419)
+        Me.AddItemRequiredDexterityLABEL.Location = New System.Drawing.Point(30, 407)
         Me.AddItemRequiredDexterityLABEL.Name = "AddItemRequiredDexterityLABEL"
         Me.AddItemRequiredDexterityLABEL.Size = New System.Drawing.Size(94, 13)
         Me.AddItemRequiredDexterityLABEL.TabIndex = 609
@@ -843,7 +844,7 @@ Partial Class AddItemForm
         '
         Me.AddItemRequiredDexterityTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemRequiredDexterityTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemRequiredDexterityTEXTBOX.Location = New System.Drawing.Point(130, 416)
+        Me.AddItemRequiredDexterityTEXTBOX.Location = New System.Drawing.Point(130, 404)
         Me.AddItemRequiredDexterityTEXTBOX.Name = "AddItemRequiredDexterityTEXTBOX"
         Me.AddItemRequiredDexterityTEXTBOX.Size = New System.Drawing.Size(40, 20)
         Me.AddItemRequiredDexterityTEXTBOX.TabIndex = 572
@@ -852,7 +853,7 @@ Partial Class AddItemForm
         '
         Me.AddItemQuantityLABEL.AutoSize = True
         Me.AddItemQuantityLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemQuantityLABEL.Location = New System.Drawing.Point(78, 270)
+        Me.AddItemQuantityLABEL.Location = New System.Drawing.Point(78, 258)
         Me.AddItemQuantityLABEL.Name = "AddItemQuantityLABEL"
         Me.AddItemQuantityLABEL.Size = New System.Drawing.Size(46, 13)
         Me.AddItemQuantityLABEL.TabIndex = 608
@@ -862,7 +863,7 @@ Partial Class AddItemForm
         '
         Me.AddItemQuantityMinTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemQuantityMinTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemQuantityMinTEXTBOX.Location = New System.Drawing.Point(130, 268)
+        Me.AddItemQuantityMinTEXTBOX.Location = New System.Drawing.Point(130, 256)
         Me.AddItemQuantityMinTEXTBOX.Name = "AddItemQuantityMinTEXTBOX"
         Me.AddItemQuantityMinTEXTBOX.Size = New System.Drawing.Size(40, 20)
         Me.AddItemQuantityMinTEXTBOX.TabIndex = 565
@@ -871,7 +872,7 @@ Partial Class AddItemForm
         '
         Me.AddItemTwoHandDamageLABEL.AutoSize = True
         Me.AddItemTwoHandDamageLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemTwoHandDamageLABEL.Location = New System.Drawing.Point(24, 231)
+        Me.AddItemTwoHandDamageLABEL.Location = New System.Drawing.Point(24, 219)
         Me.AddItemTwoHandDamageLABEL.Name = "AddItemTwoHandDamageLABEL"
         Me.AddItemTwoHandDamageLABEL.Size = New System.Drawing.Size(100, 13)
         Me.AddItemTwoHandDamageLABEL.TabIndex = 607
@@ -880,7 +881,7 @@ Partial Class AddItemForm
         'AddItemTwoHandDamageToLABEL
         '
         Me.AddItemTwoHandDamageToLABEL.AutoSize = True
-        Me.AddItemTwoHandDamageToLABEL.Location = New System.Drawing.Point(176, 230)
+        Me.AddItemTwoHandDamageToLABEL.Location = New System.Drawing.Point(176, 218)
         Me.AddItemTwoHandDamageToLABEL.Name = "AddItemTwoHandDamageToLABEL"
         Me.AddItemTwoHandDamageToLABEL.Size = New System.Drawing.Size(16, 13)
         Me.AddItemTwoHandDamageToLABEL.TabIndex = 606
@@ -890,7 +891,7 @@ Partial Class AddItemForm
         '
         Me.AddItemTwoHandDamageMaxTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemTwoHandDamageMaxTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemTwoHandDamageMaxTEXTBOX.Location = New System.Drawing.Point(198, 227)
+        Me.AddItemTwoHandDamageMaxTEXTBOX.Location = New System.Drawing.Point(198, 215)
         Me.AddItemTwoHandDamageMaxTEXTBOX.Name = "AddItemTwoHandDamageMaxTEXTBOX"
         Me.AddItemTwoHandDamageMaxTEXTBOX.Size = New System.Drawing.Size(38, 20)
         Me.AddItemTwoHandDamageMaxTEXTBOX.TabIndex = 564
@@ -899,7 +900,7 @@ Partial Class AddItemForm
         '
         Me.AddItemTwoHandDamageMinTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemTwoHandDamageMinTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemTwoHandDamageMinTEXTBOX.Location = New System.Drawing.Point(130, 228)
+        Me.AddItemTwoHandDamageMinTEXTBOX.Location = New System.Drawing.Point(130, 216)
         Me.AddItemTwoHandDamageMinTEXTBOX.Name = "AddItemTwoHandDamageMinTEXTBOX"
         Me.AddItemTwoHandDamageMinTEXTBOX.Size = New System.Drawing.Size(40, 20)
         Me.AddItemTwoHandDamageMinTEXTBOX.TabIndex = 563
@@ -907,7 +908,7 @@ Partial Class AddItemForm
         'AddItemOneHandDamageToLABEL
         '
         Me.AddItemOneHandDamageToLABEL.AutoSize = True
-        Me.AddItemOneHandDamageToLABEL.Location = New System.Drawing.Point(176, 207)
+        Me.AddItemOneHandDamageToLABEL.Location = New System.Drawing.Point(176, 195)
         Me.AddItemOneHandDamageToLABEL.Name = "AddItemOneHandDamageToLABEL"
         Me.AddItemOneHandDamageToLABEL.Size = New System.Drawing.Size(16, 13)
         Me.AddItemOneHandDamageToLABEL.TabIndex = 605
@@ -917,7 +918,7 @@ Partial Class AddItemForm
         '
         Me.AddItemOneHamdDamageLABEL.AutoSize = True
         Me.AddItemOneHamdDamageLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemOneHamdDamageLABEL.Location = New System.Drawing.Point(25, 207)
+        Me.AddItemOneHamdDamageLABEL.Location = New System.Drawing.Point(25, 195)
         Me.AddItemOneHamdDamageLABEL.Name = "AddItemOneHamdDamageLABEL"
         Me.AddItemOneHamdDamageLABEL.Size = New System.Drawing.Size(99, 13)
         Me.AddItemOneHamdDamageLABEL.TabIndex = 604
@@ -927,7 +928,7 @@ Partial Class AddItemForm
         '
         Me.AddItemOneHandDamageMaxTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemOneHandDamageMaxTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemOneHandDamageMaxTEXTBOX.Location = New System.Drawing.Point(198, 204)
+        Me.AddItemOneHandDamageMaxTEXTBOX.Location = New System.Drawing.Point(198, 192)
         Me.AddItemOneHandDamageMaxTEXTBOX.Name = "AddItemOneHandDamageMaxTEXTBOX"
         Me.AddItemOneHandDamageMaxTEXTBOX.Size = New System.Drawing.Size(38, 20)
         Me.AddItemOneHandDamageMaxTEXTBOX.TabIndex = 562
@@ -936,7 +937,7 @@ Partial Class AddItemForm
         '
         Me.AddItemOneHandDamageMinTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemOneHandDamageMinTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemOneHandDamageMinTEXTBOX.Location = New System.Drawing.Point(130, 204)
+        Me.AddItemOneHandDamageMinTEXTBOX.Location = New System.Drawing.Point(130, 192)
         Me.AddItemOneHandDamageMinTEXTBOX.Name = "AddItemOneHandDamageMinTEXTBOX"
         Me.AddItemOneHandDamageMinTEXTBOX.Size = New System.Drawing.Size(40, 20)
         Me.AddItemOneHandDamageMinTEXTBOX.TabIndex = 561
@@ -945,7 +946,7 @@ Partial Class AddItemForm
         '
         Me.AddItemThrowDamageMaxTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemThrowDamageMaxTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemThrowDamageMaxTEXTBOX.Location = New System.Drawing.Point(198, 181)
+        Me.AddItemThrowDamageMaxTEXTBOX.Location = New System.Drawing.Point(198, 169)
         Me.AddItemThrowDamageMaxTEXTBOX.Name = "AddItemThrowDamageMaxTEXTBOX"
         Me.AddItemThrowDamageMaxTEXTBOX.Size = New System.Drawing.Size(38, 20)
         Me.AddItemThrowDamageMaxTEXTBOX.TabIndex = 560
@@ -953,7 +954,7 @@ Partial Class AddItemForm
         'AddItemThrowDamageOfLABEL
         '
         Me.AddItemThrowDamageOfLABEL.AutoSize = True
-        Me.AddItemThrowDamageOfLABEL.Location = New System.Drawing.Point(176, 183)
+        Me.AddItemThrowDamageOfLABEL.Location = New System.Drawing.Point(176, 171)
         Me.AddItemThrowDamageOfLABEL.Name = "AddItemThrowDamageOfLABEL"
         Me.AddItemThrowDamageOfLABEL.Size = New System.Drawing.Size(16, 13)
         Me.AddItemThrowDamageOfLABEL.TabIndex = 603
@@ -963,7 +964,7 @@ Partial Class AddItemForm
         '
         Me.AddItemThrowDamageLABEL.AutoSize = True
         Me.AddItemThrowDamageLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemThrowDamageLABEL.Location = New System.Drawing.Point(44, 183)
+        Me.AddItemThrowDamageLABEL.Location = New System.Drawing.Point(44, 171)
         Me.AddItemThrowDamageLABEL.Name = "AddItemThrowDamageLABEL"
         Me.AddItemThrowDamageLABEL.Size = New System.Drawing.Size(80, 13)
         Me.AddItemThrowDamageLABEL.TabIndex = 602
@@ -973,7 +974,7 @@ Partial Class AddItemForm
         '
         Me.AddItemThrowDamageMinTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemThrowDamageMinTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemThrowDamageMinTEXTBOX.Location = New System.Drawing.Point(130, 181)
+        Me.AddItemThrowDamageMinTEXTBOX.Location = New System.Drawing.Point(130, 169)
         Me.AddItemThrowDamageMinTEXTBOX.Name = "AddItemThrowDamageMinTEXTBOX"
         Me.AddItemThrowDamageMinTEXTBOX.Size = New System.Drawing.Size(40, 20)
         Me.AddItemThrowDamageMinTEXTBOX.TabIndex = 559
@@ -982,7 +983,7 @@ Partial Class AddItemForm
         '
         Me.AddItemBaseLABEL.AutoSize = True
         Me.AddItemBaseLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemBaseLABEL.Location = New System.Drawing.Point(32, 54)
+        Me.AddItemBaseLABEL.Location = New System.Drawing.Point(32, 42)
         Me.AddItemBaseLABEL.Name = "AddItemBaseLABEL"
         Me.AddItemBaseLABEL.Size = New System.Drawing.Size(54, 13)
         Me.AddItemBaseLABEL.TabIndex = 601
@@ -992,7 +993,7 @@ Partial Class AddItemForm
         '
         Me.AddItemNameLABEL.AutoSize = True
         Me.AddItemNameLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AddItemNameLABEL.Location = New System.Drawing.Point(29, 34)
+        Me.AddItemNameLABEL.Location = New System.Drawing.Point(29, 22)
         Me.AddItemNameLABEL.Name = "AddItemNameLABEL"
         Me.AddItemNameLABEL.Size = New System.Drawing.Size(58, 13)
         Me.AddItemNameLABEL.TabIndex = 600
@@ -1002,7 +1003,7 @@ Partial Class AddItemForm
         '
         Me.AddItemNameTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.AddItemNameTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.AddItemNameTEXTBOX.Location = New System.Drawing.Point(90, 29)
+        Me.AddItemNameTEXTBOX.Location = New System.Drawing.Point(90, 17)
         Me.AddItemNameTEXTBOX.Name = "AddItemNameTEXTBOX"
         Me.AddItemNameTEXTBOX.Size = New System.Drawing.Size(444, 20)
         Me.AddItemNameTEXTBOX.TabIndex = 553
@@ -1011,7 +1012,7 @@ Partial Class AddItemForm
         '
         Me.Label1.BackColor = System.Drawing.SystemColors.Window
         Me.Label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label1.Location = New System.Drawing.Point(258, 70)
+        Me.Label1.Location = New System.Drawing.Point(258, 58)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(280, 279)
         Me.Label1.TabIndex = 619
@@ -1019,7 +1020,7 @@ Partial Class AddItemForm
         'Label126
         '
         Me.Label126.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label126.Location = New System.Drawing.Point(258, 348)
+        Me.Label126.Location = New System.Drawing.Point(258, 336)
         Me.Label126.Name = "Label126"
         Me.Label126.Size = New System.Drawing.Size(280, 3)
         Me.Label126.TabIndex = 979
@@ -1027,7 +1028,7 @@ Partial Class AddItemForm
         'Label124
         '
         Me.Label124.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label124.Location = New System.Drawing.Point(536, 72)
+        Me.Label124.Location = New System.Drawing.Point(536, 60)
         Me.Label124.Name = "Label124"
         Me.Label124.Size = New System.Drawing.Size(3, 279)
         Me.Label124.TabIndex = 978
@@ -1035,7 +1036,7 @@ Partial Class AddItemForm
         'Label125
         '
         Me.Label125.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label125.Location = New System.Drawing.Point(259, 70)
+        Me.Label125.Location = New System.Drawing.Point(259, 58)
         Me.Label125.Name = "Label125"
         Me.Label125.Size = New System.Drawing.Size(280, 3)
         Me.Label125.TabIndex = 977
@@ -1043,7 +1044,7 @@ Partial Class AddItemForm
         'Label127
         '
         Me.Label127.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label127.Location = New System.Drawing.Point(258, 70)
+        Me.Label127.Location = New System.Drawing.Point(258, 58)
         Me.Label127.Name = "Label127"
         Me.Label127.Size = New System.Drawing.Size(3, 280)
         Me.Label127.TabIndex = 976
@@ -1051,7 +1052,7 @@ Partial Class AddItemForm
         'Label120
         '
         Me.Label120.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label120.Location = New System.Drawing.Point(365, 514)
+        Me.Label120.Location = New System.Drawing.Point(365, 502)
         Me.Label120.Name = "Label120"
         Me.Label120.Size = New System.Drawing.Size(63, 3)
         Me.Label120.TabIndex = 975
@@ -1059,7 +1060,7 @@ Partial Class AddItemForm
         'Label121
         '
         Me.Label121.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label121.Location = New System.Drawing.Point(364, 496)
+        Me.Label121.Location = New System.Drawing.Point(364, 484)
         Me.Label121.Name = "Label121"
         Me.Label121.Size = New System.Drawing.Size(64, 3)
         Me.Label121.TabIndex = 974
@@ -1067,7 +1068,7 @@ Partial Class AddItemForm
         'Label122
         '
         Me.Label122.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label122.Location = New System.Drawing.Point(364, 497)
+        Me.Label122.Location = New System.Drawing.Point(364, 485)
         Me.Label122.Name = "Label122"
         Me.Label122.Size = New System.Drawing.Size(3, 20)
         Me.Label122.TabIndex = 973
@@ -1075,7 +1076,7 @@ Partial Class AddItemForm
         'Label123
         '
         Me.Label123.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label123.Location = New System.Drawing.Point(427, 496)
+        Me.Label123.Location = New System.Drawing.Point(427, 484)
         Me.Label123.Name = "Label123"
         Me.Label123.Size = New System.Drawing.Size(3, 21)
         Me.Label123.TabIndex = 972
@@ -1083,7 +1084,7 @@ Partial Class AddItemForm
         'Label116
         '
         Me.Label116.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label116.Location = New System.Drawing.Point(91, 516)
+        Me.Label116.Location = New System.Drawing.Point(91, 504)
         Me.Label116.Name = "Label116"
         Me.Label116.Size = New System.Drawing.Size(165, 3)
         Me.Label116.TabIndex = 971
@@ -1091,7 +1092,7 @@ Partial Class AddItemForm
         'Label117
         '
         Me.Label117.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label117.Location = New System.Drawing.Point(91, 498)
+        Me.Label117.Location = New System.Drawing.Point(91, 486)
         Me.Label117.Name = "Label117"
         Me.Label117.Size = New System.Drawing.Size(165, 3)
         Me.Label117.TabIndex = 970
@@ -1099,7 +1100,7 @@ Partial Class AddItemForm
         'Label118
         '
         Me.Label118.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label118.Location = New System.Drawing.Point(255, 498)
+        Me.Label118.Location = New System.Drawing.Point(255, 486)
         Me.Label118.Name = "Label118"
         Me.Label118.Size = New System.Drawing.Size(3, 21)
         Me.Label118.TabIndex = 969
@@ -1107,7 +1108,7 @@ Partial Class AddItemForm
         'Label119
         '
         Me.Label119.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label119.Location = New System.Drawing.Point(88, 498)
+        Me.Label119.Location = New System.Drawing.Point(88, 486)
         Me.Label119.Name = "Label119"
         Me.Label119.Size = New System.Drawing.Size(3, 21)
         Me.Label119.TabIndex = 968
@@ -1115,7 +1116,7 @@ Partial Class AddItemForm
         'Label111
         '
         Me.Label111.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label111.Location = New System.Drawing.Point(91, 491)
+        Me.Label111.Location = New System.Drawing.Point(91, 479)
         Me.Label111.Name = "Label111"
         Me.Label111.Size = New System.Drawing.Size(165, 3)
         Me.Label111.TabIndex = 967
@@ -1123,7 +1124,7 @@ Partial Class AddItemForm
         'Label112
         '
         Me.Label112.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label112.Location = New System.Drawing.Point(91, 473)
+        Me.Label112.Location = New System.Drawing.Point(91, 461)
         Me.Label112.Name = "Label112"
         Me.Label112.Size = New System.Drawing.Size(165, 3)
         Me.Label112.TabIndex = 966
@@ -1131,7 +1132,7 @@ Partial Class AddItemForm
         'Label113
         '
         Me.Label113.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label113.Location = New System.Drawing.Point(255, 473)
+        Me.Label113.Location = New System.Drawing.Point(255, 461)
         Me.Label113.Name = "Label113"
         Me.Label113.Size = New System.Drawing.Size(3, 21)
         Me.Label113.TabIndex = 965
@@ -1139,7 +1140,7 @@ Partial Class AddItemForm
         'Label114
         '
         Me.Label114.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label114.Location = New System.Drawing.Point(88, 473)
+        Me.Label114.Location = New System.Drawing.Point(88, 461)
         Me.Label114.Name = "Label114"
         Me.Label114.Size = New System.Drawing.Size(3, 21)
         Me.Label114.TabIndex = 964
@@ -1147,7 +1148,7 @@ Partial Class AddItemForm
         'Label105
         '
         Me.Label105.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label105.Location = New System.Drawing.Point(88, 156)
+        Me.Label105.Location = New System.Drawing.Point(88, 144)
         Me.Label105.Name = "Label105"
         Me.Label105.Size = New System.Drawing.Size(44, 3)
         Me.Label105.TabIndex = 963
@@ -1155,7 +1156,7 @@ Partial Class AddItemForm
         'Label106
         '
         Me.Label106.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label106.Location = New System.Drawing.Point(88, 138)
+        Me.Label106.Location = New System.Drawing.Point(88, 126)
         Me.Label106.Name = "Label106"
         Me.Label106.Size = New System.Drawing.Size(44, 3)
         Me.Label106.TabIndex = 962
@@ -1163,7 +1164,7 @@ Partial Class AddItemForm
         'Label107
         '
         Me.Label107.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label107.Location = New System.Drawing.Point(88, 139)
+        Me.Label107.Location = New System.Drawing.Point(88, 127)
         Me.Label107.Name = "Label107"
         Me.Label107.Size = New System.Drawing.Size(3, 20)
         Me.Label107.TabIndex = 961
@@ -1171,7 +1172,7 @@ Partial Class AddItemForm
         'Label108
         '
         Me.Label108.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label108.Location = New System.Drawing.Point(132, 138)
+        Me.Label108.Location = New System.Drawing.Point(132, 126)
         Me.Label108.Name = "Label108"
         Me.Label108.Size = New System.Drawing.Size(3, 21)
         Me.Label108.TabIndex = 960
@@ -1179,7 +1180,7 @@ Partial Class AddItemForm
         'Label101
         '
         Me.Label101.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label101.Location = New System.Drawing.Point(131, 199)
+        Me.Label101.Location = New System.Drawing.Point(131, 187)
         Me.Label101.Name = "Label101"
         Me.Label101.Size = New System.Drawing.Size(39, 3)
         Me.Label101.TabIndex = 959
@@ -1187,7 +1188,7 @@ Partial Class AddItemForm
         'Label102
         '
         Me.Label102.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label102.Location = New System.Drawing.Point(130, 181)
+        Me.Label102.Location = New System.Drawing.Point(130, 169)
         Me.Label102.Name = "Label102"
         Me.Label102.Size = New System.Drawing.Size(40, 3)
         Me.Label102.TabIndex = 958
@@ -1195,7 +1196,7 @@ Partial Class AddItemForm
         'Label103
         '
         Me.Label103.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label103.Location = New System.Drawing.Point(130, 182)
+        Me.Label103.Location = New System.Drawing.Point(130, 170)
         Me.Label103.Name = "Label103"
         Me.Label103.Size = New System.Drawing.Size(3, 20)
         Me.Label103.TabIndex = 957
@@ -1203,7 +1204,7 @@ Partial Class AddItemForm
         'Label104
         '
         Me.Label104.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label104.Location = New System.Drawing.Point(167, 182)
+        Me.Label104.Location = New System.Drawing.Point(167, 170)
         Me.Label104.Name = "Label104"
         Me.Label104.Size = New System.Drawing.Size(3, 20)
         Me.Label104.TabIndex = 956
@@ -1211,7 +1212,7 @@ Partial Class AddItemForm
         'Label97
         '
         Me.Label97.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label97.Location = New System.Drawing.Point(131, 222)
+        Me.Label97.Location = New System.Drawing.Point(131, 210)
         Me.Label97.Name = "Label97"
         Me.Label97.Size = New System.Drawing.Size(39, 3)
         Me.Label97.TabIndex = 955
@@ -1219,7 +1220,7 @@ Partial Class AddItemForm
         'Label98
         '
         Me.Label98.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label98.Location = New System.Drawing.Point(130, 204)
+        Me.Label98.Location = New System.Drawing.Point(130, 192)
         Me.Label98.Name = "Label98"
         Me.Label98.Size = New System.Drawing.Size(40, 3)
         Me.Label98.TabIndex = 954
@@ -1227,7 +1228,7 @@ Partial Class AddItemForm
         'Label99
         '
         Me.Label99.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label99.Location = New System.Drawing.Point(130, 205)
+        Me.Label99.Location = New System.Drawing.Point(130, 193)
         Me.Label99.Name = "Label99"
         Me.Label99.Size = New System.Drawing.Size(3, 20)
         Me.Label99.TabIndex = 953
@@ -1235,7 +1236,7 @@ Partial Class AddItemForm
         'Label100
         '
         Me.Label100.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label100.Location = New System.Drawing.Point(167, 205)
+        Me.Label100.Location = New System.Drawing.Point(167, 193)
         Me.Label100.Name = "Label100"
         Me.Label100.Size = New System.Drawing.Size(3, 20)
         Me.Label100.TabIndex = 952
@@ -1243,7 +1244,7 @@ Partial Class AddItemForm
         'Label93
         '
         Me.Label93.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label93.Location = New System.Drawing.Point(131, 246)
+        Me.Label93.Location = New System.Drawing.Point(131, 234)
         Me.Label93.Name = "Label93"
         Me.Label93.Size = New System.Drawing.Size(39, 3)
         Me.Label93.TabIndex = 951
@@ -1251,7 +1252,7 @@ Partial Class AddItemForm
         'Label94
         '
         Me.Label94.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label94.Location = New System.Drawing.Point(130, 228)
+        Me.Label94.Location = New System.Drawing.Point(130, 216)
         Me.Label94.Name = "Label94"
         Me.Label94.Size = New System.Drawing.Size(40, 3)
         Me.Label94.TabIndex = 950
@@ -1259,7 +1260,7 @@ Partial Class AddItemForm
         'Label95
         '
         Me.Label95.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label95.Location = New System.Drawing.Point(130, 229)
+        Me.Label95.Location = New System.Drawing.Point(130, 217)
         Me.Label95.Name = "Label95"
         Me.Label95.Size = New System.Drawing.Size(3, 20)
         Me.Label95.TabIndex = 949
@@ -1267,7 +1268,7 @@ Partial Class AddItemForm
         'Label96
         '
         Me.Label96.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label96.Location = New System.Drawing.Point(167, 229)
+        Me.Label96.Location = New System.Drawing.Point(167, 217)
         Me.Label96.Name = "Label96"
         Me.Label96.Size = New System.Drawing.Size(3, 20)
         Me.Label96.TabIndex = 948
@@ -1275,7 +1276,7 @@ Partial Class AddItemForm
         'Label89
         '
         Me.Label89.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label89.Location = New System.Drawing.Point(198, 199)
+        Me.Label89.Location = New System.Drawing.Point(198, 187)
         Me.Label89.Name = "Label89"
         Me.Label89.Size = New System.Drawing.Size(39, 3)
         Me.Label89.TabIndex = 947
@@ -1283,7 +1284,7 @@ Partial Class AddItemForm
         'Label90
         '
         Me.Label90.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label90.Location = New System.Drawing.Point(197, 181)
+        Me.Label90.Location = New System.Drawing.Point(197, 169)
         Me.Label90.Name = "Label90"
         Me.Label90.Size = New System.Drawing.Size(40, 3)
         Me.Label90.TabIndex = 946
@@ -1291,7 +1292,7 @@ Partial Class AddItemForm
         'Label91
         '
         Me.Label91.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label91.Location = New System.Drawing.Point(197, 182)
+        Me.Label91.Location = New System.Drawing.Point(197, 170)
         Me.Label91.Name = "Label91"
         Me.Label91.Size = New System.Drawing.Size(3, 20)
         Me.Label91.TabIndex = 945
@@ -1299,7 +1300,7 @@ Partial Class AddItemForm
         'Label92
         '
         Me.Label92.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label92.Location = New System.Drawing.Point(234, 182)
+        Me.Label92.Location = New System.Drawing.Point(234, 170)
         Me.Label92.Name = "Label92"
         Me.Label92.Size = New System.Drawing.Size(3, 20)
         Me.Label92.TabIndex = 944
@@ -1307,7 +1308,7 @@ Partial Class AddItemForm
         'Label85
         '
         Me.Label85.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label85.Location = New System.Drawing.Point(198, 222)
+        Me.Label85.Location = New System.Drawing.Point(198, 210)
         Me.Label85.Name = "Label85"
         Me.Label85.Size = New System.Drawing.Size(39, 3)
         Me.Label85.TabIndex = 943
@@ -1315,7 +1316,7 @@ Partial Class AddItemForm
         'Label86
         '
         Me.Label86.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label86.Location = New System.Drawing.Point(197, 204)
+        Me.Label86.Location = New System.Drawing.Point(197, 192)
         Me.Label86.Name = "Label86"
         Me.Label86.Size = New System.Drawing.Size(40, 3)
         Me.Label86.TabIndex = 942
@@ -1323,7 +1324,7 @@ Partial Class AddItemForm
         'Label87
         '
         Me.Label87.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label87.Location = New System.Drawing.Point(197, 205)
+        Me.Label87.Location = New System.Drawing.Point(197, 193)
         Me.Label87.Name = "Label87"
         Me.Label87.Size = New System.Drawing.Size(3, 20)
         Me.Label87.TabIndex = 941
@@ -1331,7 +1332,7 @@ Partial Class AddItemForm
         'Label88
         '
         Me.Label88.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label88.Location = New System.Drawing.Point(234, 205)
+        Me.Label88.Location = New System.Drawing.Point(234, 193)
         Me.Label88.Name = "Label88"
         Me.Label88.Size = New System.Drawing.Size(3, 20)
         Me.Label88.TabIndex = 940
@@ -1339,7 +1340,7 @@ Partial Class AddItemForm
         'Label81
         '
         Me.Label81.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label81.Location = New System.Drawing.Point(198, 245)
+        Me.Label81.Location = New System.Drawing.Point(198, 233)
         Me.Label81.Name = "Label81"
         Me.Label81.Size = New System.Drawing.Size(39, 3)
         Me.Label81.TabIndex = 939
@@ -1347,7 +1348,7 @@ Partial Class AddItemForm
         'Label82
         '
         Me.Label82.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label82.Location = New System.Drawing.Point(197, 227)
+        Me.Label82.Location = New System.Drawing.Point(197, 215)
         Me.Label82.Name = "Label82"
         Me.Label82.Size = New System.Drawing.Size(40, 3)
         Me.Label82.TabIndex = 938
@@ -1355,7 +1356,7 @@ Partial Class AddItemForm
         'Label83
         '
         Me.Label83.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label83.Location = New System.Drawing.Point(197, 228)
+        Me.Label83.Location = New System.Drawing.Point(197, 216)
         Me.Label83.Name = "Label83"
         Me.Label83.Size = New System.Drawing.Size(3, 20)
         Me.Label83.TabIndex = 937
@@ -1363,7 +1364,7 @@ Partial Class AddItemForm
         'Label84
         '
         Me.Label84.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label84.Location = New System.Drawing.Point(234, 228)
+        Me.Label84.Location = New System.Drawing.Point(234, 216)
         Me.Label84.Name = "Label84"
         Me.Label84.Size = New System.Drawing.Size(3, 20)
         Me.Label84.TabIndex = 936
@@ -1371,7 +1372,7 @@ Partial Class AddItemForm
         'Label77
         '
         Me.Label77.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label77.Location = New System.Drawing.Point(131, 433)
+        Me.Label77.Location = New System.Drawing.Point(131, 421)
         Me.Label77.Name = "Label77"
         Me.Label77.Size = New System.Drawing.Size(39, 3)
         Me.Label77.TabIndex = 935
@@ -1379,7 +1380,7 @@ Partial Class AddItemForm
         'Label78
         '
         Me.Label78.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label78.Location = New System.Drawing.Point(130, 415)
+        Me.Label78.Location = New System.Drawing.Point(130, 403)
         Me.Label78.Name = "Label78"
         Me.Label78.Size = New System.Drawing.Size(40, 3)
         Me.Label78.TabIndex = 934
@@ -1387,7 +1388,7 @@ Partial Class AddItemForm
         'Label79
         '
         Me.Label79.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label79.Location = New System.Drawing.Point(130, 416)
+        Me.Label79.Location = New System.Drawing.Point(130, 404)
         Me.Label79.Name = "Label79"
         Me.Label79.Size = New System.Drawing.Size(3, 20)
         Me.Label79.TabIndex = 933
@@ -1395,7 +1396,7 @@ Partial Class AddItemForm
         'Label80
         '
         Me.Label80.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label80.Location = New System.Drawing.Point(167, 416)
+        Me.Label80.Location = New System.Drawing.Point(167, 404)
         Me.Label80.Name = "Label80"
         Me.Label80.Size = New System.Drawing.Size(3, 20)
         Me.Label80.TabIndex = 932
@@ -1403,7 +1404,7 @@ Partial Class AddItemForm
         'Label73
         '
         Me.Label73.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label73.Location = New System.Drawing.Point(131, 458)
+        Me.Label73.Location = New System.Drawing.Point(131, 446)
         Me.Label73.Name = "Label73"
         Me.Label73.Size = New System.Drawing.Size(39, 3)
         Me.Label73.TabIndex = 931
@@ -1411,7 +1412,7 @@ Partial Class AddItemForm
         'Label74
         '
         Me.Label74.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label74.Location = New System.Drawing.Point(130, 440)
+        Me.Label74.Location = New System.Drawing.Point(130, 428)
         Me.Label74.Name = "Label74"
         Me.Label74.Size = New System.Drawing.Size(40, 3)
         Me.Label74.TabIndex = 930
@@ -1419,7 +1420,7 @@ Partial Class AddItemForm
         'Label75
         '
         Me.Label75.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label75.Location = New System.Drawing.Point(130, 441)
+        Me.Label75.Location = New System.Drawing.Point(130, 429)
         Me.Label75.Name = "Label75"
         Me.Label75.Size = New System.Drawing.Size(3, 20)
         Me.Label75.TabIndex = 929
@@ -1427,7 +1428,7 @@ Partial Class AddItemForm
         'Label76
         '
         Me.Label76.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label76.Location = New System.Drawing.Point(167, 441)
+        Me.Label76.Location = New System.Drawing.Point(167, 429)
         Me.Label76.Name = "Label76"
         Me.Label76.Size = New System.Drawing.Size(3, 20)
         Me.Label76.TabIndex = 928
@@ -1435,7 +1436,7 @@ Partial Class AddItemForm
         'Label69
         '
         Me.Label69.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label69.Location = New System.Drawing.Point(131, 408)
+        Me.Label69.Location = New System.Drawing.Point(131, 396)
         Me.Label69.Name = "Label69"
         Me.Label69.Size = New System.Drawing.Size(39, 3)
         Me.Label69.TabIndex = 927
@@ -1443,7 +1444,7 @@ Partial Class AddItemForm
         'Label70
         '
         Me.Label70.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label70.Location = New System.Drawing.Point(130, 390)
+        Me.Label70.Location = New System.Drawing.Point(130, 378)
         Me.Label70.Name = "Label70"
         Me.Label70.Size = New System.Drawing.Size(40, 3)
         Me.Label70.TabIndex = 926
@@ -1451,7 +1452,7 @@ Partial Class AddItemForm
         'Label71
         '
         Me.Label71.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label71.Location = New System.Drawing.Point(130, 391)
+        Me.Label71.Location = New System.Drawing.Point(130, 379)
         Me.Label71.Name = "Label71"
         Me.Label71.Size = New System.Drawing.Size(3, 20)
         Me.Label71.TabIndex = 925
@@ -1459,7 +1460,7 @@ Partial Class AddItemForm
         'Label72
         '
         Me.Label72.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label72.Location = New System.Drawing.Point(167, 391)
+        Me.Label72.Location = New System.Drawing.Point(167, 379)
         Me.Label72.Name = "Label72"
         Me.Label72.Size = New System.Drawing.Size(3, 20)
         Me.Label72.TabIndex = 924
@@ -1467,7 +1468,7 @@ Partial Class AddItemForm
         'Label65
         '
         Me.Label65.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label65.Location = New System.Drawing.Point(131, 370)
+        Me.Label65.Location = New System.Drawing.Point(131, 358)
         Me.Label65.Name = "Label65"
         Me.Label65.Size = New System.Drawing.Size(39, 3)
         Me.Label65.TabIndex = 923
@@ -1475,7 +1476,7 @@ Partial Class AddItemForm
         'Label66
         '
         Me.Label66.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label66.Location = New System.Drawing.Point(130, 352)
+        Me.Label66.Location = New System.Drawing.Point(130, 340)
         Me.Label66.Name = "Label66"
         Me.Label66.Size = New System.Drawing.Size(40, 3)
         Me.Label66.TabIndex = 922
@@ -1483,7 +1484,7 @@ Partial Class AddItemForm
         'Label67
         '
         Me.Label67.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label67.Location = New System.Drawing.Point(130, 353)
+        Me.Label67.Location = New System.Drawing.Point(130, 341)
         Me.Label67.Name = "Label67"
         Me.Label67.Size = New System.Drawing.Size(3, 20)
         Me.Label67.TabIndex = 921
@@ -1491,7 +1492,7 @@ Partial Class AddItemForm
         'Label68
         '
         Me.Label68.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label68.Location = New System.Drawing.Point(167, 353)
+        Me.Label68.Location = New System.Drawing.Point(167, 341)
         Me.Label68.Name = "Label68"
         Me.Label68.Size = New System.Drawing.Size(3, 20)
         Me.Label68.TabIndex = 920
@@ -1499,7 +1500,7 @@ Partial Class AddItemForm
         'Label61
         '
         Me.Label61.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label61.Location = New System.Drawing.Point(131, 347)
+        Me.Label61.Location = New System.Drawing.Point(131, 335)
         Me.Label61.Name = "Label61"
         Me.Label61.Size = New System.Drawing.Size(39, 3)
         Me.Label61.TabIndex = 919
@@ -1507,7 +1508,7 @@ Partial Class AddItemForm
         'Label62
         '
         Me.Label62.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label62.Location = New System.Drawing.Point(130, 329)
+        Me.Label62.Location = New System.Drawing.Point(130, 317)
         Me.Label62.Name = "Label62"
         Me.Label62.Size = New System.Drawing.Size(40, 3)
         Me.Label62.TabIndex = 918
@@ -1515,7 +1516,7 @@ Partial Class AddItemForm
         'Label63
         '
         Me.Label63.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label63.Location = New System.Drawing.Point(130, 330)
+        Me.Label63.Location = New System.Drawing.Point(130, 318)
         Me.Label63.Name = "Label63"
         Me.Label63.Size = New System.Drawing.Size(3, 20)
         Me.Label63.TabIndex = 917
@@ -1523,7 +1524,7 @@ Partial Class AddItemForm
         'Label64
         '
         Me.Label64.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label64.Location = New System.Drawing.Point(167, 330)
+        Me.Label64.Location = New System.Drawing.Point(167, 318)
         Me.Label64.Name = "Label64"
         Me.Label64.Size = New System.Drawing.Size(3, 20)
         Me.Label64.TabIndex = 916
@@ -1531,7 +1532,7 @@ Partial Class AddItemForm
         'Label57
         '
         Me.Label57.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label57.Location = New System.Drawing.Point(131, 286)
+        Me.Label57.Location = New System.Drawing.Point(131, 274)
         Me.Label57.Name = "Label57"
         Me.Label57.Size = New System.Drawing.Size(39, 3)
         Me.Label57.TabIndex = 915
@@ -1539,7 +1540,7 @@ Partial Class AddItemForm
         'Label58
         '
         Me.Label58.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label58.Location = New System.Drawing.Point(130, 268)
+        Me.Label58.Location = New System.Drawing.Point(130, 256)
         Me.Label58.Name = "Label58"
         Me.Label58.Size = New System.Drawing.Size(40, 3)
         Me.Label58.TabIndex = 914
@@ -1547,7 +1548,7 @@ Partial Class AddItemForm
         'Label59
         '
         Me.Label59.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label59.Location = New System.Drawing.Point(130, 269)
+        Me.Label59.Location = New System.Drawing.Point(130, 257)
         Me.Label59.Name = "Label59"
         Me.Label59.Size = New System.Drawing.Size(3, 20)
         Me.Label59.TabIndex = 913
@@ -1555,7 +1556,7 @@ Partial Class AddItemForm
         'Label60
         '
         Me.Label60.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label60.Location = New System.Drawing.Point(167, 269)
+        Me.Label60.Location = New System.Drawing.Point(167, 257)
         Me.Label60.Name = "Label60"
         Me.Label60.Size = New System.Drawing.Size(3, 20)
         Me.Label60.TabIndex = 912
@@ -1563,7 +1564,7 @@ Partial Class AddItemForm
         'Label53
         '
         Me.Label53.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label53.Location = New System.Drawing.Point(131, 309)
+        Me.Label53.Location = New System.Drawing.Point(131, 297)
         Me.Label53.Name = "Label53"
         Me.Label53.Size = New System.Drawing.Size(39, 3)
         Me.Label53.TabIndex = 911
@@ -1571,7 +1572,7 @@ Partial Class AddItemForm
         'Label54
         '
         Me.Label54.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label54.Location = New System.Drawing.Point(130, 291)
+        Me.Label54.Location = New System.Drawing.Point(130, 279)
         Me.Label54.Name = "Label54"
         Me.Label54.Size = New System.Drawing.Size(40, 3)
         Me.Label54.TabIndex = 910
@@ -1579,7 +1580,7 @@ Partial Class AddItemForm
         'Label55
         '
         Me.Label55.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label55.Location = New System.Drawing.Point(130, 292)
+        Me.Label55.Location = New System.Drawing.Point(130, 280)
         Me.Label55.Name = "Label55"
         Me.Label55.Size = New System.Drawing.Size(3, 20)
         Me.Label55.TabIndex = 909
@@ -1587,7 +1588,7 @@ Partial Class AddItemForm
         'Label56
         '
         Me.Label56.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label56.Location = New System.Drawing.Point(167, 292)
+        Me.Label56.Location = New System.Drawing.Point(167, 280)
         Me.Label56.Name = "Label56"
         Me.Label56.Size = New System.Drawing.Size(3, 20)
         Me.Label56.TabIndex = 908
@@ -1595,7 +1596,7 @@ Partial Class AddItemForm
         'Label42
         '
         Me.Label42.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label42.Location = New System.Drawing.Point(198, 286)
+        Me.Label42.Location = New System.Drawing.Point(198, 274)
         Me.Label42.Name = "Label42"
         Me.Label42.Size = New System.Drawing.Size(39, 3)
         Me.Label42.TabIndex = 907
@@ -1603,7 +1604,7 @@ Partial Class AddItemForm
         'Label43
         '
         Me.Label43.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label43.Location = New System.Drawing.Point(197, 268)
+        Me.Label43.Location = New System.Drawing.Point(197, 256)
         Me.Label43.Name = "Label43"
         Me.Label43.Size = New System.Drawing.Size(40, 3)
         Me.Label43.TabIndex = 906
@@ -1611,7 +1612,7 @@ Partial Class AddItemForm
         'Label44
         '
         Me.Label44.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label44.Location = New System.Drawing.Point(197, 269)
+        Me.Label44.Location = New System.Drawing.Point(197, 257)
         Me.Label44.Name = "Label44"
         Me.Label44.Size = New System.Drawing.Size(3, 20)
         Me.Label44.TabIndex = 905
@@ -1619,7 +1620,7 @@ Partial Class AddItemForm
         'Label52
         '
         Me.Label52.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label52.Location = New System.Drawing.Point(234, 269)
+        Me.Label52.Location = New System.Drawing.Point(234, 257)
         Me.Label52.Name = "Label52"
         Me.Label52.Size = New System.Drawing.Size(3, 20)
         Me.Label52.TabIndex = 904
@@ -1627,7 +1628,7 @@ Partial Class AddItemForm
         'Label41
         '
         Me.Label41.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label41.Location = New System.Drawing.Point(198, 309)
+        Me.Label41.Location = New System.Drawing.Point(198, 297)
         Me.Label41.Name = "Label41"
         Me.Label41.Size = New System.Drawing.Size(39, 3)
         Me.Label41.TabIndex = 903
@@ -1635,7 +1636,7 @@ Partial Class AddItemForm
         'Label40
         '
         Me.Label40.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label40.Location = New System.Drawing.Point(197, 291)
+        Me.Label40.Location = New System.Drawing.Point(197, 279)
         Me.Label40.Name = "Label40"
         Me.Label40.Size = New System.Drawing.Size(40, 3)
         Me.Label40.TabIndex = 902
@@ -1643,7 +1644,7 @@ Partial Class AddItemForm
         'Label36
         '
         Me.Label36.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label36.Location = New System.Drawing.Point(373, 462)
+        Me.Label36.Location = New System.Drawing.Point(373, 450)
         Me.Label36.Name = "Label36"
         Me.Label36.Size = New System.Drawing.Size(165, 3)
         Me.Label36.TabIndex = 901
@@ -1651,7 +1652,7 @@ Partial Class AddItemForm
         'Label37
         '
         Me.Label37.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label37.Location = New System.Drawing.Point(373, 444)
+        Me.Label37.Location = New System.Drawing.Point(373, 432)
         Me.Label37.Name = "Label37"
         Me.Label37.Size = New System.Drawing.Size(165, 3)
         Me.Label37.TabIndex = 900
@@ -1659,7 +1660,7 @@ Partial Class AddItemForm
         'Label38
         '
         Me.Label38.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label38.Location = New System.Drawing.Point(537, 444)
+        Me.Label38.Location = New System.Drawing.Point(537, 432)
         Me.Label38.Name = "Label38"
         Me.Label38.Size = New System.Drawing.Size(3, 21)
         Me.Label38.TabIndex = 899
@@ -1667,7 +1668,7 @@ Partial Class AddItemForm
         'Label39
         '
         Me.Label39.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label39.Location = New System.Drawing.Point(370, 444)
+        Me.Label39.Location = New System.Drawing.Point(370, 432)
         Me.Label39.Name = "Label39"
         Me.Label39.Size = New System.Drawing.Size(3, 21)
         Me.Label39.TabIndex = 898
@@ -1675,7 +1676,7 @@ Partial Class AddItemForm
         'Label31
         '
         Me.Label31.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label31.Location = New System.Drawing.Point(373, 433)
+        Me.Label31.Location = New System.Drawing.Point(373, 421)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(165, 3)
         Me.Label31.TabIndex = 897
@@ -1683,7 +1684,7 @@ Partial Class AddItemForm
         'Label32
         '
         Me.Label32.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label32.Location = New System.Drawing.Point(373, 415)
+        Me.Label32.Location = New System.Drawing.Point(373, 403)
         Me.Label32.Name = "Label32"
         Me.Label32.Size = New System.Drawing.Size(165, 3)
         Me.Label32.TabIndex = 896
@@ -1691,7 +1692,7 @@ Partial Class AddItemForm
         'Label33
         '
         Me.Label33.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label33.Location = New System.Drawing.Point(536, 415)
+        Me.Label33.Location = New System.Drawing.Point(536, 403)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(3, 21)
         Me.Label33.TabIndex = 895
@@ -1699,7 +1700,7 @@ Partial Class AddItemForm
         'Label34
         '
         Me.Label34.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label34.Location = New System.Drawing.Point(370, 415)
+        Me.Label34.Location = New System.Drawing.Point(370, 403)
         Me.Label34.Name = "Label34"
         Me.Label34.Size = New System.Drawing.Size(3, 21)
         Me.Label34.TabIndex = 894
@@ -1707,7 +1708,7 @@ Partial Class AddItemForm
         'Label25
         '
         Me.Label25.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label25.Location = New System.Drawing.Point(373, 405)
+        Me.Label25.Location = New System.Drawing.Point(373, 393)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(165, 3)
         Me.Label25.TabIndex = 893
@@ -1715,7 +1716,7 @@ Partial Class AddItemForm
         'Label27
         '
         Me.Label27.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label27.Location = New System.Drawing.Point(373, 387)
+        Me.Label27.Location = New System.Drawing.Point(373, 375)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(165, 3)
         Me.Label27.TabIndex = 892
@@ -1723,7 +1724,7 @@ Partial Class AddItemForm
         'Label28
         '
         Me.Label28.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label28.Location = New System.Drawing.Point(536, 387)
+        Me.Label28.Location = New System.Drawing.Point(536, 375)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(3, 21)
         Me.Label28.TabIndex = 891
@@ -1731,7 +1732,7 @@ Partial Class AddItemForm
         'Label29
         '
         Me.Label29.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label29.Location = New System.Drawing.Point(370, 387)
+        Me.Label29.Location = New System.Drawing.Point(370, 375)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(3, 21)
         Me.Label29.TabIndex = 890
@@ -1739,7 +1740,7 @@ Partial Class AddItemForm
         'Label20
         '
         Me.Label20.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label20.Location = New System.Drawing.Point(373, 377)
+        Me.Label20.Location = New System.Drawing.Point(373, 365)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(165, 3)
         Me.Label20.TabIndex = 889
@@ -1747,7 +1748,7 @@ Partial Class AddItemForm
         'Label21
         '
         Me.Label21.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label21.Location = New System.Drawing.Point(373, 359)
+        Me.Label21.Location = New System.Drawing.Point(373, 347)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(165, 3)
         Me.Label21.TabIndex = 888
@@ -1755,7 +1756,7 @@ Partial Class AddItemForm
         'Label22
         '
         Me.Label22.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label22.Location = New System.Drawing.Point(537, 359)
+        Me.Label22.Location = New System.Drawing.Point(537, 347)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(3, 21)
         Me.Label22.TabIndex = 887
@@ -1763,7 +1764,7 @@ Partial Class AddItemForm
         'Label18
         '
         Me.Label18.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label18.Location = New System.Drawing.Point(89, 129)
+        Me.Label18.Location = New System.Drawing.Point(89, 117)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(161, 3)
         Me.Label18.TabIndex = 886
@@ -1771,7 +1772,7 @@ Partial Class AddItemForm
         'Label19
         '
         Me.Label19.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label19.Location = New System.Drawing.Point(89, 111)
+        Me.Label19.Location = New System.Drawing.Point(89, 99)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(161, 3)
         Me.Label19.TabIndex = 885
@@ -1779,7 +1780,7 @@ Partial Class AddItemForm
         'Label50
         '
         Me.Label50.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label50.Location = New System.Drawing.Point(247, 111)
+        Me.Label50.Location = New System.Drawing.Point(247, 99)
         Me.Label50.Name = "Label50"
         Me.Label50.Size = New System.Drawing.Size(3, 21)
         Me.Label50.TabIndex = 884
@@ -1787,7 +1788,7 @@ Partial Class AddItemForm
         'Label51
         '
         Me.Label51.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label51.Location = New System.Drawing.Point(88, 111)
+        Me.Label51.Location = New System.Drawing.Point(88, 99)
         Me.Label51.Name = "Label51"
         Me.Label51.Size = New System.Drawing.Size(3, 21)
         Me.Label51.TabIndex = 883
@@ -1795,7 +1796,7 @@ Partial Class AddItemForm
         'Label8
         '
         Me.Label8.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label8.Location = New System.Drawing.Point(90, 97)
+        Me.Label8.Location = New System.Drawing.Point(90, 85)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(161, 3)
         Me.Label8.TabIndex = 882
@@ -1803,7 +1804,7 @@ Partial Class AddItemForm
         'Label9
         '
         Me.Label9.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label9.Location = New System.Drawing.Point(90, 79)
+        Me.Label9.Location = New System.Drawing.Point(90, 67)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(161, 3)
         Me.Label9.TabIndex = 881
@@ -1811,7 +1812,7 @@ Partial Class AddItemForm
         'Label14
         '
         Me.Label14.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label14.Location = New System.Drawing.Point(250, 79)
+        Me.Label14.Location = New System.Drawing.Point(250, 67)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(3, 21)
         Me.Label14.TabIndex = 880
@@ -1819,7 +1820,7 @@ Partial Class AddItemForm
         'Label15
         '
         Me.Label15.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label15.Location = New System.Drawing.Point(89, 79)
+        Me.Label15.Location = New System.Drawing.Point(89, 67)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(3, 21)
         Me.Label15.TabIndex = 879
@@ -1827,7 +1828,7 @@ Partial Class AddItemForm
         'Label45
         '
         Me.Label45.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label45.Location = New System.Drawing.Point(532, 553)
+        Me.Label45.Location = New System.Drawing.Point(532, 541)
         Me.Label45.Name = "Label45"
         Me.Label45.Size = New System.Drawing.Size(3, 20)
         Me.Label45.TabIndex = 878
@@ -1835,7 +1836,7 @@ Partial Class AddItemForm
         'Label46
         '
         Me.Label46.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label46.Location = New System.Drawing.Point(88, 553)
+        Me.Label46.Location = New System.Drawing.Point(88, 541)
         Me.Label46.Name = "Label46"
         Me.Label46.Size = New System.Drawing.Size(3, 20)
         Me.Label46.TabIndex = 877
@@ -1843,7 +1844,7 @@ Partial Class AddItemForm
         'Label47
         '
         Me.Label47.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label47.Location = New System.Drawing.Point(89, 571)
+        Me.Label47.Location = New System.Drawing.Point(89, 559)
         Me.Label47.Name = "Label47"
         Me.Label47.Size = New System.Drawing.Size(445, 3)
         Me.Label47.TabIndex = 876
@@ -1851,7 +1852,7 @@ Partial Class AddItemForm
         'Label48
         '
         Me.Label48.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label48.Location = New System.Drawing.Point(88, 552)
+        Me.Label48.Location = New System.Drawing.Point(88, 540)
         Me.Label48.Name = "Label48"
         Me.Label48.Size = New System.Drawing.Size(446, 3)
         Me.Label48.TabIndex = 875
@@ -1859,7 +1860,7 @@ Partial Class AddItemForm
         'Label13
         '
         Me.Label13.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label13.Location = New System.Drawing.Point(91, 72)
+        Me.Label13.Location = New System.Drawing.Point(91, 60)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(161, 3)
         Me.Label13.TabIndex = 874
@@ -1867,7 +1868,7 @@ Partial Class AddItemForm
         'Label12
         '
         Me.Label12.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label12.Location = New System.Drawing.Point(91, 54)
+        Me.Label12.Location = New System.Drawing.Point(91, 42)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(161, 3)
         Me.Label12.TabIndex = 873
@@ -1875,7 +1876,7 @@ Partial Class AddItemForm
         'Label11
         '
         Me.Label11.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label11.Location = New System.Drawing.Point(197, 292)
+        Me.Label11.Location = New System.Drawing.Point(197, 280)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(3, 20)
         Me.Label11.TabIndex = 872
@@ -1883,7 +1884,7 @@ Partial Class AddItemForm
         'Label10
         '
         Me.Label10.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label10.Location = New System.Drawing.Point(234, 292)
+        Me.Label10.Location = New System.Drawing.Point(234, 280)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(3, 20)
         Me.Label10.TabIndex = 871
@@ -1891,7 +1892,7 @@ Partial Class AddItemForm
         'Label6
         '
         Me.Label6.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label6.Location = New System.Drawing.Point(250, 54)
+        Me.Label6.Location = New System.Drawing.Point(250, 42)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(3, 21)
         Me.Label6.TabIndex = 870
@@ -1899,7 +1900,7 @@ Partial Class AddItemForm
         'Label5
         '
         Me.Label5.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label5.Location = New System.Drawing.Point(89, 54)
+        Me.Label5.Location = New System.Drawing.Point(89, 42)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(3, 21)
         Me.Label5.TabIndex = 869
@@ -1907,7 +1908,7 @@ Partial Class AddItemForm
         'Label4
         '
         Me.Label4.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label4.Location = New System.Drawing.Point(532, 29)
+        Me.Label4.Location = New System.Drawing.Point(532, 17)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(3, 20)
         Me.Label4.TabIndex = 868
@@ -1915,7 +1916,7 @@ Partial Class AddItemForm
         'Label26
         '
         Me.Label26.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label26.Location = New System.Drawing.Point(89, 29)
+        Me.Label26.Location = New System.Drawing.Point(89, 17)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(3, 20)
         Me.Label26.TabIndex = 867
@@ -1923,7 +1924,7 @@ Partial Class AddItemForm
         'Label2
         '
         Me.Label2.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label2.Location = New System.Drawing.Point(89, 47)
+        Me.Label2.Location = New System.Drawing.Point(89, 35)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(446, 3)
         Me.Label2.TabIndex = 866
@@ -1931,7 +1932,7 @@ Partial Class AddItemForm
         'Label17
         '
         Me.Label17.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label17.Location = New System.Drawing.Point(89, 28)
+        Me.Label17.Location = New System.Drawing.Point(89, 16)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(446, 3)
         Me.Label17.TabIndex = 865
@@ -1939,7 +1940,7 @@ Partial Class AddItemForm
         'Label7
         '
         Me.Label7.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label7.Location = New System.Drawing.Point(370, 359)
+        Me.Label7.Location = New System.Drawing.Point(370, 347)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(3, 21)
         Me.Label7.TabIndex = 980
@@ -1947,7 +1948,7 @@ Partial Class AddItemForm
         'Label16
         '
         Me.Label16.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label16.Location = New System.Drawing.Point(259, 88)
+        Me.Label16.Location = New System.Drawing.Point(259, 76)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(280, 1)
         Me.Label16.TabIndex = 981
@@ -1955,7 +1956,7 @@ Partial Class AddItemForm
         'Label23
         '
         Me.Label23.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label23.Location = New System.Drawing.Point(259, 106)
+        Me.Label23.Location = New System.Drawing.Point(259, 94)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(280, 1)
         Me.Label23.TabIndex = 982
@@ -1963,7 +1964,7 @@ Partial Class AddItemForm
         'Label24
         '
         Me.Label24.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label24.Location = New System.Drawing.Point(259, 123)
+        Me.Label24.Location = New System.Drawing.Point(259, 111)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(280, 1)
         Me.Label24.TabIndex = 983
@@ -1971,7 +1972,7 @@ Partial Class AddItemForm
         'Label30
         '
         Me.Label30.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label30.Location = New System.Drawing.Point(259, 141)
+        Me.Label30.Location = New System.Drawing.Point(259, 129)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(280, 1)
         Me.Label30.TabIndex = 984
@@ -1979,7 +1980,7 @@ Partial Class AddItemForm
         'Label35
         '
         Me.Label35.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label35.Location = New System.Drawing.Point(258, 160)
+        Me.Label35.Location = New System.Drawing.Point(258, 148)
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(280, 1)
         Me.Label35.TabIndex = 985
@@ -1987,7 +1988,7 @@ Partial Class AddItemForm
         'Label49
         '
         Me.Label49.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label49.Location = New System.Drawing.Point(258, 179)
+        Me.Label49.Location = New System.Drawing.Point(258, 167)
         Me.Label49.Name = "Label49"
         Me.Label49.Size = New System.Drawing.Size(280, 1)
         Me.Label49.TabIndex = 986
@@ -1995,7 +1996,7 @@ Partial Class AddItemForm
         'Label109
         '
         Me.Label109.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label109.Location = New System.Drawing.Point(259, 198)
+        Me.Label109.Location = New System.Drawing.Point(259, 186)
         Me.Label109.Name = "Label109"
         Me.Label109.Size = New System.Drawing.Size(280, 1)
         Me.Label109.TabIndex = 987
@@ -2003,7 +2004,7 @@ Partial Class AddItemForm
         'Label110
         '
         Me.Label110.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label110.Location = New System.Drawing.Point(259, 217)
+        Me.Label110.Location = New System.Drawing.Point(259, 205)
         Me.Label110.Name = "Label110"
         Me.Label110.Size = New System.Drawing.Size(280, 1)
         Me.Label110.TabIndex = 988
@@ -2011,7 +2012,7 @@ Partial Class AddItemForm
         'Label115
         '
         Me.Label115.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label115.Location = New System.Drawing.Point(259, 236)
+        Me.Label115.Location = New System.Drawing.Point(259, 224)
         Me.Label115.Name = "Label115"
         Me.Label115.Size = New System.Drawing.Size(280, 1)
         Me.Label115.TabIndex = 989
@@ -2019,7 +2020,7 @@ Partial Class AddItemForm
         'Label128
         '
         Me.Label128.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label128.Location = New System.Drawing.Point(258, 254)
+        Me.Label128.Location = New System.Drawing.Point(258, 242)
         Me.Label128.Name = "Label128"
         Me.Label128.Size = New System.Drawing.Size(280, 1)
         Me.Label128.TabIndex = 990
@@ -2027,7 +2028,7 @@ Partial Class AddItemForm
         'Label129
         '
         Me.Label129.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label129.Location = New System.Drawing.Point(259, 272)
+        Me.Label129.Location = New System.Drawing.Point(259, 260)
         Me.Label129.Name = "Label129"
         Me.Label129.Size = New System.Drawing.Size(280, 1)
         Me.Label129.TabIndex = 991
@@ -2035,7 +2036,7 @@ Partial Class AddItemForm
         'Label130
         '
         Me.Label130.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label130.Location = New System.Drawing.Point(259, 291)
+        Me.Label130.Location = New System.Drawing.Point(259, 279)
         Me.Label130.Name = "Label130"
         Me.Label130.Size = New System.Drawing.Size(280, 1)
         Me.Label130.TabIndex = 992
@@ -2043,7 +2044,7 @@ Partial Class AddItemForm
         'Label131
         '
         Me.Label131.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label131.Location = New System.Drawing.Point(259, 310)
+        Me.Label131.Location = New System.Drawing.Point(259, 298)
         Me.Label131.Name = "Label131"
         Me.Label131.Size = New System.Drawing.Size(280, 1)
         Me.Label131.TabIndex = 993
@@ -2051,7 +2052,7 @@ Partial Class AddItemForm
         'Label132
         '
         Me.Label132.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label132.Location = New System.Drawing.Point(259, 329)
+        Me.Label132.Location = New System.Drawing.Point(259, 317)
         Me.Label132.Name = "Label132"
         Me.Label132.Size = New System.Drawing.Size(280, 1)
         Me.Label132.TabIndex = 994
@@ -2272,6 +2273,7 @@ Partial Class AddItemForm
         Me.Controls.Add(Me.AddItemNameTEXTBOX)
         Me.Controls.Add(Me.Label1)
         Me.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximumSize = New System.Drawing.Size(562, 668)
         Me.MinimumSize = New System.Drawing.Size(562, 668)
         Me.Name = "AddItemForm"

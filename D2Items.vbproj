@@ -46,7 +46,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>sword_and_Shield.ico</ApplicationIcon>
+    <ApplicationIcon>sword_and_Shield_Xparent.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -216,6 +216,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="sword_and_Shield.ico" />
+    <Content Include="sword_and_Shield_Xparent.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
