@@ -1024,7 +1024,7 @@ Partial Class Form1
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(810, 800)
+        Me.MaximumSize = New System.Drawing.Size(810, 810)
         Me.MinimumSize = New System.Drawing.Size(810, 600)
         Me.Name = "Form1"
         Me.Text = "D2DiaBase Beta vers  0.85"
