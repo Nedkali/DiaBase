@@ -409,10 +409,6 @@ Public Class Form1
 
         If UCase(SearchOperatorCOMBOBOX.Text) = "EQUAL TO" Or UCase(SearchOperatorCOMBOBOX.Text) = "NOT EQUAL TO" Or UCase(SearchOperatorCOMBOBOX.Text) = "GREATER THAN" Or UCase(SearchOperatorCOMBOBOX.Text) = "LESS THAN" Then
             SearchRoutine() ' If all is good and search seems valid then branch to the search routine sub in Module1
-
-            'This returns focus to the item lists after search function
-            If SearchLISTBOX.Items.Count > 0 Then SearchLISTBOX.Focus()
-            If SearchLISTBOX.Items.Count = 0 Then AllItemsInDatabaseListBox.Focus()
         End If
 
 
