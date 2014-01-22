@@ -202,7 +202,7 @@ Public Class Form1
                 RichTextBox2.SelectionColor = Color.BurlyWood
                 RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
             End If
-
+            RichTextBox2.AppendText(vbCrLf) ' add a spacing line between item name and item stats (looks neater)
 
             count = RichTextBox2.TextLength
             'from this point we want to add white text for basic item info
@@ -214,6 +214,13 @@ Public Class Form1
             If Objects(RowNumber).RequiredStrength <> Nothing Then RichTextBox2.AppendText("Required Strength: " & Objects(RowNumber).RequiredStrength & vbCrLf)
             If Objects(RowNumber).RequiredDexterity <> Nothing Then RichTextBox2.AppendText("Required Dexterity: " & Objects(RowNumber).RequiredDexterity & vbCrLf)
             If Objects(RowNumber).RequiredLevel <> Nothing Then RichTextBox2.AppendText("Required Level: " & Objects(RowNumber).RequiredLevel & vbCrLf)
+            RichTextBox2.AppendText(vbCrLf) ' add a spacing line between item stats and unique attributes (looks neater)
+
+
+            ' Shouldnt attack class and speed be included in the main stat display like this as opposed to the unique attibutes block?
+
+            'If Objects(RowNumber).AttackClass <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).AttackClass & " Class") : If Objects(RowNumber).AttackSpeed <> Nothing Then RichTextBox2.AppendText(" - " & Objects(RowNumber).AttackSpeed & vbCrLf) Else RichTextBox2.AppendText(vbCrLf)
+
 
             Dim count2 As Integer = RichTextBox2.TextLength - count
             RichTextBox2.Select(count, count2)
@@ -236,20 +243,6 @@ Public Class Form1
             If Objects(RowNumber).Stat15 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat15 & vbCrLf)
 
 
-            'ROBS EDIT commented out this bit to test mule info text box <-----------------------------------------------------[ROBS EDIT]
-
-            'RichTextBox2.SelectionStart = RichTextBox2.TextLength 'ensure we are at end of document
-            'count = RichTextBox2.GetLineFromCharIndex(RichTextBox2.TextLength)
-            ' For x = 0 To 20 - count
-            'RichTextBox2.AppendText(vbCrLf) ' a few line feeds so we can display muleaccount etc info near bottom
-            'Next
-
-
-
-            ' MuleInfoRICHTEXTBOX.AppendText("Mule Account: " & Objects(RowNumber).MuleAccount & vbCrLf) '<----------------[ROBS EDIT]
-            ' MuleInfoRICHTEXTBOX.AppendText("Mule Name: " & Objects(RowNumber).MuleName & vbCrLf)
-            '  MuleInfoRICHTEXTBOX.AppendText("Mule Pass: " & Objects(RowNumber).MulePass & vbCrLf)
-
             MuleAccountTextbox.Text = Objects(RowNumber).MuleAccount
             MuleNameTextbox.Text = Objects(RowNumber).MuleName
             MulePassTextbox.Text = Objects(RowNumber).MulePass
@@ -258,9 +251,7 @@ Public Class Form1
         End If
         RichTextBox2.SelectAll()
         RichTextBox2.SelectionAlignment = HorizontalAlignment.Center
-        ' MuleInfoRICHTEXTBOX.SelectAll()
-        ' MuleInfoRICHTEXTBOX.SelectionAlignment = HorizontalAlignment.Center
-
+  
         PictureBox1.Load("Skins\" + ItemImageList(Objects(RowNumber).ItemImage) + ".jpg")
 
 
@@ -410,7 +401,7 @@ Public Class Form1
         If UCase(SearchOperatorCOMBOBOX.Text) = "EQUAL TO" Or UCase(SearchOperatorCOMBOBOX.Text) = "NOT EQUAL TO" Or UCase(SearchOperatorCOMBOBOX.Text) = "GREATER THAN" Or UCase(SearchOperatorCOMBOBOX.Text) = "LESS THAN" Then
             SearchRoutine() ' If all is good and search seems valid then branch to the search routine sub in Module1
         End If
-
+        If SearchLISTBOX.Items.Count > 0 Then SearchLISTBOX.Focus() Else AllItemsInDatabaseListBox.Focus() ' ensure focus is returned to the relevant item list after search
 
     End Sub
 

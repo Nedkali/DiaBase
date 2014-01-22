@@ -23,29 +23,42 @@ Partial Class SearchProgressForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.SearchPROGRESSBAR = New System.Windows.Forms.ProgressBar()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.SearchProgressLABEL2 = New System.Windows.Forms.Label()
+        Me.SearchProgressLABEL1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'SearchPROGRESSBAR
         '
         Me.SearchPROGRESSBAR.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.SearchPROGRESSBAR.ForeColor = System.Drawing.Color.BurlyWood
-        Me.SearchPROGRESSBAR.Location = New System.Drawing.Point(43, 32)
+        Me.SearchPROGRESSBAR.Location = New System.Drawing.Point(43, 33)
         Me.SearchPROGRESSBAR.Name = "SearchPROGRESSBAR"
         Me.SearchPROGRESSBAR.Size = New System.Drawing.Size(361, 20)
         Me.SearchPROGRESSBAR.TabIndex = 0
         '
-        'Label1
+        'SearchProgressLABEL2
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label1.Location = New System.Drawing.Point(90, 65)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(270, 15)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Searching Database For Matches, Please Wait..."
+        Me.SearchProgressLABEL2.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.SearchProgressLABEL2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SearchProgressLABEL2.ForeColor = System.Drawing.Color.BurlyWood
+        Me.SearchProgressLABEL2.Location = New System.Drawing.Point(234, 60)
+        Me.SearchProgressLABEL2.Name = "SearchProgressLABEL2"
+        Me.SearchProgressLABEL2.Size = New System.Drawing.Size(170, 15)
+        Me.SearchProgressLABEL2.TabIndex = 1
+        Me.SearchProgressLABEL2.Text = "Checking 0 of 0 Items"
+        Me.SearchProgressLABEL2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'SearchProgressLABEL1
+        '
+        Me.SearchProgressLABEL1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.SearchProgressLABEL1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SearchProgressLABEL1.ForeColor = System.Drawing.Color.BurlyWood
+        Me.SearchProgressLABEL1.Location = New System.Drawing.Point(43, 60)
+        Me.SearchProgressLABEL1.Name = "SearchProgressLABEL1"
+        Me.SearchProgressLABEL1.Size = New System.Drawing.Size(170, 15)
+        Me.SearchProgressLABEL1.TabIndex = 2
+        Me.SearchProgressLABEL1.Text = "0 Matches"
+        Me.SearchProgressLABEL1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'SearchProgressForm
         '
@@ -54,7 +67,8 @@ Partial Class SearchProgressForm
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.mbox
         Me.ClientSize = New System.Drawing.Size(441, 110)
         Me.ControlBox = False
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.SearchProgressLABEL1)
+        Me.Controls.Add(Me.SearchProgressLABEL2)
         Me.Controls.Add(Me.SearchPROGRESSBAR)
         Me.Name = "SearchProgressForm"
         Me.ShowIcon = False
@@ -62,9 +76,9 @@ Partial Class SearchProgressForm
         Me.Text = "Search In Progress... "
         Me.TopMost = True
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents SearchPROGRESSBAR As System.Windows.Forms.ProgressBar
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents SearchProgressLABEL2 As System.Windows.Forms.Label
+    Friend WithEvents SearchProgressLABEL1 As System.Windows.Forms.Label
 End Class
