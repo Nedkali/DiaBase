@@ -157,8 +157,8 @@ Partial Class Form1
         '
         'ToolStripProgressBar1
         '
-        Me.ToolStripProgressBar1.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.ToolStripProgressBar1.ForeColor = System.Drawing.SystemColors.WindowFrame
+        Me.ToolStripProgressBar1.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.ToolStripProgressBar1.ForeColor = System.Drawing.Color.BurlyWood
         Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
         Me.ToolStripProgressBar1.Size = New System.Drawing.Size(150, 16)
         Me.ToolStripProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous
@@ -433,10 +433,11 @@ Partial Class Form1
         Me.TextBox2.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TextBox2.ForeColor = System.Drawing.Color.BurlyWood
-        Me.TextBox2.Location = New System.Drawing.Point(177, 186)
+        Me.TextBox2.Location = New System.Drawing.Point(163, 186)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(99, 20)
+        Me.TextBox2.Size = New System.Drawing.Size(113, 20)
         Me.TextBox2.TabIndex = 25
+        Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'SearchLABEL
         '
@@ -863,28 +864,28 @@ Partial Class Form1
         '
         Me.Label30.AutoSize = True
         Me.Label30.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label30.Location = New System.Drawing.Point(453, 406)
+        Me.Label30.Location = New System.Drawing.Point(453, 398)
         Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(47, 13)
+        Me.Label30.Size = New System.Drawing.Size(73, 13)
         Me.Label30.TabIndex = 161
-        Me.Label30.Text = "Account"
+        Me.Label30.Text = "Mule Account"
         '
         'Label31
         '
         Me.Label31.AutoSize = True
         Me.Label31.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label31.Location = New System.Drawing.Point(453, 444)
+        Me.Label31.Location = New System.Drawing.Point(453, 480)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(60, 13)
+        Me.Label31.Size = New System.Drawing.Size(61, 13)
         Me.Label31.TabIndex = 162
-        Me.Label31.Text = "Char Name"
+        Me.Label31.Text = "Mule Name"
         '
         'MuleAccountTextbox
         '
         Me.MuleAccountTextbox.BackColor = System.Drawing.SystemColors.WindowText
         Me.MuleAccountTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.MuleAccountTextbox.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.MuleAccountTextbox.Location = New System.Drawing.Point(453, 422)
+        Me.MuleAccountTextbox.Location = New System.Drawing.Point(453, 414)
         Me.MuleAccountTextbox.Name = "MuleAccountTextbox"
         Me.MuleAccountTextbox.Size = New System.Drawing.Size(100, 13)
         Me.MuleAccountTextbox.TabIndex = 163
@@ -894,7 +895,7 @@ Partial Class Form1
         Me.MuleNameTextbox.BackColor = System.Drawing.SystemColors.WindowText
         Me.MuleNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.MuleNameTextbox.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.MuleNameTextbox.Location = New System.Drawing.Point(453, 460)
+        Me.MuleNameTextbox.Location = New System.Drawing.Point(453, 496)
         Me.MuleNameTextbox.Name = "MuleNameTextbox"
         Me.MuleNameTextbox.Size = New System.Drawing.Size(100, 13)
         Me.MuleNameTextbox.TabIndex = 164
@@ -904,7 +905,7 @@ Partial Class Form1
         Me.MulePassTextbox.BackColor = System.Drawing.SystemColors.WindowText
         Me.MulePassTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.MulePassTextbox.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.MulePassTextbox.Location = New System.Drawing.Point(453, 502)
+        Me.MulePassTextbox.Location = New System.Drawing.Point(453, 456)
         Me.MulePassTextbox.Name = "MulePassTextbox"
         Me.MulePassTextbox.Size = New System.Drawing.Size(100, 13)
         Me.MulePassTextbox.TabIndex = 166
@@ -913,26 +914,26 @@ Partial Class Form1
         '
         Me.Label32.AutoSize = True
         Me.Label32.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label32.Location = New System.Drawing.Point(453, 486)
+        Me.Label32.Location = New System.Drawing.Point(453, 440)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(58, 13)
+        Me.Label32.Size = New System.Drawing.Size(56, 13)
         Me.Label32.TabIndex = 165
-        Me.Label32.Text = "AccntPass"
+        Me.Label32.Text = "Mule Pass"
         '
         'Label33
         '
         Me.Label33.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label33.Location = New System.Drawing.Point(178, 205)
+        Me.Label33.Location = New System.Drawing.Point(163, 205)
         Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(98, 1)
+        Me.Label33.Size = New System.Drawing.Size(113, 1)
         Me.Label33.TabIndex = 167
         '
         'Label34
         '
         Me.Label34.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label34.Location = New System.Drawing.Point(178, 185)
+        Me.Label34.Location = New System.Drawing.Point(163, 185)
         Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(98, 1)
+        Me.Label34.Size = New System.Drawing.Size(113, 1)
         Me.Label34.TabIndex = 168
         '
         'Label35
@@ -946,7 +947,7 @@ Partial Class Form1
         'Label36
         '
         Me.Label36.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label36.Location = New System.Drawing.Point(177, 185)
+        Me.Label36.Location = New System.Drawing.Point(162, 185)
         Me.Label36.Name = "Label36"
         Me.Label36.Size = New System.Drawing.Size(1, 21)
         Me.Label36.TabIndex = 170
