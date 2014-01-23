@@ -542,6 +542,13 @@ Public Class Form1
             Button3.Text = "Timer Stop"
             RichTextBox1.AppendText("Timer Running" & vbCrLf)
         End If
+
+        '-------------------------------------------------------------------------------------------------------------------------------------------------
+        'trying to get time progress bar to run in marquee when in stop mode, to make the stop and absence of autologging stand out bit more doesnt work yet
+        'If Button3.Text = "Timer Stop" Then ToolStripProgressBar1.Style = ProgressBarStyle.Marquee : ToolStripProgressBar1.MarqueeAnimationSpeed = 1000
+        'If Button3.Text = "Timer Start" Then  ToolStripProgressBar1.Style = ProgressBarStyle.default
+        '-------------------------------------------------------------------------------------------------------------------------------------------------
+
     End Sub
 
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click

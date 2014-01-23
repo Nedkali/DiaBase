@@ -156,35 +156,39 @@ Partial Class Form1
         '
         'ToolStripProgressBar1
         '
-        Me.ToolStripProgressBar1.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.ToolStripProgressBar1.ForeColor = System.Drawing.SystemColors.WindowFrame
+        Me.ToolStripProgressBar1.BackColor = System.Drawing.Color.DimGray
+        Me.ToolStripProgressBar1.ForeColor = System.Drawing.Color.BurlyWood
         Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
-        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(150, 16)
+        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(150, 18)
         Me.ToolStripProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         '
         'ToolStripStatusLabel1
         '
-        Me.ToolStripStatusLabel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.ToolStripStatusLabel1.BackColor = System.Drawing.Color.Transparent
+        Me.ToolStripStatusLabel1.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
         Me.ToolStripStatusLabel1.ForeColor = System.Drawing.Color.BurlyWood
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(129, 17)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(163, 19)
         Me.ToolStripStatusLabel1.Text = "Time untill next update"
+        Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'StatusStrip1
         '
         Me.StatusStrip1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.StatusStrip1.BackgroundImage = Global.DiaBase.My.Resources.Resources.d2graphicselect
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripProgressBar1, Me.ToolStripStatusLabel2})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 569)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 567)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(794, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(794, 24)
         Me.StatusStrip1.TabIndex = 20
         Me.StatusStrip1.Text = "StatusStrip1"
         '
         'ToolStripStatusLabel2
         '
+        Me.ToolStripStatusLabel2.BackColor = System.Drawing.Color.Transparent
         Me.ToolStripStatusLabel2.ForeColor = System.Drawing.Color.BurlyWood
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(15, 17)
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(15, 19)
         Me.ToolStripStatusLabel2.Text = "<"
         '
         'EditExistingItemToolStripMenuItem
@@ -390,6 +394,7 @@ Partial Class Form1
         'MenuStrip1
         '
         Me.MenuStrip1.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.MenuStrip1.BackgroundImage = Global.DiaBase.My.Resources.Resources.d2graphicselect
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ItemFileToolStripMenuItem, Me.ItemsToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
@@ -413,10 +418,10 @@ Partial Class Form1
         Me.RichTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.RichTextBox2.CausesValidation = False
         Me.RichTextBox2.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.RichTextBox2.Location = New System.Drawing.Point(553, 236)
+        Me.RichTextBox2.Location = New System.Drawing.Point(562, 236)
         Me.RichTextBox2.Name = "RichTextBox2"
         Me.RichTextBox2.ReadOnly = True
-        Me.RichTextBox2.Size = New System.Drawing.Size(213, 326)
+        Me.RichTextBox2.Size = New System.Drawing.Size(205, 326)
         Me.RichTextBox2.TabIndex = 15
         Me.RichTextBox2.Text = ""
         '
@@ -854,63 +859,66 @@ Partial Class Form1
         '
         'Label30
         '
-        Me.Label30.AutoSize = True
         Me.Label30.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label30.Location = New System.Drawing.Point(453, 406)
+        Me.Label30.Location = New System.Drawing.Point(440, 410)
         Me.Label30.Name = "Label30"
-        Me.Label30.Size = New System.Drawing.Size(73, 13)
+        Me.Label30.Size = New System.Drawing.Size(116, 13)
         Me.Label30.TabIndex = 161
         Me.Label30.Text = "Mule Account"
+        Me.Label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label31
         '
-        Me.Label31.AutoSize = True
         Me.Label31.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label31.Location = New System.Drawing.Point(453, 497)
+        Me.Label31.Location = New System.Drawing.Point(440, 505)
         Me.Label31.Name = "Label31"
-        Me.Label31.Size = New System.Drawing.Size(61, 13)
+        Me.Label31.Size = New System.Drawing.Size(116, 13)
         Me.Label31.TabIndex = 162
         Me.Label31.Text = "Mule Name"
+        Me.Label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'MuleAccountTextbox
         '
         Me.MuleAccountTextbox.BackColor = System.Drawing.SystemColors.WindowText
         Me.MuleAccountTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.MuleAccountTextbox.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.MuleAccountTextbox.Location = New System.Drawing.Point(453, 422)
+        Me.MuleAccountTextbox.Location = New System.Drawing.Point(440, 426)
         Me.MuleAccountTextbox.Name = "MuleAccountTextbox"
-        Me.MuleAccountTextbox.Size = New System.Drawing.Size(100, 13)
+        Me.MuleAccountTextbox.Size = New System.Drawing.Size(116, 13)
         Me.MuleAccountTextbox.TabIndex = 163
+        Me.MuleAccountTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'MuleNameTextbox
         '
         Me.MuleNameTextbox.BackColor = System.Drawing.SystemColors.WindowText
         Me.MuleNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.MuleNameTextbox.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.MuleNameTextbox.Location = New System.Drawing.Point(453, 513)
+        Me.MuleNameTextbox.Location = New System.Drawing.Point(440, 521)
         Me.MuleNameTextbox.Name = "MuleNameTextbox"
-        Me.MuleNameTextbox.Size = New System.Drawing.Size(100, 13)
+        Me.MuleNameTextbox.Size = New System.Drawing.Size(116, 13)
         Me.MuleNameTextbox.TabIndex = 164
+        Me.MuleNameTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'MulePassTextbox
         '
         Me.MulePassTextbox.BackColor = System.Drawing.SystemColors.WindowText
         Me.MulePassTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.MulePassTextbox.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.MulePassTextbox.Location = New System.Drawing.Point(453, 470)
+        Me.MulePassTextbox.Location = New System.Drawing.Point(440, 474)
         Me.MulePassTextbox.Name = "MulePassTextbox"
-        Me.MulePassTextbox.Size = New System.Drawing.Size(100, 13)
+        Me.MulePassTextbox.Size = New System.Drawing.Size(116, 13)
         Me.MulePassTextbox.TabIndex = 166
+        Me.MulePassTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label32
         '
-        Me.Label32.AutoSize = True
         Me.Label32.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label32.Location = New System.Drawing.Point(453, 454)
+        Me.Label32.Location = New System.Drawing.Point(440, 458)
         Me.Label32.Name = "Label32"
-        Me.Label32.Size = New System.Drawing.Size(79, 13)
+        Me.Label32.Size = New System.Drawing.Size(116, 13)
         Me.Label32.TabIndex = 165
         Me.Label32.Text = "Mule Password"
+        Me.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label33
         '
