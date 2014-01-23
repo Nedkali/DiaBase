@@ -74,6 +74,7 @@ Partial Class YesNoD2Style
         Me.YesNoHeaderLABEL.Size = New System.Drawing.Size(328, 23)
         Me.YesNoHeaderLABEL.TabIndex = 3
         Me.YesNoHeaderLABEL.Text = "YesNoHeaderLABEL - Set at runtime"
+        Me.YesNoHeaderLABEL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'YesNoD2Style
         '
@@ -91,7 +92,7 @@ Partial Class YesNoD2Style
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "YesNoD2Style"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Universal Confirmation Box - Set Text At Runtime"
         Me.TopMost = True
         Me.ResumeLayout(False)

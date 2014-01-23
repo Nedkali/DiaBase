@@ -425,10 +425,11 @@ Partial Class Form1
         Me.TextBox2.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TextBox2.ForeColor = System.Drawing.Color.BurlyWood
-        Me.TextBox2.Location = New System.Drawing.Point(177, 186)
+        Me.TextBox2.Location = New System.Drawing.Point(159, 186)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(99, 20)
+        Me.TextBox2.Size = New System.Drawing.Size(114, 20)
         Me.TextBox2.TabIndex = 25
+        Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'SearchLABEL
         '
@@ -914,23 +915,23 @@ Partial Class Form1
         'Label33
         '
         Me.Label33.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label33.Location = New System.Drawing.Point(178, 205)
+        Me.Label33.Location = New System.Drawing.Point(160, 205)
         Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(98, 1)
+        Me.Label33.Size = New System.Drawing.Size(113, 1)
         Me.Label33.TabIndex = 167
         '
         'Label34
         '
         Me.Label34.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label34.Location = New System.Drawing.Point(178, 185)
+        Me.Label34.Location = New System.Drawing.Point(160, 185)
         Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(98, 1)
+        Me.Label34.Size = New System.Drawing.Size(113, 1)
         Me.Label34.TabIndex = 168
         '
         'Label35
         '
         Me.Label35.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label35.Location = New System.Drawing.Point(276, 185)
+        Me.Label35.Location = New System.Drawing.Point(273, 185)
         Me.Label35.Name = "Label35"
         Me.Label35.Size = New System.Drawing.Size(1, 21)
         Me.Label35.TabIndex = 169
@@ -938,7 +939,7 @@ Partial Class Form1
         'Label36
         '
         Me.Label36.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label36.Location = New System.Drawing.Point(177, 185)
+        Me.Label36.Location = New System.Drawing.Point(159, 185)
         Me.Label36.Name = "Label36"
         Me.Label36.Size = New System.Drawing.Size(1, 21)
         Me.Label36.TabIndex = 170

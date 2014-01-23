@@ -116,6 +116,7 @@ Partial Class ClosingAppForm
         Me.Controls.Add(Me.SaveDatabaseCHECKBOX)
         Me.Controls.Add(Me.BackupDatabaseCHRCKBOX)
         Me.Name = "ClosingAppForm"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Close DiaBase Application Confirmation"
         Me.ResumeLayout(False)
         Me.PerformLayout()

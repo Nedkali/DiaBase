@@ -406,48 +406,63 @@ Public Class Form1
         If UCase(SearchFieldCOMBOBOX.Text) = "ITEM NAME" Then
             SearchWordCOMBOBOX.Items.Clear()
             For Each item In ItemNamePulldownList
-                SearchWordCOMBOBOX.Items.Add(item)
+                If item <> Nothing Then SearchWordCOMBOBOX.Items.Add(item)
             Next
+            SearchWordCOMBOBOX.Select()
+        End If
+
+        'populate for unique attributes block FOR THE SAME REASONS AS FOR THE ITEM NAME FIELD ABOVE?/\
+        If UCase(SearchFieldCOMBOBOX.Text) = "UNIQUE ATTRIBUTES" Then
+            SearchWordCOMBOBOX.Items.Clear()
+            For Each item In UniqueAttribsPulldownList
+                If item <> Nothing Then SearchWordCOMBOBOX.Items.Add(item)
+            Next
+            SearchWordCOMBOBOX.Select()
         End If
 
         'POPULATE WORD SEARCH DROPDOWN WITH ALL ITEM BASE ENTRYS WHEN ITEM BASE IS SELECTED FOR SEARCH
         If UCase(SearchFieldCOMBOBOX.Text) = "ITEM BASE" Then
             SearchWordCOMBOBOX.Items.Clear()
             For Each ItemObjectItem As ItemObjects In Objects
-                If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.ItemBase) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.ItemBase)
+                If ItemObjectItem.ItemBase <> Nothing Then If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.ItemBase) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.ItemBase)
             Next
+            SearchWordCOMBOBOX.Select()
         End If
 
         'POPULATE WORD SEARCH DROPDOWN WITH ALL ITEM QUALITY ENTRYS WHEN ITEM QUALITY IS SELECTED FOR SEARCH
         If UCase(SearchFieldCOMBOBOX.Text) = "ITEM QUALITY" Then
             SearchWordCOMBOBOX.Items.Clear()
             For Each ItemObjectItem As ItemObjects In Objects
-                If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.ItemQuality) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.ItemQuality)
+                If ItemObjectItem.ItemQuality <> Nothing Then If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.ItemQuality) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.ItemQuality)
             Next
+            SearchWordCOMBOBOX.Select()
         End If
 
         'POPULATE WORD SEARCH DROPDOWN WITH ALL USER REFERENCE ENTRYS WHEN USER REF IS SELECTED FOR SEARCH
         If UCase(SearchFieldCOMBOBOX.Text) = "USER REFERENCE" Then
             SearchWordCOMBOBOX.Items.Clear()
             For Each ItemObjectItem As ItemObjects In Objects
-                If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.UserReference) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.UserReference)
+                If ItemObjectItem.UserReference <> Nothing Then If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.UserReference) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.UserReference)
             Next
+            SearchWordCOMBOBOX.Select()
         End If
 
         'POPULATE WORD SEARCH DROPDOWN WITH ALL MULE ACCOUNT ENTRYS WHEN MULE ACCOUNT IS SELECTED FOR SEARCH
         If UCase(SearchFieldCOMBOBOX.Text) = "MULE ACCOUNT" Then
             SearchWordCOMBOBOX.Items.Clear()
             For Each ItemObjectItem As ItemObjects In Objects
-                If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.MuleAccount) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.MuleAccount)
+                If ItemObjectItem.MuleAccount <> Nothing Then If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.MuleAccount) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.MuleAccount)
             Next
+            SearchWordCOMBOBOX.Select()
         End If
 
         'POPULATE WORD SEARCH DROPDOWN WITH ALL MULE NAME ENTRYS WHEN MULE NAME IS SELECTED FOR SEARCH
         If UCase(SearchFieldCOMBOBOX.Text) = "MULE NAME" Then
             SearchWordCOMBOBOX.Items.Clear()
             For Each ItemObjectItem As ItemObjects In Objects
-                If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.MuleName) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.MuleName)
+                If ItemObjectItem.MuleName <> Nothing Then If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.MuleName) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.MuleName)
             Next
+            SearchWordCOMBOBOX.Select()
         End If
 
         'POPULATE WORD SEARCH DROPDOWN WITH ALL MULE PASS ENTRYS WHEN MULE PASS IS SELECTED FOR SEARCH
@@ -456,30 +471,54 @@ Public Class Form1
             SearchWordCOMBOBOX.Items.Clear()
             If Settings.CheckBox3.Checked = False Then
                 For Each ItemObjectItem As ItemObjects In Objects
-                    If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.MulePass) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.MulePass)
+                    If ItemObjectItem.MulePass <> Nothing Then If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.MulePass) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.MulePass)
                 Next
+                SearchWordCOMBOBOX.Select()
             End If
         End If
 
         'POPULATE WORD SEARCH DROPDOWN WITH ALL ATTACK CLASS ENTRYS WHEN ATTACK CLASS IS SELECTED FOR SEARCH
         If UCase(SearchFieldCOMBOBOX.Text) = "ATTACK CLASS" Then
             SearchWordCOMBOBOX.Items.Clear()
-            If Settings.CheckBox3.Checked = False Then
-                For Each ItemObjectItem As ItemObjects In Objects
-                    If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.AttackClass) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.AttackClass)
-                Next
-            End If
+            For Each ItemObjectItem As ItemObjects In Objects
+                If ItemObjectItem.AttackClass <> Nothing Then If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.AttackClass) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.AttackClass)
+            Next
+            SearchWordCOMBOBOX.Select()
         End If
-
+    
         'POPULATE WORD SEARCH DROPDOWN WITH ALL ATTACK SPEED ENTRYS WHEN ATTACK SPEED IS SELECTED FOR SEARCH
         If UCase(SearchFieldCOMBOBOX.Text) = "ATTACK SPEED" Then
             SearchWordCOMBOBOX.Items.Clear()
-            If Settings.CheckBox3.Checked = False Then
-                For Each ItemObjectItem As ItemObjects In Objects
-                    If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.AttackSpeed) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.AttackSpeed)
-                Next
-            End If
+            For Each ItemObjectItem As ItemObjects In Objects
+                If ItemObjectItem.AttackSpeed <> Nothing Then If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.AttackSpeed) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.AttackSpeed)
+            Next
+            SearchWordCOMBOBOX.Select()
         End If
+
+        'POPULATE WORD SEARCH DROPDOWN WITH ALL RUNEWORD ENTRYS WHEN ATTACK SPEED IS SELECTED FOR SEARCH
+        If UCase(SearchFieldCOMBOBOX.Text) = "RUNEWORD" Then
+            SearchWordCOMBOBOX.Items.Clear()
+            For Each ItemObjectItem As ItemObjects In Objects
+                If ItemObjectItem.RuneWord <> Nothing Then If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.RuneWord) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.RuneWord)
+            Next
+            SearchWordCOMBOBOX.Select()
+        End If
+
+
+
+
+
+
+        'Clear out the word pulldowns if var searches apply also clears out word search entry and select value box ready for input
+
+        If UCase(SearchFieldCOMBOBOX.Text) = "ONE HAND DAMAGE MIN" Or UCase(SearchFieldCOMBOBOX.Text) = "ONE HAND DAMAGE MAX" Or UCase(SearchFieldCOMBOBOX.Text) = "TWO HAND DAMAGE MIN" Or UCase(SearchFieldCOMBOBOX.Text) = "TWO HAND DAMAGE MAX" _
+             Or UCase(SearchFieldCOMBOBOX.Text) = "THROW DAMAGE MIN" Or UCase(SearchFieldCOMBOBOX.Text) = "THROW DAMAGE MAX" Or UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED LEVEL" Or UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED STRENGTH" _
+              Or UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED DEXTERITY" Or UCase(SearchFieldCOMBOBOX.Text) = "CHANCE TO BLOCK" Or UCase(SearchFieldCOMBOBOX.Text) = "ITEM DEFENSE" Then SearchWordCOMBOBOX.Items.Clear() : SearchWordCOMBOBOX.Text = "" : SearchValueNUMERICUPDWN.Select()
+
+
+
+
+
 
         'ENTER SEARCH CRITERIA AND READY TO SEARCH!!!!!!!!!!!!!!!!!!
 
