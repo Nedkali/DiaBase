@@ -2379,22 +2379,22 @@ ItemMatched:  ' Jump point to avoid redundant routine once a match has been foun
 
                 If Objects(count).Stat1.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then
                     MyValue = getvalue(Objects(count).Stat1)
-                    If MyValue > 0 Then MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                    MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
                 End If
 
                 If Objects(count).Stat2.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then
                     MyValue = getvalue(Objects(count).Stat2)
-                    If MyValue > 0 Then MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                    MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
                 End If
 
                 If Objects(count).Stat3.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then
                     MyValue = getvalue(Objects(count).Stat3)
-                    If MyValue > 0 Then MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                    MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
                 End If
 
                 If Objects(count).Stat4.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then
                     MyValue = getvalue(Objects(count).Stat4)
-                    If MyValue > 0 Then MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                    MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
                 End If
 
             Next
@@ -2404,27 +2404,36 @@ ItemMatched:  ' Jump point to avoid redundant routine once a match has been foun
         End If
 
 
+        If SearchReferenceList.Count > 0 Then
+            Form1.SearchLISTBOX.SelectedIndex = 0
+            Form1.ListboxTABCONTROL.SelectTab(1)
+            Form1.Button1.BackColor = Color.DimGray
+            Form1.Button2.BackColor = Color.Black
+            Form1.TextBox2.Text = Form1.SearchLISTBOX.Items.Count & " - Total Matches"
+        End If
+
+
     End Sub
     Sub MyDecipher(ByVal count, ByVal xval)
 
         If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-            If xval = Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(xval & " " & Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            If xval = Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
         End If
         If Form1.SearchOperatorCOMBOBOX.Text = "Greater Than" Then
-            If xval > Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(xval & " " & Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            If xval > Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
         End If
         If Form1.SearchOperatorCOMBOBOX.Text = "Less Than" Then
-            If xval < Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(xval & " " & Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            If xval < Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
         End If
         If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-            If xval <> Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(xval & " " & Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            If xval <> Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
         End If
 
     End Sub
 
 
     Function getvalue(ByVal temp) As Integer
-        Dim myvalue As Integer = -1
+        Dim myvalue As Integer = 0
         temp = Replace(temp, "+", "")
         temp = Replace(temp, "%", "")
         temp = Replace(temp, ":", "")
@@ -2433,6 +2442,7 @@ ItemMatched:  ' Jump point to avoid redundant routine once a match has been foun
         For x = 0 To myarray.Length - 1
             If IsNumeric(myarray(x)) Then
                 myvalue = myarray(x)
+                Return myvalue
             End If
         Next
         Return myvalue
