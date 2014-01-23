@@ -1462,6 +1462,8 @@
     End Function
 
     Sub SearchRoutine()
+        Searchtest() : Return
+
         'This builds the RefineSearchReferenceList array which is a copy of the SearchReferenceList which is deleted before search
         'its used for refined searches... It verifys the item being tested for a match already existed as a match in the last search thus refining the old matched results
         If Form1.RefineSearchCHECKBOX.Checked = True Then
@@ -2321,7 +2323,7 @@ ItemMatched:  ' Jump point to avoid redundant routine once a match has been foun
 
 
         'if search was successful and matches exist this selects the first match in the searchlist and focuses on the search list tab page to show matches
-         If Form1.SearchLISTBOX.Items.Count > 0 Then
+        If Form1.SearchLISTBOX.Items.Count > 0 Then
             Form1.SearchLISTBOX.SelectedIndex = 0
             Form1.ListboxTABCONTROL.SelectTab(1)
             Form1.Button1.BackColor = Color.DimGray
@@ -2364,5 +2366,61 @@ ItemMatched:  ' Jump point to avoid redundant routine once a match has been foun
         My.Computer.FileSystem.CopyFile(DataBasePath & DatabaseFile, BackupPath & tempname)
 
     End Sub
+    Sub Searchtest()
+        Form1.SearchLISTBOX.Items.Clear()
+        Dim temp As String = ""
+        Dim MyValue As Integer = -1
+        If Form1.SearchFieldCOMBOBOX.Text = "Unique Attributes" Then
 
+            For Each ItemObjectItem As ItemObjects In Objects
+                If ItemObjectItem.Stat1.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then
+                    MyValue = getvalue(ItemObjectItem.Stat1)
+                    If MyValue > -1 Then temp = ItemObjectItem.Stat1 : MyDecipher(temp, MyValue) : Continue For 'skip rest we have found it
+                End If
+
+
+
+                'stat2
+
+                'stat3 etc
+
+
+            Next
+
+
+
+        End If
+
+
+
+
+    End Sub
+    Sub MyDecipher(ByVal temp, ByVal xval)
+
+        If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
+            If Val(xval) = Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(xval & " " & temp) : Return
+        End If
+        If Form1.SearchOperatorCOMBOBOX.Text = "Greater Than" Then
+            If Val(xval) > Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(xval & " " & temp) : Return
+        End If
+        If Form1.SearchOperatorCOMBOBOX.Text = "Less Than" Then
+            If Val(xval) < Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(xval & " " & temp) : Return
+        End If
+        If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
+            If Val(xval) <> Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(xval & " " & temp) : Return
+        End If
+
+    End Sub
+
+
+    Function getvalue(ByVal temp) As Integer
+        Dim myvalue As Integer = -1
+        Dim myarray = temp.Split(" ")
+        For x = 0 To myarray.Length - 1
+            If IsNumeric(myarray(x)) Then
+                myvalue = myarray(x)
+            End If
+        Next
+        Return myvalue
+    End Function
 End Module
