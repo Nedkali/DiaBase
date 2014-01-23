@@ -29,7 +29,8 @@ Public Class Form1
             file.WriteLine(Application.StartupPath + "\DataBase\Default.txt")
             file.WriteLine("30")
             file.WriteLine("True")
-            file.WriteLine("False")
+            file.WriteLine("False") 'added for backup before imports 
+            file.WriteLine("False") 'added for backup before item edits 
             file.Close()
             Mymessages = "Settings file created" : MyMessageBox()
 
@@ -149,16 +150,8 @@ Public Class Form1
         If Button3.Text = "Timer Stop" Then ImportTimer.Start()
     End Sub
 
-    'dISPLAYS THE SETTINGS FOM SELECTED FROM PULLDOWN MENUES
-    Private Sub SetDefaultsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetDefaultsToolStripMenuItem.Click
-        If LoggerRunning = True Then
-            Mymessages = "Please wait Import in progress" : MyMessageBox()
-            Return
-        End If
-        ImportTimer.Stop()
-        Settings.Show()
-        If Button3.Text = "Timer Stop" Then ImportTimer.Start()
-    End Sub
+
+   
 
 
     Private Sub AllItemsInDatabaseListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AllItemsInDatabaseListBox.SelectedIndexChanged
@@ -265,6 +258,11 @@ Public Class Form1
             Mymessages = "Please wait Import in progress" : MyMessageBox()
             Return
         End If
+
+        'check for backup on edits set to true if so then backup now
+        If Settings.BackupOnEditsCHECKBOX.Checked = True Then BackupDatabase()
+
+
         Dim RowNumber As Integer = AllItemsInDatabaseListBox.SelectedIndex
         If RowNumber = -1 Then Return ' do nothing
         If RowNumber >= 0 Then
@@ -635,5 +633,17 @@ SkipExit:
 
 
 SkipNewDatabase:
+    End Sub
+
+    Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
+        'dISPLAYS THE SETTINGS FOM SELECTED FROM PULLDOWN MENUES
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+        ImportTimer.Stop()
+        Settings.Show()
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start()
+
     End Sub
 End Class

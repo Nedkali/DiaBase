@@ -154,6 +154,13 @@
             Return
         End If
 
+        'check for backup on edits set to true if so the backup now
+        If Settings.BackupOnEditsCHECKBOX.Checked = True Then BackupDatabase()
+
+
+
+
+
         Objects(iEdit).ItemName = EditItemNameTEXTBOX.Text
         Objects(iEdit).ItemBase = EditItemBaseCOMBOBOX.Text
         Objects(iEdit).ItemQuality = EditItemQualityCOMBOBOX.Text

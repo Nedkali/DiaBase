@@ -38,9 +38,9 @@ Partial Class ClosingAppForm
         Me.BackupDatabaseCHRCKBOX.ForeColor = System.Drawing.Color.BurlyWood
         Me.BackupDatabaseCHRCKBOX.Location = New System.Drawing.Point(38, 169)
         Me.BackupDatabaseCHRCKBOX.Name = "BackupDatabaseCHRCKBOX"
-        Me.BackupDatabaseCHRCKBOX.Size = New System.Drawing.Size(149, 17)
+        Me.BackupDatabaseCHRCKBOX.Size = New System.Drawing.Size(112, 17)
         Me.BackupDatabaseCHRCKBOX.TabIndex = 0
-        Me.BackupDatabaseCHRCKBOX.Text = "Backup Current Database"
+        Me.BackupDatabaseCHRCKBOX.Text = "Backup Database"
         Me.BackupDatabaseCHRCKBOX.UseVisualStyleBackColor = False
         '
         'SaveDatabaseCHECKBOX
@@ -50,9 +50,9 @@ Partial Class ClosingAppForm
         Me.SaveDatabaseCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
         Me.SaveDatabaseCHECKBOX.Location = New System.Drawing.Point(38, 146)
         Me.SaveDatabaseCHECKBOX.Name = "SaveDatabaseCHECKBOX"
-        Me.SaveDatabaseCHECKBOX.Size = New System.Drawing.Size(137, 17)
+        Me.SaveDatabaseCHECKBOX.Size = New System.Drawing.Size(100, 17)
         Me.SaveDatabaseCHECKBOX.TabIndex = 1
-        Me.SaveDatabaseCHECKBOX.Text = "Save Current Database"
+        Me.SaveDatabaseCHECKBOX.Text = "Save Database"
         Me.SaveDatabaseCHECKBOX.UseVisualStyleBackColor = False
         '
         'AppCloseCancelBUTTONButton1

@@ -48,7 +48,6 @@ Partial Class Form1
         Me.DeleteItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.SetDefaultsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -337,15 +336,8 @@ Partial Class Form1
         Me.Label1.TabIndex = 17
         Me.Label1.Text = " Item Lists"
         '
-        'SetDefaultsToolStripMenuItem
-        '
-        Me.SetDefaultsToolStripMenuItem.Name = "SetDefaultsToolStripMenuItem"
-        Me.SetDefaultsToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
-        Me.SetDefaultsToolStripMenuItem.Text = "Set Defaults"
-        '
         'SettingsToolStripMenuItem
         '
-        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SetDefaultsToolStripMenuItem})
         Me.SettingsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
@@ -1055,7 +1047,6 @@ Partial Class Form1
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents SetDefaultsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SettingsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem

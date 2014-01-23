@@ -22,6 +22,7 @@
     Public MuleDataPath As String
     Public ArchiveFolder As String
     Public AutoBackups As String
+    Public EditBackups As String
     Public SearchReferenceList As List(Of String) = New List(Of String)
     Public RefineSearchReferenceList As List(Of String) = New List(Of String)
     Public StringMatches As List(Of String) = New List(Of String)
@@ -122,8 +123,8 @@
         DataBaseFile = file.ReadLine() : Settings.DatabaseFileTEXTBOX.Text = DataBaseFile
         TimerMins = file.ReadLine() : Settings.NumericUpDown1.Value = TimerMins
         KeepPassPrivate = file.ReadLine() : If KeepPassPrivate = True Then Settings.CheckBox3.Checked = True
-        AutoBackups = file.ReadLine() : If AutoBackups = True Then Settings.AutoBackupCHECKBOX.Checked = True ' added this for auto backup setting
-
+        AutoBackups = file.ReadLine() : If AutoBackups = True Then Settings.AutoBackupImportsCHECKBOX.Checked = True ' added this for auto backup setting
+        EditBackups = file.ReadLine() : If AutoBackups = True Then Settings.AutoBackupImportsCHECKBOX.Checked = True ' added this for backup befor saving item edits
         file.Close()
     End Sub
     Public Function ItemImageList(sender As Integer)

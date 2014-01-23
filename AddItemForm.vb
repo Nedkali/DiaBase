@@ -117,6 +117,13 @@
             Return
         End If
 
+
+        'check for backup on edits set to true if so then backup now
+        If Settings.BackupOnEditsCHECKBOX.Checked = True Then BackupDatabase()
+
+
+
+
         Dim count As Integer = Objects.Count
         Dim AddObject As New ItemObjects
 

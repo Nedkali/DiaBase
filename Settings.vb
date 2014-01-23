@@ -52,7 +52,8 @@
         file.WriteLine(DatabaseFileTEXTBOX.Text)
         file.WriteLine(NumericUpDown1.Value)
         file.WriteLine(CheckBox3.Checked)
-        file.WriteLine(AutoBackupCHECKBOX.Checked) ' added this for auto backup setting
+        file.WriteLine(AutoBackupImportsCHECKBOX.Checked) ' added this for auto backup on import setting
+        file.WriteLine(BackupOnEditsCHECKBOX.Checked)   ' added this for auto backup on edits setting
         file.Close()
         EtalPath = EtalPathTEXTBOX.Text
         DataBaseFile = DatabaseFileTEXTBOX.Text
@@ -69,6 +70,8 @@
         DatabaseFileTEXTBOX.Text = DatabaseFile
         NumericUpDown1.Value = TimerMins
         CheckBox3.Checked = KeepPassPrivate
+        AutoBackupImportsCHECKBOX.Checked = AutoBackups
+        BackupOnEditsCHECKBOX.Checked = EditBackups
         SettingsChecker()
 
     End Sub
@@ -83,4 +86,5 @@
         If My.Computer.FileSystem.FileExists(DatabaseFileTEXTBOX.Text) = True Then PictureBox2.Visible = True
     End Sub
 
+    
 End Class

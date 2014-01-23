@@ -45,9 +45,9 @@ Module AutoLogger
         ' This Backsup the database if logfiles exist to import (above routine checks this is true) and is set to do so in settings auto backup checkbox
         ' Routine currently will only backup the selected database - linking will have to be considered also b4 routine is complete <---------- [FINISH THIS ROB]
 
-        If Settings.AutoBackupCHECKBOX.Checked = True Then
+        If Settings.AutoBackupImportsCHECKBOX.Checked = True Then
 
-            
+
             'get Backup directory path
             Dim BackupPath = Application.StartupPath + "\DataBase\Backup\" ' set path to backup folder
 
