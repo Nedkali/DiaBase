@@ -5,7 +5,7 @@
     'DataBase variables
     Public iEdit As Integer         'used in item edit form to locate item(array) number being edited
     Public EtalPath As String
-    Public DatabaseFile As String
+    Public DataBasePath As String
     Public TimerMins As Integer
     Public Timercount As Integer
     Public TimerSecs As Integer
@@ -18,7 +18,7 @@
 
     'Logging variables
     Public MuleLogPath As String
-    Public DataBasePath As String
+    Public Databasefile As String
     Public MuleDataPath As String
     Public ArchiveFolder As String
     Public AutoBackups As String
@@ -41,7 +41,12 @@
 
     'This Reads the database from file and puts it in the object database (moved from form1 to allow it to be used at startup to load default database)
     Sub OpenDatabaseRoutine(DatabaseFile)
-
+        Form1.SearchLISTBOX.Items.Clear()               ' clears out search lists and other stat windows
+        Form1.MuleAccountTextbox.Text = ""
+        Form1.MuleNameTextbox.Text = ""
+        Form1.MulePassTextbox.Text = ""
+        Form1.RichTextBox2.Text = ""
+        Form1.PictureBox1.Image = Nothing
         Form1.AllItemsInDatabaseListBox.Items.Clear()   ' clears items listed
         If Objects.Count > 0 Then                       ' had to be done this way - havent figured out a better way for now
             Objects.RemoveRange(1, Objects.Count - 1)
@@ -2337,4 +2342,23 @@ ItemMatched:  ' Jump point to avoid redundant routine once a match has been foun
         End If
         Form1.SearchBUTTON.Enabled = True 'Finally re-enable the search button and were done, sooo lets get the hell outta here... phew!
     End Sub
+
+
+
+    'this backsup the current database from menu selection and when closing app
+    Sub BackupDatabase()
+        Dim BackupPath = Application.StartupPath & "\Database\Backup\"
+        Dim temp As String = ""
+        Dim myarray = Split(DatabaseFile, ".txt", 0)
+        Dim tempname = myarray(0) & ".bak"
+        myarray = Split(tempname, "\")
+        tempname = myarray(myarray.Length - 1)
+
+        If My.Computer.FileSystem.FileExists(BackupPath & tempname) = True Then
+            My.Computer.FileSystem.DeleteFile(BackupPath & tempname)
+        End If
+        My.Computer.FileSystem.CopyFile(DataBasePath & DatabaseFile, BackupPath & tempname)
+
+    End Sub
+
 End Module

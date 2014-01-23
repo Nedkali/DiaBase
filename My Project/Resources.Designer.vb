@@ -80,6 +80,15 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        '''</summary>
+        Friend ReadOnly Property d2Dong() As System.IO.UnmanagedMemoryStream
+            Get
+                Return ResourceManager.GetStream("d2Dong", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property d2graphicselect() As System.Drawing.Bitmap

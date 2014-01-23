@@ -202,7 +202,7 @@ Public Class Form1
                 RichTextBox2.SelectionColor = Color.BurlyWood
                 RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
             End If
-            RichTextBox2.AppendText(vbCrLf) ' add a spacing line between item name and item stats (looks neater)
+            RichTextBox2.AppendText(vbCrLf) ' add a spacing line between item name and item stats (looks neater) ROBS EDIT
 
             count = RichTextBox2.TextLength
             'from this point we want to add white text for basic item info
@@ -214,12 +214,13 @@ Public Class Form1
             If Objects(RowNumber).RequiredStrength <> Nothing Then RichTextBox2.AppendText("Required Strength: " & Objects(RowNumber).RequiredStrength & vbCrLf)
             If Objects(RowNumber).RequiredDexterity <> Nothing Then RichTextBox2.AppendText("Required Dexterity: " & Objects(RowNumber).RequiredDexterity & vbCrLf)
             If Objects(RowNumber).RequiredLevel <> Nothing Then RichTextBox2.AppendText("Required Level: " & Objects(RowNumber).RequiredLevel & vbCrLf)
-            RichTextBox2.AppendText(vbCrLf) ' add a spacing line between item stats and unique attributes (looks neater)
+            
+
+            'ROBS EDIT - includes attack class in the main stat display  as opposed to the unique attibutes block?
+            If Objects(RowNumber).AttackClass <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).AttackClass & " Class") : If Objects(RowNumber).AttackSpeed <> Nothing Then RichTextBox2.AppendText(" - " & Objects(RowNumber).AttackSpeed & vbCrLf) Else RichTextBox2.AppendText(vbCrLf)
 
 
-            ' Shouldnt attack class and speed be included in the main stat display like this as opposed to the unique attibutes block?
-
-            'If Objects(RowNumber).AttackClass <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).AttackClass & " Class") : If Objects(RowNumber).AttackSpeed <> Nothing Then RichTextBox2.AppendText(" - " & Objects(RowNumber).AttackSpeed & vbCrLf) Else RichTextBox2.AppendText(vbCrLf)
+            RichTextBox2.AppendText(vbCrLf) ' add a spacing line between item stats and unique attributes (looks neater) ROBS EDIT
 
 
             Dim count2 As Integer = RichTextBox2.TextLength - count
@@ -362,21 +363,11 @@ Public Class Form1
 
     'Refreshes selected database when selected from menu bar
     Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
-
-        Dim BackupPath = Application.StartupPath & "\Database\Backup\"
-        Dim temp As String = ""
-        Dim myarray = Split(DatabaseFile, ".txt", 0)
-        Dim tempname = myarray(0) & ".bak"
-        myarray = Split(tempname, "\")
-        tempname = myarray(myarray.Length - 1)
-
-        If My.Computer.FileSystem.FileExists(BackupPath & tempname) = True Then
-            My.Computer.FileSystem.DeleteFile(BackupPath & tempname)
-        End If
-        My.Computer.FileSystem.CopyFile(DataBasePath & DatabaseFile, BackupPath & tempname)
-
-        OpenDatabaseRoutine(DatabaseFile) ' refresh list ( to show backup worked )
-
+        YesNoD2Style.Text = "Confirm Database Backup"
+        YesNoD2Style.YesNoHeaderLABEL.Text = "PLEASE READ BEFORE REFRESHING BACKUP"
+        YesNoD2Style.YesNoMessageLABEL.Text = "This will permantly destroy the current database backup file. Doing this will mean you will no longer be able to resore the current backup file to a complete database." & vbCrLf & "Are you sure you wish to continue?"
+        YesNoD2Style.ShowDialog()
+        If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.Yes Then BackupDatabase()
     End Sub
 
 
@@ -437,7 +428,7 @@ Public Class Form1
             Next
         End If
 
-        'POPULATE WORD SEARCH DROPDOWN WITH ALL USER REFERENCE ENTRYS WHEN MULE ACCOUNT IS SELECTED FOR SEARCH
+        'POPULATE WORD SEARCH DROPDOWN WITH ALL USER REFERENCE ENTRYS WHEN USER REF IS SELECTED FOR SEARCH
         If UCase(SearchFieldCOMBOBOX.Text) = "USER REFERENCE" Then
             SearchWordCOMBOBOX.Items.Clear()
             For Each ItemObjectItem As ItemObjects In Objects
@@ -547,7 +538,7 @@ Public Class Form1
 
     End Sub
 
-    
+
     'items and matches nuber textbox
     Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
 
@@ -580,31 +571,69 @@ Public Class Form1
                 My.Computer.FileSystem.CopyFile(BackupPath & tempname, DatabaseFile, True) ' copy over new dbase file and rename it
 
                 OpenDatabaseRoutine(DatabaseFile) 'refresh new database file to the lists
-
-
-
             Else
                 'There is not backup file for this database so cant restore it
+            End If
+        End If
+
+        'cancel backup rtrstoration
+        If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.No Then
+        End If
+    End Sub
+
+    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        ClosingAppForm.ShowDialog()
+        'this end without backing up or saving
+        If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.No Then e.Cancel = True
+        If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = False And ClosingAppForm.BackupDatabaseCHRCKBOX.Checked = False Then End
+        If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = True Then SaveItems()
+
+        If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = True Then BackupDatabase()
+
+
+SkipExit:
+        ClosingAppForm.Close()
+
+    End Sub
+
+
+
+
+
+
+
+
+
+
+  
+    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+        Me.Close()
+    End Sub
+
+    Private Sub NewToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem1.Click
+        YesNoD2Style.Text = "Confirm New Database"
+        YesNoD2Style.YesNoHeaderLABEL.Text = "PLEASE READ BEFOR CREATING A NEW DATABASE"
+        YesNoD2Style.YesNoMessageLABEL.Text = "The Beat version does not support multiple databases. Creating a new database will destroy the current one." & vbCrLf & "Are you sure you want to contine?"
+        YesNoD2Style.ShowDialog()
+        If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.Yes Then
+
+            If My.Computer.FileSystem.FileExists(Application.StartupPath + "\DataBase\Default.txt") = False Then
+
+                My.Computer.FileSystem.DeleteFile(Application.StartupPath + "\DataBase\Default.txt")
+            Else
+
+                Dim file As System.IO.StreamWriter
+                file = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath + "\DataBase\Default.txt", False)
+                file.Close()
+                Mymessages = "Default Data base file created" : MyMessageBox()
+                OpenDatabaseRoutine(Databasefile) 'refresh new database file to the lists
+
 
             End If
 
         End If
 
 
-
-
-        'cancel backup rtrstoration
-        If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.No Then
-            ' MessageBox.Show("cancel it")
-
-
-
-
-        End If
-
-
-
-
-
+SkipNewDatabase:
     End Sub
 End Class

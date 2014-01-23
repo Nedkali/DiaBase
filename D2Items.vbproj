@@ -82,6 +82,12 @@
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
     <Compile Include="AutoLogger.vb" />
+    <Compile Include="ClosingAppForm.Designer.vb">
+      <DependentUpon>ClosingAppForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ClosingAppForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="EditItemForm.Designer.vb">
       <DependentUpon>EditItemForm.vb</DependentUpon>
     </Compile>
@@ -142,16 +148,19 @@
     <Compile Include="UserMessaging.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="YesNoDialog.Designer.vb">
-      <DependentUpon>YesNoDialog.vb</DependentUpon>
+    <Compile Include="YesNoD2StyleDialog.Designer.vb">
+      <DependentUpon>YesNoD2StyleDialog.vb</DependentUpon>
     </Compile>
-    <Compile Include="YesNoDialog.vb">
+    <Compile Include="YesNoD2StyleDialog.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AddItemForm.resx">
       <DependentUpon>AddItemForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClosingAppForm.resx">
+      <DependentUpon>ClosingAppForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditItemForm.resx">
       <DependentUpon>EditItemForm.vb</DependentUpon>
@@ -180,8 +189,8 @@
     <EmbeddedResource Include="UserMessaging.resx">
       <DependentUpon>UserMessaging.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="YesNoDialog.resx">
-      <DependentUpon>YesNoDialog.vb</DependentUpon>
+    <EmbeddedResource Include="YesNoD2StyleDialog.resx">
+      <DependentUpon>YesNoD2StyleDialog.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +233,7 @@
     <None Include="Resources\BigDLaugh.wav" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\d2Dong.wav" />
     <Content Include="sword_and_Shield.ico" />
     <Content Include="sword_and_Shield_Xparent.ico" />
     <Content Include="Treasure_Chest.ico" />
