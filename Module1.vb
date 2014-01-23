@@ -2377,25 +2377,50 @@ ItemMatched:  ' Jump point to avoid redundant routine once a match has been foun
 
             For count = 0 To Objects.Count - 1
 
-                If Objects(count).Stat1.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then
-                    MyValue = getvalue(Objects(count).Stat1)
-                    MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
-                End If
+                If Objects(count).Stat1 = "" Then Continue For ' optimize seach time
+                If Objects(count).Stat1.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat1) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
 
-                If Objects(count).Stat2.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then
-                    MyValue = getvalue(Objects(count).Stat2)
-                    MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
-                End If
+                If Objects(count).Stat2 = "" Then Continue For ' optimize seach time
+                If Objects(count).Stat2.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat2) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
 
-                If Objects(count).Stat3.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then
-                    MyValue = getvalue(Objects(count).Stat3)
-                    MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
-                End If
+                If Objects(count).Stat3 = "" Then Continue For ' optimize seach time
+                If Objects(count).Stat3.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat3) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
 
-                If Objects(count).Stat4.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then
-                    MyValue = getvalue(Objects(count).Stat4)
-                    MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
-                End If
+                If Objects(count).Stat4 = "" Then Continue For ' optimize seach time
+                If Objects(count).Stat4.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat4) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+
+                If Objects(count).Stat5 = "" Then Continue For ' optimize seach time
+                If Objects(count).Stat5.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat5) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+
+                If Objects(count).Stat6 = "" Then Continue For ' optimize seach time
+                If Objects(count).Stat6.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat6) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+
+                If Objects(count).Stat7 = "" Then Continue For ' optimize seach time
+                If Objects(count).Stat7.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat7) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+
+                If Objects(count).Stat8 = "" Then Continue For ' optimize seach time
+                If Objects(count).Stat8.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat8) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+
+                If Objects(count).Stat9 = "" Then Continue For ' optimize seach time
+                If Objects(count).Stat9.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat9) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+
+                If Objects(count).Stat10 = "" Then Continue For ' optimize seach time
+                If Objects(count).Stat10.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat10) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+
+                If Objects(count).Stat11 = "" Then Continue For ' optimize seach time
+                If Objects(count).Stat11.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat11) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+
+                If Objects(count).Stat12 = "" Then Continue For ' optimize seach time
+                If Objects(count).Stat12.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat12) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+
+                If Objects(count).Stat13 = "" Then Continue For ' optimize seach time
+                If Objects(count).Stat13.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat13) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+
+                If Objects(count).Stat14 = "" Then Continue For ' optimize seach time
+                If Objects(count).Stat14.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat14) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+
+                If Objects(count).Stat15 = "" Then Continue For ' optimize seach time
+                If Objects(count).Stat15.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat15) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
 
             Next
 
