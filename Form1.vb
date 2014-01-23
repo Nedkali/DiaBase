@@ -692,4 +692,6 @@ SkipNewDatabase:
         If Button3.Text = "Timer Stop" Then ImportTimer.Start()
 
     End Sub
+
+
 End Class

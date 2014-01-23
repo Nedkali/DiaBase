@@ -23,6 +23,7 @@
     Public ArchiveFolder As String
     Public AutoBackups As String
     Public EditBackups As String
+    Public MyCounter As Array
     Public SearchReferenceList As List(Of String) = New List(Of String)
     Public RefineSearchReferenceList As List(Of String) = New List(Of String)
     Public StringMatches As List(Of String) = New List(Of String)
@@ -2368,22 +2369,33 @@ ItemMatched:  ' Jump point to avoid redundant routine once a match has been foun
     End Sub
     Sub Searchtest()
         Form1.SearchLISTBOX.Items.Clear()
+        SearchReferenceList.Clear()
         Dim temp As String = ""
-        Dim MyValue As Integer = -1
+        Dim MyValue = -1
+
         If Form1.SearchFieldCOMBOBOX.Text = "Unique Attributes" Then
 
-            For Each ItemObjectItem As ItemObjects In Objects
-                If ItemObjectItem.Stat1.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then
-                    MyValue = getvalue(ItemObjectItem.Stat1)
-                    If MyValue > -1 Then temp = ItemObjectItem.Stat1 : MyDecipher(temp, MyValue) : Continue For 'skip rest we have found it
+            For count = 0 To Objects.Count - 1
+
+                If Objects(count).Stat1.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then
+                    MyValue = getvalue(Objects(count).Stat1)
+                    If MyValue > 0 Then MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
                 End If
 
+                If Objects(count).Stat2.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then
+                    MyValue = getvalue(Objects(count).Stat2)
+                    If MyValue > 0 Then MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                End If
 
+                If Objects(count).Stat3.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then
+                    MyValue = getvalue(Objects(count).Stat3)
+                    If MyValue > 0 Then MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                End If
 
-                'stat2
-
-                'stat3 etc
-
+                If Objects(count).Stat4.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then
+                    MyValue = getvalue(Objects(count).Stat4)
+                    If MyValue > 0 Then MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                End If
 
             Next
 
@@ -2392,22 +2404,20 @@ ItemMatched:  ' Jump point to avoid redundant routine once a match has been foun
         End If
 
 
-
-
     End Sub
-    Sub MyDecipher(ByVal temp, ByVal xval)
+    Sub MyDecipher(ByVal count, ByVal xval)
 
         If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-            If Val(xval) = Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(xval & " " & temp) : Return
+            If xval = Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(xval & " " & Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
         End If
         If Form1.SearchOperatorCOMBOBOX.Text = "Greater Than" Then
-            If Val(xval) > Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(xval & " " & temp) : Return
+            If xval > Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(xval & " " & Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
         End If
         If Form1.SearchOperatorCOMBOBOX.Text = "Less Than" Then
-            If Val(xval) < Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(xval & " " & temp) : Return
+            If xval < Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(xval & " " & Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
         End If
         If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-            If Val(xval) <> Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(xval & " " & temp) : Return
+            If xval <> Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(xval & " " & Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
         End If
 
     End Sub
@@ -2415,6 +2425,10 @@ ItemMatched:  ' Jump point to avoid redundant routine once a match has been foun
 
     Function getvalue(ByVal temp) As Integer
         Dim myvalue As Integer = -1
+        temp = Replace(temp, "+", "")
+        temp = Replace(temp, "%", "")
+        temp = Replace(temp, ":", "")
+        temp = Replace(temp, "-", "")
         Dim myarray = temp.Split(" ")
         For x = 0 To myarray.Length - 1
             If IsNumeric(myarray(x)) Then
@@ -2423,4 +2437,5 @@ ItemMatched:  ' Jump point to avoid redundant routine once a match has been foun
         Next
         Return myvalue
     End Function
+
 End Module
