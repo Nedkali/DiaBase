@@ -29,7 +29,9 @@ Partial Class UserMessaging
         'Button1
         '
         Me.Button1.BackColor = System.Drawing.SystemColors.InfoText
-        Me.Button1.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.Button1.BackgroundImage = Global.DiaBase.My.Resources.Resources.back1
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.ForeColor = System.Drawing.Color.BurlyWood
         Me.Button1.Location = New System.Drawing.Point(182, 58)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)

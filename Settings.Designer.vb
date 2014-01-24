@@ -53,14 +53,19 @@ Partial Class Settings
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.BackupOnEditsCHECKBOX = New System.Windows.Forms.CheckBox()
-        CType(Me.NumericUpDown1,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.PictureBox1,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.PictureBox2,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.SuspendLayout
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.Label20 = New System.Windows.Forms.Label()
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
         '
         'Label5
         '
-        Me.Label5.AutoSize = true
+        Me.Label5.AutoSize = True
         Me.Label5.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label5.ForeColor = System.Drawing.Color.BurlyWood
         Me.Label5.Location = New System.Drawing.Point(407, 188)
@@ -71,18 +76,20 @@ Partial Class Settings
         '
         'Label4
         '
-        Me.Label4.AutoSize = true
+        Me.Label4.AutoSize = True
         Me.Label4.BackColor = System.Drawing.SystemColors.WindowText
+        Me.Label4.Font = New System.Drawing.Font("Buxton Sketch", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label4.Location = New System.Drawing.Point(332, 160)
+        Me.Label4.Location = New System.Drawing.Point(331, 163)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(121, 13)
+        Me.Label4.Size = New System.Drawing.Size(145, 20)
         Me.Label4.TabIndex = 28
-        Me.Label4.Text = "Time between file scans"
+        Me.Label4.Text = "Check Imports Delay"
         '
         'SaveDefaultsBUTTON
         '
         Me.SaveDefaultsBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.SaveDefaultsBUTTON.BackgroundImage = CType(resources.GetObject("SaveDefaultsBUTTON.BackgroundImage"), System.Drawing.Image)
         Me.SaveDefaultsBUTTON.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.SaveDefaultsBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.SaveDefaultsBUTTON.ForeColor = System.Drawing.Color.BurlyWood
@@ -91,11 +98,12 @@ Partial Class Settings
         Me.SaveDefaultsBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.SaveDefaultsBUTTON.TabIndex = 27
         Me.SaveDefaultsBUTTON.Text = "Save"
-        Me.SaveDefaultsBUTTON.UseVisualStyleBackColor = false
+        Me.SaveDefaultsBUTTON.UseVisualStyleBackColor = False
         '
         'DefaultDatabaseBrowseBUTTON
         '
         Me.DefaultDatabaseBrowseBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.DefaultDatabaseBrowseBUTTON.BackgroundImage = CType(resources.GetObject("DefaultDatabaseBrowseBUTTON.BackgroundImage"), System.Drawing.Image)
         Me.DefaultDatabaseBrowseBUTTON.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.DefaultDatabaseBrowseBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.DefaultDatabaseBrowseBUTTON.ForeColor = System.Drawing.Color.BurlyWood
@@ -104,11 +112,12 @@ Partial Class Settings
         Me.DefaultDatabaseBrowseBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.DefaultDatabaseBrowseBUTTON.TabIndex = 26
         Me.DefaultDatabaseBrowseBUTTON.Text = "Browse"
-        Me.DefaultDatabaseBrowseBUTTON.UseVisualStyleBackColor = false
+        Me.DefaultDatabaseBrowseBUTTON.UseVisualStyleBackColor = False
         '
         'EtalPathBrowseBUTTON
         '
         Me.EtalPathBrowseBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.EtalPathBrowseBUTTON.BackgroundImage = CType(resources.GetObject("EtalPathBrowseBUTTON.BackgroundImage"), System.Drawing.Image)
         Me.EtalPathBrowseBUTTON.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.EtalPathBrowseBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.EtalPathBrowseBUTTON.ForeColor = System.Drawing.Color.BurlyWood
@@ -117,11 +126,12 @@ Partial Class Settings
         Me.EtalPathBrowseBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.EtalPathBrowseBUTTON.TabIndex = 25
         Me.EtalPathBrowseBUTTON.Text = "Browse"
-        Me.EtalPathBrowseBUTTON.UseVisualStyleBackColor = false
+        Me.EtalPathBrowseBUTTON.UseVisualStyleBackColor = False
         '
         'CancelDefaultsBUTTON
         '
         Me.CancelDefaultsBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.CancelDefaultsBUTTON.BackgroundImage = CType(resources.GetObject("CancelDefaultsBUTTON.BackgroundImage"), System.Drawing.Image)
         Me.CancelDefaultsBUTTON.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.CancelDefaultsBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CancelDefaultsBUTTON.ForeColor = System.Drawing.Color.BurlyWood
@@ -130,7 +140,7 @@ Partial Class Settings
         Me.CancelDefaultsBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.CancelDefaultsBUTTON.TabIndex = 24
         Me.CancelDefaultsBUTTON.Text = "Cancel"
-        Me.CancelDefaultsBUTTON.UseVisualStyleBackColor = false
+        Me.CancelDefaultsBUTTON.UseVisualStyleBackColor = False
         '
         'DatabaseFileTEXTBOX
         '
@@ -143,12 +153,13 @@ Partial Class Settings
         '
         'Label1
         '
-        Me.Label1.AutoSize = true
+        Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.SystemColors.WindowText
+        Me.Label1.Font = New System.Drawing.Font("Buxton Sketch", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label1.Location = New System.Drawing.Point(71, 26)
+        Me.Label1.Location = New System.Drawing.Point(71, 32)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(125, 13)
+        Me.Label1.Size = New System.Drawing.Size(170, 20)
         Me.Label1.TabIndex = 21
         Me.Label1.Text = "Etal Folder - eg C:\D2NT"
         '
@@ -163,12 +174,13 @@ Partial Class Settings
         '
         'Label3
         '
-        Me.Label3.AutoSize = true
+        Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.SystemColors.WindowText
+        Me.Label3.Font = New System.Drawing.Font("Buxton Sketch", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label3.Location = New System.Drawing.Point(71, 90)
+        Me.Label3.Location = New System.Drawing.Point(71, 97)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(90, 13)
+        Me.Label3.Size = New System.Drawing.Size(124, 20)
         Me.Label3.TabIndex = 32
         Me.Label3.Text = "Default Database"
         '
@@ -189,7 +201,7 @@ Partial Class Settings
         '
         'CheckBox3
         '
-        Me.CheckBox3.AutoSize = true
+        Me.CheckBox3.AutoSize = True
         Me.CheckBox3.BackColor = System.Drawing.SystemColors.WindowText
         Me.CheckBox3.ForeColor = System.Drawing.Color.BurlyWood
         Me.CheckBox3.Location = New System.Drawing.Point(42, 162)
@@ -197,33 +209,33 @@ Partial Class Settings
         Me.CheckBox3.Size = New System.Drawing.Size(212, 17)
         Me.CheckBox3.TabIndex = 34
         Me.CheckBox3.Text = "Make Mule Account Password Invisible"
-        Me.CheckBox3.UseVisualStyleBackColor = false
+        Me.CheckBox3.UseVisualStyleBackColor = False
         '
         'PictureBox1
         '
         Me.PictureBox1.BackColor = System.Drawing.SystemColors.WindowText
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"),System.Drawing.Image)
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(42, 49)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(23, 24)
         Me.PictureBox1.TabIndex = 35
-        Me.PictureBox1.TabStop = false
-        Me.PictureBox1.Visible = false
+        Me.PictureBox1.TabStop = False
+        Me.PictureBox1.Visible = False
         '
         'PictureBox2
         '
         Me.PictureBox2.BackColor = System.Drawing.SystemColors.WindowText
-        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"),System.Drawing.Image)
+        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
         Me.PictureBox2.Location = New System.Drawing.Point(42, 111)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(23, 24)
         Me.PictureBox2.TabIndex = 36
-        Me.PictureBox2.TabStop = false
-        Me.PictureBox2.Visible = false
+        Me.PictureBox2.TabStop = False
+        Me.PictureBox2.Visible = False
         '
         'AutoBackupImportsCHECKBOX
         '
-        Me.AutoBackupImportsCHECKBOX.AutoSize = true
+        Me.AutoBackupImportsCHECKBOX.AutoSize = True
         Me.AutoBackupImportsCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.AutoBackupImportsCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
         Me.AutoBackupImportsCHECKBOX.Location = New System.Drawing.Point(42, 203)
@@ -231,7 +243,7 @@ Partial Class Settings
         Me.AutoBackupImportsCHECKBOX.Size = New System.Drawing.Size(216, 17)
         Me.AutoBackupImportsCHECKBOX.TabIndex = 37
         Me.AutoBackupImportsCHECKBOX.Text = "Backup Database Before Importng Logs"
-        Me.AutoBackupImportsCHECKBOX.UseVisualStyleBackColor = false
+        Me.AutoBackupImportsCHECKBOX.UseVisualStyleBackColor = False
         '
         'Label128
         '
@@ -331,7 +343,7 @@ Partial Class Settings
         '
         'BackupOnEditsCHECKBOX
         '
-        Me.BackupOnEditsCHECKBOX.AutoSize = true
+        Me.BackupOnEditsCHECKBOX.AutoSize = True
         Me.BackupOnEditsCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.BackupOnEditsCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
         Me.BackupOnEditsCHECKBOX.Location = New System.Drawing.Point(42, 226)
@@ -339,14 +351,59 @@ Partial Class Settings
         Me.BackupOnEditsCHECKBOX.Size = New System.Drawing.Size(209, 17)
         Me.BackupOnEditsCHECKBOX.TabIndex = 878
         Me.BackupOnEditsCHECKBOX.Text = "Backup Database Before Editing Items"
-        Me.BackupOnEditsCHECKBOX.UseVisualStyleBackColor = false
+        Me.BackupOnEditsCHECKBOX.UseVisualStyleBackColor = False
+        '
+        'Label16
+        '
+        Me.Label16.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label16.Location = New System.Drawing.Point(34, 199)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(234, 1)
+        Me.Label16.TabIndex = 879
+        '
+        'Label17
+        '
+        Me.Label17.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label17.Location = New System.Drawing.Point(34, 247)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(234, 1)
+        Me.Label17.TabIndex = 880
+        '
+        'Label18
+        '
+        Me.Label18.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label18.Location = New System.Drawing.Point(267, 200)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(0, 46)
+        Me.Label18.TabIndex = 881
+        '
+        'Label19
+        '
+        Me.Label19.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label19.Location = New System.Drawing.Point(267, 199)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(1, 48)
+        Me.Label19.TabIndex = 882
+        '
+        'Label20
+        '
+        Me.Label20.BackColor = System.Drawing.Color.BurlyWood
+        Me.Label20.Location = New System.Drawing.Point(34, 200)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(1, 48)
+        Me.Label20.TabIndex = 883
         '
         'Settings
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.Setting
         Me.ClientSize = New System.Drawing.Size(511, 295)
+        Me.Controls.Add(Me.Label20)
+        Me.Controls.Add(Me.Label19)
+        Me.Controls.Add(Me.Label18)
+        Me.Controls.Add(Me.Label17)
+        Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.BackupOnEditsCHECKBOX)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Label12)
@@ -375,11 +432,11 @@ Partial Class Settings
         Me.Controls.Add(Me.EtalPathTEXTBOX)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.NumericUpDown1)
-        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
-        Me.MaximizeBox = false
-        Me.MinimizeBox = false
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "Settings"
-        Me.Text = "Settings"
+        Me.Text = "Configure DiaBase Settings"
         CType(Me.NumericUpDown1,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.PictureBox1,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.PictureBox2,System.ComponentModel.ISupportInitialize).EndInit
@@ -417,4 +474,9 @@ End Sub
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents BackupOnEditsCHECKBOX As System.Windows.Forms.CheckBox
+    Friend WithEvents Label16 As System.Windows.Forms.Label
+    Friend WithEvents Label17 As System.Windows.Forms.Label
+    Friend WithEvents Label18 As System.Windows.Forms.Label
+    Friend WithEvents Label19 As System.Windows.Forms.Label
+    Friend WithEvents Label20 As System.Windows.Forms.Label
 End Class

@@ -112,6 +112,10 @@ Partial Class Form1
         Me.Label34 = New System.Windows.Forms.Label()
         Me.Label35 = New System.Windows.Forms.Label()
         Me.Label36 = New System.Windows.Forms.Label()
+        Me.Label37 = New System.Windows.Forms.Label()
+        Me.Label38 = New System.Windows.Forms.Label()
+        Me.Label39 = New System.Windows.Forms.Label()
+        Me.Label40 = New System.Windows.Forms.Label()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -126,22 +130,21 @@ Partial Class Form1
         '
         Me.Label3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Buxton Sketch", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label3.Location = New System.Drawing.Point(464, 24)
+        Me.Label3.Location = New System.Drawing.Point(465, 27)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(191, 24)
+        Me.Label3.Size = New System.Drawing.Size(200, 26)
         Me.Label3.TabIndex = 24
         Me.Label3.Text = "AutoLogging Status"
         '
         'AllItemsInDatabaseListBox
         '
-        Me.AllItemsInDatabaseListBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.AllItemsInDatabaseListBox.BackColor = System.Drawing.Color.Black
         Me.AllItemsInDatabaseListBox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.AllItemsInDatabaseListBox.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.AllItemsInDatabaseListBox.ForeColor = System.Drawing.SystemColors.MenuBar
+        Me.AllItemsInDatabaseListBox.ForeColor = System.Drawing.Color.White
         Me.AllItemsInDatabaseListBox.FormattingEnabled = True
         Me.AllItemsInDatabaseListBox.Location = New System.Drawing.Point(3, 3)
         Me.AllItemsInDatabaseListBox.Margin = New System.Windows.Forms.Padding(0)
@@ -165,10 +168,10 @@ Partial Class Form1
         'ToolStripStatusLabel1
         '
         Me.ToolStripStatusLabel1.BackColor = System.Drawing.Color.Transparent
-        Me.ToolStripStatusLabel1.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.ToolStripStatusLabel1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.ToolStripStatusLabel1.ForeColor = System.Drawing.Color.BurlyWood
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(163, 19)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(149, 19)
         Me.ToolStripStatusLabel1.Text = "Time untill next update"
         Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
@@ -195,7 +198,7 @@ Partial Class Form1
         'EditExistingItemToolStripMenuItem
         '
         Me.EditExistingItemToolStripMenuItem.Name = "EditExistingItemToolStripMenuItem"
-        Me.EditExistingItemToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
+        Me.EditExistingItemToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
         Me.EditExistingItemToolStripMenuItem.Text = "Edit"
         '
         'SearchOperatorLABEL
@@ -270,6 +273,7 @@ Partial Class Form1
         'SearchBUTTON
         '
         Me.SearchBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.SearchBUTTON.BackgroundImage = Global.DiaBase.My.Resources.Resources.back1
         Me.SearchBUTTON.FlatAppearance.BorderSize = 2
         Me.SearchBUTTON.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
         Me.SearchBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -283,49 +287,51 @@ Partial Class Form1
         '
         'ItemsToolStripMenuItem
         '
+        Me.ItemsToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
         Me.ItemsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2, Me.ToolStripSeparator2, Me.AddNewItemToolStripMenuItem, Me.EditExistingItemToolStripMenuItem, Me.ToolStripSeparator1, Me.DeleteItemToolStripMenuItem})
+        Me.ItemsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.ItemsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.ItemsToolStripMenuItem.Name = "ItemsToolStripMenuItem"
-        Me.ItemsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
+        Me.ItemsToolStripMenuItem.Size = New System.Drawing.Size(51, 20)
         Me.ItemsToolStripMenuItem.Text = "Items"
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(196, 22)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(201, 22)
         Me.ToolStripMenuItem2.Text = "Import Mule Logs Now"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(193, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(198, 6)
         '
         'AddNewItemToolStripMenuItem
         '
         Me.AddNewItemToolStripMenuItem.Name = "AddNewItemToolStripMenuItem"
-        Me.AddNewItemToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
+        Me.AddNewItemToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
         Me.AddNewItemToolStripMenuItem.Text = "Add"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(193, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(198, 6)
         '
         'DeleteItemToolStripMenuItem
         '
         Me.DeleteItemToolStripMenuItem.Name = "DeleteItemToolStripMenuItem"
-        Me.DeleteItemToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
+        Me.DeleteItemToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
         Me.DeleteItemToolStripMenuItem.Text = "Delete"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Buxton Sketch", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label2.Location = New System.Drawing.Point(557, 183)
+        Me.Label2.Location = New System.Drawing.Point(566, 183)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(213, 24)
+        Me.Label2.Size = New System.Drawing.Size(194, 26)
         Me.Label2.TabIndex = 18
         Me.Label2.Text = "Mule And Item Details"
         '
@@ -333,63 +339,67 @@ Partial Class Form1
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Buxton Sketch", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label1.Location = New System.Drawing.Point(47, 183)
+        Me.Label1.Location = New System.Drawing.Point(31, 183)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(102, 24)
+        Me.Label1.Size = New System.Drawing.Size(102, 26)
         Me.Label1.TabIndex = 17
         Me.Label1.Text = " Item Lists"
         '
         'SettingsToolStripMenuItem
         '
+        Me.SettingsToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.SettingsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.SettingsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(65, 20)
         Me.SettingsToolStripMenuItem.Text = "Settings"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(155, 22)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(162, 22)
         Me.ToolStripMenuItem1.Text = "Backup Files"
         '
         'CloseToolStripMenuItem
         '
         Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
-        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
         Me.CloseToolStripMenuItem.Text = "Save"
         '
         'OpenToolStripMenuItem
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
         Me.OpenToolStripMenuItem.Text = "Open"
         '
         'ItemFileToolStripMenuItem
         '
+        Me.ItemFileToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
         Me.ItemFileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.CloseToolStripMenuItem, Me.NewToolStripMenuItem1, Me.ToolStripMenuItem1, Me.RestoreBackupToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.ItemFileToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ItemFileToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.ItemFileToolStripMenuItem.Name = "ItemFileToolStripMenuItem"
-        Me.ItemFileToolStripMenuItem.Size = New System.Drawing.Size(67, 20)
+        Me.ItemFileToolStripMenuItem.Size = New System.Drawing.Size(70, 20)
         Me.ItemFileToolStripMenuItem.Text = "Database"
         '
         'NewToolStripMenuItem1
         '
         Me.NewToolStripMenuItem1.Name = "NewToolStripMenuItem1"
-        Me.NewToolStripMenuItem1.Size = New System.Drawing.Size(155, 22)
+        Me.NewToolStripMenuItem1.Size = New System.Drawing.Size(162, 22)
         Me.NewToolStripMenuItem1.Text = "New"
         '
         'RestoreBackupToolStripMenuItem
         '
         Me.RestoreBackupToolStripMenuItem.Name = "RestoreBackupToolStripMenuItem"
-        Me.RestoreBackupToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.RestoreBackupToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
         Me.RestoreBackupToolStripMenuItem.Text = "Restore Backup"
         '
         'MenuStrip1
@@ -406,9 +416,11 @@ Partial Class Form1
         '
         'HelpToolStripMenuItem
         '
+        Me.HelpToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.HelpToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.HelpToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(45, 20)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'RichTextBox2
@@ -420,10 +432,10 @@ Partial Class Form1
         Me.RichTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.RichTextBox2.CausesValidation = False
         Me.RichTextBox2.ForeColor = System.Drawing.SystemColors.Highlight
-        Me.RichTextBox2.Location = New System.Drawing.Point(562, 236)
+        Me.RichTextBox2.Location = New System.Drawing.Point(562, 251)
         Me.RichTextBox2.Name = "RichTextBox2"
         Me.RichTextBox2.ReadOnly = True
-        Me.RichTextBox2.Size = New System.Drawing.Size(205, 326)
+        Me.RichTextBox2.Size = New System.Drawing.Size(205, 311)
         Me.RichTextBox2.TabIndex = 15
         Me.RichTextBox2.Text = ""
         '
@@ -544,6 +556,7 @@ Partial Class Form1
         'Button3
         '
         Me.Button3.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.Button3.BackgroundImage = Global.DiaBase.My.Resources.Resources.back1
         Me.Button3.FlatAppearance.BorderSize = 2
         Me.Button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
@@ -615,7 +628,7 @@ Partial Class Form1
         '
         Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
         Me.Label5.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label5.Location = New System.Drawing.Point(26, 256)
+        Me.Label5.Location = New System.Drawing.Point(26, 255)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(4, 301)
         Me.Label5.TabIndex = 132
@@ -635,7 +648,7 @@ Partial Class Form1
         Me.Label7.Location = New System.Drawing.Point(26, 255)
         Me.Label7.Name = "Label7"
         Me.Label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.Label7.Size = New System.Drawing.Size(381, 3)
+        Me.Label7.Size = New System.Drawing.Size(381, 4)
         Me.Label7.TabIndex = 133
         '
         'Label8
@@ -644,7 +657,7 @@ Partial Class Form1
         Me.Label8.BackColor = System.Drawing.Color.BurlyWood
         Me.Label8.Location = New System.Drawing.Point(26, 553)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(381, 4)
+        Me.Label8.Size = New System.Drawing.Size(382, 4)
         Me.Label8.TabIndex = 134
         '
         'Button1
@@ -695,26 +708,26 @@ Partial Class Form1
         Me.Label12.BackColor = System.Drawing.Color.Khaki
         Me.Label12.Location = New System.Drawing.Point(30, 259)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(2, 293)
+        Me.Label12.Size = New System.Drawing.Size(3, 294)
         Me.Label12.TabIndex = 140
         '
         'Label13
         '
-        Me.Label13.BackColor = System.Drawing.Color.DarkGoldenrod
-        Me.Label13.Location = New System.Drawing.Point(30, 258)
+        Me.Label13.BackColor = System.Drawing.Color.Khaki
+        Me.Label13.Location = New System.Drawing.Point(31, 259)
         Me.Label13.Name = "Label13"
         Me.Label13.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.Label13.Size = New System.Drawing.Size(373, 2)
+        Me.Label13.Size = New System.Drawing.Size(373, 1)
         Me.Label13.TabIndex = 141
         '
         'Label14
         '
         Me.Label14.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.Label14.BackColor = System.Drawing.Color.DarkGoldenrod
-        Me.Label14.Location = New System.Drawing.Point(30, 552)
+        Me.Label14.Location = New System.Drawing.Point(31, 552)
         Me.Label14.Name = "Label14"
         Me.Label14.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.Label14.Size = New System.Drawing.Size(373, 2)
+        Me.Label14.Size = New System.Drawing.Size(373, 1)
         Me.Label14.TabIndex = 142
         '
         'Label15
@@ -851,11 +864,11 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label29.AutoSize = True
         Me.Label29.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label29.Font = New System.Drawing.Font("Buxton Sketch", 15.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label29.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label29.Location = New System.Drawing.Point(28, 24)
+        Me.Label29.Location = New System.Drawing.Point(28, 26)
         Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(239, 24)
+        Me.Label29.Size = New System.Drawing.Size(211, 26)
         Me.Label29.TabIndex = 160
         Me.Label29.Text = "Item And Mule Searches"
         '
@@ -954,6 +967,42 @@ Partial Class Form1
         Me.Label36.Size = New System.Drawing.Size(1, 21)
         Me.Label36.TabIndex = 170
         '
+        'Label37
+        '
+        Me.Label37.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.Label37.BackColor = System.Drawing.Color.Khaki
+        Me.Label37.Location = New System.Drawing.Point(406, 255)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(2, 302)
+        Me.Label37.TabIndex = 171
+        '
+        'Label38
+        '
+        Me.Label38.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.Label38.BackColor = System.Drawing.Color.DimGray
+        Me.Label38.Location = New System.Drawing.Point(26, 255)
+        Me.Label38.Name = "Label38"
+        Me.Label38.Size = New System.Drawing.Size(2, 302)
+        Me.Label38.TabIndex = 172
+        '
+        'Label39
+        '
+        Me.Label39.BackColor = System.Drawing.Color.DarkGoldenrod
+        Me.Label39.Location = New System.Drawing.Point(29, 255)
+        Me.Label39.Name = "Label39"
+        Me.Label39.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.Label39.Size = New System.Drawing.Size(378, 1)
+        Me.Label39.TabIndex = 173
+        '
+        'Label40
+        '
+        Me.Label40.BackColor = System.Drawing.Color.DarkGoldenrod
+        Me.Label40.Location = New System.Drawing.Point(26, 557)
+        Me.Label40.Name = "Label40"
+        Me.Label40.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.Label40.Size = New System.Drawing.Size(382, 1)
+        Me.Label40.TabIndex = 174
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -962,6 +1011,10 @@ Partial Class Form1
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.D2Data
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(794, 591)
+        Me.Controls.Add(Me.Label40)
+        Me.Controls.Add(Me.Label39)
+        Me.Controls.Add(Me.Label38)
+        Me.Controls.Add(Me.Label37)
         Me.Controls.Add(Me.Label36)
         Me.Controls.Add(Me.Label35)
         Me.Controls.Add(Me.Label34)
@@ -972,7 +1025,6 @@ Partial Class Form1
         Me.Controls.Add(Me.MuleAccountTextbox)
         Me.Controls.Add(Me.Label31)
         Me.Controls.Add(Me.Label30)
-        Me.Controls.Add(Me.Label29)
         Me.Controls.Add(Me.Label28)
         Me.Controls.Add(Me.Label27)
         Me.Controls.Add(Me.Label26)
@@ -1015,7 +1067,6 @@ Partial Class Form1
         Me.Controls.Add(Me.SearchFieldCOMBOBOX)
         Me.Controls.Add(Me.SearchOperatorCOMBOBOX)
         Me.Controls.Add(Me.TextBox2)
-        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.SearchBUTTON)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.Label2)
@@ -1024,11 +1075,14 @@ Partial Class Form1
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.RichTextBox2)
         Me.Controls.Add(Me.ListboxTABCONTROL)
+        Me.Controls.Add(Me.Label29)
+        Me.Controls.Add(Me.Label3)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(810, 810)
+        Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(810, 600)
         Me.Name = "Form1"
         Me.Text = "D2DiaBase Beta vers  0.85"
@@ -1135,6 +1189,10 @@ Partial Class Form1
     Friend WithEvents Label34 As System.Windows.Forms.Label
     Friend WithEvents Label35 As System.Windows.Forms.Label
     Friend WithEvents Label36 As System.Windows.Forms.Label
+    Friend WithEvents Label37 As System.Windows.Forms.Label
+    Friend WithEvents Label38 As System.Windows.Forms.Label
+    Friend WithEvents Label39 As System.Windows.Forms.Label
+    Friend WithEvents Label40 As System.Windows.Forms.Label
 
 
 End Class

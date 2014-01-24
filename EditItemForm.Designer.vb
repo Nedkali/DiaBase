@@ -246,6 +246,7 @@ Partial Class EditItemForm
         'EditItemImageLABEL
         '
         Me.EditItemImageLABEL.AutoSize = True
+        Me.EditItemImageLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemImageLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemImageLABEL.Location = New System.Drawing.Point(308, 484)
         Me.EditItemImageLABEL.Name = "EditItemImageLABEL"
@@ -256,9 +257,10 @@ Partial Class EditItemForm
         'EditItemImageBUTTON
         '
         Me.EditItemImageBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.EditItemImageBUTTON.BackgroundImage = CType(resources.GetObject("EditItemImageBUTTON.BackgroundImage"), System.Drawing.Image)
         Me.EditItemImageBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.EditItemImageBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.EditItemImageBUTTON.Location = New System.Drawing.Point(441, 479)
+        Me.EditItemImageBUTTON.Location = New System.Drawing.Point(441, 478)
         Me.EditItemImageBUTTON.Name = "EditItemImageBUTTON"
         Me.EditItemImageBUTTON.Size = New System.Drawing.Size(102, 23)
         Me.EditItemImageBUTTON.TabIndex = 701
@@ -279,6 +281,7 @@ Partial Class EditItemForm
         'EditItemPickitBotLABEL
         '
         Me.EditItemPickitBotLABEL.AutoSize = True
+        Me.EditItemPickitBotLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemPickitBotLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemPickitBotLABEL.Location = New System.Drawing.Point(318, 435)
         Me.EditItemPickitBotLABEL.Name = "EditItemPickitBotLABEL"
@@ -354,6 +357,7 @@ Partial Class EditItemForm
         'Label2
         '
         Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.ForeColor = System.Drawing.Color.BurlyWood
         Me.Label2.Location = New System.Drawing.Point(37, 98)
         Me.Label2.Name = "Label2"
@@ -382,6 +386,7 @@ Partial Class EditItemForm
         'EditItemUndoChangesBUTTON
         '
         Me.EditItemUndoChangesBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.EditItemUndoChangesBUTTON.BackgroundImage = CType(resources.GetObject("EditItemUndoChangesBUTTON.BackgroundImage"), System.Drawing.Image)
         Me.EditItemUndoChangesBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.EditItemUndoChangesBUTTON.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemUndoChangesBUTTON.Location = New System.Drawing.Point(371, 563)
@@ -394,6 +399,7 @@ Partial Class EditItemForm
         'EditItemRequiredStrengthLABEL
         '
         Me.EditItemRequiredStrengthLABEL.AutoSize = True
+        Me.EditItemRequiredStrengthLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemRequiredStrengthLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemRequiredStrengthLABEL.Location = New System.Drawing.Point(36, 383)
         Me.EditItemRequiredStrengthLABEL.Name = "EditItemRequiredStrengthLABEL"
@@ -404,6 +410,7 @@ Partial Class EditItemForm
         'EditItemCancelBUTTON
         '
         Me.EditItemCancelBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.EditItemCancelBUTTON.BackgroundImage = CType(resources.GetObject("EditItemCancelBUTTON.BackgroundImage"), System.Drawing.Image)
         Me.EditItemCancelBUTTON.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.EditItemCancelBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.EditItemCancelBUTTON.ForeColor = System.Drawing.Color.BurlyWood
@@ -417,6 +424,7 @@ Partial Class EditItemForm
         'EditItemBaseLABEL
         '
         Me.EditItemBaseLABEL.AutoSize = True
+        Me.EditItemBaseLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemBaseLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemBaseLABEL.Location = New System.Drawing.Point(34, 41)
         Me.EditItemBaseLABEL.Name = "EditItemBaseLABEL"
@@ -448,6 +456,7 @@ Partial Class EditItemForm
         'EditItemDurabilityOfLABEL
         '
         Me.EditItemDurabilityOfLABEL.AutoSize = True
+        Me.EditItemDurabilityOfLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemDurabilityOfLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemDurabilityOfLABEL.Location = New System.Drawing.Point(178, 283)
         Me.EditItemDurabilityOfLABEL.Name = "EditItemDurabilityOfLABEL"
@@ -458,6 +467,7 @@ Partial Class EditItemForm
         'EditItemQuantityOfLABEL
         '
         Me.EditItemQuantityOfLABEL.AutoSize = True
+        Me.EditItemQuantityOfLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemQuantityOfLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemQuantityOfLABEL.Location = New System.Drawing.Point(178, 258)
         Me.EditItemQuantityOfLABEL.Name = "EditItemQuantityOfLABEL"
@@ -478,6 +488,7 @@ Partial Class EditItemForm
         'EditItemUniqueAttributesLABEL
         '
         Me.EditItemUniqueAttributesLABEL.AutoSize = True
+        Me.EditItemUniqueAttributesLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemUniqueAttributesLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemUniqueAttributesLABEL.Location = New System.Drawing.Point(263, 43)
         Me.EditItemUniqueAttributesLABEL.Name = "EditItemUniqueAttributesLABEL"
@@ -488,8 +499,9 @@ Partial Class EditItemForm
         'EditItemUserReferenceLABEL
         '
         Me.EditItemUserReferenceLABEL.AutoSize = True
+        Me.EditItemUserReferenceLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemUserReferenceLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.EditItemUserReferenceLABEL.Location = New System.Drawing.Point(8, 539)
+        Me.EditItemUserReferenceLABEL.Location = New System.Drawing.Point(8, 534)
         Me.EditItemUserReferenceLABEL.Name = "EditItemUserReferenceLABEL"
         Me.EditItemUserReferenceLABEL.Size = New System.Drawing.Size(82, 13)
         Me.EditItemUserReferenceLABEL.TabIndex = 691
@@ -499,7 +511,7 @@ Partial Class EditItemForm
         '
         Me.EditItemUserReferenceTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.EditItemUserReferenceTEXTBOX.ForeColor = System.Drawing.Color.White
-        Me.EditItemUserReferenceTEXTBOX.Location = New System.Drawing.Point(96, 536)
+        Me.EditItemUserReferenceTEXTBOX.Location = New System.Drawing.Point(96, 531)
         Me.EditItemUserReferenceTEXTBOX.Name = "EditItemUserReferenceTEXTBOX"
         Me.EditItemUserReferenceTEXTBOX.Size = New System.Drawing.Size(445, 20)
         Me.EditItemUserReferenceTEXTBOX.TabIndex = 665
@@ -507,6 +519,7 @@ Partial Class EditItemForm
         'EditItemSaveChangesBUTTON
         '
         Me.EditItemSaveChangesBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.EditItemSaveChangesBUTTON.BackgroundImage = CType(resources.GetObject("EditItemSaveChangesBUTTON.BackgroundImage"), System.Drawing.Image)
         Me.EditItemSaveChangesBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.EditItemSaveChangesBUTTON.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemSaveChangesBUTTON.Location = New System.Drawing.Point(266, 563)
@@ -519,6 +532,7 @@ Partial Class EditItemForm
         'EditItemDefenseLABEL
         '
         Me.EditItemDefenseLABEL.AutoSize = True
+        Me.EditItemDefenseLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemDefenseLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemDefenseLABEL.Location = New System.Drawing.Point(53, 322)
         Me.EditItemDefenseLABEL.Name = "EditItemDefenseLABEL"
@@ -659,6 +673,7 @@ Partial Class EditItemForm
         'EditMulePassLABEL
         '
         Me.EditMulePassLABEL.AutoSize = True
+        Me.EditMulePassLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditMulePassLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditMulePassLABEL.Location = New System.Drawing.Point(291, 407)
         Me.EditMulePassLABEL.Name = "EditMulePassLABEL"
@@ -669,6 +684,7 @@ Partial Class EditItemForm
         'EditItemMuleAccountLABEL
         '
         Me.EditItemMuleAccountLABEL.AutoSize = True
+        Me.EditItemMuleAccountLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemMuleAccountLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemMuleAccountLABEL.Location = New System.Drawing.Point(297, 379)
         Me.EditItemMuleAccountLABEL.Name = "EditItemMuleAccountLABEL"
@@ -679,6 +695,7 @@ Partial Class EditItemForm
         'EditItemMuleNameLABEL
         '
         Me.EditItemMuleNameLABEL.AutoSize = True
+        Me.EditItemMuleNameLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemMuleNameLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemMuleNameLABEL.Location = New System.Drawing.Point(309, 352)
         Me.EditItemMuleNameLABEL.Name = "EditItemMuleNameLABEL"
@@ -689,6 +706,7 @@ Partial Class EditItemForm
         'EditItemAttackSpeedLABEL
         '
         Me.EditItemAttackSpeedLABEL.AutoSize = True
+        Me.EditItemAttackSpeedLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemAttackSpeedLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemAttackSpeedLABEL.Location = New System.Drawing.Point(18, 483)
         Me.EditItemAttackSpeedLABEL.Name = "EditItemAttackSpeedLABEL"
@@ -699,6 +717,7 @@ Partial Class EditItemForm
         'EditItemChanceToBlockLABEL
         '
         Me.EditItemChanceToBlockLABEL.AutoSize = True
+        Me.EditItemChanceToBlockLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemChanceToBlockLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemChanceToBlockLABEL.Location = New System.Drawing.Point(36, 344)
         Me.EditItemChanceToBlockLABEL.Name = "EditItemChanceToBlockLABEL"
@@ -719,6 +738,7 @@ Partial Class EditItemForm
         'EditItemSocketsLABEL
         '
         Me.EditItemSocketsLABEL.AutoSize = True
+        Me.EditItemSocketsLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemSocketsLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemSocketsLABEL.Location = New System.Drawing.Point(47, 124)
         Me.EditItemSocketsLABEL.Name = "EditItemSocketsLABEL"
@@ -741,6 +761,7 @@ Partial Class EditItemForm
         'EditItemEtherealItemCHECKBOX
         '
         Me.EditItemEtherealItemCHECKBOX.AutoSize = True
+        Me.EditItemEtherealItemCHECKBOX.BackColor = System.Drawing.Color.Transparent
         Me.EditItemEtherealItemCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemEtherealItemCHECKBOX.Location = New System.Drawing.Point(166, 123)
         Me.EditItemEtherealItemCHECKBOX.Name = "EditItemEtherealItemCHECKBOX"
@@ -748,11 +769,12 @@ Partial Class EditItemForm
         Me.EditItemEtherealItemCHECKBOX.Size = New System.Drawing.Size(88, 17)
         Me.EditItemEtherealItemCHECKBOX.TabIndex = 625
         Me.EditItemEtherealItemCHECKBOX.Text = "Ethereal Item"
-        Me.EditItemEtherealItemCHECKBOX.UseVisualStyleBackColor = True
+        Me.EditItemEtherealItemCHECKBOX.UseVisualStyleBackColor = False
         '
         'EditItemDurabilityLABEL
         '
         Me.EditItemDurabilityLABEL.AutoSize = True
+        Me.EditItemDurabilityLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemDurabilityLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemDurabilityLABEL.Location = New System.Drawing.Point(76, 283)
         Me.EditItemDurabilityLABEL.Name = "EditItemDurabilityLABEL"
@@ -773,6 +795,7 @@ Partial Class EditItemForm
         'EditItemAttackClassLABEL
         '
         Me.EditItemAttackClassLABEL.AutoSize = True
+        Me.EditItemAttackClassLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemAttackClassLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemAttackClassLABEL.Location = New System.Drawing.Point(24, 460)
         Me.EditItemAttackClassLABEL.Name = "EditItemAttackClassLABEL"
@@ -783,6 +806,7 @@ Partial Class EditItemForm
         'EditItemRequiredLevelLABEL
         '
         Me.EditItemRequiredLevelLABEL.AutoSize = True
+        Me.EditItemRequiredLevelLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemRequiredLevelLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemRequiredLevelLABEL.Location = New System.Drawing.Point(24, 432)
         Me.EditItemRequiredLevelLABEL.Name = "EditItemRequiredLevelLABEL"
@@ -803,6 +827,7 @@ Partial Class EditItemForm
         'EditItemRequiredDexterityLABEL
         '
         Me.EditItemRequiredDexterityLABEL.AutoSize = True
+        Me.EditItemRequiredDexterityLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemRequiredDexterityLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemRequiredDexterityLABEL.Location = New System.Drawing.Point(35, 408)
         Me.EditItemRequiredDexterityLABEL.Name = "EditItemRequiredDexterityLABEL"
@@ -823,6 +848,7 @@ Partial Class EditItemForm
         'EditItemQuantityLABEL
         '
         Me.EditItemQuantityLABEL.AutoSize = True
+        Me.EditItemQuantityLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemQuantityLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemQuantityLABEL.Location = New System.Drawing.Point(80, 259)
         Me.EditItemQuantityLABEL.Name = "EditItemQuantityLABEL"
@@ -843,6 +869,7 @@ Partial Class EditItemForm
         'EditItemTwoHandDamageLABEL
         '
         Me.EditItemTwoHandDamageLABEL.AutoSize = True
+        Me.EditItemTwoHandDamageLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemTwoHandDamageLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemTwoHandDamageLABEL.Location = New System.Drawing.Point(26, 220)
         Me.EditItemTwoHandDamageLABEL.Name = "EditItemTwoHandDamageLABEL"
@@ -853,6 +880,7 @@ Partial Class EditItemForm
         'EditItemTwoHandDamageToLABEL
         '
         Me.EditItemTwoHandDamageToLABEL.AutoSize = True
+        Me.EditItemTwoHandDamageToLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemTwoHandDamageToLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemTwoHandDamageToLABEL.Location = New System.Drawing.Point(178, 219)
         Me.EditItemTwoHandDamageToLABEL.Name = "EditItemTwoHandDamageToLABEL"
@@ -883,6 +911,7 @@ Partial Class EditItemForm
         'EditItemOneHandDamageToLABEL
         '
         Me.EditItemOneHandDamageToLABEL.AutoSize = True
+        Me.EditItemOneHandDamageToLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemOneHandDamageToLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemOneHandDamageToLABEL.Location = New System.Drawing.Point(178, 196)
         Me.EditItemOneHandDamageToLABEL.Name = "EditItemOneHandDamageToLABEL"
@@ -893,6 +922,7 @@ Partial Class EditItemForm
         'EditItemOneHamdDamageLABEL
         '
         Me.EditItemOneHamdDamageLABEL.AutoSize = True
+        Me.EditItemOneHamdDamageLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemOneHamdDamageLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemOneHamdDamageLABEL.Location = New System.Drawing.Point(27, 196)
         Me.EditItemOneHamdDamageLABEL.Name = "EditItemOneHamdDamageLABEL"
@@ -933,6 +963,7 @@ Partial Class EditItemForm
         'EditItemThrowDamageOfLABEL
         '
         Me.EditItemThrowDamageOfLABEL.AutoSize = True
+        Me.EditItemThrowDamageOfLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemThrowDamageOfLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemThrowDamageOfLABEL.Location = New System.Drawing.Point(178, 172)
         Me.EditItemThrowDamageOfLABEL.Name = "EditItemThrowDamageOfLABEL"
@@ -943,6 +974,7 @@ Partial Class EditItemForm
         'EditItemThrowDamageLABEL
         '
         Me.EditItemThrowDamageLABEL.AutoSize = True
+        Me.EditItemThrowDamageLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemThrowDamageLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemThrowDamageLABEL.Location = New System.Drawing.Point(46, 172)
         Me.EditItemThrowDamageLABEL.Name = "EditItemThrowDamageLABEL"
@@ -963,6 +995,7 @@ Partial Class EditItemForm
         'EditItemQualityLABEL
         '
         Me.EditItemQualityLABEL.AutoSize = True
+        Me.EditItemQualityLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemQualityLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemQualityLABEL.Location = New System.Drawing.Point(27, 65)
         Me.EditItemQualityLABEL.Name = "EditItemQualityLABEL"
@@ -973,6 +1006,7 @@ Partial Class EditItemForm
         'EditItemNameLABEL
         '
         Me.EditItemNameLABEL.AutoSize = True
+        Me.EditItemNameLABEL.BackColor = System.Drawing.Color.Transparent
         Me.EditItemNameLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.EditItemNameLABEL.Location = New System.Drawing.Point(31, 17)
         Me.EditItemNameLABEL.Name = "EditItemNameLABEL"
@@ -1085,7 +1119,7 @@ Partial Class EditItemForm
         'Label45
         '
         Me.Label45.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label45.Location = New System.Drawing.Point(539, 536)
+        Me.Label45.Location = New System.Drawing.Point(538, 531)
         Me.Label45.Name = "Label45"
         Me.Label45.Size = New System.Drawing.Size(3, 20)
         Me.Label45.TabIndex = 752
@@ -1093,7 +1127,7 @@ Partial Class EditItemForm
         'Label46
         '
         Me.Label46.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label46.Location = New System.Drawing.Point(95, 536)
+        Me.Label46.Location = New System.Drawing.Point(95, 531)
         Me.Label46.Name = "Label46"
         Me.Label46.Size = New System.Drawing.Size(3, 20)
         Me.Label46.TabIndex = 751
@@ -1101,7 +1135,7 @@ Partial Class EditItemForm
         'Label47
         '
         Me.Label47.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label47.Location = New System.Drawing.Point(96, 554)
+        Me.Label47.Location = New System.Drawing.Point(96, 549)
         Me.Label47.Name = "Label47"
         Me.Label47.Size = New System.Drawing.Size(445, 3)
         Me.Label47.TabIndex = 750
@@ -1109,7 +1143,7 @@ Partial Class EditItemForm
         'Label48
         '
         Me.Label48.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label48.Location = New System.Drawing.Point(95, 535)
+        Me.Label48.Location = New System.Drawing.Point(95, 530)
         Me.Label48.Name = "Label48"
         Me.Label48.Size = New System.Drawing.Size(446, 3)
         Me.Label48.TabIndex = 749
@@ -2080,6 +2114,8 @@ Partial Class EditItemForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.WindowText
+        Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.D2BACKGROUNDPIC
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(552, 595)
         Me.Controls.Add(Me.Label141)
         Me.Controls.Add(Me.Label140)
@@ -2289,8 +2325,11 @@ Partial Class EditItemForm
         Me.Controls.Add(Me.EditItemNameLABEL)
         Me.Controls.Add(Me.EditItemNameTEXTBOX)
         Me.Controls.Add(Me.Label1)
+        Me.DoubleBuffered = True
         Me.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "EditItemForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "EditItemForm"

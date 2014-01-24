@@ -32,10 +32,11 @@ Partial Class YesNoD2Style
         'YesNoCANCELBUTTON
         '
         Me.YesNoCANCELBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.YesNoCANCELBUTTON.BackgroundImage = CType(resources.GetObject("YesNoCANCELBUTTON.BackgroundImage"), System.Drawing.Image)
         Me.YesNoCANCELBUTTON.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.YesNoCANCELBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.YesNoCANCELBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.YesNoCANCELBUTTON.Location = New System.Drawing.Point(288, 214)
+        Me.YesNoCANCELBUTTON.Location = New System.Drawing.Point(282, 213)
         Me.YesNoCANCELBUTTON.Name = "YesNoCANCELBUTTON"
         Me.YesNoCANCELBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.YesNoCANCELBUTTON.TabIndex = 0
@@ -45,10 +46,11 @@ Partial Class YesNoD2Style
         'YesNoCONFIRMBUTTON
         '
         Me.YesNoCONFIRMBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.YesNoCONFIRMBUTTON.BackgroundImage = CType(resources.GetObject("YesNoCONFIRMBUTTON.BackgroundImage"), System.Drawing.Image)
         Me.YesNoCONFIRMBUTTON.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.YesNoCONFIRMBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.YesNoCONFIRMBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.YesNoCONFIRMBUTTON.Location = New System.Drawing.Point(191, 214)
+        Me.YesNoCONFIRMBUTTON.Location = New System.Drawing.Point(185, 213)
         Me.YesNoCONFIRMBUTTON.Name = "YesNoCONFIRMBUTTON"
         Me.YesNoCONFIRMBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.YesNoCONFIRMBUTTON.TabIndex = 1

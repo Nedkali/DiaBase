@@ -92,6 +92,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property D2BACKGROUNDPIC() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("D2BACKGROUNDPIC", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property D2Data() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("D2Data", resourceCulture)
@@ -124,6 +134,26 @@ Namespace My.Resources
         Friend ReadOnly Property d2itemapp() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("d2itemapp", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property D2TEXTBOX() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("D2TEXTBOX", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property D2TEXTBOX1() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("D2TEXTBOX1", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

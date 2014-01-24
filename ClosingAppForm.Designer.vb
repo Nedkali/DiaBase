@@ -47,6 +47,8 @@ Partial Class ClosingAppForm
         '
         Me.SaveDatabaseCHECKBOX.AutoSize = True
         Me.SaveDatabaseCHECKBOX.BackColor = System.Drawing.Color.Black
+        Me.SaveDatabaseCHECKBOX.Checked = True
+        Me.SaveDatabaseCHECKBOX.CheckState = System.Windows.Forms.CheckState.Checked
         Me.SaveDatabaseCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
         Me.SaveDatabaseCHECKBOX.Location = New System.Drawing.Point(38, 146)
         Me.SaveDatabaseCHECKBOX.Name = "SaveDatabaseCHECKBOX"
@@ -58,6 +60,7 @@ Partial Class ClosingAppForm
         'AppCloseCancelBUTTONButton1
         '
         Me.AppCloseCancelBUTTONButton1.BackColor = System.Drawing.Color.DimGray
+        Me.AppCloseCancelBUTTONButton1.BackgroundImage = CType(resources.GetObject("AppCloseCancelBUTTONButton1.BackgroundImage"), System.Drawing.Image)
         Me.AppCloseCancelBUTTONButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.AppCloseCancelBUTTONButton1.ForeColor = System.Drawing.Color.BurlyWood
         Me.AppCloseCancelBUTTONButton1.Location = New System.Drawing.Point(285, 166)
@@ -70,6 +73,7 @@ Partial Class ClosingAppForm
         'AppCloseConfirmBUTTON
         '
         Me.AppCloseConfirmBUTTON.BackColor = System.Drawing.Color.DimGray
+        Me.AppCloseConfirmBUTTON.BackgroundImage = CType(resources.GetObject("AppCloseConfirmBUTTON.BackgroundImage"), System.Drawing.Image)
         Me.AppCloseConfirmBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.AppCloseConfirmBUTTON.ForeColor = System.Drawing.Color.BurlyWood
         Me.AppCloseConfirmBUTTON.Location = New System.Drawing.Point(193, 166)
@@ -98,7 +102,7 @@ Partial Class ClosingAppForm
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(325, 23)
         Me.Label1.TabIndex = 5
-        Me.Label1.Text = "PLEASE READ BEFORE CLOSING DiaBase"
+        Me.Label1.Text = "SAVE AND BACKUP BEFORE EXITING"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'ClosingAppForm
@@ -117,7 +121,7 @@ Partial Class ClosingAppForm
         Me.Controls.Add(Me.BackupDatabaseCHRCKBOX)
         Me.Name = "ClosingAppForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Close DiaBase Application Confirmation"
+        Me.Text = "Close DiaBase Confirmation"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
