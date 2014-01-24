@@ -116,7 +116,7 @@ Partial Class SearchProgressForm
         Me.MinimizeBox = False
         Me.Name = "SearchProgressForm"
         Me.ShowIcon = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Checking For Matches, Please Wait...."
         Me.TopMost = True
         Me.ResumeLayout(False)
