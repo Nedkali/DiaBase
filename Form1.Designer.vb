@@ -175,7 +175,8 @@ Partial Class Form1
         'StatusStrip1
         '
         Me.StatusStrip1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.StatusStrip1.BackgroundImage = Global.DiaBase.My.Resources.Resources.d2graphicselect
+        Me.StatusStrip1.BackgroundImage = Global.DiaBase.My.Resources.Resources.menubar
+        Me.StatusStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripProgressBar1, Me.ToolStripStatusLabel2})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 567)
         Me.StatusStrip1.Name = "StatusStrip1"
@@ -393,8 +394,9 @@ Partial Class Form1
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.BackColor = System.Drawing.SystemColors.WindowFrame
-        Me.MenuStrip1.BackgroundImage = Global.DiaBase.My.Resources.Resources.d2graphicselect
+        Me.MenuStrip1.BackColor = System.Drawing.Color.BurlyWood
+        Me.MenuStrip1.BackgroundImage = Global.DiaBase.My.Resources.Resources.menubar
+        Me.MenuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ItemFileToolStripMenuItem, Me.ItemsToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
@@ -1022,6 +1024,7 @@ Partial Class Form1
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.RichTextBox2)
         Me.Controls.Add(Me.ListboxTABCONTROL)
+        Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False

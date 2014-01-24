@@ -1463,7 +1463,7 @@
     End Function
 
     Sub SearchRoutine()
-        Searchtest() : Return
+        'Searchtest() : Return
 
         'This builds the RefineSearchReferenceList array which is a copy of the SearchReferenceList which is deleted before search
         'its used for refined searches... It verifys the item being tested for a match already existed as a match in the last search thus refining the old matched results

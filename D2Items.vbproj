@@ -234,6 +234,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\d2Dong.wav" />
+    <None Include="Resources\back3.PNG" />
+    <None Include="Resources\back1.PNG" />
+    <None Include="Resources\menubar.PNG" />
     <Content Include="sword_and_Shield.ico" />
     <Content Include="sword_and_Shield_Xparent.ico" />
     <Content Include="Treasure_Chest.ico" />
