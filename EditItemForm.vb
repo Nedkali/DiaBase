@@ -155,7 +155,7 @@
         End If
 
         'check for backup on edits set to true if so the backup now
-        If Settings.BackupOnEditsCHECKBOX.Checked = True Then BackupDatabase()
+        If Settings.BackupOnEditsCHECKBOX.Checked = True Then Module1.BackupDatabase()
 
 
 

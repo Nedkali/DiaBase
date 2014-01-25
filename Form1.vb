@@ -260,7 +260,7 @@ Public Class Form1
         End If
 
         'check for backup on edits set to true if so then backup now
-        If Settings.BackupOnEditsCHECKBOX.Checked = True Then BackupDatabase()
+        If Settings.BackupOnEditsCHECKBOX.Checked = True Then Module1.BackupDatabase()
 
 
         Dim RowNumber As Integer = AllItemsInDatabaseListBox.SelectedIndex
@@ -365,7 +365,7 @@ Public Class Form1
         YesNoD2Style.YesNoHeaderLABEL.Text = "PLEASE READ BEFORE REFRESHING BACKUP"
         YesNoD2Style.YesNoMessageLABEL.Text = "This will permantly destroy the current database backup file. Doing this will mean you will no longer be able to resore the current backup file to a complete database." & vbCrLf & "Are you sure you wish to continue?"
         YesNoD2Style.ShowDialog()
-        If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.Yes Then BackupDatabase()
+        If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.Yes Then Module1.BackupDatabase()
     End Sub
 
 
@@ -632,7 +632,7 @@ Public Class Form1
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = False And ClosingAppForm.BackupDatabaseCHRCKBOX.Checked = False Then End
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = True Then SaveItems()
 
-        If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = True Then BackupDatabase()
+        If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = True Then Module1.BackupDatabase()
 
 
 SkipExit:
