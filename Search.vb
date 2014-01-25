@@ -18,772 +18,149 @@
 
         Select Case Form1.SearchFieldCOMBOBOX.Text
             Case "Item Name"
-                SearchItemName()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    TextDecipher(count, Objects(count).ItemName)
+                Next
             Case "Item Base"
-                SearchItemBase()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    TextDecipher(count, Objects(count).ItemBase)
+                Next
             Case "Item Quality"
-                SearchItemQuality()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    TextDecipher(count, Objects(count).ItemQuality)
+                Next
             Case "Item Defense"
-                SearchItemDefense()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    If Val(Objects(count).Defense) > 0 Then MyDecipher(count, Val(Objects(count).Defense))
+                Next
             Case "RuneWord"
-                SearchRuneWord()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    If Objects(count).RuneWord = True Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count)
+                Next
             Case "Chance To Block"
-                SearchChanceToBlock()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    MyDecipher(count, Val(Objects(count).ChanceToBlock))
+                Next
             Case "One Hand Damage Max"
-                SearchOneHandDamageMax()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    If Val(Objects(count).OneHandDamageMax) > 0 Then MyDecipher(count, Val(Objects(count).OneHandDamageMax))
+                Next
             Case "One Hand Damage Min"
-                SearchOneHandDamageMin()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    If Val(Objects(count).OneHandDamageMin) > 0 Then MyDecipher(count, Val(Objects(count).OneHandDamageMin))
+                Next
             Case "Two Hand Damage Max"
-                SearchTwoHandDamageMax()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    If Val(Objects(count).TwoHandDamageMax) > 0 Then MyDecipher(count, Val(Objects(count).TwoHandDamageMax))
+                Next
             Case "Two Hand Damage Min"
-                SearchTwoHandDamageMin()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    If Val(Objects(count).TwoHandDamageMin) > 0 Then MyDecipher(count, Val(Objects(count).TwoHandDamageMin))
+                Next
             Case "Throw Damage Max"
-                SearchThrowDamageMax()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    If Val(Objects(count).ThrowDamageMax) > 0 Then MyDecipher(count, Val(Objects(count).ThrowDamageMax))
+                Next
             Case "Throw Damage Min"
-                SearchThrowDamageMin()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    If Val(Objects(count).ThrowDamageMin) > 0 Then MyDecipher(count, Val(Objects(count).ThrowDamageMin))
+                Next
             Case "Required Level"
-                SearchRequiredLevel()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    MyDecipher(count, Val(Objects(count).RequiredLevel))
+                Next
             Case "Required Strength"
-                SearchRequiredStrength()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    MyDecipher(count, Val(Objects(count).RequiredStrength))
+                Next
             Case "Required Dexterity"
-                SearchRequiredDexterity()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    MyDecipher(count, Val(Objects(count).RequiredDexterity))
+                Next
             Case "Attack Class"
-                SearchAttackClass()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    TextDecipher(count, Objects(count).AttackClass)
+                Next
             Case "Attack Speed"
-                SearchAttackSpeed()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    TextDecipher(count, Objects(count).AttackSpeed)
+                Next
             Case "Unique Attributes"
                 SearchUniqueAttributes()
             Case "Mule Name"
-                SearchMuleName()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    TextDecipher(count, Objects(count).MuleName)
+                Next
             Case "Mule Account"
-                SearchMuleAccount()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    TextDecipher(count, Objects(count).MuleAccount)
+                Next
             Case "Mule Pass"
-                SearchMulePass()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    TextDecipher(count, Objects(count).MulePass)
+                Next
             Case "User Reference"
-                SearchUserReference()
+                For count = 0 To Objects.Count - 1
+                    ProgressBar1(count)
+                    TextDecipher(count, Objects(count).UserReference)
+                Next
 
         End Select
+
         SearchProgressForm.Close()
-    End Sub
 
-
-
-    Sub SearchItemName()
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-
-                If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                    If UCase(ItemObjectItem.ItemName).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                    If UCase(ItemObjectItem.ItemName).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                End If
-
-                If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                    If UCase(ItemObjectItem.ItemName).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' NotEqualTo 
-                    If UCase(ItemObjectItem.ItemName).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' NotEqualTo 
-                End If
-            End If
-
-
-            If Form1.ExactMatchCHECKBOX.Checked = True Then
-
-                If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                    If (Form1.SearchWordCOMBOBOX.Text) = (ItemObjectItem.ItemName) And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                    If (Form1.SearchWordCOMBOBOX.Text) = (ItemObjectItem.ItemName) And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                End If
-
-                If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                    If (Form1.SearchWordCOMBOBOX.Text) <> (ItemObjectItem.ItemName) And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                    If (Form1.SearchWordCOMBOBOX.Text) <> (ItemObjectItem.ItemName) And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                End If
-            End If
-
-
-        Next
-
-    End Sub
-
-
-
-    Sub SearchItemBase()
-
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-
-                If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                    If UCase(ItemObjectItem.ItemBase).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '       EqualTo
-                    If UCase(ItemObjectItem.ItemBase).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '       EqualTo
-                End If
-
-                If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                    If UCase(ItemObjectItem.ItemBase).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '   NotEqualTo 
-                    If UCase(ItemObjectItem.ItemBase).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '   NotEqualTo 
-                End If
-            End If
-
-            'EXACT MATCH SEARCH FOR ITEM BASE
-            If Form1.ExactMatchCHECKBOX.Checked = True Then
-
-                If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                    If (Form1.SearchWordCOMBOBOX.Text) = (ItemObjectItem.ItemBase) And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '       EqualTo
-                    If (Form1.SearchWordCOMBOBOX.Text) = (ItemObjectItem.ItemBase) And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '       EqualTo
-                End If
-
-                If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                    If (Form1.SearchWordCOMBOBOX.Text) <> (ItemObjectItem.ItemBase) And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '  NotEqualTo 
-                    If (Form1.SearchWordCOMBOBOX.Text) <> (ItemObjectItem.ItemBase) And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '  NotEqualTo 
-                End If
-            End If
-        Next
-
-    End Sub
-
-
-    Sub SearchItemQuality()
-
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                    If UCase(ItemObjectItem.ItemQuality).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                    If UCase(ItemObjectItem.ItemQuality).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                End If
-                If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                    If UCase(ItemObjectItem.ItemQuality).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' NotEqualTo 
-                    If UCase(ItemObjectItem.ItemQuality).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' NotEqualTo 
-                End If
-            End If
-
-            'EXACT MATCH SEARCH FOR ITEM Quality
-            If Form1.ExactMatchCHECKBOX.Checked = True Then
-
-                If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                    If (Form1.SearchWordCOMBOBOX.Text) = (ItemObjectItem.ItemQuality) And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                    If (Form1.SearchWordCOMBOBOX.Text) = (ItemObjectItem.ItemQuality) And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                End If
-                If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                    If (Form1.SearchWordCOMBOBOX.Text) <> (ItemObjectItem.ItemQuality) And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                    If (Form1.SearchWordCOMBOBOX.Text) <> (ItemObjectItem.ItemQuality) And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                End If
-            End If
-        Next
-
-    End Sub
-
-    Sub SearchAttackClass()
-
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-
-            If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ATTACK CLASS" Then
-
-                If Form1.ExactMatchCHECKBOX.Checked = False Then
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                        If UCase(ItemObjectItem.AttackClass).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' NotEqualTo 
-                        If UCase(ItemObjectItem.AttackClass).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' NotEqualTo 
-                    End If
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                        If UCase(ItemObjectItem.AttackClass).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                        If UCase(ItemObjectItem.AttackClass).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                    End If
-                End If
-
-                If Form1.ExactMatchCHECKBOX.Checked = True Then
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                        If (Form1.SearchWordCOMBOBOX.Text) = (ItemObjectItem.AttackClass) And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                        If (Form1.SearchWordCOMBOBOX.Text) = (ItemObjectItem.AttackClass) And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                    End If
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                        If (Form1.SearchWordCOMBOBOX.Text) <> (ItemObjectItem.AttackClass) And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                        If (Form1.SearchWordCOMBOBOX.Text) <> (ItemObjectItem.AttackClass) And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                    End If
-                End If
-            End If
-        Next
-    End Sub
-
-    Sub SearchAttackSpeed()
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-
-            If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ATTACK SPEED" Then
-                If Form1.ExactMatchCHECKBOX.Checked = False Then
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                        If UCase(ItemObjectItem.AttackSpeed).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                        If UCase(ItemObjectItem.AttackSpeed).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                    End If
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                        If UCase(ItemObjectItem.AttackSpeed).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' NotEqualTo 
-                        If UCase(ItemObjectItem.AttackSpeed).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' NotEqualTo 
-                    End If
-                End If
-
-                'EXACT MATCH SEARCH FOR ATTACK SPEED
-                If Form1.ExactMatchCHECKBOX.Checked = True Then
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                        If (Form1.SearchWordCOMBOBOX.Text) = (ItemObjectItem.AttackSpeed) And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                        If (Form1.SearchWordCOMBOBOX.Text) = (ItemObjectItem.AttackSpeed) And Form1.RefineSearchCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                    End If
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                        If (Form1.SearchWordCOMBOBOX.Text) <> (ItemObjectItem.AttackSpeed) And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                        If (Form1.SearchWordCOMBOBOX.Text) <> (ItemObjectItem.AttackSpeed) And Form1.RefineSearchCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                    End If
-                End If
-            End If
-        Next
-    End Sub
-
-    Sub SearchMuleAccount()
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-
-            If UCase(Form1.SearchFieldCOMBOBOX.Text) = "MULE ACCOUNT" Then
-                If Form1.ExactMatchCHECKBOX.Checked = False Then
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                        If UCase(ItemObjectItem.MuleAccount).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                        If UCase(ItemObjectItem.MuleAccount).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                    End If
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                        If UCase(ItemObjectItem.MuleAccount).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' NotEqualTo 
-                        If UCase(ItemObjectItem.MuleAccount).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' NotEqualTo 
-                    End If
-                End If
-
-                'EXACT MATCH SEARCH FOR MULE ACCOUNT NAME
-                If Form1.ExactMatchCHECKBOX.Checked = True Then
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                        If (Form1.SearchWordCOMBOBOX.Text) = (ItemObjectItem.MuleAccount) And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                        If (Form1.SearchWordCOMBOBOX.Text) = (ItemObjectItem.MuleAccount) And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                    End If
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                        If (Form1.SearchWordCOMBOBOX.Text) <> (ItemObjectItem.MuleAccount) And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                        If (Form1.SearchWordCOMBOBOX.Text) <> (ItemObjectItem.MuleAccount) And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                    End If
-                End If
-
-            End If
-        Next
-    End Sub
-
-    Sub SearchMuleName()
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-
-            If UCase(Form1.SearchFieldCOMBOBOX.Text) = "MULE NAME" Then
-
-                If Form1.ExactMatchCHECKBOX.Checked = False Then
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                        If UCase(ItemObjectItem.MuleName).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '       EqualTo
-                        If UCase(ItemObjectItem.MuleName).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '       EqualTo
-                    End If
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                        If UCase(ItemObjectItem.MuleName).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '   NotEqualTo 
-                        If UCase(ItemObjectItem.MuleName).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '   NotEqualTo 
-                    End If
-                End If
-
-                'EXACT MATCH SEARCH FOR MULE NAME
-                If Form1.ExactMatchCHECKBOX.Checked = True Then
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                        If (Form1.SearchWordCOMBOBOX.Text) = (ItemObjectItem.MuleName) And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '       EqualTo
-                        If (Form1.SearchWordCOMBOBOX.Text) = (ItemObjectItem.MuleName) And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '       EqualTo
-                    End If
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                        If (Form1.SearchWordCOMBOBOX.Text) <> UCase(ItemObjectItem.MuleName) And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '  NotEqualTo 
-                        If (Form1.SearchWordCOMBOBOX.Text) <> (ItemObjectItem.MuleName) And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '  NotEqualTo 
-                    End If
-                End If
-            End If
-        Next
-    End Sub
-
-    Sub SearchMulePass()
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-
-            If UCase(Form1.SearchFieldCOMBOBOX.Text) = "MULE PASS" Then
-                If Form1.ExactMatchCHECKBOX.Checked = False Then
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                        If UCase(ItemObjectItem.MulePass).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '       EqualTo
-                        If UCase(ItemObjectItem.MulePass).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '       EqualTo
-                    End If
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                        If UCase(ItemObjectItem.MulePass).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '   NotEqualTo 
-                        If UCase(ItemObjectItem.MulePass).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '   NotEqualTo 
-                    End If
-                End If
-
-                'EXACT MATCH SEARCH FOR MULE NAME
-                If Form1.ExactMatchCHECKBOX.Checked = True Then
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                        If (Form1.SearchWordCOMBOBOX.Text) = (ItemObjectItem.MulePass) And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '       EqualTo
-                        If (Form1.SearchWordCOMBOBOX.Text) = (ItemObjectItem.MulePass) And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '       EqualTo
-                    End If
-
-                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                        If (Form1.SearchWordCOMBOBOX.Text) <> UCase(ItemObjectItem.MulePass) And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '  NotEqualTo 
-                        If (Form1.SearchWordCOMBOBOX.Text) <> (ItemObjectItem.MulePass) And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '  NotEqualTo 
-                    End If
-
-                End If
-
-            End If
-        Next
-    End Sub
-
-    Sub SearchUserReference()
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-
-
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-
-                If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                    If UCase(ItemObjectItem.UserReference).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                    If UCase(ItemObjectItem.UserReference).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                End If
-
-                If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                    If UCase(ItemObjectItem.UserReference).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' NotEqualTo 
-                    If UCase(ItemObjectItem.UserReference).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' NotEqualTo 
-                End If
-
-            End If
-
-            'EXACT MATCH SEARCH FOR USER REFERENCE
-            If Form1.ExactMatchCHECKBOX.Checked = True Then
-
-                If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                    If Form1.SearchWordCOMBOBOX.Text = ItemObjectItem.UserReference And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                    If Form1.SearchWordCOMBOBOX.Text = ItemObjectItem.UserReference And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                End If
-
-                If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                    If Form1.SearchWordCOMBOBOX.Text <> ItemObjectItem.UserReference And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                    If Form1.SearchWordCOMBOBOX.Text <> ItemObjectItem.UserReference And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                End If
-            End If
-
-        Next
-    End Sub
-
-    Sub SearchRuneWord()
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-
-                If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                    If UCase(ItemObjectItem.RuneWord).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                    If UCase(ItemObjectItem.RuneWord).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                End If
-
-                If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                    If UCase(ItemObjectItem.RuneWord).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' NotEqualTo 
-                    If UCase(ItemObjectItem.RuneWord).IndexOf(UCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' NotEqualTo 
-                End If
-            End If
-
-            'EXACT MATCH SEARCH FOR USER REFERENCE
-            If Form1.ExactMatchCHECKBOX.Checked = True Then
-
-                If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                    If Form1.SearchWordCOMBOBOX.Text = ItemObjectItem.RuneWord And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                    If Form1.SearchWordCOMBOBOX.Text = ItemObjectItem.RuneWord And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                End If
-
-                If Form1.SearchWordCOMBOBOX.Text <> ItemObjectItem.RuneWord And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                If Form1.SearchWordCOMBOBOX.Text <> ItemObjectItem.RuneWord And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-
-            End If
-        Next
-
-    End Sub
-
-    Sub SearchRequiredLevel()
-
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-            If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                If Val(ItemObjectItem.RequiredLevel) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '         EqualTo
-                If Val(ItemObjectItem.RequiredLevel) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '         EqualTo
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                If Val(ItemObjectItem.RequiredLevel) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    NotEqualTo 
-                If Val(ItemObjectItem.RequiredLevel) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    NotEqualTo 
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Greater Than" Then
-                If Val(ItemObjectItem.RequiredLevel) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     GreaterThan
-                If Val(ItemObjectItem.RequiredLevel) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     GreaterThan
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Less Than" Then
-                If Val(ItemObjectItem.RequiredLevel) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '        LessThan 
-                If Val(ItemObjectItem.RequiredLevel) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '        LessThan 
-            End If
-        Next
-
-    End Sub
-
-    Sub SearchRequiredStrength()
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                If Val(ItemObjectItem.RequiredStrength) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '         EqualTo
-                If Val(ItemObjectItem.RequiredStrength) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '         EqualTo
-            End If
-            If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                If Val(ItemObjectItem.RequiredStrength) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    NotEqualTo 
-                If Val(ItemObjectItem.RequiredStrength) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    NotEqualTo 
-            End If
-            If Form1.SearchOperatorCOMBOBOX.Text = "Greater Than" Then
-                If Val(ItemObjectItem.RequiredStrength) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     GreaterThan
-                If Val(ItemObjectItem.RequiredStrength) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     GreaterThan
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Less Than" Then
-                If Val(ItemObjectItem.RequiredStrength) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '        LessThan 
-                If Val(ItemObjectItem.RequiredStrength) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '        LessThan 
-            End If
-        Next
-
-    End Sub
-
-    Sub SearchRequiredDexterity()
-
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-            If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                If Val(ItemObjectItem.RequiredDexterity) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '         EqualTo
-                If Val(ItemObjectItem.RequiredDexterity) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '         EqualTo
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                If Val(ItemObjectItem.RequiredDexterity) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    NotEqualTo 
-                If Val(ItemObjectItem.RequiredDexterity) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    NotEqualTo 
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Greater Than" Then
-                If Val(ItemObjectItem.RequiredDexterity) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     GreaterThan
-                If Val(ItemObjectItem.RequiredDexterity) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     GreaterThan
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Less Than" Then
-                If Val(ItemObjectItem.RequiredDexterity) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '        LessThan 
-                If Val(ItemObjectItem.RequiredDexterity) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '        LessThan 
-            End If
-        Next
-
-    End Sub
-
-    Sub SearchOneHandDamageMax()
-
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-            If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                If Val(ItemObjectItem.OneHandDamageMax) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                If Val(ItemObjectItem.OneHandDamageMax) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '         EqualTo
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                If Val(ItemObjectItem.OneHandDamageMax) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                If Val(ItemObjectItem.OneHandDamageMax) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    NotEqualTo 
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Greater Than" Then
-                If Val(ItemObjectItem.OneHandDamageMax) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' GreaterThan
-                If Val(ItemObjectItem.OneHandDamageMax) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     GreaterThan
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Less Than" Then
-                If Val(ItemObjectItem.OneHandDamageMax) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    LessThan 
-                If Val(ItemObjectItem.OneHandDamageMax) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '        LessThan 
-            End If
-        Next
-
-    End Sub
-
-    Sub SearchOneHandDamageMin()
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-            If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                If Val(ItemObjectItem.OneHandDamageMin) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                If Val(ItemObjectItem.OneHandDamageMin) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '         EqualTo
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                If Val(ItemObjectItem.OneHandDamageMin) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                If Val(ItemObjectItem.OneHandDamageMin) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    NotEqualTo 
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Greater Than" Then
-                If Val(ItemObjectItem.OneHandDamageMin) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' GreaterThan
-                If Val(ItemObjectItem.OneHandDamageMin) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     GreaterThan
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Less Than" Then
-                If Val(ItemObjectItem.OneHandDamageMin) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    LessThan 
-                If Val(ItemObjectItem.OneHandDamageMin) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '        LessThan 
-            End If
-        Next
-
-    End Sub
-
-    Sub SearchTwoHandDamageMax()
-
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-            If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                If Val(ItemObjectItem.OneHandDamageMax) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                If Val(ItemObjectItem.OneHandDamageMax) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '         EqualTo
-            End If
-            If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                If Val(ItemObjectItem.OneHandDamageMax) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                If Val(ItemObjectItem.OneHandDamageMax) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    NotEqualTo 
-            End If
-            If Form1.SearchOperatorCOMBOBOX.Text = "Greater Than" Then
-                If Val(ItemObjectItem.OneHandDamageMax) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' GreaterThan
-                If Val(ItemObjectItem.OneHandDamageMax) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     GreaterThan
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Less Than" Then
-                If Val(ItemObjectItem.OneHandDamageMax) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    LessThan 
-                If Val(ItemObjectItem.OneHandDamageMax) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '        LessThan 
-            End If
-        Next
-
-    End Sub
-
-    Sub SearchTwoHandDamageMin()
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                If Val(ItemObjectItem.TwoHandDamageMin) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                If Val(ItemObjectItem.TwoHandDamageMin) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '         EqualTo
-            End If
-            If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                If Val(ItemObjectItem.TwoHandDamageMin) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                If Val(ItemObjectItem.TwoHandDamageMin) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    NotEqualTo 
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Greater Than" Then
-                If Val(ItemObjectItem.TwoHandDamageMin) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' GreaterThan
-                If Val(ItemObjectItem.TwoHandDamageMin) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     GreaterThan
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Less Than" Then
-                If Val(ItemObjectItem.TwoHandDamageMin) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    LessThan 
-                If Val(ItemObjectItem.TwoHandDamageMin) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '        LessThan 
-            End If
-        Next
-
-    End Sub
-
-    Sub SearchThrowDamageMin()
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-            If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                If Val(ItemObjectItem.ThrowDamageMin) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                If Val(ItemObjectItem.TwoHandDamageMin) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '         EqualTo
-            End If
-            If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                If Val(ItemObjectItem.ThrowDamageMin) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                If Val(ItemObjectItem.ThrowDamageMin) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    NotEqualTo 
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Greater Than" Then
-                If Val(ItemObjectItem.ThrowDamageMin) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' GreaterThan
-                If Val(ItemObjectItem.ThrowDamageMin) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     GreaterThan
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Less Than" Then
-                If Val(ItemObjectItem.ThrowDamageMin) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    LessThan 
-                If Val(ItemObjectItem.ThrowDamageMin) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '        LessThan 
-            End If
-        Next
-
-    End Sub
-
-    Sub SearchThrowDamageMax()
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-            If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                If Val(ItemObjectItem.ThrowDamageMax) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                If Val(ItemObjectItem.TwoHandDamageMax) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '         EqualTo
-            End If
-            If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                If Val(ItemObjectItem.ThrowDamageMax) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                If Val(ItemObjectItem.ThrowDamageMax) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    NotEqualTo 
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Greater Than" Then
-                If Val(ItemObjectItem.ThrowDamageMax) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' GreaterThan
-                If Val(ItemObjectItem.ThrowDamageMax) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     GreaterThan
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Less Than" Then
-                If Val(ItemObjectItem.ThrowDamageMax) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    LessThan 
-                If Val(ItemObjectItem.ThrowDamageMax) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '        LessThan 
-            End If
-        Next
-
-    End Sub
-
-
-    Sub SearchChanceToBlock()
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-            If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                If Val(ItemObjectItem.ChanceToBlock) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                If Val(ItemObjectItem.ChanceToBlock) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '         EqualTo
-            End If
-            If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                If Val(ItemObjectItem.ChanceToBlock) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                If Val(ItemObjectItem.ChanceToBlock) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    NotEqualTo 
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Greater Than" Then
-                If Val(ItemObjectItem.ChanceToBlock) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' GreaterThan
-                If Val(ItemObjectItem.ChanceToBlock) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     GreaterThan
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Less Than" Then
-                If Val(ItemObjectItem.ChanceToBlock) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    LessThan 
-                If Val(ItemObjectItem.ChanceToBlock) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '        LessThan 
-            End If
-        Next
-
-    End Sub
-
-    Sub SearchItemDefense()
-        Dim count = -1
-        For Each ItemObjectItem As ItemObjects In Objects       'Sequentually reference through all Object entries (iterates entire database)
-            count = count + 1                                   ' move item locatino refrence counter onto next item number
-
-            ProgressBar1(count)
-            If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                If Val(ItemObjectItem.Defense) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     EqualTo
-                If Val(ItemObjectItem.Defense) = Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '         EqualTo
-            End If
-            If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-                If Val(ItemObjectItem.Defense) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) 'NotEqualTo 
-                If Val(ItemObjectItem.Defense) <> Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    NotEqualTo 
-            End If
-            If Form1.SearchOperatorCOMBOBOX.Text = "Greater Than" Then
-                If Val(ItemObjectItem.Defense) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) ' GreaterThan
-                If Val(ItemObjectItem.Defense) > Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '     GreaterThan
-            End If
-
-            If Form1.SearchOperatorCOMBOBOX.Text = "Less Than" Then
-                If Val(ItemObjectItem.Defense) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = True And RefineSearchReferenceList.Contains(count) = True Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '    LessThan 
-                If Val(ItemObjectItem.Defense) < Form1.SearchValueNUMERICUPDWN.Value And Form1.RefineSearchCHECKBOX.Checked = False Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(ItemObjectItem.ItemName) = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) Else If Form1.HideDuplicatesCHECKBOX.Checked = False Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : ItemMatched(count) '        LessThan 
-            End If
-        Next
-
-    End Sub
-
-
-
-    'this backsup the current database from menu selection and when closing app
-    Sub BackupDatabase()
-        Dim BackupPath = Application.StartupPath & "\Database\Backup\"
-        Dim temp As String = ""
-        Dim myarray = Split(Databasefile, ".txt", 0)
-        Dim tempname = myarray(0) & ".bak"
-        myarray = Split(tempname, "\")
-        tempname = myarray(myarray.Length - 1)
-
-        If My.Computer.FileSystem.FileExists(BackupPath & tempname) = True Then
-            My.Computer.FileSystem.DeleteFile(BackupPath & tempname)
+        If SearchReferenceList.Count > 0 Then
+            Form1.SearchLISTBOX.SelectedIndex = 0
+            Form1.ListboxTABCONTROL.SelectTab(1)
+            Form1.Button1.BackColor = Color.DimGray
+            Form1.Button2.BackColor = Color.Black
+            Form1.TextBox2.Text = Form1.SearchLISTBOX.Items.Count & " - Total Matches"
         End If
-        My.Computer.FileSystem.CopyFile(DataBasePath & Databasefile, BackupPath & tempname)
+    End Sub
+
+    Sub TextDecipher(ByVal count, ByVal txtval)
+
+        If Form1.ExactMatchCHECKBOX.Checked = True Then
+            If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
+                If txtval.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            End If
+            If Form1.SearchOperatorCOMBOBOX.Text <> "Equal To" Then
+                If txtval.IndexOf(Form1.SearchWordCOMBOBOX.Text) = -1 Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            End If
+        End If
+
+        If Form1.ExactMatchCHECKBOX.Checked = False Then
+            If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
+                If LCase(txtval).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            End If
+            If Form1.SearchOperatorCOMBOBOX.Text <> "Equal To" Then
+                If LCase(txtval).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            End If
+        End If
 
     End Sub
+
+
     Sub SearchUniqueAttributes()
         Form1.SearchLISTBOX.Items.Clear()
         SearchReferenceList.Clear()
@@ -914,16 +291,6 @@
             End If
 
         Next
-
-
-
-        If SearchReferenceList.Count > 0 Then
-            Form1.SearchLISTBOX.SelectedIndex = 0
-            Form1.ListboxTABCONTROL.SelectTab(1)
-            Form1.Button1.BackColor = Color.DimGray
-            Form1.Button2.BackColor = Color.Black
-            Form1.TextBox2.Text = Form1.SearchLISTBOX.Items.Count & " - Total Matches"
-        End If
 
 
     End Sub
