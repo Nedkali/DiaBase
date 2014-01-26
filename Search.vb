@@ -142,19 +142,32 @@
 
         If Form1.ExactMatchCHECKBOX.Checked = True Then
             If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                If txtval.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+                If txtval.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then
+                    If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
+                    Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+                End If
             End If
             If Form1.SearchOperatorCOMBOBOX.Text <> "Equal To" Then
-                If txtval.IndexOf(Form1.SearchWordCOMBOBOX.Text) = -1 Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+                If txtval.IndexOf(Form1.SearchWordCOMBOBOX.Text) = -1 Then
+                    If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
+                    Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+                End If
             End If
         End If
 
         If Form1.ExactMatchCHECKBOX.Checked = False Then
             If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                If LCase(txtval).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+                If LCase(txtval).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then
+                    If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
+                    Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+                End If
+
             End If
             If Form1.SearchOperatorCOMBOBOX.Text <> "Equal To" Then
-                If LCase(txtval).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+                If LCase(txtval).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 Then
+                    If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
+                    Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+                End If
             End If
         End If
 
