@@ -312,16 +312,31 @@
     Sub MyDecipher(ByVal count, ByVal xval)
 
         If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-            If xval = Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            If xval = Form1.SearchValueNUMERICUPDWN.Value Then
+                If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
+                Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            End If
         End If
         If Form1.SearchOperatorCOMBOBOX.Text = "Greater Than" Then
-            If xval > Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            If xval > Form1.SearchValueNUMERICUPDWN.Value Then
+                If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
+                Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            End If
         End If
+
         If Form1.SearchOperatorCOMBOBOX.Text = "Less Than" Then
-            If xval < Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            If xval < Form1.SearchValueNUMERICUPDWN.Value Then
+                If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
+                Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            End If
+
         End If
         If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-            If xval <> Form1.SearchValueNUMERICUPDWN.Value Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            If xval <> Form1.SearchValueNUMERICUPDWN.Value Then
+                If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
+                Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            End If
+
         End If
 
     End Sub
