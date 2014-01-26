@@ -2,6 +2,7 @@
 
     Private Sub ItemImageSelector_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PictureBox1.Load(Application.StartupPath & "\Skins\" + ItemImageList(NumericUpDown1.Value) + ".jpg")
+        NumericUpDown1.Value = 1
     End Sub
 
     Private Sub AddSelectImageCancelBUTTON_Click(sender As Object, e As EventArgs) Handles AddSelectImageCancelBUTTON.Click

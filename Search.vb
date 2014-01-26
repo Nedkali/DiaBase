@@ -177,130 +177,127 @@
     Sub SearchUniqueAttributes()
         Form1.SearchLISTBOX.Items.Clear()
         SearchReferenceList.Clear()
-        Dim temp As String = ""
-        Dim MyValue = -1
-
 
         For count = 0 To Objects.Count - 1
             ProgressBar1(count)
             If Objects(count).Stat1 = "" Then Continue For ' optimize seach time
             If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat1.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat1) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If Objects(count).Stat1.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat1)) : Continue For 'skip rest we have found it
             End If
             If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat1).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyValue = getvalue(Objects(count).Stat1) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If LCase(Objects(count).Stat1).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat1)) : Continue For 'skip rest we have found it
             End If
 
             If Objects(count).Stat2 = "" Then Continue For ' optimize seach time
             If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat2.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat2) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If Objects(count).Stat2.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat2)) : Continue For 'skip rest we have found it
             End If
             If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat2).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyValue = getvalue(Objects(count).Stat2) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If LCase(Objects(count).Stat2).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat2)) : Continue For 'skip rest we have found it
             End If
 
             If Objects(count).Stat3 = "" Then Continue For ' optimize seach time
             If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat3.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat3) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If Objects(count).Stat3.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat3)) : Continue For 'skip rest we have found it
             End If
             If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat3).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyValue = getvalue(Objects(count).Stat3) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If LCase(Objects(count).Stat3).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat3)) : Continue For 'skip rest we have found it
             End If
 
             If Objects(count).Stat4 = "" Then Continue For ' optimize seach time
             If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat4.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat4) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If Objects(count).Stat4.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat4)) : Continue For 'skip rest we have found it
             End If
             If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat4).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyValue = getvalue(Objects(count).Stat4) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If LCase(Objects(count).Stat4).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat4)) : Continue For 'skip rest we have found it
             End If
 
             If Objects(count).Stat5 = "" Then Continue For ' optimize seach time
             If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat5.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat5) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If Objects(count).Stat5.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat5)) : Continue For 'skip rest we have found it
             End If
             If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat5).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyValue = getvalue(Objects(count).Stat5) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If LCase(Objects(count).Stat5).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat5)) : Continue For 'skip rest we have found it
             End If
 
             If Objects(count).Stat6 = "" Then Continue For ' optimize seach time
             If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat6.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat6) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If Objects(count).Stat6.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat6)) : Continue For 'skip rest we have found it
             End If
             If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat6).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyValue = getvalue(Objects(count).Stat6) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If LCase(Objects(count).Stat6).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat6)) : Continue For 'skip rest we have found it
             End If
 
             If Objects(count).Stat7 = "" Then Continue For ' optimize seach time
             If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat7.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat7) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If Objects(count).Stat7.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat7)) : Continue For 'skip rest we have found it
             End If
             If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat7).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyValue = getvalue(Objects(count).Stat7) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If LCase(Objects(count).Stat7).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat7)) : Continue For 'skip rest we have found it
             End If
 
             If Objects(count).Stat8 = "" Then Continue For ' optimize seach time
             If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat8.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat8) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If Objects(count).Stat8.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat8)) : Continue For 'skip rest we have found it
             End If
             If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat8).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyValue = getvalue(Objects(count).Stat8) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If LCase(Objects(count).Stat8).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat8)) : Continue For 'skip rest we have found it
             End If
 
             If Objects(count).Stat9 = "" Then Continue For ' optimize seach time
             If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat9.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat9) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If Objects(count).Stat9.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat9)) : Continue For 'skip rest we have found it
             End If
             If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat9).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyValue = getvalue(Objects(count).Stat9) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If LCase(Objects(count).Stat9).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat9)) : Continue For 'skip rest we have found it
             End If
 
             If Objects(count).Stat10 = "" Then Continue For ' optimize seach time
             If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat10.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat10) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If Objects(count).Stat10.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat10)) : Continue For 'skip rest we have found it
             End If
             If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat10).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyValue = getvalue(Objects(count).Stat10) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If LCase(Objects(count).Stat10).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat10)) : Continue For 'skip rest we have found it
             End If
 
             If Objects(count).Stat11 = "" Then Continue For ' optimize seach time
             If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat11.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat11) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If Objects(count).Stat11.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat11)) : Continue For 'skip rest we have found it
             End If
             If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat11).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyValue = getvalue(Objects(count).Stat11) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If LCase(Objects(count).Stat11).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat11)) : Continue For 'skip rest we have found it
             End If
 
             If Objects(count).Stat12 = "" Then Continue For ' optimize seach time
             If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat12.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat12) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If Objects(count).Stat12.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat12)) : Continue For 'skip rest we have found it
             End If
             If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat12).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyValue = getvalue(Objects(count).Stat12) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If LCase(Objects(count).Stat12).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat12)) : Continue For 'skip rest we have found it
             End If
 
             If Objects(count).Stat13 = "" Then Continue For ' optimize seach time
             If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat13.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat13) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If Objects(count).Stat13.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat13)) : Continue For 'skip rest we have found it
             End If
             If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat13).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyValue = getvalue(Objects(count).Stat13) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If LCase(Objects(count).Stat13).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat13)) : Continue For 'skip rest we have found it
             End If
 
             If Objects(count).Stat14 = "" Then Continue For ' optimize seach time
             If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat14.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat14) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If Objects(count).Stat14.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat14)) : Continue For 'skip rest we have found it
             End If
             If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat14).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyValue = getvalue(Objects(count).Stat14) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If LCase(Objects(count).Stat14).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat14)) : Continue For 'skip rest we have found it
             End If
 
             If Objects(count).Stat15 = "" Then Continue For ' optimize seach time
             If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat15.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyValue = getvalue(Objects(count).Stat15) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If Objects(count).Stat15.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat15)) : Continue For 'skip rest we have found it
             End If
             If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat15).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyValue = getvalue(Objects(count).Stat15) : MyDecipher(count, MyValue) : Continue For 'skip rest we have found it
+                If LCase(Objects(count).Stat15).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat15)) : Continue For 'skip rest we have found it
             End If
 
         Next
@@ -369,6 +366,6 @@
         SearchProgressForm.SearchPROGRESSBAR.Value = Int((count / Form1.AllItemsInDatabaseListBox.Items.Count) * 100)
         SearchProgressForm.SearchProgressLABEL1.Text = Form1.SearchLISTBOX.Items.Count & " Matches"
         SearchProgressForm.SearchProgressLABEL2.Text = "Searching " & count & " of " & Form1.AllItemsInDatabaseListBox.Items.Count & " Item Records..."
-        ' SearchProgressForm.Refresh()
+        SearchProgressForm.Refresh()
     End Sub
 End Module

@@ -134,6 +134,7 @@ Partial Class ItemImageSelector
         Me.MaximumSize = New System.Drawing.Size(366, 258)
         Me.MinimumSize = New System.Drawing.Size(366, 258)
         Me.Name = "ItemImageSelector"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Select An Item Image"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()

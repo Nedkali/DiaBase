@@ -78,11 +78,11 @@ Partial Class Settings
         '
         Me.Label4.AutoSize = True
         Me.Label4.BackColor = System.Drawing.SystemColors.WindowText
-        Me.Label4.Font = New System.Drawing.Font("Buxton Sketch", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.BurlyWood
         Me.Label4.Location = New System.Drawing.Point(331, 163)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(145, 20)
+        Me.Label4.Size = New System.Drawing.Size(151, 16)
         Me.Label4.TabIndex = 28
         Me.Label4.Text = "Check Imports Delay"
         '
@@ -155,11 +155,11 @@ Partial Class Settings
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.SystemColors.WindowText
-        Me.Label1.Font = New System.Drawing.Font("Buxton Sketch", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.BurlyWood
         Me.Label1.Location = New System.Drawing.Point(71, 32)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(170, 20)
+        Me.Label1.Size = New System.Drawing.Size(205, 20)
         Me.Label1.TabIndex = 21
         Me.Label1.Text = "Etal Folder - eg C:\D2NT"
         '
@@ -176,11 +176,11 @@ Partial Class Settings
         '
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.SystemColors.WindowText
-        Me.Label3.Font = New System.Drawing.Font("Buxton Sketch", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.BurlyWood
         Me.Label3.Location = New System.Drawing.Point(71, 97)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(124, 20)
+        Me.Label3.Size = New System.Drawing.Size(151, 20)
         Me.Label3.TabIndex = 32
         Me.Label3.Text = "Default Database"
         '
@@ -436,6 +436,7 @@ Partial Class Settings
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Settings"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Configure DiaBase Settings"
         CType(Me.NumericUpDown1,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.PictureBox1,System.ComponentModel.ISupportInitialize).EndInit
