@@ -10,8 +10,8 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("DiaBase")> 
 <Assembly: AssemblyDescription("Diablo2 Item and Mule Database For EtalBot")> 
-<Assembly: AssemblyCompany("AussieHacks & Neds Etalian Coding Group")> 
-<Assembly: AssemblyProduct("D2Items")> 
+<Assembly: AssemblyCompany("AussieHack & Ned")> 
+<Assembly: AssemblyProduct("DiaBASE")> 
 <Assembly: AssemblyCopyright("Copyright ©  2013")> 
 <Assembly: AssemblyTrademark("Free To Distribute")> 
 

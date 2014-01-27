@@ -23,39 +23,7 @@
     End Sub
 
 
-    'PUTS ALL EDITED QUICK SELECT ITEMS INTO EDIT COMBOBOX DROPDOWS 
-    Sub PopulateDropDowns()
-        'Dim Count As Integer = 0 'Record tracking var
-
-        'CLEARS OUT OLD DROPDOWN ITEMS
-        'AddItemMuleNameCOMBOBOX.Items.Clear()
-        ' AddItemMuleAccountCOMBOBOX.Items.Clear()
-        'AddItemMulePassCOMBOBOX.Items.Clear()
-        'AddItemPickitBotCOMBOBOX.Items.Clear()
-        'AddItemBaseCOMBOBOX.Items.Clear()
-        'AddItemAttackClassCOMBOBOX.Items.Clear()
-
-
-        'Checks if the item is included it the pulldown already, if not it adds it
-        'For Each Type In ItemObjects(Count).ItemName
-        'If AddItemMuleNameCOMBOBOX.Items.Contains(MuleName(Count)) = False Then AddItemMuleNameCOMBOBOX.Items.Add(MuleName(Count))
-        'If AddItemMuleAccountCOMBOBOX.Items.Contains(MuleAccount(Count)) = False Then AddItemMuleAccountCOMBOBOX.Items.Add(MuleAccount(Count))
-        'If AddItemMulePassCOMBOBOX.Items.Contains(MulePass(Count)) = False Then AddItemMulePassCOMBOBOX.Items.Add(MulePass(Count))
-        'If AddItemPickitAreaCOMBOBOX.Items.Contains(PickitArea(Count)) = False Then AddItemPickitAreaCOMBOBOX.Items.Add(PickitArea(Count))
-        'If AddItemPickitBotCOMBOBOX.Items.Contains(PickitBot(Count)) = False Then AddItemPickitBotCOMBOBOX.Items.Add(PickitBot(Count))
-        'If AddItemBaseCOMBOBOX.Items.Contains(ItemQuality(Count)) = False Then AddItemBaseCOMBOBOX.Items.Add(ItemQuality(Count))
-        'If AddItemAttackClassCOMBOBOX.Items.Contains(AttackClass(Count)) = False Then AddItemAttackClassCOMBOBOX.Items.Add(AttackClass(Count))
-        'Count = Count + 1
-        ' Next
-
-        'REMOVES ANY POSSIBLE NULL ENTRIES FROM EDIT DROPDOWNS (Nulls are used to hold a field value that is not in use by the item)
-        'If AddItemMuleAccountCOMBOBOX.Items.Contains("") = True Then AddItemMuleAccountCOMBOBOX.Items.Remove("")
-        'If AddItemMuleNameCOMBOBOX.Items.Contains("") = True Then AddItemMuleNameCOMBOBOX.Items.Remove("")
-        'If AddItemMulePassCOMBOBOX.Items.Contains("") = True Then AddItemMulePassCOMBOBOX.Items.Remove("")
-        'If AddItemPickitBotCOMBOBOX.Items.Contains("") = True Then AddItemPickitBotCOMBOBOX.Items.Remove("")
-        'If AddItemAttackClassCOMBOBOX.Items.Contains("") = True Then AddItemAttackClassCOMBOBOX.Items.Remove("")
-        'If AddItemBaseCOMBOBOX.Items.Contains("") = True Then AddItemBaseCOMBOBOX.Items.Remove("")
-    End Sub
+   
 
 
 
@@ -184,7 +152,39 @@
 
     'Load Add Form Event Handler - Initiates every time add form is Loaded
     Private Sub AddItemForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        PopulateDropDowns()
+
+        AddItemMuleAccountCOMBOBOX.Items.Clear()
+        AddItemMuleNameCOMBOBOX.Items.Clear()
+        AddItemMulePassCOMBOBOX.Items.Clear()
+        AddItemBaseCOMBOBOX.Items.Clear()
+        AddItemQualityCOMBOBOX.Items.Clear()
+        AddItemAttackClassCOMBOBOX.Items.Clear()
+        AddItemPickitBotCOMBOBOX.Items.Clear()
+
+
+        For Each ItemObjectItem As ItemObjects In Objects
+            If AddItemMuleNameCOMBOBOX.Items.Contains(ItemObjectItem.MuleName) = False Then AddItemMuleNameCOMBOBOX.Items.Add(ItemObjectItem.MuleName)
+            If AddItemMuleAccountCOMBOBOX.Items.Contains(ItemObjectItem.MuleAccount) = False Then AddItemMuleAccountCOMBOBOX.Items.Add(ItemObjectItem.MuleAccount)
+            If AddItemMulePassCOMBOBOX.Items.Contains(ItemObjectItem.MulePass) = False Then AddItemMulePassCOMBOBOX.Items.Add(ItemObjectItem.MulePass)
+            If AddItemAttackClassCOMBOBOX.Items.Contains(ItemObjectItem.AttackClass) = False Then AddItemAttackClassCOMBOBOX.Items.Add(ItemObjectItem.AttackClass)
+            If AddItemBaseCOMBOBOX.Items.Contains(ItemObjectItem.ItemBase) = False Then AddItemBaseCOMBOBOX.Items.Add(ItemObjectItem.ItemBase)
+            If AddItemQualityCOMBOBOX.Items.Contains(ItemObjectItem.ItemQuality) = False Then AddItemQualityCOMBOBOX.Items.Add(ItemObjectItem.ItemQuality)
+            If AddItemPickitBotCOMBOBOX.Items.Contains(ItemObjectItem.PickitBot) = False Then AddItemPickitBotCOMBOBOX.Items.Add(ItemObjectItem.PickitBot)
+        Next
+
+        'remove any nuls
+        If AddItemMuleNameCOMBOBOX.Items.Contains("") Then AddItemMuleNameCOMBOBOX.Items.Remove("")
+        If AddItemMuleAccountCOMBOBOX.Items.Contains("") Then AddItemMuleAccountCOMBOBOX.Items.Remove("")
+        If AddItemMulePassCOMBOBOX.Items.Contains("") Then AddItemMulePassCOMBOBOX.Items.Remove("")
+        If AddItemAttackClassCOMBOBOX.Items.Contains("") Then AddItemAttackClassCOMBOBOX.Items.Remove("")
+        If AddItemBaseCOMBOBOX.Items.Contains("") Then AddItemBaseCOMBOBOX.Items.Remove("")
+        If AddItemQualityCOMBOBOX.Items.Contains("") Then AddItemQualityCOMBOBOX.Items.Remove("")
+        If AddItemPickitBotCOMBOBOX.Items.Contains("") Then AddItemPickitBotCOMBOBOX.Items.Remove("")
+
+
+
+
+
     End Sub
 
     Private Sub AddItemImageBUTTON_Click(sender As Object, e As EventArgs) Handles AddItemImageBUTTON.Click

@@ -1026,7 +1026,7 @@ Partial Class Form1
         'AddItemToolStripMenuItem
         '
         Me.AddItemToolStripMenuItem.Name = "AddItemToolStripMenuItem"
-        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
+        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(142, 22)
         Me.AddItemToolStripMenuItem.Text = "Add Item"
         '
         'EditItemToolStripMenuItem
@@ -1039,13 +1039,13 @@ Partial Class Form1
         'DeleteItemToolStripMenuItem1
         '
         Me.DeleteItemToolStripMenuItem1.Name = "DeleteItemToolStripMenuItem1"
-        Me.DeleteItemToolStripMenuItem1.Size = New System.Drawing.Size(134, 22)
+        Me.DeleteItemToolStripMenuItem1.Size = New System.Drawing.Size(142, 22)
         Me.DeleteItemToolStripMenuItem1.Text = "Delete Item"
         '
         'SortToolStripMenuItem
         '
         Me.SortToolStripMenuItem.Name = "SortToolStripMenuItem"
-        Me.SortToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
+        Me.SortToolStripMenuItem.Size = New System.Drawing.Size(142, 22)
         Me.SortToolStripMenuItem.Text = "Sort List"
         '
         'Form1
@@ -1130,7 +1130,7 @@ Partial Class Form1
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(810, 600)
         Me.Name = "Form1"
-        Me.Text = "D2DiaBase Beta vers  0.85"
+        Me.Text = "DiaBase Version  8.0 - Beta"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).EndInit()
