@@ -620,7 +620,7 @@ Public Class Form1
             End If
         End If
 
-        'cancel backup rtrstoration
+        'cancel backup restoration
         If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.No Then
         End If
     End Sub
@@ -629,6 +629,7 @@ Public Class Form1
         ClosingAppForm.ShowDialog()
         'this end without backing up or saving
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.No Then e.Cancel = True
+
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = False And ClosingAppForm.BackupDatabaseCHRCKBOX.Checked = False Then End
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = True Then SaveItems()
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = True Then Module1.BackupDatabase()

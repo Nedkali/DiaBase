@@ -120,8 +120,8 @@ Partial Class Form1
         Me.ItemListboxCONTEXTMENUSTRIP = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.AddItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DeleteItemToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SortToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteItemToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -1036,17 +1036,17 @@ Partial Class Form1
         Me.EditItemToolStripMenuItem.Size = New System.Drawing.Size(142, 22)
         Me.EditItemToolStripMenuItem.Text = "Edit Item"
         '
-        'DeleteItemToolStripMenuItem1
-        '
-        Me.DeleteItemToolStripMenuItem1.Name = "DeleteItemToolStripMenuItem1"
-        Me.DeleteItemToolStripMenuItem1.Size = New System.Drawing.Size(142, 22)
-        Me.DeleteItemToolStripMenuItem1.Text = "Delete Item"
-        '
         'SortToolStripMenuItem
         '
         Me.SortToolStripMenuItem.Name = "SortToolStripMenuItem"
         Me.SortToolStripMenuItem.Size = New System.Drawing.Size(142, 22)
         Me.SortToolStripMenuItem.Text = "Sort List"
+        '
+        'DeleteItemToolStripMenuItem1
+        '
+        Me.DeleteItemToolStripMenuItem1.Name = "DeleteItemToolStripMenuItem1"
+        Me.DeleteItemToolStripMenuItem1.Size = New System.Drawing.Size(142, 22)
+        Me.DeleteItemToolStripMenuItem1.Text = "Delete Item"
         '
         'Form1
         '
@@ -1127,7 +1127,6 @@ Partial Class Form1
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(810, 810)
-        Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(810, 600)
         Me.Name = "Form1"
         Me.Text = "DiaBase Version  8.0 - Beta"

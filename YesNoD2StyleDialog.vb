@@ -9,4 +9,10 @@
         DialogResult = Windows.Forms.DialogResult.No
 
     End Sub
+
+   
+   
+    Private Sub YesNoD2Style_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        My.Computer.Audio.Play(My.Resources.d2Dong, AudioPlayMode.Background) 'plays d2 thunk alert sound
+    End Sub
 End Class

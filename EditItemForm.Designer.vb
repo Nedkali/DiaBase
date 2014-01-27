@@ -2332,7 +2332,7 @@ Partial Class EditItemForm
         Me.MinimizeBox = False
         Me.Name = "EditItemForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "EditItemForm"
+        Me.Text = "Edit Item"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

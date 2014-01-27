@@ -11,7 +11,7 @@
 
    
     Private Sub ClosingAppForm_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
-        My.Computer.Audio.Play(My.Resources.d2Dong, AudioPlayMode.Background)
-
+        My.Computer.Audio.Play(My.Resources.d2Dong, AudioPlayMode.Background) ' Plays d2 thunk sound
+        'My.Computer.Audio.Play(My.Resources.Baalfadeout, AudioPlayMode.Background) 'plays baal laugh sound
     End Sub
 End Class

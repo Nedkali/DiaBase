@@ -22,6 +22,7 @@ Partial Class ItemImageSelector
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ItemImageSelector))
         Me.AddSelectImageBUTTON = New System.Windows.Forms.Button()
         Me.AddSelectImageCancelBUTTON = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -131,6 +132,7 @@ Partial Class ItemImageSelector
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.AddSelectImageBUTTON)
         Me.Controls.Add(Me.AddSelectImageCancelBUTTON)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximumSize = New System.Drawing.Size(366, 258)
         Me.MinimumSize = New System.Drawing.Size(366, 258)
         Me.Name = "ItemImageSelector"

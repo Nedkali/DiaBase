@@ -2321,7 +2321,7 @@ Partial Class AddItemForm
         Me.MinimumSize = New System.Drawing.Size(562, 668)
         Me.Name = "AddItemForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "AddItemForm"
+        Me.Text = "Add Item"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
