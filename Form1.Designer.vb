@@ -44,6 +44,7 @@ Partial Class Form1
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.AddNewItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.DeleteItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -116,7 +117,11 @@ Partial Class Form1
         Me.Label38 = New System.Windows.Forms.Label()
         Me.Label39 = New System.Windows.Forms.Label()
         Me.Label40 = New System.Windows.Forms.Label()
-        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ItemListboxCONTEXTMENUSTRIP = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.AddItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EditItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteItemToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SortToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -125,6 +130,7 @@ Partial Class Form1
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ItemListboxCONTEXTMENUSTRIP.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label3
@@ -200,7 +206,7 @@ Partial Class Form1
         '
         Me.EditExistingItemToolStripMenuItem.Name = "EditExistingItemToolStripMenuItem"
         Me.EditExistingItemToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
-        Me.EditExistingItemToolStripMenuItem.Text = "Edit"
+        Me.EditExistingItemToolStripMenuItem.Text = "Edit Item"
         '
         'SearchOperatorLABEL
         '
@@ -311,7 +317,13 @@ Partial Class Form1
         '
         Me.AddNewItemToolStripMenuItem.Name = "AddNewItemToolStripMenuItem"
         Me.AddNewItemToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
-        Me.AddNewItemToolStripMenuItem.Text = "Add"
+        Me.AddNewItemToolStripMenuItem.Text = "Add Item"
+        '
+        'ToolStripMenuItem3
+        '
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(201, 22)
+        Me.ToolStripMenuItem3.Text = "Sort list"
         '
         'ToolStripSeparator1
         '
@@ -322,7 +334,7 @@ Partial Class Form1
         '
         Me.DeleteItemToolStripMenuItem.Name = "DeleteItemToolStripMenuItem"
         Me.DeleteItemToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
-        Me.DeleteItemToolStripMenuItem.Text = "Delete"
+        Me.DeleteItemToolStripMenuItem.Text = "Delete Item"
         '
         'Label2
         '
@@ -1004,11 +1016,37 @@ Partial Class Form1
         Me.Label40.Size = New System.Drawing.Size(382, 1)
         Me.Label40.TabIndex = 174
         '
-        'ToolStripMenuItem3
+        'ItemListboxCONTEXTMENUSTRIP
         '
-        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(201, 22)
-        Me.ToolStripMenuItem3.Text = "Sort list"
+        Me.ItemListboxCONTEXTMENUSTRIP.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.ItemListboxCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddItemToolStripMenuItem, Me.EditItemToolStripMenuItem, Me.SortToolStripMenuItem, Me.DeleteItemToolStripMenuItem1})
+        Me.ItemListboxCONTEXTMENUSTRIP.Name = "ItemListboxCONTEXTMENUSTRIP"
+        Me.ItemListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(143, 92)
+        '
+        'AddItemToolStripMenuItem
+        '
+        Me.AddItemToolStripMenuItem.Name = "AddItemToolStripMenuItem"
+        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
+        Me.AddItemToolStripMenuItem.Text = "Add Item"
+        '
+        'EditItemToolStripMenuItem
+        '
+        Me.EditItemToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.EditItemToolStripMenuItem.Name = "EditItemToolStripMenuItem"
+        Me.EditItemToolStripMenuItem.Size = New System.Drawing.Size(142, 22)
+        Me.EditItemToolStripMenuItem.Text = "Edit Item"
+        '
+        'DeleteItemToolStripMenuItem1
+        '
+        Me.DeleteItemToolStripMenuItem1.Name = "DeleteItemToolStripMenuItem1"
+        Me.DeleteItemToolStripMenuItem1.Size = New System.Drawing.Size(134, 22)
+        Me.DeleteItemToolStripMenuItem1.Text = "Delete Item"
+        '
+        'SortToolStripMenuItem
+        '
+        Me.SortToolStripMenuItem.Name = "SortToolStripMenuItem"
+        Me.SortToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
+        Me.SortToolStripMenuItem.Text = "Sort List"
         '
         'Form1
         '
@@ -1103,6 +1141,7 @@ Partial Class Form1
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage2.ResumeLayout(False)
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ItemListboxCONTEXTMENUSTRIP.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1201,6 +1240,11 @@ Partial Class Form1
     Friend WithEvents Label39 As System.Windows.Forms.Label
     Friend WithEvents Label40 As System.Windows.Forms.Label
     Friend WithEvents ToolStripMenuItem3 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ItemListboxCONTEXTMENUSTRIP As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents AddItemToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents EditItemToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DeleteItemToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SortToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 
 End Class

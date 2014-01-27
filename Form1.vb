@@ -631,9 +631,7 @@ Public Class Form1
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.No Then e.Cancel = True
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = False And ClosingAppForm.BackupDatabaseCHRCKBOX.Checked = False Then End
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = True Then SaveItems()
-
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = True Then Module1.BackupDatabase()
-
 
 SkipExit:
         ClosingAppForm.Close()
@@ -641,15 +639,6 @@ SkipExit:
     End Sub
 
 
-
-
-
-
-
-
-
-
-  
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
         Me.Close()
     End Sub
@@ -671,13 +660,8 @@ SkipExit:
                 file.Close()
                 Mymessages = "Default Data base file created" : MyMessageBox()
                 OpenDatabaseRoutine(Databasefile) 'refresh new database file to the lists
-
-
             End If
-
         End If
-
-
 SkipNewDatabase:
     End Sub
 
@@ -697,5 +681,63 @@ SkipNewDatabase:
     Private Sub ToolStripMenuItem3_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem3.Click
         Objects.Sort(Function(x, y) x.ItemName.CompareTo(y.ItemName))
         Display_Items()
+    End Sub
+
+    Private Sub AllItemsInDatabaseListBox_MouseDown(sender As Object, e As MouseEventArgs) Handles AllItemsInDatabaseListBox.MouseDown
+        If e.Button = Windows.Forms.MouseButtons.Right Then
+            If AllItemsInDatabaseListBox.SelectedIndex > -1 Then
+                If Not String.IsNullOrEmpty(AllItemsInDatabaseListBox.Text) Then
+                    Me.ItemListboxCONTEXTMENUSTRIP.Show(Control.MousePosition)
+                End If
+            End If
+        Else
+        End If
+
+    End Sub
+
+    Private Sub AddItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddItemToolStripMenuItem.Click
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+
+        ImportTimer.Stop() '        stop timer b4 form opens
+        AddItemForm.ShowDialog()
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start() '       restart timer after form closes
+
+    End Sub
+
+    Private Sub DeleteItemToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DeleteItemToolStripMenuItem1.Click
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+
+        'check for backup on edits set to true if so then backup now
+        If Settings.BackupOnEditsCHECKBOX.Checked = True Then Module1.BackupDatabase()
+        Dim RowNumber As Integer = AllItemsInDatabaseListBox.SelectedIndex
+        If RowNumber = -1 Then Return ' do nothing
+        If RowNumber >= 0 Then
+            Objects.RemoveAt(RowNumber)
+            AllItemsInDatabaseListBox.Items.Clear()
+            Display_Items()
+        End If
+
+    End Sub
+
+    Private Sub SortToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SortToolStripMenuItem.Click
+        Objects.Sort(Function(x, y) x.ItemName.CompareTo(y.ItemName))
+        Display_Items()
+    End Sub
+
+    Private Sub EditItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditItemToolStripMenuItem.Click
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+        ImportTimer.Stop()
+        If AllItemsInDatabaseListBox.SelectedIndex > -1 Then EditItemForm.ShowDialog()
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start()
+
     End Sub
 End Class
