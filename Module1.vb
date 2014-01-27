@@ -114,6 +114,8 @@
         Loop Until Reader.EndOfStream
         Reader.Close()
 
+        Objects.Sort(Function(x, y) x.ItemName.CompareTo(y.ItemName)) 'sort list alphabetically after assigning objects
+
         Form1.display_items()
 
     End Sub
