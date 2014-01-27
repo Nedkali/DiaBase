@@ -694,4 +694,8 @@ SkipNewDatabase:
     End Sub
 
 
+    Private Sub ToolStripMenuItem3_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem3.Click
+        Objects.Sort(Function(x, y) x.ItemName.CompareTo(y.ItemName))
+        Display_Items()
+    End Sub
 End Class
