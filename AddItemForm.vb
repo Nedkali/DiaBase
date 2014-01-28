@@ -163,25 +163,33 @@
 
 
         For Each ItemObjectItem As ItemObjects In Objects
-            If AddItemMuleNameCOMBOBOX.Items.Contains(ItemObjectItem.MuleName) = False Then AddItemMuleNameCOMBOBOX.Items.Add(ItemObjectItem.MuleName)
-            If AddItemMuleAccountCOMBOBOX.Items.Contains(ItemObjectItem.MuleAccount) = False Then AddItemMuleAccountCOMBOBOX.Items.Add(ItemObjectItem.MuleAccount)
-            If AddItemMulePassCOMBOBOX.Items.Contains(ItemObjectItem.MulePass) = False Then AddItemMulePassCOMBOBOX.Items.Add(ItemObjectItem.MulePass)
-            If AddItemAttackClassCOMBOBOX.Items.Contains(ItemObjectItem.AttackClass) = False Then AddItemAttackClassCOMBOBOX.Items.Add(ItemObjectItem.AttackClass)
-            If AddItemBaseCOMBOBOX.Items.Contains(ItemObjectItem.ItemBase) = False Then AddItemBaseCOMBOBOX.Items.Add(ItemObjectItem.ItemBase)
-            If AddItemQualityCOMBOBOX.Items.Contains(ItemObjectItem.ItemQuality) = False Then AddItemQualityCOMBOBOX.Items.Add(ItemObjectItem.ItemQuality)
-            If AddItemPickitBotCOMBOBOX.Items.Contains(ItemObjectItem.PickitBot) = False Then AddItemPickitBotCOMBOBOX.Items.Add(ItemObjectItem.PickitBot)
+            If ItemObjectItem.MuleName <> "" Then
+                If AddItemMuleNameCOMBOBOX.Items.Contains(ItemObjectItem.MuleName) = False Then AddItemMuleNameCOMBOBOX.Items.Add(ItemObjectItem.MuleName)
+            End If
+
+            If ItemObjectItem.MuleAccount <> "" Then
+                If AddItemMuleAccountCOMBOBOX.Items.Contains(ItemObjectItem.MuleAccount) = False Then AddItemMuleAccountCOMBOBOX.Items.Add(ItemObjectItem.MuleAccount)
+            End If
+
+            If ItemObjectItem.MulePass <> "" Then
+                If AddItemMulePassCOMBOBOX.Items.Contains(ItemObjectItem.MulePass) = False Then AddItemMulePassCOMBOBOX.Items.Add(ItemObjectItem.MulePass)
+            End If
+
+            If ItemObjectItem.AttackClass <> "" Then
+                If AddItemAttackClassCOMBOBOX.Items.Contains(ItemObjectItem.AttackClass) = False Then AddItemAttackClassCOMBOBOX.Items.Add(ItemObjectItem.AttackClass)
+            End If
+
+            If ItemObjectItem.ItemBase <> "" Then
+                If AddItemBaseCOMBOBOX.Items.Contains(ItemObjectItem.ItemBase) = False Then AddItemBaseCOMBOBOX.Items.Add(ItemObjectItem.ItemBase)
+            End If
+            If ItemObjectItem.ItemQuality <> "" Then
+                If AddItemQualityCOMBOBOX.Items.Contains(ItemObjectItem.ItemQuality) = False Then AddItemQualityCOMBOBOX.Items.Add(ItemObjectItem.ItemQuality)
+            End If
+            If ItemObjectItem.PickitBot <> "" Then
+                If AddItemPickitBotCOMBOBOX.Items.Contains(ItemObjectItem.PickitBot) = False Then AddItemPickitBotCOMBOBOX.Items.Add(ItemObjectItem.PickitBot)
+            End If
+
         Next
-
-        'remove any nuls
-        If AddItemMuleNameCOMBOBOX.Items.Contains("") Then AddItemMuleNameCOMBOBOX.Items.Remove("")
-        If AddItemMuleAccountCOMBOBOX.Items.Contains("") Then AddItemMuleAccountCOMBOBOX.Items.Remove("")
-        If AddItemMulePassCOMBOBOX.Items.Contains("") Then AddItemMulePassCOMBOBOX.Items.Remove("")
-        If AddItemAttackClassCOMBOBOX.Items.Contains("") Then AddItemAttackClassCOMBOBOX.Items.Remove("")
-        If AddItemBaseCOMBOBOX.Items.Contains("") Then AddItemBaseCOMBOBOX.Items.Remove("")
-        If AddItemQualityCOMBOBOX.Items.Contains("") Then AddItemQualityCOMBOBOX.Items.Remove("")
-        If AddItemPickitBotCOMBOBOX.Items.Contains("") Then AddItemPickitBotCOMBOBOX.Items.Remove("")
-
-
 
 
 

@@ -1129,7 +1129,7 @@ Partial Class Form1
         Me.MaximumSize = New System.Drawing.Size(810, 810)
         Me.MinimumSize = New System.Drawing.Size(810, 600)
         Me.Name = "Form1"
-        Me.Text = "DiaBase Version  8.0 - Beta"
+        Me.Text = "DiaBase Version  9.0 - Beta"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).EndInit()
