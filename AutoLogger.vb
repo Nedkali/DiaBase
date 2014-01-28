@@ -175,8 +175,8 @@ Module AutoLogger
                         If temp <> "" Then Exit For
                     Next
                     NewObject.ItemName = temp 'these 5 lines should exist for each item
-                    temp = LogFile.ReadLine() : myarray = Split(temp, " ")
-                    NewObject.ItemBase = myarray(2)
+                    temp = LogFile.ReadLine()
+                    NewObject.ItemBase = temp.Replace("Item Base ", "")
                     temp = LogFile.ReadLine() : myarray = Split(temp, " ")
                     NewObject.ItemQuality = myarray(2)
                     temp = LogFile.ReadLine() : myarray = Split(temp, " ")
@@ -300,6 +300,14 @@ Module AutoLogger
                                 NewObject.RequiredCharacter = "Druid"
                                 found = True
                             End If
+                            ' check for fix for item class
+                            If temp.IndexOf("Class") > -1 Then
+                                myarray = temp.Split(" ")
+                                NewObject.AttackClass = myarray(0)
+                                myarray = temp.Split("- ")
+                                NewObject.AttackSpeed = LTrim(myarray(1))
+                                Continue While
+                            End If
 
 
                             If found = False And NewObject.Stat1 = "" Then NewObject.Stat1 = temp : found = True
@@ -323,6 +331,11 @@ Module AutoLogger
 
 
                     End While
+
+                    ' fixes area - correcting item imports
+                    If NewObject.ItemName.IndexOf("Large Charm") > -1 Then NewObject.ItemBase = "Large Charm" ' torches misread as medium ????? weird maybe valid ???
+                    If NewObject.ItemName.IndexOf("Grand Charm") > -1 Then NewObject.ItemBase = "Grand Charm" ' this also as above
+
                     If NewObject.ItemBase = "Rune" Then
                         temp = GetRunes(NewObject.ItemName)
                         myarray = Split(temp, ",")
