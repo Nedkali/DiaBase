@@ -1,6 +1,6 @@
 ﻿Public Class EditItemForm
     Sub AddEditItemComboboxItems(ByVal ItemIndexNumberToRefrence)
-         End Sub
+    End Sub
     Private Sub EditItemForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         iEdit = Form1.AllItemsInDatabaseListBox.SelectedIndex
 
