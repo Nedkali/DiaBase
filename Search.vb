@@ -1,5 +1,5 @@
 ﻿Module Search
-    Sub SearchRoutineTest()
+    Sub SearchRoutine()
 
 
         If Form1.RefineSearchCHECKBOX.Checked = True Then
@@ -354,12 +354,6 @@
         Next
         Return myvalue
     End Function
-    Sub ItemMatched(ByVal count)
-
-        Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName)
-        SearchReferenceList.Add(count)
-
-    End Sub
 
     Sub ProgressBar1(ByRef count)
         If SearchProgressForm.Enabled = False Then Return

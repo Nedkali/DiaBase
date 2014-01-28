@@ -388,7 +388,7 @@ Public Class Form1
         'minimum ammount of search criteria has been entered. This insures the search routine wont crash due to user input error (i hope)
 
         If UCase(SearchOperatorCOMBOBOX.Text) = "EQUAL TO" Or UCase(SearchOperatorCOMBOBOX.Text) = "NOT EQUAL TO" Or UCase(SearchOperatorCOMBOBOX.Text) = "GREATER THAN" Or UCase(SearchOperatorCOMBOBOX.Text) = "LESS THAN" Then
-            SearchRoutineTest() ' If all is good and search seems valid then branch to the search routine sub in Module1
+            SearchRoutine() ' If all is good and search seems valid then branch to the search routine sub in Module1
         End If
         If SearchLISTBOX.Items.Count > 0 Then SearchLISTBOX.Focus() Else AllItemsInDatabaseListBox.Focus() ' ensure focus is returned to the relevant item list after search
 
