@@ -1009,6 +1009,7 @@ Partial Class Form1
         '
         'Label40
         '
+        Me.Label40.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.Label40.BackColor = System.Drawing.Color.DarkGoldenrod
         Me.Label40.Location = New System.Drawing.Point(26, 557)
         Me.Label40.Name = "Label40"
