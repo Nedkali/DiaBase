@@ -241,7 +241,7 @@ Public Class Form1
             MuleNameTextbox.Text = Objects(RowNumber).MuleName
 
             'DISPLAY PASSWORD FIX REV 12 AussieHack - converts pass to '***' with function if hide pass is set
-            If KeepPassPrivate = True Then MulePassTextbox.Text = HidePass(Objects(RowNumber)) Else MulePassTextbox.Text = Objects(RowNumber).MulePass
+            If KeepPassPrivate = True Then MulePassTextbox.Text = HidePass(Objects(RowNumber).MulePass) Else MulePassTextbox.Text = Objects(RowNumber).MulePass
 
 
         End If

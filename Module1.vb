@@ -1481,19 +1481,18 @@
 
     End Sub
 
-    'this repaces the password with the same number of asterix '****' to hide pass information 
-    Function HidePass(PassString)
+    'This repaces the password with the same number of asterix '****' to hide pass information 
+    Function HidePass(PassString As String)
         Select Case KeepPassPrivate
             Case "True"
                 Dim temppass As String = Nothing
                 Dim count As Integer = 0
-                Do Until count = Len(PassString) ' counts out same munber of asterix as chars in the pass (looks neater)
-                    temppass = temppass + "*" 'loop to length
+                Do Until count = Len(PassString)    'Counts out same munber of asterix as chars in the pass (looks neater)
+                    temppass = temppass + "*"       'Loop to length
                     count = count + 1
                 Loop
-                PassString = temppass ' reapply to incoming var
-
+                PassString = temppass               'Reapply to global var
         End Select
-        Return (PassString)
+        Return (PassString)                         'Return result
     End Function
 End Module
