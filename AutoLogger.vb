@@ -145,19 +145,18 @@ Module AutoLogger
                 End If
                 
 
-              
+                'PASSWORD DISPLAY FIX REV 12 <------------------------------------------------------------------------ MOVED THIS TO MODULE 1 - AussieHack              
                 'this repaces the password with the same number of asterix '****' to hide pass information 
-                Select Case KeepPassPrivate
-                    Case "True"
-                        Dim temppass As String = Nothing
-                        Dim count As Integer = 0
-                        Do Until count = Len(thislogpass)
-                            temppass = temppass + "*"
-                            count = count + 1
-                        Loop
-                        thislogpass = temppass
-
-                End Select
+                'Select Case KeepPassPrivate
+                '   Case "True"
+                'Dim temppass As String = Nothing
+                'Dim count As Integer = 0
+                'Do Until count = Len(thislogpass)
+                'temppass = temppass + "*"
+                'count = count + 1
+                'Loop
+                'thislogpass = temppass
+                'End Select
 
 
 

@@ -51,7 +51,7 @@
         file.WriteLine(EtalPathTEXTBOX.Text)
         file.WriteLine(DatabaseFileTEXTBOX.Text)
         file.WriteLine(NumericUpDown1.Value)
-        file.WriteLine(CheckBox3.Checked)
+        file.WriteLine(CheckBox3.Checked) : KeepPassPrivate = CheckBox3.CheckState '<-------------------------------Display Password Fix rev 12 (AussieHack)
         file.WriteLine(AutoBackupImportsCHECKBOX.Checked) ' added this for auto backup on import setting
         file.WriteLine(BackupOnEditsCHECKBOX.Checked)   ' added this for auto backup on edits setting
         file.Close()

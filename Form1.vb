@@ -239,13 +239,15 @@ Public Class Form1
 
             MuleAccountTextbox.Text = Objects(RowNumber).MuleAccount
             MuleNameTextbox.Text = Objects(RowNumber).MuleName
-            MulePassTextbox.Text = Objects(RowNumber).MulePass
+
+            'DISPLAY PASSWORD FIX REV 12 AussieHack - converts pass to '***' with function if hide pass is set
+            If KeepPassPrivate = True Then MulePassTextbox.Text = HidePass(Objects(RowNumber)) Else MulePassTextbox.Text = Objects(RowNumber).MulePass
 
 
         End If
         RichTextBox2.SelectAll()
         RichTextBox2.SelectionAlignment = HorizontalAlignment.Center
-  
+
         PictureBox1.Load("Skins\" + ItemImageList(Objects(RowNumber).ItemImage) + ".jpg")
 
 
