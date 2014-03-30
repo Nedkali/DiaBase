@@ -424,7 +424,7 @@ Module AutoLogger
                 If temp1.IndexOf(accname) <> -1 Then
                     Dim AccAndPass = temp1.Split(New [Char]() {"/"c})
                     password = AccAndPass(1)     'Get mule acc pass from _muleaccount.txt
-                    Dim myarray = Split(PassFiles(counter), "_", 0)
+                    Dim myarray = Split(PassFiles(counter), "__muleaccount.txt")
                     password = password & "," & myarray(0)
                     ReadPassFiles.Close()
                     Exit For
