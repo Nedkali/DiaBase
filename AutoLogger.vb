@@ -70,7 +70,6 @@ Module AutoLogger
 
         Form1.RichTextBox1.AppendText("Logs to import = " & LogFilesList.Count & vbCrLf)
         Dim Pretotal = Objects.Count
-        GetmuleaccountFiles()
 
         ProcessLogFiles() 'moved rest to a separate sub to cut down on coded lines in a single sub
 
@@ -87,22 +86,13 @@ Module AutoLogger
             If LogFiles(Tally).IndexOf("delete me.txt") = -1 Then                   'ignore the delete me file (if its still there)
                 If Replace(LogFiles(Tally), ".txt", "").IndexOf("_") > -1 Then
                     LogFilesList.Add(LogFiles(Tally))                               'ADD LOG FILE NAME TO LogFilesList()
-                    LogType.Add("new")
                 End If
-
-                If Replace(LogFiles(Tally), ".txt", "").IndexOf(".") > -1 Then
-                    LogFilesList.Add(LogFiles(Tally))                               'ADD Old LOG FILE NAME TO LogFilesList()
-                    LogType.Add("old")
-                End If
-
-
 
             End If
             Tally = Tally + 1
         Loop
 
     End Sub
-    'SUB GETS ALL _muleaccount.txt fileas from etals mulelogs dir and puts em in PassFiles()
     Sub GetmuleaccountFiles()
         Dim Tally As Integer = 0
         PassFiles.Clear()
@@ -115,55 +105,69 @@ Module AutoLogger
 
     End Sub
 
+
+    Function GetMulePass(ByVal accname)
+        GetmuleaccountFiles()
+        Dim counter As Integer = 0
+        Dim temp As String = ""
+        Dim returnstring As String = "Unknown"
+        Dim temp1 As Array
+        Form1.RichTextBox1.AppendText("Looking up " & accname & " information" & vbCrLf)
+        For Each item In PassFiles
+
+            Dim ReadPassFiles = My.Computer.FileSystem.OpenTextFileReader(MuleDataPath & PassFiles(counter))
+            While ReadPassFiles.EndOfStream = False
+                temp = ReadPassFiles.ReadLine()
+                If temp.IndexOf(accname) <> -1 Then
+                    returnstring = PassFiles(counter).Replace("_muleaccount.txt", "")
+                    temp1 = temp.Split("/")
+                    returnstring = returnstring + "," + temp1(1)
+                    ReadPassFiles.Close()
+                    Return returnstring
+                    Exit For
+                End If
+            End While
+            counter = counter + 1
+        Next
+
+
+        Return (",")
+
+    End Function
+
     Private Sub ProcessLogFiles()
         Dim temp As String = ""
         Dim Tally As Integer = 0
         Dim mycounter As Integer = 0
         Dim found As Boolean = True
         Dim myarray As Array
-        Dim thislogmulename As String = ""
-        Dim thislogmuleacc As String
-        Dim thislogpass As String = ""
-        Dim thispickbot As String = ""
+
         Do Until Tally = LogFilesList.Count
 
             If My.Computer.FileSystem.FileExists(MuleLogPath & LogFilesList(Tally)) = True Then 'Verify the log Exists
                 Dim LogFile = My.Computer.FileSystem.OpenTextFileReader(MuleLogPath & LogFilesList(Tally))
 
 
-                thispickbot = LogFile.ReadLine 'these lines should exist for each log
-                thislogmuleacc = LogFile.ReadLine
-                If LogType(Tally) = "new" Then
-                    thislogmulename = LogFile.ReadLine
-                End If
+                Dim thispickbot = LogFile.ReadLine() 'these lines should exist for each log
+                Dim thislogmuleacc = LogFile.ReadLine()
+                Dim thislogmulename = LogFile.ReadLine()
+                Dim thislogpass = LogFile.ReadLine()
                 LogFile.ReadLine()
-                temp = GetMulePass(thislogmuleacc)
-                If temp <> "" Then  ' potential app crash without this check
-                    myarray = Split(temp, ",", 0)
-                    thislogpass = myarray(0)
-                    If myarray.Length > 1 And thispickbot = "" Then thispickbot = myarray(1) 'for manual logs
+
+                If (thispickbot = "Unknown" Or thislogpass = "Unknown") Then 'lets try to find them
+                    Dim result As String = GetMulePass(thislogmuleacc)
+                    myarray = result.Split(",")
+                    If (myarray(0) <> "") Then
+                        thispickbot = myarray(0)
+                    End If
+                    If (myarray(1) <> "") Then
+                        thislogpass = myarray(1)
+                    End If
                 End If
-                
-
-                'PASSWORD DISPLAY FIX REV 12 <------------------------------------------------------------------------ MOVED THIS TO MODULE 1 - AussieHack              
-                'this repaces the password with the same number of asterix '****' to hide pass information 
-                'Select Case KeepPassPrivate
-                '   Case "True"
-                'Dim temppass As String = Nothing
-                'Dim count As Integer = 0
-                'Do Until count = Len(thislogpass)
-                'temppass = temppass + "*"
-                'count = count + 1
-                'Loop
-                'thislogpass = temppass
-                'End Select
-
-
-
 
                 Do
                     Dim NewObject As New ItemObjects
-
+                    NewObject.PickitBot = thispickbot
                     NewObject.MuleAccount = thislogmuleacc
                     NewObject.MuleName = thislogmulename
                     NewObject.MulePass = thislogpass
@@ -180,9 +184,8 @@ Module AutoLogger
                     NewObject.ItemQuality = myarray(2)
                     temp = LogFile.ReadLine() : myarray = Split(temp, " ")
                     NewObject.ItemImage = myarray(2)
-                    If LogType(Tally) = "new" Then
-                        NewObject.RuneWord = LogFile.ReadLine()
-                    End If
+                    NewObject.RuneWord = LogFile.ReadLine()
+
 
 
                     While LogFile.EndOfStream = False   'attempt to read item added information and exit if end of stream/file
@@ -338,7 +341,6 @@ Module AutoLogger
                     If NewObject.ItemBase = "Rune" Then
                         temp = GetRunes(NewObject.ItemName)
                         myarray = Split(temp, ",")
-                        'MessageBox.Show(NewObject.ItemName, "Rune check")
                         NewObject.RequiredLevel = myarray(0)
                         NewObject.Stat1 = myarray(1)
                         NewObject.Stat2 = myarray(2)
@@ -368,7 +370,8 @@ Module AutoLogger
                         NewObject.Stat1 = "Right-click to reset Stat/Skill Points"
                     End If
 
-                    NewObject.PickitBot = thispickbot
+                    ''check pickitbot var
+                    'NewObject.PickitBot = thispickbot
                     Objects.Add(NewObject)
 
                 Loop Until LogFile.EndOfStream
@@ -402,46 +405,7 @@ Module AutoLogger
         Loop
 
     End Sub
-    Function GetMulePass(ByVal accname)
-        Dim counter As Integer = 0
-        Dim temp1 As String = ""
-        Dim password As String = ""
-        Dim botname As String = ""
 
-        Form1.RichTextBox1.AppendText("Account name searching for = " & accname & vbCrLf)
-
-        For Each item In PassFiles
-
-            If My.Computer.FileSystem.FileExists(MuleDataPath & PassFiles(counter)) = False Then
-                Form1.RichTextBox1.AppendText("File doesnt Exist " & vbCrLf)
-                Return password
-            End If
-
-            Dim ReadPassFiles = My.Computer.FileSystem.OpenTextFileReader(MuleDataPath & PassFiles(counter))
-            Form1.RichTextBox1.AppendText("checking file " & PassFiles(counter) & vbCrLf)
-            While ReadPassFiles.EndOfStream = False
-                temp1 = ReadPassFiles.ReadLine()
-                If temp1.IndexOf(accname) <> -1 Then
-                    Dim AccAndPass = temp1.Split(New [Char]() {"/"c})
-                    password = AccAndPass(1)     'Get mule acc pass from _muleaccount.txt
-                    Dim myarray = Split(PassFiles(counter), "__muleaccount.txt")
-                    password = password & "," & myarray(0)
-                    ReadPassFiles.Close()
-                    Exit For
-                End If
-            End While
-            ReadPassFiles.Close()
-
-            counter = counter + 1
-        Next
-
-        If KeepPassPrivate = True And password <> "" Then Form1.RichTextBox1.AppendText("Password found = " & password & vbCrLf)
-        If KeepPassPrivate = False And password <> "" Then Form1.RichTextBox1.AppendText("Password found = " & password & vbCrLf)
-        If password = "" Then Form1.RichTextBox1.AppendText("Password not found = " & vbCrLf)
-        Form1.RichTextBox1.ScrollToCaret()
-
-        Return password
-    End Function
 
     Private Sub SaveLoggedItems(ByVal itemstart)
 
@@ -511,14 +475,6 @@ Module AutoLogger
         End Try
         Form1.RichTextBox1.AppendText("Items Saved = " & count & vbCrLf)
 
-        'probably need to delete the objects used here likely to cause conflicts with item add & saving database
-        ' leave the following code in case of further app changes - maybe usefull
-        'If itemstart > 0 Then
-        '    For y = itemstart To Objects.Count - 1
-        '        Objects.RemoveAt(Objects.Count - 1)
-        '    Next
-
-        'End If
         For y = itemstart To Objects.Count - 1
             Form1.AllItemsInDatabaseListBox.Items.Add(Objects(y).ItemName)
         Next
