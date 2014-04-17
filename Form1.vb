@@ -5,6 +5,10 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load 'check if required folders exist on startup and create if necessary
         My.Computer.Audio.Play(My.Resources.BigDLaugh, AudioPlayMode.Background)
 
+        '------------------------------------------------------------------------------------------------------------------
+        'Set Version And revision number in form 1 titlebar text - Version and Revision number set in module1 variable list
+        Me.Text = "DiaBASE Beta - Version " & VersionNumber & "  Revision " & RevisionNumber
+        '------------------------------------------------------------------------------------------------------------------
 
         If My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "\DataBase\Backup") = False Then
             My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "\DataBase\Backup")
@@ -122,7 +126,7 @@ Public Class Form1
             AllItemsInDatabaseListBox.Items.Add(Objects(x).ItemName)
         Next
         ListboxTABCONTROL.SelectTab(0) ' ensure listboxTABCONTROL itset to all items list for repopuleate
-        TextBox2.Text = Objects.Count & " - Total Items"
+        ItemTallyTEXTBOX.Text = Objects.Count & " - Total Items"
 
         If AllItemsInDatabaseListBox.Items.Count > 0 Then AllItemsInDatabaseListBox.SelectedIndex = 0
     End Sub
@@ -151,7 +155,7 @@ Public Class Form1
     End Sub
 
 
-   
+
 
 
     Private Sub AllItemsInDatabaseListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AllItemsInDatabaseListBox.SelectedIndexChanged
@@ -207,7 +211,7 @@ Public Class Form1
             If Objects(RowNumber).RequiredStrength <> Nothing Then RichTextBox2.AppendText("Required Strength: " & Objects(RowNumber).RequiredStrength & vbCrLf)
             If Objects(RowNumber).RequiredDexterity <> Nothing Then RichTextBox2.AppendText("Required Dexterity: " & Objects(RowNumber).RequiredDexterity & vbCrLf)
             If Objects(RowNumber).RequiredLevel <> Nothing Then RichTextBox2.AppendText("Required Level: " & Objects(RowNumber).RequiredLevel & vbCrLf)
-            
+
 
             'ROBS EDIT - includes attack class in the main stat display  as opposed to the unique attibutes block?
             If Objects(RowNumber).AttackClass <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).AttackClass & " Class") : If Objects(RowNumber).AttackSpeed <> Nothing Then RichTextBox2.AppendText(" - " & Objects(RowNumber).AttackSpeed & vbCrLf) Else RichTextBox2.AppendText(vbCrLf)
@@ -487,7 +491,7 @@ Public Class Form1
             Next
             SearchWordCOMBOBOX.Select()
         End If
-    
+
         'POPULATE WORD SEARCH DROPDOWN WITH ALL ATTACK SPEED ENTRYS WHEN ATTACK SPEED IS SELECTED FOR SEARCH
         If UCase(SearchFieldCOMBOBOX.Text) = "ATTACK SPEED" Then
             SearchWordCOMBOBOX.Items.Clear()
@@ -566,30 +570,38 @@ Public Class Form1
     End Sub
 
     'this button selects tab page 0 and colors button to show all items listbox on page 0 and displays total items value to textbox2
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles ListControlTabBUTTON.Click
         ListboxTABCONTROL.SelectTab(0)
-        Button2.BackColor = Color.DimGray
-        Button1.BackColor = Color.Black
-        TextBox2.Text = AllItemsInDatabaseListBox.Items.Count & " - Total Items"
+        ListControlTabBUTTON.BackColor = Color.DimGray
+        SearchListControlTabBUTTON.BackColor = Color.Black
+        TaggedListControlTabBUTTON.BackColor = Color.Black
+        ItemTallyTEXTBOX.Text = AllItemsInDatabaseListBox.Items.Count & " - Total Items"
 
 
     End Sub
 
     'this button selects tab page 1 and colors button to show all search listbox on page 1 and displays total search matches value to textbox2
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles SearchListControlTabBUTTON.Click
         ListboxTABCONTROL.SelectTab(1)
-        Button1.BackColor = Color.DimGray
-        Button2.BackColor = Color.Black
-        TextBox2.Text = SearchLISTBOX.Items.Count & " - Total Matches"
+        SearchListControlTabBUTTON.BackColor = Color.DimGray
+        ListControlTabBUTTON.BackColor = Color.Black
+        TaggedListControlTabBUTTON.BackColor = Color.Black
+        ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Matches"
 
     End Sub
 
-
-    'items and matches nuber textbox
-    Private Sub TextBox2_TextChanged(sender As Object, e As EventArgs) Handles TextBox2.TextChanged
+    'selects user list tab
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles TaggedListControlTabBUTTON.Click
+        ListboxTABCONTROL.SelectTab(2)
+        SearchListControlTabBUTTON.BackColor = Color.Black
+        ListControlTabBUTTON.BackColor = Color.Black
+        TaggedListControlTabBUTTON.BackColor = Color.DimGray
+        ItemTallyTEXTBOX.Text = UserLISTBOX.Items.Count & " - Tagged Items"
+        UserLISTBOX.SelectedIndex = -1
 
     End Sub
 
+    ' This restores the database from its backup file (if there is one ofc)
     Private Sub RestoreBackupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RestoreBackupToolStripMenuItem.Click
         'SET D2 DIALOG TITLE AND MESSAGES
         YesNoD2Style.Text = "Restore Database From Backup"
@@ -598,11 +610,9 @@ Public Class Form1
         YesNoD2Style.YesNoMessageLABEL.Text = "You are about to permanently delete the current database and replace it with its backup file (if one exists)." & vbCrLf & vbCrLf & "Only continue if you are sure you know what you are doing as severe data loss may occur if you dont backup regularly." & vbCrLf & "Most record issues can be fixed manually by editing the faulty item record with the Item / Edit Item function." & vbCrLf & vbCrLf & "Are you sure you wish to restore the backup file?"
         YesNoD2Style.ShowDialog()
 
-        'Restore form backup
+        'On confirmation Restore form backup
         If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.Yes Then
 
-            'ty for build backup filename routine Ned - im um borrowing it haha heehe!     
-            ' MessageBox.Show("do it") '<----------------------------------------------------------------------------------ROBS DEBUG
             Dim BackupPath = Application.StartupPath & "\Database\Backup\"
             Dim temp As String = ""
             Dim myarray = Split(DatabaseFile, ".txt", 0)
@@ -627,34 +637,33 @@ Public Class Form1
         End If
     End Sub
 
+    'Closing Form1 (exit Application) Event Handler. Throws To exit confirmation message. also handles saves and backups if set to do so
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         ClosingAppForm.ShowDialog()
         'this end without backing up or saving
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.No Then e.Cancel = True
-
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = False And ClosingAppForm.BackupDatabaseCHRCKBOX.Checked = False Then End
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = True Then SaveItems()
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = True Then Module1.BackupDatabase()
 
 SkipExit:
         ClosingAppForm.Close()
-
     End Sub
 
-
+    'This is the actual exit command to close app which triggers above handler (do it this way so handler activates no matter where app is closed from)
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
         Me.Close()
     End Sub
 
+    'CREATE NEW DATABASE OPTION FOR MULTIPLE DATABASES-------> NEEDS TO BE RESOLVED YET <-------------------------------------------[FINISH THIS ALREADY ROB]
     Private Sub NewToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem1.Click
         YesNoD2Style.Text = "Confirm New Database"
         YesNoD2Style.YesNoHeaderLABEL.Text = "PLEASE READ BEFOR CREATING A NEW DATABASE"
-        YesNoD2Style.YesNoMessageLABEL.Text = "The Beat version does not support multiple databases. Creating a new database will destroy the current one." & vbCrLf & "Are you sure you want to contine?"
+        YesNoD2Style.YesNoMessageLABEL.Text = "The Beat version does not support multiple databases. Creating a new database will totally destroy the current one." & vbCrLf & "Are you sure you want to contine?"
         YesNoD2Style.ShowDialog()
         If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.Yes Then
 
             If My.Computer.FileSystem.FileExists(Application.StartupPath + "\DataBase\Default.txt") = False Then
-
                 My.Computer.FileSystem.DeleteFile(Application.StartupPath + "\DataBase\Default.txt")
             Else
 
@@ -668,8 +677,8 @@ SkipExit:
 SkipNewDatabase:
     End Sub
 
+    'DISPLAYS THE SETTINGS FROM SELECTED FROM PULLDOWN MENUES
     Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
-        'dISPLAYS THE SETTINGS FOM SELECTED FROM PULLDOWN MENUES
         If LoggerRunning = True Then
             Mymessages = "Please wait Import in progress" : MyMessageBox()
             Return
@@ -680,12 +689,13 @@ SkipNewDatabase:
 
     End Sub
 
-
+    'This Does The Sort Database Command From Pull Down "items" Menu
     Private Sub ToolStripMenuItem3_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem3.Click
         Objects.Sort(Function(x, y) x.ItemName.CompareTo(y.ItemName))
         Display_Items()
     End Sub
 
+    'ALL ITEMS LISTBOX CONTEXT MENU STRIP DISPLAY ROUTINE
     Private Sub AllItemsInDatabaseListBox_MouseDown(sender As Object, e As MouseEventArgs) Handles AllItemsInDatabaseListBox.MouseDown
         If e.Button = Windows.Forms.MouseButtons.Right Then
             If AllItemsInDatabaseListBox.SelectedIndex > -1 Then
@@ -695,8 +705,34 @@ SkipNewDatabase:
             End If
         Else
         End If
-
     End Sub
+
+    'Search Listbox Context MenuStrip display routine 
+    Private Sub SearchLISTBOX_MouseDown(sender As Object, e As MouseEventArgs) Handles SearchLISTBOX.MouseDown
+        If e.Button = Windows.Forms.MouseButtons.Right Then
+            If SearchLISTBOX.Items.Count > 0 Then
+                Me.SearchListboxCONTEXTMENUSTRIP.Show(Control.MousePosition)
+            End If
+        Else
+        End If
+    End Sub
+
+    'tagged (userLISTBOX) Listbox context menu display routine
+    Private Sub UserLISTBOX_MouseDown(sender As Object, e As MouseEventArgs) Handles UserLISTBOX.MouseDown
+        If e.Button = Windows.Forms.MouseButtons.Right Then
+            If UserLISTBOX.Items.Count > 0 Then
+                Me.UserListboxCONTEXTMENUSTRIP.Show(Control.MousePosition)
+            End If
+        Else
+        End If
+    End Sub
+
+
+
+
+
+
+
 
     Private Sub AddItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddItemToolStripMenuItem.Click
         If LoggerRunning = True Then
@@ -722,6 +758,8 @@ SkipNewDatabase:
         If RowNumber = -1 Then Return ' do nothing
         If RowNumber >= 0 Then
             Objects.RemoveAt(RowNumber)
+            UserLISTBOX.Items.Clear() 'put these in here to aviod potential chash if item remains in search list after delete and if selected app will try to display stats for an item that no longer exists
+            SearchLISTBOX.Items.Clear()
             AllItemsInDatabaseListBox.Items.Clear()
             Display_Items()
         End If
@@ -741,6 +779,106 @@ SkipNewDatabase:
         ImportTimer.Stop()
         If AllItemsInDatabaseListBox.SelectedIndex > -1 Then EditItemForm.ShowDialog()
         If Button3.Text = "Timer Stop" Then ImportTimer.Start()
+
+    End Sub
+
+    Private Sub AddToUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddToUserListToolStripMenuItem.Click
+        ' adds selected item name to the user list if its not already there, uses listbox index mumber to track items that are already included (UserListReferenceList Array)
+        If AllItemsInDatabaseListBox.SelectedIndex <> -1 Then
+            Dim FoundMatch As Boolean = False
+            For Each item In UserListReferenceList
+                If item = AllItemsInDatabaseListBox.SelectedIndex Then FoundMatch = True
+            Next
+            If FoundMatch = False Then
+                UserListReferenceList.Add(AllItemsInDatabaseListBox.SelectedIndex)
+                UserLISTBOX.Items.Add(AllItemsInDatabaseListBox.SelectedItem)
+            End If
+        End If
+    End Sub
+
+    Private Sub UserLISTBOX_SelectedIndexChanged(sender As Object, e As EventArgs) Handles UserLISTBOX.SelectedIndexChanged
+        AllItemsInDatabaseListBox.SelectedItem = UserLISTBOX.SelectedItem
+    End Sub
+
+    'CLEAR ALL ITEMS FROM USER LIST
+    Private Sub ClearUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearUserListToolStripMenuItem.Click
+        UserLISTBOX.Items.Clear()
+        UserListReferenceList.Clear()
+    End Sub
+
+
+    Private Sub ClearSearchListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearSearchListToolStripMenuItem.Click
+        SearchLISTBOX.Items.Clear()
+        SearchReferenceList.Clear()
+        RefineSearchReferenceList.Clear()
+    End Sub
+
+    Private Sub AddAllItemsToUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddAllItemsToUserListToolStripMenuItem.Click
+        'add all items in search list to user list
+
+        Dim count As Integer = 0
+        For Each item In SearchLISTBOX.Items
+
+            If UserListReferenceList.Contains(SearchReferenceList(count)) = False Then
+                UserLISTBOX.Items.Add(item) : UserListReferenceList.Add(SearchReferenceList(count))
+            End If
+            count = count + 1
+        Next
+
+
+    End Sub
+
+    'REMOVES ONE ITEM FROM THE USER LIST
+    Private Sub RemoveItemFromUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveItemFromUserListToolStripMenuItem.Click
+        If UserLISTBOX.SelectedIndex <> -1 Then
+            UserListReferenceList.Remove(UserListReferenceList(UserLISTBOX.SelectedIndex))
+            UserLISTBOX.Items.Remove(UserLISTBOX.SelectedItem)
+            ItemTallyTEXTBOX.Text = UserLISTBOX.Items.Count & " - "
+        End If
+    End Sub
+
+    'DELETES ALL ITMES FORM DATABASE THAT ARE LISTED IN THE USER LIST
+    Private Sub DeleteAllItemsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteAllItemsToolStripMenuItem.Click
+        If UserLISTBOX.Items.Count > 0 Then
+            'Show D2StyleDialogBox With Yes No Returned as DialogResult - Prompts For Confirmation To Delete  Multiple Items 
+
+            YesNoD2Style.Text = "Delete All Items In The Tagged List"
+            YesNoD2Style.YesNoHeaderLABEL.Text = "CONFIRM MULTIPE ITEM DELETE"
+            YesNoD2Style.YesNoHeaderLABEL.TextAlign = ContentAlignment.MiddleCenter
+            YesNoD2Style.YesNoMessageLABEL.Text = "This will permanently remove all listed item(s) from the database." & vbCrLf & vbCrLf & "Be sure to backup your database if nessicary." & vbCrLf & "If you have 'Backup Before Edits' set to true in 'Settings' the backup file will be updated automatically before the items are deleted." & vbCrLf & vbCrLf & "Total items to delete " & UserLISTBOX.Items.Count & vbCrLf & vbCrLf & "Please Confirm Delete to Continue..."
+            YesNoD2Style.ShowDialog()
+            If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.Yes Then
+
+                'Delete Has Been Confirmed And Continues On With Delete Here
+                If Settings.BackupOnEditsCHECKBOX.Checked = True Then Module1.BackupDatabase() ' backup before delete if set to do so
+
+                'This next itty bitty routine re orders the object row number list highest to lowest value -  MUST DO THIS TO AVOID ERRORS!
+                'This makes deletes occur in reverse order while the 'for next' still itterates fowards through the list. This avoids the object list  
+                'adjusting after each seperate delete which will cause wrong items to be deleted when moving further down the list of adjusted objects. 
+                Dim SortedList = From str In UserListReferenceList
+                                 Where CInt(str) > -1
+                                 Order By CInt(str) Descending
+                                 Select str
+
+                'This next even more itty bitty bit does the actual deleting
+                For Each item In SortedList
+                    Objects.RemoveAt(item)
+                Next
+
+                'tidy up and clear listboxes afterwards to avoid app referencing items that no longer exist
+                SearchReferenceList.Clear() : UserListReferenceList.Clear()
+                SearchLISTBOX.Items.Clear() : UserLISTBOX.Items.Clear()
+                ListControlTabBUTTON.BackColor = Color.DimGray : SearchListControlTabBUTTON.BackColor = Color.Black : TaggedListControlTabBUTTON.BackColor = Color.Black
+                ItemTallyTEXTBOX.Text = AllItemsInDatabaseListBox.Items.Count & " - Total Items"
+
+                'Finally Re-Populate The AllItemsInDatabaseLISTBOX After Multi Delete And Then Im Getin' The Goddamn Hell Outta Here Already
+                AllItemsInDatabaseListBox.Items.Clear()
+                Display_Items()
+            End If
+        End If
+    End Sub
+
+    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
 
     End Sub
 End Class

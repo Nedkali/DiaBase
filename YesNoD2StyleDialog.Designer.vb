@@ -36,7 +36,7 @@ Partial Class YesNoD2Style
         Me.YesNoCANCELBUTTON.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.YesNoCANCELBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.YesNoCANCELBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.YesNoCANCELBUTTON.Location = New System.Drawing.Point(282, 213)
+        Me.YesNoCANCELBUTTON.Location = New System.Drawing.Point(319, 214)
         Me.YesNoCANCELBUTTON.Name = "YesNoCANCELBUTTON"
         Me.YesNoCANCELBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.YesNoCANCELBUTTON.TabIndex = 0
@@ -50,7 +50,7 @@ Partial Class YesNoD2Style
         Me.YesNoCONFIRMBUTTON.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.YesNoCONFIRMBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.YesNoCONFIRMBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.YesNoCONFIRMBUTTON.Location = New System.Drawing.Point(185, 213)
+        Me.YesNoCONFIRMBUTTON.Location = New System.Drawing.Point(222, 214)
         Me.YesNoCONFIRMBUTTON.Name = "YesNoCONFIRMBUTTON"
         Me.YesNoCONFIRMBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.YesNoCONFIRMBUTTON.TabIndex = 1
@@ -63,7 +63,7 @@ Partial Class YesNoD2Style
         Me.YesNoMessageLABEL.ForeColor = System.Drawing.Color.White
         Me.YesNoMessageLABEL.Location = New System.Drawing.Point(35, 71)
         Me.YesNoMessageLABEL.Name = "YesNoMessageLABEL"
-        Me.YesNoMessageLABEL.Size = New System.Drawing.Size(328, 124)
+        Me.YesNoMessageLABEL.Size = New System.Drawing.Size(359, 124)
         Me.YesNoMessageLABEL.TabIndex = 2
         Me.YesNoMessageLABEL.Text = "YesNoMessageLABEL - Set at runtime"
         '
@@ -84,7 +84,7 @@ Partial Class YesNoD2Style
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.d2graphicselect
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(395, 275)
+        Me.ClientSize = New System.Drawing.Size(431, 275)
         Me.ControlBox = False
         Me.Controls.Add(Me.YesNoHeaderLABEL)
         Me.Controls.Add(Me.YesNoMessageLABEL)

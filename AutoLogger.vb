@@ -478,7 +478,7 @@ Module AutoLogger
         For y = itemstart To Objects.Count - 1
             Form1.AllItemsInDatabaseListBox.Items.Add(Objects(y).ItemName)
         Next
-        Form1.TextBox2.Text = Objects.Count & " Items"
+        Form1.ItemTallyTEXTBOX.Text = Objects.Count & " Items"
     End Sub
     Function GetRunes(ByVal runename)
         Dim runestats As String = ""

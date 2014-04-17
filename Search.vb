@@ -132,9 +132,9 @@
         If SearchReferenceList.Count > 0 Then
             Form1.SearchLISTBOX.SelectedIndex = 0
             Form1.ListboxTABCONTROL.SelectTab(1)
-            Form1.Button1.BackColor = Color.DimGray
-            Form1.Button2.BackColor = Color.Black
-            Form1.TextBox2.Text = Form1.SearchLISTBOX.Items.Count & " - Total Matches"
+            Form1.SearchListControlTabBUTTON.BackColor = Color.DimGray
+            Form1.ListControlTabBUTTON.BackColor = Color.Black
+            Form1.ItemTallyTEXTBOX.Text = Form1.SearchLISTBOX.Items.Count & " - Total Matches"
         End If
     End Sub
 

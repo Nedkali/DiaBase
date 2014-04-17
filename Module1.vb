@@ -1,6 +1,13 @@
 ﻿Module Module1
-    Public Objects As List(Of ItemObjects) = New List(Of ItemObjects) ' sets up new list of class items for database
+    'Sets up new list of class items for database
+    Public Objects As List(Of ItemObjects) = New List(Of ItemObjects)
 
+    '-------------------------------------------------------------------------------------------------------------------
+    'Version Variables (displayed in form1 titlebar) - UPDATE FOR EACH COMMIT PLS SO APP VERSION MATCHES REVISION NUMBER
+    '-------------------------------------------------------------------------------------------------------------------
+    Public VersionNumber As String = "9.0"
+    Public RevisionNumber As String = "73"
+    '-------------------------------------------------------------------------------------------------------------------
 
     'DataBase variables
     Public iEdit As Integer         'used in item edit form to locate item(array) number being edited
@@ -10,13 +17,14 @@
     Public Timercount As Integer
     Public TimerSecs As Integer
     Public Mymessages As String
+
     ' needs to be set to true when logger is doing log reads/imports and then set to false when completed
     ' Need this to prevent reading database while logger maybe trying to access it - logger will need priority
     ' or will most likely trigger an exception and crash Program
     Public LoggerRunning As Boolean = False
     Public KeepPassPrivate As Boolean = True
 
-    'Logging variables
+    'Logging Variables
     Public MuleLogPath As String
     Public Databasefile As String
     Public MuleDataPath As String
@@ -26,17 +34,19 @@
     Public MyCounter As Array
     Public SearchReferenceList As List(Of String) = New List(Of String)
     Public RefineSearchReferenceList As List(Of String) = New List(Of String)
+    Public UserListReferenceList As List(Of String) = New List(Of String)
     Public StringMatches As List(Of String) = New List(Of String)
     Public IntegerMatches As List(Of String) = New List(Of String)
     Dim GetAllIntegers As List(Of String) = New List(Of String)
 
-
+    'Other Required Crap
     Public ItemNamePulldownList As List(Of String) = New List(Of String)
     Public UniqueAttribsPulldownList As List(Of String) = New List(Of String)
     Public LogFilesList As List(Of String) = New List(Of String)    'Holds all logs found in log directory
     Public PassFiles As List(Of String) = New List(Of String)       'Holds all _muleaccount.txt file used to get mule pass and mule account
     Public LogType As List(Of String) = New List(Of String)
 
+    'Calls the UserMessaging 'Okie Dokie' Form As DialogBox
     Public Sub MyMessageBox()
         UserMessaging.ShowDialog()
     End Sub
@@ -120,6 +130,7 @@
 
     End Sub
 
+    'Load up the app configuration Values from \InstallDir\Settings.cfg file
     Sub LoadConfigFile()
         Dim file As System.IO.StreamReader
         file = My.Computer.FileSystem.OpenTextFileReader(Application.StartupPath + "\Settings.cfg")
@@ -131,6 +142,8 @@
         EditBackups = file.ReadLine() : If AutoBackups = True Then Settings.AutoBackupImportsCHECKBOX.Checked = True ' added this for backup befor saving item edits
         file.Close()
     End Sub
+
+    'Brances to Selected ItemImage listed in each items image field (Is Always Called from Display Item Statistics Routine In Form1 Code Block)
     Public Function ItemImageList(sender As Integer)
         Dim item As String
         Select Case Int(sender)
