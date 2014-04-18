@@ -70,6 +70,7 @@ Partial Class Form1
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.SearchLISTBOX = New System.Windows.Forms.ListBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.RichTextBox3 = New System.Windows.Forms.RichTextBox()
         Me.ExactMatchCHECKBOX = New System.Windows.Forms.CheckBox()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
@@ -132,7 +133,6 @@ Partial Class Form1
         Me.SearchListboxCONTEXTMENUSTRIP = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ClearSearchListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddAllItemsToUserListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RichTextBox3 = New System.Windows.Forms.RichTextBox()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -584,6 +584,17 @@ Partial Class Form1
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "TabPage3"
         '
+        'RichTextBox3
+        '
+        Me.RichTextBox3.BackColor = System.Drawing.SystemColors.MenuText
+        Me.RichTextBox3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RichTextBox3.ForeColor = System.Drawing.SystemColors.Menu
+        Me.RichTextBox3.Location = New System.Drawing.Point(0, 0)
+        Me.RichTextBox3.Name = "RichTextBox3"
+        Me.RichTextBox3.Size = New System.Drawing.Size(373, 266)
+        Me.RichTextBox3.TabIndex = 0
+        Me.RichTextBox3.Text = ""
+        '
         'ExactMatchCHECKBOX
         '
         Me.ExactMatchCHECKBOX.AutoSize = True
@@ -663,7 +674,7 @@ Partial Class Form1
         'Label4
         '
         Me.Label4.BackColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(25, 228)
+        Me.Label4.Location = New System.Drawing.Point(25, 208)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(383, 27)
         Me.Label4.TabIndex = 0
@@ -713,7 +724,7 @@ Partial Class Form1
         Me.SearchListControlTabBUTTON.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.SearchListControlTabBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.SearchListControlTabBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.SearchListControlTabBUTTON.Location = New System.Drawing.Point(104, 228)
+        Me.SearchListControlTabBUTTON.Location = New System.Drawing.Point(104, 208)
         Me.SearchListControlTabBUTTON.Name = "SearchListControlTabBUTTON"
         Me.SearchListControlTabBUTTON.Size = New System.Drawing.Size(75, 25)
         Me.SearchListControlTabBUTTON.TabIndex = 10
@@ -729,7 +740,7 @@ Partial Class Form1
         Me.ListControlTabBUTTON.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ListControlTabBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ListControlTabBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.ListControlTabBUTTON.Location = New System.Drawing.Point(27, 228)
+        Me.ListControlTabBUTTON.Location = New System.Drawing.Point(27, 208)
         Me.ListControlTabBUTTON.Name = "ListControlTabBUTTON"
         Me.ListControlTabBUTTON.Size = New System.Drawing.Size(75, 25)
         Me.ListControlTabBUTTON.TabIndex = 9
@@ -1102,7 +1113,7 @@ Partial Class Form1
         Me.TaggedListControlTabBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.TaggedListControlTabBUTTON.ForeColor = System.Drawing.Color.BurlyWood
         Me.TaggedListControlTabBUTTON.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.TaggedListControlTabBUTTON.Location = New System.Drawing.Point(181, 228)
+        Me.TaggedListControlTabBUTTON.Location = New System.Drawing.Point(181, 208)
         Me.TaggedListControlTabBUTTON.Name = "TaggedListControlTabBUTTON"
         Me.TaggedListControlTabBUTTON.Size = New System.Drawing.Size(75, 25)
         Me.TaggedListControlTabBUTTON.TabIndex = 11
@@ -1156,17 +1167,6 @@ Partial Class Form1
         Me.AddAllItemsToUserListToolStripMenuItem.Name = "AddAllItemsToUserListToolStripMenuItem"
         Me.AddAllItemsToUserListToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
         Me.AddAllItemsToUserListToolStripMenuItem.Text = "Add All Items to Tagged List"
-        '
-        'RichTextBox3
-        '
-        Me.RichTextBox3.BackColor = System.Drawing.SystemColors.MenuText
-        Me.RichTextBox3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RichTextBox3.ForeColor = System.Drawing.SystemColors.Menu
-        Me.RichTextBox3.Location = New System.Drawing.Point(0, 0)
-        Me.RichTextBox3.Name = "RichTextBox3"
-        Me.RichTextBox3.Size = New System.Drawing.Size(373, 266)
-        Me.RichTextBox3.TabIndex = 0
-        Me.RichTextBox3.Text = ""
         '
         'Form1
         '
