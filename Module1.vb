@@ -17,8 +17,8 @@
     Public Timercount As Integer
     Public TimerSecs As Integer
     Public Mymessages As String
-    Public saveonexit As Boolean = True
-    Public backuponexit As Boolean = True
+    Public saveonexit As Boolean = False
+    Public backuponexit As Boolean = False
 
     ' needs to be set to true when logger is doing log reads/imports and then set to false when completed
     ' Need this to prevent reading database while logger maybe trying to access it - logger will need priority

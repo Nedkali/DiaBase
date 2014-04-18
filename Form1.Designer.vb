@@ -350,7 +350,7 @@ Partial Class Form1
         '
         Me.DeleteItemToolStripMenuItem.Name = "DeleteItemToolStripMenuItem"
         Me.DeleteItemToolStripMenuItem.Size = New System.Drawing.Size(201, 22)
-        Me.DeleteItemToolStripMenuItem.Text = "Delete Item"
+        Me.DeleteItemToolStripMenuItem.Text = "Delete Item/s"
         '
         'Label2
         '
@@ -1070,38 +1070,38 @@ Partial Class Form1
         Me.ItemListboxCONTEXTMENUSTRIP.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.ItemListboxCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SortToolStripMenuItem, Me.AddItemToolStripMenuItem, Me.EditItemToolStripMenuItem, Me.DeleteItemToolStripMenuItem1, Me.AddToUserListToolStripMenuItem})
         Me.ItemListboxCONTEXTMENUSTRIP.Name = "ItemListboxCONTEXTMENUSTRIP"
-        Me.ItemListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(210, 114)
+        Me.ItemListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(201, 136)
         '
         'SortToolStripMenuItem
         '
         Me.SortToolStripMenuItem.Name = "SortToolStripMenuItem"
-        Me.SortToolStripMenuItem.Size = New System.Drawing.Size(209, 22)
+        Me.SortToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
         Me.SortToolStripMenuItem.Text = "Sort List"
         '
         'AddItemToolStripMenuItem
         '
         Me.AddItemToolStripMenuItem.Name = "AddItemToolStripMenuItem"
-        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(209, 22)
+        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
         Me.AddItemToolStripMenuItem.Text = "Add New Item"
         '
         'EditItemToolStripMenuItem
         '
         Me.EditItemToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.EditItemToolStripMenuItem.Name = "EditItemToolStripMenuItem"
-        Me.EditItemToolStripMenuItem.Size = New System.Drawing.Size(209, 22)
+        Me.EditItemToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
         Me.EditItemToolStripMenuItem.Text = "Edit Item"
         '
         'DeleteItemToolStripMenuItem1
         '
         Me.DeleteItemToolStripMenuItem1.Name = "DeleteItemToolStripMenuItem1"
-        Me.DeleteItemToolStripMenuItem1.Size = New System.Drawing.Size(209, 22)
-        Me.DeleteItemToolStripMenuItem1.Text = "Delete Item"
+        Me.DeleteItemToolStripMenuItem1.Size = New System.Drawing.Size(200, 22)
+        Me.DeleteItemToolStripMenuItem1.Text = "Delete Item/s"
         '
         'AddToUserListToolStripMenuItem
         '
         Me.AddToUserListToolStripMenuItem.Name = "AddToUserListToolStripMenuItem"
-        Me.AddToUserListToolStripMenuItem.Size = New System.Drawing.Size(209, 22)
-        Me.AddToUserListToolStripMenuItem.Text = "Add Item To Tagged List"
+        Me.AddToUserListToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.AddToUserListToolStripMenuItem.Text = "Add Item To Trade List"
         '
         'TaggedListControlTabBUTTON
         '

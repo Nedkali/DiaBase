@@ -745,11 +745,6 @@ SkipNewDatabase:
 
     End Sub
 
-    Private Sub DeleteGroupItems()
-
-    End Sub
-
-
     Private Sub EditItem()
 
         If LoggerRunning = True Then
@@ -771,6 +766,25 @@ SkipNewDatabase:
         ImportTimer.Stop() '        stop timer b4 form opens
         AddItemForm.ShowDialog()
         If Button3.Text = "Timer Stop" Then ImportTimer.Start() '       restart timer after form closes
+
+    End Sub
+
+    Private Sub AddToUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddToUserListToolStripMenuItem.Click
+
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+
+        If AllItemsInDatabaseListBox.SelectedIndices.Count > 0 Then
+
+            For index = AllItemsInDatabaseListBox.SelectedIndices.Count - 1 To 0 Step -1
+                Dim a As Integer = AllItemsInDatabaseListBox.SelectedIndices(index)
+                SendToTradeList(a)
+            Next
+        End If
+
+        AllItemsInDatabaseListBox.SelectedIndex = -1
 
     End Sub
 End Class
