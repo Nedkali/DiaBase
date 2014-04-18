@@ -674,7 +674,7 @@ Partial Class Form1
         'Label4
         '
         Me.Label4.BackColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(25, 208)
+        Me.Label4.Location = New System.Drawing.Point(25, 228)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(383, 27)
         Me.Label4.TabIndex = 0
@@ -724,7 +724,7 @@ Partial Class Form1
         Me.SearchListControlTabBUTTON.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.SearchListControlTabBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.SearchListControlTabBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.SearchListControlTabBUTTON.Location = New System.Drawing.Point(104, 208)
+        Me.SearchListControlTabBUTTON.Location = New System.Drawing.Point(104, 228)
         Me.SearchListControlTabBUTTON.Name = "SearchListControlTabBUTTON"
         Me.SearchListControlTabBUTTON.Size = New System.Drawing.Size(75, 25)
         Me.SearchListControlTabBUTTON.TabIndex = 10
@@ -740,7 +740,7 @@ Partial Class Form1
         Me.ListControlTabBUTTON.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark
         Me.ListControlTabBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ListControlTabBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.ListControlTabBUTTON.Location = New System.Drawing.Point(27, 208)
+        Me.ListControlTabBUTTON.Location = New System.Drawing.Point(27, 228)
         Me.ListControlTabBUTTON.Name = "ListControlTabBUTTON"
         Me.ListControlTabBUTTON.Size = New System.Drawing.Size(75, 25)
         Me.ListControlTabBUTTON.TabIndex = 9
@@ -1113,7 +1113,7 @@ Partial Class Form1
         Me.TaggedListControlTabBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.TaggedListControlTabBUTTON.ForeColor = System.Drawing.Color.BurlyWood
         Me.TaggedListControlTabBUTTON.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.TaggedListControlTabBUTTON.Location = New System.Drawing.Point(181, 208)
+        Me.TaggedListControlTabBUTTON.Location = New System.Drawing.Point(181, 228)
         Me.TaggedListControlTabBUTTON.Name = "TaggedListControlTabBUTTON"
         Me.TaggedListControlTabBUTTON.Size = New System.Drawing.Size(75, 25)
         Me.TaggedListControlTabBUTTON.TabIndex = 11
