@@ -613,7 +613,8 @@ Public Class Form1
         ClosingAppForm.ShowDialog()
 
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.No Then Return
-        If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK Then
+        If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.Yes Then
+
             If saveonexit = True Then SaveItems()
             If backuponexit = True Then Module1.BackupDatabase()
         End If
