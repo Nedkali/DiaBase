@@ -8,22 +8,41 @@ Module Tradelist
 
         If Objects(x).ItemBase = "Rune" Then
             Dim rune = Objects(x).ItemName.Replace(" Rune", "")
-            Form1.RichTextBox3.AppendText(rune & vbCrLf)
+            Form1.RichTextBox3.AppendText(rune & vbCrLf & vbCrLf)
             Return
         End If
 
-        temp = Objects(x).ItemName & ", " 'sets the default name
-
-
-        If Objects(x).ItemName = "The Stone of Jordan Ring" Then Form1.RichTextBox3.AppendText("Soj" & vbCrLf) : Return
+        '***********************************************
+        'Unique items
+        '***********************************************
+        If Objects(x).ItemName = "The Stone of Jordan Ring" Then Form1.RichTextBox3.AppendText("Soj" & vbCrLf & vbCrLf) : Return
         If Objects(x).ItemName = "Mara's Kaleidoscope Amulet" Then
             temp = "Mara's " & Objects(x).Stat3
             temp = temp.Replace("All Resistances", "") : temp = temp.Replace("+", "")
-            Form1.RichTextBox3.AppendText(temp & vbCrLf) : Return
+            Form1.RichTextBox3.AppendText(temp & vbCrLf & vbCrLf) : Return
         End If
-        If Objects(x).ItemName = "Token of Absolution" Then Form1.RichTextBox3.AppendText("Token" & vbCrLf) : Return
 
 
+        If Objects(x).ItemBase = "Small Charm" And Objects(x).ItemQuality = "Unique" Then
+            If Objects(x).Stat2 = "" Then Form1.RichTextBox3.AppendText("Anni Unid" & vbCrLf & vbCrLf) : Return
+            temp = "Anni "
+            Dim temp1 = Regex.Replace(Objects(x).Stat2, "[^0-9]", "") & " " & Regex.Replace(Objects(x).Stat3, "[^0-9]", "") & " " & Regex.Replace(Objects(x).Stat4, "[^0-9]", "")
+            Form1.RichTextBox3.AppendText(temp & temp1 & vbCrLf & vbCrLf) : Return
+        End If
+
+
+
+        '***********************************************
+        'Other items
+        '***********************************************
+        If Objects(x).ItemName = "Token of Absolution" Then Form1.RichTextBox3.AppendText("Token" & vbCrLf & vbCrLf) : Return
+
+
+
+        '***********************************************
+        'Rare/magic/white items
+        '***********************************************
+        temp = Objects(x).ItemName & ", " 'sets the default name
 
         Select Case (Objects(x).ItemBase)
             Case "Armor", "Helm", "Belt", "Shield", "Boots", "Gloves"
@@ -37,7 +56,7 @@ Module Tradelist
         End Select
 
 
-        If Objects(x).Stat1 <> Nothing Then temp = temp & ", " & Objects(x).Stat1
+        If Objects(x).Stat1 <> "" Then temp = temp & ", " & Objects(x).Stat1
         If Objects(x).Stat2 <> "" Then temp = temp & ", " & Objects(x).Stat2
         If Objects(x).Stat3 <> "" Then temp = temp & ", " & Objects(x).Stat3
         If Objects(x).Stat4 <> "" Then temp = temp & ", " & Objects(x).Stat4
@@ -61,7 +80,7 @@ Module Tradelist
         temp = temp.Replace("Ethereal (Cannot be Repaired)", "eth")
         temp = temp.Replace("Extra Gold from Monsters", "Gf")
         temp = temp.Replace("All Resistances", "Res All")
-        temp = temp.Replace("to Experience Gained", "XP")
+        temp = temp.Replace("to Experience Gained", "Xp")
         temp = temp.Replace("Faster Cast Rate", "fcr")
         temp = temp.Replace("Enhanced Defense", "Edef")
         temp = temp.Replace("Faster Hit Recovery", "Fhr")
@@ -89,10 +108,10 @@ Module Tradelist
         'temp = temp.Replace("Druid Only", "Druid") ' not worth trimming
         temp = temp.Replace("Assasin", "Sin")
         temp = temp.Replace("Amazon", "Zon")
+        temp = temp.Replace(",,", ",") ' couple extra "," slip in for some reason
 
 
-
-        Form1.RichTextBox3.AppendText(temp & vbCrLf)
+        Form1.RichTextBox3.AppendText(temp & vbCrLf & vbCrLf)
     End Sub
 
 
