@@ -133,28 +133,14 @@ Public Class Form1
 
     'OPENES THE NEW ITEM FORM TO MANUALLY ADD A NEW ITEM TO THE DATABASE
     Private Sub AddNewItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddNewItemToolStripMenuItem.Click
-        If LoggerRunning = True Then
-            Mymessages = "Please wait Import in progress" : MyMessageBox()
-            Return
-        End If
+        AddNewItem()
 
-        ImportTimer.Stop() '        stop timer b4 form opens
-        AddItemForm.ShowDialog()
-        If Button3.Text = "Timer Stop" Then ImportTimer.Start() '       restart timer after form closes
     End Sub
 
     'OPENS THE EDIT EXISTING ITEM FORM TO MANUALLY EDIT AN ITEMS FIELDS
     Private Sub EditExistingItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditExistingItemToolStripMenuItem.Click
-        If LoggerRunning = True Then
-            Mymessages = "Please wait Import in progress" : MyMessageBox()
-            Return
-        End If
-        ImportTimer.Stop()
-        If AllItemsInDatabaseListBox.SelectedIndex > -1 Then EditItemForm.ShowDialog()
-        If Button3.Text = "Timer Stop" Then ImportTimer.Start()
+        EditItem()
     End Sub
-
-
 
 
 
@@ -260,22 +246,8 @@ Public Class Form1
 
 
     Private Sub DeleteItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteItemToolStripMenuItem.Click
-        If LoggerRunning = True Then
-            Mymessages = "Please wait Import in progress" : MyMessageBox()
-            Return
-        End If
+        DeleteItem()
 
-        'check for backup on edits set to true if so then backup now
-        If Settings.BackupOnEditsCHECKBOX.Checked = True Then Module1.BackupDatabase()
-
-
-        Dim RowNumber As Integer = AllItemsInDatabaseListBox.SelectedIndex
-        If RowNumber = -1 Then Return ' do nothing
-        If RowNumber >= 0 Then
-            Objects.RemoveAt(RowNumber)
-            AllItemsInDatabaseListBox.Items.Clear()
-            Display_Items()
-        End If
     End Sub
 
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
@@ -596,8 +568,7 @@ Public Class Form1
         SearchListControlTabBUTTON.BackColor = Color.Black
         ListControlTabBUTTON.BackColor = Color.Black
         TaggedListControlTabBUTTON.BackColor = Color.DimGray
-        ItemTallyTEXTBOX.Text = UserLISTBOX.Items.Count & " - Tagged Items"
-        UserLISTBOX.SelectedIndex = -1
+
 
     End Sub
 
@@ -640,14 +611,13 @@ Public Class Form1
     'Closing Form1 (exit Application) Event Handler. Throws To exit confirmation message. also handles saves and backups if set to do so
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         ClosingAppForm.ShowDialog()
-        'this end without backing up or saving
-        If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.No Then e.Cancel = True
-        If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = False And ClosingAppForm.BackupDatabaseCHRCKBOX.Checked = False Then End
-        If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = True Then SaveItems()
-        If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK And ClosingAppForm.SaveDatabaseCHECKBOX.Checked = True Then Module1.BackupDatabase()
 
-SkipExit:
-        ClosingAppForm.Close()
+        If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.No Then Return
+        If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.OK Then
+            If saveonexit = True Then SaveItems()
+            If backuponexit = True Then Module1.BackupDatabase()
+        End If
+
     End Sub
 
     'This is the actual exit command to close app which triggers above handler (do it this way so handler activates no matter where app is closed from)
@@ -717,93 +687,23 @@ SkipNewDatabase:
         End If
     End Sub
 
-    'tagged (userLISTBOX) Listbox context menu display routine
-    Private Sub UserLISTBOX_MouseDown(sender As Object, e As MouseEventArgs) Handles UserLISTBOX.MouseDown
-        If e.Button = Windows.Forms.MouseButtons.Right Then
-            If UserLISTBOX.Items.Count > 0 Then
-                Me.UserListboxCONTEXTMENUSTRIP.Show(Control.MousePosition)
-            End If
-        Else
-        End If
-    End Sub
-
-
-
-
-
-
 
 
     Private Sub AddItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddItemToolStripMenuItem.Click
-        If LoggerRunning = True Then
-            Mymessages = "Please wait Import in progress" : MyMessageBox()
-            Return
-        End If
-
-        ImportTimer.Stop() '        stop timer b4 form opens
-        AddItemForm.ShowDialog()
-        If Button3.Text = "Timer Stop" Then ImportTimer.Start() '       restart timer after form closes
-
+        AddNewItem()
     End Sub
 
     Private Sub DeleteItemToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DeleteItemToolStripMenuItem1.Click
-        If LoggerRunning = True Then
-            Mymessages = "Please wait Import in progress" : MyMessageBox()
-            Return
-        End If
+        DeleteItem()
+    End Sub
 
-        'check for backup on edits set to true if so then backup now
-        If Settings.BackupOnEditsCHECKBOX.Checked = True Then Module1.BackupDatabase()
-        Dim RowNumber As Integer = AllItemsInDatabaseListBox.SelectedIndex
-        If RowNumber = -1 Then Return ' do nothing
-        If RowNumber >= 0 Then
-            Objects.RemoveAt(RowNumber)
-            UserLISTBOX.Items.Clear() 'put these in here to aviod potential chash if item remains in search list after delete and if selected app will try to display stats for an item that no longer exists
-            SearchLISTBOX.Items.Clear()
-            AllItemsInDatabaseListBox.Items.Clear()
-            Display_Items()
-        End If
-
+    Private Sub EditItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditItemToolStripMenuItem.Click
+        EditItem()
     End Sub
 
     Private Sub SortToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SortToolStripMenuItem.Click
         Objects.Sort(Function(x, y) x.ItemName.CompareTo(y.ItemName))
-        Display_Items()
-    End Sub
-
-    Private Sub EditItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditItemToolStripMenuItem.Click
-        If LoggerRunning = True Then
-            Mymessages = "Please wait Import in progress" : MyMessageBox()
-            Return
-        End If
-        ImportTimer.Stop()
-        If AllItemsInDatabaseListBox.SelectedIndex > -1 Then EditItemForm.ShowDialog()
-        If Button3.Text = "Timer Stop" Then ImportTimer.Start()
-
-    End Sub
-
-    Private Sub AddToUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddToUserListToolStripMenuItem.Click
-        ' adds selected item name to the user list if its not already there, uses listbox index mumber to track items that are already included (UserListReferenceList Array)
-        If AllItemsInDatabaseListBox.SelectedIndex <> -1 Then
-            Dim FoundMatch As Boolean = False
-            For Each item In UserListReferenceList
-                If item = AllItemsInDatabaseListBox.SelectedIndex Then FoundMatch = True
-            Next
-            If FoundMatch = False Then
-                UserListReferenceList.Add(AllItemsInDatabaseListBox.SelectedIndex)
-                UserLISTBOX.Items.Add(AllItemsInDatabaseListBox.SelectedItem)
-            End If
-        End If
-    End Sub
-
-    Private Sub UserLISTBOX_SelectedIndexChanged(sender As Object, e As EventArgs) Handles UserLISTBOX.SelectedIndexChanged
-        AllItemsInDatabaseListBox.SelectedItem = UserLISTBOX.SelectedItem
-    End Sub
-
-    'CLEAR ALL ITEMS FROM USER LIST
-    Private Sub ClearUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearUserListToolStripMenuItem.Click
-        UserLISTBOX.Items.Clear()
-        UserListReferenceList.Clear()
+        Display_Items() ' refresh list after sorting
     End Sub
 
 
@@ -814,71 +714,66 @@ SkipNewDatabase:
     End Sub
 
     Private Sub AddAllItemsToUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddAllItemsToUserListToolStripMenuItem.Click
-        'add all items in search list to user list
 
-        Dim count As Integer = 0
-        For Each item In SearchLISTBOX.Items
-
-            If UserListReferenceList.Contains(SearchReferenceList(count)) = False Then
-                UserLISTBOX.Items.Add(item) : UserListReferenceList.Add(SearchReferenceList(count))
-            End If
-            count = count + 1
-        Next
 
 
     End Sub
 
-    'REMOVES ONE ITEM FROM THE USER LIST
-    Private Sub RemoveItemFromUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveItemFromUserListToolStripMenuItem.Click
-        If UserLISTBOX.SelectedIndex <> -1 Then
-            UserListReferenceList.Remove(UserListReferenceList(UserLISTBOX.SelectedIndex))
-            UserLISTBOX.Items.Remove(UserLISTBOX.SelectedItem)
-            ItemTallyTEXTBOX.Text = UserLISTBOX.Items.Count & " - "
+
+
+    'Action subs relating to mouse click events redirected to here
+    '*************************************************************
+    Private Sub DeleteItem()
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
         End If
-    End Sub
 
-    'DELETES ALL ITMES FORM DATABASE THAT ARE LISTED IN THE USER LIST
-    Private Sub DeleteAllItemsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteAllItemsToolStripMenuItem.Click
-        If UserLISTBOX.Items.Count > 0 Then
-            'Show D2StyleDialogBox With Yes No Returned as DialogResult - Prompts For Confirmation To Delete  Multiple Items 
+        'check for backup on edits set to true if so then backup now
+        If Settings.BackupOnEditsCHECKBOX.Checked = True Then Module1.BackupDatabase()
+        'MessageBox.Show(" Selected items = " & AllItemsInDatabaseListBox.SelectedIndices.Count)
 
-            YesNoD2Style.Text = "Delete All Items In The Tagged List"
-            YesNoD2Style.YesNoHeaderLABEL.Text = "CONFIRM MULTIPE ITEM DELETE"
-            YesNoD2Style.YesNoHeaderLABEL.TextAlign = ContentAlignment.MiddleCenter
-            YesNoD2Style.YesNoMessageLABEL.Text = "This will permanently remove all listed item(s) from the database." & vbCrLf & vbCrLf & "Be sure to backup your database if nessicary." & vbCrLf & "If you have 'Backup Before Edits' set to true in 'Settings' the backup file will be updated automatically before the items are deleted." & vbCrLf & vbCrLf & "Total items to delete " & UserLISTBOX.Items.Count & vbCrLf & vbCrLf & "Please Confirm Delete to Continue..."
-            YesNoD2Style.ShowDialog()
-            If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.Yes Then
+        If AllItemsInDatabaseListBox.SelectedIndices.Count > 0 Then
 
-                'Delete Has Been Confirmed And Continues On With Delete Here
-                If Settings.BackupOnEditsCHECKBOX.Checked = True Then Module1.BackupDatabase() ' backup before delete if set to do so
+            For index = AllItemsInDatabaseListBox.SelectedIndices.Count - 1 To 0 Step -1
+                Dim a As Integer = AllItemsInDatabaseListBox.SelectedIndices(index)
+                MessageBox.Show("item to be removed = " & a)
+                AllItemsInDatabaseListBox.Items.RemoveAt(a)
+                Objects.RemoveAt(a)
+            Next
 
-                'This next itty bitty routine re orders the object row number list highest to lowest value -  MUST DO THIS TO AVOID ERRORS!
-                'This makes deletes occur in reverse order while the 'for next' still itterates fowards through the list. This avoids the object list  
-                'adjusting after each seperate delete which will cause wrong items to be deleted when moving further down the list of adjusted objects. 
-                Dim SortedList = From str In UserListReferenceList
-                                 Where CInt(str) > -1
-                                 Order By CInt(str) Descending
-                                 Select str
-
-                'This next even more itty bitty bit does the actual deleting
-                For Each item In SortedList
-                    Objects.RemoveAt(item)
-                Next
-
-                'tidy up and clear listboxes afterwards to avoid app referencing items that no longer exist
-                SearchReferenceList.Clear() : UserListReferenceList.Clear()
-                SearchLISTBOX.Items.Clear() : UserLISTBOX.Items.Clear()
-                ListControlTabBUTTON.BackColor = Color.DimGray : SearchListControlTabBUTTON.BackColor = Color.Black : TaggedListControlTabBUTTON.BackColor = Color.Black
-                ItemTallyTEXTBOX.Text = AllItemsInDatabaseListBox.Items.Count & " - Total Items"
-
-                'Finally Re-Populate The AllItemsInDatabaseLISTBOX After Multi Delete And Then Im Getin' The Goddamn Hell Outta Here Already
-                AllItemsInDatabaseListBox.Items.Clear()
-                Display_Items()
-            End If
+            ItemTallyTEXTBOX.Text = AllItemsInDatabaseListBox.Items.Count & " - Total Items"
+            Return
         End If
+
     End Sub
 
-    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
+    Private Sub DeleteGroupItems()
+
+    End Sub
+
+
+    Private Sub EditItem()
+
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+        ImportTimer.Stop()
+        If AllItemsInDatabaseListBox.SelectedIndex > -1 Then EditItemForm.ShowDialog()
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start()
+    End Sub
+
+    Private Sub AddNewItem()
+
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+
+        ImportTimer.Stop() '        stop timer b4 form opens
+        AddItemForm.ShowDialog()
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start() '       restart timer after form closes
 
     End Sub
 End Class

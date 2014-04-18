@@ -70,7 +70,6 @@ Partial Class Form1
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.SearchLISTBOX = New System.Windows.Forms.ListBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.UserLISTBOX = New System.Windows.Forms.ListBox()
         Me.ExactMatchCHECKBOX = New System.Windows.Forms.CheckBox()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
@@ -133,6 +132,7 @@ Partial Class Form1
         Me.SearchListboxCONTEXTMENUSTRIP = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ClearSearchListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddAllItemsToUserListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RichTextBox3 = New System.Windows.Forms.RichTextBox()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -170,6 +170,7 @@ Partial Class Form1
         Me.AllItemsInDatabaseListBox.Location = New System.Drawing.Point(3, 3)
         Me.AllItemsInDatabaseListBox.Margin = New System.Windows.Forms.Padding(0)
         Me.AllItemsInDatabaseListBox.Name = "AllItemsInDatabaseListBox"
+        Me.AllItemsInDatabaseListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
         Me.AllItemsInDatabaseListBox.Size = New System.Drawing.Size(367, 260)
         Me.AllItemsInDatabaseListBox.TabIndex = 22
         '
@@ -576,23 +577,12 @@ Partial Class Form1
         'TabPage3
         '
         Me.TabPage3.BackColor = System.Drawing.Color.Black
-        Me.TabPage3.Controls.Add(Me.UserLISTBOX)
+        Me.TabPage3.Controls.Add(Me.RichTextBox3)
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Size = New System.Drawing.Size(373, 266)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "TabPage3"
-        '
-        'UserLISTBOX
-        '
-        Me.UserLISTBOX.BackColor = System.Drawing.Color.Gray
-        Me.UserLISTBOX.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.UserLISTBOX.ForeColor = System.Drawing.Color.White
-        Me.UserLISTBOX.FormattingEnabled = True
-        Me.UserLISTBOX.Location = New System.Drawing.Point(0, 0)
-        Me.UserLISTBOX.Name = "UserLISTBOX"
-        Me.UserLISTBOX.Size = New System.Drawing.Size(373, 266)
-        Me.UserLISTBOX.TabIndex = 0
         '
         'ExactMatchCHECKBOX
         '
@@ -1116,7 +1106,7 @@ Partial Class Form1
         Me.TaggedListControlTabBUTTON.Name = "TaggedListControlTabBUTTON"
         Me.TaggedListControlTabBUTTON.Size = New System.Drawing.Size(75, 25)
         Me.TaggedListControlTabBUTTON.TabIndex = 11
-        Me.TaggedListControlTabBUTTON.Text = "Tagged List"
+        Me.TaggedListControlTabBUTTON.Text = "Trade List"
         Me.TaggedListControlTabBUTTON.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.TaggedListControlTabBUTTON.UseVisualStyleBackColor = False
         '
@@ -1166,6 +1156,17 @@ Partial Class Form1
         Me.AddAllItemsToUserListToolStripMenuItem.Name = "AddAllItemsToUserListToolStripMenuItem"
         Me.AddAllItemsToUserListToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
         Me.AddAllItemsToUserListToolStripMenuItem.Text = "Add All Items to Tagged List"
+        '
+        'RichTextBox3
+        '
+        Me.RichTextBox3.BackColor = System.Drawing.SystemColors.MenuText
+        Me.RichTextBox3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.RichTextBox3.ForeColor = System.Drawing.SystemColors.Menu
+        Me.RichTextBox3.Location = New System.Drawing.Point(0, 0)
+        Me.RichTextBox3.Name = "RichTextBox3"
+        Me.RichTextBox3.Size = New System.Drawing.Size(373, 266)
+        Me.RichTextBox3.TabIndex = 0
+        Me.RichTextBox3.Text = ""
         '
         'Form1
         '
@@ -1369,7 +1370,6 @@ Partial Class Form1
     Friend WithEvents SortToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
     Friend WithEvents TaggedListControlTabBUTTON As System.Windows.Forms.Button
-    Friend WithEvents UserLISTBOX As System.Windows.Forms.ListBox
     Friend WithEvents AddToUserListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents UserListboxCONTEXTMENUSTRIP As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents ClearUserListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -1378,6 +1378,7 @@ Partial Class Form1
     Friend WithEvents ClearSearchListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddAllItemsToUserListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RemoveItemFromUserListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents RichTextBox3 As System.Windows.Forms.RichTextBox
 
 
 End Class
