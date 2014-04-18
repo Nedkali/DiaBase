@@ -612,7 +612,7 @@ Public Class Form1
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         ClosingAppForm.ShowDialog()
 
-        If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.No Then Return
+        If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.No Then e.Cancel = True : Return
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.Yes Then
 
             If saveonexit = True Then SaveItems()

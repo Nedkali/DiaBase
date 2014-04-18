@@ -6,7 +6,7 @@
     'Version Variables (displayed in form1 titlebar) - UPDATE FOR EACH COMMIT PLS SO APP VERSION MATCHES REVISION NUMBER
     '-------------------------------------------------------------------------------------------------------------------
     Public VersionNumber As String = "9.0"
-    Public RevisionNumber As String = "73"
+    Public RevisionNumber As String = "17"
     '-------------------------------------------------------------------------------------------------------------------
 
     'DataBase variables
@@ -1496,7 +1496,7 @@
 
     End Sub
 
-    'This repaces the password with the same number of asterix '****' to hide pass information 
+    'This replaces the password with the same number of asterix '****' to hide pass information 
     Function HidePass(PassString As String)
         Select Case KeepPassPrivate
             Case "True"
