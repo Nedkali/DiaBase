@@ -18,10 +18,8 @@ Module Tradelist
         If Objects(x).ItemName = "The Stone of Jordan Ring" Then Form1.RichTextBox3.AppendText("Soj" & vbCrLf & vbCrLf) : Return
         If Objects(x).ItemName = "Mara's Kaleidoscope Amulet" Then
             temp = "Mara's " & Objects(x).Stat3
-            temp = temp.Replace("All Resistances", "") : temp = temp.Replace("+", "")
-            Form1.RichTextBox3.AppendText(temp & vbCrLf & vbCrLf) : Return
+            GoTo Abbrev
         End If
-
 
         If Objects(x).ItemBase = "Small Charm" And Objects(x).ItemQuality = "Unique" Then
             If Objects(x).Stat2 = "" Then Form1.RichTextBox3.AppendText("Anni Unid" & vbCrLf & vbCrLf) : Return
@@ -30,10 +28,43 @@ Module Tradelist
             Form1.RichTextBox3.AppendText(temp & temp1 & vbCrLf & vbCrLf) : Return
         End If
 
+        If Objects(x).ItemName = "Andariel's Visage Demonhead" Then
+            temp = "Andies " & Objects(x).Stat4 & " " & Objects(x).Stat6
+            If Objects(x).EtherealItem = True Then temp = temp & " Eth"
+            GoTo Abbrev
+        End If
+        If Objects(x).ItemName = "Crown of Ages Corona" Then
+            temp = "CoA " & "Def" & Objects(x).Defense
+            If Objects(x).Stat1 <> "Indestructible" Then temp = temp & Objects(x).Stat1
+            temp = temp & " Soc" & Objects(x).Sockets
+            If Objects(x).EtherealItem = True Then temp = temp & " Eth"
+            GoTo Abbrev
+        End If
+
+
+        If Objects(x).ItemName = "Arachnid Mesh Spiderweb Sash" Then
+            temp = "Arach  Def" & Objects(x).Defense
+            GoTo Abbrev
+        End If
+
+        If Objects(x).ItemName = "Chance Guards Chain Gloves" Then
+            temp = "Chancies  Mf" & Objects(x).Stat5
+            GoTo Abbrev
+        End If
+
+        If Objects(x).ItemName = "Dracul's Grasp Vampirebone Gloves" Then
+            temp = "Dracs  " & Objects(x).Stat2 & " " & Objects(x).Stat5
+            temp = temp.Replace("Strength", "Str") : temp = temp.Replace("Life stolen per hit", "Loh")
+            Form1.RichTextBox3.AppendText(temp & vbCrLf & vbCrLf) : Return
+        End If
+
+        If Objects(x).ItemName = "Eschuta's Temper Eldritch Orb" Then temp = "Eschuta's" : GoTo Stats
+
+
 
 
         '***********************************************
-        'Other items
+        'Specific items
         '***********************************************
         If Objects(x).ItemName = "Token of Absolution" Then Form1.RichTextBox3.AppendText("Token" & vbCrLf & vbCrLf) : Return
 
@@ -55,7 +86,7 @@ Module Tradelist
                 temp = "GC"
         End Select
 
-
+Stats:
         If Objects(x).Stat1 <> "" Then temp = temp & ", " & Objects(x).Stat1
         If Objects(x).Stat2 <> "" Then temp = temp & ", " & Objects(x).Stat2
         If Objects(x).Stat3 <> "" Then temp = temp & ", " & Objects(x).Stat3
@@ -71,10 +102,17 @@ Module Tradelist
         If Objects(x).Stat11 <> "" Then temp = temp & ", " & Objects(x).Stat14
         If Objects(x).Stat12 <> "" Then temp = temp & ", " & Objects(x).Stat15
 
+Abbrev:
+        temp = temp.Replace("Lightning Resistance", "Lr")
         temp = temp.Replace("Lightning Resist", "Lr")
+        temp = temp.Replace("Cold Resistance", "Cr")
         temp = temp.Replace("Cold Resist", "Cr")
+        temp = temp.Replace("Fire Resistance", "Fr")
         temp = temp.Replace("Fire Resist", "Fr")
+        temp = temp.Replace("Poison Resistance", "Pr")
         temp = temp.Replace("Poison Resist", "Pr")
+        temp = temp.Replace("to Lightning Skill Damage", "to Lit dmg")
+        temp = temp.Replace("Sorceress Skill Levels", "Sorc Skills")
         temp = temp.Replace("to Dexterity", "to Dex")
         temp = temp.Replace("Better Chance of Getting Magic Items", "Mf")
         temp = temp.Replace("Ethereal (Cannot be Repaired)", "eth")
@@ -88,9 +126,15 @@ Module Tradelist
         temp = temp.Replace("Attack Rating", "Ar")
         temp = temp.Replace("Faster Block Rate", "Fbr")
         temp = temp.Replace("Increased Attack Speed", "Ias")
-
-
+        temp = temp.Replace("Strength", "Str")
+        temp = temp.Replace("Life stolen per hit", "LoH")
         temp = temp.Replace("Regenerate Mana", "Mana Regen")
+        temp = temp.Replace("Life stolen per hit", "Loh")
+        temp = temp.Replace("damage", "dmg")
+        temp = temp.Replace("Maximum Damage", "Max dmg")
+        temp = temp.Replace("Defense", "Def")
+        temp = temp.Replace("Fire Skill Damage", "Fire dmg")
+
 
         temp = temp.Replace("Socketed", "Soc")
         temp = temp.Replace("Unidentified", "Unid")
@@ -108,8 +152,9 @@ Module Tradelist
         'temp = temp.Replace("Druid Only", "Druid") ' not worth trimming
         temp = temp.Replace("Assasin", "Sin")
         temp = temp.Replace("Amazon", "Zon")
+        temp = temp.Replace("Only", "")
+        temp = temp.Replace(", ,", ",") ' couple extra "," slip in for some reason
         temp = temp.Replace(",,", ",") ' couple extra "," slip in for some reason
-
 
         Form1.RichTextBox3.AppendText(temp & vbCrLf & vbCrLf)
     End Sub

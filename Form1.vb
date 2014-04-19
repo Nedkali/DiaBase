@@ -734,7 +734,6 @@ SkipNewDatabase:
 
             For index = AllItemsInDatabaseListBox.SelectedIndices.Count - 1 To 0 Step -1
                 Dim a As Integer = AllItemsInDatabaseListBox.SelectedIndices(index)
-                MessageBox.Show("item to be removed = " & a)
                 AllItemsInDatabaseListBox.Items.RemoveAt(a)
                 Objects.RemoveAt(a)
             Next
