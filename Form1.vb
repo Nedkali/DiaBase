@@ -761,15 +761,49 @@ SkipNewDatabase:
             Return
         End If
 
+        'ref list aff all dupes in this selected items (so only the first dupe is sent to the trade list)
+        Dim DupeReferenceList As List(Of String) = New List(Of String)
+
         If AllItemsInDatabaseListBox.SelectedIndices.Count > 0 Then
 
             For index = AllItemsInDatabaseListBox.SelectedIndices.Count - 1 To 0 Step -1
+
+                'Flag/Count Variable used to count duplicated instances of each item
+                Dim DupeCount As Integer = 0
+
+                '--------------------------------------------------------------
+                'All Duped Items have a DupeCount value > 1 
+                'All non duped items will carry a DupeCount value = 1, 
+                'All Pre added items that are duped carry a DupeCount value = 0
+                '--------------------------------------------------------------
+
+                'Next bit counts all like named items int the selected items block. 
+                'If duped item is found its name is added to the DupeRefList so its not counted or add to the trade list more than once.
+
+                For Each item In AllItemsInDatabaseListBox.SelectedItems
+                    If DupeReferenceList.Contains(AllItemsInDatabaseListBox.Items(AllItemsInDatabaseListBox.SelectedIndices(index))) = False And AllItemsInDatabaseListBox.Items(AllItemsInDatabaseListBox.SelectedIndices(index)) = item Then
+                        DupeCount = DupeCount + 1
+                    End If
+
+                Next
+                MessageBox.Show("Checking Item:  " & AllItemsInDatabaseListBox.Items(AllItemsInDatabaseListBox.SelectedIndices(index)) & vbCrLf & vbCrLf & "Dupe Total:  " & DupeCount, "Dupe Check Routine...") ' Debugg test message - will delete later
+
                 Dim a As Integer = AllItemsInDatabaseListBox.SelectedIndices(index)
-                SendToTradeList(a)
+
+                'only sends to trade list now if its not duped (in the dupeReferenceList)
+                If DupeReferenceList.Contains(AllItemsInDatabaseListBox.Items(AllItemsInDatabaseListBox.SelectedIndices(index))) = False Then
+                    SendToTradeList(a)
+                End If
+
+                'THIS Adds items to DupeReferenceList ONLY if theres more than one of them in the selected items block (so duped items arent added to trade list more than once) 
+
+                If DupeCount > 1 Then DupeReferenceList.Add(AllItemsInDatabaseListBox.Items(AllItemsInDatabaseListBox.SelectedIndices(index)))
             Next
         End If
 
         AllItemsInDatabaseListBox.SelectedIndex = -1
+
+        'Sorry if i made a total mess of it all Ned
 
     End Sub
 

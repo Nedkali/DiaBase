@@ -39,7 +39,7 @@
     Public UserListReferenceList As List(Of String) = New List(Of String)
     Public StringMatches As List(Of String) = New List(Of String)
     Public IntegerMatches As List(Of String) = New List(Of String)
-    Dim GetAllIntegers As List(Of String) = New List(Of String)
+    Dim GetAllIntegers As List(Of String) = New List(Of String) '.........................This doesnt seem to do anything???
 
     'Other Required Crap
     Public ItemNamePulldownList As List(Of String) = New List(Of String)
