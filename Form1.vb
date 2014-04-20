@@ -176,15 +176,11 @@ Public Class Form1
                 RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
             End If
             If DisplayType = "Rare" Then
-                RichTextBox2.SelectionColor = Color.Yellow
+                RichTextBox2.SelectionColor = Color.Goldenrod
                 RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
             End If
             If DisplayType = "Set" Then
                 RichTextBox2.SelectionColor = Color.Green
-                RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
-            End If
-            If DisplayType = "Crafted" Then
-                RichTextBox2.SelectionColor = Color.DarkOrange
                 RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
             End If
             If DisplayType = "Unique" Then
@@ -722,6 +718,7 @@ SkipNewDatabase:
 
             For index = AllItemsInDatabaseListBox.SelectedIndices.Count - 1 To 0 Step -1
                 Dim a As Integer = AllItemsInDatabaseListBox.SelectedIndices(index)
+                MessageBox.Show("item to be removed = " & a)
                 AllItemsInDatabaseListBox.Items.RemoveAt(a)
                 Objects.RemoveAt(a)
             Next
@@ -764,34 +761,49 @@ SkipNewDatabase:
             Return
         End If
 
-        Dim rCount(34) As Integer
-        Dim g As Integer = 0
+        'ref list aff all dupes in this selected items (so only the first dupe is sent to the trade list)
+        Dim DupeReferenceList As List(Of String) = New List(Of String)
 
-        MessageBox.Show(Rune.Length)
-        Dim a As Integer = 0
         If AllItemsInDatabaseListBox.SelectedIndices.Count > 0 Then
-            For index = 0 To AllItemsInDatabaseListBox.SelectedIndices.Count - 1
-                a = AllItemsInDatabaseListBox.SelectedIndices(index)
-                If Objects(a).ItemBase <> "Rune" Then SendToTradeList(a)
-                If Objects(a).ItemBase = "Rune" Then
-                    Dim temp = Objects(a).ItemName.Replace(" Rune", "")
-                    For g = 0 To Rune.Length - 1
 
-                        If temp = Rune(g) Then
-                            rCount(g) = rCount(g) + 1
-                        End If
-                    Next
+            For index = AllItemsInDatabaseListBox.SelectedIndices.Count - 1 To 0 Step -1
+
+                'Flag/Count Variable used to count duplicated instances of each item
+                Dim DupeCount As Integer = 0
+
+                '--------------------------------------------------------------
+                'All Duped Items have a DupeCount value > 1 
+                'All non duped items will carry a DupeCount value = 1, 
+                'All Pre added items that are duped carry a DupeCount value = 0
+                '--------------------------------------------------------------
+
+                'Next bit counts all like named items int the selected items block. 
+                'If duped item is found its name is added to the DupeRefList so its not counted or add to the trade list more than once.
+
+                For Each item In AllItemsInDatabaseListBox.SelectedItems
+                    If DupeReferenceList.Contains(AllItemsInDatabaseListBox.Items(AllItemsInDatabaseListBox.SelectedIndices(index))) = False And AllItemsInDatabaseListBox.Items(AllItemsInDatabaseListBox.SelectedIndices(index)) = item Then
+                        DupeCount = DupeCount + 1
+                    End If
+
+                Next
+                MessageBox.Show("Checking Item:  " & AllItemsInDatabaseListBox.Items(AllItemsInDatabaseListBox.SelectedIndices(index)) & vbCrLf & vbCrLf & "Dupe Total:  " & DupeCount, "Dupe Check Routine...") ' Debugg test message - will delete later
+
+                Dim a As Integer = AllItemsInDatabaseListBox.SelectedIndices(index)
+
+                'only sends to trade list now if its not duped (in the dupeReferenceList)
+                If DupeReferenceList.Contains(AllItemsInDatabaseListBox.Items(AllItemsInDatabaseListBox.SelectedIndices(index))) = False Then
+                    SendToTradeList(a)
                 End If
+
+                'THIS Adds items to DupeReferenceList ONLY if theres more than one of them in the selected items block (so duped items arent added to trade list more than once) 
+
+                If DupeCount > 1 Then DupeReferenceList.Add(AllItemsInDatabaseListBox.Items(AllItemsInDatabaseListBox.SelectedIndices(index)))
             Next
         End If
 
-
-        For g = 0 To Rune.Length - 1
-            If rCount(g) <> Nothing Then
-                RichTextBox3.AppendText(Rune(g) & " (" & rCount(g) & ")" & vbCrLf & vbCrLf)
-            End If
-        Next
         AllItemsInDatabaseListBox.SelectedIndex = -1
+
+        'Sorry if i made a total mess of it all Ned
 
     End Sub
 
@@ -824,35 +836,15 @@ SkipNewDatabase:
         End If
 
         If SearchLISTBOX.Items.Count > 0 Then
-            Dim rCount(35) As Integer
-            Dim tokens As Integer = 0
+
             'ADDS ALL THE ITEMS
             Dim Counter As Integer = 0
             For Each ITEM In SearchLISTBOX.Items
                 Dim a = SearchReferenceList(Counter)
-                If Objects(a).ItemBase <> "Rune" And Objects(a).ItemName.Contains("Token") = False Then SendToTradeList(a)
-                If Objects(a).ItemName.Contains("Token") = True Then tokens += 1
-                If Objects(a).ItemBase = "Rune" Then
-                    Dim temp = Objects(a).ItemName.Replace(" Rune", "")
-                    For g = 0 To Rune.Length - 1
-
-                        If temp = Rune(g) Then
-                            rCount(g) = rCount(g) + 1
-                        End If
-                    Next
-                End If
+                SendToTradeList(a)
                 Counter = Counter + 1
             Next
-
-            For g = 0 To Rune.Length - 1
-                If rCount(g) <> Nothing Then
-                    RichTextBox3.AppendText(Rune(g) & " (" & rCount(g) & ")" & vbCrLf)
-                End If
-            Next
-            RichTextBox3.AppendText(vbCrLf)
-            If tokens > 0 Then RichTextBox3.AppendText("Tokens (" & tokens & ")" & vbCrLf & vbCrLf)
         End If
-
         AllItemsInDatabaseListBox.SelectedIndex = -1
     End Sub
 End Class

@@ -48,9 +48,6 @@
     Public PassFiles As List(Of String) = New List(Of String)       'Holds all _muleaccount.txt file used to get mule pass and mule account
     Public LogType As List(Of String) = New List(Of String)
 
-    Public Rune As Array = {"Eld", "El", "Tir", "Nef", "Eth", "Ith", "Tal", "Ral", "Ort", "Thul", "Amn", "Sol", "Shael", "Dol", "Hel", "Io",
-                     "Lum", "Ko", "Fal", "Lem", "Pul", "Um", "Mal", "Ist", "Gul", "Vex", "Ohm", "Lo", "Sur", "Jah", "Ber", "Cham", "Zod"}
-
     'Calls the UserMessaging 'Okie Dokie' Form As DialogBox
     Public Sub MyMessageBox()
         UserMessaging.ShowDialog()
