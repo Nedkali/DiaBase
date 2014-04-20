@@ -126,13 +126,10 @@ Partial Class Form1
         Me.DeleteItemToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddToUserListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TaggedListControlTabBUTTON = New System.Windows.Forms.Button()
-        Me.UserListboxCONTEXTMENUSTRIP = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ClearUserListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RemoveItemFromUserListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DeleteAllItemsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SearchListboxCONTEXTMENUSTRIP = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ClearSearchListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddAllItemsToUserListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AddItemToTradeListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -143,7 +140,6 @@ Partial Class Form1
         Me.TabPage3.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ItemListboxCONTEXTMENUSTRIP.SuspendLayout()
-        Me.UserListboxCONTEXTMENUSTRIP.SuspendLayout()
         Me.SearchListboxCONTEXTMENUSTRIP.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -1070,38 +1066,38 @@ Partial Class Form1
         Me.ItemListboxCONTEXTMENUSTRIP.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.ItemListboxCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SortToolStripMenuItem, Me.AddItemToolStripMenuItem, Me.EditItemToolStripMenuItem, Me.DeleteItemToolStripMenuItem1, Me.AddToUserListToolStripMenuItem})
         Me.ItemListboxCONTEXTMENUSTRIP.Name = "ItemListboxCONTEXTMENUSTRIP"
-        Me.ItemListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(201, 136)
+        Me.ItemListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(214, 114)
         '
         'SortToolStripMenuItem
         '
         Me.SortToolStripMenuItem.Name = "SortToolStripMenuItem"
-        Me.SortToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.SortToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
         Me.SortToolStripMenuItem.Text = "Sort List"
         '
         'AddItemToolStripMenuItem
         '
         Me.AddItemToolStripMenuItem.Name = "AddItemToolStripMenuItem"
-        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
         Me.AddItemToolStripMenuItem.Text = "Add New Item"
         '
         'EditItemToolStripMenuItem
         '
         Me.EditItemToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.EditItemToolStripMenuItem.Name = "EditItemToolStripMenuItem"
-        Me.EditItemToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
+        Me.EditItemToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
         Me.EditItemToolStripMenuItem.Text = "Edit Item"
         '
         'DeleteItemToolStripMenuItem1
         '
         Me.DeleteItemToolStripMenuItem1.Name = "DeleteItemToolStripMenuItem1"
-        Me.DeleteItemToolStripMenuItem1.Size = New System.Drawing.Size(200, 22)
-        Me.DeleteItemToolStripMenuItem1.Text = "Delete Item/s"
+        Me.DeleteItemToolStripMenuItem1.Size = New System.Drawing.Size(213, 22)
+        Me.DeleteItemToolStripMenuItem1.Text = "Delete Item(s)"
         '
         'AddToUserListToolStripMenuItem
         '
         Me.AddToUserListToolStripMenuItem.Name = "AddToUserListToolStripMenuItem"
-        Me.AddToUserListToolStripMenuItem.Size = New System.Drawing.Size(200, 22)
-        Me.AddToUserListToolStripMenuItem.Text = "Add Item To Trade List"
+        Me.AddToUserListToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
+        Me.AddToUserListToolStripMenuItem.Text = "Add Item(s) To Trade List"
         '
         'TaggedListControlTabBUTTON
         '
@@ -1121,52 +1117,32 @@ Partial Class Form1
         Me.TaggedListControlTabBUTTON.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.TaggedListControlTabBUTTON.UseVisualStyleBackColor = False
         '
-        'UserListboxCONTEXTMENUSTRIP
-        '
-        Me.UserListboxCONTEXTMENUSTRIP.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.UserListboxCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearUserListToolStripMenuItem, Me.RemoveItemFromUserListToolStripMenuItem, Me.DeleteAllItemsToolStripMenuItem})
-        Me.UserListboxCONTEXTMENUSTRIP.Name = "UserListboxCONTEXTMENUSTRIP"
-        Me.UserListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(251, 70)
-        '
-        'ClearUserListToolStripMenuItem
-        '
-        Me.ClearUserListToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.ClearUserListToolStripMenuItem.Name = "ClearUserListToolStripMenuItem"
-        Me.ClearUserListToolStripMenuItem.Size = New System.Drawing.Size(250, 22)
-        Me.ClearUserListToolStripMenuItem.Text = "Clear Tagged List"
-        '
-        'RemoveItemFromUserListToolStripMenuItem
-        '
-        Me.RemoveItemFromUserListToolStripMenuItem.Name = "RemoveItemFromUserListToolStripMenuItem"
-        Me.RemoveItemFromUserListToolStripMenuItem.Size = New System.Drawing.Size(250, 22)
-        Me.RemoveItemFromUserListToolStripMenuItem.Text = "Remove Item From List"
-        '
-        'DeleteAllItemsToolStripMenuItem
-        '
-        Me.DeleteAllItemsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.DeleteAllItemsToolStripMenuItem.Name = "DeleteAllItemsToolStripMenuItem"
-        Me.DeleteAllItemsToolStripMenuItem.Size = New System.Drawing.Size(250, 22)
-        Me.DeleteAllItemsToolStripMenuItem.Text = "Delete All Items From Database"
-        '
         'SearchListboxCONTEXTMENUSTRIP
         '
-        Me.SearchListboxCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearSearchListToolStripMenuItem, Me.AddAllItemsToUserListToolStripMenuItem})
+        Me.SearchListboxCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearSearchListToolStripMenuItem, Me.AddItemToTradeListToolStripMenuItem, Me.AddAllItemsToUserListToolStripMenuItem})
         Me.SearchListboxCONTEXTMENUSTRIP.Name = "SearchListboxCONTEXTMENUSTRIP"
-        Me.SearchListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(230, 48)
+        Me.SearchListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(223, 92)
         '
         'ClearSearchListToolStripMenuItem
         '
         Me.ClearSearchListToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.ClearSearchListToolStripMenuItem.Name = "ClearSearchListToolStripMenuItem"
-        Me.ClearSearchListToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
+        Me.ClearSearchListToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
         Me.ClearSearchListToolStripMenuItem.Text = "Clear Search List"
         '
         'AddAllItemsToUserListToolStripMenuItem
         '
         Me.AddAllItemsToUserListToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.AddAllItemsToUserListToolStripMenuItem.Name = "AddAllItemsToUserListToolStripMenuItem"
-        Me.AddAllItemsToUserListToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
-        Me.AddAllItemsToUserListToolStripMenuItem.Text = "Add All Items to Tagged List"
+        Me.AddAllItemsToUserListToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.AddAllItemsToUserListToolStripMenuItem.Text = "Add All Items To Trade List"
+        '
+        'AddItemToTradeListToolStripMenuItem
+        '
+        Me.AddItemToTradeListToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.AddItemToTradeListToolStripMenuItem.Name = "AddItemToTradeListToolStripMenuItem"
+        Me.AddItemToTradeListToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.AddItemToTradeListToolStripMenuItem.Text = "Add Item To Trade List"
         '
         'Form1
         '
@@ -1263,7 +1239,6 @@ Partial Class Form1
         Me.TabPage3.ResumeLayout(False)
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ItemListboxCONTEXTMENUSTRIP.ResumeLayout(False)
-        Me.UserListboxCONTEXTMENUSTRIP.ResumeLayout(False)
         Me.SearchListboxCONTEXTMENUSTRIP.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -1371,14 +1346,11 @@ Partial Class Form1
     Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
     Friend WithEvents TaggedListControlTabBUTTON As System.Windows.Forms.Button
     Friend WithEvents AddToUserListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents UserListboxCONTEXTMENUSTRIP As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents ClearUserListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents DeleteAllItemsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SearchListboxCONTEXTMENUSTRIP As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents ClearSearchListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddAllItemsToUserListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents RemoveItemFromUserListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RichTextBox3 As System.Windows.Forms.RichTextBox
+    Friend WithEvents AddItemToTradeListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 
 End Class

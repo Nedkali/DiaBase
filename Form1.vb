@@ -1,7 +1,8 @@
 ﻿Imports System.IO
 
 Public Class Form1
-
+    'FORM1 LOAD EVENT - PLAYS AUDIO LAUGH AND GETS FILE CONFIG VALUES AND SETS UP APPLICATION ELEMENTS AND OPENS THE DEFAULT DATABASE
+    'ROUTINE ALSO SETS UP REQURED FILES ECT ON FIRST RUN (INSTALLS APP)
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load 'check if required folders exist on startup and create if necessary
         My.Computer.Audio.Play(My.Resources.BigDLaugh, AudioPlayMode.Background)
 
@@ -37,16 +38,13 @@ Public Class Form1
             file.WriteLine("False") 'added for backup before item edits 
             file.Close()
             Mymessages = "Settings file created" : MyMessageBox()
-
         End If
-
-
     End Sub
+
     'Stuff to run after program starts
     Private Sub Form1_Shown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Shown
         LoadConfigFile()
-
-        OpenDatabaseRoutine(DataBaseFile)
+        OpenDatabaseRoutine(Databasefile)
 
         StartTimer()
         If LoggerRunning = False Then RichTextBox1.Text = "AutoLogging is Idle" & vbCrLf
@@ -57,8 +55,11 @@ Public Class Form1
 
         SearchFieldCOMBOBOX.Text = "Item Name"
     End Sub
+
+    'DEFINES THE ImportTimer AS A GLOBAL SYSTEM TIMER (ONLY FOR AUTO IMPORTS)
     Public WithEvents ImportTimer As New System.Windows.Forms.Timer()
 
+    'START IMPORT TIMER ROUTINE
     Sub StartTimer()
         Timercount = 0
         TimerSecs = TimerMins * 60
@@ -68,6 +69,7 @@ Public Class Form1
 
     End Sub
 
+    'IMPORT DELAY COUNTER - HANDLES IMPORT DLEAY AUTOLOGGING SYSTEM - BRANCES TO IMPORT ROUTINE WHEN DELAY IS UP
     Private Sub TimerEventProcessor(ByVal myObject As Object, ByVal MyEventArgs As EventArgs) Handles ImportTimer.Tick
 
         Timercount = Timercount + 1
@@ -143,7 +145,7 @@ Public Class Form1
     End Sub
 
 
-
+    'ALL ITEMS LISTBOX SELECTED INDEX CHANGE HANDLER
     Private Sub AllItemsInDatabaseListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AllItemsInDatabaseListBox.SelectedIndexChanged
         Dim RowNumber As Integer = AllItemsInDatabaseListBox.SelectedIndex
         If RowNumber = -1 Then Return ' do nothing
@@ -151,7 +153,7 @@ Public Class Form1
             RichTextBox2.Text = ""  'clears form has been some overlap of listings occur - wierd behaviour
 
 
-            ' MuleInfoRICHTEXTBOX.Clear() 'clearc mule info textbox
+            ' MuleInfoRICHTEXTBOX.Clear() 'clears mule info textbox
             MuleAccountTextbox.Clear()
             MuleNameTextbox.Clear()
             MulePassTextbox.Clear()
@@ -225,31 +227,27 @@ Public Class Form1
             If Objects(RowNumber).Stat13 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat13 & vbCrLf)
             If Objects(RowNumber).Stat14 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat14 & vbCrLf)
             If Objects(RowNumber).Stat15 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat15 & vbCrLf)
-
-
             MuleAccountTextbox.Text = Objects(RowNumber).MuleAccount
             MuleNameTextbox.Text = Objects(RowNumber).MuleName
 
-            'DISPLAY PASSWORD FIX REV 12 AussieHack - converts pass to '***' with function if hide pass is set
+            'converts pass to '***' with function if hide pass is set
             If KeepPassPrivate = True Then MulePassTextbox.Text = HidePass(Objects(RowNumber).MulePass) Else MulePassTextbox.Text = Objects(RowNumber).MulePass
 
 
         End If
         RichTextBox2.SelectAll()
         RichTextBox2.SelectionAlignment = HorizontalAlignment.Center
-
         PictureBox1.Load("Skins\" + ItemImageList(Objects(RowNumber).ItemImage) + ".jpg")
 
-
     End Sub
 
 
-
+    'DELETE ITEM BUTTON PRESS HANDLER - BRANCHES TO DeleteItem ROUTINE
     Private Sub DeleteItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteItemToolStripMenuItem.Click
         DeleteItem()
-
     End Sub
 
+    'IMPORT NOW FUNCTION BUTTON PRESS HANDLER - ACTRIVATES THE IMPORT ROUTINE RIGHT NOW REGARDLESS OF IMPORT DELAY VALUE
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
         RichTextBox1.Text = "Checking for new Logs" & vbCrLf
         ImportTimer.Stop()
@@ -258,6 +256,7 @@ Public Class Form1
         If Button3.Text = "Timer Stop" Then ImportTimer.Start()
     End Sub
 
+    'SAVE DATABASE CONFIRMATION DIALOG ROUTINE
     Private Sub CloseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseToolStripMenuItem.Click
         If Objects.Count < 1 Then Return ' nothing to save
         YesNoD2Style.Text = "Save Database"
@@ -271,11 +270,12 @@ Public Class Form1
         SaveItems()
         If Button3.Text = "Timer Stop" Then ImportTimer.Start()
     End Sub
+
+    'SAVES THE CURRENT DATABASE TO FILE
     Private Sub SaveItems()
 
         Try
-
-            Dim LogWriter = My.Computer.FileSystem.OpenTextFileWriter(DataBaseFile, False)
+            Dim LogWriter = My.Computer.FileSystem.OpenTextFileWriter(Databasefile, False)
 
             For x = 0 To Objects.Count - 1
 
@@ -336,7 +336,6 @@ Public Class Form1
 
     End Sub
 
-
     'Refreshes selected database when selected from menu bar
     Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
         YesNoD2Style.Text = "Confirm Database Backup"
@@ -346,18 +345,19 @@ Public Class Form1
         If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.Yes Then Module1.BackupDatabase()
     End Sub
 
-
-
+    'SHOW HELP FILE
     Private Sub HelpToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HelpToolStripMenuItem.Click
         Help.ShowDialog()
     End Sub
 
+    'PAUSE IMPORT TIMER HANDLER
     Private Sub Button3_Click(sender As Object, e As EventArgs)
         ImportTimer.Stop()
         ItemImageSelector.ShowDialog()
         If Button3.Text = "Timer Stop" Then ImportTimer.Start()
     End Sub
 
+    'SEARCH / REFINE NOW BUTTON CLICK HANDLER
     Private Sub SearchBUTTON_Click(sender As Object, e As EventArgs) Handles SearchBUTTON.Click
 
         'This next 'if then' checks that the selected search operator is valid if its not set to default equal to, in upper case the emphasise the fix to the user
@@ -473,7 +473,7 @@ Public Class Form1
             SearchWordCOMBOBOX.Select()
         End If
 
-        'POPULATE WORD SEARCH DROPDOWN WITH ALL RUNEWORD ENTRYS WHEN ATTACK SPEED IS SELECTED FOR SEARCH
+        'POPULATE WORD SEARCH DROPDOWN WITH ALL RUNEWORD ENTRYS WHEN RUNEWORD IS SELECTED FOR SEARCH
         If UCase(SearchFieldCOMBOBOX.Text) = "RUNEWORD" Then
             SearchWordCOMBOBOX.Items.Clear()
             For Each ItemObjectItem As ItemObjects In Objects
@@ -482,28 +482,20 @@ Public Class Form1
             SearchWordCOMBOBOX.Select()
         End If
 
-
-
-
-
-
         'Clear out the word pulldowns if var searches apply also clears out word search entry and select value box ready for input
-
         If UCase(SearchFieldCOMBOBOX.Text) = "ONE HAND DAMAGE MIN" Or UCase(SearchFieldCOMBOBOX.Text) = "ONE HAND DAMAGE MAX" Or UCase(SearchFieldCOMBOBOX.Text) = "TWO HAND DAMAGE MIN" Or UCase(SearchFieldCOMBOBOX.Text) = "TWO HAND DAMAGE MAX" _
              Or UCase(SearchFieldCOMBOBOX.Text) = "THROW DAMAGE MIN" Or UCase(SearchFieldCOMBOBOX.Text) = "THROW DAMAGE MAX" Or UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED LEVEL" Or UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED STRENGTH" _
               Or UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED DEXTERITY" Or UCase(SearchFieldCOMBOBOX.Text) = "CHANCE TO BLOCK" Or UCase(SearchFieldCOMBOBOX.Text) = "ITEM DEFENSE" Then SearchWordCOMBOBOX.Items.Clear() : SearchWordCOMBOBOX.Text = "" : SearchValueNUMERICUPDWN.Select()
 
-
-        'ENTER SEARCH CRITERIA AND READY TO SEARCH!!!!!!!!!!!!!!!!!!
-
     End Sub
 
-
+    'INDEX CHANGED HANDLER FOR THE SEARCH LISTBOX - SELECTS THE SAME ITEM IN THE ALL ITEMS LISTBOX SO STATS WILL DISPLAY FOR THE SELECTED SEARCHed ITEM
     Private Sub SearchLISTBOX_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SearchLISTBOX.SelectedIndexChanged
         AllItemsInDatabaseListBox.SelectedIndex = -1 'Clears mutiple selection(s) from AllItemsListbox otherwise it only seems to foucus on the topmost item 
         AllItemsInDatabaseListBox.SelectedIndex = SearchReferenceList(SearchLISTBOX.SelectedIndex)
     End Sub
 
+    'PAUSE AND RESTART AUTO IMPORT TIMER HANDLER
     Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
         If Button3.Text = "Timer Stop" Then
             ImportTimer.Stop()
@@ -685,7 +677,7 @@ SkipNewDatabase:
     End Sub
 
 
-
+    'BUTTON CLICK HANDLERS FOR MENU BAR OPTIONS
     Private Sub AddItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddItemToolStripMenuItem.Click
         AddNewItem()
     End Sub
@@ -703,20 +695,12 @@ SkipNewDatabase:
         Display_Items() ' refresh list after sorting
     End Sub
 
-
+    'CLEARS THE SEARCH LIST (NOT SURE WHY THIS IS HERE - DONT REALLY NEED TO CLEAR SEARCH LIST NOW)
     Private Sub ClearSearchListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearSearchListToolStripMenuItem.Click
         SearchLISTBOX.Items.Clear()
         SearchReferenceList.Clear()
         RefineSearchReferenceList.Clear()
     End Sub
-
-    Private Sub AddAllItemsToUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddAllItemsToUserListToolStripMenuItem.Click
-
-
-
-    End Sub
-
-
 
     'Action subs relating to mouse click events redirected to here
     '*************************************************************
@@ -734,6 +718,7 @@ SkipNewDatabase:
 
             For index = AllItemsInDatabaseListBox.SelectedIndices.Count - 1 To 0 Step -1
                 Dim a As Integer = AllItemsInDatabaseListBox.SelectedIndices(index)
+                MessageBox.Show("item to be removed = " & a)
                 AllItemsInDatabaseListBox.Items.RemoveAt(a)
                 Objects.RemoveAt(a)
             Next
@@ -744,8 +729,8 @@ SkipNewDatabase:
 
     End Sub
 
+    'EDIT ITEM BUTTON CLICK HANDLER - BRANCHES TO EDIT ITEM FORM
     Private Sub EditItem()
-
         If LoggerRunning = True Then
             Mymessages = "Please wait Import in progress" : MyMessageBox()
             Return
@@ -755,8 +740,8 @@ SkipNewDatabase:
         If Button3.Text = "Timer Stop" Then ImportTimer.Start()
     End Sub
 
+    'ADD NEW ITEM BUTTON CLICK HANDLER - BRANCHES TO ADD ITEM FORM
     Private Sub AddNewItem()
-
         If LoggerRunning = True Then
             Mymessages = "Please wait Import in progress" : MyMessageBox()
             Return
@@ -768,6 +753,7 @@ SkipNewDatabase:
 
     End Sub
 
+    'SENDS HIGHLIGHTED ITEMS TO THE TRADE LIST
     Private Sub AddToUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddToUserListToolStripMenuItem.Click
 
         If LoggerRunning = True Then
@@ -785,5 +771,46 @@ SkipNewDatabase:
 
         AllItemsInDatabaseListBox.SelectedIndex = -1
 
+    End Sub
+
+    'ADD THE SELECTED ITEM TO THE TRADE LIST FROM SEARCH LIST
+    Private Sub AddItemToTradeListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddItemToTradeListToolStripMenuItem.Click
+
+        'CHECK FOR LOGGER ACTIVE
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+
+        If SearchLISTBOX.Items.Count > 0 Then
+            'ADD THE SELECTED ITEM
+            Dim a = SearchReferenceList(SearchLISTBOX.SelectedIndex)
+            SendToTradeList(a)
+        End If
+        AllItemsInDatabaseListBox.SelectedIndex = -1
+
+    End Sub
+
+
+    'ADD ALL ITEMS TO TRADE LIST FROM SEARCH LIST
+    Private Sub AddAllItemsToUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddAllItemsToUserListToolStripMenuItem.Click
+
+        'CHECK FOR LOGGER ACTIVE
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+
+        If SearchLISTBOX.Items.Count > 0 Then
+
+            'ADDS ALL THE ITEMS
+            Dim Counter As Integer = 0
+            For Each ITEM In SearchLISTBOX.Items
+                Dim a = SearchReferenceList(Counter)
+                SendToTradeList(a)
+                Counter = Counter + 1
+            Next
+        End If
+        AllItemsInDatabaseListBox.SelectedIndex = -1
     End Sub
 End Class
