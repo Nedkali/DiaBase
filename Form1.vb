@@ -759,18 +759,51 @@ SkipNewDatabase:
 
     'SENDS HIGHLIGHTED ITEMS TO THE TRADE LIST
     Private Sub AddToUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddToUserListToolStripMenuItem.Click
-
+      
         If LoggerRunning = True Then
             Mymessages = "Please wait Import in progress" : MyMessageBox()
             Return
         End If
 
+        DupeReferenceList.Clear()
 
         If AllItemsInDatabaseListBox.SelectedIndices.Count > 0 Then
             Dim a As Integer = 0
             For index = 0 To AllItemsInDatabaseListBox.SelectedIndices.Count - 1
-                a = AllItemsInDatabaseListBox.SelectedIndices(index)
-                SendToTradeList(a)
+
+                Dim Temp = AllItemsInDatabaseListBox.Items(AllItemsInDatabaseListBox.SelectedIndices(index))
+                
+                If Temp.indexof("Rune") > -1 Or Temp.indexof("Token") > -1 Or Temp.indexof("Perfect") > -1 Then 'keywords to trigger count, need 2 add more obviously
+
+                    Dim DupeCountResult = CountDupes(index, Temp) ' function to count dupes
+                    If DupeCountResult > 1 Then
+                        a = AllItemsInDatabaseListBox.SelectedIndices(index) ' this adds duped item only once
+                        SendToTradeList(a)
+
+                    Else
+
+                        a = AllItemsInDatabaseListBox.SelectedIndices(index) ' this add all other items
+                        SendToTradeList(a)
+
+
+
+
+                    End If
+
+
+
+
+                End If
+
+               
+
+
+
+
+
+
+
+
             Next
             AllItemsInDatabaseListBox.SelectedIndex = -1
         End If

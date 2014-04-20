@@ -19,6 +19,7 @@
     Public Mymessages As String
     Public saveonexit As Boolean = False
     Public backuponexit As Boolean = False
+    Public DupeReferenceList As List(Of String) = New List(Of String)
 
     ' needs to be set to true when logger is doing log reads/imports and then set to false when completed
     ' Need this to prevent reading database while logger maybe trying to access it - logger will need priority
@@ -1514,4 +1515,21 @@
         End Select
         Return (PassString)                         'Return result
     End Function
+
+    'this counts dupes in listbox selected items but can easily be changed to another list
+    Function CountDupes(ByVal index As Integer, ByVal CountItem As String)
+        Dim DupeCount As Integer = 0
+
+        For Each item In Form1.AllItemsInDatabaseListBox.SelectedItems
+            If DupeReferenceList.Contains(Form1.AllItemsInDatabaseListBox.Items(Form1.AllItemsInDatabaseListBox.SelectedIndices(index))) = False And Form1.AllItemsInDatabaseListBox.Items(Form1.AllItemsInDatabaseListBox.SelectedIndices(index)) = item Then
+                DupeCount = DupeCount + 1
+            End If
+        Next
+
+        'debugg message box - will delete later
+        MessageBox.Show("Checking Item:  " & Form1.AllItemsInDatabaseListBox.Items(Form1.AllItemsInDatabaseListBox.SelectedIndices(index)) & vbCrLf & vbCrLf & "Dupe Total:  " & DupeCount, "Dupe Check Routine...") ' Debugg test message - will delete later
+
+        Return DupeCount
+    End Function
+
 End Module
