@@ -16,6 +16,7 @@ Module Tradelist
         'Unique items
         '***********************************************
         If Objects(x).ItemName = "The Stone of Jordan Ring" Then Form1.RichTextBox3.AppendText("Soj" & vbCrLf & vbCrLf) : Return
+
         If Objects(x).ItemName = "Mara's Kaleidoscope Amulet" Then
             temp = "Mara's " & Objects(x).Stat3
             GoTo Abbrev
@@ -60,6 +61,11 @@ Module Tradelist
 
         If Objects(x).ItemName = "Eschuta's Temper Eldritch Orb" Then temp = "Eschuta's" : GoTo Stats
 
+        If Objects(x).ItemName = "Verdungo's Hearty Cord Mithril Coil" Then
+            temp = "Verdungo Coil - Def " & Objects(x).Defense & ", " & Objects(x).Stat1 & ", " & Objects(x).Stat2 & ", " & Objects(x).Stat3 & ", " & Objects(x).Stat4 & ", " & Objects(x).Stat5 & ", " & Objects(x).Stat6
+            GoTo Abbrev
+
+        End If
 
 
 
@@ -68,7 +74,27 @@ Module Tradelist
         '***********************************************
         If Objects(x).ItemName = "Token of Absolution" Then Form1.RichTextBox3.AppendText("Token" & vbCrLf & vbCrLf) : Return
 
+        If Objects(x).ItemName = "Perfect Amythst" Then Form1.RichTextBox3.AppendText("Perf Amythist" & vbCrLf & vbCrLf) : Return
+        If Objects(x).ItemName = "Perfect Diamond" Then Form1.RichTextBox3.AppendText("Perf Diamond" & vbCrLf & vbCrLf) : Return
+        If Objects(x).ItemName = "Perfect Sapphire" Then Form1.RichTextBox3.AppendText("Perf Sapphire" & vbCrLf & vbCrLf) : Return
+        If Objects(x).ItemName = "Perfect Topaz" Then Form1.RichTextBox3.AppendText("Perf Topaz" & vbCrLf & vbCrLf) : Return
+        If Objects(x).ItemName = "Perfect Ruby" Then Form1.RichTextBox3.AppendText("Perf Topaz" & vbCrLf & vbCrLf) : Return
 
+
+        If Objects(x).ItemName = "Mephistos Brain" Then Form1.RichTextBox3.AppendText("Mephs Brain" & vbCrLf & vbCrLf) : Return
+        If Objects(x).ItemName = "Mephistos Soulstone" Then Form1.RichTextBox3.AppendText("Mephs Soulstone" & vbCrLf & vbCrLf) : Return
+
+        If Objects(x).ItemName = "Key Of Hatred" Then Form1.RichTextBox3.AppendText("H Key" & vbCrLf & vbCrLf) : Return
+        If Objects(x).ItemName = "Key Of Suffering" Then Form1.RichTextBox3.AppendText("S Key" & vbCrLf & vbCrLf) : Return
+        If Objects(x).ItemName = "Key Of Terror" Then Form1.RichTextBox3.AppendText("T Key" & vbCrLf & vbCrLf) : Return
+
+        If Objects(x).ItemName = "Twisted Essence Of Suffering" Then Form1.RichTextBox3.AppendText("Yellow Essence" & vbCrLf & vbCrLf) : Return
+        If Objects(x).ItemName = "Charged Essence Of Haterd" Then Form1.RichTextBox3.AppendText("Green Essence" & vbCrLf & vbCrLf) : Return
+        If Objects(x).ItemName = "Infernal Essence Of Terror" Then Form1.RichTextBox3.AppendText("Red Essence" & vbCrLf & vbCrLf) : Return
+        If Objects(x).ItemName = "Essance Of Corruption" Then Form1.RichTextBox3.AppendText("Blue Essence" & vbCrLf & vbCrLf) : Return
+
+
+        'please check names 
 
         '***********************************************
         'Rare/magic/white items
@@ -85,6 +111,8 @@ Module Tradelist
             Case "Grand Charm"
                 temp = "GC"
         End Select
+
+
 
 Stats:
         If Objects(x).Stat1 <> "" Then temp = temp & ", " & Objects(x).Stat1
@@ -131,8 +159,30 @@ Abbrev:
         temp = temp.Replace("Regenerate Mana", "Mana Regen")
         temp = temp.Replace("Life stolen per hit", "Loh")
         temp = temp.Replace("damage", "dmg")
-        temp = temp.Replace("Maximum Damage", "Max dmg")
+        temp = temp.Replace("Damage", "Dmg")
+        temp = temp.Replace("Minuites", "Mins")
+        temp = temp.Replace("minuites", "mins")
+        temp = temp.Replace("Seconds", "Secs")
+        temp = temp.Replace("seconds", "secs")
+        temp = temp.Replace("minimum", "min")
+        temp = temp.Replace("Minimum", "Min")
+        temp = temp.Replace("maximum", "max")
+        temp = temp.Replace("Maximum", "Max")
+        temp = temp.Replace("Vitality", "Vit")
         temp = temp.Replace("Defense", "Def")
+        temp = temp.Replace("Replenish", "Rep")
+        temp = temp.Replace("Reduced", "Red")
+        temp = temp.Replace("Stamina", "Stam")
+        temp = temp.Replace("Poison", "Psn")
+        temp = temp.Replace("poison", "psn")
+        temp = temp.Replace("Enhanced", "Enh")
+        temp = temp.Replace("Level", "Lev")
+        temp = temp.Replace("level", "lev")
+        temp = temp.Replace("Missiles", "Miss")
+        temp = temp.Replace("Requirements", "Req")
+        temp = temp.Replace("Character", "Char")
+        temp = temp.Replace("character", "char")
+        
         temp = temp.Replace("Fire Skill Damage", "Fire dmg")
 
 

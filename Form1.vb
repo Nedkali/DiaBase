@@ -786,7 +786,7 @@ SkipNewDatabase:
                     End If
 
                 Next
-                MessageBox.Show("Checking Item:  " & AllItemsInDatabaseListBox.Items(AllItemsInDatabaseListBox.SelectedIndices(index)) & vbCrLf & vbCrLf & "Dupe Total:  " & DupeCount, "Dupe Check Routine...") ' Debugg test message - will delete later
+                'MessageBox.Show("Checking Item:  " & AllItemsInDatabaseListBox.Items(AllItemsInDatabaseListBox.SelectedIndices(index)) & vbCrLf & vbCrLf & "Dupe Total:  " & DupeCount, "Dupe Check Routine...") ' Debugg test message - will delete later
 
                 Dim a As Integer = AllItemsInDatabaseListBox.SelectedIndices(index)
 
