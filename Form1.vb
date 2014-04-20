@@ -776,38 +776,18 @@ SkipNewDatabase:
                 If Temp.indexof("Rune") > -1 Or Temp.indexof("Token") > -1 Or Temp.indexof("Perfect") > -1 Then 'keywords to trigger count, need 2 add more obviously
 
                     Dim DupeCountResult = CountDupes(index, Temp) ' function to count dupes
-                    If DupeCountResult > 1 Then
-                        a = AllItemsInDatabaseListBox.SelectedIndices(index) ' this adds duped item only once
+                    If DupeCountResult > 0 Then
+                        a = AllItemsInDatabaseListBox.SelectedIndices(index) ' this adds duped item only once (precounted items have a DupeCount = 0 value)
                         SendToTradeList(a)
-
-                    Else
-
-                        a = AllItemsInDatabaseListBox.SelectedIndices(index) ' this add all other items
-                        SendToTradeList(a)
-
-
-
-
+                        DupeReferenceList.Add(Temp)
                     End If
-
-
-
-
+                Else
+                    a = AllItemsInDatabaseListBox.SelectedIndices(index) ' this add all other items
+                    SendToTradeList(a)
                 End If
-
-               
-
-
-
-
-
-
-
-
             Next
             AllItemsInDatabaseListBox.SelectedIndex = -1
         End If
-
     End Sub
 
     'ADD THE SELECTED ITEM TO THE TRADE LIST FROM SEARCH LIST

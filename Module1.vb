@@ -1520,14 +1520,14 @@
     Function CountDupes(ByVal index As Integer, ByVal CountItem As String)
         Dim DupeCount As Integer = 0
 
-        For Each item In Form1.AllItemsInDatabaseListBox.SelectedItems
-            If DupeReferenceList.Contains(Form1.AllItemsInDatabaseListBox.Items(Form1.AllItemsInDatabaseListBox.SelectedIndices(index))) = False And Form1.AllItemsInDatabaseListBox.Items(Form1.AllItemsInDatabaseListBox.SelectedIndices(index)) = item Then
+        For Each item In Form1.AllItemsInDatabaseListBox.SelectedItems ' iterate list
+            If DupeReferenceList.Contains(CountItem) = False And CountItem = item Then 'if not already counted and it matches then count it else do nothing
                 DupeCount = DupeCount + 1
             End If
         Next
 
         'debugg message box - will delete later
-        MessageBox.Show("Checking Item:  " & Form1.AllItemsInDatabaseListBox.Items(Form1.AllItemsInDatabaseListBox.SelectedIndices(index)) & vbCrLf & vbCrLf & "Dupe Total:  " & DupeCount, "Dupe Check Routine...") ' Debugg test message - will delete later
+        MessageBox.Show("Checking Item:  " & CountItem & vbCrLf & vbCrLf & "Dupe Total:  " & DupeCount, "Dupe Check Routine...") ' Debugg test message - will delete later
 
         Return DupeCount
     End Function
