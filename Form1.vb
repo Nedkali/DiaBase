@@ -956,9 +956,14 @@ SkipNewDatabase:
         RichTextBox3.Clear() 'clear list
 
         For x = 0 To UBound(arr) ' re - sort and put back
+            If count(x) > 1 Then arr(x) = arr(x) & " (" & count(x) & ")"
+        Next
+
+        Array.Sort(arr)
+
+        For x = 0 To UBound(arr) ' re - sort and put back
             If arr(x) <> "" Then
-                If count(x) > 1 Then RichTextBox3.AppendText(arr(x) & " (" & count(x) & ")" & vbCrLf & vbCrLf)
-                If count(x) = 1 And arr(x) <> "" Then RichTextBox3.AppendText(arr(x) & vbCrLf & vbCrLf)
+                RichTextBox3.AppendText(arr(x) & vbCrLf & vbCrLf)
             End If
         Next
     End Sub
