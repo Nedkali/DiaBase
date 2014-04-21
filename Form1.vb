@@ -38,6 +38,8 @@ Public Class Form1
             file.WriteLine("False") 'added for backup before item edits 
             file.Close()
             Mymessages = "Settings file created" : MyMessageBox()
+
+
         End If
     End Sub
 
@@ -54,6 +56,7 @@ Public Class Form1
         End If
 
         SearchFieldCOMBOBOX.Text = "Item Name"
+        AllItemsInDatabaseListBox.Select() ' focuses control on main listbox on startup
     End Sub
 
     'DEFINES THE ImportTimer AS A GLOBAL SYSTEM TIMER (ONLY FOR AUTO IMPORTS)
@@ -561,7 +564,13 @@ Public Class Form1
         ListControlTabBUTTON.BackColor = Color.Black
         TaggedListControlTabBUTTON.BackColor = Color.DimGray
 
-
+        'SHORT ROUTINE TO COUNT TRADE ITEMS IN RICHTEXT3 BY COUNTING THE GAPS BETWEEN THE ITEMS (SUBTRACTS 1 DUE TO EMPTY LINE AT END OF TEXT) 
+        Dim TradeItemCounter As Integer = 0
+        For Each item In RichTextBox3.Lines
+            If item = Nothing Then TradeItemCounter = TradeItemCounter + 1
+        Next
+        If TradeItemCounter = 0 Then TradeItemCounter = 1
+        ItemTallyTEXTBOX.Text = (TradeItemCounter - 1) & " - Trade Entries"
     End Sub
 
     ' This restores the database from its backup file (if there is one ofc)
@@ -676,9 +685,31 @@ SkipNewDatabase:
             If SearchLISTBOX.Items.Count > 0 Then
                 Me.SearchListboxCONTEXTMENUSTRIP.Show(Control.MousePosition)
             End If
-        Else
         End If
     End Sub
+
+    'trade entries Context MenuStrip display routine 
+    Private Sub RichTextBox3_MouseDown(sender As Object, e As MouseEventArgs) Handles RichTextBox3.MouseDown
+        If e.Button = Windows.Forms.MouseButtons.Right Then
+            If RichTextBox3.Text <> Nothing Then
+                Me.TradesCONTEXTMENUSTRIP.Show(Control.MousePosition)
+            End If
+        End If
+
+    End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     'BUTTON CLICK HANDLERS FOR MENU BAR OPTIONS
@@ -769,11 +800,23 @@ SkipNewDatabase:
 
 
 
+
+
         If AllItemsInDatabaseListBox.SelectedIndices.Count > 0 Then
+            'RichTextBox3.Clear()
+
             Dim a As Integer = 0
+            Dim count As Integer = 0
+            DupeCountProgressForm.Show() : DupeCountProgressForm.DupePROGRESSBAR.Value = 0 'show and reset progress bar
+
             For index = 0 To AllItemsInDatabaseListBox.SelectedIndices.Count - 1
 
+                'CALCULATE PROGRESS BAR
+                DupeCountProgressForm.DupePROGRESSBAR.Value = Int((count / AllItemsInDatabaseListBox.Items.Count) * 100)
+                count = count + 1
+
                 a = AllItemsInDatabaseListBox.SelectedIndices(index)
+
 
                 Dim Temp = Objects(a).ItemName
                 If Objects(a).ItemBase = "Rune" Or Objects(a).ItemBase = "Gem" Or Objects(a).ItemName.IndexOf("Token") > -1 Or Objects(a).ItemName.IndexOf("Key of") > -1 Or Objects(a).ItemName.IndexOf("Essence") > -1 Then
@@ -786,8 +829,26 @@ SkipNewDatabase:
             Next
             AllItemsInDatabaseListBox.SelectedIndex = -1
         End If
+
+        DupeCountProgressForm.Close()
+
+
         DupesList()
+
+        'SET TRADELIST HIGHLIGHT AND SELECT TRADE LIST TAB
+        ListControlTabBUTTON.BackColor = Color.Black
+        SearchListControlTabBUTTON.BackColor = Color.Black
+        TaggedListControlTabBUTTON.BackColor = Color.DimGray
         ListboxTABCONTROL.SelectTab(2)
+
+        'SHORT ROUTINE TO COUNT TRADE ITEMS IN RICHTEXT3 BY COUNTING THE GAPS BETWEEN THE ITEMS (SUBTRACTS 1 DUE TO EMPTY LINE AT END OF TEXT) 
+        Dim TradeItemCounter As Integer = 0
+        For Each item In RichTextBox3.Lines
+            If item = Nothing Then TradeItemCounter = TradeItemCounter + 1
+        Next
+        If TradeItemCounter = 0 Then TradeItemCounter = 1
+        ItemTallyTEXTBOX.Text = (TradeItemCounter - 1) & " - Trade Entries"
+
     End Sub
 
     'ADD THE SELECTED ITEM TO THE TRADE LIST FROM SEARCH LIST
@@ -801,12 +862,27 @@ SkipNewDatabase:
 
         If SearchLISTBOX.Items.Count > 0 Then
             'ADD THE SELECTED ITEM
+            'RichTextBox3.Clear()
             Dim a = SearchReferenceList(SearchLISTBOX.SelectedIndex)
             SendToTradeList(a)
         End If
         AllItemsInDatabaseListBox.SelectedIndex = -1
         DupesList()
+
+        'SET TRADELIST HIGHLIGHT AND SELECT TRADE LIST TAB
+        ListControlTabBUTTON.BackColor = Color.Black
+        SearchListControlTabBUTTON.BackColor = Color.Black
+        TaggedListControlTabBUTTON.BackColor = Color.DimGray
         ListboxTABCONTROL.SelectTab(2)
+
+        'SHORT ROUTINE TO COUNT TRADE ITEMS IN RICHTEXT3 BY COUNTING THE GAPS BETWEEN THE ITEMS (SUBTRACTS 1 DUE TO EMPTY LINE AT END OF TEXT) 
+        Dim TradeItemCounter As Integer = 0
+        For Each item In RichTextBox3.Lines
+            If item = Nothing Then TradeItemCounter = TradeItemCounter + 1
+        Next
+        If TradeItemCounter = 0 Then TradeItemCounter = 1
+        ItemTallyTEXTBOX.Text = (TradeItemCounter - 1) & " - Trade Entries"
+
     End Sub
 
 
@@ -820,10 +896,18 @@ SkipNewDatabase:
         End If
 
         If SearchLISTBOX.Items.Count > 0 Then
-            RichTextBox3.Clear()
+            'RichTextBox3.Clear()
             'ADDS ALL THE ITEMS
             Dim Counter As Integer = 0
+            Dim count As Integer = 0
+            DupeCountProgressForm.Show() : DupeCountProgressForm.DupePROGRESSBAR.Value = 0 'show and reset progress bar
+
             For Each ITEM In SearchLISTBOX.Items
+
+                'CALCULATE PROGRESS BAR
+                DupeCountProgressForm.DupePROGRESSBAR.Value = Int((count / SearchLISTBOX.Items.Count) * 100)
+                count = count + 1
+
                 Dim a = SearchReferenceList(Counter)
                 Dim Temp = Objects(a).ItemName
                 If Objects(a).ItemBase = "Rune" Or Objects(a).ItemBase = "Gem" Or Objects(a).ItemName.IndexOf("Token") > -1 Or Objects(a).ItemName.IndexOf("Key of") > -1 Or Objects(a).ItemName.IndexOf("Essence") > -1 Then
@@ -839,7 +923,22 @@ SkipNewDatabase:
             AllItemsInDatabaseListBox.SelectedIndex = -1
         End If
         DupesList()
+        DupeCountProgressForm.Close()
+
+        'SET TRADELIST HIGHLIGHT AND SELECT TRADE LIST TAB
+        ListControlTabBUTTON.BackColor = Color.Black
+        SearchListControlTabBUTTON.BackColor = Color.Black
+        TaggedListControlTabBUTTON.BackColor = Color.DimGray
         ListboxTABCONTROL.SelectTab(2)
+
+        'SHORT ROUTINE TO COUNT TRADE ITEMS IN RICHTEXT3 BY COUNTING THE GAPS BETWEEN THE ITEMS (SUBTRACTS 1 DUE TO EMPTY LINE AT END OF TEXT) 
+        Dim TradeItemCounter As Integer = 0
+        For Each item In RichTextBox3.Lines
+            If item = Nothing Then TradeItemCounter = TradeItemCounter + 1
+        Next
+        If TradeItemCounter = 0 Then TradeItemCounter = 1
+        ItemTallyTEXTBOX.Text = (TradeItemCounter - 1) & " - Trade Entries"
+
     End Sub
 
     Private Sub DupesList()
@@ -862,5 +961,26 @@ SkipNewDatabase:
                 If count(x) = 1 And arr(x) <> "" Then RichTextBox3.AppendText(arr(x) & vbCrLf & vbCrLf)
             End If
         Next
+    End Sub
+
+    'clears the trade RICHTEXT on items menu bar selection
+    Private Sub ClearTradeListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearTradeListToolStripMenuItem.Click
+        RichTextBox3.Clear()
+    End Sub
+
+    'clears the trade RICHTEXT on CONTEXT MENU SELECTION
+    Private Sub ClearToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearToolStripMenuItem.Click
+        RichTextBox3.Clear()
+    End Sub
+
+    'COPY ENTIRE TRADE RICHTEXT TO CLIPBOARD
+    Private Sub CopyToClipboardToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyToClipboardToolStripMenuItem.Click
+        My.Computer.Clipboard.Clear()
+        My.Computer.Clipboard.SetText(RichTextBox3.Text)
+    End Sub
+
+    'APPEND ENTIRE TRADE RICHTEXT TO CLIPBOARD
+    Private Sub AppendToClipboardToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AppendToClipboardToolStripMenuItem.Click
+        My.Computer.Clipboard.SetText(My.Computer.Clipboard.GetText & RichTextBox3.Text)
     End Sub
 End Class

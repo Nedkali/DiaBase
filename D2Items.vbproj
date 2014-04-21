@@ -88,6 +88,12 @@
     <Compile Include="ClosingAppForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DupeCountProgressForm.Designer.vb">
+      <DependentUpon>DupeCountProgressForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DupeCountProgressForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="EditItemForm.Designer.vb">
       <DependentUpon>EditItemForm.vb</DependentUpon>
     </Compile>
@@ -163,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClosingAppForm.resx">
       <DependentUpon>ClosingAppForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DupeCountProgressForm.resx">
+      <DependentUpon>DupeCountProgressForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditItemForm.resx">
       <DependentUpon>EditItemForm.vb</DependentUpon>

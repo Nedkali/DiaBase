@@ -17,7 +17,7 @@
     Public Timercount As Integer
     Public TimerSecs As Integer
     Public Mymessages As String
-    Public saveonexit As Boolean = False
+    Public saveonexit As Boolean = True
     Public backuponexit As Boolean = False
     Public DupeReferenceList As List(Of String) = New List(Of String)
 

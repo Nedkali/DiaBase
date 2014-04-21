@@ -113,7 +113,9 @@ Partial Class SearchProgressForm
         Me.Controls.Add(Me.SearchProgressLABEL1)
         Me.Controls.Add(Me.SearchPROGRESSBAR)
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(457, 148)
         Me.MinimizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(457, 148)
         Me.Name = "SearchProgressForm"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
