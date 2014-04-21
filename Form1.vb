@@ -758,36 +758,36 @@ SkipNewDatabase:
     End Sub
 
     'SENDS HIGHLIGHTED ITEMS TO THE TRADE LIST
+
+    'SENDS HIGHLIGHTED ITEMS TO THE TRADE LIST
     Private Sub AddToUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddToUserListToolStripMenuItem.Click
-      
+
         If LoggerRunning = True Then
             Mymessages = "Please wait Import in progress" : MyMessageBox()
             Return
         End If
 
-        DupeReferenceList.Clear()
+
 
         If AllItemsInDatabaseListBox.SelectedIndices.Count > 0 Then
             Dim a As Integer = 0
             For index = 0 To AllItemsInDatabaseListBox.SelectedIndices.Count - 1
 
-                Dim Temp = AllItemsInDatabaseListBox.Items(AllItemsInDatabaseListBox.SelectedIndices(index))
-                
-                If Temp.indexof("Rune") > -1 Or Temp.indexof("Token") > -1 Or Temp.indexof("Perfect") > -1 Then 'keywords to trigger count, need 2 add more obviously
+                a = AllItemsInDatabaseListBox.SelectedIndices(index)
 
-                    Dim DupeCountResult = CountDupes(index, Temp) ' function to count dupes
-                    If DupeCountResult > 0 Then
-                        a = AllItemsInDatabaseListBox.SelectedIndices(index) ' this adds duped item only once (precounted items have a DupeCount = 0 value)
-                        SendToTradeList(a)
-                        DupeReferenceList.Add(Temp)
-                    End If
+                Dim Temp = Objects(a).ItemName
+                If Objects(a).ItemBase = "Rune" Or Objects(a).ItemBase = "Gem" Or Objects(a).ItemName.IndexOf("Token") > -1 Or Objects(a).ItemName.IndexOf("Key of") > -1 Or Objects(a).ItemName.IndexOf("Essence") > -1 Then
+                    If Objects(a).ItemName.IndexOf("Token") > -1 Then Temp = "Token"
+                    RichTextBox3.AppendText(Temp & vbCrLf & vbCrLf)
                 Else
-                    a = AllItemsInDatabaseListBox.SelectedIndices(index) ' this add all other items
                     SendToTradeList(a)
+
                 End If
             Next
             AllItemsInDatabaseListBox.SelectedIndex = -1
         End If
+        DupesList()
+        ListboxTABCONTROL.SelectTab(2)
     End Sub
 
     'ADD THE SELECTED ITEM TO THE TRADE LIST FROM SEARCH LIST
@@ -805,7 +805,8 @@ SkipNewDatabase:
             SendToTradeList(a)
         End If
         AllItemsInDatabaseListBox.SelectedIndex = -1
-
+        DupesList()
+        ListboxTABCONTROL.SelectTab(2)
     End Sub
 
 
@@ -819,25 +820,47 @@ SkipNewDatabase:
         End If
 
         If SearchLISTBOX.Items.Count > 0 Then
-
+            RichTextBox3.Clear()
             'ADDS ALL THE ITEMS
             Dim Counter As Integer = 0
             For Each ITEM In SearchLISTBOX.Items
                 Dim a = SearchReferenceList(Counter)
-                SendToTradeList(a)
+                Dim Temp = Objects(a).ItemName
+                If Objects(a).ItemBase = "Rune" Or Objects(a).ItemBase = "Gem" Or Objects(a).ItemName.IndexOf("Token") > -1 Or Objects(a).ItemName.IndexOf("Key of") > -1 Or Objects(a).ItemName.IndexOf("Essence") > -1 Then
+
+                    If Objects(a).ItemName.IndexOf("Token") > -1 Then Temp = "Token"
+                    RichTextBox3.AppendText(Temp & vbCrLf & vbCrLf)
+                Else
+                    SendToTradeList(a)
+
+                End If
                 Counter = Counter + 1
             Next
             AllItemsInDatabaseListBox.SelectedIndex = -1
         End If
-
+        DupesList()
+        ListboxTABCONTROL.SelectTab(2)
     End Sub
 
-    Private Sub tradelistDupes()
-        'Routine here to correct duplicates listings ToDo
+    Private Sub DupesList()
+        Dim arr() As String = RichTextBox3.Text.Split(Chr(10))
+        Dim count(UBound(arr)) As Integer
 
+        For i = 0 To UBound(arr) - 1 'find duplicates and delete
+            count(i) = 1
+            For x = (i + 1) To UBound(arr)
+                If arr(x) = "" Then Continue For
+                If arr(i) = arr(x) Then arr(x) = "" : count(i) += 1
+            Next
+        Next
 
+        RichTextBox3.Clear() 'clear list
 
-
-
+        For x = 0 To UBound(arr) ' re - sort and put back
+            If arr(x) <> "" Then
+                If count(x) > 1 Then RichTextBox3.AppendText(arr(x) & " (" & count(x) & ")" & vbCrLf & vbCrLf)
+                If count(x) = 1 And arr(x) <> "" Then RichTextBox3.AppendText(arr(x) & vbCrLf & vbCrLf)
+            End If
+        Next
     End Sub
 End Class
