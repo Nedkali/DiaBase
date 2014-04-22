@@ -11,22 +11,32 @@ Module Tradelist
         '***********************************************
         'Rings
         '***********************************************
-        If Objects(x).ItemName = "The Stone of Jordan Ring" Then Form1.RichTextBox3.AppendText("Soj" & vbCrLf & vbCrLf) : Return
-        If Objects(x).ItemName = "Dwarf Star Ring" Then Form1.RichTextBox3.AppendText(Objects(x).ItemName & vbCrLf & vbCrLf) : Return
-        If Objects(x).ItemName = "Raven Frost Ring" Then temp = "Raven Frost, " & Objects(x).Stat1 & " " & Objects(x).Stat3 : GoTo Abbrev
+        If Objects(x).ItemName = "Bul-Kathos' Wedding Band Ring" Then temp = "BK Ring " & Objects(x).Stat2 : GoTo Abbrev
         If Objects(x).ItemName = "Nagelring Ring" Then temp = "Nagel Ring, " & Objects(x).Stat4 : GoTo Abbrev
-        If Objects(x).ItemName = "Nature's Peace Ring" Then temp = "Nature's Peace Ring, " : GoTo Abbrev
+        If Objects(x).ItemName = "The Stone of Jordan Ring" Then Form1.RichTextBox3.AppendText("Soj" & vbCrLf & vbCrLf) : Return
+        If Objects(x).ItemName = "Carrion Wind Ring" Then temp = "Nagel Ring, " & Objects(x).Stat3 : GoTo Abbrev
+        If Objects(x).ItemName = "Dwarf Star Ring" Then temp = Objects(x).ItemName : GoTo Abbrev
         If Objects(x).ItemName = "Manald Heal Ring" Then temp = "Manald Heal Ring, " : GoTo Abbrev
+        If Objects(x).ItemName = "Raven Frost Ring" Then temp = "Raven Frost, " & Objects(x).Stat1 & " " & Objects(x).Stat3 : GoTo Abbrev
+        If Objects(x).ItemName = "Wisp Projector Ring" Then temp = "Wisp Ring, " & Objects(x).Stat2 & " " & Objects(x).Stat3 : GoTo Abbrev
+        If Objects(x).ItemName = "Nature's Peace Ring" Then temp = "Nature's Peace Ring, " & Objects(x).Stat3 : GoTo Abbrev
 
         '***********************************************
         'Amulets
         '***********************************************
+        If Objects(x).ItemName = "Atma's Scarab Amulet" Then temp = "Atma's Amulet, " : GoTo Abbrev
+        If Objects(x).ItemName = "Cresent Moon Amulet" Then temp = "Cresent Amulet, " : GoTo Abbrev
+        If Objects(x).ItemName = "Highlord's Wrath Amulet" Then temp = "Highlord's Amulet, " : GoTo Abbrev
         If Objects(x).ItemName = "Mara's Kaleidoscope Amulet" Then temp = "Mara's, " & Objects(x).Stat3 : GoTo Abbrev
-        If Objects(x).ItemName = "Tal Rasha's Adjudication Amulet" Then temp = "Tal's  Amulet" : GoTo Abbrev
-        If Objects(x).ItemName = "The Eye of Etlich Amulet" Then temp = "Etlich Amulet, " & Objects(x).Stat3 : GoTo Abbrev
-        If Objects(x).ItemName = "The Rising Sun Amulet" Then temp = "Rising Sun Amulet, " : GoTo Abbrev
-        If Objects(x).ItemName = "The Mahim-Oak Curio Amulet" Then temp = "Mahim-Oak Amulet, " : GoTo Abbrev
+        If Objects(x).ItemName = "Metal Grid Amulet" Then temp = "Metal Grid Amulet, " : GoTo Abbrev
+        If Objects(x).ItemName = "Nokozan Relic" Then temp = "Nokozan Relic, " : GoTo Abbrev
+        If Objects(x).ItemName = "Saracen's Chance Amulet" Then temp = "Saracen's Amulet, " : GoTo Abbrev
         If Objects(x).ItemName = "Seraph's Hymn Amulet" Then temp = "Seraph's Hymn Amulet, " : GoTo Abbrev
+        If Objects(x).ItemName = "The Cat's Eye Amulet" Then temp = "Cat's Eye Amulet, " : GoTo Abbrev
+        If Objects(x).ItemName = "The Eye of Etlich Amulet" Then temp = "Etlich Amulet, " & Objects(x).Stat3 : GoTo Abbrev
+        If Objects(x).ItemName = "The Mahim-Oak Curio Amulet" Then temp = "Mahim-Oak Amulet, " : GoTo Abbrev
+        If Objects(x).ItemName = "The Rising Sun Amulet" Then temp = "Rising Sun Amulet, " : GoTo Abbrev
+        If Objects(x).ItemName = "Tal Rasha's Adjudication Amulet" Then temp = "Tal's  Amulet" : GoTo Abbrev
 
         '***********************************************
         'Annihilus
@@ -39,178 +49,129 @@ Module Tradelist
         End If
 
         '***********************************************
-        'Helms
+        ' Unique Helms
         '***********************************************
-        If Objects(x).ItemName = "Andariel's Visage Demonhead" Then
-            temp = "Andies, " & Objects(x).Stat4 & " " & Objects(x).Stat6 : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
+
+        If Objects(x).ItemQuality = "Unique" And Objects(x).ItemBase = "Helm" Then
+            If Objects(x).ItemName = "Andariel's Visage Demonhead" Then temp = "Andies, " & Objects(x).Stat4 & " " & Objects(x).Stat6
+            If Objects(x).ItemName = "Harlequin Crest Shako" Then temp = "Shako, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Veil of Steel Spired Helm" Then temp = "Veil of Steel, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Peasant Crown War Hat" Then temp = "Peasant Hat , Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Kira's Guardian Tiara" Then temp = "Kira's , Def " & Objects(x).Defense & " " & Objects(x).Stat3
+
         End If
+
         If Objects(x).ItemName = "Crown of Ages Corona" Then
             temp = "CoA, Def" & Objects(x).Defense
             If Objects(x).Stat1 <> "Indestructible" Then temp = temp & Objects(x).Stat1
-            temp = temp & " Soc" & Objects(x).Sockets : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "Tal Rasha's Horadric Crest Death Mask" Then
-            temp = "Tals Death Mask, Def " & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "Harlequin Crest Shako" Then
-            temp = "Shako, Def " & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "Veil of Steel Spired Helm" Then
-            temp = "Veil of Steel, Def " & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "Peasant Crown War Hat" Then
-            temp = "Peasant Hat , Def " & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "Kira's Guardian Tiara" Then
-            temp = "Kira's , Def " & Objects(x).Defense & " " & Objects(x).Stat3 : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
+            temp = temp & " Soc" & Objects(x).Sockets :
         End If
 
+        '***********************************************
+        ' Set Helms
+        '***********************************************
+        If Objects(x).ItemQuality = "Set" And Objects(x).ItemBase = "Helm" Then
+            If Objects(x).ItemName = "Tal Rasha's Horadric Crest Death Mask" Then temp = "Tals Death Mask, Def " & Objects(x).Defense
+
+        End If
 
         '***********************************************
         'Belts
         '***********************************************
-        If Objects(x).ItemName = "Arachnid Mesh Spiderweb Sash" Then
-            temp = "Arach, Def" & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
+        If Objects(x).ItemQuality = "Unique" And Objects(x).ItemBase = "Belt" Then
+            If Objects(x).ItemName = "Arachnid Mesh Spiderweb Sash" Then temp = "Arach, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Thundergod's Vigor War Belt" Then temp = "Thundergod's, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Verdungo's Hearty Cord Mithril Coil" Then temp = "Dungo's, Def " & Objects(x).Defense & " " & Objects(x).Stat3
+            If Objects(x).ItemName = "String of Ears Demonhide Sash" Then temp = "String of Ears, Def " & Objects(x).Defense
+
+
         End If
-        If Objects(x).ItemName = "Thundergod's Vigor War Belt" Then
-            temp = "Thundergod's, Def" & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
+
+        If Objects(x).ItemName = "Goldwrap Heavy Belt" Then temp = "Goldwrap, " : GoTo Stats
+        '***********************************************
+        ' Set Belts
+        '***********************************************
+        If Objects(x).ItemQuality = "Set" And Objects(x).ItemBase = "Belt" Then
+            If Objects(x).ItemName = "Tal Rasha's Fine-Spun Cloth Mesh Belt" Then temp = "Tal's Belt, Def" & Objects(x).Defense & " " & Objects(x).Stat4
+
+
         End If
-        If Objects(x).ItemName = "Verdungo's Hearty Cord Mithril Coil" Then
-            temp = "Dungo's, Def" & Objects(x).Defense & " " & Objects(x).Stat3
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "Tal Rasha's Fine-Spun Cloth Mesh Belt" Then
-            temp = "Tal's Belt, Def" & Objects(x).Defense & " " & Objects(x).Stat4 : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "String of Ears Demonhide Sash" Then
-            temp = "String of Ears, Def" & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "Goldwrap Heavy Belt" Then temp = "Goldwrap, Def" : GoTo Stats
+
 
         '***********************************************
         'Gloves
         '***********************************************
-        If Objects(x).ItemName = "Chance Guards Chain Gloves" Then
-            temp = "Chancies, Mf" & Objects(x).Stat5 : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName.IndexOf("Magefist") > -1 Then
-            temp = "Magefist, Def" & Objects(x).Defense & " " & Objects(x).Stat4 : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "Dracul's Grasp Vampirebone Gloves" Then
-            temp = "Dracs, " & Objects(x).Stat2 & " " & Objects(x).Stat5 : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "Venom Grip Demonhide Gloves" Then
-            temp = "Venom Grip, Def" & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "Lava Gout Crusader Gauntlets" Then
-            temp = "Lava Gout Crusader Gauntlets, Def" & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "Lava Gout Battle Gauntlets" Then
-            temp = "Lava Gout Battle Gauntlets, Def" & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
+        If Objects(x).ItemQuality = "Unique" And Objects(x).ItemBase = "Gloves" Then
+            If Objects(x).ItemName = "Chance Guards Chain Gloves" Then temp = "Chancies, Mf" & Objects(x).Stat5
+            If Objects(x).ItemName.IndexOf("Magefist") > -1 Then temp = "Magefist, Def " & Objects(x).Defense & " " & Objects(x).Stat4
+            If Objects(x).ItemName = "Dracul's Grasp Vampirebone Gloves" Then temp = "Dracs, " & Objects(x).Stat2 & " " & Objects(x).Stat5
+            If Objects(x).ItemName = "Venom Grip Demonhide Gloves" Then temp = "Venom Grip, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Lava Gout Crusader Gauntlets" Then temp = "Lava Gout Crusader Gauntlets, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Lava Gout Battle Gauntlets" Then temp = "Lava Gout Battle Gauntlets, Def " & Objects(x).Defense
+
         End If
 
 
         '***********************************************Lava Gout Battle Gauntlets
         'Boots
         '***********************************************
-        If Objects(x).ItemName = "War Traveler Battle Boots" Then
-            temp = "War Travs, " & Objects(x).Stat8 : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "Waterwalk Sharkskin Boots" Then
-            temp = "Waterwalks, " & Objects(x).Stat5 : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "Sandstorm Trek Scarabshell Boots" Then
-            temp = "Treks, Def" & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "Marrowwalk Boneweave Boots" Then
-            temp = "Marrowwalk, Def" & Objects(x).Defense & " " & Objects(x).Stat2 : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "Gore Rider War Boots" Then
-            temp = "Gore Rider's, Def" & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
+        If Objects(x).ItemQuality = "Unique" And Objects(x).ItemBase = "Boots" Then
+            If Objects(x).ItemName = "War Traveler Battle Boots" Then temp = "War Travs, Def " & Objects(x).Defense & " " & Objects(x).Stat8
+            If Objects(x).ItemName = "Waterwalk Sharkskin Boots" Then temp = "Waterwalks, Def " & Objects(x).Defense & " " & Objects(x).Stat5
+            If Objects(x).ItemName = "Sandstorm Trek Scarabshell Boots" Then temp = "Treks, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Marrowwalk Boneweave Boots" Then temp = "Marrowwalk, Def " & Objects(x).Defense & " " & Objects(x).Stat2
+            If Objects(x).ItemName = "Gore Rider War Boots" Then temp = "Gore Rider's, Def " & Objects(x).Defense
         End If
 
 
         '***********************************************
-        'Armor
+        ' Unique Armor
         '***********************************************
-        If Objects(x).ItemName = "Skin of the Vipermagi Serpentskin Armor" Then
-            temp = "Vipermagi  " & Objects(x).Stat4 : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "Tal Rasha's Guardianship Lacquered Plate" Then
-            temp = "Tal's Armor Def " & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "Shaftstop Mesh Armor" Then
-            temp = "Shaftstop Armor Def " & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
+        If Objects(x).ItemQuality = "Unique" And Objects(x).ItemBase = "Armor" Then
+            If Objects(x).ItemName = "Skin of the Vipermagi Serpentskin Armor" Then temp = "Vipermagi  " & Objects(x).Stat4
+            If Objects(x).ItemName = "Shaftstop Mesh Armor" Then temp = "Shaftstop Armor Def " & Objects(x).Defense
 
 
+        End If
+        '***********************************************
+        ' Set Armor
+        '***********************************************
+        If Objects(x).ItemQuality = "Set" And Objects(x).ItemBase = "Armor" Then
+            If Objects(x).ItemName = "Tal Rasha's Guardianship Lacquered Plate" Then temp = "Tal's Armor Def " & Objects(x).Defense
+
+
+        End If
         '***********************************************
         ' Runeword Armor
         '***********************************************
-        If Objects(x).ItemName.IndexOf("Chains of Honor") > -1 And Objects(x).ItemBase = "Armor" Then
-            temp = Objects(x).ItemName & " Def " & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName.IndexOf("Enigma") > -1 And Objects(x).ItemBase = "Armor" Then
-            temp = Objects(x).ItemName & " Def " & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName.IndexOf("Treachery") > -1 And Objects(x).ItemBase = "Armor" Then
-            temp = Objects(x).ItemName & " Def " & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
+        If Objects(x).RuneWord = "True" And Objects(x).ItemBase = "Armor" Then
+            temp = Objects(x).ItemName & " Def " & Objects(x).Defense
+            'If Objects(x).ItemName.IndexOf("Enigma") > -1 And Objects(x).ItemBase = "Armor" Then
+            'If Objects(x).ItemName.IndexOf("Treachery") > -1 And Objects(x).ItemBase = "Armor" Then
+            'If Objects(x).ItemName.IndexOf("Fortitude") > -1 Then
 
+
+        End If
 
         '***********************************************
         'Shields
         '***********************************************
-        If Objects(x).ItemName.IndexOf("Herald of Zakarum") > -1 And Objects(x).ItemQuality = "Unique" Then
-            temp = "Hoz " & " Def " & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName.IndexOf("Steelclash Kite Shield") > -1 Then
-            temp = "Steelclash " & " Def " & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
+        If Objects(x).ItemQuality = "Unique" And Objects(x).ItemBase = "Shield" Or Objects(x).ItemBase = "Auric Shield" Then
+            If Objects(x).ItemName = "Herald of Zakarum Gilded Shield" Then temp = "Hoz " & " Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Steelclash Kite Shield" Then temp = "Steelclash " & " Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Lidless Wall Grim Shield" Then temp = "Lidless Shield" & " Def " & Objects(x).Defense
 
+        End If
 
         '***********************************************
         ' Runeword Shields
         '***********************************************
-        If Objects(x).ItemName.IndexOf("Splendor") > -1 And Objects(x).ItemBase = "Shield" Then
-            temp = Objects(x).ItemName & " Def " & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName = "Lidless Wall Grim Shield" Then
-            temp = "Lidless Shield" & " Def " & Objects(x).Defense : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
+        If Objects(x).RuneWord = "True" And Objects(x).ItemBase = "Shield" Then
+            temp = Objects(x).ItemName & " Def " & Objects(x).Defense
+            If Objects(x).ItemName.IndexOf("Spirit") > -1 Then temp = Objects(x).ItemName & " Def " & Objects(x).Defense & Objects(x).Stat2
 
+
+        End If
 
 
         '***********************************************
@@ -221,26 +182,25 @@ Module Tradelist
         End If
         If Objects(x).ItemName = "Tal Rasha's Lidless Eye Swirling Crystal" Then
             temp = "Tal's Lidless, " & Objects(x).Stat3 & Objects(x).Stat4 & Objects(x).Stat5
-            temp = temp.Replace("(Sorceress Only)", "") : If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
+            temp = temp.Replace("(Sorceress Only)", "") 
         End If
 
         '***********************************************
         ' Runeword Weapons
         '***********************************************
-        If Objects(x).ItemName.IndexOf("Insight") > -1 And Objects(x).ItemBase = "polearm" Then
-            temp = Objects(x).ItemName & " " : temp = temp & Objects(x).Stat2
-            If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
-        End If
-        If Objects(x).ItemName.IndexOf("Spirit") > -1 And Objects(x).RuneWord = True And Objects(x).ItemBase = "Sword" Then
-            temp = Objects(x).ItemName & " " : temp = temp & Objects(x).Stat3
-            If Objects(x).EtherealItem = True Then temp = temp & "Eth"
-            GoTo Abbrev
+        If Objects(x).RuneWord = "True" And Objects(x).ItemBase = "polearm" Or Objects(x).ItemBase = "Sword" Or Objects(x).ItemBase = "Mace" Or Objects(x).ItemBase = "Axe" Then
+            If Objects(x).ItemName.IndexOf("Insight") > -1 Then temp = Objects(x).ItemName & " " & Objects(x).Stat2
+            If Objects(x).ItemName.IndexOf("Spirit") > -1 Then temp = Objects(x).ItemName & " " & Objects(x).Stat3
+            If Objects(x).ItemName.IndexOf("Oak") > -1 Then temp = Objects(x).ItemName & " " & Objects(x).Stat12
+            If Objects(x).ItemName.IndexOf("Arms") > -1 Then temp = Objects(x).ItemName & " " & Objects(x).Stat6 & " " & Objects(x).Stat7 & " " & Objects(x).Stat8
+            If Objects(x).ItemName.IndexOf("Grief") > -1 Then temp = Objects(x).ItemName & " " & Objects(x).Stat2
+            If Objects(x).ItemName.IndexOf("Infinity") > -1 Then temp = Objects(x).ItemName & " " & Objects(x).Stat6
+            If Objects(x).ItemName.IndexOf("Last Wish") > -1 Then temp = Objects(x).ItemName & " " & Objects(x).Stat8
         End If
 
+
         '***********************************************
-        ' non Specific items
+        ' Unique non Specific items - torch - facets
         '***********************************************
         If Objects(x).ItemName.IndexOf("Hellfire Torch") > -1 Then
             If Objects(x).Stat2.IndexOf("Ama") > -1 Then temp = "Zon "
@@ -258,8 +218,14 @@ Module Tradelist
 
         If Objects(x).ItemName = "Rainbow Facet Jewel" Then temp = "Rainbow Facet  " & Objects(x).Stat3 & " " & Objects(x).Stat4 : GoTo Abbrev
 
-        '***********************************************
 
+
+        If temp > "" And Objects(x).RuneWord = "True" Or Objects(x).ItemQuality = "Unique" Or Objects(x).ItemQuality = "Set" Then
+            If Objects(x).EtherealItem = True Then temp = temp & "Eth"
+            GoTo Abbrev
+        End If
+
+        '***********************************************
         'Rare/magic/white items
         '***********************************************
         temp = Objects(x).ItemName & ", " 'sets the default name

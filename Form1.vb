@@ -896,7 +896,7 @@ SkipNewDatabase:
         End If
 
         If SearchLISTBOX.Items.Count > 0 Then
-            'RichTextBox3.Clear()
+            RichTextBox3.Clear()
             'ADDS ALL THE ITEMS
             Dim Counter As Integer = 0
             Dim count As Integer = 0
