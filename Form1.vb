@@ -735,6 +735,7 @@ SkipNewDatabase:
         SearchLISTBOX.Items.Clear()
         SearchReferenceList.Clear()
         RefineSearchReferenceList.Clear()
+        ItemTallyTEXTBOX.Text = "0 - Total Matches"
     End Sub
 
     'Action subs relating to mouse click events redirected to here
@@ -975,7 +976,7 @@ SkipNewDatabase:
 
     'clears the trade RICHTEXT on CONTEXT MENU SELECTION
     Private Sub ClearToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearToolStripMenuItem.Click
-        RichTextBox3.Clear()
+        ItemTallyTEXTBOX.Text = "0 - Trade Entries " : RichTextBox3.Clear()
     End Sub
 
     'COPY ENTIRE TRADE RICHTEXT TO CLIPBOARD
