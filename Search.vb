@@ -1,129 +1,402 @@
 ﻿Module Search
     Sub SearchRoutine()
 
-
-        If Form1.RefineSearchCHECKBOX.Checked = True Then
-
-            RefineSearchReferenceList.Clear()
-            For Each item In SearchReferenceList
-                RefineSearchReferenceList.Add(item) ' no idea what this is for - refine what? doesnt seem to do anything
+        RefineSearchReferenceList.Clear()                       'Clear out old refine list
+       
+        If Form1.SearchLISTBOX.Items.Count > 0 Then             'Can only run a refined search if items exist already in the search lisbox
+             For Each item In SearchReferenceList
+                RefineSearchReferenceList.Add(item)             'Create a reference list of each items object location in database that have 
+                '                                               'Already been matched and are right now still in the matched search list....
+                '                                               'Refine searches will use this list to look for matches as opposed all items list
             Next
-
         End If
 
-        Form1.SearchLISTBOX.Items.Clear()                       'Clear out old search matches
         SearchReferenceList.Clear()                             'Clear Out old Item Search Reference List (Holds location in database of each matched item)
+        Form1.SearchLISTBOX.Items.Clear()                       'Clear out old search matches
+        SearchProgressForm.SearchPROGRESSBAR.Value = 0
+        SearchProgressForm.Show()                               'Search Engine Progress Bar Form
 
-        SearchProgressForm.Show() : SearchProgressForm.SearchPROGRESSBAR.Value = 0
-
+        'SELECT CASE FOR THE FIELD BEING SEARCHED - NOTE: UNIQUE ATTRIBUTES HAS ITS OWN SEARCH ENGINE SUB ROUTINE
         Select Case Form1.SearchFieldCOMBOBOX.Text
+
             Case "Item Name"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    TextDecipher(count, Objects(count).ItemName)
-                Next
+                'Normal Searches - Item Name
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        TextDecipher(count, Objects(count).ItemName)
+                    Next
+                End If
+
+                'Refining Searches - Item Name
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).ItemName)
+                    Next
+                End If
+
+
             Case "Item Base"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    TextDecipher(count, Objects(count).ItemBase)
-                Next
+                'Normal Searches - Item Base
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        TextDecipher(count, Objects(count).ItemBase)
+                    Next
+                End If
+
+                'Refining Searches - Item Base
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).ItemBase)
+                    Next
+                End If
+
+
             Case "Item Quality"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    TextDecipher(count, Objects(count).ItemQuality)
-                Next
+                'Normal Searches - Quality
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        TextDecipher(count, Objects(count).ItemQuality)
+                    Next
+                End If
+
+                'Refining Searches - Quality
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).ItemQuality)
+                    Next
+                End If
+
+
             Case "Item Defense"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    If Val(Objects(count).Defense) > 0 Then MyDecipher(count, Val(Objects(count).Defense))
-                Next
+                'Normal Searches - Defense
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        If Val(Objects(count).Defense) > 0 Then MyDecipher(count, Val(Objects(count).Defense))
+                    Next
+                End If
+
+                'Refining Searches - Defense
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        If Val(Objects(RefineSearchReferenceList(count)).Defense) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).Defense))
+                    Next
+                End If
+
+
             Case "RuneWord"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    If Objects(count).RuneWord = True Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count)
-                Next
+                'Normal Searches - Runeword
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        If Objects(count).RuneWord = True Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count)
+                    Next
+                End If
+
+                'Refining Searches - Runeword
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        If Objects(RefineSearchReferenceList(count)).RuneWord = True Then Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count))
+                    Next
+                End If
+
+
             Case "Chance To Block"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    MyDecipher(count, Val(Objects(count).ChanceToBlock))
-                Next
+                'Normal Searches - Runeword
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        MyDecipher(count, Val(Objects(count).ChanceToBlock))
+                    Next
+                End If
+
+                'Refining Searches - Runeword
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).ChanceToBlock))
+                    Next
+                End If
+
+
             Case "One Hand Damage Max"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    If Val(Objects(count).OneHandDamageMax) > 0 Then MyDecipher(count, Val(Objects(count).OneHandDamageMax))
-                Next
+                'Normal Searches - One Hand Damage Max
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        If Val(Objects(count).OneHandDamageMax) > 0 Then MyDecipher(count, Val(Objects(count).OneHandDamageMax))
+                    Next
+                End If
+
+                'Refining Searches - One Hand Damage Max
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        If Val(Objects(RefineSearchReferenceList(count)).OneHandDamageMax) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).OneHandDamageMax))
+                    Next
+                End If
+
+
             Case "One Hand Damage Min"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    If Val(Objects(count).OneHandDamageMin) > 0 Then MyDecipher(count, Val(Objects(count).OneHandDamageMin))
-                Next
+                'Normal Searches - One Hand Damage Min
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        If Val(Objects(count).OneHandDamageMin) > 0 Then MyDecipher(count, Val(Objects(count).OneHandDamageMin))
+                    Next
+                End If
+
+                'Refining Searches - One Hand Damage Min
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        If Val(Objects(RefineSearchReferenceList(count)).OneHandDamageMin) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).OneHandDamageMin))
+                    Next
+                End If
+
+
             Case "Two Hand Damage Max"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    If Val(Objects(count).TwoHandDamageMax) > 0 Then MyDecipher(count, Val(Objects(count).TwoHandDamageMax))
-                Next
+                'Normal Searches - Two Hand Damage Max
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        If Val(Objects(count).TwoHandDamageMax) > 0 Then MyDecipher(count, Val(Objects(count).TwoHandDamageMax))
+                    Next
+                End If
+
+                'Refining Searches - Two Hand Damage Max
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        If Val(Objects(RefineSearchReferenceList(count)).TwoHandDamageMax) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).TwoHandDamageMax))
+                    Next
+                End If
+
+
             Case "Two Hand Damage Min"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    If Val(Objects(count).TwoHandDamageMin) > 0 Then MyDecipher(count, Val(Objects(count).TwoHandDamageMin))
-                Next
+                'Normal Searches - Two Hand Damage Min
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        If Val(Objects(count).TwoHandDamageMin) > 0 Then MyDecipher(count, Val(Objects(count).TwoHandDamageMin))
+                    Next
+                End If
+                'Refining Searches - Two Hand Damage Min
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        If Val(Objects(RefineSearchReferenceList(count)).TwoHandDamageMin) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).TwoHandDamageMin))
+                    Next
+                End If
+
+
             Case "Throw Damage Max"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    If Val(Objects(count).ThrowDamageMax) > 0 Then MyDecipher(count, Val(Objects(count).ThrowDamageMax))
-                Next
+                'Normal Searches - Throw Damage Max
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        If Val(Objects(count).ThrowDamageMax) > 0 Then MyDecipher(count, Val(Objects(count).ThrowDamageMax))
+                    Next
+                End If
+                'Refining Searches - Throw Damage Max
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        If Val(Objects(RefineSearchReferenceList(count)).ThrowDamageMax) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).ThrowDamageMax))
+                    Next
+                End If
+
+
             Case "Throw Damage Min"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    If Val(Objects(count).ThrowDamageMin) > 0 Then MyDecipher(count, Val(Objects(count).ThrowDamageMin))
-                Next
+                'Normal Searches - Throw Damage Min
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        If Val(Objects(count).ThrowDamageMin) > 0 Then MyDecipher(count, Val(Objects(count).ThrowDamageMin))
+                    Next
+                End If
+
+                'Refiening Searches - Throw Damage Min
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        If Val(Objects(RefineSearchReferenceList(count)).ThrowDamageMin) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).ThrowDamageMin))
+                    Next
+                End If
+
+
             Case "Required Level"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    MyDecipher(count, Val(Objects(count).RequiredLevel))
-                Next
+                'Normal Searches - Required Level
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        MyDecipher(count, Val(Objects(count).RequiredLevel))
+                    Next
+                End If
+
+                'Refining Searches - Required Level
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).RequiredLevel))
+                    Next
+                End If
+
+
             Case "Required Strength"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    MyDecipher(count, Val(Objects(count).RequiredStrength))
-                Next
+                'Normal Searches - Required Strength
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        MyDecipher(count, Val(Objects(count).RequiredStrength))
+                    Next
+                End If
+
+                'Refining Searches - Required Strength
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).RequiredStrength))
+                    Next
+                End If
+
+
             Case "Required Dexterity"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    MyDecipher(count, Val(Objects(count).RequiredDexterity))
-                Next
+                'Normal Searches - Required Dextreity
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        MyDecipher(count, Val(Objects(count).RequiredDexterity))
+                    Next
+                End If
+
+                'Refining Searches - Required Dextreity
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).RequiredDexterity))
+                    Next
+                End If
+
+
             Case "Attack Class"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    TextDecipher(count, Objects(count).AttackClass)
-                Next
+                'Normal Searches - Attack Class
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        TextDecipher(count, Objects(count).AttackClass)
+                    Next
+                End If
+
+                'Refining Searches - Attack Class
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).AttackClass)
+                    Next
+                End If
+
+
             Case "Attack Speed"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    TextDecipher(count, Objects(count).AttackSpeed)
-                Next
-            Case "Unique Attributes"
-                SearchUniqueAttributes()
+                'Normal Searches - Attack Speed
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        TextDecipher(count, Objects(count).AttackSpeed)
+                    Next
+                End If
+
+                'Refining Searches - Attack Speed
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).AttackSpeed)
+                    Next
+                End If
+
+
             Case "Mule Name"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    TextDecipher(count, Objects(count).MuleName)
-                Next
+                'Normal Searches - Mule Name
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        TextDecipher(count, Objects(count).MuleName)
+                    Next
+                End If
+
+                'Refining Searches - Mule Name
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).MuleName)
+                    Next
+                End If
+
+
             Case "Mule Account"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    TextDecipher(count, Objects(count).MuleAccount)
-                Next
+                'Normal Searches - Mule Account
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        TextDecipher(count, Objects(count).MuleAccount)
+                    Next
+                End If
+
+                'Refining Searches - Mule Account
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).MuleAccount)
+                    Next
+                End If
+
+
             Case "Mule Pass"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    TextDecipher(count, Objects(count).MulePass)
-                Next
+                'Normal Searches - Mule Account Password
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        TextDecipher(count, Objects(count).MulePass)
+                    Next
+                End If
+
+                'Refining Searches - Mule Account Password
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).MulePass)
+                    Next
+                End If
+
+
             Case "User Reference"
-                For count = 0 To Objects.Count - 1
-                    ProgressBar1(count)
-                    TextDecipher(count, Objects(count).UserReference)
-                Next
+                'Normal Searches - Users Reference Field
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        TextDecipher(count, Objects(count).UserReference)
+                    Next
+                End If
+
+                'Refining Searches - Users Reference Field
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).UserReference)
+                    Next
+                End If
+
+            Case "Unique Attributes"
+                'Seperate Routine For Searching Unique Attribs Block
+                SearchUniqueAttributes()
 
         End Select
 
@@ -140,33 +413,78 @@
 
     Sub TextDecipher(ByVal count, ByVal txtval)
 
-        If Form1.ExactMatchCHECKBOX.Checked = True Then
-            If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                If txtval.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then
-                    If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
-                    Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
-                End If
-            End If
-            If Form1.SearchOperatorCOMBOBOX.Text <> "Equal To" Then
-                If txtval.IndexOf(Form1.SearchWordCOMBOBOX.Text) = -1 Then
-                    If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
-                    Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
-                End If
-            End If
-        End If
-
+        'EQUAL TO - NOT EXACT MATCH - NORMAL
         If Form1.ExactMatchCHECKBOX.Checked = False Then
             If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-                If LCase(txtval).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then
-                    If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
-                    Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    If LCase(txtval).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then
+                        If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Exit Sub
+                        Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+                    End If
                 End If
 
+                'EQUAL TO - NOT EXACT MATCH - REFINED
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    If LCase(txtval).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then
+                        If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Exit Sub
+                        Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Return
+                    End If
+                End If
             End If
-            If Form1.SearchOperatorCOMBOBOX.Text <> "Equal To" Then
-                If LCase(txtval).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 Then
-                    If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
-                    Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+
+            'NOT EQUAL TO - NOT EXACT MATCH - NORMAL
+            If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    If LCase(txtval).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 Then
+                        If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
+                        Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+                    End If
+                End If
+
+                'NOT EQUAL TO - NOT EXACT MATCH - REFINED
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    If LCase(txtval).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 Then
+                        If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Return
+                        Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Return
+                    End If
+                End If
+            End If
+        End If
+
+        'EQUAL TO - EXACT MATCH - NORMAL
+        If Form1.ExactMatchCHECKBOX.Checked = True Then
+            If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    If txtval = Form1.SearchWordCOMBOBOX.Text Then
+                        If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Exit Sub
+                        Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+                    End If
+                End If
+
+                'EQUAL TO - EXACT MATCH - REFINED
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    If txtval = Form1.SearchWordCOMBOBOX.Text Then
+                        If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Exit Sub
+                        Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Return
+                    End If
+                End If
+            End If
+
+            'NOT EQUAL TO - EXACT MATCH - NORMAL
+            If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    If txtval = Form1.SearchWordCOMBOBOX.Text Then
+                        If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
+                        Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+                    End If
+                End If
+            End If
+
+            'NOT EQUAL TO - EXACT MATCH - REFINED
+            If Form1.RefineSearchCHECKBOX.Checked = True Then
+                If txtval = Form1.SearchWordCOMBOBOX.Text Then
+                    If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Return
+                    Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Return
                 End If
             End If
         End If
@@ -174,171 +492,821 @@
     End Sub
 
 
-    Sub SearchUniqueAttributes()
-        Form1.SearchLISTBOX.Items.Clear()
-        SearchReferenceList.Clear()
+    Sub SearchUniqueAttributes() 'SEARCHES UNIQUE ATTRIBUTES
+        'NORMAL SEARCH FOR UNIQUE ATTRIBUTES BLOCK
+        Dim NotEqualToCounter As Integer = 0
 
-        For count = 0 To Objects.Count - 1
-            ProgressBar1(count)
-            If Objects(count).Stat1 = "" Then Continue For ' optimize seach time
-            If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat1.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat1)) : Continue For 'skip rest we have found it
-            End If
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat1).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat1)) : Continue For 'skip rest we have found it
-            End If
+        If Form1.RefineSearchCHECKBOX.Checked = False Then
+            For count = 0 To Objects.Count - 1
+                ProgressBar1(count)
 
-            If Objects(count).Stat2 = "" Then Continue For ' optimize seach time
-            If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat2.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat2)) : Continue For 'skip rest we have found it
-            End If
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat2).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat2)) : Continue For 'skip rest we have found it
-            End If
+                'STAT1
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING  FOR VALUE SEARCHES
+                    If Objects(count).Stat1 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat1)) : Continue For
 
-            If Objects(count).Stat3 = "" Then Continue For ' optimize seach time
-            If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat3.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat3)) : Continue For 'skip rest we have found it
-            End If
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat3).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat3)) : Continue For 'skip rest we have found it
-            End If
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(count).Stat1 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
 
-            If Objects(count).Stat4 = "" Then Continue For ' optimize seach time
-            If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat4.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat4)) : Continue For 'skip rest we have found it
-            End If
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat4).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat4)) : Continue For 'skip rest we have found it
-            End If
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(count).Stat1 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 'If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
 
-            If Objects(count).Stat5 = "" Then Continue For ' optimize seach time
-            If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat5.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat5)) : Continue For 'skip rest we have found it
-            End If
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat5).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat5)) : Continue For 'skip rest we have found it
-            End If
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(count).Stat1).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat1)) : Continue For
 
-            If Objects(count).Stat6 = "" Then Continue For ' optimize seach time
-            If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat6.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat6)) : Continue For 'skip rest we have found it
-            End If
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat6).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat6)) : Continue For 'skip rest we have found it
-            End If
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(count).Stat1).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
 
-            If Objects(count).Stat7 = "" Then Continue For ' optimize seach time
-            If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat7.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat7)) : Continue For 'skip rest we have found it
-            End If
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat7).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat7)) : Continue For 'skip rest we have found it
-            End If
-
-            If Objects(count).Stat8 = "" Then Continue For ' optimize seach time
-            If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat8.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat8)) : Continue For 'skip rest we have found it
-            End If
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat8).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat8)) : Continue For 'skip rest we have found it
-            End If
-
-            If Objects(count).Stat9 = "" Then Continue For ' optimize seach time
-            If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat9.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat9)) : Continue For 'skip rest we have found it
-            End If
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat9).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat9)) : Continue For 'skip rest we have found it
-            End If
-
-            If Objects(count).Stat10 = "" Then Continue For ' optimize seach time
-            If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat10.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat10)) : Continue For 'skip rest we have found it
-            End If
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat10).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat10)) : Continue For 'skip rest we have found it
-            End If
-
-            If Objects(count).Stat11 = "" Then Continue For ' optimize seach time
-            If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat11.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat11)) : Continue For 'skip rest we have found it
-            End If
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat11).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat11)) : Continue For 'skip rest we have found it
-            End If
-
-            If Objects(count).Stat12 = "" Then Continue For ' optimize seach time
-            If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat12.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat12)) : Continue For 'skip rest we have found it
-            End If
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat12).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat12)) : Continue For 'skip rest we have found it
-            End If
-
-            If Objects(count).Stat13 = "" Then Continue For ' optimize seach time
-            If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat13.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat13)) : Continue For 'skip rest we have found it
-            End If
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat13).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat13)) : Continue For 'skip rest we have found it
-            End If
-
-            If Objects(count).Stat14 = "" Then Continue For ' optimize seach time
-            If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat14.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat14)) : Continue For 'skip rest we have found it
-            End If
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat14).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat14)) : Continue For 'skip rest we have found it
-            End If
-
-            If Objects(count).Stat15 = "" Then Continue For ' optimize seach time
-            If Form1.ExactMatchCHECKBOX.Checked = True Then ' case sensitive search
-                If Objects(count).Stat15.IndexOf(Form1.SearchWordCOMBOBOX.Text) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat15)) : Continue For 'skip rest we have found it
-            End If
-            If Form1.ExactMatchCHECKBOX.Checked = False Then
-                If LCase(Objects(count).Stat15).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 Then MyDecipher(count, getvalue(Objects(count).Stat15)) : Continue For 'skip rest we have found it
-            End If
-
-        Next
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(count).Stat1).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
 
 
+                'STAT2
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING  FOR VALUE SEARCHES
+                    If Objects(count).Stat2 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat2)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(count).Stat2 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(count).Stat2 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(count).Stat2).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat2)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(count).Stat2).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(count).Stat2).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+
+                'STAT3
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING  FOR VALUE SEARCHES
+                    If Objects(count).Stat3 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat3)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(count).Stat3 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(count).Stat3 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(count).Stat3).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat3)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(count).Stat3).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(count).Stat3).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+
+                'STAT4
+                 If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING  FOR VALUE SEARCHES
+                    If Objects(count).Stat4 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat4)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(count).Stat4 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(count).Stat4 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(count).Stat4).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat4)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(count).Stat4).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(count).Stat4).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+
+                'STAT5
+                 If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING  FOR VALUE SEARCHES
+                    If Objects(count).Stat5 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat5)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(count).Stat5 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(count).Stat5 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(count).Stat5).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat5)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(count).Stat5).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(count).Stat5).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+
+                'STAT6
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING  FOR VALUE SEARCHES
+                    If Objects(count).Stat6 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat6)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(count).Stat6 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(count).Stat6 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(count).Stat6).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat6)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(count).Stat6).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(count).Stat6).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+
+                'STAT7
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING  FOR VALUE SEARCHES
+                    If Objects(count).Stat7 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat7)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(count).Stat7 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(count).Stat7 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 'If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(count).Stat7).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat7)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(count).Stat7).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(count).Stat7).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+
+                'STAT8
+               If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING  FOR VALUE SEARCHES
+                    If Objects(count).Stat8 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat8)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(count).Stat8 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(count).Stat8 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(count).Stat8).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat8)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(count).Stat8).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(count).Stat8).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+
+                'STAT9
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING  FOR VALUE SEARCHES
+                    If Objects(count).Stat9 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat9)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(count).Stat9 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(count).Stat9 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(count).Stat9).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat9)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(count).Stat9).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(count).Stat9).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+
+                'STAT10
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING  FOR VALUE SEARCHES
+                    If Objects(count).Stat10 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat10)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(count).Stat10 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(count).Stat10 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(count).Stat10).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat10)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(count).Stat10).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(count).Stat10).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+
+                'STAT11
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING  FOR VALUE SEARCHES
+                    If Objects(count).Stat11 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat11)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(count).Stat11 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(count).Stat11 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(count).Stat11).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat11)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(count).Stat11).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(count).Stat11).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+
+                'STAT12
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING  FOR VALUE SEARCHES
+                    If Objects(count).Stat12 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat12)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(count).Stat12 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(count).Stat12 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(count).Stat12).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat12)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(count).Stat12).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(count).Stat12).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+
+                'STAT13
+                 If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING  FOR VALUE SEARCHES
+                    If Objects(count).Stat13 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat13)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(count).Stat13 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(count).Stat13 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(count).Stat13).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat13)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(count).Stat13).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(count).Stat13).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+
+                'STAT14
+                 If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING  FOR VALUE SEARCHES
+                    If Objects(count).Stat14 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat14)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(count).Stat14 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(count).Stat14 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(count).Stat14).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat14)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(count).Stat14).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(count).Stat14).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+
+                'STAT15
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING  FOR VALUE SEARCHES
+                    If Objects(count).Stat15 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat15)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(count).Stat15 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(count).Stat15 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(count).Stat15).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(count).Stat15)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(count).Stat15).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(count).Stat15).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Continue For
+                End If
+
+                'APPLYS NOT EQUAL TO STRING SEARCH MATCH RESULT IF ALL STATS ARE NOT EQUAL TO SEARCH STRING
+                If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" And NotEqualToCounter = 15 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count)
+                NotEqualToCounter = 0
+            Next
+        End If
+
+
+        'REFINED SEARCH FOR UNIQUE ATTRIBUTES BLOCK
+        If Form1.RefineSearchCHECKBOX.Checked = True Then
+            For count = 0 To RefineSearchReferenceList.Count - 1
+                ProgressBar1(count)
+
+                'STAT1
+                 If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If Objects(RefineSearchReferenceList(count)).Stat1 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat1)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat1 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat1 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(RefineSearchReferenceList(count)).Stat1).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat1)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat1).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat1).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                'STAT2
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If Objects(RefineSearchReferenceList(count)).Stat2 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat2)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat2 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat2 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(RefineSearchReferenceList(count)).Stat2).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat2)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat2).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat2).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                'STAT3
+                 If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If Objects(RefineSearchReferenceList(count)).Stat3 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat3)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat3 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat3 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(RefineSearchReferenceList(count)).Stat3).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat3)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat3).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat3).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                'STAT4
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If Objects(RefineSearchReferenceList(count)).Stat4 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat4)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat4 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat4 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(RefineSearchReferenceList(count)).Stat4).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat4)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat4).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat4).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                'STAT5
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If Objects(RefineSearchReferenceList(count)).Stat5 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat5)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat5 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat5 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(RefineSearchReferenceList(count)).Stat5).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat5)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat5).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat5).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                'STAT6
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If Objects(RefineSearchReferenceList(count)).Stat6 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat6)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat6 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat6 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(RefineSearchReferenceList(count)).Stat6).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat6)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat6).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat6).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                'STAT7
+               If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If Objects(RefineSearchReferenceList(count)).Stat7 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat7)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat7 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat7 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(RefineSearchReferenceList(count)).Stat7).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat7)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat7).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat7).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                'STAT8
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If Objects(RefineSearchReferenceList(count)).Stat8 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat8)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat8 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat8 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(RefineSearchReferenceList(count)).Stat8).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat8)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat8).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat8).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                'STAT9
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If Objects(RefineSearchReferenceList(count)).Stat9 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat9)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat9 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat9 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(RefineSearchReferenceList(count)).Stat9).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat9)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat9).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat9).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                'STAT10
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If Objects(RefineSearchReferenceList(count)).Stat10 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat10)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat10 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat10 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(RefineSearchReferenceList(count)).Stat10).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat10)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat10).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat10).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                'STAT11
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If Objects(RefineSearchReferenceList(count)).Stat11 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat11)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat11 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat11 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(RefineSearchReferenceList(count)).Stat11).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat11)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat11).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat11).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                'STAT12
+               If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If Objects(RefineSearchReferenceList(count)).Stat12 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat12)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat12 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat12 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(RefineSearchReferenceList(count)).Stat12).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat12)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat12).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat12).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                'STAT13
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If Objects(RefineSearchReferenceList(count)).Stat13 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat13)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat13 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat13 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(RefineSearchReferenceList(count)).Stat13).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat13)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat13).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat13).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                'STAT14
+                If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If Objects(RefineSearchReferenceList(count)).Stat14 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat14)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat14 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat14 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(RefineSearchReferenceList(count)).Stat14).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat14)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat14).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat14).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                'STAT15
+                 If Form1.ExactMatchCHECKBOX.Checked = True Then
+                    'VALUE AND STRING SEARCH - EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If Objects(RefineSearchReferenceList(count)).Stat15 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat15)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat15 = Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If Objects(RefineSearchReferenceList(count)).Stat15 <> Form1.SearchWordCOMBOBOX.Text And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                If Form1.ExactMatchCHECKBOX.Checked = False Then
+                    'VALUE AND STRING SEARCH - NOT EXACT MATCH - ASSUMES EQUAL TO STRING FOR VALUE SEARCHES
+                    If LCase(Objects(RefineSearchReferenceList(count)).Stat15).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value > 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else MyDecipher(count, getvalue(Objects(RefineSearchReferenceList(count)).Stat15)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat15).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) > -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+
+                    'STRING ONLY SEARCHES - NOT EXACT MATCH - NOT EQUAL TO
+                    If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then If LCase(Objects(RefineSearchReferenceList(count)).Stat15).IndexOf(LCase(Form1.SearchWordCOMBOBOX.Text)) = -1 And Form1.SearchValueNUMERICUPDWN.Value = 0 Then NotEqualToCounter = NotEqualToCounter + 1 ' If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Continue For
+                End If
+
+                'APPLYS NOT EQUAL TO STRING SEARCH MATCH IF ALL STATS ARE NOT EQUAL TO STRING
+                If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" And NotEqualToCounter = 15 Then If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Continue For Else Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count))
+                NotEqualToCounter = 0
+
+            Next
+        End If
     End Sub
 
-
+    'Compares Extracted String Value With Entered Search Value Relevant To The Selected Operator (= <> > <)
     Sub MyDecipher(ByVal count, ByVal xval)
 
+
         If Form1.SearchOperatorCOMBOBOX.Text = "Equal To" Then
-            If xval = Form1.SearchValueNUMERICUPDWN.Value Then
-                If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
-                Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            'Normal Searches - Equal To
+            If Form1.RefineSearchCHECKBOX.Checked = False Then
+                If xval = Form1.SearchValueNUMERICUPDWN.Value Then
+                    If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
+                    Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+                End If
+            End If
+
+            'Refining Searches - Equal To
+            If Form1.RefineSearchCHECKBOX.Checked = True Then
+                If xval = Form1.SearchValueNUMERICUPDWN.Value Then
+                    If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Return
+                    Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Return
+                End If
             End If
         End If
+
+
+        If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
+            'Normal Searches - Not Equal To
+            If Form1.RefineSearchCHECKBOX.Checked = False Then
+                If xval <> Form1.SearchValueNUMERICUPDWN.Value Then
+                    If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
+                    Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+                End If
+            End If
+
+            'Refining Searches - Not Equal To
+            If Form1.RefineSearchCHECKBOX.Checked = True Then
+                If xval <> Form1.SearchValueNUMERICUPDWN.Value Then
+                    If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Return
+                    Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Return
+                End If
+            End If
+        End If
+
+
         If Form1.SearchOperatorCOMBOBOX.Text = "Greater Than" Then
-            If xval > Form1.SearchValueNUMERICUPDWN.Value Then
-                If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
-                Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            'Normal Searches - Greater Than
+            If Form1.RefineSearchCHECKBOX.Checked = False Then
+                If xval > Form1.SearchValueNUMERICUPDWN.Value Then
+                    If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
+                    Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+                End If
+            End If
+
+            'Refining Searches - Greater Than
+            If Form1.RefineSearchCHECKBOX.Checked = True Then
+                If xval > Form1.SearchValueNUMERICUPDWN.Value Then
+                    If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Return
+                    Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Return
+                End If
             End If
         End If
 
         If Form1.SearchOperatorCOMBOBOX.Text = "Less Than" Then
-            If xval < Form1.SearchValueNUMERICUPDWN.Value Then
-                If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
-                Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            'Normal Searches - Less Than
+            If Form1.RefineSearchCHECKBOX.Checked = False Then
+                If xval < Form1.SearchValueNUMERICUPDWN.Value Then
+                    If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
+                    Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+                End If
             End If
 
-        End If
-        If Form1.SearchOperatorCOMBOBOX.Text = "Not Equal To" Then
-            If xval <> Form1.SearchValueNUMERICUPDWN.Value Then
-                If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(count).ItemName) = True Then Return
-                Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count) : Return
+            'Refining Searches - Less Than
+            If Form1.RefineSearchCHECKBOX.Checked = True Then
+                If xval < Form1.SearchValueNUMERICUPDWN.Value Then
+                    If Form1.HideDuplicatesCHECKBOX.Checked = True And Form1.SearchLISTBOX.Items.Contains(Objects(RefineSearchReferenceList(count)).ItemName) = True Then Return
+                    Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count)) : Return
+                End If
             End If
-
         End If
 
+
+       
     End Sub
 
-
+    'PULLS INTEGER 
     Function getvalue(ByVal temp) As Integer
         Dim myvalue As Integer = 0
         temp = Replace(temp, "+", "")
