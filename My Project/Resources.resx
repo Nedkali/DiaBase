@@ -127,9 +127,6 @@
   <data name="ImageBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ImageBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="d2itemapp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\d2itemapp.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Setting" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Setting.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -165,8 +162,5 @@
   </data>
   <data name="D2TEXTBOX1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\D2TEXTBOX1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Baalfadeout" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Baalfadeout.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

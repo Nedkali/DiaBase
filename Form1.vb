@@ -161,15 +161,20 @@ Public Class Form1
             MuleNameTextbox.Clear()
             MulePassTextbox.Clear()
 
-
             Dim DisplayType As String = Objects(RowNumber).ItemQuality
             Dim count As Integer = Objects(RowNumber).ItemQuality.Length
             If DisplayType = "Normal" Or DisplayType = "Superior" Then
                 If Objects(RowNumber).ItemBase = "Rune" Then
+                    RichTextBox2.SelectionColor = Color.OrangeRed
+                    RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
+                End If
+
+                If Objects(RowNumber).ItemBase = "Quest" Then
                     RichTextBox2.SelectionColor = Color.Orange
                     RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
                 End If
-                If Objects(RowNumber).ItemName.IndexOf("Rune") = -1 Then
+
+                If Objects(RowNumber).ItemName.IndexOf("Rune") = -1 And Objects(RowNumber).ItemBase <> "Quest" Then
                     RichTextBox2.SelectionColor = Color.White
                     RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
                 End If
@@ -194,6 +199,7 @@ Public Class Form1
                 RichTextBox2.SelectionColor = Color.BurlyWood
                 RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
             End If
+
             RichTextBox2.AppendText(vbCrLf) ' add a spacing line between item name and item stats (looks neater) ROBS EDIT
 
             count = RichTextBox2.TextLength
