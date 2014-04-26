@@ -358,21 +358,21 @@ Module Tradelist
         '***********************************************
         ' Set Helms
         '***********************************************
-        If Objects(x).ItemBase = "Helm" Then
-            If Objects(x).ItemName = "Aldur's Stony Gaze Hunter's Guise" Then Return "Aldur's Helm, Def " & Objects(x).Defense & " " & Objects(x).Stat4
-            If Objects(x).ItemName = "Arcana's Head Skull Cap" Then Return "Arcana's Helm, Def " & Objects(x).Defense
+        If Objects(x).ItemBase = "Helm" Or Objects(x).ItemBase = "Circlet" Or Objects(x).ItemBase = "Primal Helm" Then
+            If Objects(x).ItemName = "Aldur's Stony Gaze Hunter's Guise" Then Return "Aldur's Helm, Def " & Objects(x).Defense & ", " & Objects(x).Stat4
+            If Objects(x).ItemName = "Arcanna's Head Skull Cap" Then Return "Arcanna's Helm, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Berserker's Headgear Helm" Then Return "Berserker's Helm, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Cathan's Visage Mask" Then Return "Cathan's Helm, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Griswold's Valor Corona" Then Return "Griswold's, Def " & Objects(x).Defense & " " & Objects(x).Stat1 & " " & Objects(x).Stat4
+            If Objects(x).ItemName = "Griswold's Valor Corona" Then Return "Griswold's, Def " & Objects(x).Defense & " " & Objects(x).Stat1 & ", " & Objects(x).Stat4
             If Objects(x).ItemName = "Guillaume's Face Winged Helm" Then Return "Guillaume's Helm, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Hwann's Splendor Grand Crown" Then Return "Hwann's Helm, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Immortal King's Will Avenger Guard" Then Return "Immortal King's Helm, Def " & Objects(x).Defense & " " & Objects(x).Stat4
+            If Objects(x).ItemName = "Hwanin's Splendor Grand Crown" Then Return "Hwanin's Crown, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Immortal King's Will Avenger Guard" Then Return "Immortal King's Helm, Def " & Objects(x).Defense & ", " & Objects(x).Stat4
             If Objects(x).ItemName = "Infernal Cranium Cap" Then Return "Infernal Helm, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Iratha's Coil Crown" Then Return "Iratha's Helm, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Isenhart's Horns Full Helm" Then Return "Isenhart's Helm, Def " & Objects(x).Defense
             If Objects(x).ItemName = "M'avina's True Sight Diadem" Then Return "M'avina's Helm, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Milabrega's Diadem Crown" Then Return "Milabrega's Helm, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Naj's Circlet Circlet" Then Return "Naj's Helm, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Naj's Circlet Circlet" Then Return "Naj's Circlet, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Natalya's Totem Grim Helm" Then Return "Natalya's Helm, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Ondal's Almighty Spired Helm" Then Return "Ondal's Helm, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Sander's Paragon Cap" Then Return "Sander's Helm, Def " & Objects(x).Defense
@@ -381,13 +381,14 @@ Module Tradelist
             If Objects(x).ItemName = "Tal Rasha's Horadric Crest Death Mask" Then Return "Tals Helm, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Tancred's Skull Bone Helm" Then Return "Tancred's Helm, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Trang-Ouls' Guise Bone Visage" Then Return "Trang-Ouls Helm, Def " & Objects(x).Defense
+            Return Objects(x).ItemName & " Not Listed"
         End If
 
         '***********************************************
         ' Set Armor
         '***********************************************
         If Objects(x).ItemBase = "Armor" Then
-            If Objects(x).ItemName = "Aldur's Deception Shadow Plate" Then Return "Aldur's, Armor Def " & Objects(x).Defense & " " & Objects(x).Stat6
+            If Objects(x).ItemName = "Aldur's Deception Shadow Plate" Then Return "Aldur's, Armor Def " & Objects(x).Defense & ", " & Objects(x).Stat6
             If Objects(x).ItemName = "Angelic Mantle Ring Mail" Then Return "Angelic Armor, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Arcanna's Flesh Light Plate" Then Return "Arcanna's Armor, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Arctic Furs Quilted Armor" Then Return "Arctic Furs Armor, Def " & Objects(x).Defense
@@ -395,20 +396,38 @@ Module Tradelist
             If Objects(x).ItemName = "Cathan's Mesh Chain Mail" Then Return "Cathan's Armor, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Dark Adherent Dusk Shroud" Then Return "Dark Adherent Armor, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Griswold's Heart Ornate Plate" Then Return "Griswold's Armor, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Haemosu's Adament Cuirass" Then Return "Haemosu's Armor, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Haemosu's Adamant Cuirass" Then Return "Haemosu's Cuirass, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Hwanin's Refuge Tigulated Mail" Then Return "Hwanin's Armor, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Immortal King's Soul Cage Sacred Armor" Then Return "Immortal King's Armor, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Isenhart's Case Breast Plate" Then Return "Isenhart's Armor, Def " & Objects(x).Defense
             If Objects(x).ItemName = "M'avina's Embrace Kraken Shell" Then Return "M'avina's Armor, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Milabrega's Robe Ancient Armor" Then Return "Milabrega's Armor, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Naj's Light Plate Hellforge Plate" Then Return "Naj's Armor, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Natalya's Shadow Loricated Mail" Then Return "Natalya's Armor, Def " & Objects(x).Defense & "soc " & Objects(x).Sockets
-            If Objects(x).ItemName = "Sazabi's Ghost Liberator Balrog Skin" Then Return "Sazabi's Armor, Def " & Objects(x).Defense & " " & Objects(x).Stat5
+            If Objects(x).ItemName = "Natalya's Shadow Loricated Mail" Then Return "Natalya's Armor, Def " & Objects(x).Defense & ", soc " & Objects(x).Sockets
+            If Objects(x).ItemName = "Sazabi's Ghost Liberator Balrog Skin" Then Return "Sazabi's Armor, Def " & Objects(x).Defense & ", " & Objects(x).Stat5
             If Objects(x).ItemName = "Sigon's Shelter Gothic Plate" Then Return "Sigon's Armor, Def " & Objects(x).Defense & " " & Objects(x).Stat5
             If Objects(x).ItemName = "Tal Rasha's Guardianship Lacquered Plate" Then Return "Tal's Armor, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Tancred's Spine Full Plate Mail" Then Return "Tancred's Armor, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Trang-Oul's Scales Chaos Armor" Then Return "Trang-Oul's Armor, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Vidala's Ambush Leather Armor" Then Return "Vidala's, Def " & Objects(x).Defense
+            Return Objects(x).ItemName & " Not Listed"
+        End If
+
+        '***********************************************
+        ' Set Gloves
+        '***********************************************
+        If Objects(x).ItemBase = "Shield" Or Objects(x).ItemBase = "Voodoo Heads" Then
+            If Objects(x).ItemName = "Civerb's Ward Large Shield" Then Return "Civerb's Shield, Def " & Objects(x).Defense '******
+            If Objects(x).ItemName = "Cleglaw's Claw Small Shield" Then Return "Cleglaw's Shield, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Griswold's Honor Vortex Shield" Then Return "Griswold's Shield, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Hsarus' Iron Fist Buckler" Then Return "Hsarus' Shield, Def " & Objects(x).Defense '******
+            If Objects(x).ItemName = "Isenhart's Parry Gothic Shield" Then Return "Isenhart's Shield, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Milabrega's Orb Kite Shield" Then Return "Milabrega's Shield, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Sigon's Guard Tower Shield" Then Return "Sigon's Shield, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Taebaek's Glory Ward" Then Return "Taebaek's Shield, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Trang-Oul's Wing Cantor Trophy" Then Return "Trang-Oul's Trophy, Def " & Objects(x).Defense & " " & Objects(x).Stat5
+            If Objects(x).ItemName = "Whitstan's Guard Round Shield" Then Return "Whitstan's Guard Round Shield, Def " & Objects(x).Defense
+            Return Objects(x).ItemName & " Not Listed"
         End If
 
         '***********************************************
@@ -426,6 +445,7 @@ Module Tradelist
             If Objects(x).ItemName = "Sander's Taboo Heavy Gloves" Then Return "Sander's Gloves, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Sigon's Gage Gauntlets" Then Return "Sigon's Gloves, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Trang-Oul's Claws Heavy Bracers" Then Return "Trang-Oul's Bracers, Def " & Objects(x).Defense
+            Return Objects(x).ItemName & " Not Listed"
         End If
 
         '***********************************************
@@ -440,67 +460,77 @@ Module Tradelist
             If Objects(x).ItemName = "Immortal King's Detail War Belt" Then Return "IK Belt, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Infernal Sign Heavy Belt" Then Return "Infernal Belt, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Iratha's Cord Heavy Belt" Then Return "Iratha's Belt, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "M'avina's Tenet Sharksin Belt" Then Return "M'avina's Belt, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "M'avina's Tenet Sharkskin Belt" Then Return "M'avina's Belt, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Sigon's Wrap Plated Belt" Then Return "Sigon's Belt, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Tal Rasha's Fine-Spun Cloth Mesh Belt" Then Return "Tal's Belt, Def" & Objects(x).Defense & " " & Objects(x).Stat4
+            If Objects(x).ItemName = "Tal Rasha's Fine-Spun Cloth Mesh Belt" Then Return "Tal's Belt, Def" & Objects(x).Defense & ", " & Objects(x).Stat4
             If Objects(x).ItemName = "Trang-Oul's Girth Troll Belt" Then Return "Trang-Oul's Belt, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Wilhelm's Pride Battle Belt" Then Return "Wilhelm's Belt, Def " & Objects(x).Defense
+            Return Objects(x).ItemName & " Not Listed"
         End If
 
         '***********************************************
         ' Set Boots
         '***********************************************
         If Objects(x).ItemBase = "Boots" Then
-            If Objects(x).ItemName = "Aldur's Advance Battle Boots" Then Return "Aldur's Boots, Def " & Objects(x).Defense & " " & Objects(x).Stat5
+            If Objects(x).ItemName = "Aldur's Advance Battle Boots" Then Return "Aldur's Boots, Def " & Objects(x).Defense & ", " & Objects(x).Stat5
             If Objects(x).ItemName = "Hsarus' Iron Heel Chain Boots" Then Return "Hsarus' Boots, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Immortal King's Pillar War Boots" Then Return "IK Boots, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Natalya's Soul Mesh Boots" Then Return "Natalya's Boots, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Rite Of Passage Demonhide Boots" Then Return "Rite Of Passage Boots, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Rite of Passage Demonhide Boots" Then Return "Rite Of Passage Boots, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Sander's Riprap Heavy Boots" Then Return "Sander's Boots, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Sigon's Sabot Greaves" Then Return "Sigon's Greaves, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Tancred's Hobnails Boots" Then Return "Tancred's Boots, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Vidala's Fetlock Light Plated Boots" Then Return "Vidala's Boots, Def " & Objects(x).Defense
+            Return Objects(x).ItemName & " Not Listed"
         End If
 
-        If Objects(x).ItemBase = "Axes" Then
-            If Objects(x).ItemName = "Beserker's Hatchet Double Axe" Then Return "Beserker's Axe"
+        If Objects(x).ItemBase = "Axe" Then
+            If Objects(x).ItemName = "Berserker's Hatchet Double Axe" Then Return "Berserker's Axe"
             If Objects(x).ItemName = "Tancred's Crowbill Military Pick" Then Return "Tancred's Pick"
+            Return Objects(x).ItemName & " Not Listed"
+        End If
+
+        If Objects(x).ItemBase = "Bow" Then
+            If Objects(x).ItemName = "Arctic Horn Short War Bow" Then Return "Arctic Bow"
+            If Objects(x).ItemName = "M'avina's Caster Grand Matron Bow" Then Return "M'avina's Bow"
+            If Objects(x).ItemName = "Vidala's Barb Long Battle Bow" Then Return "M'avina's Bow"
+            Return Objects(x).ItemName & " Not Listed"
         End If
 
         If Objects(x).ItemBase = "Bows" Then
             If Objects(x).ItemName = "Arctic Horn Short War Bow" Then Return "Arctic Bow"
             If Objects(x).ItemName = "M'avina's Caster Grand Matron Bow" Then Return "M'avina's Bow"
             If Objects(x).ItemName = "Vidala's Barb Long Battle Bow" Then Return "M'avina's Bow"
+            Return Objects(x).ItemName & " Not Listed"
         End If
 
-        If Objects(x).ItemBase = "Bows" Then
-            If Objects(x).ItemName = "Arctic Horn Short War Bow" Then Return "Arctic Bow"
-            If Objects(x).ItemName = "M'avina's Caster Grand Matron Bow" Then Return "M'avina's Bow"
-            If Objects(x).ItemName = "Vidala's Barb Long Battle Bow" Then Return "M'avina's Bow"
-        End If
-
-        If Objects(x).ItemBase = "Claws" Then
+        If Objects(x).ItemBase = "Claw" Then
             If Objects(x).ItemName = "Natalya's Mark Scissirs Suwayyah" Then Return "Natalya's Suwayyah"
+            Return Objects(x).ItemName & " Not Listed"
         End If
 
-        If Objects(x).ItemBase = "Maces" Then
+        If Objects(x).ItemBase = "Mace" Then
             If Objects(x).ItemName = "Aldur's Rhythm Jagged Star" Then Return "Aldur's Star"
             If Objects(x).ItemName = "Dangoon's Teaching Reinforced Mace" Then Return "Dangoon's Mace"
             If Objects(x).ItemName = "Immortal King's Stone Crusher Ogre Maul" Then Return "IK Maul, " & Objects(x).Stat6
+            Return Objects(x).ItemName & " Not Listed"
         End If
 
         If Objects(x).ItemBase = "Orb" Then
-            If Objects(x).ItemName = "Tal Rasha's Lidless Eye" Then Return "Tal's Lidless"
+            If Objects(x).ItemName = "Tal Rasha's Lidless Eye Swirling Crystal" Then Return "Tal's Lidless"
+            Return Objects(x).ItemName & " Not Listed"
         End If
 
         If Objects(x).ItemBase = "polearm" Then
             If Objects(x).ItemName = "Hwanin's Justice Bill" Then Return "Hwanin's Justice"
+            Return Objects(x).ItemName & " Not Listed"
         End If
 
-        If Objects(x).ItemBase = "staves" Then
+        If Objects(x).ItemBase = "Staff" Then
             If Objects(x).ItemName = "Arcanna's Deathwand War Staff" Then Return "Arcanna's Staff"
             If Objects(x).ItemName = "Cathan's Rule Battle Staff" Then Return "Cathan's Staff"
             If Objects(x).ItemName = "Naj's Puzzler Elder Staff" Then Return "Naj's Staff"
+            Return Objects(x).ItemName & " Not Listed"
         End If
 
         If Objects(x).ItemBase = "Sword" Then
@@ -511,10 +541,17 @@ Module Tradelist
             If Objects(x).ItemName = "Death's Touch War Sword" Then Return "Death's Touch Sword"
             If Objects(x).ItemName = "Isenhart's Lightbrand Broad Sword" Then Return "Isenhart's Sword"
             If Objects(x).ItemName = "Sazabi's Cobalt Redeemer Cryptic Sword" Then Return "Sazabi's Sword"
+            Return Objects(x).ItemName & " Not Listed"
+        End If
+
+        If Objects(x).ItemBase = "Scepter" Then
+            If Objects(x).ItemName = "Civerb's Cudgel Grand Scepter" Then Return "Civerb's Scepter"
+            If Objects(x).ItemName = "Milabrega's Rod War Scepter" Then Return "Milabrega's Scepter"
+            Return Objects(x).ItemName & " Not Listed"
         End If
 
         If Objects(x).ItemName = "Infernal Torch Grim Wand" Then Return "Infernal Wand"
-
+        If Objects(x).ItemName = "Sander's Superstition Bone Wand" Then Return "Sander's Wand"
         Return Objects(x).ItemName & " Not Listed"
 
     End Function
