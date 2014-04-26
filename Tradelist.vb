@@ -35,7 +35,12 @@ Module Tradelist
 
 
         ' if Identified & set item go to set function
-        If Objects(x).ItemQuality = "Set" And Objects(x).Stat1.IndexOf("Unid") = -1 Then temp = Set_items(x) : If Objects(x).EtherealItem = True Then temp = temp & " Eth"
+        If Objects(x).ItemQuality = "Set" And Objects(x).Stat1.IndexOf("Unid") = -1 Then
+            temp = Set_items(x)
+            If Objects(x).Sockets <> "" Then temp = temp & ", Socs " & Objects(x).Sockets
+            If Objects(x).EtherealItem = True Then temp = temp & ", Eth"
+        End If
+
         ' if Identified & set item go to Unique function
         If Objects(x).ItemQuality = "Unique" And Objects(x).Stat1.IndexOf("Unid") = -1 Then temp = Uniq_items(x) : If Objects(x).EtherealItem = True Then temp = temp & " Eth"
 
@@ -403,7 +408,7 @@ Module Tradelist
             If Objects(x).ItemName = "M'avina's Embrace Kraken Shell" Then Return "M'avina's Armor, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Milabrega's Robe Ancient Armor" Then Return "Milabrega's Armor, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Naj's Light Plate Hellforge Plate" Then Return "Naj's Armor, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Natalya's Shadow Loricated Mail" Then Return "Natalya's Armor, Def " & Objects(x).Defense & ", soc " & Objects(x).Sockets
+            If Objects(x).ItemName = "Natalya's Shadow Loricated Mail" Then Return "Natalya's Armor, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Sazabi's Ghost Liberator Balrog Skin" Then Return "Sazabi's Armor, Def " & Objects(x).Defense & ", " & Objects(x).Stat5
             If Objects(x).ItemName = "Sigon's Shelter Gothic Plate" Then Return "Sigon's Armor, Def " & Objects(x).Defense & " " & Objects(x).Stat5
             If Objects(x).ItemName = "Tal Rasha's Guardianship Lacquered Plate" Then Return "Tal's Armor, Def " & Objects(x).Defense
