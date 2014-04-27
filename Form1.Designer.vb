@@ -128,9 +128,10 @@ Partial Class Form1
         Me.AddToUserListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TaggedListControlTabBUTTON = New System.Windows.Forms.Button()
         Me.SearchListboxCONTEXTMENUSTRIP = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ClearSearchListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddItemToTradeListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddAllItemsToUserListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.DeleteItemsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TradesCONTEXTMENUSTRIP = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.CopyToClipboardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AppendToClipboardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -581,6 +582,7 @@ Partial Class Form1
         Me.SearchLISTBOX.FormattingEnabled = True
         Me.SearchLISTBOX.Location = New System.Drawing.Point(3, 3)
         Me.SearchLISTBOX.Name = "SearchLISTBOX"
+        Me.SearchLISTBOX.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
         Me.SearchLISTBOX.Size = New System.Drawing.Size(365, 258)
         Me.SearchLISTBOX.TabIndex = 0
         '
@@ -1133,16 +1135,9 @@ Partial Class Form1
         '
         'SearchListboxCONTEXTMENUSTRIP
         '
-        Me.SearchListboxCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearSearchListToolStripMenuItem, Me.AddItemToTradeListToolStripMenuItem, Me.AddAllItemsToUserListToolStripMenuItem})
+        Me.SearchListboxCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddItemToTradeListToolStripMenuItem, Me.AddAllItemsToUserListToolStripMenuItem, Me.ToolStripSeparator4, Me.DeleteItemsToolStripMenuItem})
         Me.SearchListboxCONTEXTMENUSTRIP.Name = "SearchListboxCONTEXTMENUSTRIP"
-        Me.SearchListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(223, 70)
-        '
-        'ClearSearchListToolStripMenuItem
-        '
-        Me.ClearSearchListToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.ClearSearchListToolStripMenuItem.Name = "ClearSearchListToolStripMenuItem"
-        Me.ClearSearchListToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
-        Me.ClearSearchListToolStripMenuItem.Text = "Clear Search List"
+        Me.SearchListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(223, 76)
         '
         'AddItemToTradeListToolStripMenuItem
         '
@@ -1157,6 +1152,18 @@ Partial Class Form1
         Me.AddAllItemsToUserListToolStripMenuItem.Name = "AddAllItemsToUserListToolStripMenuItem"
         Me.AddAllItemsToUserListToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
         Me.AddAllItemsToUserListToolStripMenuItem.Text = "Add All Items To Trade List"
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(219, 6)
+        '
+        'DeleteItemsToolStripMenuItem
+        '
+        Me.DeleteItemsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.DeleteItemsToolStripMenuItem.Name = "DeleteItemsToolStripMenuItem"
+        Me.DeleteItemsToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.DeleteItemsToolStripMenuItem.Text = "Delete Item(s)"
         '
         'TradesCONTEXTMENUSTRIP
         '
@@ -1401,7 +1408,6 @@ Partial Class Form1
     Friend WithEvents TaggedListControlTabBUTTON As System.Windows.Forms.Button
     Friend WithEvents AddToUserListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SearchListboxCONTEXTMENUSTRIP As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents ClearSearchListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddAllItemsToUserListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RichTextBox3 As System.Windows.Forms.RichTextBox
     Friend WithEvents AddItemToTradeListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -1412,6 +1418,8 @@ Partial Class Form1
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ClearClipboardToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ClearToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DeleteItemsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
 
 
 End Class

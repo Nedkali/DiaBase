@@ -505,7 +505,19 @@ Public Class Form1
     'INDEX CHANGED HANDLER FOR THE SEARCH LISTBOX - SELECTS THE SAME ITEM IN THE ALL ITEMS LISTBOX SO STATS WILL DISPLAY FOR THE SELECTED SEARCHed ITEM
     Private Sub SearchLISTBOX_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SearchLISTBOX.SelectedIndexChanged
         AllItemsInDatabaseListBox.SelectedIndex = -1 'Clears mutiple selection(s) from AllItemsListbox otherwise it only seems to foucus on the topmost item 
-        AllItemsInDatabaseListBox.SelectedIndex = SearchReferenceList(SearchLISTBOX.SelectedIndex)
+
+        'FIX POTENTIAL BUG FOR WHEN NOTHING IS SELECTED
+        If SearchLISTBOX.SelectedIndex <> -1 Then
+            AllItemsInDatabaseListBox.SelectedIndex = SearchReferenceList(SearchLISTBOX.SelectedIndex)
+            'IF NOTING IS SELECTED IN THE SEARCH LIST DO THIS
+        Else
+            'CLEAN OUT OLD ITEM STATS
+            PictureBox1.Image = Nothing
+            RichTextBox2.Text = Nothing
+            MuleAccountTextbox.Text = Nothing
+            MulePassTextbox.Text = Nothing
+            MuleNameTextbox.Text = Nothing
+        End If
     End Sub
 
     'PAUSE AND RESTART AUTO IMPORT TIMER HANDLER
@@ -736,12 +748,9 @@ SkipNewDatabase:
         Display_Items() ' refresh list after sorting
     End Sub
 
-    'CLEARS THE SEARCH LIST (NOT SURE WHY THIS IS HERE - DONT REALLY NEED TO CLEAR SEARCH LIST NOW)
-    Private Sub ClearSearchListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearSearchListToolStripMenuItem.Click
-        SearchLISTBOX.Items.Clear()
-        SearchReferenceList.Clear()
-        RefineSearchReferenceList.Clear()
-        ItemTallyTEXTBOX.Text = "0 - Total Matches"
+    'CLEARS THE SEARCH LIST SELECTIONS (HIGHLIGHTED ITEMS IN SEARCHLIST)
+    Private Sub ClearSearchListToolStripMenuItem_Click(sender As Object, e As EventArgs)
+        SearchLISTBOX.SelectedItem = -1
     End Sub
 
     'Action subs relating to mouse click events redirected to here
@@ -754,22 +763,57 @@ SkipNewDatabase:
 
         'check for backup on edits set to true if so then backup now
         If Settings.BackupOnEditsCHECKBOX.Checked = True Then Module1.BackupDatabase()
-        'MessageBox.Show(" Selected items = " & AllItemsInDatabaseListBox.SelectedIndices.Count)
+        'MessageBox.Show(" Selected items = " & AllItemsInDatabaseListBox.SelectedIndices.Count) ' debugg message box
 
         If AllItemsInDatabaseListBox.SelectedIndices.Count > 0 Then
 
             For index = AllItemsInDatabaseListBox.SelectedIndices.Count - 1 To 0 Step -1
                 Dim a As Integer = AllItemsInDatabaseListBox.SelectedIndices(index)
-                MessageBox.Show("item to be removed = " & a)
+
                 AllItemsInDatabaseListBox.Items.RemoveAt(a)
                 Objects.RemoveAt(a)
+
+
+                '---this bit is bugged----------------------------------------------------------------------------------------------------------------------
+                'if the same item is in the search list remove item from there too <---------------------------------- DELETE ITEM SEARCH LIST FIX REV 103
+                If SearchReferenceList.Contains(a) And SearchLISTBOX.Items.Count > 0 Then
+                    SearchReferenceList.Remove(a)                   'remove from SearchReferenceList
+                    SearchLISTBOX.Items.RemoveAt(a)                 'remove item name from search list actual
+                End If
+                '-------------------------------------------------------------------------------------------------------------------------------------------
+
+
             Next
 
             ItemTallyTEXTBOX.Text = AllItemsInDatabaseListBox.Items.Count & " - Total Items"
             Return
         End If
+    End Sub
+
+
+    'Deletes items form search list by selecting each item and deleting it from the main list
+    Private Sub DeleteItemsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteItemsToolStripMenuItem.Click
+
+        'For index = SearchLISTBOX.SelectedIndices.Count - 1 To 0 Step -1
+
+        'For Each item In SearchLISTBOX.SelectedIndices
+
+        'MessageBox.Show("Next Delete:  Object Loc:" & SearchReferenceList(index) & "   Item Name:" & Objects(SearchReferenceList(index)).ItemName)
+
+
+        'AllItemsInDatabaseListBox.SelectedItem = SearchReferenceList(index)
+        'DeleteItem()
+
+        'Next
+
+
+
+
+
 
     End Sub
+
+
 
     'EDIT ITEM BUTTON CLICK HANDLER - BRANCHES TO EDIT ITEM FORM
     Private Sub EditItem()
@@ -995,4 +1039,6 @@ SkipNewDatabase:
     Private Sub AppendToClipboardToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AppendToClipboardToolStripMenuItem.Click
         My.Computer.Clipboard.SetText(My.Computer.Clipboard.GetText & RichTextBox3.Text)
     End Sub
+
+  
 End Class
