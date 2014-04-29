@@ -768,22 +768,30 @@ SkipNewDatabase:
         If AllItemsInDatabaseListBox.SelectedIndices.Count > 0 Then
 
             For index = AllItemsInDatabaseListBox.SelectedIndices.Count - 1 To 0 Step -1
+
                 Dim a As Integer = AllItemsInDatabaseListBox.SelectedIndices(index)
 
                 AllItemsInDatabaseListBox.Items.RemoveAt(a)
                 Objects.RemoveAt(a)
 
+                'Removes Item From Search Listbox & Ref List
+                If SearchReferenceList.Contains(a) = True Then
 
-                '---this bit is bugged----------------------------------------------------------------------------------------------------------------------
-                'if the same item is in the search list remove item from there too <---------------------------------- DELETE ITEM SEARCH LIST FIX REV 103
-                If SearchReferenceList.Contains(a) And SearchLISTBOX.Items.Count > 0 Then
-                    SearchReferenceList.Remove(a)                   'remove from SearchReferenceList
-                    SearchLISTBOX.Items.RemoveAt(a)                 'remove item name from search list actual
+                    Dim count As Integer = SearchReferenceList.Count - 1
+                    For Each item In SearchReferenceList
+
+                        'MessageBox.Show("checking:" & SearchReferenceList(count) & "    check value:" & a & "    count:" & count)'  DEBUGGING
+                        If SearchReferenceList(count) = a Then
+                            SearchReferenceList.RemoveAt(count)
+                            SearchLISTBOX.Items.RemoveAt(count)
+                            Exit For
+                        End If
+                        count = count - 1
+
+                    Next
                 End If
-                '-------------------------------------------------------------------------------------------------------------------------------------------
-
-
             Next
+
 
             ItemTallyTEXTBOX.Text = AllItemsInDatabaseListBox.Items.Count & " - Total Items"
             Return
