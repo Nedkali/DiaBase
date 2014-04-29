@@ -775,21 +775,27 @@ SkipNewDatabase:
                 Objects.RemoveAt(a)
 
                 'Removes Item From Search Listbox & Ref List
-                If SearchReferenceList.Contains(a) = True Then
+                'If SearchReferenceList.Contains(a) = True Then
 
-                    Dim count As Integer = SearchReferenceList.Count - 1
-                    For Each item In SearchReferenceList
+                Dim count As Integer = SearchReferenceList.Count - 1
+                For Each item In SearchReferenceList
 
-                        'MessageBox.Show("checking:" & SearchReferenceList(count) & "    check value:" & a & "    count:" & count)'  DEBUGGING
-                        If SearchReferenceList(count) = a Then
-                            SearchReferenceList.RemoveAt(count)
-                            SearchLISTBOX.Items.RemoveAt(count)
-                            Exit For
-                        End If
-                        count = count - 1
+                    If SearchReferenceList(count) = a Then
+                        SearchReferenceList.RemoveAt(count)
+                        SearchLISTBOX.Items.RemoveAt(count)
 
-                    Next
-                End If
+                        For x = a To SearchReferenceList.Count - 1
+                            SearchReferenceList(x) = SearchReferenceList(x) - 1
+                        Next
+
+                        Exit For
+                    End If
+                    count = count - 1
+
+
+
+                Next
+
             Next
 
 
