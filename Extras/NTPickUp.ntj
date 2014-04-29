@@ -142,7 +142,7 @@ function NTMU_TLMuleInventory() {
 	
 	Print(COLOR_3 + "[Toothless Inventory] - Load");
    
-	if(databasesupport && _ItemsOnGround())
+	if(databasesupport)
 		Log_DoIt(true);
 	else
 		TLI_MuledIt();

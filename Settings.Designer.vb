@@ -58,6 +58,7 @@ Partial Class Settings
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
+        Me.DupeCheckBox1 = New System.Windows.Forms.CheckBox()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -204,7 +205,7 @@ Partial Class Settings
         Me.CheckBox3.AutoSize = True
         Me.CheckBox3.BackColor = System.Drawing.SystemColors.WindowText
         Me.CheckBox3.ForeColor = System.Drawing.Color.BurlyWood
-        Me.CheckBox3.Location = New System.Drawing.Point(42, 162)
+        Me.CheckBox3.Location = New System.Drawing.Point(42, 151)
         Me.CheckBox3.Name = "CheckBox3"
         Me.CheckBox3.Size = New System.Drawing.Size(212, 17)
         Me.CheckBox3.TabIndex = 34
@@ -393,12 +394,25 @@ Partial Class Settings
         Me.Label20.Size = New System.Drawing.Size(1, 48)
         Me.Label20.TabIndex = 883
         '
+        'DupeCheckBox1
+        '
+        Me.DupeCheckBox1.AutoSize = True
+        Me.DupeCheckBox1.BackColor = System.Drawing.SystemColors.WindowText
+        Me.DupeCheckBox1.ForeColor = System.Drawing.Color.BurlyWood
+        Me.DupeCheckBox1.Location = New System.Drawing.Point(42, 174)
+        Me.DupeCheckBox1.Name = "DupeCheckBox1"
+        Me.DupeCheckBox1.Size = New System.Drawing.Size(165, 17)
+        Me.DupeCheckBox1.TabIndex = 884
+        Me.DupeCheckBox1.Text = "Remove duplicated mule logs"
+        Me.DupeCheckBox1.UseVisualStyleBackColor = False
+        '
         'Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.Setting
         Me.ClientSize = New System.Drawing.Size(511, 295)
+        Me.Controls.Add(Me.DupeCheckBox1)
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.Label18)
@@ -438,13 +452,13 @@ Partial Class Settings
         Me.Name = "Settings"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Configure DiaBase Settings"
-        CType(Me.NumericUpDown1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PictureBox1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.PictureBox2,System.ComponentModel.ISupportInitialize).EndInit
-        Me.ResumeLayout(false)
-        Me.PerformLayout
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
 
-End Sub
+    End Sub
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents SaveDefaultsBUTTON As System.Windows.Forms.Button
@@ -480,4 +494,5 @@ End Sub
     Friend WithEvents Label18 As System.Windows.Forms.Label
     Friend WithEvents Label19 As System.Windows.Forms.Label
     Friend WithEvents Label20 As System.Windows.Forms.Label
+    Friend WithEvents DupeCheckBox1 As System.Windows.Forms.CheckBox
 End Class

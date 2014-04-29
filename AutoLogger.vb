@@ -69,11 +69,12 @@ Module AutoLogger
 
 
         Form1.RichTextBox1.AppendText("Logs to import = " & LogFilesList.Count & vbCrLf)
-        Dim Pretotal = Objects.Count
+        Pretotal = Objects.Count
 
         ProcessLogFiles() 'moved rest to a separate sub to cut down on coded lines in a single sub
 
-        If Objects.Count - Pretotal > 0 Then SaveLoggedItems(Pretotal)
+        Form1.SaveItems()
+        Form1.Display_Items()
 
     End Sub
     Sub GetLogFiles()
@@ -163,6 +164,19 @@ Module AutoLogger
                     If (myarray(1) <> "") Then
                         thislogpass = myarray(1)
                     End If
+                End If
+
+                If RemoveDupeMule = True Then ' adding in remove duplicated mule option
+                    For mc = Objects.Count - 1 To 0 Step -1
+                        'MsgBox("Curent index = " & mc)
+                        If Pretotal > 0 And Objects(mc).MuleName = thislogmulename Then
+                            Objects.RemoveAt(mc)
+                            Pretotal = Pretotal - 1
+                            If Form1.AllItemsInDatabaseListBox.Items.Count > 0 Then ' remove item from list if there
+                                Form1.AllItemsInDatabaseListBox.Items.RemoveAt(mc)
+                            End If
+                        End If
+                    Next
                 End If
 
                 Do
@@ -381,22 +395,22 @@ Module AutoLogger
                 LogFile.Close()
 
 
-                Dim filecheck = My.Computer.FileSystem.FileExists(ArchiveFolder & LogFilesList(Tally))
-                Dim filecount As Integer = 0
-                If filecheck = False Then
-                    My.Computer.FileSystem.MoveFile(MuleLogPath & LogFilesList(Tally), ArchiveFolder & LogFilesList(Tally))
-                End If
+                'Dim filecheck = My.Computer.FileSystem.FileExists(ArchiveFolder & LogFilesList(Tally))
+                'Dim filecount As Integer = 0
+                'If filecheck = False Then
+                My.Computer.FileSystem.MoveFile(MuleLogPath & LogFilesList(Tally), ArchiveFolder & LogFilesList(Tally), True)
+                'End If
 
-                If filecheck = True Then
-                    myarray = Split(LogFilesList(Tally), ".txt", 0)
-                    Dim tempname = myarray(0)
-                    Do Until filecheck = False
-                        temp = tempname & filecount & ".txt"
-                        filecheck = My.Computer.FileSystem.FileExists(ArchiveFolder & temp)
-                        filecount = filecount + 1
-                    Loop
-                    My.Computer.FileSystem.MoveFile(MuleLogPath & LogFilesList(Tally), ArchiveFolder & temp)
-                End If
+                'If filecheck = True Then
+                '    myarray = Split(LogFilesList(Tally), ".txt", 0)
+                '    Dim tempname = myarray(0)
+                '    Do Until filecheck = False
+                '        temp = tempname & filecount & ".txt"
+                '        filecheck = My.Computer.FileSystem.FileExists(ArchiveFolder & temp)
+                '        filecount = filecount + 1
+                '    Loop
+                '    My.Computer.FileSystem.MoveFile(MuleLogPath & LogFilesList(Tally), ArchiveFolder & temp, True)
+                'End If
 
 
             End If

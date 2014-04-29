@@ -54,6 +54,7 @@
         file.WriteLine(CheckBox3.Checked) : KeepPassPrivate = CheckBox3.CheckState '<-------------------------------Display Password Fix rev 12 (AussieHack)
         file.WriteLine(AutoBackupImportsCHECKBOX.Checked) ' added this for auto backup on import setting
         file.WriteLine(BackupOnEditsCHECKBOX.Checked)   ' added this for auto backup on edits setting
+        file.WriteLine(DupeCheckBox1.Checked) : RemoveDupeMule = DupeCheckBox1.CheckState
         file.Close()
         EtalPath = EtalPathTEXTBOX.Text
         DataBaseFile = DatabaseFileTEXTBOX.Text
@@ -72,6 +73,7 @@
         CheckBox3.Checked = KeepPassPrivate
         AutoBackupImportsCHECKBOX.Checked = AutoBackups
         BackupOnEditsCHECKBOX.Checked = EditBackups
+        DupeCheckBox1.Checked = RemoveDupeMule
         SettingsChecker()
 
     End Sub
@@ -87,4 +89,9 @@
     End Sub
 
     
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles DupeCheckBox1.CheckedChanged
+        If DupeCheckBox1.Checked = True Then
+            RemoveDupeMule = True
+        End If
+    End Sub
 End Class

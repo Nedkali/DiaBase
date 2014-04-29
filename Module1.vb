@@ -19,6 +19,8 @@
     Public Mymessages As String
     Public saveonexit As Boolean = True
     Public backuponexit As Boolean = False
+    Public RemoveDupeMule As String = True
+    Public Pretotal As Integer = 0
     Public DupeReferenceList As List(Of String) = New List(Of String)
 
     ' needs to be set to true when logger is doing log reads/imports and then set to false when completed
@@ -147,6 +149,7 @@
         KeepPassPrivate = file.ReadLine() : If KeepPassPrivate = True Then Settings.CheckBox3.Checked = True
         AutoBackups = file.ReadLine() : If AutoBackups = True Then Settings.AutoBackupImportsCHECKBOX.Checked = True ' added this for auto backup setting
         EditBackups = file.ReadLine() : If AutoBackups = True Then Settings.AutoBackupImportsCHECKBOX.Checked = True ' added this for backup befor saving item edits
+        RemoveDupeMule = file.ReadLine()
         file.Close()
     End Sub
 

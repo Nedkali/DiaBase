@@ -36,6 +36,7 @@ Public Class Form1
             file.WriteLine("True")
             file.WriteLine("False") 'added for backup before imports 
             file.WriteLine("False") 'added for backup before item edits 
+            file.WriteLine("False") 'added for remove mule dupe
             file.Close()
             Mymessages = "Settings file created" : MyMessageBox()
 
@@ -285,7 +286,7 @@ Public Class Form1
     End Sub
 
     'SAVES THE CURRENT DATABASE TO FILE
-    Private Sub SaveItems()
+    Public Sub SaveItems()
 
         Try
             Dim LogWriter = My.Computer.FileSystem.OpenTextFileWriter(Databasefile, False)
