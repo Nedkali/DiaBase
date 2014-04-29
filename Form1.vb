@@ -814,6 +814,7 @@ SkipNewDatabase:
             b = SearchReferenceList(a)
             SearchLISTBOX.Items.RemoveAt(a)
             AllItemsInDatabaseListBox.Items.RemoveAt(b)
+            Objects.RemoveAt(b)
             SearchReferenceList.RemoveAt(a)
             For x = a To SearchReferenceList.Count - 1
                 SearchReferenceList(x) = SearchReferenceList(x) - 1
