@@ -801,23 +801,18 @@ SkipNewDatabase:
 
     'Deletes items form search list by selecting each item and deleting it from the main list
     Private Sub DeleteItemsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteItemsToolStripMenuItem.Click
-
-        'For index = SearchLISTBOX.SelectedIndices.Count - 1 To 0 Step -1
-
-        'For Each item In SearchLISTBOX.SelectedIndices
-
-        'MessageBox.Show("Next Delete:  Object Loc:" & SearchReferenceList(index) & "   Item Name:" & Objects(SearchReferenceList(index)).ItemName)
-
-
-        'AllItemsInDatabaseListBox.SelectedItem = SearchReferenceList(index)
-        'DeleteItem()
-
-        'Next
-
-
-
-
-
+        Dim a As Integer
+        Dim b As Integer
+        For index = SearchLISTBOX.SelectedIndices.Count - 1 To 0 Step -1
+            a = SearchLISTBOX.SelectedIndices(index)
+            b = SearchReferenceList(a)
+            SearchLISTBOX.Items.RemoveAt(a)
+            AllItemsInDatabaseListBox.Items.RemoveAt(b)
+            SearchReferenceList.RemoveAt(a)
+            For x = a To SearchReferenceList.Count - 1
+                SearchReferenceList(x) = SearchReferenceList(x) - 1
+            Next
+        Next
 
     End Sub
 
@@ -1048,5 +1043,5 @@ SkipNewDatabase:
         My.Computer.Clipboard.SetText(My.Computer.Clipboard.GetText & RichTextBox3.Text)
     End Sub
 
-  
+
 End Class

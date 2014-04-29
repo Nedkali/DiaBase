@@ -431,7 +431,7 @@ Module Tradelist
             If Objects(x).ItemName = "Sigon's Guard Tower Shield" Then Return "Sigon's Shield, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Taebaek's Glory Ward" Then Return "Taebaek's Shield, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Trang-Oul's Wing Cantor Trophy" Then Return "Trang-Oul's Trophy, Def " & Objects(x).Defense & " " & Objects(x).Stat5
-            If Objects(x).ItemName = "Whitstan's Guard Round Shield" Then Return "Whitstan's Guard Round Shield, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Whitstan's Guard Round Shield" Then Return "Whitstan's Shield, Def " & Objects(x).Defense
             Return Objects(x).ItemName & " Not Listed"
         End If
 
@@ -495,7 +495,7 @@ Module Tradelist
             Return Objects(x).ItemName & " Not Listed"
         End If
 
-        If Objects(x).ItemBase = "Bow" Then
+        If Objects(x).ItemBase = "Bow" Or Objects(x).ItemBase = "Amazon Bow" Then
             If Objects(x).ItemName = "Arctic Horn Short War Bow" Then Return "Arctic Bow"
             If Objects(x).ItemName = "M'avina's Caster Grand Matron Bow" Then Return "M'avina's Bow"
             If Objects(x).ItemName = "Vidala's Barb Long Battle Bow" Then Return "Vidala's Bow"

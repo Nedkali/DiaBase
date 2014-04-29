@@ -1137,7 +1137,7 @@ Partial Class Form1
         '
         Me.SearchListboxCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddItemToTradeListToolStripMenuItem, Me.AddAllItemsToUserListToolStripMenuItem, Me.ToolStripSeparator4, Me.DeleteItemsToolStripMenuItem})
         Me.SearchListboxCONTEXTMENUSTRIP.Name = "SearchListboxCONTEXTMENUSTRIP"
-        Me.SearchListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(223, 76)
+        Me.SearchListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(223, 98)
         '
         'AddItemToTradeListToolStripMenuItem
         '
