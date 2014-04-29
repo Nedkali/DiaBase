@@ -165,7 +165,7 @@ Public Class Form1
             Dim count As Integer = Objects(RowNumber).ItemQuality.Length
             If DisplayType = "Normal" Or DisplayType = "Superior" Then
                 If Objects(RowNumber).ItemBase = "Rune" Then
-                    RichTextBox2.SelectionColor = Color.OrangeRed
+                    RichTextBox2.SelectionColor = Color.Orange
                     RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
                 End If
 
@@ -1052,4 +1052,14 @@ SkipNewDatabase:
     End Sub
 
 
+    Private Sub RemoveItemsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveItemsToolStripMenuItem.Click
+        Dim a As Integer
+        For index = SearchLISTBOX.SelectedIndices.Count - 1 To 0 Step -1
+            a = SearchLISTBOX.SelectedIndices(index)
+            SearchLISTBOX.Items.RemoveAt(a)
+            SearchReferenceList.RemoveAt(a)
+        Next
+        SearchLISTBOX.SelectedItem = -1
+        ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Items"
+    End Sub
 End Class

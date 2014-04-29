@@ -138,6 +138,7 @@ Partial Class Form1
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ClearClipboardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RemoveItemsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -1135,9 +1136,9 @@ Partial Class Form1
         '
         'SearchListboxCONTEXTMENUSTRIP
         '
-        Me.SearchListboxCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddItemToTradeListToolStripMenuItem, Me.AddAllItemsToUserListToolStripMenuItem, Me.ToolStripSeparator4, Me.DeleteItemsToolStripMenuItem})
+        Me.SearchListboxCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddItemToTradeListToolStripMenuItem, Me.AddAllItemsToUserListToolStripMenuItem, Me.ToolStripSeparator4, Me.DeleteItemsToolStripMenuItem, Me.RemoveItemsToolStripMenuItem})
         Me.SearchListboxCONTEXTMENUSTRIP.Name = "SearchListboxCONTEXTMENUSTRIP"
-        Me.SearchListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(223, 76)
+        Me.SearchListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(223, 98)
         '
         'AddItemToTradeListToolStripMenuItem
         '
@@ -1203,6 +1204,13 @@ Partial Class Form1
         Me.ClearToolStripMenuItem.Name = "ClearToolStripMenuItem"
         Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
         Me.ClearToolStripMenuItem.Text = "Clear All Trade Entries"
+        '
+        'RemoveItemsToolStripMenuItem
+        '
+        Me.RemoveItemsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RemoveItemsToolStripMenuItem.Name = "RemoveItemsToolStripMenuItem"
+        Me.RemoveItemsToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.RemoveItemsToolStripMenuItem.Text = "Remove Item(s)"
         '
         'Form1
         '
@@ -1420,6 +1428,7 @@ Partial Class Form1
     Friend WithEvents ClearToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DeleteItemsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents RemoveItemsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 
 End Class
