@@ -813,7 +813,8 @@ SkipNewDatabase:
                 SearchReferenceList(x) = SearchReferenceList(x) - 1
             Next
         Next
-
+        SearchLISTBOX.SelectedItem = -1
+        ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Items"
     End Sub
 
 
