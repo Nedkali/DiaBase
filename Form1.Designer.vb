@@ -132,13 +132,13 @@ Partial Class Form1
         Me.AddAllItemsToUserListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.DeleteItemsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RemoveItemsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TradesCONTEXTMENUSTRIP = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.CopyToClipboardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AppendToClipboardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ClearClipboardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RemoveItemsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -164,7 +164,7 @@ Partial Class Form1
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(200, 26)
         Me.Label3.TabIndex = 0
-        Me.Label3.Text = "AutoLogging Status"
+        Me.Label3.Text = "AutoLogging"
         '
         'AllItemsInDatabaseListBox
         '
@@ -310,7 +310,7 @@ Partial Class Form1
         Me.SearchBUTTON.Name = "SearchBUTTON"
         Me.SearchBUTTON.Size = New System.Drawing.Size(78, 24)
         Me.SearchBUTTON.TabIndex = 7
-        Me.SearchBUTTON.Text = "Search Now"
+        Me.SearchBUTTON.Text = "Search"
         Me.SearchBUTTON.UseVisualStyleBackColor = False
         '
         'ItemsToolStripMenuItem
@@ -370,11 +370,11 @@ Partial Class Form1
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label2.Location = New System.Drawing.Point(566, 183)
+        Me.Label2.Location = New System.Drawing.Point(615, 183)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(186, 20)
+        Me.Label2.Size = New System.Drawing.Size(65, 20)
         Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Mule And Item Details"
+        Me.Label2.Text = "Details"
         '
         'Label1
         '
@@ -382,11 +382,11 @@ Partial Class Form1
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label1.Location = New System.Drawing.Point(31, 183)
+        Me.Label1.Location = New System.Drawing.Point(44, 183)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(93, 20)
+        Me.Label1.Size = New System.Drawing.Size(47, 20)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = " Item Lists"
+        Me.Label1.Text = "Lists"
         '
         'SettingsToolStripMenuItem
         '
@@ -629,10 +629,10 @@ Partial Class Form1
         Me.Button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button3.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Button3.Location = New System.Drawing.Point(691, 29)
+        Me.Button3.Location = New System.Drawing.Point(693, 29)
         Me.Button3.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 25)
+        Me.Button3.Size = New System.Drawing.Size(73, 25)
         Me.Button3.TabIndex = 12
         Me.Button3.Text = "Timer Stop"
         Me.Button3.UseVisualStyleBackColor = False
@@ -741,7 +741,7 @@ Partial Class Form1
         Me.SearchListControlTabBUTTON.Name = "SearchListControlTabBUTTON"
         Me.SearchListControlTabBUTTON.Size = New System.Drawing.Size(75, 25)
         Me.SearchListControlTabBUTTON.TabIndex = 10
-        Me.SearchListControlTabBUTTON.Text = "Search List"
+        Me.SearchListControlTabBUTTON.Text = "Search"
         Me.SearchListControlTabBUTTON.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.SearchListControlTabBUTTON.UseVisualStyleBackColor = False
         '
@@ -757,7 +757,7 @@ Partial Class Form1
         Me.ListControlTabBUTTON.Name = "ListControlTabBUTTON"
         Me.ListControlTabBUTTON.Size = New System.Drawing.Size(75, 25)
         Me.ListControlTabBUTTON.TabIndex = 9
-        Me.ListControlTabBUTTON.Text = "Item List"
+        Me.ListControlTabBUTTON.Text = "Item"
         Me.ListControlTabBUTTON.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.ListControlTabBUTTON.UseVisualStyleBackColor = False
         '
@@ -936,9 +936,9 @@ Partial Class Form1
         Me.Label29.ForeColor = System.Drawing.Color.BurlyWood
         Me.Label29.Location = New System.Drawing.Point(28, 26)
         Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(206, 20)
+        Me.Label29.Size = New System.Drawing.Size(187, 20)
         Me.Label29.TabIndex = 160
-        Me.Label29.Text = "Item And Mule Searches"
+        Me.Label29.Text = "Item And Mule Search"
         '
         'Label30
         '
@@ -1130,7 +1130,7 @@ Partial Class Form1
         Me.TaggedListControlTabBUTTON.Name = "TaggedListControlTabBUTTON"
         Me.TaggedListControlTabBUTTON.Size = New System.Drawing.Size(75, 25)
         Me.TaggedListControlTabBUTTON.TabIndex = 11
-        Me.TaggedListControlTabBUTTON.Text = "Trade List"
+        Me.TaggedListControlTabBUTTON.Text = "Trade"
         Me.TaggedListControlTabBUTTON.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.TaggedListControlTabBUTTON.UseVisualStyleBackColor = False
         '
@@ -1165,6 +1165,13 @@ Partial Class Form1
         Me.DeleteItemsToolStripMenuItem.Name = "DeleteItemsToolStripMenuItem"
         Me.DeleteItemsToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
         Me.DeleteItemsToolStripMenuItem.Text = "Delete Item(s)"
+        '
+        'RemoveItemsToolStripMenuItem
+        '
+        Me.RemoveItemsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RemoveItemsToolStripMenuItem.Name = "RemoveItemsToolStripMenuItem"
+        Me.RemoveItemsToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.RemoveItemsToolStripMenuItem.Text = "Remove Item(s)"
         '
         'TradesCONTEXTMENUSTRIP
         '
@@ -1204,13 +1211,6 @@ Partial Class Form1
         Me.ClearToolStripMenuItem.Name = "ClearToolStripMenuItem"
         Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
         Me.ClearToolStripMenuItem.Text = "Clear All Trade Entries"
-        '
-        'RemoveItemsToolStripMenuItem
-        '
-        Me.RemoveItemsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RemoveItemsToolStripMenuItem.Name = "RemoveItemsToolStripMenuItem"
-        Me.RemoveItemsToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
-        Me.RemoveItemsToolStripMenuItem.Text = "Remove Item(s)"
         '
         'Form1
         '

@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+Imports System.Drawing.Text
 
 Public Class Form1
     'FORM1 LOAD EVENT - PLAYS AUDIO LAUGH AND GETS FILE CONFIG VALUES AND SETS UP APPLICATION ELEMENTS AND OPENS THE DEFAULT DATABASE
@@ -41,7 +42,24 @@ Public Class Form1
             Mymessages = "Settings file created" : MyMessageBox()
 
 
+          
+
+
+
         End If
+
+        Dim pfc As New PrivateFontCollection()
+        pfc.AddFontFile(Application.StartupPath + "\Extras\DiabloFont.ttf")
+        Label1.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)
+        Label2.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)
+        Label3.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)
+        Label29.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)
+
+        ListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+        SearchListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+        TaggedListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+        SearchBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+        Button3.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
     End Sub
 
     'Stuff to run after program starts
@@ -120,7 +138,7 @@ Public Class Form1
 
         OpenDatabaseRoutine(DatabaseFilename) ' Routine puts saved items ito object arrays as ItemObject class collection
 
-   
+
         Display_Items() '                       Routine Populates all items listbox with, um, all items obviously :)
         If Button3.Text = "Timer Stop" Then ImportTimer.Start() '       restart timer if not paused
     End Sub

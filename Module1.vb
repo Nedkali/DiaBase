@@ -6,7 +6,7 @@
     'Version Variables (displayed in form1 titlebar) - UPDATE FOR EACH COMMIT PLS SO APP VERSION MATCHES REVISION NUMBER
     '-------------------------------------------------------------------------------------------------------------------
     Public VersionNumber As String = "9.0"
-    Public RevisionNumber As String = "19"
+    Public RevisionNumber As String = "20"
     '-------------------------------------------------------------------------------------------------------------------
 
     'DataBase variables
@@ -55,6 +55,7 @@
          "Lum", "Ko", "Fal", "Lem", "Pul", "Um", "Mal", "Ist", "Gul", "Vex", "Ohm", "Lo", "Sur", "Jah", "Ber", "Cham", "Zod"}
 
 
+    
     'Calls the UserMessaging 'Okie Dokie' Form As DialogBox
     Public Sub MyMessageBox()
         UserMessaging.ShowDialog()
