@@ -126,13 +126,12 @@ Partial Class Form1
         Me.EditItemToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteItemToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddToUserListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TaggedListControlTabBUTTON = New System.Windows.Forms.Button()
+        Me.TradesListControlTabBUTTON = New System.Windows.Forms.Button()
         Me.SearchListboxCONTEXTMENUSTRIP = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.AddItemToTradeListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddAllItemsToUserListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.DeleteItemsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RemoveItemsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TradesCONTEXTMENUSTRIP = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.CopyToClipboardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AppendToClipboardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -1116,29 +1115,29 @@ Partial Class Form1
         Me.AddToUserListToolStripMenuItem.Size = New System.Drawing.Size(213, 22)
         Me.AddToUserListToolStripMenuItem.Text = "Add Item(s) To Trade List"
         '
-        'TaggedListControlTabBUTTON
+        'TradesListControlTabBUTTON
         '
-        Me.TaggedListControlTabBUTTON.BackColor = System.Drawing.Color.Black
-        Me.TaggedListControlTabBUTTON.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
-        Me.TaggedListControlTabBUTTON.FlatAppearance.BorderSize = 2
-        Me.TaggedListControlTabBUTTON.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowFrame
-        Me.TaggedListControlTabBUTTON.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.TaggedListControlTabBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.TaggedListControlTabBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.TaggedListControlTabBUTTON.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.TaggedListControlTabBUTTON.Location = New System.Drawing.Point(181, 228)
-        Me.TaggedListControlTabBUTTON.Name = "TaggedListControlTabBUTTON"
-        Me.TaggedListControlTabBUTTON.Size = New System.Drawing.Size(75, 25)
-        Me.TaggedListControlTabBUTTON.TabIndex = 11
-        Me.TaggedListControlTabBUTTON.Text = "Trade"
-        Me.TaggedListControlTabBUTTON.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.TaggedListControlTabBUTTON.UseVisualStyleBackColor = False
+        Me.TradesListControlTabBUTTON.BackColor = System.Drawing.Color.Black
+        Me.TradesListControlTabBUTTON.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
+        Me.TradesListControlTabBUTTON.FlatAppearance.BorderSize = 2
+        Me.TradesListControlTabBUTTON.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.WindowFrame
+        Me.TradesListControlTabBUTTON.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.TradesListControlTabBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.TradesListControlTabBUTTON.ForeColor = System.Drawing.Color.BurlyWood
+        Me.TradesListControlTabBUTTON.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.TradesListControlTabBUTTON.Location = New System.Drawing.Point(181, 228)
+        Me.TradesListControlTabBUTTON.Name = "TradesListControlTabBUTTON"
+        Me.TradesListControlTabBUTTON.Size = New System.Drawing.Size(75, 25)
+        Me.TradesListControlTabBUTTON.TabIndex = 11
+        Me.TradesListControlTabBUTTON.Text = "Trade"
+        Me.TradesListControlTabBUTTON.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.TradesListControlTabBUTTON.UseVisualStyleBackColor = False
         '
         'SearchListboxCONTEXTMENUSTRIP
         '
-        Me.SearchListboxCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddItemToTradeListToolStripMenuItem, Me.AddAllItemsToUserListToolStripMenuItem, Me.ToolStripSeparator4, Me.DeleteItemsToolStripMenuItem, Me.RemoveItemsToolStripMenuItem})
+        Me.SearchListboxCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddItemToTradeListToolStripMenuItem, Me.AddAllItemsToUserListToolStripMenuItem, Me.ToolStripSeparator4, Me.DeleteItemsToolStripMenuItem})
         Me.SearchListboxCONTEXTMENUSTRIP.Name = "SearchListboxCONTEXTMENUSTRIP"
-        Me.SearchListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(223, 98)
+        Me.SearchListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(223, 76)
         '
         'AddItemToTradeListToolStripMenuItem
         '
@@ -1165,13 +1164,6 @@ Partial Class Form1
         Me.DeleteItemsToolStripMenuItem.Name = "DeleteItemsToolStripMenuItem"
         Me.DeleteItemsToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
         Me.DeleteItemsToolStripMenuItem.Text = "Delete Item(s)"
-        '
-        'RemoveItemsToolStripMenuItem
-        '
-        Me.RemoveItemsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RemoveItemsToolStripMenuItem.Name = "RemoveItemsToolStripMenuItem"
-        Me.RemoveItemsToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
-        Me.RemoveItemsToolStripMenuItem.Text = "Remove Item(s)"
         '
         'TradesCONTEXTMENUSTRIP
         '
@@ -1220,7 +1212,7 @@ Partial Class Form1
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.D2Data
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(794, 562)
-        Me.Controls.Add(Me.TaggedListControlTabBUTTON)
+        Me.Controls.Add(Me.TradesListControlTabBUTTON)
         Me.Controls.Add(Me.Label40)
         Me.Controls.Add(Me.Label39)
         Me.Controls.Add(Me.Label38)
@@ -1413,7 +1405,7 @@ Partial Class Form1
     Friend WithEvents DeleteItemToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SortToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
-    Friend WithEvents TaggedListControlTabBUTTON As System.Windows.Forms.Button
+    Friend WithEvents TradesListControlTabBUTTON As System.Windows.Forms.Button
     Friend WithEvents AddToUserListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SearchListboxCONTEXTMENUSTRIP As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents AddAllItemsToUserListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -1428,7 +1420,6 @@ Partial Class Form1
     Friend WithEvents ClearToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DeleteItemsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents RemoveItemsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 
 End Class

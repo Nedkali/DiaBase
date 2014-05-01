@@ -145,9 +145,14 @@
         Objects.Add(AddObject)
         Form1.AllItemsInDatabaseListBox.Items.Add(Objects(count).ItemName)
 
-        If AddAnotherCHECKBOX.Checked = False Then Me.Close()
-        ClearAddForm()
-
+        'Routine Checks 'Add Another Item" checkbox to clear form for next new item if checked
+        'ELSE selects the most recently created item in then main listbox and close routine if unchecked
+        If AddAnotherCHECKBOX.Checked = False Then
+            Form1.AllItemsInDatabaseListBox.SelectedIndex = Form1.AllItemsInDatabaseListBox.Items.Count - 1
+            Me.Close()
+        Else
+            ClearAddForm()
+        End If
     End Sub
 
     'Load Add Form Event Handler - Initiates every time add form is Loaded

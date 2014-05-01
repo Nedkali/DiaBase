@@ -40,26 +40,41 @@ Public Class Form1
             file.WriteLine("False") 'added for remove mule dupe
             file.Close()
             Mymessages = "Settings file created" : MyMessageBox()
-
-
-          
-
-
-
         End If
 
-        Dim pfc As New PrivateFontCollection()
-        pfc.AddFontFile(Application.StartupPath + "\Extras\DiabloFont.ttf")
-        Label1.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)
-        Label2.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)
-        Label3.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)
-        Label29.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)
+        'Next bit setup up diablo 2 heading text and game text true type fonts (.ttf) 
+        'Applying these fonts here and now will overwrite any value set in the from designer properties window
 
+        'Setup pfc as our font collestion label, then assign the .ttf font fileas the font to use (should be in extras folder)
+        Dim pfc As New PrivateFontCollection()
+
+        'This adds Diablo2 Heading Text font as 0
+        If My.Computer.FileSystem.FileExists(Application.StartupPath + "\Extras\DiabloFont1.ttf") = True Then
+            pfc.AddFontFile(Application.StartupPath + "\Extras\DiabloFont1.ttf")
+        End If
+
+
+        'General Text (8 to 6 point size)
+        'RichTextBox3.Font = New Font(pfc.Families(36), 8, FontStyle.Regular)
+
+
+
+
+        'Fancy Headers (16 point size)
+        Label1.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)  'Item Lists Header
+        Label2.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)  'Details Header
+        Label3.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)  'Autologging Header
+        Label29.Font = New Font(pfc.Families(0), 16, FontStyle.Regular) 'Item and Mule Search
+
+        'Fancy Buttons (9 point size)
         ListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
         SearchListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
-        TaggedListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+        TradesListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
         SearchBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
-        Button3.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+        Button3.Font = New Font(pfc.Families(0), 9, FontStyle.Regular) 'autologgers pause times buttom
+
+
+
     End Sub
 
     'Stuff to run after program starts
@@ -451,8 +466,8 @@ Public Class Form1
         'POPULATE WORD SEARCH DROPDOWN WITH ALL USER REFERENCE ENTRYS WHEN USER REF IS SELECTED FOR SEARCH
         If UCase(SearchFieldCOMBOBOX.Text) = "USER REFERENCE" Then
             SearchWordCOMBOBOX.Items.Clear()
-            For Each ItemObjectItem As ItemObjects In Objects
-                If ItemObjectItem.UserReference <> Nothing Then If SearchWordCOMBOBOX.Items.Contains(ItemObjectItem.UserReference) = False Then SearchWordCOMBOBOX.Items.Add(ItemObjectItem.UserReference)
+            For Each item In UserReferencePulldownList
+                If item <> Nothing Then SearchWordCOMBOBOX.Items.Add(item)
             Next
             SearchWordCOMBOBOX.Select()
         End If
@@ -578,7 +593,7 @@ Public Class Form1
         ListboxTABCONTROL.SelectTab(0)
         ListControlTabBUTTON.BackColor = Color.DimGray
         SearchListControlTabBUTTON.BackColor = Color.Black
-        TaggedListControlTabBUTTON.BackColor = Color.Black
+        TradesListControlTabBUTTON.BackColor = Color.Black
         ItemTallyTEXTBOX.Text = AllItemsInDatabaseListBox.Items.Count & " - Total Items"
 
 
@@ -589,17 +604,17 @@ Public Class Form1
         ListboxTABCONTROL.SelectTab(1)
         SearchListControlTabBUTTON.BackColor = Color.DimGray
         ListControlTabBUTTON.BackColor = Color.Black
-        TaggedListControlTabBUTTON.BackColor = Color.Black
+        TradesListControlTabBUTTON.BackColor = Color.Black
         ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Matches"
 
     End Sub
 
     'selects user list tab
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles TaggedListControlTabBUTTON.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles TradesListControlTabBUTTON.Click
         ListboxTABCONTROL.SelectTab(2)
         SearchListControlTabBUTTON.BackColor = Color.Black
         ListControlTabBUTTON.BackColor = Color.Black
-        TaggedListControlTabBUTTON.BackColor = Color.DimGray
+        TradesListControlTabBUTTON.BackColor = Color.DimGray
 
         'SHORT ROUTINE TO COUNT TRADE ITEMS IN RICHTEXT3 BY COUNTING THE GAPS BETWEEN THE ITEMS (SUBTRACTS 1 DUE TO EMPTY LINE AT END OF TEXT) 
         Dim TradeItemCounter As Integer = 0
@@ -736,19 +751,6 @@ SkipNewDatabase:
     End Sub
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     'BUTTON CLICK HANDLERS FOR MENU BAR OPTIONS
     Private Sub AddItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddItemToolStripMenuItem.Click
         AddNewItem()
@@ -779,17 +781,22 @@ SkipNewDatabase:
             Mymessages = "Please wait Import in progress" : MyMessageBox()
             Return
         End If
+        Dim FocusOnExit As Integer = Nothing
 
         'check for backup on edits set to true if so then backup now
         If Settings.BackupOnEditsCHECKBOX.Checked = True Then Module1.BackupDatabase()
         'MessageBox.Show(" Selected items = " & AllItemsInDatabaseListBox.SelectedIndices.Count) ' debugg message box
 
+        'Gets the object location for the record before the delete selection So after delete is finished selection bar will to return there<----ROB REV20
+        If AllItemsInDatabaseListBox.Items.Count > 1 Then
+            FocusOnExit = AllItemsInDatabaseListBox.SelectedIndex
+            If FocusOnExit > AllItemsInDatabaseListBox.Items.Count Then FocusOnExit = AllItemsInDatabaseListBox.Items.Count - 1
+            If FocusOnExit < 0 Then FocusOnExit = 0
+        End If
+
         If AllItemsInDatabaseListBox.SelectedIndices.Count > 0 Then
-
             For index = AllItemsInDatabaseListBox.SelectedIndices.Count - 1 To 0 Step -1
-
                 Dim a As Integer = AllItemsInDatabaseListBox.SelectedIndices(index)
-
                 AllItemsInDatabaseListBox.Items.RemoveAt(a)
                 Objects.RemoveAt(a)
 
@@ -810,15 +817,10 @@ SkipNewDatabase:
                         Exit For
                     End If
                     count = count - 1
-
-
-
                 Next
-
             Next
-
-
             ItemTallyTEXTBOX.Text = AllItemsInDatabaseListBox.Items.Count & " - Total Items"
+            AllItemsInDatabaseListBox.SelectedIndex = FocusOnExit
             Return
         End If
     End Sub
@@ -828,6 +830,17 @@ SkipNewDatabase:
     Private Sub DeleteItemsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteItemsToolStripMenuItem.Click
         Dim a As Integer
         Dim b As Integer
+        Dim FocusOnExit As Integer = Nothing
+
+        'Gets the object location for the record before the delete selection So after delete is finished selection bar will to return there<----ROB REV20
+        If SearchLISTBOX.Items.Count > 1 Then
+            FocusOnExit = SearchLISTBOX.SelectedIndex
+            If FocusOnExit > SearchLISTBOX.Items.Count Then FocusOnExit = SearchLISTBOX.Items.Count - 1
+            If FocusOnExit < 0 Then FocusOnExit = 0
+        End If
+
+
+
         For index = SearchLISTBOX.SelectedIndices.Count - 1 To 0 Step -1
             a = SearchLISTBOX.SelectedIndices(index)
             b = SearchReferenceList(a)
@@ -839,8 +852,9 @@ SkipNewDatabase:
                 SearchReferenceList(x) = SearchReferenceList(x) - 1
             Next
         Next
-        SearchLISTBOX.SelectedItem = -1
         ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Items"
+        SearchLISTBOX.SelectedIndex = FocusOnExit
+
     End Sub
 
 
@@ -919,7 +933,7 @@ SkipNewDatabase:
         'SET TRADELIST HIGHLIGHT AND SELECT TRADE LIST TAB
         ListControlTabBUTTON.BackColor = Color.Black
         SearchListControlTabBUTTON.BackColor = Color.Black
-        TaggedListControlTabBUTTON.BackColor = Color.DimGray
+        TradesListControlTabBUTTON.BackColor = Color.DimGray
         ListboxTABCONTROL.SelectTab(2)
 
         'SHORT ROUTINE TO COUNT TRADE ITEMS IN RICHTEXT3 BY COUNTING THE GAPS BETWEEN THE ITEMS (SUBTRACTS 1 DUE TO EMPTY LINE AT END OF TEXT) 
@@ -943,7 +957,7 @@ SkipNewDatabase:
 
         If SearchLISTBOX.Items.Count > 0 Then
             'ADD THE SELECTED ITEM
-            'RichTextBox3.Clear()
+
             Dim a = SearchReferenceList(SearchLISTBOX.SelectedIndex)
             SendToTradeList(a)
         End If
@@ -953,7 +967,7 @@ SkipNewDatabase:
         'SET TRADELIST HIGHLIGHT AND SELECT TRADE LIST TAB
         ListControlTabBUTTON.BackColor = Color.Black
         SearchListControlTabBUTTON.BackColor = Color.Black
-        TaggedListControlTabBUTTON.BackColor = Color.DimGray
+        TradesListControlTabBUTTON.BackColor = Color.DimGray
         ListboxTABCONTROL.SelectTab(2)
 
         'SHORT ROUTINE TO COUNT TRADE ITEMS IN RICHTEXT3 BY COUNTING THE GAPS BETWEEN THE ITEMS (SUBTRACTS 1 DUE TO EMPTY LINE AT END OF TEXT) 
@@ -1009,7 +1023,7 @@ SkipNewDatabase:
         'SET TRADELIST HIGHLIGHT AND SELECT TRADE LIST TAB
         ListControlTabBUTTON.BackColor = Color.Black
         SearchListControlTabBUTTON.BackColor = Color.Black
-        TaggedListControlTabBUTTON.BackColor = Color.DimGray
+        TradesListControlTabBUTTON.BackColor = Color.DimGray
         ListboxTABCONTROL.SelectTab(2)
 
         'SHORT ROUTINE TO COUNT TRADE ITEMS IN RICHTEXT3 BY COUNTING THE GAPS BETWEEN THE ITEMS (SUBTRACTS 1 DUE TO EMPTY LINE AT END OF TEXT) 
@@ -1060,25 +1074,73 @@ SkipNewDatabase:
     End Sub
 
     'COPY ENTIRE TRADE RICHTEXT TO CLIPBOARD
+    'If any text is selected only the selection will be copied otherwise the entire text will be copied
+
     Private Sub CopyToClipboardToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CopyToClipboardToolStripMenuItem.Click
         My.Computer.Clipboard.Clear()
-        My.Computer.Clipboard.SetText(RichTextBox3.Text)
+        If RichTextBox3.SelectedText = Nothing Then
+            My.Computer.Clipboard.SetText(RichTextBox3.Text)
+        Else
+            My.Computer.Clipboard.SetText(RichTextBox3.SelectedText)
+
+        End If
+
     End Sub
 
     'APPEND ENTIRE TRADE RICHTEXT TO CLIPBOARD
+    'If any text is selected only the selection will be appended otherwise the entire text will be appended
+
     Private Sub AppendToClipboardToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AppendToClipboardToolStripMenuItem.Click
-        My.Computer.Clipboard.SetText(My.Computer.Clipboard.GetText & RichTextBox3.Text)
+        If RichTextBox3.SelectedText = Nothing Then
+            My.Computer.Clipboard.SetText(My.Computer.Clipboard.GetText & RichTextBox3.Text)
+        Else
+            My.Computer.Clipboard.SetText(My.Computer.Clipboard.GetText & RichTextBox3.SelectedText)
+        End If
+
     End Sub
 
+    '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    'REMOVE MULTIPLE ITEMS FROM SEARCH ITEM LIST  (FOR SOME RREASON THERE WAS TWO DELETE ROUTINES IN THE SEARCH LIST SO I REMOVED THIS ONE)
+    'Private Sub RemoveItemsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveItemsToolStripMenuItem.Click
+    'Dim a As Integer
+    'For index = SearchLISTBOX.SelectedIndices.Count - 1 To 0 Step -1
+    'a = SearchLISTBOX.SelectedIndices(index)
+    'SearchLISTBOX.Items.RemoveAt(a)
+    'SearchReferenceList.RemoveAt(a)
+    'Next
+    'SearchLISTBOX.SelectedItem = -1
+    'ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Items"
+    'End Sub
+    '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    Private Sub RemoveItemsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveItemsToolStripMenuItem.Click
-        Dim a As Integer
-        For index = SearchLISTBOX.SelectedIndices.Count - 1 To 0 Step -1
-            a = SearchLISTBOX.SelectedIndices(index)
-            SearchLISTBOX.Items.RemoveAt(a)
-            SearchReferenceList.RemoveAt(a)
-        Next
-        SearchLISTBOX.SelectedItem = -1
-        ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Items"
+    'starts search routine from enter keypress   
+    Private Sub SearchBUTTON_KeyDown(sender As Object, e As KeyEventArgs) Handles SearchBUTTON.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            'This next 'if then' checks that the selected search operator is valid if its not set to default equal to, in upper case the emphasise the fix to the user
+
+            'NOTED: Checks for the other comboboxes entry vaildity are IN EACH ENTRY CHANGED EVENT HANDLER. The Search button will remain disabled until the 
+            'minimum ammount of search criteria has been entered. This insures the search routine wont crash due to user input error (i hope)
+            If UCase(SearchOperatorCOMBOBOX.Text) = "EQUAL TO" Or UCase(SearchOperatorCOMBOBOX.Text) = "NOT EQUAL TO" Or UCase(SearchOperatorCOMBOBOX.Text) = "GREATER THAN" Or UCase(SearchOperatorCOMBOBOX.Text) = "LESS THAN" Then
+                SearchRoutine() ' If all is good and search seems valid then branch to the search routine sub in Module1
+            End If
+            If SearchLISTBOX.Items.Count > 0 Then SearchLISTBOX.Focus() Else AllItemsInDatabaseListBox.Focus() ' ensure focus is returned to the relevant item list after search
+        End If
+    End Sub
+
+    'SWITCHES FOCUS FROM STRING ENTRY TEXTBOX TO SEARCH BUTTON ON ENTER KEYPRESS
+    Private Sub SearchWordCOMBOBOX_KeyDown(sender As Object, e As KeyEventArgs) Handles SearchWordCOMBOBOX.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            SearchBUTTON.Select()
+        End If
+    End Sub
+
+    'SWITCHES FOCUS FROM  VALUE ENTRY NUMERIC UP DOWN BOX TO SEARCH BUTTON ON ENTER KEYPRESS
+    Private Sub SearchValueNUMERICUPDWN_KeyDown(sender As Object, e As KeyEventArgs) Handles SearchValueNUMERICUPDWN.KeyDown
+        If e.KeyCode = Keys.Enter Then
+            e.SuppressKeyPress = True
+            SearchBUTTON.Select()
+        End If
     End Sub
 End Class

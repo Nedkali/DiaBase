@@ -249,7 +249,7 @@
 
         Form1.AllItemsInDatabaseListBox.Items.RemoveAt(iEdit)                           'Clears previous item's name from form1 itemlistbox
         Form1.AllItemsInDatabaseListBox.Items.Insert(iEdit, (Objects(iEdit).ItemName))  'Updates new details/name in form1 itemlistbox
-
+        Form1.AllItemsInDatabaseListBox.SelectedIndex = iEdit                           'selects the same item after edit
         Me.Close()
 
     End Sub

@@ -399,7 +399,6 @@
                 SearchUniqueAttributes()
 
         End Select
-
         SearchProgressForm.Close()
 
         If SearchReferenceList.Count > 0 Then
@@ -407,7 +406,16 @@
             Form1.ListboxTABCONTROL.SelectTab(1)
             Form1.SearchListControlTabBUTTON.BackColor = Color.DimGray
             Form1.ListControlTabBUTTON.BackColor = Color.Black
+            Form1.TradesListControlTabBUTTON.BackColor = Color.Black
             Form1.ItemTallyTEXTBOX.Text = Form1.SearchLISTBOX.Items.Count & " - Total Matches"
+
+            'POPULATES SEARCHES QUICK SELECTION DROP DOWN COLLECTIONS after successful search entries (Item Name, User Reference, Unique Attribs Strings) <-----------ROBS REV20
+            If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM NAME" And Form1.SearchWordCOMBOBOX.Text <> "" And ItemNamePulldownList.Contains(Form1.SearchWordCOMBOBOX.Text) = False Then ItemNamePulldownList.Add(Form1.SearchWordCOMBOBOX.Text) : Form1.SearchWordCOMBOBOX.Items.Add(Form1.SearchWordCOMBOBOX.Text)
+            If UCase(Form1.SearchFieldCOMBOBOX.Text) = "UNIQUE ATTRIBUTES" And Form1.SearchWordCOMBOBOX.Text <> "" And UniqueAttribsPulldownList.Contains(Form1.SearchWordCOMBOBOX.Text) = False Then UniqueAttribsPulldownList.Add(Form1.SearchWordCOMBOBOX.Text) : Form1.SearchWordCOMBOBOX.Items.Add(Form1.SearchWordCOMBOBOX.Text)
+            If UCase(Form1.SearchFieldCOMBOBOX.Text) = "USER REFERENCE" And Form1.SearchWordCOMBOBOX.Text <> "" And UserReferencePulldownList.Contains(Form1.SearchWordCOMBOBOX.Text) = False Then UserReferencePulldownList.Add(Form1.SearchWordCOMBOBOX.Text) : Form1.SearchWordCOMBOBOX.Items.Add(Form1.SearchWordCOMBOBOX.Text)
+
+
+
         End If
     End Sub
 

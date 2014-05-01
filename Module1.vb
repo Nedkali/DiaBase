@@ -47,6 +47,7 @@
     'Other Required Crap
     Public ItemNamePulldownList As List(Of String) = New List(Of String)
     Public UniqueAttribsPulldownList As List(Of String) = New List(Of String)
+    Public UserReferencePulldownList As List(Of String) = New List(Of String)
     Public LogFilesList As List(Of String) = New List(Of String)    'Holds all logs found in log directory
     Public PassFiles As List(Of String) = New List(Of String)       'Holds all _muleaccount.txt file used to get mule pass and mule account
     Public LogType As List(Of String) = New List(Of String)
