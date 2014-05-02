@@ -23,6 +23,7 @@
     Public Pretotal As Integer = 0
     Public DupeReferenceList As List(Of String) = New List(Of String)
 
+
     ' needs to be set to true when logger is doing log reads/imports and then set to false when completed
     ' Need this to prevent reading database while logger maybe trying to access it - logger will need priority
     ' or will most likely trigger an exception and crash Program
@@ -1502,7 +1503,7 @@
         If My.Computer.FileSystem.FileExists(BackupPath & tempname) = True Then
             My.Computer.FileSystem.DeleteFile(BackupPath & tempname)
         End If
-        My.Computer.FileSystem.CopyFile(DataBasePath & DatabaseFile, BackupPath & tempname)
+        My.Computer.FileSystem.CopyFile(Databasefile, BackupPath & tempname)
 
     End Sub
 

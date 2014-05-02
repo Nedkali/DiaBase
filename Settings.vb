@@ -32,6 +32,7 @@
         OpenFileDialog1.RestoreDirectory = True
         OpenFileDialog1.ShowDialog()
         DatabaseFileTEXTBOX.Text = openFileDialog1.FileName
+        DataBasePath = openFileDialog1.FileName
         SettingsChecker()
     End Sub
 
@@ -57,7 +58,6 @@
         file.WriteLine(DupeCheckBox1.Checked) : RemoveDupeMule = DupeCheckBox1.CheckState
         file.Close()
         EtalPath = EtalPathTEXTBOX.Text
-        DataBaseFile = DatabaseFileTEXTBOX.Text
         TimerMins = NumericUpDown1.Value
         TimerSecs = TimerMins * 60
         Me.Close()

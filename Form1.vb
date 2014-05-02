@@ -2,6 +2,8 @@
 Imports System.Drawing.Text
 
 Public Class Form1
+    Public pfc As New PrivateFontCollection()
+
     'FORM1 LOAD EVENT - PLAYS AUDIO LAUGH AND GETS FILE CONFIG VALUES AND SETS UP APPLICATION ELEMENTS AND OPENS THE DEFAULT DATABASE
     'ROUTINE ALSO SETS UP REQURED FILES ECT ON FIRST RUN (INSTALLS APP)
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load 'check if required folders exist on startup and create if necessary
@@ -46,18 +48,14 @@ Public Class Form1
         'Applying these fonts here and now will overwrite any value set in the from designer properties window
 
         'Setup pfc as our font collestion label, then assign the .ttf font fileas the font to use (should be in extras folder)
-        Dim pfc As New PrivateFontCollection()
+
 
         'This adds Diablo2 Heading Text font as 0
         If My.Computer.FileSystem.FileExists(Application.StartupPath + "\Extras\DiabloFont1.ttf") = True Then
             pfc.AddFontFile(Application.StartupPath + "\Extras\DiabloFont1.ttf")
 
-
             'General Text (8 to 6 point size)
             'RichTextBox3.Font = New Font(pfc.Families(36), 8, FontStyle.Regular)
-
-
-
 
             'Fancy Headers (16 point size)
             Label1.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)  'Item Lists Header
@@ -71,16 +69,14 @@ Public Class Form1
             TradesListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             SearchBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             Button3.Font = New Font(pfc.Families(0), 9, FontStyle.Regular) 'autologgers pause times buttom
-
         End If
-
-
     End Sub
 
     'Stuff to run after program starts
     Private Sub Form1_Shown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Shown
         LoadConfigFile()
         OpenDatabaseRoutine(Databasefile)
+        CurrentDatabaseLABEL.Text = My.Computer.FileSystem.GetName(Databasefile)
 
         StartTimer()
         If LoggerRunning = False Then RichTextBox1.Text = "AutoLogging is Idle" & vbCrLf
@@ -134,27 +130,33 @@ Public Class Form1
             Return
         End If
         ImportTimer.Stop() '        stop timer b4 form opens
-        OpenDatabaseDIALOG.Title = "Open Existing Database" '                           set dialog title
+        OpenDatabaseDIALOG.Title = "Open An Existing Database File" '                           set dialog title
         OpenDatabaseDIALOG.InitialDirectory = Application.StartupPath + "\DataBase\" '  set initial dir
         OpenDatabaseDIALOG.Filter = ".txt|*.txt"
-        OpenDatabaseDIALOG.FileName = "Default.txt"
+        OpenDatabaseDIALOG.FileName = Nothing
 
         If OpenDatabaseDIALOG.ShowDialog() = DialogResult.Cancel Then
             If Button3.Text = "Timer Stop" Then ImportTimer.Start() '       restart timer if not paused
             Return '          without this if user clicks cancel app crashes
         End If
 
+        'clean out old items in last loaded database
         SearchLISTBOX.Items.Clear() '                                                   clean out old search matches
-        PictureBox1.BackgroundImage = DiaBase.My.Resources.Resources.ImageBackground '  clean out old image                 [NOT WORKING]
-        RichTextBox2.Text = "" '                                                        clean out old item stats
-        RichTextBox1.Text = "" '                                                        clean out logging window
+        PictureBox1.BackgroundImage = DiaBase.My.Resources.Resources.ImageBackground '  clean out old image
+        RichTextBox3.Text = Nothing '                                                   clean out trades list
+        RichTextBox2.Text = Nothing '                                                   clean out old item stats
+        RichTextBox1.Text = Nothing '                                                   clean out logging window
+        MuleAccountTextbox.Text = Nothing '                                             clean all mule stats
+        MulePassTextbox.Text = Nothing
+        MuleNameTextbox.Text = Nothing
 
-        Dim DatabaseFilename As String = OpenDatabaseDIALOG.FileName
+        Databasefile = OpenDatabaseDIALOG.FileName
 
-        OpenDatabaseRoutine(DatabaseFilename) ' Routine puts saved items ito object arrays as ItemObject class collection
-
-
+        OpenDatabaseRoutine(Databasefile) ' Routine puts saved items ito object arrays as ItemObject class collection
         Display_Items() '                       Routine Populates all items listbox with, um, all items obviously :)
+        CurrentDatabaseLABEL.Text = My.Computer.FileSystem.GetName(Databasefile)
+
+
         If Button3.Text = "Timer Stop" Then ImportTimer.Start() '       restart timer if not paused
     End Sub
 
@@ -307,9 +309,10 @@ Public Class Form1
     Private Sub CloseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseToolStripMenuItem.Click
         If Objects.Count < 1 Then Return ' nothing to save
         YesNoD2Style.Text = "Save Database"
-        YesNoD2Style.YesNoHeaderLABEL.Text = ""
+        YesNoD2Style.YesNoHeaderLABEL.Text = "CONFIRM SAVE"
         YesNoD2Style.YesNoHeaderLABEL.TextAlign = ContentAlignment.MiddleCenter
-        YesNoD2Style.YesNoMessageLABEL.Text = "This will Overwrite the Database" & vbCrLf & vbCrLf & vbCrLf & "Are you sure you?"
+        YesNoD2Style.YesNoMessageLABEL.Text = "You are about to update the " & My.Computer.FileSystem.GetName(Databasefile) & " database file." & vbCrLf & vbCrLf & _
+                                              "Select " & Chr(34) & "Confirm" & Chr(34) & " to replace the old database file or" & Chr(34) & "Cancel" & Chr(34) & " to abort.."
         YesNoD2Style.ShowDialog()
         If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.No Then Return
 
@@ -385,9 +388,10 @@ Public Class Form1
 
     'Refreshes selected database when selected from menu bar
     Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
-        YesNoD2Style.Text = "Confirm Database Backup"
-        YesNoD2Style.YesNoHeaderLABEL.Text = "PLEASE READ BEFORE REFRESHING BACKUP"
-        YesNoD2Style.YesNoMessageLABEL.Text = "This will permantly destroy the current database backup file. Doing this will mean you will no longer be able to resore the current backup file to a complete database." & vbCrLf & "Are you sure you wish to continue?"
+        YesNoD2Style.Text = "Backup Database"
+        YesNoD2Style.YesNoHeaderLABEL.Text = "CONFIRM BACKUP"
+        YesNoD2Style.YesNoMessageLABEL.Text = "You are about to backup the " & My.Computer.FileSystem.GetName(Databasefile) & " database file. This will replace any backup file that already exists for this database." & vbCrLf & vbCrLf & _
+                                              "Select " & Chr(34) & "Confirm" & Chr(34) & " to replace the old backup file or " & Chr(34) & "Cancel" & Chr(34) & " to abort.."
         YesNoD2Style.ShowDialog()
         If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.Yes Then Module1.BackupDatabase()
     End Sub
@@ -629,9 +633,11 @@ Public Class Form1
     Private Sub RestoreBackupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RestoreBackupToolStripMenuItem.Click
         'SET D2 DIALOG TITLE AND MESSAGES
         YesNoD2Style.Text = "Restore Database From Backup"
-        YesNoD2Style.YesNoHeaderLABEL.Text = "PLEASE READ BEFORE RESTORING BACKUP"
+        YesNoD2Style.YesNoHeaderLABEL.Text = "CONFIRM BACKUP RESTORE"
         YesNoD2Style.YesNoHeaderLABEL.TextAlign = ContentAlignment.MiddleCenter
-        YesNoD2Style.YesNoMessageLABEL.Text = "You are about to permanently delete the current database and replace it with its backup file (if one exists)." & vbCrLf & vbCrLf & "Only continue if you are sure you know what you are doing as severe data loss may occur if you dont backup regularly." & vbCrLf & "Most record issues can be fixed manually by editing the faulty item record with the Item / Edit Item function." & vbCrLf & vbCrLf & "Are you sure you wish to restore the backup file?"
+        YesNoD2Style.YesNoMessageLABEL.Text = "You are about to permanently delete the current database and replace it with its backup file (if one exists)." & vbCrLf & vbCrLf & _
+                                              "Only continue if you are sure as severe data loss may occur if you havn't backed up regularly." & vbCrLf & vbCrLf & _
+                                              "Select " & Chr(34) & "Confirm" & Chr(34) & " to restore the backup file or " & Chr(34) & "Cancel" & Chr(34) & " to abort.."
         YesNoD2Style.ShowDialog()
 
         'On confirmation Restore form backup
@@ -639,7 +645,7 @@ Public Class Form1
 
             Dim BackupPath = Application.StartupPath & "\Database\Backup\"
             Dim temp As String = ""
-            Dim myarray = Split(DatabaseFile, ".txt", 0)
+            Dim myarray = Split(Databasefile, ".txt", 0)
             Dim tempname = myarray(0) & ".bak"
             myarray = Split(tempname, "\")
             tempname = myarray(myarray.Length - 1)
@@ -647,10 +653,10 @@ Public Class Form1
             If My.Computer.FileSystem.FileExists(BackupPath & tempname) = True Then
 
                 'found a backup file and copying it over to replace current database file, then reload it
-                My.Computer.FileSystem.DeleteFile(DatabaseFile) 'delete old dbase file
-                My.Computer.FileSystem.CopyFile(BackupPath & tempname, DatabaseFile, True) ' copy over new dbase file and rename it
+                My.Computer.FileSystem.DeleteFile(Databasefile) 'delete old dbase file
+                My.Computer.FileSystem.CopyFile(BackupPath & tempname, Databasefile, True) ' copy over new dbase file and rename it
 
-                OpenDatabaseRoutine(DatabaseFile) 'refresh new database file to the lists
+                OpenDatabaseRoutine(Databasefile) 'refresh new database file to the lists
             Else
                 'There is not backup file for this database so cant restore it
             End If
@@ -681,24 +687,37 @@ Public Class Form1
 
     'CREATE NEW DATABASE OPTION FOR MULTIPLE DATABASES-------> NEEDS TO BE RESOLVED YET <-------------------------------------------[FINISH THIS ALREADY ROB]
     Private Sub NewToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem1.Click
-        YesNoD2Style.Text = "Confirm New Database"
-        YesNoD2Style.YesNoHeaderLABEL.Text = "PLEASE READ BEFOR CREATING A NEW DATABASE"
-        YesNoD2Style.YesNoMessageLABEL.Text = "The Beat version does not support multiple databases. Creating a new database will totally destroy the current one." & vbCrLf & "Are you sure you want to contine?"
-        YesNoD2Style.ShowDialog()
-        If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.Yes Then
 
-            If My.Computer.FileSystem.FileExists(Application.StartupPath + "\DataBase\Default.txt") = False Then
-                My.Computer.FileSystem.DeleteFile(Application.StartupPath + "\DataBase\Default.txt")
-            Else
+        '---OLD CODE FOR HANDLER-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        'YesNoD2Style.Text = "Confirm New Database"
+        'YesNoD2Style.YesNoHeaderLABEL.Text = "PLEASE READ BEFOR CREATING A NEW DATABASE"
+        'YesNoD2Style.YesNoMessageLABEL.Text = "The Beat version does not support multiple databases. Creating a new database will totally destroy the current one." & vbCrLf & "Are you sure you want to contine?"
+        'YesNoD2Style.ShowDialog()
+        'If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.Yes Then
+        'If My.Computer.FileSystem.FileExists(Application.StartupPath + "\DataBase\Default.txt") = False Then
+        'My.Computer.FileSystem.DeleteFile(Application.StartupPath + "\DataBase\Default.txt")
+        'Else
+        'Dim file As System.IO.StreamWriter
+        'file = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath + "\DataBase\Default.txt", False)
+        'file.Close()
+        'Mymessages = "Default Data base file created" : MyMessageBox()
+        'OpenDatabaseRoutine(Databasefile) 'refresh new database file to the lists
+        'End If
+        'End If
+        'SkipNewDatabase:
+        '----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-                Dim file As System.IO.StreamWriter
-                file = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath + "\DataBase\Default.txt", False)
-                file.Close()
-                Mymessages = "Default Data base file created" : MyMessageBox()
-                OpenDatabaseRoutine(Databasefile) 'refresh new database file to the lists
-            End If
+        If LoggerRunning = True Then ' dont try to create file if auto logger is working - will cause app crash
+            Mymessages = "Please wait File in use, Logger Running" : MyMessageBox()
+            Return
         End If
-SkipNewDatabase:
+        ImportTimer.Stop()                                      'stop timer b4 new database creation
+
+        CreateNewDatabase.ShowDialog()
+
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start() 'restart timer but only if its not set to pause
+
+
     End Sub
 
     'DISPLAYS THE SETTINGS FROM SELECTED FROM PULLDOWN MENUES
@@ -820,7 +839,7 @@ SkipNewDatabase:
                 Next
             Next
             ItemTallyTEXTBOX.Text = AllItemsInDatabaseListBox.Items.Count & " - Total Items"
-            AllItemsInDatabaseListBox.SelectedIndex = FocusOnExit
+            If AllItemsInDatabaseListBox.SelectedIndex > 0 Then AllItemsInDatabaseListBox.SelectedIndex = FocusOnExit
             Return
         End If
     End Sub

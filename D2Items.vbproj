@@ -88,6 +88,12 @@
     <Compile Include="ClosingAppForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CreateNewDatabase.Designer.vb">
+      <DependentUpon>CreateNewDatabase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CreateNewDatabase.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DupeCountProgressForm.Designer.vb">
       <DependentUpon>DupeCountProgressForm.vb</DependentUpon>
     </Compile>
@@ -169,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClosingAppForm.resx">
       <DependentUpon>ClosingAppForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateNewDatabase.resx">
+      <DependentUpon>CreateNewDatabase.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DupeCountProgressForm.resx">
       <DependentUpon>DupeCountProgressForm.vb</DependentUpon>
@@ -252,6 +261,7 @@
     <None Include="Resources\D2TEXTBOX.PNG" />
     <None Include="Resources\D2TEXTBOX1.PNG" />
     <None Include="Resources\Baalfadeout.wav" />
+    <None Include="Resources\CurrentFileBackground.PNG" />
     <Content Include="sword_and_Shield.ico" />
     <Content Include="sword_and_Shield_Xparent.ico" />
     <Content Include="Treasure_Chest.ico" />

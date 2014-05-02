@@ -60,20 +60,22 @@ Partial Class YesNoD2Style
         'YesNoMessageLABEL
         '
         Me.YesNoMessageLABEL.BackColor = System.Drawing.Color.Black
+        Me.YesNoMessageLABEL.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.YesNoMessageLABEL.ForeColor = System.Drawing.Color.White
-        Me.YesNoMessageLABEL.Location = New System.Drawing.Point(35, 71)
+        Me.YesNoMessageLABEL.Location = New System.Drawing.Point(39, 76)
         Me.YesNoMessageLABEL.Name = "YesNoMessageLABEL"
-        Me.YesNoMessageLABEL.Size = New System.Drawing.Size(359, 124)
+        Me.YesNoMessageLABEL.Size = New System.Drawing.Size(353, 124)
         Me.YesNoMessageLABEL.TabIndex = 2
         Me.YesNoMessageLABEL.Text = "YesNoMessageLABEL - Set at runtime"
         '
         'YesNoHeaderLABEL
         '
         Me.YesNoHeaderLABEL.BackColor = System.Drawing.Color.Black
+        Me.YesNoHeaderLABEL.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.YesNoHeaderLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.YesNoHeaderLABEL.Location = New System.Drawing.Point(35, 38)
+        Me.YesNoHeaderLABEL.Location = New System.Drawing.Point(36, 38)
         Me.YesNoHeaderLABEL.Name = "YesNoHeaderLABEL"
-        Me.YesNoHeaderLABEL.Size = New System.Drawing.Size(328, 23)
+        Me.YesNoHeaderLABEL.Size = New System.Drawing.Size(356, 23)
         Me.YesNoHeaderLABEL.TabIndex = 3
         Me.YesNoHeaderLABEL.Text = "YesNoHeaderLABEL - Set at runtime"
         Me.YesNoHeaderLABEL.TextAlign = System.Drawing.ContentAlignment.MiddleCenter

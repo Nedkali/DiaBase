@@ -138,6 +138,7 @@ Partial Class Form1
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ClearClipboardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CurrentDatabaseLABEL = New System.Windows.Forms.Label()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -163,7 +164,7 @@ Partial Class Form1
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(200, 26)
         Me.Label3.TabIndex = 0
-        Me.Label3.Text = "AutoLogging"
+        Me.Label3.Text = "Auto Logging"
         '
         'AllItemsInDatabaseListBox
         '
@@ -365,27 +366,27 @@ Partial Class Form1
         '
         'Label2
         '
-        Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label2.Location = New System.Drawing.Point(615, 183)
+        Me.Label2.Location = New System.Drawing.Point(562, 183)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(65, 20)
+        Me.Label2.Size = New System.Drawing.Size(205, 20)
         Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Details"
+        Me.Label2.Text = "Statistics"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label1.Location = New System.Drawing.Point(44, 183)
+        Me.Label1.Location = New System.Drawing.Point(31, 184)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(47, 20)
+        Me.Label1.Size = New System.Drawing.Size(101, 20)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Lists"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'SettingsToolStripMenuItem
         '
@@ -486,11 +487,12 @@ Partial Class Form1
         '
         Me.ItemTallyTEXTBOX.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.ItemTallyTEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.ItemTallyTEXTBOX.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.ItemTallyTEXTBOX.ForeColor = System.Drawing.Color.BurlyWood
-        Me.ItemTallyTEXTBOX.Location = New System.Drawing.Point(155, 186)
+        Me.ItemTallyTEXTBOX.Location = New System.Drawing.Point(140, 186)
         Me.ItemTallyTEXTBOX.Name = "ItemTallyTEXTBOX"
         Me.ItemTallyTEXTBOX.ReadOnly = True
-        Me.ItemTallyTEXTBOX.Size = New System.Drawing.Size(114, 20)
+        Me.ItemTallyTEXTBOX.Size = New System.Drawing.Size(129, 21)
         Me.ItemTallyTEXTBOX.TabIndex = 0
         Me.ItemTallyTEXTBOX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1008,18 +1010,18 @@ Partial Class Form1
         'Label33
         '
         Me.Label33.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label33.Location = New System.Drawing.Point(156, 206)
+        Me.Label33.Location = New System.Drawing.Point(141, 206)
         Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(113, 1)
+        Me.Label33.Size = New System.Drawing.Size(128, 1)
         Me.Label33.TabIndex = 167
         Me.Label33.Text = "0"
         '
         'Label34
         '
         Me.Label34.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label34.Location = New System.Drawing.Point(156, 186)
+        Me.Label34.Location = New System.Drawing.Point(141, 186)
         Me.Label34.Name = "Label34"
-        Me.Label34.Size = New System.Drawing.Size(113, 1)
+        Me.Label34.Size = New System.Drawing.Size(128, 1)
         Me.Label34.TabIndex = 0
         '
         'Label35
@@ -1033,7 +1035,7 @@ Partial Class Form1
         'Label36
         '
         Me.Label36.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label36.Location = New System.Drawing.Point(155, 186)
+        Me.Label36.Location = New System.Drawing.Point(140, 186)
         Me.Label36.Name = "Label36"
         Me.Label36.Size = New System.Drawing.Size(1, 21)
         Me.Label36.TabIndex = 170
@@ -1204,6 +1206,18 @@ Partial Class Form1
         Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(229, 22)
         Me.ClearToolStripMenuItem.Text = "Clear All Trade Entries"
         '
+        'CurrentDatabaseLABEL
+        '
+        Me.CurrentDatabaseLABEL.BackColor = System.Drawing.Color.Black
+        Me.CurrentDatabaseLABEL.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CurrentDatabaseLABEL.ForeColor = System.Drawing.Color.SeaShell
+        Me.CurrentDatabaseLABEL.Image = Global.DiaBase.My.Resources.Resources.back2
+        Me.CurrentDatabaseLABEL.Location = New System.Drawing.Point(558, 3)
+        Me.CurrentDatabaseLABEL.Name = "CurrentDatabaseLABEL"
+        Me.CurrentDatabaseLABEL.Size = New System.Drawing.Size(234, 18)
+        Me.CurrentDatabaseLABEL.TabIndex = 179
+        Me.CurrentDatabaseLABEL.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1212,6 +1226,7 @@ Partial Class Form1
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.D2Data
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(794, 562)
+        Me.Controls.Add(Me.CurrentDatabaseLABEL)
         Me.Controls.Add(Me.TradesListControlTabBUTTON)
         Me.Controls.Add(Me.Label40)
         Me.Controls.Add(Me.Label39)
@@ -1420,6 +1435,7 @@ Partial Class Form1
     Friend WithEvents ClearToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DeleteItemsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents CurrentDatabaseLABEL As System.Windows.Forms.Label
 
 
 End Class
