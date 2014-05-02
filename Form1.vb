@@ -51,28 +51,28 @@ Public Class Form1
         'This adds Diablo2 Heading Text font as 0
         If My.Computer.FileSystem.FileExists(Application.StartupPath + "\Extras\DiabloFont1.ttf") = True Then
             pfc.AddFontFile(Application.StartupPath + "\Extras\DiabloFont1.ttf")
+
+
+            'General Text (8 to 6 point size)
+            'RichTextBox3.Font = New Font(pfc.Families(36), 8, FontStyle.Regular)
+
+
+
+
+            'Fancy Headers (16 point size)
+            Label1.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)  'Item Lists Header
+            Label2.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)  'Details Header
+            Label3.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)  'Autologging Header
+            Label29.Font = New Font(pfc.Families(0), 16, FontStyle.Regular) 'Item and Mule Search
+
+            'Fancy Buttons (9 point size)
+            ListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            SearchListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            TradesListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            SearchBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            Button3.Font = New Font(pfc.Families(0), 9, FontStyle.Regular) 'autologgers pause times buttom
+
         End If
-
-
-        'General Text (8 to 6 point size)
-        'RichTextBox3.Font = New Font(pfc.Families(36), 8, FontStyle.Regular)
-
-
-
-
-        'Fancy Headers (16 point size)
-        Label1.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)  'Item Lists Header
-        Label2.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)  'Details Header
-        Label3.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)  'Autologging Header
-        Label29.Font = New Font(pfc.Families(0), 16, FontStyle.Regular) 'Item and Mule Search
-
-        'Fancy Buttons (9 point size)
-        ListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
-        SearchListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
-        TradesListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
-        SearchBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
-        Button3.Font = New Font(pfc.Families(0), 9, FontStyle.Regular) 'autologgers pause times buttom
-
 
 
     End Sub
@@ -1100,7 +1100,7 @@ SkipNewDatabase:
     End Sub
 
     '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    'REMOVE MULTIPLE ITEMS FROM SEARCH ITEM LIST  (FOR SOME RREASON THERE WAS TWO DELETE ROUTINES IN THE SEARCH LIST SO I REMOVED THIS ONE)
+    'REMOVE MULTIPLE ITEMS FROM SEARCH ITEM LIST  (FOR SOME REASON THERE WAS TWO DELETE ROUTINES IN THE SEARCH LIST SO I REMOVED THIS ONE)
     'Private Sub RemoveItemsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveItemsToolStripMenuItem.Click
     'Dim a As Integer
     'For index = SearchLISTBOX.SelectedIndices.Count - 1 To 0 Step -1
