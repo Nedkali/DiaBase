@@ -54,6 +54,8 @@ Public Class Form1
         If My.Computer.FileSystem.FileExists(Application.StartupPath + "\Extras\DiabloFont1.ttf") = True Then
             pfc.AddFontFile(Application.StartupPath + "\Extras\DiabloFont1.ttf")
 
+
+
             'General Text (8 to 6 point size)
             'RichTextBox3.Font = New Font(pfc.Families(36), 8, FontStyle.Regular)
 
@@ -287,6 +289,9 @@ Public Class Form1
         RichTextBox2.SelectAll()
         RichTextBox2.SelectionAlignment = HorizontalAlignment.Center
         PictureBox1.Load("Skins\" + ItemImageList(Objects(RowNumber).ItemImage) + ".jpg")
+
+        
+
 
     End Sub
 
@@ -807,12 +812,8 @@ Public Class Form1
         'MessageBox.Show(" Selected items = " & AllItemsInDatabaseListBox.SelectedIndices.Count) ' debugg message box
 
         'Gets the object location for the record before the delete selection So after delete is finished selection bar will to return there<----ROB REV20
-        If AllItemsInDatabaseListBox.Items.Count > 1 Then
-            FocusOnExit = AllItemsInDatabaseListBox.SelectedIndex
-            If FocusOnExit > AllItemsInDatabaseListBox.Items.Count Then FocusOnExit = AllItemsInDatabaseListBox.Items.Count - 1
-            If FocusOnExit < 0 Then FocusOnExit = 0
-        End If
-
+             FocusOnExit = AllItemsInDatabaseListBox.SelectedIndex
+         
         If AllItemsInDatabaseListBox.SelectedIndices.Count > 0 Then
             For index = AllItemsInDatabaseListBox.SelectedIndices.Count - 1 To 0 Step -1
                 Dim a As Integer = AllItemsInDatabaseListBox.SelectedIndices(index)
@@ -839,7 +840,14 @@ Public Class Form1
                 Next
             Next
             ItemTallyTEXTBOX.Text = AllItemsInDatabaseListBox.Items.Count & " - Total Items"
-            If AllItemsInDatabaseListBox.SelectedIndex > 0 Then AllItemsInDatabaseListBox.SelectedIndex = FocusOnExit
+
+            'SET THE DELETED OBJECT LOCATION IN THE LIST AS THE HIGHLIGHTED ITEM ON RETURN FROM DETETE
+            If FocusOnExit >= (AllItemsInDatabaseListBox.Items.Count) Then FocusOnExit = AllItemsInDatabaseListBox.Items.Count - 1
+            If AllItemsInDatabaseListBox.Items.Count = 1 Then FocusOnExit = 0
+            If AllItemsInDatabaseListBox.Items.Count = 0 Then FocusOnExit = -1
+
+
+            AllItemsInDatabaseListBox.SelectedIndex = FocusOnExit
             Return
         End If
     End Sub
@@ -852,11 +860,9 @@ Public Class Form1
         Dim FocusOnExit As Integer = Nothing
 
         'Gets the object location for the record before the delete selection So after delete is finished selection bar will to return there<----ROB REV20
-        If SearchLISTBOX.Items.Count > 1 Then
-            FocusOnExit = SearchLISTBOX.SelectedIndex
-            If FocusOnExit > SearchLISTBOX.Items.Count Then FocusOnExit = SearchLISTBOX.Items.Count - 1
-            If FocusOnExit < 0 Then FocusOnExit = 0
-        End If
+
+        FocusOnExit = SearchLISTBOX.SelectedIndex
+
 
 
 
@@ -872,6 +878,13 @@ Public Class Form1
             Next
         Next
         ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Items"
+
+
+        'SET THE DELETED OBJECT LOCATION IN THE LIST AS THE HIGHLIGHTED ITEM ON RETURN FROM DETETE
+        If FocusOnExit >= (SearchLISTBOX.Items.Count) Then FocusOnExit = SearchLISTBOX.Items.Count - 1
+        If SearchLISTBOX.Items.Count = 1 Then FocusOnExit = 0
+        If SearchLISTBOX.Items.Count = 0 Then FocusOnExit = -1
+
         SearchLISTBOX.SelectedIndex = FocusOnExit
 
     End Sub
