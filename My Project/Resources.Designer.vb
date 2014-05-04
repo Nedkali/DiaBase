@@ -102,6 +102,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property BigSettings() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("BigSettings", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property D2BACKGROUNDPIC() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("D2BACKGROUNDPIC", resourceCulture)

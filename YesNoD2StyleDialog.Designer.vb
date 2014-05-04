@@ -84,7 +84,7 @@ Partial Class YesNoD2Style
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.d2graphicselect
+        Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.Setting
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(431, 275)
         Me.ControlBox = False

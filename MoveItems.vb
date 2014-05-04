@@ -22,13 +22,15 @@ Public Class MoveItems
 
     'auto selects the textbox and enters listbox selection into textbox as its selected in the listbox (keeps textbox always selected)
     Private Sub SavedDatabasesLISTBOX_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SavedDatabasesLISTBOX.SelectedIndexChanged
-        DatabaseFilenameTEXTBOX.Text = Replace(SavedDatabasesLISTBOX.SelectedItem, ".txt", "")
+        DatabaseFilenameTEXTBOX.Text = SavedDatabasesLISTBOX.SelectedItem
         DatabaseFilenameTEXTBOX.Select()
+        DatabaseFilenameTEXTBOX.SelectionLength = 0
     End Sub
 
     'Stops list box from selecting when nothing in the textbox is selected (keeps textbox always selected)
     Private Sub SavedDatabasesLISTBOX_MouseDown(sender As Object, e As MouseEventArgs) Handles SavedDatabasesLISTBOX.MouseDown
         DatabaseFilenameTEXTBOX.Select()
+        DatabaseFilenameTEXTBOX.SelectionLength = 0
     End Sub
 
     Private Sub MoveItemsBUTTON_Click(sender As Object, e As EventArgs) Handles MoveItemsBUTTON.Click
@@ -42,7 +44,6 @@ Public Class MoveItems
 
             'creates a new database file if it doesnt already exist
             Dim NewDatabase = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath + "\Database\" + DatabaseFilenameTEXTBOX.Text + ".txt", False)
-            'NewDatabase.WriteLine("--------------------")
             NewDatabase.Close()
         End If
 
@@ -124,7 +125,7 @@ Public Class MoveItems
             'load up destination one and display first item and set current database label in top right of form1
             OpenDatabaseRoutine(Application.StartupPath + "\Database\" + DatabaseFilenameTEXTBOX.Text + ".txt")
             Form1.Display_Items()
-            Form1.CurrentDatabaseLABEL.Text = Application.StartupPath + "\Database\" + DatabaseFilenameTEXTBOX.Text
+            Form1.CurrentDatabaseLABEL.Text = DatabaseFilenameTEXTBOX.Text
 
         End If
         Me.Close()

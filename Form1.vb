@@ -128,25 +128,27 @@ Public Class Form1
             Return
         End If
         ImportTimer.Stop() '        stop timer b4 form opens
-        OpenDatabaseDIALOG.Title = "Open An Existing Database File" '                           set dialog title
-        OpenDatabaseDIALOG.InitialDirectory = Application.StartupPath + "\DataBase\" '  set initial dir
-        OpenDatabaseDIALOG.Filter = ".txt|*.txt"
-        OpenDatabaseDIALOG.FileName = Nothing
 
-        If OpenDatabaseDIALOG.ShowDialog() = DialogResult.Cancel Then
-            If Button3.Text = "Timer Stop" Then ImportTimer.Start() '       restart timer if not paused
-            Return '          without this if user clicks cancel app crashes
-        End If
+        D2StyleOpenFileDialog.Show()
 
+        'OpenDatabaseDIALOG.Title = "Open An Existing Database File" '                           set dialog title
+        'OpenDatabaseDIALOG.InitialDirectory = Application.StartupPath + "\DataBase\" '  set initial dir
+        'OpenDatabaseDIALOG.Filter = ".txt|*.txt"
+        'OpenDatabaseDIALOG.FileName = Nothing
+
+        'If OpenDatabaseDIALOG.ShowDialog() = DialogResult.Cancel Then
+        'If Button3.Text = "Timer Stop" Then ImportTimer.Start() '       restart timer if not paused
+        'Return '          without this if user clicks cancel app crashes
+        'End If
         'clean out old items in last loaded database
-        SearchLISTBOX.Items.Clear() '                                                   clean out old search matches
-        RichTextBox3.Text = Nothing '                                                   clean out trades list
-        ClearStats()
-        Databasefile = OpenDatabaseDIALOG.FileName
+        'SearchLISTBOX.Items.Clear() '                                                   clean out old search matches
+        'RichTextBox3.Text = Nothing '                                                   clean out trades list
+        'ClearStats()
+        'Databasefile = OpenDatabaseDIALOG.FileName
 
-        OpenDatabaseRoutine(Databasefile) ' Routine puts saved items ito object arrays as ItemObject class collection
-        Display_Items() '                       Routine Populates all items listbox with, um, all items obviously :)
-        Me.CurrentDatabaseLABEL.Text = Replace(My.Computer.FileSystem.GetName(Databasefile), ".txt", "")
+        'OpenDatabaseRoutine(Databasefile) ' Routine puts saved items ito object arrays as ItemObject class collection
+        'Display_Items() '                       Routine Populates all items listbox with, um, all items obviously :)
+        'Me.CurrentDatabaseLABEL.Text = Replace(My.Computer.FileSystem.GetName(Databasefile), ".txt", "")
         If Button3.Text = "Timer Stop" Then ImportTimer.Start() '       restart timer if not paused
     End Sub
 

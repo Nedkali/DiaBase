@@ -94,6 +94,12 @@
     <Compile Include="CreateNewDatabase.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="D2StyleOpenFileDialog.Designer.vb">
+      <DependentUpon>D2StyleOpenFileDialog.vb</DependentUpon>
+    </Compile>
+    <Compile Include="D2StyleOpenFileDialog.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DupeCountProgressForm.Designer.vb">
       <DependentUpon>DupeCountProgressForm.vb</DependentUpon>
     </Compile>
@@ -162,6 +168,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tradelist.vb" />
+    <Compile Include="UserInputForm.Designer.vb">
+      <DependentUpon>UserInputForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserInputForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UserMessaging.Designer.vb">
       <DependentUpon>UserMessaging.vb</DependentUpon>
     </Compile>
@@ -184,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateNewDatabase.resx">
       <DependentUpon>CreateNewDatabase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="D2StyleOpenFileDialog.resx">
+      <DependentUpon>D2StyleOpenFileDialog.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DupeCountProgressForm.resx">
       <DependentUpon>DupeCountProgressForm.vb</DependentUpon>
@@ -214,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserInputForm.resx">
+      <DependentUpon>UserInputForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserMessaging.resx">
       <DependentUpon>UserMessaging.vb</DependentUpon>
@@ -271,6 +289,7 @@
     <None Include="Resources\D2TEXTBOX1.PNG" />
     <None Include="Resources\Baalfadeout.wav" />
     <None Include="Resources\CurrentFileBackground.PNG" />
+    <None Include="Resources\BigSettings.bmp" />
     <Content Include="sword_and_Shield.ico" />
     <Content Include="sword_and_Shield_Xparent.ico" />
     <Content Include="Treasure_Chest.ico" />

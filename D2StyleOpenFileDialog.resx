@@ -117,56 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Gem" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gem.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mbox" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mbox.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ImageBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ImageBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Setting" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Setting.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="d2Dong" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\d2Dong.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="diablotaunt1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\diablotaunt1.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="d2graphicselect" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\d2graphicselect.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="back1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\back1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BigDLaugh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BigDLaugh.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="back3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\back3.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="D2TEXTBOX" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\D2TEXTBOX.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="menubar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\menubar.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="D2Data" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\D2Data.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="D2BACKGROUNDPIC" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\D2BACKGROUNDPIC.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="D2TEXTBOX1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\D2TEXTBOX1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="back2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CurrentFileBackground.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BigSettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BigSettings.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  <metadata name="OpenDatabaseCONTEXTMENU.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

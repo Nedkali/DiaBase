@@ -23,7 +23,6 @@ Public Class CreateNewDatabase
                 'If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DataBase\" & NewDatabaseTEXTBOX.Text & ".txt") = True Then My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DataBase\" & NewDatabaseTEXTBOX.Text & ".txt")
 
                 Dim CreateFile = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath & "\DataBase\" & NewDatabaseTEXTBOX.Text & ".txt", False)
-                'CreateFile.WriteLine("--------------------")
                 CreateFile.Close()
 
                 'CHECK THE AUTO SAVE AND OPEN NEW DATABASE CHECKBOX
