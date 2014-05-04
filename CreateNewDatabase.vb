@@ -1,5 +1,4 @@
 ﻿Imports System.IO
-Imports System.Drawing.Text
 
 Public Class CreateNewDatabase
 
@@ -24,7 +23,7 @@ Public Class CreateNewDatabase
                 'If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DataBase\" & NewDatabaseTEXTBOX.Text & ".txt") = True Then My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DataBase\" & NewDatabaseTEXTBOX.Text & ".txt")
 
                 Dim CreateFile = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath & "\DataBase\" & NewDatabaseTEXTBOX.Text & ".txt", False)
-                CreateFile.WriteLine("--------------------")
+                'CreateFile.WriteLine("--------------------")
                 CreateFile.Close()
 
                 'CHECK THE AUTO SAVE AND OPEN NEW DATABASE CHECKBOX
@@ -39,16 +38,10 @@ Public Class CreateNewDatabase
                     'Clear form 1 old database stats
                     Form1.SearchLISTBOX.Items.Clear() '                                                   clean out old search matches
                     Form1.PictureBox1.BackgroundImage = DiaBase.My.Resources.Resources.ImageBackground '  clean out old image
-                    Form1.RichTextBox3.Text = Nothing '                                                   clean out trades list
-                    Form1.RichTextBox2.Text = Nothing '                                                   clean out old item stats
-                    Form1.RichTextBox1.Text = Nothing '                                                   clean out logging window
-                    Form1.MuleAccountTextbox.Text = Nothing '                                             clean all mule stats Acc/Pass/Name
-                    Form1.MulePassTextbox.Text = Nothing
-                    Form1.MuleNameTextbox.Text = Nothing
-
+                    Form1.ClearStats()
                     OpenDatabaseRoutine(Databasefile)
                     Form1.Display_Items()
-                    Form1.CurrentDatabaseLABEL.Text = My.Computer.FileSystem.GetName(Databasefile)
+                    Form1.CurrentDatabaseLABEL.Text = Replace(My.Computer.FileSystem.GetName(Databasefile), ".txt", "")
                     Me.Close()
 
                 End If
@@ -57,10 +50,17 @@ Public Class CreateNewDatabase
             If DialogResult = Windows.Forms.DialogResult.No Then
                 'CANCEL REPLACE - Do Nothing
             End If
+        Else
+            NewDatabaseTEXTBOX.Select()
         End If
     End Sub
     'CANCEL CREATE DATABASE
     Private Sub NewDatabaseCancelBUTTON_Click(sender As Object, e As EventArgs) Handles NewDatabaseCancelBUTTON.Click
         Me.Close()
+    End Sub
+
+    Private Sub CreateNewDatabase_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        NewDatabaseTEXTBOX.Text = Nothing
+        NewDatabaseTEXTBOX.Select()
     End Sub
 End Class

@@ -46,15 +46,11 @@ Public Class Form1
 
         'Next bit setup up diablo 2 heading text and game text true type fonts (.ttf) 
         'Applying these fonts here and now will overwrite any value set in the from designer properties window
-
         'Setup pfc as our font collestion label, then assign the .ttf font fileas the font to use (should be in extras folder)
-
 
         'This adds Diablo2 Heading Text font as 0
         If My.Computer.FileSystem.FileExists(Application.StartupPath + "\Extras\DiabloFont1.ttf") = True Then
             pfc.AddFontFile(Application.StartupPath + "\Extras\DiabloFont1.ttf")
-
-
 
             'General Text (8 to 6 point size)
             'RichTextBox3.Font = New Font(pfc.Families(36), 8, FontStyle.Regular)
@@ -78,7 +74,7 @@ Public Class Form1
     Private Sub Form1_Shown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Shown
         LoadConfigFile()
         OpenDatabaseRoutine(Databasefile)
-        CurrentDatabaseLABEL.Text = My.Computer.FileSystem.GetName(Databasefile)
+        Me.CurrentDatabaseLABEL.Text = Replace(My.Computer.FileSystem.GetName(Databasefile), ".txt", "")
 
         StartTimer()
         If LoggerRunning = False Then RichTextBox1.Text = "AutoLogging is Idle" & vbCrLf
@@ -144,21 +140,13 @@ Public Class Form1
 
         'clean out old items in last loaded database
         SearchLISTBOX.Items.Clear() '                                                   clean out old search matches
-        PictureBox1.BackgroundImage = DiaBase.My.Resources.Resources.ImageBackground '  clean out old image
         RichTextBox3.Text = Nothing '                                                   clean out trades list
-        RichTextBox2.Text = Nothing '                                                   clean out old item stats
-        RichTextBox1.Text = Nothing '                                                   clean out logging window
-        MuleAccountTextbox.Text = Nothing '                                             clean all mule stats
-        MulePassTextbox.Text = Nothing
-        MuleNameTextbox.Text = Nothing
-
+        ClearStats()
         Databasefile = OpenDatabaseDIALOG.FileName
 
         OpenDatabaseRoutine(Databasefile) ' Routine puts saved items ito object arrays as ItemObject class collection
         Display_Items() '                       Routine Populates all items listbox with, um, all items obviously :)
-        CurrentDatabaseLABEL.Text = My.Computer.FileSystem.GetName(Databasefile)
-
-
+        Me.CurrentDatabaseLABEL.Text = Replace(My.Computer.FileSystem.GetName(Databasefile), ".txt", "")
         If Button3.Text = "Timer Stop" Then ImportTimer.Start() '       restart timer if not paused
     End Sub
 
@@ -176,125 +164,116 @@ Public Class Form1
 
     'OPENES THE NEW ITEM FORM TO MANUALLY ADD A NEW ITEM TO THE DATABASE
     Private Sub AddNewItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddNewItemToolStripMenuItem.Click
-        AddNewItem()
-
+        AddNewItem() 'add item form is opened in this next sub
     End Sub
 
     'OPENS THE EDIT EXISTING ITEM FORM TO MANUALLY EDIT AN ITEMS FIELDS
     Private Sub EditExistingItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditExistingItemToolStripMenuItem.Click
-        EditItem()
+        EditItem() 'edit item form is opened in this next sub
     End Sub
-
 
     'ALL ITEMS LISTBOX SELECTED INDEX CHANGE HANDLER
     Private Sub AllItemsInDatabaseListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AllItemsInDatabaseListBox.SelectedIndexChanged
-        Dim RowNumber As Integer = AllItemsInDatabaseListBox.SelectedIndex
-        If RowNumber = -1 Then Return ' do nothing
-        If RowNumber >= 0 Then
-            RichTextBox2.Text = ""  'clears form has been some overlap of listings occur - wierd behaviour
+        If AllItemsInDatabaseListBox.SelectedIndex <> -1 Then
+            Dim RowNumber As Integer = AllItemsInDatabaseListBox.SelectedIndex
+            If RowNumber = -1 Then Return ' do nothing
+            If RowNumber >= 0 Then
+                RichTextBox2.Text = ""  'clears form has been some overlap of listings occur - wierd behaviour
 
+                ' MuleInfoRICHTEXTBOX.Clear() 'clears mule info textbox
+                MuleAccountTextbox.Clear()
+                MuleNameTextbox.Clear()
+                MulePassTextbox.Clear()
 
-            ' MuleInfoRICHTEXTBOX.Clear() 'clears mule info textbox
-            MuleAccountTextbox.Clear()
-            MuleNameTextbox.Clear()
-            MulePassTextbox.Clear()
+                Dim DisplayType As String = Objects(RowNumber).ItemQuality
+                Dim count As Integer = Objects(RowNumber).ItemQuality.Length
+                If DisplayType = "Normal" Or DisplayType = "Superior" Then
+                    If Objects(RowNumber).ItemBase = "Rune" Then
+                        RichTextBox2.SelectionColor = Color.Orange
+                        RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
+                    End If
 
-            Dim DisplayType As String = Objects(RowNumber).ItemQuality
-            Dim count As Integer = Objects(RowNumber).ItemQuality.Length
-            If DisplayType = "Normal" Or DisplayType = "Superior" Then
-                If Objects(RowNumber).ItemBase = "Rune" Then
-                    RichTextBox2.SelectionColor = Color.Orange
+                    If Objects(RowNumber).ItemBase = "Quest" Then
+                        RichTextBox2.SelectionColor = Color.Orange
+                        RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
+                    End If
+
+                    If Objects(RowNumber).ItemName.IndexOf("Rune") = -1 And Objects(RowNumber).ItemBase <> "Quest" Then
+                        RichTextBox2.SelectionColor = Color.White
+                        RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
+                    End If
+                End If
+                If DisplayType = "Magic" Then
+                    RichTextBox2.SelectionColor = Color.DodgerBlue
+                    RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
+                End If
+                If DisplayType = "Rare" Then
+                    RichTextBox2.SelectionColor = Color.Yellow
+                    RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
+                End If
+                If DisplayType = "Crafted" Then
+                    RichTextBox2.SelectionColor = Color.DarkGoldenrod
+                    RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
+                End If
+                If DisplayType = "Set" Then
+                    RichTextBox2.SelectionColor = Color.Green
+                    RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
+                End If
+                If DisplayType = "Unique" Then
+                    RichTextBox2.SelectionColor = Color.BurlyWood
                     RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
                 End If
 
-                If Objects(RowNumber).ItemBase = "Quest" Then
-                    RichTextBox2.SelectionColor = Color.Orange
-                    RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
-                End If
+                RichTextBox2.AppendText(vbCrLf) ' add a spacing line between item name and item stats (looks neater) ROBS EDIT
 
-                If Objects(RowNumber).ItemName.IndexOf("Rune") = -1 And Objects(RowNumber).ItemBase <> "Quest" Then
-                    RichTextBox2.SelectionColor = Color.White
-                    RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
-                End If
+                count = RichTextBox2.TextLength
+                'from this point we want to add white text for basic item info
+                If Objects(RowNumber).Defense <> Nothing Then RichTextBox2.AppendText("Defense: " & Objects(RowNumber).Defense & vbCrLf)
+                If Objects(RowNumber).ChanceToBlock <> Nothing Then RichTextBox2.AppendText("ChanceToBlock: " & Objects(RowNumber).ChanceToBlock & vbCrLf)
+                If Objects(RowNumber).OneHandDamageMax <> Nothing Then RichTextBox2.AppendText("OneHandDamage: " & Objects(RowNumber).OneHandDamageMin & " To " & Objects(RowNumber).OneHandDamageMax & vbCrLf)
+                If Objects(RowNumber).TwoHandDamageMax <> Nothing Then RichTextBox2.AppendText("TwoHandDamage: " & Objects(RowNumber).TwoHandDamageMin & " To " & Objects(RowNumber).TwoHandDamageMax & vbCrLf)
+                If Objects(RowNumber).DurabilityMin <> Nothing Then RichTextBox2.AppendText("Durability: " & Objects(RowNumber).DurabilityMin & " of " & Objects(RowNumber).DurabilityMax & vbCrLf)
+                If Objects(RowNumber).RequiredStrength <> Nothing Then RichTextBox2.AppendText("Required Strength: " & Objects(RowNumber).RequiredStrength & vbCrLf)
+                If Objects(RowNumber).RequiredDexterity <> Nothing Then RichTextBox2.AppendText("Required Dexterity: " & Objects(RowNumber).RequiredDexterity & vbCrLf)
+                If Objects(RowNumber).RequiredLevel <> Nothing Then RichTextBox2.AppendText("Required Level: " & Objects(RowNumber).RequiredLevel & vbCrLf)
+
+                'ROBS EDIT - includes attack class in the main stat display  as opposed to the unique attibutes block?
+                If Objects(RowNumber).AttackClass <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).AttackClass & " Class") : If Objects(RowNumber).AttackSpeed <> Nothing Then RichTextBox2.AppendText(" - " & Objects(RowNumber).AttackSpeed & vbCrLf) Else RichTextBox2.AppendText(vbCrLf)
+
+                RichTextBox2.AppendText(vbCrLf) ' add a spacing line between item stats and unique attributes (looks neater) ROBS EDIT
+
+                Dim count2 As Integer = RichTextBox2.TextLength - count
+                RichTextBox2.Select(count, count2)
+                RichTextBox2.SelectionColor = Color.White
+
+                'from this point we dont need to add colors - Default Blue
+                If Objects(RowNumber).Stat1 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat1 & vbCrLf)
+                If Objects(RowNumber).Stat2 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat2 & vbCrLf)
+                If Objects(RowNumber).Stat3 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat3 & vbCrLf)
+                If Objects(RowNumber).Stat4 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat4 & vbCrLf)
+                If Objects(RowNumber).Stat5 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat5 & vbCrLf)
+                If Objects(RowNumber).Stat6 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat6 & vbCrLf)
+                If Objects(RowNumber).Stat7 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat7 & vbCrLf)
+                If Objects(RowNumber).Stat8 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat8 & vbCrLf)
+                If Objects(RowNumber).Stat9 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat9 & vbCrLf)
+                If Objects(RowNumber).Stat10 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat10 & vbCrLf)
+                If Objects(RowNumber).Stat11 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat11 & vbCrLf)
+                If Objects(RowNumber).Stat12 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat12 & vbCrLf)
+                If Objects(RowNumber).Stat13 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat13 & vbCrLf)
+                If Objects(RowNumber).Stat14 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat14 & vbCrLf)
+                If Objects(RowNumber).Stat15 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat15 & vbCrLf)
+                MuleAccountTextbox.Text = Objects(RowNumber).MuleAccount
+                MuleNameTextbox.Text = Objects(RowNumber).MuleName
+
+                'converts pass to '***' with function if hide pass is set
+                If KeepPassPrivate = True Then MulePassTextbox.Text = HidePass(Objects(RowNumber).MulePass) Else MulePassTextbox.Text = Objects(RowNumber).MulePass
+
             End If
-            If DisplayType = "Magic" Then
-                RichTextBox2.SelectionColor = Color.DodgerBlue
-                RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
-            End If
-            If DisplayType = "Rare" Then
-                RichTextBox2.SelectionColor = Color.Yellow
-                RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
-            End If
-            If DisplayType = "Crafted" Then
-                RichTextBox2.SelectionColor = Color.DarkGoldenrod
-                RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
-            End If
-            If DisplayType = "Set" Then
-                RichTextBox2.SelectionColor = Color.Green
-                RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
-            End If
-            If DisplayType = "Unique" Then
-                RichTextBox2.SelectionColor = Color.BurlyWood
-                RichTextBox2.SelectedText = Objects(RowNumber).ItemName & vbCrLf
-            End If
-
-            RichTextBox2.AppendText(vbCrLf) ' add a spacing line between item name and item stats (looks neater) ROBS EDIT
-
-            count = RichTextBox2.TextLength
-            'from this point we want to add white text for basic item info
-            If Objects(RowNumber).Defense <> Nothing Then RichTextBox2.AppendText("Defense: " & Objects(RowNumber).Defense & vbCrLf)
-            If Objects(RowNumber).ChanceToBlock <> Nothing Then RichTextBox2.AppendText("ChanceToBlock: " & Objects(RowNumber).ChanceToBlock & vbCrLf)
-            If Objects(RowNumber).OneHandDamageMax <> Nothing Then RichTextBox2.AppendText("OneHandDamage: " & Objects(RowNumber).OneHandDamageMin & " To " & Objects(RowNumber).OneHandDamageMax & vbCrLf)
-            If Objects(RowNumber).TwoHandDamageMax <> Nothing Then RichTextBox2.AppendText("TwoHandDamage: " & Objects(RowNumber).TwoHandDamageMin & " To " & Objects(RowNumber).TwoHandDamageMax & vbCrLf)
-            If Objects(RowNumber).DurabilityMin <> Nothing Then RichTextBox2.AppendText("Durability: " & Objects(RowNumber).DurabilityMin & " of " & Objects(RowNumber).DurabilityMax & vbCrLf)
-            If Objects(RowNumber).RequiredStrength <> Nothing Then RichTextBox2.AppendText("Required Strength: " & Objects(RowNumber).RequiredStrength & vbCrLf)
-            If Objects(RowNumber).RequiredDexterity <> Nothing Then RichTextBox2.AppendText("Required Dexterity: " & Objects(RowNumber).RequiredDexterity & vbCrLf)
-            If Objects(RowNumber).RequiredLevel <> Nothing Then RichTextBox2.AppendText("Required Level: " & Objects(RowNumber).RequiredLevel & vbCrLf)
-
-
-            'ROBS EDIT - includes attack class in the main stat display  as opposed to the unique attibutes block?
-            If Objects(RowNumber).AttackClass <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).AttackClass & " Class") : If Objects(RowNumber).AttackSpeed <> Nothing Then RichTextBox2.AppendText(" - " & Objects(RowNumber).AttackSpeed & vbCrLf) Else RichTextBox2.AppendText(vbCrLf)
-
-
-            RichTextBox2.AppendText(vbCrLf) ' add a spacing line between item stats and unique attributes (looks neater) ROBS EDIT
-
-
-            Dim count2 As Integer = RichTextBox2.TextLength - count
-            RichTextBox2.Select(count, count2)
-            RichTextBox2.SelectionColor = Color.White
-            'from this point we dont need to add colors - Default Blue
-            If Objects(RowNumber).Stat1 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat1 & vbCrLf)
-            If Objects(RowNumber).Stat2 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat2 & vbCrLf)
-            If Objects(RowNumber).Stat3 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat3 & vbCrLf)
-            If Objects(RowNumber).Stat4 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat4 & vbCrLf)
-            If Objects(RowNumber).Stat5 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat5 & vbCrLf)
-            If Objects(RowNumber).Stat6 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat6 & vbCrLf)
-            If Objects(RowNumber).Stat7 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat7 & vbCrLf)
-            If Objects(RowNumber).Stat8 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat8 & vbCrLf)
-            If Objects(RowNumber).Stat9 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat9 & vbCrLf)
-            If Objects(RowNumber).Stat10 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat10 & vbCrLf)
-            If Objects(RowNumber).Stat11 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat11 & vbCrLf)
-            If Objects(RowNumber).Stat12 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat12 & vbCrLf)
-            If Objects(RowNumber).Stat13 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat13 & vbCrLf)
-            If Objects(RowNumber).Stat14 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat14 & vbCrLf)
-            If Objects(RowNumber).Stat15 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat15 & vbCrLf)
-            MuleAccountTextbox.Text = Objects(RowNumber).MuleAccount
-            MuleNameTextbox.Text = Objects(RowNumber).MuleName
-
-            'converts pass to '***' with function if hide pass is set
-            If KeepPassPrivate = True Then MulePassTextbox.Text = HidePass(Objects(RowNumber).MulePass) Else MulePassTextbox.Text = Objects(RowNumber).MulePass
-
-
+            RichTextBox2.SelectAll()
+            RichTextBox2.SelectionAlignment = HorizontalAlignment.Center
+            PictureBox1.Load("Skins\" + ItemImageList(Objects(RowNumber).ItemImage) + ".jpg")
         End If
-        RichTextBox2.SelectAll()
-        RichTextBox2.SelectionAlignment = HorizontalAlignment.Center
-        PictureBox1.Load("Skins\" + ItemImageList(Objects(RowNumber).ItemImage) + ".jpg")
-
-        
-
-
     End Sub
-
 
     'DELETE ITEM BUTTON PRESS HANDLER - BRANCHES TO DeleteItem ROUTINE
     Private Sub DeleteItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteItemToolStripMenuItem.Click
@@ -333,7 +312,6 @@ Public Class Form1
             Dim LogWriter = My.Computer.FileSystem.OpenTextFileWriter(Databasefile, False)
 
             For x = 0 To Objects.Count - 1
-
                 LogWriter.WriteLine("--------------------")
                 LogWriter.WriteLine(Objects(x).ItemName)
                 LogWriter.WriteLine(Objects(x).ItemBase)
@@ -542,7 +520,6 @@ Public Class Form1
         If UCase(SearchFieldCOMBOBOX.Text) = "ONE HAND DAMAGE MIN" Or UCase(SearchFieldCOMBOBOX.Text) = "ONE HAND DAMAGE MAX" Or UCase(SearchFieldCOMBOBOX.Text) = "TWO HAND DAMAGE MIN" Or UCase(SearchFieldCOMBOBOX.Text) = "TWO HAND DAMAGE MAX" _
              Or UCase(SearchFieldCOMBOBOX.Text) = "THROW DAMAGE MIN" Or UCase(SearchFieldCOMBOBOX.Text) = "THROW DAMAGE MAX" Or UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED LEVEL" Or UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED STRENGTH" _
               Or UCase(SearchFieldCOMBOBOX.Text) = "REQUIRED DEXTERITY" Or UCase(SearchFieldCOMBOBOX.Text) = "CHANCE TO BLOCK" Or UCase(SearchFieldCOMBOBOX.Text) = "ITEM DEFENSE" Then SearchWordCOMBOBOX.Items.Clear() : SearchWordCOMBOBOX.Text = "" : SearchValueNUMERICUPDWN.Select()
-
     End Sub
 
     'INDEX CHANGED HANDLER FOR THE SEARCH LISTBOX - SELECTS THE SAME ITEM IN THE ALL ITEMS LISTBOX SO STATS WILL DISPLAY FOR THE SELECTED SEARCHed ITEM
@@ -594,7 +571,6 @@ Public Class Form1
     Private Sub RefineSearchCHECKBOX_CheckedChanged(sender As Object, e As EventArgs) Handles RefineSearchCHECKBOX.CheckedChanged
         If RefineSearchCHECKBOX.Checked = True Then SearchBUTTON.Text = "Refine Now"
         If RefineSearchCHECKBOX.Checked = False Then SearchBUTTON.Text = "Search Now"
-
     End Sub
 
     'this button selects tab page 0 and colors button to show all items listbox on page 0 and displays total items value to textbox2
@@ -604,8 +580,6 @@ Public Class Form1
         SearchListControlTabBUTTON.BackColor = Color.Black
         TradesListControlTabBUTTON.BackColor = Color.Black
         ItemTallyTEXTBOX.Text = AllItemsInDatabaseListBox.Items.Count & " - Total Items"
-
-
     End Sub
 
     'this button selects tab page 1 and colors button to show all search listbox on page 1 and displays total search matches value to textbox2
@@ -615,7 +589,6 @@ Public Class Form1
         ListControlTabBUTTON.BackColor = Color.Black
         TradesListControlTabBUTTON.BackColor = Color.Black
         ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Matches"
-
     End Sub
 
     'selects user list tab
@@ -717,12 +690,8 @@ Public Class Form1
             Return
         End If
         ImportTimer.Stop()                                      'stop timer b4 new database creation
-
         CreateNewDatabase.ShowDialog()
-
         If Button3.Text = "Timer Stop" Then ImportTimer.Start() 'restart timer but only if its not set to pause
-
-
     End Sub
 
     'DISPLAYS THE SETTINGS FROM SELECTED FROM PULLDOWN MENUES
@@ -771,21 +740,29 @@ Public Class Form1
                 Me.TradesCONTEXTMENUSTRIP.Show(Control.MousePosition)
             End If
         End If
-
     End Sub
 
+    'BUTTON CLICK HANDLERS FOR ALL ITEMS CONTEXT POPUP MENU OPTIONS
 
-    'BUTTON CLICK HANDLERS FOR MENU BAR OPTIONS
+    'Add New Item  Menu Option All Items Context Menu
     Private Sub AddItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddItemToolStripMenuItem.Click
         AddNewItem()
     End Sub
 
-    Private Sub DeleteItemToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DeleteItemToolStripMenuItem1.Click
-        DeleteItem()
-    End Sub
-
+    'Edit Item Menu Option All Items Context Menu
     Private Sub EditItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditItemToolStripMenuItem.Click
         EditItem()
+    End Sub
+
+    'Delete Item(s) Menu Option
+    Private Sub DeleteItemToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DeleteItemToolStripMenuItem1.Click
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+        ImportTimer.Stop()
+        DeleteItem()
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start()
     End Sub
 
     Private Sub SortToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SortToolStripMenuItem.Click
@@ -805,15 +782,12 @@ Public Class Form1
             Mymessages = "Please wait Import in progress" : MyMessageBox()
             Return
         End If
-        Dim FocusOnExit As Integer = Nothing
+        ImportTimer.Stop()
+
+        Dim FocusOnExit As Integer = AllItemsInDatabaseListBox.SelectedIndex
 
         'check for backup on edits set to true if so then backup now
         If Settings.BackupOnEditsCHECKBOX.Checked = True Then Module1.BackupDatabase()
-        'MessageBox.Show(" Selected items = " & AllItemsInDatabaseListBox.SelectedIndices.Count) ' debugg message box
-
-        'Gets the object location for the record before the delete selection So after delete is finished selection bar will to return there<----ROB REV20
-             FocusOnExit = AllItemsInDatabaseListBox.SelectedIndex
-         
         If AllItemsInDatabaseListBox.SelectedIndices.Count > 0 Then
             For index = AllItemsInDatabaseListBox.SelectedIndices.Count - 1 To 0 Step -1
                 Dim a As Integer = AllItemsInDatabaseListBox.SelectedIndices(index)
@@ -845,51 +819,23 @@ Public Class Form1
             If FocusOnExit >= (AllItemsInDatabaseListBox.Items.Count) Then FocusOnExit = AllItemsInDatabaseListBox.Items.Count - 1
             If AllItemsInDatabaseListBox.Items.Count = 1 Then FocusOnExit = 0
             If AllItemsInDatabaseListBox.Items.Count = 0 Then FocusOnExit = -1
-
-
+            ClearStats()
             AllItemsInDatabaseListBox.SelectedIndex = FocusOnExit
+            If Button3.Text = "Timer Stop" Then ImportTimer.Start()
             Return
         End If
     End Sub
 
-
     'Deletes items form search list by selecting each item and deleting it from the main list
     Private Sub DeleteItemsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteItemsToolStripMenuItem.Click
-        Dim a As Integer
-        Dim b As Integer
-        Dim FocusOnExit As Integer = Nothing
-
-        'Gets the object location for the record before the delete selection So after delete is finished selection bar will to return there<----ROB REV20
-
-        FocusOnExit = SearchLISTBOX.SelectedIndex
-
-
-
-
-        For index = SearchLISTBOX.SelectedIndices.Count - 1 To 0 Step -1
-            a = SearchLISTBOX.SelectedIndices(index)
-            b = SearchReferenceList(a)
-            SearchLISTBOX.Items.RemoveAt(a)
-            AllItemsInDatabaseListBox.Items.RemoveAt(b)
-            Objects.RemoveAt(b)
-            SearchReferenceList.RemoveAt(a)
-            For x = a To SearchReferenceList.Count - 1
-                SearchReferenceList(x) = SearchReferenceList(x) - 1
-            Next
-        Next
-        ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Items"
-
-
-        'SET THE DELETED OBJECT LOCATION IN THE LIST AS THE HIGHLIGHTED ITEM ON RETURN FROM DETETE
-        If FocusOnExit >= (SearchLISTBOX.Items.Count) Then FocusOnExit = SearchLISTBOX.Items.Count - 1
-        If SearchLISTBOX.Items.Count = 1 Then FocusOnExit = 0
-        If SearchLISTBOX.Items.Count = 0 Then FocusOnExit = -1
-
-        SearchLISTBOX.SelectedIndex = FocusOnExit
-
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+        ImportTimer.Stop()
+        DeleteSearchItems() 'branch to searchdete sub
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start()
     End Sub
-
-
 
     'EDIT ITEM BUTTON CLICK HANDLER - BRANCHES TO EDIT ITEM FORM
     Private Sub EditItem()
@@ -908,14 +854,11 @@ Public Class Form1
             Mymessages = "Please wait Import in progress" : MyMessageBox()
             Return
         End If
-
         ImportTimer.Stop() '        stop timer b4 form opens
         AddItemForm.ShowDialog()
         If Button3.Text = "Timer Stop" Then ImportTimer.Start() '       restart timer after form closes
 
     End Sub
-
-    'SENDS HIGHLIGHTED ITEMS TO THE TRADE LIST
 
     'SENDS HIGHLIGHTED ITEMS TO THE TRADE LIST
     Private Sub AddToUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddToUserListToolStripMenuItem.Click
@@ -924,10 +867,7 @@ Public Class Form1
             Mymessages = "Please wait Import in progress" : MyMessageBox()
             Return
         End If
-
-
-
-
+        ImportTimer.Stop()
 
         If AllItemsInDatabaseListBox.SelectedIndices.Count > 0 Then
             'RichTextBox3.Clear()
@@ -944,22 +884,18 @@ Public Class Form1
 
                 a = AllItemsInDatabaseListBox.SelectedIndices(index)
 
-
                 Dim Temp = Objects(a).ItemName
                 If Objects(a).ItemBase = "Rune" Or Objects(a).ItemBase = "Gem" Or Objects(a).ItemName.IndexOf("Token") > -1 Or Objects(a).ItemName.IndexOf("Key of") > -1 Or Objects(a).ItemName.IndexOf("Essence") > -1 Then
                     If Objects(a).ItemName.IndexOf("Token") > -1 Then Temp = "Token"
                     RichTextBox3.AppendText(Temp & vbCrLf & vbCrLf)
                 Else
                     SendToTradeList(a)
-
                 End If
             Next
             AllItemsInDatabaseListBox.SelectedIndex = -1
         End If
 
         DupeCountProgressForm.Close()
-
-
         DupesList()
 
         'SET TRADELIST HIGHLIGHT AND SELECT TRADE LIST TAB
@@ -975,7 +911,7 @@ Public Class Form1
         Next
         If TradeItemCounter = 0 Then TradeItemCounter = 1
         ItemTallyTEXTBOX.Text = (TradeItemCounter - 1) & " - Trade Entries"
-
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start()
     End Sub
 
     'ADD THE SELECTED ITEM TO THE TRADE LIST FROM SEARCH LIST
@@ -987,6 +923,7 @@ Public Class Form1
             Return
         End If
 
+        ImportTimer.Stop()
         If SearchLISTBOX.Items.Count > 0 Then
             'ADD THE SELECTED ITEM
 
@@ -1009,9 +946,8 @@ Public Class Form1
         Next
         If TradeItemCounter = 0 Then TradeItemCounter = 1
         ItemTallyTEXTBOX.Text = (TradeItemCounter - 1) & " - Trade Entries"
-
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start()
     End Sub
-
 
     'ADD ALL ITEMS TO TRADE LIST FROM SEARCH LIST
     Private Sub AddAllItemsToUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddAllItemsToUserListToolStripMenuItem.Click
@@ -1022,6 +958,7 @@ Public Class Form1
             Return
         End If
 
+        ImportTimer.Stop()
         If SearchLISTBOX.Items.Count > 0 Then
             RichTextBox3.Clear()
             'ADDS ALL THE ITEMS
@@ -1043,7 +980,6 @@ Public Class Form1
                     RichTextBox3.AppendText(Temp & vbCrLf & vbCrLf)
                 Else
                     SendToTradeList(a)
-
                 End If
                 Counter = Counter + 1
             Next
@@ -1065,6 +1001,7 @@ Public Class Form1
         Next
         If TradeItemCounter = 0 Then TradeItemCounter = 1
         ItemTallyTEXTBOX.Text = (TradeItemCounter - 1) & " - Trade Entries"
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start()
 
     End Sub
 
@@ -1114,9 +1051,7 @@ Public Class Form1
             My.Computer.Clipboard.SetText(RichTextBox3.Text)
         Else
             My.Computer.Clipboard.SetText(RichTextBox3.SelectedText)
-
         End If
-
     End Sub
 
     'APPEND ENTIRE TRADE RICHTEXT TO CLIPBOARD
@@ -1175,4 +1110,66 @@ Public Class Form1
             SearchBUTTON.Select()
         End If
     End Sub
+
+    'CLEANS OUT OLD ITEM STATISTICS
+    Sub ClearStats()
+        PictureBox1.Image = Nothing
+        PictureBox1.BackgroundImage = DiaBase.My.Resources.Resources.ImageBackground '  clean out old image
+        RichTextBox2.Text = Nothing '                                                   clean out old item stats
+        RichTextBox1.Text = Nothing '                                                   clean out logging window
+        MuleAccountTextbox.Text = Nothing '                                             clean out mule Account
+        MulePassTextbox.Text = Nothing '                                                clean out mule Pass
+        MuleNameTextbox.Text = Nothing '                                                clean out mule Name
+    End Sub
+
+    'MOVES SELECECTED ITEMS IN SEARCH MATCHES LIST OVER TO A NEW DATABASE OR CREATE A NEW ONE (NOS SURE WHAT WORDING WAS BETTER: "EXPORT ITEM(S)" OR "MOVE ITEM(S)"
+    Private Sub ExportSelectedItemsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExportSelectedItemsToolStripMenuItem.Click
+
+        If LoggerRunning = True Then 'Check for logger running .... as usual lol
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+
+        ImportTimer.Stop()
+        If SearchLISTBOX.SelectedIndex <> -1 Then MoveItems.ShowDialog() ' MOVE/EXPORT ROUTINES ARE ALL IN THE "MoveItems" CODE FORM
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start()
+    End Sub
+
+    'DELETES SELECTED ITEMS FROM THE SEARCH LIST
+    Sub DeleteSearchItems()
+        Dim a As Integer
+        Dim b As Integer
+        Dim FocusOnExit As Integer = SearchLISTBOX.SelectedIndex
+
+        For index = SearchLISTBOX.SelectedIndices.Count - 1 To 0 Step -1
+            a = SearchLISTBOX.SelectedIndices(index)
+            b = SearchReferenceList(a)
+            SearchLISTBOX.Items.RemoveAt(a)
+            AllItemsInDatabaseListBox.Items.RemoveAt(b)
+            Objects.RemoveAt(b)
+            SearchReferenceList.RemoveAt(a)
+            For x = a To SearchReferenceList.Count - 1
+                SearchReferenceList(x) = SearchReferenceList(x) - 1
+            Next
+        Next
+        ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Items"
+
+        'SET THE DELETED OBJECT LOCATION IN THE LIST AS THE HIGHLIGHTED ITEM ON RETURN FROM DETETE
+        If FocusOnExit >= (SearchLISTBOX.Items.Count) Then FocusOnExit = SearchLISTBOX.Items.Count - 1
+        If SearchLISTBOX.Items.Count = 1 Then FocusOnExit = 0
+        If SearchLISTBOX.Items.Count = 0 Then FocusOnExit = -1
+        ClearStats()
+        SearchLISTBOX.SelectedIndex = FocusOnExit
+    End Sub
+
+    'Selects all items in the search list - NOTE: dont like this routine much but could not find a select all option for listboxes anywhere
+    Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
+        For Count = 0 To SearchLISTBOX.Items.Count - 1
+            SearchLISTBOX.SetSelected(Count, True)
+        Next
+
+    End Sub
 End Class
+
+
+
