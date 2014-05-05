@@ -44,7 +44,7 @@ Partial Class MoveItems
         'Label4
         '
         Me.Label4.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label4.Location = New System.Drawing.Point(329, 339)
+        Me.Label4.Location = New System.Drawing.Point(415, 339)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(3, 20)
         Me.Label4.TabIndex = 878
@@ -62,7 +62,7 @@ Partial Class MoveItems
         Me.Label2.BackColor = System.Drawing.Color.BurlyWood
         Me.Label2.Location = New System.Drawing.Point(42, 356)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(290, 3)
+        Me.Label2.Size = New System.Drawing.Size(376, 3)
         Me.Label2.TabIndex = 876
         '
         'Label17
@@ -70,7 +70,7 @@ Partial Class MoveItems
         Me.Label17.BackColor = System.Drawing.Color.BurlyWood
         Me.Label17.Location = New System.Drawing.Point(42, 337)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(290, 3)
+        Me.Label17.Size = New System.Drawing.Size(376, 3)
         Me.Label17.TabIndex = 875
         '
         'DatabaseFilenameTEXTBOX
@@ -79,7 +79,7 @@ Partial Class MoveItems
         Me.DatabaseFilenameTEXTBOX.ForeColor = System.Drawing.Color.White
         Me.DatabaseFilenameTEXTBOX.Location = New System.Drawing.Point(43, 338)
         Me.DatabaseFilenameTEXTBOX.Name = "DatabaseFilenameTEXTBOX"
-        Me.DatabaseFilenameTEXTBOX.Size = New System.Drawing.Size(288, 20)
+        Me.DatabaseFilenameTEXTBOX.Size = New System.Drawing.Size(374, 20)
         Me.DatabaseFilenameTEXTBOX.TabIndex = 874
         '
         'Label1
@@ -113,12 +113,12 @@ Partial Class MoveItems
         Me.MoveItemsBUTTON.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
         Me.MoveItemsBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.MoveItemsBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.MoveItemsBUTTON.Location = New System.Drawing.Point(439, 332)
+        Me.MoveItemsBUTTON.Location = New System.Drawing.Point(439, 334)
         Me.MoveItemsBUTTON.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
         Me.MoveItemsBUTTON.Name = "MoveItemsBUTTON"
         Me.MoveItemsBUTTON.Size = New System.Drawing.Size(73, 25)
         Me.MoveItemsBUTTON.TabIndex = 882
-        Me.MoveItemsBUTTON.Text = "Continue"
+        Me.MoveItemsBUTTON.Text = "Export"
         Me.MoveItemsBUTTON.UseVisualStyleBackColor = False
         '
         'NewDatabaseCancelBUTTON
@@ -129,7 +129,7 @@ Partial Class MoveItems
         Me.NewDatabaseCancelBUTTON.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
         Me.NewDatabaseCancelBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.NewDatabaseCancelBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.NewDatabaseCancelBUTTON.Location = New System.Drawing.Point(522, 332)
+        Me.NewDatabaseCancelBUTTON.Location = New System.Drawing.Point(522, 334)
         Me.NewDatabaseCancelBUTTON.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
         Me.NewDatabaseCancelBUTTON.Name = "NewDatabaseCancelBUTTON"
         Me.NewDatabaseCancelBUTTON.Size = New System.Drawing.Size(73, 25)
@@ -140,8 +140,6 @@ Partial Class MoveItems
         'DeleteItemsCHECKBOX
         '
         Me.DeleteItemsCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.DeleteItemsCHECKBOX.Checked = True
-        Me.DeleteItemsCHECKBOX.CheckState = System.Windows.Forms.CheckState.Checked
         Me.DeleteItemsCHECKBOX.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.DeleteItemsCHECKBOX.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DeleteItemsCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
@@ -155,8 +153,6 @@ Partial Class MoveItems
         'OpenDatabaseCHECKBOX
         '
         Me.OpenDatabaseCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.OpenDatabaseCHECKBOX.Checked = True
-        Me.OpenDatabaseCHECKBOX.CheckState = System.Windows.Forms.CheckState.Checked
         Me.OpenDatabaseCHECKBOX.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.OpenDatabaseCHECKBOX.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OpenDatabaseCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood

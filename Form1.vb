@@ -615,7 +615,7 @@ Public Class Form1
         YesNoD2Style.Text = "Restore Database From Backup"
         YesNoD2Style.YesNoHeaderLABEL.Text = "CONFIRM BACKUP RESTORE"
         YesNoD2Style.YesNoHeaderLABEL.TextAlign = ContentAlignment.MiddleCenter
-        YesNoD2Style.YesNoMessageLABEL.Text = "You are about to permanently delete the current database and replace it with its backup file (if one exists)." & vbCrLf & vbCrLf & _
+        YesNoD2Style.YesNoMessageLABEL.Text = "You are about to permanently delete the " + CurrentDatabaseLABEL.Text + " database and replace it with its backup file (if one exists)." & vbCrLf & vbCrLf & _
                                               "Only continue if you are sure as severe data loss may occur if you havn't backed up regularly." & vbCrLf & vbCrLf & _
                                               "Select " & Chr(34) & "Confirm" & Chr(34) & " to restore the backup file or " & Chr(34) & "Cancel" & Chr(34) & " to abort.."
         YesNoD2Style.ShowDialog()

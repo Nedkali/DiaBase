@@ -38,12 +38,14 @@
     Public AutoBackups As String
     Public EditBackups As String
     Public MyCounter As Array
+
     Public SearchReferenceList As List(Of String) = New List(Of String)
     Public RefineSearchReferenceList As List(Of String) = New List(Of String)
     Public UserListReferenceList As List(Of String) = New List(Of String)
     Public StringMatches As List(Of String) = New List(Of String)
     Public IntegerMatches As List(Of String) = New List(Of String)
-    Dim GetAllIntegers As List(Of String) = New List(Of String) '.........................This doesnt seem to do anything???
+    Public OpenDatabaseDropDown As List(Of String) = New List(Of String)
+    'Dim GetAllIntegers As List(Of String) = New List(Of String) '.........................This doesnt seem to do anything???
 
     'Other Required Crap
     Public ItemNamePulldownList As List(Of String) = New List(Of String)
@@ -147,7 +149,7 @@
         Dim file As System.IO.StreamReader
         file = My.Computer.FileSystem.OpenTextFileReader(Application.StartupPath + "\Settings.cfg")
         EtalPath = file.ReadLine() : Settings.EtalPathTEXTBOX.Text = EtalPath
-        DataBaseFile = file.ReadLine() : Settings.DatabaseFileTEXTBOX.Text = DataBaseFile
+        Databasefile = file.ReadLine() : Settings.DatabaseFileTEXTBOX.Text = Databasefile
         TimerMins = file.ReadLine() : Settings.NumericUpDown1.Value = TimerMins
         KeepPassPrivate = file.ReadLine() : If KeepPassPrivate = True Then Settings.CheckBox3.Checked = True
         AutoBackups = file.ReadLine() : If AutoBackups = True Then Settings.AutoBackupImportsCHECKBOX.Checked = True ' added this for auto backup setting

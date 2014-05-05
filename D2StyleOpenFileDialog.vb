@@ -17,10 +17,12 @@ Public Class D2StyleOpenFileDialog
             SavedDatabasesLISTBOX.Items.Add(Replace(item, ".txt", ""))
         Next
 
-        'Adds the default database name to the file name combobox drop down list if its not already there
-        If DatabaseFilenameCOMBOBOX.Items.Contains(Form1.CurrentDatabaseLABEL.Text) = False Then
-            DatabaseFilenameCOMBOBOX.Items.Add(Form1.CurrentDatabaseLABEL.Text)
-        End If
+        'refresh the open database combobox drop down with file alread successfully opened in this session (stored in OpenDatabaseDropDown collection)
+
+        For Each item In OpenDatabaseDropDown
+            DatabaseFilenameCOMBOBOX.Items.Add(item)
+
+        Next
 
         DatabaseFilenameCOMBOBOX.Select()
     End Sub
@@ -33,13 +35,10 @@ Public Class D2StyleOpenFileDialog
                 OpenDatabaseCONTEXTMENU.Items(1).Enabled = False
                 OpenDatabaseCONTEXTMENU.Items(2).Enabled = False
             Else
-
                 OpenDatabaseCONTEXTMENU.Items(0).Enabled = True
                 OpenDatabaseCONTEXTMENU.Items(1).Enabled = True
                 OpenDatabaseCONTEXTMENU.Items(2).Enabled = True
-
             End If
-
 
             'If Not String.IsNullOrEmpty(SavedDatabasesLISTBOX.Text) Then
             Me.OpenDatabaseCONTEXTMENU.Show(Control.MousePosition)
@@ -49,7 +48,6 @@ Public Class D2StyleOpenFileDialog
         'End If
         DatabaseFilenameCOMBOBOX.Select()
         DatabaseFilenameCOMBOBOX.SelectionLength = 0
-
     End Sub
 
     'PUTS SELECTED ITEM INTO TEXTBOX AND KEEPS COMBOBX SELECTED
@@ -72,22 +70,30 @@ Public Class D2StyleOpenFileDialog
 
     'LOADS THE SELECTED DATABASE IF IT EXISTS
     Sub OpenSavedDatabase()
+        Dim OpenError As Boolean = False
         Try
             If My.Computer.FileSystem.FileExists(Application.StartupPath + "\Database\" + DatabaseFilenameCOMBOBOX.Text + ".txt") = True Then
 
                 'VERIFYS THE SELECTED is really a diabase data file by looking for the exact "--------------------" item spacer (20 x -) on the first line
                 Dim FileVerify = My.Computer.FileSystem.OpenTextFileReader(Application.StartupPath + "\Database\" + DatabaseFilenameCOMBOBOX.Text + ".txt")
-                If FileVerify.ReadLine <> "--------------------" Then
+                Dim TempLine = FileVerify.ReadLine
+                If TempLine <> "--------------------" And TempLine <> Nothing Then
                     'VERIFICATION FAILED - CLOSE FORM
                     Mymessages = "DiaBase File Verification Error." : MyMessageBox()
-                    FileVerify.Close() : Me.Close()
+                    SavedDatabasesLISTBOX.SelectedIndex = -1
+                    DatabaseFilenameCOMBOBOX.Text = Nothing
+                    DatabaseFilenameCOMBOBOX.Select()
+
+                    OpenError = True
                 End If
 
                 FileVerify.Close()
-                'Checks open destination database checkbox then save this database and load the destionation database if nessicary
+                If OpenError = True Then GoTo SkipOnError
+
+                'CHECKS THE SAVE CURRENT CHECKBOX AND SAVES THE CURRENT DATABASE BEFORE LOADING THE NEW ONE IF SET TO DO SO (DEFAULT IT CHECKED)
                 If SaveBeforeOpeningCHECKBOX.Checked = True Then
 
-                    Databasefile = Application.StartupPath + "\Database\" + Form1.CurrentDatabaseLABEL.Text + ".txt"
+                    Databasefile = Application.StartupPath + "\Database\" + Form1.CurrentDatabaseLABEL.Text + ".txt" 'UPDATE THE MAIN VAR FOR CURRNET DATABASE FILE AND PATH
                     Form1.SaveItems() 'Branch to save routine to save the current database first
 
                     'Clean out old items from the last loaded database
@@ -99,44 +105,84 @@ Public Class D2StyleOpenFileDialog
                     OpenDatabaseRoutine(Application.StartupPath + "\Database\" + DatabaseFilenameCOMBOBOX.Text + ".txt")
                     Form1.Display_Items()
                     Form1.CurrentDatabaseLABEL.Text = DatabaseFilenameCOMBOBOX.Text
+                    Databasefile = Application.StartupPath + "\Database\" + SavedDatabasesLISTBOX.SelectedItem + ".txt"
+
+                    'setlect main list and prep form1
+                    Form1.ListboxTABCONTROL.SelectTab(0)
+                    Form1.ListControlTabBUTTON.BackColor = Color.DimGray
+                    Form1.SearchListControlTabBUTTON.BackColor = Color.Black
+                    Form1.TradesListControlTabBUTTON.BackColor = Color.Black
+                    Form1.ItemTallyTEXTBOX.Text = Form1.AllItemsInDatabaseListBox.Items.Count & " - Total Items"
+
+
 
                     'after successfull save this puts the database name into the combobox dropdown menu if its not already there
-                    If DatabaseFilenameCOMBOBOX.Items.Contains(DatabaseFilenameCOMBOBOX.Text) = False Then DatabaseFilenameCOMBOBOX.Items.Add(DatabaseFilenameCOMBOBOX.Text)
+                    If OpenDatabaseDropDown.Contains(DatabaseFilenameCOMBOBOX.Text) = False Then OpenDatabaseDropDown.Add(DatabaseFilenameCOMBOBOX.Text)
                     Me.Close() ' close form once file has been verified
 
                 End If
             Else
-                'If the entered file does not exist
-                DatabaseFilenameCOMBOBOX.Text = Nothing
+                'If the entered file does not exist then do this
+                DatabaseFilenameCOMBOBOX.Text = Nothing : DatabaseFilenameCOMBOBOX.Select()
             End If
 
-            'catch errors exception handler
+            'catch open file errors exception handler
         Catch ex As Exception
             Mymessages = "File Error Opening Saved Database." : MyMessageBox()
         End Try
+SkipOnError:
     End Sub
 
+
+    'RENAMES THE SELECTED FILE IN OPEN DTATBASE LISTBOX - SavedDatabasesLISTBOX CONTEXT MENU
     Private Sub RenameSelectedDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RenameSelectedDatabaseToolStripMenuItem.Click
 
         UserInputForm.Text = "Rename The Selected Database"
         UserInputForm.UserInputHeaderLABEL.Text = "ENTER NEW DATABASE NAME"
-        UserInputForm.UserImputMessageLABEL.Text = "To rename the selected database please enter its new unique name into the text box"
+        UserInputForm.UserImputMessageLABEL.Text = "To rename the " + SavedDatabasesLISTBOX.SelectedItem + " database file please enter its new unique name into the text box"
         UserInputForm.UserInputYesBUTTON.Text = "Rename"
         UserInputForm.UserInputNoBUTTON.Text = "Cancel"
 
         DialogResult = UserInputForm.ShowDialog
 
         If DialogResult = Windows.Forms.DialogResult.Yes Then
-            'RENAMES THE DATABASE HERE
+            'RENAMES THE DATABASE AND ITS BACKUP AND ITS PROGRAM REFERENCES IF ITS CURRENTLY LOADED  <--------------- R E N A M E   D A T A B A S E    H E R E  
             Try
+                'UPDATE THE MAIN DATABASE FILE RENAME
                 If My.Computer.FileSystem.FileExists(Application.StartupPath + "\Database\" + DatabaseFilenameCOMBOBOX.Text + ".txt") = True Then
                     My.Computer.FileSystem.RenameFile(Application.StartupPath + "\Database\" + DatabaseFilenameCOMBOBOX.Text + ".txt", UserInputForm.UserInputTEXTBOX.Text + ".txt")
+                End If
+
+                'UPDATE THE DATABASES BACKUP FILE RENAME(IF IT EXISTS)
+                If My.Computer.FileSystem.FileExists(Application.StartupPath + "\Database\" + DatabaseFilenameCOMBOBOX.Text + ".bak") = True Then
+                    My.Computer.FileSystem.RenameFile(Application.StartupPath + "\Database\" + DatabaseFilenameCOMBOBOX.Text + ".bak", UserInputForm.UserInputTEXTBOX.Text + ".bak")
+                End If
+
+                'Update default database setting in settings and its var if its the one that was just renamed
+                If Settings.DatabaseFileTEXTBOX.Text = Application.StartupPath + "\Database\" + SavedDatabasesLISTBOX.SelectedItem + ".txt" Then
+
+                    Settings.DatabaseFileTEXTBOX.Text = Application.StartupPath + "\Database\" + UserInputForm.UserInputTEXTBOX.Text + ".txt"
+                    Settings.DatabaseFileTEXTBOX.Text = Application.StartupPath + "\Database\" + UserInputForm.UserInputTEXTBOX.Text + ".txt"
+                    Databasefile = Application.StartupPath + "\Database\" + UserInputForm.UserInputTEXTBOX.Text + ".txt"
 
                 End If
 
-                'Update default database setting if its the one that was just renamed - STILL TO DO!
 
-                'Update current database label if its the one that was just renamed - STILL TO DO!
+                'Update current database label in top right corner of form1 if its the one that was just renamed
+                If Form1.CurrentDatabaseLABEL.Text = SavedDatabasesLISTBOX.SelectedItem Then
+                    Form1.CurrentDatabaseLABEL.Text = UserInputForm.UserInputTEXTBOX.Text
+                End If
+
+                'update renamed database in the saved database listbox
+                Dim AllSavedDatabasesFileNames As Array = Nothing
+                AllSavedDatabasesFileNames = Directory.GetFiles(Application.StartupPath + "\Database\", "*").Select(Function(p) Path.GetFileName(p)).ToArray()
+
+                For Each item In AllSavedDatabasesFileNames
+                    SavedDatabasesLISTBOX.Items.Add(Replace(item, ".txt", ""))
+                Next
+
+
+
 
             Catch ex As Exception
                 Mymessages = "File Error Renaming Saved Database." : MyMessageBox()

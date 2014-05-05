@@ -1249,9 +1249,9 @@ Partial Class Form1
         Me.CurrentDatabaseLABEL.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CurrentDatabaseLABEL.ForeColor = System.Drawing.Color.SeaShell
         Me.CurrentDatabaseLABEL.Image = Global.DiaBase.My.Resources.Resources.back2
-        Me.CurrentDatabaseLABEL.Location = New System.Drawing.Point(558, 3)
+        Me.CurrentDatabaseLABEL.Location = New System.Drawing.Point(316, 3)
         Me.CurrentDatabaseLABEL.Name = "CurrentDatabaseLABEL"
-        Me.CurrentDatabaseLABEL.Size = New System.Drawing.Size(234, 18)
+        Me.CurrentDatabaseLABEL.Size = New System.Drawing.Size(476, 18)
         Me.CurrentDatabaseLABEL.TabIndex = 179
         Me.CurrentDatabaseLABEL.TextAlign = System.Drawing.ContentAlignment.TopRight
         '

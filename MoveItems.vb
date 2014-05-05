@@ -123,9 +123,18 @@ Public Class MoveItems
             Form1.ClearStats()
 
             'load up destination one and display first item and set current database label in top right of form1
-            OpenDatabaseRoutine(Application.StartupPath + "\Database\" + DatabaseFilenameTEXTBOX.Text + ".txt")
+            Databasefile = Application.StartupPath + "\Database\" + DatabaseFilenameTEXTBOX.Text + ".txt"
+            OpenDatabaseRoutine(Databasefile)
             Form1.Display_Items()
             Form1.CurrentDatabaseLABEL.Text = DatabaseFilenameTEXTBOX.Text
+
+            Form1.ListboxTABCONTROL.SelectTab(0)
+            Form1.ListControlTabBUTTON.BackColor = Color.DimGray
+            Form1.SearchListControlTabBUTTON.BackColor = Color.Black
+            Form1.TradesListControlTabBUTTON.BackColor = Color.Black
+            Form1.ItemTallyTEXTBOX.Text = Form1.AllItemsInDatabaseListBox.Items.Count & " - Total Items"
+
+
 
         End If
         Me.Close()
