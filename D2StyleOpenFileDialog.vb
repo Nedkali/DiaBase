@@ -24,6 +24,7 @@ Public Class D2StyleOpenFileDialog
 
         Next
 
+
         DatabaseFilenameCOMBOBOX.Select()
     End Sub
     'KEEPS COMBOBX SELECTED
@@ -83,12 +84,11 @@ Public Class D2StyleOpenFileDialog
                     SavedDatabasesLISTBOX.SelectedIndex = -1
                     DatabaseFilenameCOMBOBOX.Text = Nothing
                     DatabaseFilenameCOMBOBOX.Select()
-
-                    OpenError = True
+                    OpenError = True 'Error flag to skip irrelevant code when an error occurs
                 End If
 
                 FileVerify.Close()
-                If OpenError = True Then GoTo SkipOnError
+                If OpenError = True Then GoTo ErrorSkipPoint
 
                 'CHECKS THE SAVE CURRENT CHECKBOX AND SAVES THE CURRENT DATABASE BEFORE LOADING THE NEW ONE IF SET TO DO SO (DEFAULT IT CHECKED)
                 If SaveBeforeOpeningCHECKBOX.Checked = True Then
@@ -114,8 +114,6 @@ Public Class D2StyleOpenFileDialog
                     Form1.TradesListControlTabBUTTON.BackColor = Color.Black
                     Form1.ItemTallyTEXTBOX.Text = Form1.AllItemsInDatabaseListBox.Items.Count & " - Total Items"
 
-
-
                     'after successfull save this puts the database name into the combobox dropdown menu if its not already there
                     If OpenDatabaseDropDown.Contains(DatabaseFilenameCOMBOBOX.Text) = False Then OpenDatabaseDropDown.Add(DatabaseFilenameCOMBOBOX.Text)
                     Me.Close() ' close form once file has been verified
@@ -123,14 +121,18 @@ Public Class D2StyleOpenFileDialog
                 End If
             Else
                 'If the entered file does not exist then do this
-                DatabaseFilenameCOMBOBOX.Text = Nothing : DatabaseFilenameCOMBOBOX.Select()
+                DatabaseFilenameCOMBOBOX.Text = Nothing
+                SavedDatabasesLISTBOX.SelectedItem = Nothing
+                DatabaseFilenameCOMBOBOX.Select()
+                OpenError = True
             End If
+            If OpenError = True Then GoTo ErrorSkipPoint 'Error flag to skip irrelevant code when an error occurs
 
             'catch open file errors exception handler
         Catch ex As Exception
             Mymessages = "File Error Opening Saved Database." : MyMessageBox()
         End Try
-SkipOnError:
+ErrorSkipPoint:
     End Sub
 
 
@@ -142,8 +144,11 @@ SkipOnError:
         UserInputForm.UserImputMessageLABEL.Text = "To rename the " + SavedDatabasesLISTBOX.SelectedItem + " database file please enter its new unique name into the text box"
         UserInputForm.UserInputYesBUTTON.Text = "Rename"
         UserInputForm.UserInputNoBUTTON.Text = "Cancel"
+        UserInputForm.UserInputTEXTBOX.Text = SavedDatabasesLISTBOX.SelectedItem
+        UserInputForm.UserInputTEXTBOX.Select()
 
         DialogResult = UserInputForm.ShowDialog
+
 
         If DialogResult = Windows.Forms.DialogResult.Yes Then
             'RENAMES THE DATABASE AND ITS BACKUP AND ITS PROGRAM REFERENCES IF ITS CURRENTLY LOADED  <--------------- R E N A M E   D A T A B A S E    H E R E  
@@ -167,7 +172,6 @@ SkipOnError:
 
                 End If
 
-
                 'Update current database label in top right corner of form1 if its the one that was just renamed
                 If Form1.CurrentDatabaseLABEL.Text = SavedDatabasesLISTBOX.SelectedItem Then
                     Form1.CurrentDatabaseLABEL.Text = UserInputForm.UserInputTEXTBOX.Text
@@ -181,6 +185,14 @@ SkipOnError:
                     SavedDatabasesLISTBOX.Items.Add(Replace(item, ".txt", ""))
                 Next
 
+                'Repopulate saved database list after namechange
+                SavedDatabasesLISTBOX.Items.Clear() : AllSavedDatabasesFileNames = Nothing
+                AllSavedDatabasesFileNames = Directory.GetFiles(Application.StartupPath + "\Database\", "*").Select(Function(p) Path.GetFileName(p)).ToArray()
+
+                For Each item In AllSavedDatabasesFileNames
+                    SavedDatabasesLISTBOX.Items.Add(Replace(item, ".txt", ""))
+
+                Next
 
 
 
@@ -188,6 +200,19 @@ SkipOnError:
                 Mymessages = "File Error Renaming Saved Database." : MyMessageBox()
             End Try
         Else
+
+            If DialogResult = Windows.Forms.DialogResult.No Then
+                'cancels any selections in listbox and or textbox
+                DatabaseFilenameCOMBOBOX.Text = Nothing
+                SavedDatabasesLISTBOX.SelectedItem = Nothing
+                DatabaseFilenameCOMBOBOX.Select()
+
+
+            End If
+
         End If
+        DialogResult = Nothing
     End Sub
+
+  
 End Class

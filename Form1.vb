@@ -129,7 +129,7 @@ Public Class Form1
         End If
         ImportTimer.Stop() '        stop timer b4 form opens
 
-        D2StyleOpenFileDialog.Show()
+        D2StyleOpenFileDialog.ShowDialog()
 
         'OpenDatabaseDIALOG.Title = "Open An Existing Database File" '                           set dialog title
         'OpenDatabaseDIALOG.InitialDirectory = Application.StartupPath + "\DataBase\" '  set initial dir
@@ -1166,9 +1166,11 @@ Public Class Form1
 
     'Selects all items in the search list - NOTE: dont like this routine much but could not find a select all option for listboxes anywhere
     Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
+        AllItemsInDatabaseListBox.EndUpdate()
         For Count = 0 To SearchLISTBOX.Items.Count - 1
             SearchLISTBOX.SetSelected(Count, True)
         Next
+        AllItemsInDatabaseListBox.BeginUpdate()
 
     End Sub
 End Class

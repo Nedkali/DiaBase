@@ -1,7 +1,7 @@
 ﻿Public Class UserInputForm
     'clears User Input Textbox
     Private Sub UserInputForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        UserInputTEXTBOX.Text = Nothing
+        ' UserInputTEXTBOX.Text = Nothing
     End Sub
 
     'YES BUTTON PRESS
