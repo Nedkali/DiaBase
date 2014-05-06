@@ -30,8 +30,8 @@ Partial Class MoveItems
         Me.DatabaseFilenameTEXTBOX = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.NewDatabaseLABEL = New System.Windows.Forms.Label()
-        Me.MoveItemsBUTTON = New System.Windows.Forms.Button()
-        Me.NewDatabaseCancelBUTTON = New System.Windows.Forms.Button()
+        Me.MoveItemsExportBUTTON = New System.Windows.Forms.Button()
+        Me.MoveItemsCancelBUTTON = New System.Windows.Forms.Button()
         Me.DeleteItemsCHECKBOX = New System.Windows.Forms.CheckBox()
         Me.OpenDatabaseCHECKBOX = New System.Windows.Forms.CheckBox()
         Me.SavedDatabasesLISTBOX = New System.Windows.Forms.ListBox()
@@ -105,37 +105,37 @@ Partial Class MoveItems
         Me.NewDatabaseLABEL.TabIndex = 880
         Me.NewDatabaseLABEL.Text = resources.GetString("NewDatabaseLABEL.Text")
         '
-        'MoveItemsBUTTON
+        'MoveItemsExportBUTTON
         '
-        Me.MoveItemsBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
-        Me.MoveItemsBUTTON.BackgroundImage = Global.DiaBase.My.Resources.Resources.back1
-        Me.MoveItemsBUTTON.FlatAppearance.BorderSize = 2
-        Me.MoveItemsBUTTON.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
-        Me.MoveItemsBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.MoveItemsBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.MoveItemsBUTTON.Location = New System.Drawing.Point(439, 334)
-        Me.MoveItemsBUTTON.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
-        Me.MoveItemsBUTTON.Name = "MoveItemsBUTTON"
-        Me.MoveItemsBUTTON.Size = New System.Drawing.Size(73, 25)
-        Me.MoveItemsBUTTON.TabIndex = 882
-        Me.MoveItemsBUTTON.Text = "Export"
-        Me.MoveItemsBUTTON.UseVisualStyleBackColor = False
+        Me.MoveItemsExportBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.MoveItemsExportBUTTON.BackgroundImage = Global.DiaBase.My.Resources.Resources.back1
+        Me.MoveItemsExportBUTTON.FlatAppearance.BorderSize = 2
+        Me.MoveItemsExportBUTTON.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
+        Me.MoveItemsExportBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.MoveItemsExportBUTTON.ForeColor = System.Drawing.Color.BurlyWood
+        Me.MoveItemsExportBUTTON.Location = New System.Drawing.Point(439, 334)
+        Me.MoveItemsExportBUTTON.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
+        Me.MoveItemsExportBUTTON.Name = "MoveItemsExportBUTTON"
+        Me.MoveItemsExportBUTTON.Size = New System.Drawing.Size(73, 25)
+        Me.MoveItemsExportBUTTON.TabIndex = 882
+        Me.MoveItemsExportBUTTON.Text = "Export"
+        Me.MoveItemsExportBUTTON.UseVisualStyleBackColor = False
         '
-        'NewDatabaseCancelBUTTON
+        'MoveItemsCancelBUTTON
         '
-        Me.NewDatabaseCancelBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
-        Me.NewDatabaseCancelBUTTON.BackgroundImage = Global.DiaBase.My.Resources.Resources.back1
-        Me.NewDatabaseCancelBUTTON.FlatAppearance.BorderSize = 2
-        Me.NewDatabaseCancelBUTTON.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
-        Me.NewDatabaseCancelBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.NewDatabaseCancelBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.NewDatabaseCancelBUTTON.Location = New System.Drawing.Point(522, 334)
-        Me.NewDatabaseCancelBUTTON.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
-        Me.NewDatabaseCancelBUTTON.Name = "NewDatabaseCancelBUTTON"
-        Me.NewDatabaseCancelBUTTON.Size = New System.Drawing.Size(73, 25)
-        Me.NewDatabaseCancelBUTTON.TabIndex = 881
-        Me.NewDatabaseCancelBUTTON.Text = "Cancel"
-        Me.NewDatabaseCancelBUTTON.UseVisualStyleBackColor = False
+        Me.MoveItemsCancelBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.MoveItemsCancelBUTTON.BackgroundImage = Global.DiaBase.My.Resources.Resources.back1
+        Me.MoveItemsCancelBUTTON.FlatAppearance.BorderSize = 2
+        Me.MoveItemsCancelBUTTON.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
+        Me.MoveItemsCancelBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.MoveItemsCancelBUTTON.ForeColor = System.Drawing.Color.BurlyWood
+        Me.MoveItemsCancelBUTTON.Location = New System.Drawing.Point(522, 334)
+        Me.MoveItemsCancelBUTTON.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
+        Me.MoveItemsCancelBUTTON.Name = "MoveItemsCancelBUTTON"
+        Me.MoveItemsCancelBUTTON.Size = New System.Drawing.Size(73, 25)
+        Me.MoveItemsCancelBUTTON.TabIndex = 881
+        Me.MoveItemsCancelBUTTON.Text = "Cancel"
+        Me.MoveItemsCancelBUTTON.UseVisualStyleBackColor = False
         '
         'DeleteItemsCHECKBOX
         '
@@ -221,8 +221,8 @@ Partial Class MoveItems
         Me.Controls.Add(Me.SavedDatabasesLISTBOX)
         Me.Controls.Add(Me.OpenDatabaseCHECKBOX)
         Me.Controls.Add(Me.DeleteItemsCHECKBOX)
-        Me.Controls.Add(Me.MoveItemsBUTTON)
-        Me.Controls.Add(Me.NewDatabaseCancelBUTTON)
+        Me.Controls.Add(Me.MoveItemsExportBUTTON)
+        Me.Controls.Add(Me.MoveItemsCancelBUTTON)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label26)
@@ -242,8 +242,8 @@ Partial Class MoveItems
     Friend WithEvents DatabaseFilenameTEXTBOX As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents NewDatabaseLABEL As System.Windows.Forms.Label
-    Friend WithEvents MoveItemsBUTTON As System.Windows.Forms.Button
-    Friend WithEvents NewDatabaseCancelBUTTON As System.Windows.Forms.Button
+    Friend WithEvents MoveItemsExportBUTTON As System.Windows.Forms.Button
+    Friend WithEvents MoveItemsCancelBUTTON As System.Windows.Forms.Button
     Friend WithEvents DeleteItemsCHECKBOX As System.Windows.Forms.CheckBox
     Friend WithEvents OpenDatabaseCHECKBOX As System.Windows.Forms.CheckBox
     Friend WithEvents SavedDatabasesLISTBOX As System.Windows.Forms.ListBox

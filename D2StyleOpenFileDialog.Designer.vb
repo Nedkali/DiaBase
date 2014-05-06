@@ -28,7 +28,7 @@ Partial Class D2StyleOpenFileDialog
         Me.DatabaseFilenameCOMBOBOX = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.NewDatabaseLABEL = New System.Windows.Forms.Label()
-        Me.MoveItemsBUTTON = New System.Windows.Forms.Button()
+        Me.OpenDatabaseBUTTON = New System.Windows.Forms.Button()
         Me.NewDatabaseCancelBUTTON = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -105,21 +105,21 @@ Partial Class D2StyleOpenFileDialog
         Me.NewDatabaseLABEL.Text = "To open a saved database please select the database from the list or enter the da" & _
     "tabase name into the text box."
         '
-        'MoveItemsBUTTON
+        'OpenDatabaseBUTTON
         '
-        Me.MoveItemsBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
-        Me.MoveItemsBUTTON.BackgroundImage = Global.DiaBase.My.Resources.Resources.back1
-        Me.MoveItemsBUTTON.FlatAppearance.BorderSize = 2
-        Me.MoveItemsBUTTON.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
-        Me.MoveItemsBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.MoveItemsBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.MoveItemsBUTTON.Location = New System.Drawing.Point(305, 458)
-        Me.MoveItemsBUTTON.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
-        Me.MoveItemsBUTTON.Name = "MoveItemsBUTTON"
-        Me.MoveItemsBUTTON.Size = New System.Drawing.Size(73, 25)
-        Me.MoveItemsBUTTON.TabIndex = 884
-        Me.MoveItemsBUTTON.Text = "Open"
-        Me.MoveItemsBUTTON.UseVisualStyleBackColor = False
+        Me.OpenDatabaseBUTTON.BackColor = System.Drawing.SystemColors.WindowFrame
+        Me.OpenDatabaseBUTTON.BackgroundImage = Global.DiaBase.My.Resources.Resources.back1
+        Me.OpenDatabaseBUTTON.FlatAppearance.BorderSize = 2
+        Me.OpenDatabaseBUTTON.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black
+        Me.OpenDatabaseBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.OpenDatabaseBUTTON.ForeColor = System.Drawing.Color.BurlyWood
+        Me.OpenDatabaseBUTTON.Location = New System.Drawing.Point(305, 458)
+        Me.OpenDatabaseBUTTON.Margin = New System.Windows.Forms.Padding(3, 1, 3, 1)
+        Me.OpenDatabaseBUTTON.Name = "OpenDatabaseBUTTON"
+        Me.OpenDatabaseBUTTON.Size = New System.Drawing.Size(73, 25)
+        Me.OpenDatabaseBUTTON.TabIndex = 884
+        Me.OpenDatabaseBUTTON.Text = "Open"
+        Me.OpenDatabaseBUTTON.UseVisualStyleBackColor = False
         '
         'NewDatabaseCancelBUTTON
         '
@@ -261,7 +261,7 @@ Partial Class D2StyleOpenFileDialog
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.MoveItemsBUTTON)
+        Me.Controls.Add(Me.OpenDatabaseBUTTON)
         Me.Controls.Add(Me.NewDatabaseCancelBUTTON)
         Me.Controls.Add(Me.NewDatabaseLABEL)
         Me.Controls.Add(Me.Label2)
@@ -283,7 +283,7 @@ Partial Class D2StyleOpenFileDialog
     Friend WithEvents DatabaseFilenameCOMBOBOX As System.Windows.Forms.ComboBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents NewDatabaseLABEL As System.Windows.Forms.Label
-    Friend WithEvents MoveItemsBUTTON As System.Windows.Forms.Button
+    Friend WithEvents OpenDatabaseBUTTON As System.Windows.Forms.Button
     Friend WithEvents NewDatabaseCancelBUTTON As System.Windows.Forms.Button
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label

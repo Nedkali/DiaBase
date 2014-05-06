@@ -1,4 +1,6 @@
-﻿Module Module1
+﻿Imports System.Drawing.Text
+
+Module Module1
     'Sets up new list of class items for database
     Public Objects As List(Of ItemObjects) = New List(Of ItemObjects)
 
@@ -6,7 +8,7 @@
     'Version Variables (displayed in form1 titlebar) - UPDATE FOR EACH COMMIT PLS SO APP VERSION MATCHES REVISION NUMBER
     '-------------------------------------------------------------------------------------------------------------------
     Public VersionNumber As String = "9.0"
-    Public RevisionNumber As String = "20"
+    Public RevisionNumber As String = "21"
     '-------------------------------------------------------------------------------------------------------------------
 
     'DataBase variables
@@ -22,7 +24,6 @@
     Public RemoveDupeMule As String = True
     Public Pretotal As Integer = 0
     Public DupeReferenceList As List(Of String) = New List(Of String)
-
 
     ' needs to be set to true when logger is doing log reads/imports and then set to false when completed
     ' Need this to prevent reading database while logger maybe trying to access it - logger will need priority
@@ -45,7 +46,7 @@
     Public StringMatches As List(Of String) = New List(Of String)
     Public IntegerMatches As List(Of String) = New List(Of String)
     Public OpenDatabaseDropDown As List(Of String) = New List(Of String)
-    'Dim GetAllIntegers As List(Of String) = New List(Of String) '.........................This doesnt seem to do anything???
+    Dim GetAllIntegers As List(Of String) = New List(Of String) '.........................This doesnt seem to do anything???
 
     'Other Required Crap
     Public ItemNamePulldownList As List(Of String) = New List(Of String)
@@ -55,16 +56,18 @@
     Public PassFiles As List(Of String) = New List(Of String)       'Holds all _muleaccount.txt file used to get mule pass and mule account
     Public LogType As List(Of String) = New List(Of String)
 
+    Public pfc As New PrivateFontCollection()                       'Defines Custom Font Collection pfc As Global
+
     Public Rune As Array = {"Eld", "El", "Tir", "Nef", "Eth", "Ith", "Tal", "Ral", "Ort", "Thul", "Amn", "Sol", "Shael", "Dol", "Hel", "Io",
          "Lum", "Ko", "Fal", "Lem", "Pul", "Um", "Mal", "Ist", "Gul", "Vex", "Ohm", "Lo", "Sur", "Jah", "Ber", "Cham", "Zod"}
 
+    'Define Global DLL Messaging Function For Listboxes "Select All" Context Menu Action - :) Tyvm For dll Lesson Ned :)
+    Declare Auto Function SendMessage Lib "user32.dll" (ByVal hWnd As IntPtr, ByVal msg As Integer, ByVal wParam As IntPtr, ByVal lParam As IntPtr) As IntPtr
 
-    
     'Calls the UserMessaging 'Okie Dokie' Form As DialogBox
     Public Sub MyMessageBox()
         UserMessaging.ShowDialog()
     End Sub
-
 
     'This Reads the database from file and puts it in the object database (moved from form1 to allow it to be used at startup to load default database)
     Sub OpenDatabaseRoutine(DatabaseFile)
@@ -81,13 +84,11 @@
         End If
 
         Dim Reader = My.Computer.FileSystem.OpenTextFileReader(DatabaseFile)
-
         Do
             If Reader.EndOfStream = True Then Exit Do
             Reader.ReadLine()
             If Reader.EndOfStream = True Then Exit Do
             Dim NewObject As New ItemObjects
-
             NewObject.ItemName = Reader.ReadLine
             NewObject.ItemBase = Reader.ReadLine
             NewObject.ItemQuality = Reader.ReadLine
@@ -139,9 +140,7 @@
         Reader.Close()
 
         Objects.Sort(Function(x, y) x.ItemName.CompareTo(y.ItemName)) 'sort list alphabetically after assigning objects
-
-        Form1.display_items()
-
+        Form1.Display_Items()
     End Sub
 
     'Load up the app configuration Values from \InstallDir\Settings.cfg file
@@ -1484,20 +1483,15 @@
             Case Else
                 item = "nia"
 
-
         End Select
-
         Return item
-
-
     End Function
 
- 
     'this backsup the current database from menu selection and when closing app
     Sub BackupDatabase()
         Dim BackupPath = Application.StartupPath & "\Database\Backup\"
         Dim temp As String = ""
-        Dim myarray = Split(DatabaseFile, ".txt", 0)
+        Dim myarray = Split(Databasefile, ".txt", 0)
         Dim tempname = myarray(0) & ".bak"
         myarray = Split(tempname, "\")
         tempname = myarray(myarray.Length - 1)
@@ -1539,5 +1533,4 @@
 
         Return DupeCount
     End Function
-
 End Module

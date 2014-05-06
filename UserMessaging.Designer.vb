@@ -33,11 +33,11 @@ Partial Class UserMessaging
         Me.Button1.BackgroundImage = Global.DiaBase.My.Resources.Resources.back1
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Button1.Location = New System.Drawing.Point(182, 58)
+        Me.Button1.Location = New System.Drawing.Point(169, 58)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.Size = New System.Drawing.Size(100, 23)
         Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Okie Dokie"
+        Me.Button1.Text = "Continue"
         Me.Button1.UseVisualStyleBackColor = False
         '
         'TextBox1
@@ -57,12 +57,14 @@ Partial Class UserMessaging
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.mbox
         Me.ClientSize = New System.Drawing.Size(439, 105)
+        Me.ControlBox = False
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximumSize = New System.Drawing.Size(455, 143)
         Me.MinimumSize = New System.Drawing.Size(455, 143)
         Me.Name = "UserMessaging"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "DiaBase Alert Message"
         Me.ResumeLayout(False)
         Me.PerformLayout()

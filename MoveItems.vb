@@ -2,7 +2,7 @@
 'EXPORTS SELECTED ITEMS IN THE SEARCH LIST TO A SECOND DATABASE
 Public Class MoveItems
     'Close move item Form
-    Private Sub NewDatabaseCancelBUTTON_Click(sender As Object, e As EventArgs) Handles NewDatabaseCancelBUTTON.Click
+    Private Sub NewDatabaseCancelBUTTON_Click(sender As Object, e As EventArgs) Handles MoveItemsCancelBUTTON.Click
         Me.Close()
     End Sub
 
@@ -33,12 +33,12 @@ Public Class MoveItems
         DatabaseFilenameTEXTBOX.SelectionLength = 0
     End Sub
 
-    Private Sub MoveItemsBUTTON_Click(sender As Object, e As EventArgs) Handles MoveItemsBUTTON.Click
+    Private Sub MoveItemsBUTTON_Click(sender As Object, e As EventArgs) Handles MoveItemsExportBUTTON.Click
 
         'Just incase noobs include path and or file extension this should successfully take them back out
         My.Computer.FileSystem.GetName(DatabaseFilenameTEXTBOX.Text)
         DatabaseFilenameTEXTBOX.Text = Replace(DatabaseFilenameTEXTBOX.Text, ".txt", "")
-      
+
         'Open destination database ready for appending selected items to it.
         If My.Computer.FileSystem.FileExists(Application.StartupPath + "\Database\" + DatabaseFilenameTEXTBOX.Text + ".txt") = False Then
 

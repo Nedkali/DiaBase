@@ -3,11 +3,6 @@ Imports System.Drawing.Text
 
 Public Class Form1
 
-    Declare Auto Function SendMessage Lib "user32.dll" (ByVal hWnd As IntPtr, ByVal msg As Integer, ByVal wParam As IntPtr, ByVal lParam As IntPtr) As IntPtr
-
-
-    Public pfc As New PrivateFontCollection()
-
     'FORM1 LOAD EVENT - PLAYS AUDIO LAUGH AND GETS FILE CONFIG VALUES AND SETS UP APPLICATION ELEMENTS AND OPENS THE DEFAULT DATABASE
     'ROUTINE ALSO SETS UP REQURED FILES ECT ON FIRST RUN (INSTALLS APP)
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load 'check if required folders exist on startup and create if necessary
@@ -56,21 +51,56 @@ Public Class Form1
         If My.Computer.FileSystem.FileExists(Application.StartupPath + "\Extras\DiabloFont1.ttf") = True Then
             pfc.AddFontFile(Application.StartupPath + "\Extras\DiabloFont1.ttf")
 
-            'General Text (8 to 6 point size)
-            'RichTextBox3.Font = New Font(pfc.Families(36), 8, FontStyle.Regular)
-
             'Fancy Headers (16 point size)
             Label1.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)  'Item Lists Header
             Label2.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)  'Details Header
             Label3.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)  'Autologging Header
             Label29.Font = New Font(pfc.Families(0), 16, FontStyle.Regular) 'Item and Mule Search
 
-            'Fancy Buttons (9 point size)
+            'FOM1 BUTTONS (9 point size)
             ListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             SearchListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             TradesListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             SearchBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
-            Button3.Font = New Font(pfc.Families(0), 9, FontStyle.Regular) 'autologgers pause times buttom
+            Button3.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+
+            'DialogResult Form Buttons (9 point size)
+            YesNoD2Style.YesNoCONFIRMBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            YesNoD2Style.YesNoCANCELBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            ClosingAppForm.AppCloseCancelBUTTONButton1.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            ClosingAppForm.AppCloseConfirmBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            CreateNewDatabase.NewDatabaseCancelBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            CreateNewDatabase.NewDatabaseCreateBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            MoveItems.MoveItemsCancelBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            MoveItems.MoveItemsExportBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            Settings.SaveDefaultsBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            Settings.CancelDefaultsBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            UserInputForm.UserInputNoBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            UserInputForm.UserInputYesBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            D2StyleOpenFileDialog.NewDatabaseCancelBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            D2StyleOpenFileDialog.OpenDatabaseBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            UserMessaging.Button1.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+
+            'DIALOG WINDOW HEADERS (12 point size)
+            YesNoD2Style.YesNoHeaderLABEL.Font = New Font(pfc.Families(0), 12, FontStyle.Regular)
+            ClosingAppForm.Label1.Font = New Font(pfc.Families(0), 12, FontStyle.Regular)
+            CreateNewDatabase.Label1.Font = New Font(pfc.Families(0), 12, FontStyle.Regular)
+            D2StyleOpenFileDialog.Label2.Font = New Font(pfc.Families(0), 12, FontStyle.Regular)
+            MoveItems.Label1.Font = New Font(pfc.Families(0), 12, FontStyle.Regular)
+            Settings.Label1.Font = New Font(pfc.Families(0), 12, FontStyle.Regular)
+            Settings.Label3.Font = New Font(pfc.Families(0), 12, FontStyle.Regular)
+            UserInputForm.UserInputHeaderLABEL.Font = New Font(pfc.Families(0), 12, FontStyle.Regular)
+
+            'EDIT AND ADD ITEM FORMS BUTTONS
+            EditItemForm.EditItemImageBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            EditItemForm.EditItemCancelBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            EditItemForm.EditItemSaveChangesBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            EditItemForm.EditItemUndoChangesBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            AddItemForm.AddItemCancelBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            AddItemForm.AddItemClearAllBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            AddItemForm.AddItemImageBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            AddItemForm.AddItemSaveBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+
         End If
     End Sub
 
@@ -313,7 +343,6 @@ Public Class Form1
 
     'SAVES THE CURRENT DATABASE TO FILE
     Public Sub SaveItems()
-
         Try
             Dim LogWriter = My.Computer.FileSystem.OpenTextFileWriter(Databasefile, False)
 

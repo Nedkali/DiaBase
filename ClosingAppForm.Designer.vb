@@ -80,7 +80,7 @@ Partial Class ClosingAppForm
         Me.AppCloseConfirmBUTTON.Name = "AppCloseConfirmBUTTON"
         Me.AppCloseConfirmBUTTON.Size = New System.Drawing.Size(86, 23)
         Me.AppCloseConfirmBUTTON.TabIndex = 3
-        Me.AppCloseConfirmBUTTON.Text = "Exit DiaBase"
+        Me.AppCloseConfirmBUTTON.Text = "Exit"
         Me.AppCloseConfirmBUTTON.UseVisualStyleBackColor = False
         '
         'CloseAppInfoLABEL

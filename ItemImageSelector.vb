@@ -17,6 +17,6 @@
 
         Dim temp As String = Convert.ToString(NumericUpDown1.Value)
         EditItemForm.EditItemImageTEXTBOX.Text = temp
-
+        Me.Close()
     End Sub
 End Class

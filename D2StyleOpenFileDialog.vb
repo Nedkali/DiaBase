@@ -18,15 +18,13 @@ Public Class D2StyleOpenFileDialog
         Next
 
         'refresh the open database combobox drop down with file alread successfully opened in this session (stored in OpenDatabaseDropDown collection)
-
         For Each item In OpenDatabaseDropDown
             DatabaseFilenameCOMBOBOX.Items.Add(item)
-
         Next
-
 
         DatabaseFilenameCOMBOBOX.Select()
     End Sub
+
     'KEEPS COMBOBX SELECTED
     Private Sub SavedDatabasesLISTBOX_MouseDown(sender As Object, e As MouseEventArgs) Handles SavedDatabasesLISTBOX.MouseDown
 
@@ -59,7 +57,7 @@ Public Class D2StyleOpenFileDialog
     End Sub
 
     'OPEN DATABASE BUTTON PRESS
-    Private Sub MoveItemsBUTTON_Click(sender As Object, e As EventArgs) Handles MoveItemsBUTTON.Click
+    Private Sub MoveItemsBUTTON_Click(sender As Object, e As EventArgs) Handles OpenDatabaseBUTTON.Click
         OpenSavedDatabase()
     End Sub
 
@@ -67,7 +65,6 @@ Public Class D2StyleOpenFileDialog
     Private Sub OpenSelectedDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenSelectedDatabaseToolStripMenuItem.Click
         OpenSavedDatabase()
     End Sub
-
 
     'LOADS THE SELECTED DATABASE IF IT EXISTS
     Sub OpenSavedDatabase()
@@ -135,7 +132,6 @@ Public Class D2StyleOpenFileDialog
 ErrorSkipPoint:
     End Sub
 
-
     'RENAMES THE SELECTED FILE IN OPEN DTATBASE LISTBOX - SavedDatabasesLISTBOX CONTEXT MENU
     Private Sub RenameSelectedDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RenameSelectedDatabaseToolStripMenuItem.Click
 
@@ -148,7 +144,6 @@ ErrorSkipPoint:
         UserInputForm.UserInputTEXTBOX.Select()
 
         DialogResult = UserInputForm.ShowDialog
-
 
         If DialogResult = Windows.Forms.DialogResult.Yes Then
             'RENAMES THE DATABASE AND ITS BACKUP AND ITS PROGRAM REFERENCES IF ITS CURRENTLY LOADED  <--------------- R E N A M E   D A T A B A S E    H E R E  
@@ -191,10 +186,7 @@ ErrorSkipPoint:
 
                 For Each item In AllSavedDatabasesFileNames
                     SavedDatabasesLISTBOX.Items.Add(Replace(item, ".txt", ""))
-
                 Next
-
-
 
             Catch ex As Exception
                 Mymessages = "File Error Renaming Saved Database." : MyMessageBox()
@@ -202,17 +194,76 @@ ErrorSkipPoint:
         Else
 
             If DialogResult = Windows.Forms.DialogResult.No Then
-                'cancels any selections in listbox and or textbox
+
+                'Cancels any selections in listbox and or textbox
                 DatabaseFilenameCOMBOBOX.Text = Nothing
                 SavedDatabasesLISTBOX.SelectedItem = Nothing
                 DatabaseFilenameCOMBOBOX.Select()
-
-
             End If
-
         End If
         DialogResult = Nothing
     End Sub
 
-  
+    'DELETES THE SELECTED DATABASE
+    Private Sub DeleteSelectedDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteSelectedDatabaseToolStripMenuItem.Click
+        Dim DeleteError As Boolean = False
+
+        'CHECK THE SELECTED DATABASE IS NOT THE DEFAULT ONE
+        If Settings.DatabaseFileTEXTBOX.Text = Application.StartupPath + DatabaseFilenameCOMBOBOX.Text + ".TXT" Then
+            Mymessages = "You Cannot Delete The Default Database." : MyMessageBox()
+            DeleteError = True
+        End If
+        If DeleteError = True Then GoTo SkipDeleteOnError
+
+        'CHECK THE SELECTED DATABASE IS NOT THE CURRENT ONE
+        If DatabaseFilenameCOMBOBOX.Text = Form1.CurrentDatabaseLABEL.Text Then
+            Mymessages = "You Cannot Delete The Current Database." : MyMessageBox()
+            DeleteError = True
+        End If
+        If DeleteError = True Then GoTo SkipDeleteOnError
+
+        YesNoD2Style.Text = "Delete Database File"
+        YesNoD2Style.YesNoHeaderLABEL.Text = "CONFIRM TO DELETE DATABASE"
+        YesNoD2Style.YesNoMessageLABEL.Text = "To delete the " + SavedDatabasesLISTBOX.SelectedItem + " database file please press the confirm button" & vbCrLf & vbCrLf + "NOTE: This action is irreversable and will permantly delete all items within the selected database as well as its backup file."
+        DialogResult = YesNoD2Style.ShowDialog
+        If DialogResult = Windows.Forms.DialogResult.Yes Then
+
+            'DELETES THE ACTUAL DATABASE HERE
+            Try
+
+                'DELETE BACKUP
+                If My.Computer.FileSystem.FileExists(Application.StartupPath + "\Database\" + DatabaseFilenameCOMBOBOX.Text + ".bak") = True Then
+                    My.Computer.FileSystem.DeleteFile(Application.StartupPath + "\Database\" + DatabaseFilenameCOMBOBOX.Text + ".bak")
+                End If
+
+                'DELETE DATABASE FILE
+                If My.Computer.FileSystem.FileExists(Application.StartupPath + "\Database\" + DatabaseFilenameCOMBOBOX.Text + ".txt") = True Then
+                    My.Computer.FileSystem.DeleteFile(Application.StartupPath + "\Database\" + DatabaseFilenameCOMBOBOX.Text + ".txt")
+                End If
+
+                'DELETE ERROR ERROR EXCEPTION
+            Catch ex As Exception
+                Mymessages = "File Error Deleting Database." : MyMessageBox()
+                DeleteError = True
+            End Try
+
+            If DeleteError = True Then GoTo SkipDeleteOnError
+
+            'Repopulate saved database list after namechange
+            SavedDatabasesLISTBOX.Items.Clear() : Dim AllSavedDatabasesFileNames As Array
+            AllSavedDatabasesFileNames = Directory.GetFiles(Application.StartupPath + "\Database\", "*").Select(Function(p) Path.GetFileName(p)).ToArray()
+
+            For Each item In AllSavedDatabasesFileNames
+                SavedDatabasesLISTBOX.Items.Add(Replace(item, ".txt", ""))
+            Next
+
+SkipDeleteOnError:
+
+            'Cancels any selections in listbox and or textbox
+            DatabaseFilenameCOMBOBOX.Text = Nothing
+            SavedDatabasesLISTBOX.SelectedItem = Nothing
+            DatabaseFilenameCOMBOBOX.Select()
+        End If
+        DialogResult = Nothing
+    End Sub
 End Class
