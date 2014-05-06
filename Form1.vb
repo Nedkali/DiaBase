@@ -2,6 +2,10 @@
 Imports System.Drawing.Text
 
 Public Class Form1
+
+    Declare Auto Function SendMessage Lib "user32.dll" (ByVal hWnd As IntPtr, ByVal msg As Integer, ByVal wParam As IntPtr, ByVal lParam As IntPtr) As IntPtr
+
+
     Public pfc As New PrivateFontCollection()
 
     'FORM1 LOAD EVENT - PLAYS AUDIO LAUGH AND GETS FILE CONFIG VALUES AND SETS UP APPLICATION ELEMENTS AND OPENS THE DEFAULT DATABASE
@@ -1068,20 +1072,7 @@ Public Class Form1
 
     End Sub
 
-    '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    'REMOVE MULTIPLE ITEMS FROM SEARCH ITEM LIST  (FOR SOME REASON THERE WAS TWO DELETE ROUTINES IN THE SEARCH LIST SO I REMOVED THIS ONE)
-    'Private Sub RemoveItemsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveItemsToolStripMenuItem.Click
-    'Dim a As Integer
-    'For index = SearchLISTBOX.SelectedIndices.Count - 1 To 0 Step -1
-    'a = SearchLISTBOX.SelectedIndices(index)
-    'SearchLISTBOX.Items.RemoveAt(a)
-    'SearchReferenceList.RemoveAt(a)
-    'Next
-    'SearchLISTBOX.SelectedItem = -1
-    'ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Items"
-    'End Sub
-    '--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+    
     'starts search routine from enter keypress   
     Private Sub SearchBUTTON_KeyDown(sender As Object, e As KeyEventArgs) Handles SearchBUTTON.KeyDown
         If e.KeyCode = Keys.Enter Then
@@ -1166,12 +1157,28 @@ Public Class Form1
 
     'Selects all items in the search list - NOTE: dont like this routine much but could not find a select all option for listboxes anywhere
     Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
-        AllItemsInDatabaseListBox.EndUpdate()
-        For Count = 0 To SearchLISTBOX.Items.Count - 1
-            SearchLISTBOX.SetSelected(Count, True)
-        Next
-        AllItemsInDatabaseListBox.BeginUpdate()
+        'For Count = 0 To SearchLISTBOX.Items.Count - 1
+        'SearchLISTBOX.SetSelected(Count, True)
+        'Next
 
+        SendMessage(SearchLISTBOX.Handle, &H185, 1, -1)
+    End Sub
+    'REMOVE MULTIPLE ITEMS FROM SEARCH ITEM LIST - DOES NOT DELETE ITMES ONLY REMOVES THEM FROM THE SEARCH LIST
+    Private Sub RemoveSelectedItemssFromSearchListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveSelectedItemssFromSearchListToolStripMenuItem.Click
+
+        Dim a As Integer
+        For index = SearchLISTBOX.SelectedIndices.Count - 1 To 0 Step -1
+            a = SearchLISTBOX.SelectedIndices(index)
+            SearchLISTBOX.Items.RemoveAt(a)
+            SearchReferenceList.RemoveAt(a)
+        Next
+        SearchLISTBOX.SelectedItem = -1
+        ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Items"
+    End Sub
+    'CLEARS ALL ITEMS OUT OF THE SEARCH LIST
+    Private Sub ClearSearchListToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles ClearSearchListToolStripMenuItem.Click
+        SearchLISTBOX.Items.Clear()
+        ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Items"
     End Sub
 End Class
 
