@@ -1185,7 +1185,7 @@ Public Class Form1
     End Sub
 
     'Selects all items in the search list - NOTE: dont like this routine much but could not find a select all option for listboxes anywhere
-    Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
+    Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs)
         'OLD SLOW AS SELECT ALL
         'For Count = 0 To SearchLISTBOX.Items.Count - 1
         'SearchLISTBOX.SetSelected(Count, True)

@@ -138,7 +138,6 @@ Partial Class Form1
         Me.DeleteItemsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RemoveSelectedItemssFromSearchListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
-        Me.SelectAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClearSearchListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TradesCONTEXTMENUSTRIP = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.CopyToClipboardToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -234,8 +233,8 @@ Partial Class Form1
         'EditExistingItemToolStripMenuItem
         '
         Me.EditExistingItemToolStripMenuItem.Name = "EditExistingItemToolStripMenuItem"
-        Me.EditExistingItemToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
-        Me.EditExistingItemToolStripMenuItem.Text = "Edit Selected Item"
+        Me.EditExistingItemToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
+        Me.EditExistingItemToolStripMenuItem.Text = "Edit"
         '
         'SearchOperatorLABEL
         '
@@ -335,42 +334,42 @@ Partial Class Form1
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(207, 22)
-        Me.ToolStripMenuItem2.Text = "Import Etal Log(s) Now"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(159, 22)
+        Me.ToolStripMenuItem2.Text = "Import Now"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(204, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(156, 6)
         '
         'AddNewItemToolStripMenuItem
         '
         Me.AddNewItemToolStripMenuItem.Name = "AddNewItemToolStripMenuItem"
-        Me.AddNewItemToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
-        Me.AddNewItemToolStripMenuItem.Text = "Add New Item(s)"
+        Me.AddNewItemToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
+        Me.AddNewItemToolStripMenuItem.Text = "Add"
         '
         'DeleteItemToolStripMenuItem
         '
         Me.DeleteItemToolStripMenuItem.Name = "DeleteItemToolStripMenuItem"
-        Me.DeleteItemToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
-        Me.DeleteItemToolStripMenuItem.Text = "Delete Selected Item(s)"
+        Me.DeleteItemToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
+        Me.DeleteItemToolStripMenuItem.Text = "Delete"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(204, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(156, 6)
         '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(207, 22)
-        Me.ToolStripMenuItem3.Text = "Sort Item list"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(159, 22)
+        Me.ToolStripMenuItem3.Text = "Sort List"
         '
         'ClearTradeListToolStripMenuItem
         '
         Me.ClearTradeListToolStripMenuItem.Name = "ClearTradeListToolStripMenuItem"
-        Me.ClearTradeListToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
-        Me.ClearTradeListToolStripMenuItem.Text = "Clear Trade List Entries"
+        Me.ClearTradeListToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
+        Me.ClearTradeListToolStripMenuItem.Text = "Clear Trade List"
         '
         'Label2
         '
@@ -410,25 +409,25 @@ Partial Class Form1
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
         Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
-        Me.ExitToolStripMenuItem.Text = "Exit DiaBase"
+        Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(224, 22)
-        Me.ToolStripMenuItem1.Text = "Backup Current Database"
+        Me.ToolStripMenuItem1.Text = "Backup "
         '
         'CloseToolStripMenuItem
         '
         Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
         Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
-        Me.CloseToolStripMenuItem.Text = "Save Current Database"
+        Me.CloseToolStripMenuItem.Text = "Save"
         '
         'OpenToolStripMenuItem
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
         Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
-        Me.OpenToolStripMenuItem.Text = "Open Saved Database"
+        Me.OpenToolStripMenuItem.Text = "Open"
         '
         'ItemFileToolStripMenuItem
         '
@@ -445,7 +444,7 @@ Partial Class Form1
         '
         Me.NewToolStripMenuItem1.Name = "NewToolStripMenuItem1"
         Me.NewToolStripMenuItem1.Size = New System.Drawing.Size(224, 22)
-        Me.NewToolStripMenuItem1.Text = "Create New Database"
+        Me.NewToolStripMenuItem1.Text = "Create New"
         '
         'MergeMultipleDatabasesToolStripMenuItem
         '
@@ -463,7 +462,7 @@ Partial Class Form1
         '
         Me.RestoreBackupToolStripMenuItem.Name = "RestoreBackupToolStripMenuItem"
         Me.RestoreBackupToolStripMenuItem.Size = New System.Drawing.Size(224, 22)
-        Me.RestoreBackupToolStripMenuItem.Text = "Restore From Backup"
+        Me.RestoreBackupToolStripMenuItem.Text = "Restore"
         '
         'ToolStripSeparator6
         '
@@ -1110,38 +1109,38 @@ Partial Class Form1
         Me.ItemListboxCONTEXTMENUSTRIP.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.ItemListboxCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SortToolStripMenuItem, Me.AddItemToolStripMenuItem, Me.EditItemToolStripMenuItem, Me.DeleteItemToolStripMenuItem1, Me.AddToUserListToolStripMenuItem})
         Me.ItemListboxCONTEXTMENUSTRIP.Name = "ItemListboxCONTEXTMENUSTRIP"
-        Me.ItemListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(266, 114)
+        Me.ItemListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(177, 114)
         '
         'SortToolStripMenuItem
         '
         Me.SortToolStripMenuItem.Name = "SortToolStripMenuItem"
-        Me.SortToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
-        Me.SortToolStripMenuItem.Text = "Sort Item List"
+        Me.SortToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.SortToolStripMenuItem.Text = "Sort List"
         '
         'AddItemToolStripMenuItem
         '
         Me.AddItemToolStripMenuItem.Name = "AddItemToolStripMenuItem"
-        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
-        Me.AddItemToolStripMenuItem.Text = "Add New Item(s)"
+        Me.AddItemToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.AddItemToolStripMenuItem.Text = "Add"
         '
         'EditItemToolStripMenuItem
         '
         Me.EditItemToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.EditItemToolStripMenuItem.Name = "EditItemToolStripMenuItem"
-        Me.EditItemToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
-        Me.EditItemToolStripMenuItem.Text = "Edit Selected Item"
+        Me.EditItemToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.EditItemToolStripMenuItem.Text = "Edit"
         '
         'DeleteItemToolStripMenuItem1
         '
         Me.DeleteItemToolStripMenuItem1.Name = "DeleteItemToolStripMenuItem1"
-        Me.DeleteItemToolStripMenuItem1.Size = New System.Drawing.Size(265, 22)
-        Me.DeleteItemToolStripMenuItem1.Text = "Delete Selected Item(s)"
+        Me.DeleteItemToolStripMenuItem1.Size = New System.Drawing.Size(176, 22)
+        Me.DeleteItemToolStripMenuItem1.Text = "Delete"
         '
         'AddToUserListToolStripMenuItem
         '
         Me.AddToUserListToolStripMenuItem.Name = "AddToUserListToolStripMenuItem"
-        Me.AddToUserListToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
-        Me.AddToUserListToolStripMenuItem.Text = "Add Selected Item(s) To Trade List"
+        Me.AddToUserListToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.AddToUserListToolStripMenuItem.Text = "Send To Trade List"
         '
         'TradesListControlTabBUTTON
         '
@@ -1163,68 +1162,61 @@ Partial Class Form1
         '
         'SearchListboxCONTEXTMENUSTRIP
         '
-        Me.SearchListboxCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddItemToTradeListToolStripMenuItem, Me.AddAllItemsToUserListToolStripMenuItem, Me.ToolStripSeparator4, Me.ExportSelectedItemsToolStripMenuItem, Me.DeleteItemsToolStripMenuItem, Me.RemoveSelectedItemssFromSearchListToolStripMenuItem, Me.ToolStripSeparator7, Me.SelectAllToolStripMenuItem, Me.ClearSearchListToolStripMenuItem})
+        Me.SearchListboxCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddItemToTradeListToolStripMenuItem, Me.AddAllItemsToUserListToolStripMenuItem, Me.ToolStripSeparator4, Me.RemoveSelectedItemssFromSearchListToolStripMenuItem, Me.ClearSearchListToolStripMenuItem, Me.DeleteItemsToolStripMenuItem, Me.ToolStripSeparator7, Me.ExportSelectedItemsToolStripMenuItem})
         Me.SearchListboxCONTEXTMENUSTRIP.Name = "SearchListboxCONTEXTMENUSTRIP"
-        Me.SearchListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(317, 170)
+        Me.SearchListboxCONTEXTMENUSTRIP.Size = New System.Drawing.Size(194, 148)
         '
         'AddItemToTradeListToolStripMenuItem
         '
         Me.AddItemToTradeListToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.AddItemToTradeListToolStripMenuItem.Name = "AddItemToTradeListToolStripMenuItem"
-        Me.AddItemToTradeListToolStripMenuItem.Size = New System.Drawing.Size(316, 22)
-        Me.AddItemToTradeListToolStripMenuItem.Text = "Add Selected Item(s) To Trade List"
+        Me.AddItemToTradeListToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
+        Me.AddItemToTradeListToolStripMenuItem.Text = "Send To Trade List"
         '
         'AddAllItemsToUserListToolStripMenuItem
         '
         Me.AddAllItemsToUserListToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.AddAllItemsToUserListToolStripMenuItem.Name = "AddAllItemsToUserListToolStripMenuItem"
-        Me.AddAllItemsToUserListToolStripMenuItem.Size = New System.Drawing.Size(316, 22)
-        Me.AddAllItemsToUserListToolStripMenuItem.Text = "Add All Items To Trade List"
+        Me.AddAllItemsToUserListToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
+        Me.AddAllItemsToUserListToolStripMenuItem.Text = "Send All To Trade List"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(313, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(190, 6)
         '
         'ExportSelectedItemsToolStripMenuItem
         '
         Me.ExportSelectedItemsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.ExportSelectedItemsToolStripMenuItem.Name = "ExportSelectedItemsToolStripMenuItem"
-        Me.ExportSelectedItemsToolStripMenuItem.Size = New System.Drawing.Size(316, 22)
-        Me.ExportSelectedItemsToolStripMenuItem.Text = "Export Selected Item(s)"
+        Me.ExportSelectedItemsToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
+        Me.ExportSelectedItemsToolStripMenuItem.Text = "Export"
         '
         'DeleteItemsToolStripMenuItem
         '
         Me.DeleteItemsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.DeleteItemsToolStripMenuItem.Name = "DeleteItemsToolStripMenuItem"
-        Me.DeleteItemsToolStripMenuItem.Size = New System.Drawing.Size(316, 22)
-        Me.DeleteItemsToolStripMenuItem.Text = "Delete Selected Item(s)"
+        Me.DeleteItemsToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
+        Me.DeleteItemsToolStripMenuItem.Text = "Delete"
         '
         'RemoveSelectedItemssFromSearchListToolStripMenuItem
         '
         Me.RemoveSelectedItemssFromSearchListToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.RemoveSelectedItemssFromSearchListToolStripMenuItem.Name = "RemoveSelectedItemssFromSearchListToolStripMenuItem"
-        Me.RemoveSelectedItemssFromSearchListToolStripMenuItem.Size = New System.Drawing.Size(316, 22)
-        Me.RemoveSelectedItemssFromSearchListToolStripMenuItem.Text = "Remove Selected Items(s) From Search List"
+        Me.RemoveSelectedItemssFromSearchListToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
+        Me.RemoveSelectedItemssFromSearchListToolStripMenuItem.Text = "Clear"
         '
         'ToolStripSeparator7
         '
         Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(313, 6)
-        '
-        'SelectAllToolStripMenuItem
-        '
-        Me.SelectAllToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.SelectAllToolStripMenuItem.Name = "SelectAllToolStripMenuItem"
-        Me.SelectAllToolStripMenuItem.Size = New System.Drawing.Size(316, 22)
-        Me.SelectAllToolStripMenuItem.Text = "Select All Matched Items"
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(190, 6)
         '
         'ClearSearchListToolStripMenuItem
         '
         Me.ClearSearchListToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.ClearSearchListToolStripMenuItem.Name = "ClearSearchListToolStripMenuItem"
-        Me.ClearSearchListToolStripMenuItem.Size = New System.Drawing.Size(316, 22)
-        Me.ClearSearchListToolStripMenuItem.Text = "Clear Search List"
+        Me.ClearSearchListToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
+        Me.ClearSearchListToolStripMenuItem.Text = "Clear All"
         '
         'TradesCONTEXTMENUSTRIP
         '
@@ -1498,7 +1490,6 @@ Partial Class Form1
     Friend WithEvents ExportSelectedItemsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripSeparator6 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents SelectAllToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MergeMultipleDatabasesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RemoveSelectedItemssFromSearchListToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator7 As System.Windows.Forms.ToolStripSeparator
