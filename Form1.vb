@@ -1186,15 +1186,21 @@ Public Class Form1
 
     'Selects all items in the search list - NOTE: dont like this routine much but could not find a select all option for listboxes anywhere
     Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
+        'OLD SLOW AS SELECT ALL
         'For Count = 0 To SearchLISTBOX.Items.Count - 1
         'SearchLISTBOX.SetSelected(Count, True)
         'Next
 
-        SendMessage(SearchLISTBOX.Handle, &H185, 1, -1)
+        'SendMessage(SearchLISTBOX.Handle, &H185, 1, -1) 'COMMENT OUT FOR DEBUG
     End Sub
     'REMOVE MULTIPLE ITEMS FROM SEARCH ITEM LIST - DOES NOT DELETE ITMES ONLY REMOVES THEM FROM THE SEARCH LIST
     Private Sub RemoveSelectedItemssFromSearchListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveSelectedItemssFromSearchListToolStripMenuItem.Click
+        If LoggerRunning = True Then '                                                                      CHECK FOR RUNNING AUTOLOG ROUTINE
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
 
+        Dim FocusOnExit As Integer = SearchLISTBOX.SelectedIndex
         Dim a As Integer
         For index = SearchLISTBOX.SelectedIndices.Count - 1 To 0 Step -1
             a = SearchLISTBOX.SelectedIndices(index)
@@ -1202,7 +1208,16 @@ Public Class Form1
             SearchReferenceList.RemoveAt(a)
         Next
         SearchLISTBOX.SelectedItem = -1
+
+        'KEEPS FocusOnExit WITHIN LISTBOX BOUNDARYS
+        If FocusOnExit >= (SearchLISTBOX.Items.Count) Then FocusOnExit = SearchLISTBOX.Items.Count - 1
+        If SearchLISTBOX.Items.Count = 1 Then FocusOnExit = 0
+        If SearchLISTBOX.Items.Count = 0 Then FocusOnExit = -1
+        ClearStats()
+        SearchLISTBOX.SelectedIndex = FocusOnExit
         ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Items"
+
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start() '                                              RESTART LOGGER
     End Sub
     'CLEARS ALL ITEMS OUT OF THE SEARCH LIST
     Private Sub ClearSearchListToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles ClearSearchListToolStripMenuItem.Click

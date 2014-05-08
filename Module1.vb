@@ -62,7 +62,7 @@ Module Module1
          "Lum", "Ko", "Fal", "Lem", "Pul", "Um", "Mal", "Ist", "Gul", "Vex", "Ohm", "Lo", "Sur", "Jah", "Ber", "Cham", "Zod"}
 
     'Define Global DLL Messaging Function For Listboxes "Select All" Context Menu Action - :) Tyvm For dll Lesson Ned :)
-    Declare Auto Function SendMessage Lib "user32.dll" (ByVal hWnd As IntPtr, ByVal msg As Integer, ByVal wParam As IntPtr, ByVal lParam As IntPtr) As IntPtr
+    'Declare Auto Function SendMessage Lib "user32.dll" (ByVal hWnd As IntPtr, ByVal msg As Integer, ByVal wParam As IntPtr, ByVal lParam As IntPtr) As IntPtr 'COMMENT OUT FOR DEBUG
 
     'Calls the UserMessaging 'Okie Dokie' Form As DialogBox
     Public Sub MyMessageBox()
