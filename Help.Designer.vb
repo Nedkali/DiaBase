@@ -35,7 +35,7 @@ Partial Class Help
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.ReadOnly = True
         Me.RichTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical
-        Me.RichTextBox1.Size = New System.Drawing.Size(529, 575)
+        Me.RichTextBox1.Size = New System.Drawing.Size(638, 575)
         Me.RichTextBox1.TabIndex = 0
         Me.RichTextBox1.Text = ""
         '
@@ -43,7 +43,7 @@ Partial Class Help
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(529, 575)
+        Me.ClientSize = New System.Drawing.Size(638, 575)
         Me.Controls.Add(Me.RichTextBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False

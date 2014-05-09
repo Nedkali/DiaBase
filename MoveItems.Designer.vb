@@ -229,6 +229,8 @@ Partial Class MoveItems
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.DatabaseFilenameTEXTBOX)
+        Me.MaximumSize = New System.Drawing.Size(650, 441)
+        Me.MinimumSize = New System.Drawing.Size(650, 441)
         Me.Name = "MoveItems"
         Me.Text = "Export Items To A Second Database"
         Me.ResumeLayout(False)

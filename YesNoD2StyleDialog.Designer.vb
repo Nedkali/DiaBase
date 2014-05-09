@@ -94,7 +94,9 @@ Partial Class YesNoD2Style
         Me.Controls.Add(Me.YesNoCANCELBUTTON)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(447, 313)
         Me.MinimizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(447, 313)
         Me.Name = "YesNoD2Style"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Universal Confirmation Box - Set Text At Runtime"

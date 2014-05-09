@@ -39,7 +39,6 @@ Partial Class Settings
         Me.CheckBox3 = New System.Windows.Forms.CheckBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.AutoBackupImportsCHECKBOX = New System.Windows.Forms.CheckBox()
         Me.Label128 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
@@ -52,13 +51,9 @@ Partial Class Settings
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
-        Me.BackupOnEditsCHECKBOX = New System.Windows.Forms.CheckBox()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.Label20 = New System.Windows.Forms.Label()
         Me.DupeCheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.AutoBackupImportsCHECKBOX = New System.Windows.Forms.CheckBox()
+        Me.BackupOnEditsCHECKBOX = New System.Windows.Forms.CheckBox()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -69,7 +64,7 @@ Partial Class Settings
         Me.Label5.AutoSize = True
         Me.Label5.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label5.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label5.Location = New System.Drawing.Point(407, 194)
+        Me.Label5.Location = New System.Drawing.Point(407, 188)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(46, 13)
         Me.Label5.TabIndex = 29
@@ -81,7 +76,7 @@ Partial Class Settings
         Me.Label4.BackColor = System.Drawing.SystemColors.WindowText
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label4.Location = New System.Drawing.Point(331, 169)
+        Me.Label4.Location = New System.Drawing.Point(331, 163)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(151, 16)
         Me.Label4.TabIndex = 28
@@ -158,11 +153,11 @@ Partial Class Settings
         Me.Label1.BackColor = System.Drawing.SystemColors.WindowText
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label1.Location = New System.Drawing.Point(71, 32)
+        Me.Label1.Location = New System.Drawing.Point(71, 33)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(205, 20)
+        Me.Label1.Size = New System.Drawing.Size(156, 20)
         Me.Label1.TabIndex = 21
-        Me.Label1.Text = "Etal Folder - eg C:\D2NT"
+        Me.Label1.Text = "Etals D2NT Folder"
         '
         'EtalPathTEXTBOX
         '
@@ -179,7 +174,7 @@ Partial Class Settings
         Me.Label3.BackColor = System.Drawing.SystemColors.WindowText
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label3.Location = New System.Drawing.Point(71, 97)
+        Me.Label3.Location = New System.Drawing.Point(71, 95)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(151, 20)
         Me.Label3.TabIndex = 32
@@ -193,7 +188,7 @@ Partial Class Settings
         '
         Me.NumericUpDown1.BackColor = System.Drawing.Color.Black
         Me.NumericUpDown1.ForeColor = System.Drawing.Color.White
-        Me.NumericUpDown1.Location = New System.Drawing.Point(335, 191)
+        Me.NumericUpDown1.Location = New System.Drawing.Point(335, 185)
         Me.NumericUpDown1.Minimum = New Decimal(New Integer() {5, 0, 0, 0})
         Me.NumericUpDown1.Name = "NumericUpDown1"
         Me.NumericUpDown1.Size = New System.Drawing.Size(56, 20)
@@ -205,7 +200,7 @@ Partial Class Settings
         Me.CheckBox3.AutoSize = True
         Me.CheckBox3.BackColor = System.Drawing.SystemColors.WindowText
         Me.CheckBox3.ForeColor = System.Drawing.Color.BurlyWood
-        Me.CheckBox3.Location = New System.Drawing.Point(42, 157)
+        Me.CheckBox3.Location = New System.Drawing.Point(42, 164)
         Me.CheckBox3.Name = "CheckBox3"
         Me.CheckBox3.Size = New System.Drawing.Size(212, 17)
         Me.CheckBox3.TabIndex = 34
@@ -233,18 +228,6 @@ Partial Class Settings
         Me.PictureBox2.TabIndex = 36
         Me.PictureBox2.TabStop = False
         Me.PictureBox2.Visible = False
-        '
-        'AutoBackupImportsCHECKBOX
-        '
-        Me.AutoBackupImportsCHECKBOX.AutoSize = True
-        Me.AutoBackupImportsCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.AutoBackupImportsCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AutoBackupImportsCHECKBOX.Location = New System.Drawing.Point(42, 209)
-        Me.AutoBackupImportsCHECKBOX.Name = "AutoBackupImportsCHECKBOX"
-        Me.AutoBackupImportsCHECKBOX.Size = New System.Drawing.Size(216, 17)
-        Me.AutoBackupImportsCHECKBOX.TabIndex = 37
-        Me.AutoBackupImportsCHECKBOX.Text = "Backup Database Before Importng Logs"
-        Me.AutoBackupImportsCHECKBOX.UseVisualStyleBackColor = False
         '
         'Label128
         '
@@ -313,7 +296,7 @@ Partial Class Settings
         'Label11
         '
         Me.Label11.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label11.Location = New System.Drawing.Point(389, 190)
+        Me.Label11.Location = New System.Drawing.Point(389, 184)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(2, 21)
         Me.Label11.TabIndex = 877
@@ -321,7 +304,7 @@ Partial Class Settings
         'Label12
         '
         Me.Label12.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label12.Location = New System.Drawing.Point(334, 190)
+        Me.Label12.Location = New System.Drawing.Point(334, 184)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(2, 21)
         Me.Label12.TabIndex = 876
@@ -329,7 +312,7 @@ Partial Class Settings
         'Label13
         '
         Me.Label13.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label13.Location = New System.Drawing.Point(336, 190)
+        Me.Label13.Location = New System.Drawing.Point(336, 184)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(55, 2)
         Me.Label13.TabIndex = 875
@@ -337,74 +320,52 @@ Partial Class Settings
         'Label14
         '
         Me.Label14.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label14.Location = New System.Drawing.Point(336, 209)
+        Me.Label14.Location = New System.Drawing.Point(336, 203)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(55, 2)
         Me.Label14.TabIndex = 874
+        '
+        'DupeCheckBox1
+        '
+        Me.DupeCheckBox1.AutoSize = True
+        Me.DupeCheckBox1.BackColor = System.Drawing.SystemColors.WindowText
+        Me.DupeCheckBox1.Checked = True
+        Me.DupeCheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.DupeCheckBox1.ForeColor = System.Drawing.Color.BurlyWood
+        Me.DupeCheckBox1.Location = New System.Drawing.Point(42, 187)
+        Me.DupeCheckBox1.MaximumSize = New System.Drawing.Size(165, 17)
+        Me.DupeCheckBox1.MinimumSize = New System.Drawing.Size(165, 17)
+        Me.DupeCheckBox1.Name = "DupeCheckBox1"
+        Me.DupeCheckBox1.Size = New System.Drawing.Size(165, 17)
+        Me.DupeCheckBox1.TabIndex = 884
+        Me.DupeCheckBox1.Text = "Remove duplicated mule logs"
+        Me.DupeCheckBox1.UseVisualStyleBackColor = False
+        '
+        'AutoBackupImportsCHECKBOX
+        '
+        Me.AutoBackupImportsCHECKBOX.AutoSize = True
+        Me.AutoBackupImportsCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.AutoBackupImportsCHECKBOX.Checked = True
+        Me.AutoBackupImportsCHECKBOX.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.AutoBackupImportsCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
+        Me.AutoBackupImportsCHECKBOX.Location = New System.Drawing.Point(42, 221)
+        Me.AutoBackupImportsCHECKBOX.Name = "AutoBackupImportsCHECKBOX"
+        Me.AutoBackupImportsCHECKBOX.Size = New System.Drawing.Size(216, 17)
+        Me.AutoBackupImportsCHECKBOX.TabIndex = 37
+        Me.AutoBackupImportsCHECKBOX.Text = "Backup Database Before Importng Logs"
+        Me.AutoBackupImportsCHECKBOX.UseVisualStyleBackColor = False
         '
         'BackupOnEditsCHECKBOX
         '
         Me.BackupOnEditsCHECKBOX.AutoSize = True
         Me.BackupOnEditsCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.BackupOnEditsCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
-        Me.BackupOnEditsCHECKBOX.Location = New System.Drawing.Point(42, 232)
+        Me.BackupOnEditsCHECKBOX.Location = New System.Drawing.Point(42, 244)
         Me.BackupOnEditsCHECKBOX.Name = "BackupOnEditsCHECKBOX"
         Me.BackupOnEditsCHECKBOX.Size = New System.Drawing.Size(209, 17)
         Me.BackupOnEditsCHECKBOX.TabIndex = 878
         Me.BackupOnEditsCHECKBOX.Text = "Backup Database Before Editing Items"
         Me.BackupOnEditsCHECKBOX.UseVisualStyleBackColor = False
-        '
-        'Label16
-        '
-        Me.Label16.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label16.Location = New System.Drawing.Point(34, 205)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(234, 1)
-        Me.Label16.TabIndex = 879
-        '
-        'Label17
-        '
-        Me.Label17.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label17.Location = New System.Drawing.Point(34, 253)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(234, 1)
-        Me.Label17.TabIndex = 880
-        '
-        'Label18
-        '
-        Me.Label18.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label18.Location = New System.Drawing.Point(267, 206)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(0, 46)
-        Me.Label18.TabIndex = 881
-        '
-        'Label19
-        '
-        Me.Label19.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label19.Location = New System.Drawing.Point(267, 205)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(1, 48)
-        Me.Label19.TabIndex = 882
-        '
-        'Label20
-        '
-        Me.Label20.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label20.Location = New System.Drawing.Point(34, 206)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(1, 48)
-        Me.Label20.TabIndex = 883
-        '
-        'DupeCheckBox1
-        '
-        Me.DupeCheckBox1.AutoSize = True
-        Me.DupeCheckBox1.BackColor = System.Drawing.SystemColors.WindowText
-        Me.DupeCheckBox1.ForeColor = System.Drawing.Color.BurlyWood
-        Me.DupeCheckBox1.Location = New System.Drawing.Point(42, 180)
-        Me.DupeCheckBox1.Name = "DupeCheckBox1"
-        Me.DupeCheckBox1.Size = New System.Drawing.Size(165, 17)
-        Me.DupeCheckBox1.TabIndex = 884
-        Me.DupeCheckBox1.Text = "Remove duplicated mule logs"
-        Me.DupeCheckBox1.UseVisualStyleBackColor = False
         '
         'Settings
         '
@@ -413,11 +374,6 @@ Partial Class Settings
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.Setting
         Me.ClientSize = New System.Drawing.Size(511, 295)
         Me.Controls.Add(Me.DupeCheckBox1)
-        Me.Controls.Add(Me.Label20)
-        Me.Controls.Add(Me.Label19)
-        Me.Controls.Add(Me.Label18)
-        Me.Controls.Add(Me.Label17)
-        Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.BackupOnEditsCHECKBOX)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Label12)
@@ -475,7 +431,6 @@ Partial Class Settings
     Friend WithEvents CheckBox3 As System.Windows.Forms.CheckBox
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
-    Friend WithEvents AutoBackupImportsCHECKBOX As System.Windows.Forms.CheckBox
     Friend WithEvents Label128 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label15 As System.Windows.Forms.Label
@@ -488,11 +443,7 @@ Partial Class Settings
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents Label14 As System.Windows.Forms.Label
-    Friend WithEvents BackupOnEditsCHECKBOX As System.Windows.Forms.CheckBox
-    Friend WithEvents Label16 As System.Windows.Forms.Label
-    Friend WithEvents Label17 As System.Windows.Forms.Label
-    Friend WithEvents Label18 As System.Windows.Forms.Label
-    Friend WithEvents Label19 As System.Windows.Forms.Label
-    Friend WithEvents Label20 As System.Windows.Forms.Label
     Friend WithEvents DupeCheckBox1 As System.Windows.Forms.CheckBox
+    Friend WithEvents AutoBackupImportsCHECKBOX As System.Windows.Forms.CheckBox
+    Friend WithEvents BackupOnEditsCHECKBOX As System.Windows.Forms.CheckBox
 End Class

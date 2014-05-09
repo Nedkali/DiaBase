@@ -101,6 +101,8 @@ Public Class Form1
             AddItemForm.AddItemImageBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             AddItemForm.AddItemSaveBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
 
+            ItemImageSelector.AddSelectImageBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            ItemImageSelector.AddSelectImageCancelBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
         End If
     End Sub
 
@@ -669,7 +671,16 @@ Public Class Form1
                 My.Computer.FileSystem.DeleteFile(Databasefile) 'delete old dbase file
                 My.Computer.FileSystem.CopyFile(BackupPath & tempname, Databasefile, True) ' copy over new dbase file and rename it
 
+
+
                 OpenDatabaseRoutine(Databasefile) 'refresh new database file to the lists
+
+                'SELECT MAIN LIST BOX AFTER BACKUP RESTORE
+                ListControlTabBUTTON.BackColor = Color.DimGray
+                SearchListControlTabBUTTON.BackColor = Color.Black
+                TradesListControlTabBUTTON.BackColor = Color.Black
+                ListboxTABCONTROL.SelectTab(0)
+
             Else
                 'There is not backup file for this database so cant restore it
             End If
@@ -960,8 +971,8 @@ Public Class Form1
 
         ImportTimer.Stop()
         If SearchLISTBOX.Items.Count > 0 Then
-            'ADD THE SELECTED ITEM
 
+            'ADD THE SELECTED ITEM
             Dim a = SearchReferenceList(SearchLISTBOX.SelectedIndex)
             SendToTradeList(a)
         End If

@@ -18,6 +18,8 @@ Public Class D2StyleOpenFileDialog
         Next
 
         'refresh the open database combobox drop down with file alread successfully opened in this session (stored in OpenDatabaseDropDown collection)
+
+        DatabaseFilenameCOMBOBOX.Items.Clear()
         For Each item In OpenDatabaseDropDown
             DatabaseFilenameCOMBOBOX.Items.Add(item)
         Next
