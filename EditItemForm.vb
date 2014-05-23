@@ -8,7 +8,7 @@
     Private Sub EditItemForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         iEdit = Form1.AllItemsInDatabaseListBox.SelectedIndex
 
-        
+        EditedFields.Clear()
 
         'POPULATE EDIT COMBOBOXES
         UpdatingField = True
@@ -204,7 +204,7 @@
         If Settings.BackupOnEditsCHECKBOX.Checked = True Then Module1.BackupDatabase()
         Dim ConfirmResult As Windows.Forms.DialogResult
         Dim FirstSelected As Integer = Nothing
-        If Form1.AllItemsInDatabaseListBox.SelectedItems.Count > 1 Then
+        If Form1.AllItemsInDatabaseListBox.SelectedItems.Count > 1 And EditedFields.Count > 0 Then
 
             'confirmation popup box
             YesNoD2Style.Text = "Confirm To Copy Edits To Selected Items"
