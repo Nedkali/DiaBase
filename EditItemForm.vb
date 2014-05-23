@@ -1,10 +1,17 @@
 ﻿Public Class EditItemForm
-    Sub AddEditItemComboboxItems(ByVal ItemIndexNumberToRefrence)
-    End Sub
+    'Sub AddEditItemComboboxItems(ByVal ItemIndexNumberToRefrence)
+    'End Sub
+    Public EditedFields As List(Of String) = New List(Of String)
+    Public UpdatingField As Boolean = False
+
+
     Private Sub EditItemForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         iEdit = Form1.AllItemsInDatabaseListBox.SelectedIndex
 
+        
+
         'POPULATE EDIT COMBOBOXES
+        UpdatingField = True
         EditItemMuleNameCOMBOBOX.Items.Clear() 'Next 5 lines clears out all existing combobox items
         EditItemMuleAccountCOMBOBOX.Items.Clear()
         EditItemMulePassCOMBOBOX.Items.Clear()
@@ -39,10 +46,8 @@
             If ItemObjectItem.PickitBot <> "" Then
                 If EditItemPickitBotCOMBOBOX.Items.Contains(ItemObjectItem.PickitBot) = False Then EditItemPickitBotCOMBOBOX.Items.Add(ItemObjectItem.PickitBot)
             End If
-
         Next
-
-
+        UpdatingField = False
     End Sub
 
     Private Sub EditItemCancelBUTTON_Click(sender As Object, e As EventArgs) Handles EditItemCancelBUTTON.Click
@@ -51,8 +56,6 @@
 
     Private Sub EditItemForm_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         AutoCompleteForm()
-
-
     End Sub
 
     Private Sub EditItemUndoChangesBUTTON_Click(sender As Object, e As EventArgs) Handles EditItemUndoChangesBUTTON.Click
@@ -84,7 +87,7 @@
 
     'Fill out form with current item information
     Private Sub AutoCompleteForm()
-
+        UpdatingField = True
         EditItemNameTEXTBOX.Text = Objects(iEdit).ItemName
         EditItemBaseCOMBOBOX.Text = Objects(iEdit).ItemBase
         EditItemQualityCOMBOBOX.Text = Objects(iEdit).ItemQuality
@@ -131,13 +134,14 @@
         If KeepPassPrivate = True Then EditItemMulePassCOMBOBOX.Text = HidePass(Objects(iEdit).MulePass) Else EditItemMulePassCOMBOBOX.Text = Objects(iEdit).MulePass
         'EditItemMulePassCOMBOBOX.Text = Objects(iEdit).MulePass
         EditItemPickitBotCOMBOBOX.Text = Objects(iEdit).PickitBot
-
+        UpdatingField = False
 
 
     End Sub
 
     'Clear form some items need correcting still TODO
     Private Sub Clear_Form()
+        UpdatingField = True
         EditItemNameTEXTBOX.Clear()
         EditItemBaseCOMBOBOX.Text = ""
         EditItemQualityCOMBOBOX.Text = ""
@@ -182,6 +186,7 @@
         EditItemMuleAccountCOMBOBOX.Text = ""
         EditItemMulePassCOMBOBOX.Text = ""
         EditItemPickitBotCOMBOBOX.Text = ""
+        UpdatingField = False
     End Sub
 
     'Update object's information based on user input
@@ -195,12 +200,93 @@
         End If
 
         'check for backup on edits set to true if so the backup now
+        'UpdatingField = True
         If Settings.BackupOnEditsCHECKBOX.Checked = True Then Module1.BackupDatabase()
 
+        If Form1.AllItemsInDatabaseListBox.SelectedItems.Count > 1 Then
+
+            YesNoD2Style.Text = "Confirm To Copy Edits To Selected Items"
+            YesNoD2Style.YesNoHeaderLABEL.Text = "Copy To Selected Items"
+            YesNoD2Style.YesNoMessageLABEL.Text = "Select Confirm to copy edited fields to all currently selected items." & vbCrLf & "Select Cancel to only edit the single item."
+
+            Dim ConfirmResult = YesNoD2Style.ShowDialog
+
+            If ConfirmResult = Windows.Forms.DialogResult.Yes Then
+
+
+                'apply edits to all selected items
+                For count = 0 To Form1.AllItemsInDatabaseListBox.SelectedItems.Count - 1 Step 1
+                    iEdit = Form1.AllItemsInDatabaseListBox.SelectedIndex + count
+                    For Each item In EditedFields
+                        If item = "EditItemNameTEXTBOX" Then Objects(iEdit).ItemName = EditItemNameTEXTBOX.Text
+                        If item = "EditItemBaseCOMBOBOX" Then Objects(iEdit).ItemBase = EditItemBaseCOMBOBOX.Text
+                        If item = "EditItemQualityCOMBOBOX" Then Objects(iEdit).ItemQuality = EditItemQualityCOMBOBOX.Text
+                        If item = "EditItemRunewordTEXTBOX" Then Objects(iEdit).RuneWord = EditItemRunewordTEXTBOX.Text
+                        If item = "EditItemSocketsCOMBOBOX" Then Objects(iEdit).Sockets = EditItemSocketsCOMBOBOX.Text
+                        If item = "EditItemEtherealItemCHECKBOX" And EditItemEtherealItemCHECKBOX.Checked = True Then Objects(iEdit).EtherealItem = "true"
+                        If item = "EditItemEtherealItemCHECKBOX" And EditItemEtherealItemCHECKBOX.Checked = False Then Objects(iEdit).EtherealItem = "false"
+                        If item = "EditItemThrowDamageMinTEXTBOX" Then Objects(iEdit).ThrowDamageMin = EditItemThrowDamageMinTEXTBOX.Text
+                        If item = "EditItemThrowDamageMaxTEXTBOX" Then Objects(iEdit).ThrowDamageMax = EditItemThrowDamageMaxTEXTBOX.Text
+                        If item = "EditItemOneHandDamageMinTEXTBOX" Then Objects(iEdit).OneHandDamageMin = EditItemOneHandDamageMinTEXTBOX.Text
+                        If item = "EditItemOneHandDamageMaxTEXTBOX" Then Objects(iEdit).OneHandDamageMax = EditItemOneHandDamageMaxTEXTBOX.Text
+                        If item = "EditItemTwoHandDamageMinTEXTBOX" Then Objects(iEdit).TwoHandDamageMin = EditItemTwoHandDamageMinTEXTBOX.Text
+                        If item = "EditItemTwoHandDamageMaxTEXTBOX" Then Objects(iEdit).TwoHandDamageMax = EditItemTwoHandDamageMaxTEXTBOX.Text
+                        If item = "EditItemQuantityMinTEXTBOX" Then Objects(iEdit).QuantityMin = EditItemQuantityMinTEXTBOX.Text
+                        If item = "EditItemQuantityMaxTEXTBOX" Then Objects(iEdit).QuantityMax = EditItemQuantityMaxTEXTBOX.Text
+                        If item = "EditItemDurabilityMinTEXTBOX" Then Objects(iEdit).DurabilityMin = EditItemDurabilityMinTEXTBOX.Text
+                        If item = "EditItemDurabilityMaxTEXTBOX" Then Objects(iEdit).DurabilityMax = EditItemDurabilityMaxTEXTBOX.Text
+                        If item = "EditItemDefenseTEXTBOX" Then Objects(iEdit).Defense = EditItemDefenseTEXTBOX.Text
+                        If item = "EditItemChanceToBlockTEXTBOX" Then Objects(iEdit).ChanceToBlock = EditItemChanceToBlockTEXTBOX.Text
+                        If item = "EditItemRequiredStrengthTEXTBOX" Then Objects(iEdit).RequiredStrength = EditItemRequiredStrengthTEXTBOX.Text
+                        If item = "EditItemRequiredDexterityTEXTBOX" Then Objects(iEdit).RequiredDexterity = EditItemRequiredDexterityTEXTBOX.Text
+                        If item = "EditItemRequiredLevelTEXTBOX" Then Objects(iEdit).RequiredLevel = EditItemRequiredLevelTEXTBOX.Text
+                        If item = "EditItemAttackClassCOMBOBOX" Then Objects(iEdit).AttackClass = EditItemAttackClassCOMBOBOX.Text
+                        If item = "EditItemAttackSpeedCOMBOBOX" Then Objects(iEdit).AttackSpeed = EditItemAttackSpeedCOMBOBOX.Text
+                        If item = "EditItemStat1TEXTBOX" Then Objects(iEdit).Stat1 = EditItemStat1TEXTBOX.Text
+                        If item = "EditItemStat2TEXTBOX" Then Objects(iEdit).Stat2 = EditItemStat2TEXTBOX.Text
+                        If item = "EditItemStat3TEXTBOX" Then Objects(iEdit).Stat3 = EditItemStat3TEXTBOX.Text
+                        If item = "EditItemStat4TEXTBOX" Then Objects(iEdit).Stat4 = EditItemStat4TEXTBOX.Text
+                        If item = "EditItemStat5TEXTBOX" Then Objects(iEdit).Stat5 = EditItemStat5TEXTBOX.Text
+                        If item = "EditItemStat6TEXTBOX" Then Objects(iEdit).Stat6 = EditItemStat6TEXTBOX.Text
+                        If item = "EditItemStat7TEXTBOX" Then Objects(iEdit).Stat7 = EditItemStat7TEXTBOX.Text
+                        If item = "EditItemStat8TEXTBOX" Then Objects(iEdit).Stat8 = EditItemStat8TEXTBOX.Text
+                        If item = "EditItemStat9TEXTBOX" Then Objects(iEdit).Stat9 = EditItemStat9TEXTBOX.Text
+                        If item = "EditItemStat10TEXTBOX" Then Objects(iEdit).Stat10 = EditItemStat10TEXTBOX.Text
+                        If item = "EditItemStat11TEXTBOX" Then Objects(iEdit).Stat11 = EditItemStat11TEXTBOX.Text
+                        If item = "EditItemStat12TEXTBOX" Then Objects(iEdit).Stat12 = EditItemStat12TEXTBOX.Text
+                        If item = "EditItemStat13TEXTBOX" Then Objects(iEdit).Stat13 = EditItemStat13TEXTBOX.Text
+                        If item = "EditItemStat14TEXTBOX" Then Objects(iEdit).Stat14 = EditItemStat14TEXTBOX.Text
+                        If item = "EditItemStat15TEXTBOX" Then Objects(iEdit).Stat15 = EditItemStat15TEXTBOX.Text
+                        If item = "EditItemMuleNameCOMBOBOX" Then Objects(iEdit).MuleName = EditItemMuleNameCOMBOBOX.Text
+                        If item = "EditItemMuleAccountCOMBOBOX" Then Objects(iEdit).MuleAccount = EditItemMuleAccountCOMBOBOX.Text
+                        If item = "EditItemMulePassCOMBOBOX" Then Objects(iEdit).MulePass = EditItemMulePassCOMBOBOX.Text
+                        If item = "EditItemPickitBotCOMBOBOX" Then Objects(iEdit).PickitBot = EditItemPickitBotCOMBOBOX.Text
+                        If item = "EditItemImageTEXTBOX" Then Objects(iEdit).ItemImage = EditItemImageTEXTBOX.Text
+                        If item = "EditItemUserReferenceTEXTBOX" Then Objects(iEdit).UserReference = EditItemUserReferenceTEXTBOX.Text
+
+                        'If item = "" Then Objects(iEdit). = .Text
+                    Next
+
+                Next
+
+                'apply edits to only 1 selected it or when only 1 item is selected
+            ElseIf ConfirmResult = Windows.Forms.DialogResult.No Or Form1.AllItemsInDatabaseListBox.SelectedItems.Count = 1 Then
+                UpdateItemToDatabase()
+            End If
+        End If
 
 
 
+        'Form1.AllItemsInDatabaseListBox.SelectedIndex = iEdit                           'selects the same item after edit
 
+
+        Me.Close()
+        'UpdatingField = False
+
+
+
+    End Sub
+    Sub UpdateItemToDatabase()
         Objects(iEdit).ItemName = EditItemNameTEXTBOX.Text
         Objects(iEdit).ItemBase = EditItemBaseCOMBOBOX.Text
         Objects(iEdit).ItemQuality = EditItemQualityCOMBOBOX.Text
@@ -249,12 +335,26 @@
 
         Form1.AllItemsInDatabaseListBox.Items.RemoveAt(iEdit)                           'Clears previous item's name from form1 itemlistbox
         Form1.AllItemsInDatabaseListBox.Items.Insert(iEdit, (Objects(iEdit).ItemName))  'Updates new details/name in form1 itemlistbox
-        Form1.AllItemsInDatabaseListBox.SelectedIndex = iEdit                           'selects the same item after edit
-        Me.Close()
 
     End Sub
 
+
     Private Sub EditItemImageBUTTON_Click(sender As Object, e As EventArgs) Handles EditItemImageBUTTON.Click
         ItemImageSelector.ShowDialog()
+    End Sub
+
+    Private Sub CheckForFieldChanges(sender As Object, e As EventArgs) Handles EditItemNameTEXTBOX.TextChanged, EditItemBaseCOMBOBOX.TextChanged, EditItemQualityCOMBOBOX.TextChanged, EditItemRunewordTEXTBOX.TextChanged, _
+        EditItemSocketsCOMBOBOX.TextChanged, EditItemEtherealItemCHECKBOX.CheckedChanged, EditItemThrowDamageMinTEXTBOX.TextChanged, EditItemThrowDamageMaxTEXTBOX.TextChanged, EditItemOneHandDamageMinTEXTBOX.TextChanged, _
+        EditItemOneHandDamageMaxTEXTBOX.TextChanged, EditItemTwoHandDamageMinTEXTBOX.TextChanged, EditItemTwoHandDamageMaxTEXTBOX.TextChanged, EditItemQuantityMinTEXTBOX.TextChanged, EditItemQuantityMaxTEXTBOX.TextChanged, _
+        EditItemDurabilityMinTEXTBOX.TextChanged, EditItemDefenseTEXTBOX.TextChanged, EditItemChanceToBlockTEXTBOX.TextChanged, EditItemRequiredStrengthTEXTBOX.TextChanged, EditItemRequiredDexterityTEXTBOX.TextChanged, _
+        EditItemRequiredLevelTEXTBOX.TextChanged, EditItemAttackClassCOMBOBOX.TextChanged, EditItemAttackSpeedCOMBOBOX.TextChanged, EditItemStat1TEXTBOX.TextChanged, EditItemStat2TEXTBOX.TextChanged, EditItemStat3TEXTBOX.TextChanged, _
+        EditItemStat4TEXTBOX.TextChanged, EditItemStat5TEXTBOX.TextChanged, EditItemStat6TEXTBOX.TextChanged, EditItemStat7TEXTBOX.TextChanged, EditItemStat8TEXTBOX.TextChanged, EditItemStat9TEXTBOX.TextChanged, EditItemStat10TEXTBOX.TextChanged, _
+        EditItemStat11TEXTBOX.TextChanged, EditItemStat12TEXTBOX.TextChanged, EditItemStat13TEXTBOX.TextChanged, EditItemStat14TEXTBOX.TextChanged, EditItemStat15TEXTBOX.TextChanged, EditItemMuleNameCOMBOBOX.TextChanged, _
+        EditItemMuleAccountCOMBOBOX.TextChanged, EditItemMulePassCOMBOBOX.TextChanged, EditItemPickitBotCOMBOBOX.TextChanged, EditItemImageTEXTBOX.TextChanged, EditItemUserReferenceTEXTBOX.TextChanged
+
+        If UpdatingField = False Then
+            Dim ControlName As String = CType(sender, Control).Name.ToString()
+            If EditedFields.contains(ControlName) = False Then EditedFields.add(ControlName)
+        End If
     End Sub
 End Class
