@@ -204,12 +204,20 @@
         If Settings.BackupOnEditsCHECKBOX.Checked = True Then Module1.BackupDatabase()
         Dim ConfirmResult As Windows.Forms.DialogResult
         Dim FirstSelected As Integer = Nothing
+        Dim AllSelected As List(Of String) = New List(Of String)
+
         If Form1.AllItemsInDatabaseListBox.SelectedItems.Count > 1 And EditedFields.Count > 0 Then
 
+            'get all selected items for reselection at end of process
+            For Each item In Form1.AllItemsInDatabaseListBox.SelectedIndices
+                AllSelected.Add(item)
+            Next
+
+
             'confirmation popup box
-            YesNoD2Style.Text = "Confirm To Copy Edits To Selected Items"
-            YesNoD2Style.YesNoHeaderLABEL.Text = "Copy To Selected Items"
-            YesNoD2Style.YesNoMessageLABEL.Text = "Select Confirm to copy edited fields to all currently selected items." & vbCrLf & "Select Cancel to only edit the single item."
+            YesNoD2Style.Text = "Confirm To Copy Edits To All Selected Items"
+            YesNoD2Style.YesNoHeaderLABEL.Text = "Copy To All Selected Items"
+            YesNoD2Style.YesNoMessageLABEL.Text = "Select Confirm to copy edited field values to all currently selected items. " & vbCrLf & "NOTE: This will permanently replace the edited field values for all other items currently selected." & vbCrLf & vbCrLf & "Select Cancel to only edit the first selected item."
 
             'confirm results...
             ConfirmResult = YesNoD2Style.ShowDialog
@@ -217,7 +225,7 @@
 
                 'apply edits to all selected items
                 For count = 0 To Form1.AllItemsInDatabaseListBox.SelectedItems.Count - 1 Step 1
-                    If count = 0 Then FirstSelected = Form1.AllItemsInDatabaseListBox.SelectedIndex
+                    If count = 0 Then FirstSelected = Form1.AllItemsInDatabaseListBox.SelectedIndex ' get first selected item for reselection at end of process
                     iEdit = Form1.AllItemsInDatabaseListBox.SelectedIndex + count
                     For Each item In EditedFields
                         If item = "EditItemNameTEXTBOX" Then Objects(iEdit).ItemName = EditItemNameTEXTBOX.Text
@@ -267,18 +275,29 @@
                         If item = "EditItemUserReferenceTEXTBOX" Then Objects(iEdit).UserReference = EditItemUserReferenceTEXTBOX.Text
                         'If item = "" Then Objects(iEdit). = .Text
                     Next
-                    Form1.AllItemsInDatabaseListBox.SelectedIndex = FirstSelected
+                     Next
+                'reselects items to refresh item stats display
+                Form1.AllItemsInDatabaseListBox.SelectedIndex = -1
+                For Each item In AllSelected
+                    Form1.AllItemsInDatabaseListBox.SetSelected(item, True)
                 Next
                 'apply edits to only 1 selected it or when only 1 item is selected from here down
             Else
                 If ConfirmResult = Windows.Forms.DialogResult.No Then
                     UpdateItemToDatabase()
-                    Form1.AllItemsInDatabaseListBox.SelectedIndex = iEdit
+                    'reselects item to refresh stats display
+                    Form1.AllItemsInDatabaseListBox.SelectedIndex = -1
+                    For Each item In AllSelected
+                        Form1.AllItemsInDatabaseListBox.SetSelected(item, True)
+                    Next
+
                 End If
             End If
         Else
             If Form1.AllItemsInDatabaseListBox.SelectedItems.Count = 1 Then
                 UpdateItemToDatabase()
+                'reselects item to refresh stats display
+                Form1.AllItemsInDatabaseListBox.SelectedIndex = -1
                 Form1.AllItemsInDatabaseListBox.SelectedIndex = iEdit
             End If
         End If
