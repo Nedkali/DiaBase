@@ -202,20 +202,22 @@
         'check for backup on edits set to true if so the backup now
         'UpdatingField = True
         If Settings.BackupOnEditsCHECKBOX.Checked = True Then Module1.BackupDatabase()
-
+        Dim ConfirmResult As Windows.Forms.DialogResult
+        Dim FirstSelected As Integer = Nothing
         If Form1.AllItemsInDatabaseListBox.SelectedItems.Count > 1 Then
 
+            'confirmation popup box
             YesNoD2Style.Text = "Confirm To Copy Edits To Selected Items"
             YesNoD2Style.YesNoHeaderLABEL.Text = "Copy To Selected Items"
             YesNoD2Style.YesNoMessageLABEL.Text = "Select Confirm to copy edited fields to all currently selected items." & vbCrLf & "Select Cancel to only edit the single item."
 
-            Dim ConfirmResult = YesNoD2Style.ShowDialog
-
+            'confirm results...
+            ConfirmResult = YesNoD2Style.ShowDialog
             If ConfirmResult = Windows.Forms.DialogResult.Yes Then
-
 
                 'apply edits to all selected items
                 For count = 0 To Form1.AllItemsInDatabaseListBox.SelectedItems.Count - 1 Step 1
+                    If count = 0 Then FirstSelected = Form1.AllItemsInDatabaseListBox.SelectedIndex
                     iEdit = Form1.AllItemsInDatabaseListBox.SelectedIndex + count
                     For Each item In EditedFields
                         If item = "EditItemNameTEXTBOX" Then Objects(iEdit).ItemName = EditItemNameTEXTBOX.Text
@@ -263,28 +265,24 @@
                         If item = "EditItemPickitBotCOMBOBOX" Then Objects(iEdit).PickitBot = EditItemPickitBotCOMBOBOX.Text
                         If item = "EditItemImageTEXTBOX" Then Objects(iEdit).ItemImage = EditItemImageTEXTBOX.Text
                         If item = "EditItemUserReferenceTEXTBOX" Then Objects(iEdit).UserReference = EditItemUserReferenceTEXTBOX.Text
-
                         'If item = "" Then Objects(iEdit). = .Text
                     Next
-
+                    Form1.AllItemsInDatabaseListBox.SelectedIndex = FirstSelected
                 Next
-
-                'apply edits to only 1 selected it or when only 1 item is selected
-            ElseIf ConfirmResult = Windows.Forms.DialogResult.No Or Form1.AllItemsInDatabaseListBox.SelectedItems.Count = 1 Then
+                'apply edits to only 1 selected it or when only 1 item is selected from here down
+            Else
+                If ConfirmResult = Windows.Forms.DialogResult.No Then
+                    UpdateItemToDatabase()
+                    Form1.AllItemsInDatabaseListBox.SelectedIndex = iEdit
+                End If
+            End If
+        Else
+            If Form1.AllItemsInDatabaseListBox.SelectedItems.Count = 1 Then
                 UpdateItemToDatabase()
+                Form1.AllItemsInDatabaseListBox.SelectedIndex = iEdit
             End If
         End If
-
-
-
-        'Form1.AllItemsInDatabaseListBox.SelectedIndex = iEdit                           'selects the same item after edit
-
-
         Me.Close()
-        'UpdatingField = False
-
-
-
     End Sub
     Sub UpdateItemToDatabase()
         Objects(iEdit).ItemName = EditItemNameTEXTBOX.Text
