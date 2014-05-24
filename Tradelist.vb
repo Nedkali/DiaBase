@@ -180,39 +180,32 @@ Module Tradelist
         ' Runeword Armor
         '***********************************************
         If Objects(x).ItemBase = "Armor" Then
-            temp = Objects(x).ItemName & " Def " & Objects(x).Defense
-            'If Objects(x).ItemName.IndexOf("Enigma") > -1  Then
-            'If Objects(x).ItemName.IndexOf("Treachery") > -1 Then
-            'If Objects(x).ItemName.IndexOf("Fortitude") > -1 Then
+            Return Objects(x).ItemName & " Def " & Objects(x).Defense
 
-            Return temp
         End If
 
         '***********************************************
         ' Runeword Shields
         '***********************************************
         If Objects(x).ItemBase = "Shield" Then
-            If Objects(x).ItemName.IndexOf("Spirit") > -1 Then temp = Objects(x).ItemName & " Def " & Objects(x).Defense & Objects(x).Stat2 : Return temp
-
-            temp = Objects(x).ItemName & " Def " & Objects(x).Defense
-            Return temp
+            If Objects(x).ItemName.IndexOf("Spirit") > -1 Then Return Objects(x).ItemName & " Def " & Objects(x).Defense & Objects(x).Stat2
         End If
 
         '***********************************************
         ' Runeword Weapons
         '***********************************************
         If Objects(x).ItemBase = "polearm" Or Objects(x).ItemBase = "Sword" Or Objects(x).ItemBase = "Mace" Or Objects(x).ItemBase = "Axe" Then
-            If Objects(x).ItemName.IndexOf("Insight") > -1 Then temp = Objects(x).ItemName & ", " & Objects(x).Stat2
-            If Objects(x).ItemName.IndexOf("Spirit") > -1 Then temp = Objects(x).ItemName & ", " & Objects(x).Stat3
-            If Objects(x).ItemName.IndexOf("Oak") > -1 Then temp = Objects(x).ItemName & ", " & Objects(x).Stat12
-            If Objects(x).ItemName.IndexOf("Arms") > -1 Then temp = Objects(x).ItemName & ", " & Objects(x).Stat6 & ", " & Objects(x).Stat7 & ", " & Objects(x).Stat8
-            If Objects(x).ItemName.IndexOf("Grief") > -1 Then temp = Objects(x).ItemName & ", " & Objects(x).Stat2
-            If Objects(x).ItemName.IndexOf("Infinity") > -1 Then temp = Objects(x).ItemName & ", " & Objects(x).Stat6
-            If Objects(x).ItemName.IndexOf("Last Wish") > -1 Then temp = Objects(x).ItemName & ", " & Objects(x).Stat8
-            Return temp
+            If Objects(x).ItemName.IndexOf("Insight") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat2
+            If Objects(x).ItemName.IndexOf("Spirit") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat3
+            If Objects(x).ItemName.IndexOf("Oak") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat12
+            If Objects(x).ItemName.IndexOf("Arms") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat6 & ", " & Objects(x).Stat7 & ", " & Objects(x).Stat8
+            If Objects(x).ItemName.IndexOf("Grief") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat2
+            If Objects(x).ItemName.IndexOf("Infinity") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat6
+            If Objects(x).ItemName.IndexOf("Last Wish") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat8
+
         End If
 
-        Return temp
+        Return Objects(x).ItemName & " not found"
     End Function
 
 
@@ -224,32 +217,34 @@ Module Tradelist
         '***********************************************
         'Rings
         '***********************************************
-        If Objects(x).ItemName = "Bul-Kathos' Wedding Band Ring" Then Return "BK Ring " & Objects(x).Stat2
-        If Objects(x).ItemName = "Nagelring Ring" Then Return "Nagel Ring, " & Objects(x).Stat4
-        If Objects(x).ItemName = "The Stone of Jordan Ring" Then Return "Soj"
-        If Objects(x).ItemName = "Carrion Wind Ring" Then Return "Nagel Ring, " & Objects(x).Stat3
-        If Objects(x).ItemName = "Dwarf Star Ring" Then Return Objects(x).ItemName
-        If Objects(x).ItemName = "Manald Heal Ring" Then Return "Manald Heal Ring, "
-        If Objects(x).ItemName = "Raven Frost Ring" Then Return "Raven Frost, " & Objects(x).Stat1 & ", " & Objects(x).Stat3
-        If Objects(x).ItemName = "Wisp Projector Ring" Then Return "Wisp Ring, " & Objects(x).Stat2 & ", " & Objects(x).Stat3
-        If Objects(x).ItemName = "Nature's Peace Ring" Then Return "Nature's Peace Ring, " & Objects(x).Stat3
-
+        If Objects(x).ItemBase = "Ring" Then
+            If Objects(x).ItemName = "Bul-Kathos' Wedding Band Ring" Then Return "BK Ring " & Objects(x).Stat2
+            If Objects(x).ItemName = "Nagelring Ring" Then Return "Nagel Ring, " & Objects(x).Stat4
+            If Objects(x).ItemName = "The Stone of Jordan Ring" Then Return "Soj"
+            If Objects(x).ItemName = "Carrion Wind Ring" Then Return "Nagel Ring, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Dwarf Star Ring" Then Return Objects(x).ItemName
+            If Objects(x).ItemName = "Manald Heal Ring" Then Return "Manald Heal Ring, "
+            If Objects(x).ItemName = "Raven Frost Ring" Then Return "Raven Frost, " & Objects(x).Stat1 & ", " & Objects(x).Stat3
+            If Objects(x).ItemName = "Wisp Projector Ring" Then Return "Wisp Ring, " & Objects(x).Stat2 & ", " & Objects(x).Stat3
+            If Objects(x).ItemName = "Nature's Peace Ring" Then Return "Nature's Peace Ring, " & Objects(x).Stat3
+        End If
         '***********************************************
         'Amulets
         '***********************************************
-        If Objects(x).ItemName = "Atma's Scarab Amulet" Then Return "Atma's Amulet, "
-        If Objects(x).ItemName = "Cresent Moon Amulet" Then Return "Cresent Amulet, "
-        If Objects(x).ItemName = "Highlord's Wrath Amulet" Then Return "Highlord's Amulet, "
-        If Objects(x).ItemName = "Mara's Kaleidoscope Amulet" Then Return "Mara's, " & Objects(x).Stat3
-        If Objects(x).ItemName = "Metal Grid Amulet" Then Return "Metal Grid Amulet, "
-        If Objects(x).ItemName = "Nokozan Relic" Then Return "Nokozan Relic, "
-        If Objects(x).ItemName = "Saracen's Chance Amulet" Then Return "Saracen's Amulet, "
-        If Objects(x).ItemName = "Seraph's Hymn Amulet" Then Return "Seraph's Hymn Amulet, "
-        If Objects(x).ItemName = "The Cat's Eye Amulet" Then Return "Cat's Eye Amulet, "
-        If Objects(x).ItemName = "The Eye of Etlich Amulet" Then Return "Etlich Amulet, " & Objects(x).Stat3
-        If Objects(x).ItemName = "The Mahim-Oak Curio Amulet" Then Return "Mahim-Oak Amulet, "
-        If Objects(x).ItemName = "The Rising Sun Amulet" Then Return "Rising Sun Amulet, "
-
+        If Objects(x).ItemBase = "Amulet" Then
+            If Objects(x).ItemName = "Atma's Scarab Amulet" Then Return "Atma's Amulet, "
+            If Objects(x).ItemName = "Cresent Moon Amulet" Then Return "Cresent Amulet, "
+            If Objects(x).ItemName = "Highlord's Wrath Amulet" Then Return "Highlord's Amulet, "
+            If Objects(x).ItemName = "Mara's Kaleidoscope Amulet" Then Return "Mara's, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Metal Grid Amulet" Then Return "Metal Grid Amulet, "
+            If Objects(x).ItemName = "Nokozan Relic" Then Return "Nokozan Relic, "
+            If Objects(x).ItemName = "Saracen's Chance Amulet" Then Return "Saracen's Amulet, "
+            If Objects(x).ItemName = "Seraph's Hymn Amulet" Then Return "Seraph's Hymn Amulet, "
+            If Objects(x).ItemName = "The Cat's Eye Amulet" Then Return "Cat's Eye Amulet, "
+            If Objects(x).ItemName = "The Eye of Etlich Amulet" Then Return "Etlich Amulet, " & Objects(x).Stat3
+            If Objects(x).ItemName = "The Mahim-Oak Curio Amulet" Then Return "Mahim-Oak Amulet, "
+            If Objects(x).ItemName = "The Rising Sun Amulet" Then Return "Rising Sun Amulet, "
+        End If
         '***********************************************
         ' Unique Helms
         '***********************************************
@@ -318,6 +313,8 @@ Module Tradelist
             If Objects(x).ItemName = "Gravepalm Sharkskin Gloves" Then Return "Gravepalm, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Hellmouth War Gauntlets" Then Return "Hellmouth, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Magefist Light Gauntlets" Then Return "Magefist, Def " & Objects(x).Defense & ", " & Objects(x).Stat4
+            If Objects(x).ItemName = "Magefist Crusader Gauntlets" Then Return "Magefist Crusader, Def " & Objects(x).Defense & ", " & Objects(x).Stat4
+            If Objects(x).ItemName = "Magefist Battle Gauntlets" Then Return "Magefist Battle, Def " & Objects(x).Defense & ", " & Objects(x).Stat4
             If Objects(x).ItemName = "Soul Drainer Vambraces" Then Return "Soul Drainer, Def " & Objects(x).Defense & ", " & Objects(x).Stat2 & ", " & Objects(x).Stat3
             If Objects(x).ItemName = "Steelrend Ogre Gauntlets" Then Return "Steelrend, Def " & Objects(x).Defense & ", " & Objects(x).Stat4
             If Objects(x).ItemName = "The Hand of Brock" Then Return "Hand of Brock, " & Objects(x).Stat3
@@ -330,59 +327,59 @@ Module Tradelist
         'Boots
         '***********************************************
         If Objects(x).ItemBase = "Boots" Then
-            If Objects(x).ItemName = "Goblin Toe Light Plated Boots" Then temp = "Goblin Toe, Def " & Objects(x).Defense & ", " & Objects(x).Stat8
-            If Objects(x).ItemName = "Gore Rider War Boots" Then temp = "Gore Rider's, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Gorefoot Heavy Boots" Then temp = "Gorefoot, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Hotspur Boots" Then temp = "Hotspur, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Marrowwalk Boneweave Boots" Then temp = "Marrowwalk, Def " & Objects(x).Defense & ", " & Objects(x).Stat2
-            If Objects(x).ItemName = "Sandstorm Trek Scarabshell Boots" Then temp = "Treks, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Shadow Dancer Myrmidon Greaves" Then temp = "Shadow Dancer, Def " & Objects(x).Defense & ", " & Objects(x).Stat4
-            If Objects(x).ItemName = "Silkweave Mesh Boots" Then temp = "Silkweave, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Goblin Toe Light Plated Boots" Then Return "Goblin Toe, Def " & Objects(x).Defense & ", " & Objects(x).Stat8
+            If Objects(x).ItemName = "Gore Rider War Boots" Then Return "Gore Rider's, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Gorefoot Heavy Boots" Then Return "Gorefoot, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Hotspur Boots" Then Return "Hotspur, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Marrowwalk Boneweave Boots" Then Return "Marrowwalk, Def " & Objects(x).Defense & ", " & Objects(x).Stat2
+            If Objects(x).ItemName = "Sandstorm Trek Scarabshell Boots" Then Return "Treks, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Shadow Dancer Myrmidon Greaves" Then Return "Shadow Dancer, Def " & Objects(x).Defense & ", " & Objects(x).Stat4
+            If Objects(x).ItemName = "Silkweave Mesh Boots" Then Return "Silkweave, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Tearhaunch Greaves" Then temp = "Tearhaunch, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Treads of Cthon Chain Boots" Then temp = "Treads of Cthon, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "War Traveler Battle Boots" Then temp = "War Travs, Def " & Objects(x).Defense & ", " & Objects(x).Stat8
-            If Objects(x).ItemName = "Waterwalk Sharkskin Boots" Then temp = "Waterwalks, Def " & Objects(x).Defense & ", " & Objects(x).Stat5
+            If Objects(x).ItemName = "Treads of Cthon Chain Boots" Then Return "Treads of Cthon, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "War Traveler Battle Boots" Then Return "War Travs, Def " & Objects(x).Defense & ", " & Objects(x).Stat8
+            If Objects(x).ItemName = "Waterwalk Sharkskin Boots" Then Return "Waterwalks, Def " & Objects(x).Defense & ", " & Objects(x).Stat5
         End If
 
         '***********************************************
         ' Unique Armor
         '***********************************************
         If Objects(x).ItemBase = "Armor" Then
-            If Objects(x).ItemName = "Arkaine's Valor Balrog Skin" Then temp = "Arkaine's Valor, Def " & Objects(x).Defense & ", " & Objects(x).Stat1
-            If Objects(x).ItemName = "Atma's Wail Embossed Plate" Then temp = "Atma's Wail, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Black Hades Chaos Armor" Then temp = "Black Hades, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Blinkbat's Form Leather Armor" Then temp = "Blinkbat's, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Boneflesh Plate Mail" Then temp = "Boneflesh, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Corpsemourn Ornate Plate" Then temp = "Corpsemourn, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Crow Caw Tigulated Mail" Then temp = "Crow Caw, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Darkglow Ring Mail" Then temp = "Darkglow, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Duriel's Shell Cuirass" Then temp = "Duriel's Shell, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Goldskin Full Plate Mail" Then temp = "Goldskin, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Greyform Quilted Armor" Then temp = "Greyform, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Guardian Angel Templar Coat" Then temp = "Guardian Angel, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Hawkmail Scale Mail" Then temp = "Hawkmail, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Heavenly Garb Light Plate" Then temp = "Heavenly Garb, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Iceblink Splint Mail" Then temp = "Iceblink, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Leviathan Kraken Shell" Then temp = "Leviathan, Def " & Objects(x).Defense & ", " & Objects(x).Stat4
-            If Objects(x).ItemName = "Ormus' Robe Dusk Shroud" Then temp = "Ormus Robes, " & Stats_items(x)
-            If Objects(x).ItemName = "Que-Hegan's Wisdom Mage Plate" Then temp = "Que-Hegan's, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Rattlecage Gothic Plate" Then temp = "Rattlecage, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Rockfleece Field Plate" Then temp = "Rockfleece, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Shaftstop Mesh Armor" Then temp = "Shaftstop Armor, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Silks of the Victor Ancient Armor" Then temp = "Silks of the Victor, Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Skin of the Flayed One Demonhide Armor" Then temp = "Skin of the Flayed One, Def " & Objects(x).Defense & ", " & Objects(x).Stat1 & ", " & Objects(x).Stat3
-            If Objects(x).ItemName = "Skin of the Vipermagi Serpentskin Armor" Then temp = "Vipermagi,  " & Objects(x).Stat4
-            If Objects(x).ItemName = "Skullder's Ire Russet Armor" Then temp = "Skullders,  " & Objects(x).Defense
-            If Objects(x).ItemName = "Sparking Mail Chain Mail" Then temp = "Sparking Mail,  " & Objects(x).Defense
-            If Objects(x).ItemName = "Steel Carapace Shadow Plate" Then temp = "Steel Carapace,  " & Objects(x).Defense
-            If Objects(x).ItemName = "Templar's Might Sacred Armor" Then temp = "Templar's Might,  " & Objects(x).Defense & ", " & Objects(x).Stat1 & ", " & Objects(x).Stat5 & ", " & Objects(x).Stat6
-            If Objects(x).ItemName = "The Centurion Hard Leather Armor" Then temp = "The Centurion,  " & Objects(x).Defense
-            If Objects(x).ItemName = "The Gladiator's Bane Wire Fleece" Then temp = "Gladiator's Bane,  " & Objects(x).Defense
-            If Objects(x).ItemName = "The Spirit Shroud Ghost Armor" Then temp = "Spirit Shroud,  " & Objects(x).Defense
-            If Objects(x).ItemName = "Toothrow Sharktooth Armor" Then temp = "Toothrow,  " & Objects(x).Defense
-            If Objects(x).ItemName = "Twitchthroe Studded Leather" Then temp = "Twitchthroe,  " & Objects(x).Defense
-            If Objects(x).ItemName = "Tyrael's Might Sacred Armor" Then temp = "Tyrael's Might,  " & Objects(x).Defense & ", " & Objects(x).Stat6 & ", " & Objects(x).Stat7
-            If Objects(x).ItemName = "Venom Ward Breast Plate" Then temp = "Venom Ward,  " & Objects(x).Defense
+            If Objects(x).ItemName = "Arkaine's Valor Balrog Skin" Then Return "Arkaine's Valor, Def " & Objects(x).Defense & ", " & Objects(x).Stat1
+            If Objects(x).ItemName = "Atma's Wail Embossed Plate" Then Return "Atma's Wail, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Black Hades Chaos Armor" Then Return "Black Hades, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Blinkbat's Form Leather Armor" Then Return "Blinkbat's, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Boneflesh Plate Mail" Then Return "Boneflesh, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Corpsemourn Ornate Plate" Then Return "Corpsemourn, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Crow Caw Tigulated Mail" Then Return "Crow Caw, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Darkglow Ring Mail" Then Return "Darkglow, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Duriel's Shell Cuirass" Then Return "Duriel's Shell, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Goldskin Full Plate Mail" Then Return "Goldskin, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Greyform Quilted Armor" Then Return "Greyform, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Guardian Angel Templar Coat" Then Return "Guardian Angel, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Hawkmail Scale Mail" Then Return "Hawkmail, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Heavenly Garb Light Plate" Then Return "Heavenly Garb, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Iceblink Splint Mail" Then Return "Iceblink, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Leviathan Kraken Shell" Then Return "Leviathan, Def " & Objects(x).Defense & ", " & Objects(x).Stat4
+            If Objects(x).ItemName = "Ormus' Robe Dusk Shroud" Then Return "Ormus Robes, " & Stats_items(x)
+            If Objects(x).ItemName = "Que-Hegan's Wisdom Mage Plate" Then Return "Que-Hegan's, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Rattlecage Gothic Plate" Then Return "Rattlecage, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Rockfleece Field Plate" Then Return "Rockfleece, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Shaftstop Mesh Armor" Then Return "Shaftstop Armor, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Silks of the Victor Ancient Armor" Then Return "Silks of the Victor, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Skin of the Flayed One Demonhide Armor" Then Return "Skin of the Flayed One, Def " & Objects(x).Defense & ", " & Objects(x).Stat1 & ", " & Objects(x).Stat3
+            If Objects(x).ItemName = "Skin of the Vipermagi Serpentskin Armor" Then Return "Vipermagi,  " & Objects(x).Stat4
+            If Objects(x).ItemName = "Skullder's Ire Russet Armor" Then Return "Skullders,  " & Objects(x).Defense
+            If Objects(x).ItemName = "Sparking Mail Chain Mail" Then Return "Sparking Mail,  " & Objects(x).Defense
+            If Objects(x).ItemName = "Steel Carapace Shadow Plate" Then Return "Steel Carapace,  " & Objects(x).Defense
+            If Objects(x).ItemName = "Templar's Might Sacred Armor" Then Return "Templar's Might,  " & Objects(x).Defense & ", " & Objects(x).Stat1 & ", " & Objects(x).Stat5 & ", " & Objects(x).Stat6
+            If Objects(x).ItemName = "The Centurion Hard Leather Armor" Then Return "The Centurion,  " & Objects(x).Defense
+            If Objects(x).ItemName = "The Gladiator's Bane Wire Fleece" Then Return "Gladiator's Bane,  " & Objects(x).Defense
+            If Objects(x).ItemName = "The Spirit Shroud Ghost Armor" Then Return "Spirit Shroud,  " & Objects(x).Defense
+            If Objects(x).ItemName = "Toothrow Sharktooth Armor" Then Return "Toothrow,  " & Objects(x).Defense
+            If Objects(x).ItemName = "Twitchthroe Studded Leather" Then Return "Twitchthroe,  " & Objects(x).Defense
+            If Objects(x).ItemName = "Tyrael's Might Sacred Armor" Then Return "Tyrael's Might,  " & Objects(x).Defense & ", " & Objects(x).Stat6 & ", " & Objects(x).Stat7
+            If Objects(x).ItemName = "Venom Ward Breast Plate" Then Return "Venom Ward,  " & Objects(x).Defense
         End If
 
         '***********************************************
@@ -418,13 +415,255 @@ Module Tradelist
         End If
 
         '***********************************************
+        'Weapons Axes
+        '***********************************************
+        If Objects(x).ItemBase = "Axes" Then
+            If Objects(x).ItemName = "Axe of Fechmar" Then Return "Fechmars Axe, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Bladebone Double Axe" Then Return "Bladebone, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Boneslayer Blade Gothic Axe" Then Return "Boneslayer, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Brainhew Great Axe" Then Return "Brainhew, " & Objects(x).Stat1 & ", " & Objects(x).Stat4
+            If Objects(x).ItemName = "Butcher's Pupil Cleaver" Then Return "Butcher's Pupil, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Cranebeak War Spike" Then Return "Cranebeak, " & Objects(x).Stat2 & ", " & Objects(x).Stat5
+            If Objects(x).ItemName = "Death Cleaver Berserker Axe" Then Return "Death Cleaver, " & Objects(x).Stat2 & ", " & Objects(x).Stat5
+            If Objects(x).ItemName = "Deathspade Axe" Then Return "Deathspade, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Ethereal Edge Silver-edged Axe" Then Return "Ethereal Edge, " & Objects(x).Stat3 & ", " & Objects(x).Stat4
+            If Objects(x).ItemName = "Executioner's Justice Glorious Axe" Then Return "Executioner's Justice, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Goreshovel Broad Axe" Then Return "Goreshovel, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Hellslayer Decapitator" Then Return "Hellslayer"
+            If Objects(x).ItemName = "Homongous Giant Axe" Then Return "Homongous, " & Objects(x).Stat1 & ", " & Objects(x).Stat3
+            If Objects(x).ItemName = "Islestrike Twin Axe" Then Return "Islestrike, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Messerschmidt's Reaver Champion Axe" Then Return "Messerschmidt's"
+            If Objects(x).ItemName = "Rakescar War Axe" Then Return "Rakescar, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Rune Master Ettin Axe" Then Return "Rune Master, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Skull Splitter Military Pick" Then Return "Skull Splitter, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Stormrider Tabar" Then Return "Stormrider"
+            If Objects(x).ItemName = "The Chieftain Battle Axe" Then Return "The Chieftain, " & Objects(x).Stat4
+            If Objects(x).ItemName = "The Gnasher Hand Axe" Then Return "The Gnasher, " & Objects(x).Stat1
+            If Objects(x).ItemName = "The Minotaur Ancient Axe" Then Return "The Minotaur, " & Objects(x).Stat1 & ", " & Objects(x).Stat6
+        End If
+
+        '***********************************************
+        'Weapons Bows
+        '***********************************************
+        If Objects(x).ItemBase = "Bows" Then
+            If Objects(x).ItemName = "Blastbark Long War Bow" Then Return "Blastbark, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Blood Raven's Charge Matriarchal Bow" Then Return "Blood Raven's Charge, " & Objects(x).Stat1 & ", " & Objects(x).Stat3
+            If Objects(x).ItemName = "Cliffkiller Large Siege Bow" Then Return "Cliffkiller, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Eaglehorn Crusader Bow" Then Return "Eaglehorn, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Goldstrike Arch Gothic Bow" Then Return "Goldstrike, " & Objects(x).Stat3 & ", " & Objects(x).Stat4
+            If Objects(x).ItemName = "Hellclap Short War Bow" Then Return "Hellclap, " & Objects(x).Stat3 & ", " & Objects(x).Stat4
+            If Objects(x).ItemName = "Kuko Shakaku Cedar Bow" Then Return "Kuko Shakaku, " & Objects(x).Stat4
+            If Objects(x).ItemName = "Lycander's Aim Ceremonial Bow" Then Return "Lycander's, " & Objects(x).Stat4 & ", " & Objects(x).Stat6
+            If Objects(x).ItemName = "Magewrath Rune Bow" Then Return "Magewrath, " & Objects(x).Stat2 & ", " & Objects(x).Stat4
+            If Objects(x).ItemName = "Pluckeye Short Bow" Then Return "Pluckeye"
+            If Objects(x).ItemName = "Raven Claw Long Bow" Then Return "Raven Claw, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Riphook Razor Bow" Then Return "Riphook, " & Objects(x).Stat2 & ", " & Objects(x).Stat3
+            If Objects(x).ItemName = "Rogue's Bow Composite Bow" Then Return "Rogue's Bow, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Stormstrike Short Battle Bow" Then Return "Stormstrike, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Widowmaker Ward Bow" Then Return "Widowmaker, " & Objects(x).Stat2 & ", " & Objects(x).Stat5
+            If Objects(x).ItemName = "Windforce Hydra Bow" Then Return "Windforce, " & Objects(x).Stat4
+            If Objects(x).ItemName = "Witchwild String Short Siege Bow" Then Return "Witchwild, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Witherstring Hunter's Bow" Then Return "Witherstring, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Wizendraw Long Battle Bow" Then Return "Wizendraw, " & Objects(x).Stat3
+        End If
+
+        '***********************************************
+        'Weapons Claws
+        '***********************************************
+        If Objects(x).ItemBase = "Claws" Then
+            If Objects(x).ItemName = "Bartuc's Cut-Throat Greater Talons" Then Return "Bartuc's, " & Objects(x).Stat4 & ", " & Objects(x).Stat7
+            If Objects(x).ItemName = "Firelizard's Talons Feral Claws" Then Return "Firelizard's, " & Objects(x).Stat3 & ", " & Objects(x).Stat7
+            If Objects(x).ItemName = "Jade Talon Wrist Sword" Then Return "Jade Talon, " & Objects(x).Stat4 & ", " & Objects(x).Stat5 & ", " & Objects(x).Stat6
+            If Objects(x).ItemName = "Shadow Killer Battle Cestus" Then Return "Shadow Killer, " & Objects(x).Stat3
+        End If
+
+        '***********************************************
+        'Weapons Crossbows
+        '***********************************************
+        If Objects(x).ItemBase = "Crossbow" Then
+            If Objects(x).ItemName = "Buriza-Do Kyanon Ballista" Then Return "Buriza-Do Kyanon, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Doomslinger Repeating Crossbow" Then Return "Doomslinger, " & Objects(x).Stat4
+            If Objects(x).ItemName = "Hellcast Heavy Crossbow" Then Return "Hellcast, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Hellrack Colossus Crossbow" Then Return "Hellrack, " & Objects(x).Stat2 & ", " & Objects(x).Stat3
+            If Objects(x).ItemName = "Ichorsting Crossbow" Then Return "Ichorsting"
+            If Objects(x).ItemName = "Leadcrow Light Crossbow" Then Return "Leadcrow"
+        End If
+        '***********************************************
+        'Weapons Daggers
+        '***********************************************
+        If Objects(x).ItemBase = "Dagger" Then
+            If Objects(x).ItemName = "Blackbog's Sharp Cinquedeas" Then Return "Blackbog's "
+            If Objects(x).ItemName = "Fleshripper Fanged Knife" Then Return "Fleshripper, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Ghostflame Legend Spike" Then Return "Ghostflame, " & Objects(x).Stat2 & ", " & Objects(x).Stat4
+            If Objects(x).ItemName = "Gull Dagger" Then Return "Gull Dagger"
+            If Objects(x).ItemName = "Heart Carver Rondel" Then Return "Heart Carver, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Spectral Shard Blade" Then Return "Spectral Shard"
+            If Objects(x).ItemName = "Spineripper Poignard" Then Return "Spineripper, " & Objects(x).Stat3
+            If Objects(x).ItemName = "The Diggler Dirk" Then Return "The Diggler"
+            If Objects(x).ItemName = "The Jade Tan Do Kris" Then Return "The Jade Tan Do, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Wizardspike" Then Return "Wizardspike"
+        End If
+        '***********************************************
+        'Weapons Javelins
+        '***********************************************
+        If Objects(x).ItemBase = "Javelin" Then
+            If Objects(x).ItemName = "Demon's Arch Balrog Spear" Then Return "Demon's Arch, " & Objects(x).Stat2 & ", " & Objects(x).Stat5
+            If Objects(x).ItemName = "Gargoyle's Bite Winged Harpoon" Then Return "Gargoyle's Bite, " & Objects(x).Stat1 & ", " & Objects(x).Stat3
+            If Objects(x).ItemName = "Thunderstroke Matriarchal Javelin" Then Return "Thunderstroke, " & Objects(x).Stat2 & ", " & Objects(x).Stat4
+            If Objects(x).ItemName = "Titan's Revenge Ceremonial Javelin" Then Return "Titan's Revenge, " & Objects(x).Stat4 & ", " & Objects(x).Stat6
+            If Objects(x).ItemName = "Wraith Flight Ghost Glaive" Then Return "Wraith Flight, " & Objects(x).Stat1 & ", " & Objects(x).Stat2
+        End If
+
+        '***********************************************
+        'Weapons Maces
+        '***********************************************
+        If Objects(x).ItemBase = "Mace" Then
+            If Objects(x).ItemName = "Baezil's Vortex Knout" Then Return "Baezil's Vortex, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Baranar's Star Devil Star" Then Return "Baranar's Star"
+            If Objects(x).ItemName = "Bloodrise Morning Star" Then Return "Bloodrise"
+            If Objects(x).ItemName = "Bloodtree Stump War Club" Then Return "Bloodtree Stump, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Bonesnap Maul" Then Return "Bonesnap, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Crushflange Mace" Then Return "Crushflangep, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Demon Limb Tyrant Club" Then Return "Demon Limb, " & Objects(x).Stat1 & ", " & Objects(x).Stat4
+            If Objects(x).ItemName = "Earth Shifter Thunder Maul" Then Return "Earth Shifter, " & Objects(x).Stat5
+            If Objects(x).ItemName = "Earthshaker" Then Return "Earthshaker"
+            If Objects(x).ItemName = "Felloak Club" Then Return "Felloak, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Fleshrender Barbed Club" Then Return "Fleshrender, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Horizon's Tornado Scourge" Then Return "Horizon's Tornado, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Ironstone War Hammer" Then Return "Ironstone, " & Objects(x).Stat1 & ", " & Objects(x).Stat2
+            If Objects(x).ItemName = "Schaefer's Hammer Legendary Mallet" Then Return "Schaefer's Hammer, " & Objects(x).Stat4
+            If Objects(x).ItemName = "Nord's Tenderizer Truncheon" Then Return "Nord's Tenderizer, " & Objects(x).Stat2 & ", " & Objects(x).Stat3
+            If Objects(x).ItemName = "Steeldriver Great Maul" Then Return "Steeldriver, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Stone Crusher Legendary Mallet" Then Return "Stone Crusher, " & Objects(x).Stat1 & ", " & Objects(x).Stat6
+            If Objects(x).ItemName = "Stormlash Scourge" Then Return "Stormlash, " & Objects(x).Stat4 & ", " & Objects(x).Stat7
+            If Objects(x).ItemName = "Stoutnail Spiked Club" Then Return "Stoutnail"
+            If Objects(x).ItemName = "The Cranium Basher Thunder Maul" Then Return "The Cranium Basher, " & Objects(x).Stat4
+            If Objects(x).ItemName = "The Gavel of Pain Martel de Fer" Then Return "The Gavel of Pain, " & Objects(x).Stat4
+            If Objects(x).ItemName = "The General's Tan Do Li Ga Flail" Then Return "The General's, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Windhammer Ogre Maul" Then Return "Windhammer, " & Objects(x).Stat3
+        End If
+
+
+        '***********************************************
         'Weapons orbs
         '***********************************************
-        If Objects(x).ItemName = "Eschuta's Temper Eldritch Orb" Then Return "Eschuta's" & Stats_items(x)
-        If Objects(x).ItemName = "Tal Rasha's Lidless Eye Swirling Crystal" Then Return "Tal's Lidless, " & Objects(x).Stat3 & Objects(x).Stat4 & Objects(x).Stat5
+        If Objects(x).ItemBase = "Orb" Then
+            If Objects(x).ItemName = "Death's Fathom Dimensional Shard" Then Return "Death's Fathom, " & Objects(x).Stat3 & ", " & Objects(x).Stat4 & ", " & Objects(x).Stat5
+            If Objects(x).ItemName = "Eschuta's Temper Eldritch Orb" Then Return "Eschuta's, " & Objects(x).Stat1 & ", " & Objects(x).Stat3 & ", " & Objects(x).Stat4 & ", " & Objects(x).Stat5
+            If Objects(x).ItemName = "The Oculus Swirling Crystal" Then Return "Oculus"
+        End If
 
+        '***********************************************
+        'Weapons Polearms
+        '***********************************************
+        If Objects(x).ItemBase = "Polearm" Then
+            If Objects(x).ItemName = "Bonehew Ogre Axe" Then Return "Bonehew, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Dimoak's Hew " Then Return "Dimoak's Hew, "
+            If Objects(x).ItemName = "Pierre Tombale Couant Partizan" Then Return "Pierre Tombale, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Soul Harvest Scythe" Then Return "Soul Harvest, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Steelgoad Voulge" Then Return "Steelgoad, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Stormspire Giant Thresher" Then Return "Stormspire, " & Objects(x).Stat5
+            If Objects(x).ItemName = "The Battlebranch Poleaxe" Then Return "The Battlebranch, " & Objects(x).Stat2 & ", " & Objects(x).Stat3
+            If Objects(x).ItemName = "The Grim Reaper War Scythe" Then Return "The Grim Reaper, " & Objects(x).Stat3
+            If Objects(x).ItemName = "The Reaper's Toll Thresher" Then Return "Reaper's Toll, " & Objects(x).Stat2 & ", " & Objects(x).Stat5
+            If Objects(x).ItemName = "Tomb Reaver Cryptic Axe" Then Return "Tomb Reaver, " & Objects(x).Stat2 & ", " & Objects(x).Stat5 & ", " & Objects(x).Stat8
+            If Objects(x).ItemName = "Woestave Halberd" Then Return "Woestave, " & Objects(x).Stat1
+        End If
 
-        Return temp
+        '***********************************************
+        'Weapons Spears
+        '***********************************************
+        If Objects(x).ItemBase = "Spear" Then
+            If Objects(x).ItemName = "Arioc's Needle Hyperion Spear" Then Return "Arioc's Needle, " & Objects(x).Stat1 & ", " & Objects(x).Stat3
+            If Objects(x).ItemName = "Bloodthief Brandistock" Then Return "Bloodthief, " & Objects(x).Stat1 & ", " & Objects(x).Stat2
+            If Objects(x).ItemName = "Hone Sundan Yari" Then Return "Hone Sundan, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Kelpie Snare Fuscina" Then Return "Kelpie Snare, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Lance of Yaggai Spetum" Then Return "Lance of Yaggai"
+            If Objects(x).ItemName = "Lycander's Flank Ceremonial Spike" Then Return "Lycander's, " & Objects(x).Stat4 & ", " & Objects(x).Stat6
+            If Objects(x).ItemName = "Razortine Trident" Then Return "Razortine, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Soulfeast Tine War Fork" Then Return "Soulfeast, " & Objects(x).Stat1 & ", " & Objects(x).Stat2
+            If Objects(x).ItemName = "Spire of Honor Lance" Then Return "Spire of Honor, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Steel Pillar War Pike" Then Return "Steel Pillar, " & Objects(x).Stat3 & ", " & Objects(x).Stat6
+            If Objects(x).ItemName = "Stoneraven Matriarchal Spear" Then Return "Stoneraven, " & Objects(x).Stat2 & ", " & Objects(x).Stat4 & ", " & Objects(x).Stat5
+            If Objects(x).ItemName = "The Dragon Chang Spear" Then Return "The Dragon Chang"
+            If Objects(x).ItemName = "The Tannr Gorerod Pike" Then Return "Tannr Gorerod, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Viperfork Mancatcher" Then Return "Viperfork, " & Objects(x).Stat3 & ", " & Objects(x).Stat4 & ", " & Objects(x).Stat6
+        End If
+
+        '***********************************************
+        'Weapons Staves
+        '***********************************************
+        If Objects(x).ItemBase = "Staff" Then
+            If Objects(x).ItemName = "Bone Ash" Then Return "Bone Ash"
+            If Objects(x).ItemName = "Chromatic Ire" Then Return "Chromatic Ire, " & Objects(x).Stat5 & ", " & Objects(x).Stat6
+            If Objects(x).ItemName = "Mang Song's Lesson Archon Staff" Then Return "Mang Song's Lesson, " & Objects(x).Stat3 & ", " & Objects(x).Stat4 & ", " & Objects(x).Stat5
+            If Objects(x).ItemName = "Ondal's Wisdom Elder Staff" Then Return "Ondal's Wisdom, " & Objects(x).Stat1 & ", " & Objects(x).Stat3 & ", " & Objects(x).Stat5
+            If Objects(x).ItemName = "Razorswitch Io Staff" Then Return "Razorswitch"
+            If Objects(x).ItemName = "Ribcracker Quarterstaff" Then Return "Ribcracker, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Serpent Lord Long Staff" Then Return "Serpent Lord, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Skull Collector Rune Staff" Then Return "Skull Collector"
+            If Objects(x).ItemName = "Spire of Lazarus Gnarled Staff" Then Return "Spire of Lazarus"
+            If Objects(x).ItemName = "The Iron Jang Bong War Staff" Then Return "The Iron Jang Bong"
+            If Objects(x).ItemName = "The Salamander Battle Staff" Then Return "The Salamander"
+            If Objects(x).ItemName = "Warpspear Gothic Staff" Then Return "Warpspear"
+
+        End If
+
+        '***********************************************
+        'Weapons Swords
+        '***********************************************
+        If Objects(x).ItemBase = "Sword" Then
+            If Objects(x).ItemName = "Azurewrath Phase Blade" Then Return "Azurewrath, " & Objects(x).Stat4 & ", " & Objects(x).Stat7
+            If Objects(x).ItemName = "Blacktongue Bastard Sword" Then Return "Blacktongue, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Blade of Ali Baba Tulwar" Then Return "Blade of Ali Baba, " & Objects(x).Stat1 & ", " & Objects(x).Stat2
+            If Objects(x).ItemName = "Blood Crescent Scimitar" Then Return "Blood Crescent, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Bloodletter Gladius" Then Return "Bloodletter, " & Objects(x).Stat6 & ", " & Objects(x).Stat7
+            If Objects(x).ItemName = "Coldsteel Eye Cutlass" Then Return "Coldsteel Eye, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Crainte Vomir Espondon" Then Return "Crainte Vomir, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Culwen's Point War Sword" Then Return "Culwen's Point, " & Objects(x).Stat4
+            If Objects(x).ItemName = "Djinn Slayer Ataghan" Then Return "Djinn Slayer, " & Objects(x).Stat1 & ", " & Objects(x).Stat4
+            If Objects(x).ItemName = "Doombringer Champion Sword" Then Return "Doombringer, " & Objects(x).Stat3 & ", " & Objects(x).Stat6
+            If Objects(x).ItemName = "Flamebellow Balrog Blade" Then Return "Flamebellow, " & Objects(x).Stat3 & ", " & Objects(x).Stat6 & ", " & Objects(x).Stat7
+            If Objects(x).ItemName = "Frostwind Cryptic Sword" Then Return "Frostwind, " & Objects(x).Stat2 & ", " & Objects(x).Stat4 & ", " & Objects(x).Stat6
+            If Objects(x).ItemName = "Ginter's Rift Dimensional Blade" Then Return "Ginter's Rift, " & Objects(x).Stat2 & ", " & Objects(x).Stat4
+            If Objects(x).ItemName = "Gleamscythe Falchion" Then Return "Gleamscythe, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Griswold's Edge Broad Sword" Then Return "Griswold's Edge, " & Objects(x).Stat2 & ", " & Objects(x).Stat4
+            If Objects(x).ItemName = "Headstriker Battle Sword" Then Return "Headstriker"
+            If Objects(x).ItemName = "Hellplague Long Sword" Then Return "Hellplague, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Hexfire Shamshir" Then Return "Hexfire, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Kinemil's Awl Giant Sword" Then Return "Kinemil's Awl, " & Objects(x).Stat1 & ", " & Objects(x).Stat2
+            If Objects(x).ItemName = "Lightsabre Phase Blade" Then Return "Lightsabre, " & Objects(x).Stat3 & ", " & Objects(x).Stat8
+            If Objects(x).ItemName = "Plague Bearer Rune Sword" Then Return "Plague Bearer"
+            If Objects(x).ItemName = "Ripsaw Flamberge" Then Return "Ripsaw, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Rixot's Keen" Then Return "Rixot's Keen" 'unfinnished
+            If Objects(x).ItemName = "Shadowfang Two-Handed Sword" Then Return "Shadowfang"
+            If Objects(x).ItemName = "Skewer of Krintiz Sabre" Then Return "Skewer of Krintiz"
+            If Objects(x).ItemName = "Soulflay Claymore" Then Return "Soulflay, " & Objects(x).Stat2 & ", " & Objects(x).Stat3
+            If Objects(x).ItemName = "Swordguard Executioner Sword" Then Return "Swordguard, " & Objects(x).Stat3 & ", " & Objects(x).Stat7
+            If Objects(x).ItemName = "The Atlantean Ancient Sword" Then Return "The Atlantean, " & Objects(x).Stat2
+            If Objects(x).ItemName = "The Grandfather Colossus Blade" Then Return "The Grandfather, " & Objects(x).Stat2
+            If Objects(x).ItemName = "The Patriarch Great Sword" Then Return "The Patriarch, " & Objects(x).Stat1
+            If Objects(x).ItemName = "The Vile Husk Tusk Sword" Then Return "The Vile Husk, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Todesfaelle Flamme Zweihander" Then Return "Todesfaelle Flamme, " & Objects(x).Stat2
+        End If
+
+        '***********************************************
+        'Weapons Wands
+        '***********************************************
+        If Objects(x).ItemBase = "Wand" Then
+            If Objects(x).ItemName = "Arm of King Leoric Tomb Wand" Then Return "Arm of King Leoric"
+            If Objects(x).ItemName = "Blackhand Key Grave Wand" Then Return "Blackhand Key"
+            If Objects(x).ItemName = "Boneshade Lich Wand" Then Return "Boneshade, " & Stats_items(x)
+            If Objects(x).ItemName = "Carin Shard Petrified Wand" Then Return "Carin Shard"
+            If Objects(x).ItemName = "Death's Web Unearthed Wand" Then Return "Death's Web, " & Objects(x).Stat2 & ", " & Objects(x).Stat3
+            If Objects(x).ItemName = "Gravespine Bone Wand" Then Return "Gravespine, " & Objects(x).Stat6
+            If Objects(x).ItemName = "Maelstrom Yew Wand" Then Return "Maelstrom, " & Objects(x).Stat3 & ", " & Objects(x).Stat4 & ", " & Objects(x).Stat5 & ", " & Objects(x).Stat6
+            If Objects(x).ItemName = "Suicide Branch Burnt Wand" Then Return "Suicide Branch"
+            If Objects(x).ItemName = "Torch of Iro Wand" Then Return "Torch of Iro"
+            If Objects(x).ItemName = "Ume's Lament Grim Wand" Then Return "Ume's Lament"
+        End If
+
+        Return Objects(x).ItemName & " Not found"
     End Function
 
 
