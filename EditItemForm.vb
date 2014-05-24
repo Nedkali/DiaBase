@@ -4,10 +4,8 @@
     Public EditedFields As List(Of String) = New List(Of String)
     Public UpdatingField As Boolean = False
 
-
     Private Sub EditItemForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         iEdit = Form1.AllItemsInDatabaseListBox.SelectedIndex
-
         EditedFields.Clear()
 
         'POPULATE EDIT COMBOBOXES
@@ -24,19 +22,15 @@
             If ItemObjectItem.MuleName <> "" Then
                 If EditItemMuleNameCOMBOBOX.Items.Contains(ItemObjectItem.MuleName) = False Then EditItemMuleNameCOMBOBOX.Items.Add(ItemObjectItem.MuleName)
             End If
-
             If ItemObjectItem.MuleAccount <> "" Then
                 If EditItemMuleAccountCOMBOBOX.Items.Contains(ItemObjectItem.MuleAccount) = False Then EditItemMuleAccountCOMBOBOX.Items.Add(ItemObjectItem.MuleAccount)
             End If
-
             If ItemObjectItem.MulePass <> "" Then
                 If EditItemMulePassCOMBOBOX.Items.Contains(ItemObjectItem.MulePass) = False Then EditItemMulePassCOMBOBOX.Items.Add(ItemObjectItem.MulePass)
             End If
-
             If ItemObjectItem.AttackClass <> "" Then
                 If EditItemAttackClassCOMBOBOX.Items.Contains(ItemObjectItem.AttackClass) = False Then EditItemAttackClassCOMBOBOX.Items.Add(ItemObjectItem.AttackClass)
             End If
-
             If ItemObjectItem.ItemBase <> "" Then
                 If EditItemBaseCOMBOBOX.Items.Contains(ItemObjectItem.ItemBase) = False Then EditItemBaseCOMBOBOX.Items.Add(ItemObjectItem.ItemBase)
             End If

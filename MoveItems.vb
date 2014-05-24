@@ -114,7 +114,6 @@ Public Class MoveItems
 
         'checks open destination database checkbox then save this database and load the destionation database if nessicary
         If OpenDatabaseCHECKBOX.Checked = True Then
-
             Form1.SaveItems() 'branch to save routine to save source dbase before loading destination dbase NOTE: I MAY PUT A CHECKBOX IN FOR THIS
 
             'clean out old items from the last loaded database
@@ -133,8 +132,6 @@ Public Class MoveItems
             Form1.SearchListControlTabBUTTON.BackColor = Color.Black
             Form1.TradesListControlTabBUTTON.BackColor = Color.Black
             Form1.ItemTallyTEXTBOX.Text = Form1.AllItemsInDatabaseListBox.Items.Count & " - Total Items"
-
-
 
         End If
         Me.Close()

@@ -18,7 +18,6 @@ Public Class D2StyleOpenFileDialog
         Next
 
         'refresh the open database combobox drop down with file alread successfully opened in this session (stored in OpenDatabaseDropDown collection)
-
         DatabaseFilenameCOMBOBOX.Items.Clear()
         For Each item In OpenDatabaseDropDown
             DatabaseFilenameCOMBOBOX.Items.Add(item)
@@ -40,13 +39,8 @@ Public Class D2StyleOpenFileDialog
                 OpenDatabaseCONTEXTMENU.Items(1).Enabled = True
                 OpenDatabaseCONTEXTMENU.Items(2).Enabled = True
             End If
-
-            'If Not String.IsNullOrEmpty(SavedDatabasesLISTBOX.Text) Then
             Me.OpenDatabaseCONTEXTMENU.Show(Control.MousePosition)
         End If
-        'End If
-        'Else
-        'End If
         DatabaseFilenameCOMBOBOX.Select()
         DatabaseFilenameCOMBOBOX.SelectionLength = 0
     End Sub
@@ -166,7 +160,6 @@ ErrorSkipPoint:
                     Settings.DatabaseFileTEXTBOX.Text = Application.StartupPath + "\Database\" + UserInputForm.UserInputTEXTBOX.Text + ".txt"
                     Settings.DatabaseFileTEXTBOX.Text = Application.StartupPath + "\Database\" + UserInputForm.UserInputTEXTBOX.Text + ".txt"
                     Databasefile = Application.StartupPath + "\Database\" + UserInputForm.UserInputTEXTBOX.Text + ".txt"
-
                 End If
 
                 'Update current database label in top right corner of form1 if its the one that was just renamed
@@ -189,7 +182,6 @@ ErrorSkipPoint:
                 For Each item In AllSavedDatabasesFileNames
                     SavedDatabasesLISTBOX.Items.Add(Replace(item, ".txt", ""))
                 Next
-
             Catch ex As Exception
                 Mymessages = "File Error Renaming Saved Database." : MyMessageBox()
             End Try
@@ -260,7 +252,6 @@ ErrorSkipPoint:
             Next
 
 SkipDeleteOnError:
-
             'Cancels any selections in listbox and or textbox
             DatabaseFilenameCOMBOBOX.Text = Nothing
             SavedDatabasesLISTBOX.SelectedItem = Nothing

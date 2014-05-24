@@ -1,5 +1,4 @@
 ﻿Public Class YesNoD2Style
-
     'YES BUTTONPRESS RETURN RESULT
     Private Sub YesNoCONFIRMBUTTON_Click(sender As Object, e As EventArgs) Handles YesNoCONFIRMBUTTON.Click
         DialogResult = Windows.Forms.DialogResult.Yes

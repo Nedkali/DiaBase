@@ -1,7 +1,5 @@
 ﻿Imports System.IO
-
 Public Class CreateNewDatabase
-
     Private Sub NewDatabaseCreateBUTTON_Click(sender As Object, e As EventArgs) Handles NewDatabaseCreateBUTTON.Click
 
         If NewDatabaseTEXTBOX.Text <> Nothing Or NewDatabaseTEXTBOX.Text <> "" Then
@@ -20,13 +18,10 @@ Public Class CreateNewDatabase
             'DELETE IF NESSICARY AND CREATE NEW DATABASE FILE
             YesNoD2Style.Close()
             If DialogResult = Windows.Forms.DialogResult.Yes Then
-                'If My.Computer.FileSystem.FileExists(Application.StartupPath & "\DataBase\" & NewDatabaseTEXTBOX.Text & ".txt") = True Then My.Computer.FileSystem.DeleteFile(Application.StartupPath & "\DataBase\" & NewDatabaseTEXTBOX.Text & ".txt")
-
                 Dim CreateFile = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath & "\DataBase\" & NewDatabaseTEXTBOX.Text & ".txt", False)
                 CreateFile.Close()
 
                 'CHECK THE AUTO SAVE AND OPEN NEW DATABASE CHECKBOX
-
                 If NewDatabaseAutoOpenCHECKBOX.Checked = True Then
 
                     'SAVE CURRENT DATABASE - MUST ALSO REFRESH BACKUP HERE I THINK SO REPLACE ACTION CAN BE UNDONE IF NESSICARY WITH RESTORE BACKUP
@@ -42,9 +37,7 @@ Public Class CreateNewDatabase
                     Form1.Display_Items()
                     Form1.CurrentDatabaseLABEL.Text = Replace(My.Computer.FileSystem.GetName(Databasefile), ".txt", "")
                     Me.Close()
-
                 End If
-
             End If
             If DialogResult = Windows.Forms.DialogResult.No Then
                 'CANCEL REPLACE - Do Nothing
@@ -53,6 +46,7 @@ Public Class CreateNewDatabase
             NewDatabaseTEXTBOX.Select()
         End If
     End Sub
+
     'CANCEL CREATE DATABASE
     Private Sub NewDatabaseCancelBUTTON_Click(sender As Object, e As EventArgs) Handles NewDatabaseCancelBUTTON.Click
         Me.Close()

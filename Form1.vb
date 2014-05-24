@@ -57,12 +57,12 @@ Public Class Form1
             Label3.Font = New Font(pfc.Families(0), 16, FontStyle.Regular)  'Autologging Header
             Label29.Font = New Font(pfc.Families(0), 16, FontStyle.Regular) 'Item and Mule Search
 
-            'FOM1 BUTTONS (9 point size)
+            'BUTTONS (9 point size)
             ListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             SearchListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             TradesListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             SearchBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
-            Button3.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+               Button3.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
 
             'DialogResult Form Buttons (9 point size)
             YesNoD2Style.YesNoCONFIRMBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
@@ -75,6 +75,9 @@ Public Class Form1
             MoveItems.MoveItemsExportBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             Settings.SaveDefaultsBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             Settings.CancelDefaultsBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            Settings.EtalPathBrowseBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            Settings.DefaultDatabaseBrowseBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            Settings.Label4.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             UserInputForm.UserInputNoBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             UserInputForm.UserInputYesBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             D2StyleOpenFileDialog.NewDatabaseCancelBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
@@ -164,27 +167,7 @@ Public Class Form1
             Return
         End If
         ImportTimer.Stop() '        stop timer b4 form opens
-
         D2StyleOpenFileDialog.ShowDialog()
-
-        'OpenDatabaseDIALOG.Title = "Open An Existing Database File" '                           set dialog title
-        'OpenDatabaseDIALOG.InitialDirectory = Application.StartupPath + "\DataBase\" '  set initial dir
-        'OpenDatabaseDIALOG.Filter = ".txt|*.txt"
-        'OpenDatabaseDIALOG.FileName = Nothing
-
-        'If OpenDatabaseDIALOG.ShowDialog() = DialogResult.Cancel Then
-        'If Button3.Text = "Timer Stop" Then ImportTimer.Start() '       restart timer if not paused
-        'Return '          without this if user clicks cancel app crashes
-        'End If
-        'clean out old items in last loaded database
-        'SearchLISTBOX.Items.Clear() '                                                   clean out old search matches
-        'RichTextBox3.Text = Nothing '                                                   clean out trades list
-        'ClearStats()
-        'Databasefile = OpenDatabaseDIALOG.FileName
-
-        'OpenDatabaseRoutine(Databasefile) ' Routine puts saved items ito object arrays as ItemObject class collection
-        'Display_Items() '                       Routine Populates all items listbox with, um, all items obviously :)
-        'Me.CurrentDatabaseLABEL.Text = Replace(My.Computer.FileSystem.GetName(Databasefile), ".txt", "")
         If Button3.Text = "Timer Stop" Then ImportTimer.Start() '       restart timer if not paused
     End Sub
 
@@ -347,7 +330,6 @@ Public Class Form1
     Public Sub SaveItems()
         Try
             Dim LogWriter = My.Computer.FileSystem.OpenTextFileWriter(Databasefile, False)
-
             For x = 0 To Objects.Count - 1
                 LogWriter.WriteLine("--------------------")
                 LogWriter.WriteLine(Objects(x).ItemName)
@@ -395,9 +377,7 @@ Public Class Form1
                 LogWriter.WriteLine(Objects(x).PickitBot)
                 LogWriter.WriteLine(Objects(x).UserReference)
                 LogWriter.WriteLine(Objects(x).ItemImage)
-
             Next
-
             LogWriter.Close()
 
         Catch ex As Exception
@@ -432,7 +412,6 @@ Public Class Form1
     Private Sub SearchBUTTON_Click(sender As Object, e As EventArgs) Handles SearchBUTTON.Click
 
         'This next 'if then' checks that the selected search operator is valid if its not set to default equal to, in upper case the emphasise the fix to the user
-
         'NOTED: Checks for the other comboboxes entry vaildity are IN EACH ENTRY CHANGED EVENT HANDLER. The Search button will remain disabled until the 
         'minimum ammount of search criteria has been entered. This insures the search routine wont crash due to user input error (i hope)
 
@@ -442,7 +421,6 @@ Public Class Form1
         If SearchLISTBOX.Items.Count > 0 Then SearchLISTBOX.Focus() Else AllItemsInDatabaseListBox.Focus() ' ensure focus is returned to the relevant item list after search
 
     End Sub
-
 
     Private Sub SearchFieldCOMBOBOX_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SearchFieldCOMBOBOX.SelectedIndexChanged
         'QUICKLY SETUP SOME SEARCH STUFF FIRST 
@@ -590,13 +568,6 @@ Public Class Form1
             Button3.Text = "Timer Stop"
             RichTextBox1.AppendText("Timer Running" & vbCrLf)
         End If
-
-        '-------------------------------------------------------------------------------------------------------------------------------------------------
-        'trying to get time progress bar to run in marquee when in stop mode, to make the stop and absence of autologging stand out bit more doesnt work yet
-        'If Button3.Text = "Timer Stop" Then ToolStripProgressBar1.Style = ProgressBarStyle.Marquee : ToolStripProgressBar1.MarqueeAnimationSpeed = 1000
-        'If Button3.Text = "Timer Start" Then  ToolStripProgressBar1.Style = ProgressBarStyle.default
-        '-------------------------------------------------------------------------------------------------------------------------------------------------
-
     End Sub
 
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
@@ -648,10 +619,10 @@ Public Class Form1
     Private Sub RestoreBackupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RestoreBackupToolStripMenuItem.Click
         'SET D2 DIALOG TITLE AND MESSAGES
         YesNoD2Style.Text = "Restore Database From Backup"
-        YesNoD2Style.YesNoHeaderLABEL.Text = "CONFIRM BACKUP RESTORE"
+        YesNoD2Style.YesNoHeaderLABEL.Text = "CONFIRM TO RESTORE BACKUP"
         YesNoD2Style.YesNoHeaderLABEL.TextAlign = ContentAlignment.MiddleCenter
-        YesNoD2Style.YesNoMessageLABEL.Text = "You are about to permanently delete the " + CurrentDatabaseLABEL.Text + " database and replace it with its backup file (if one exists)." & vbCrLf & vbCrLf & _
-                                              "Only continue if you are sure as severe data loss may occur if you havn't backed up regularly." & vbCrLf & vbCrLf & _
+        YesNoD2Style.YesNoMessageLABEL.Text = "You are about to permanently delete the " & Chr(34) + CurrentDatabaseLABEL.Text + Chr(34) & " database and replace it with its backup file (if one exists)." & vbCrLf & vbCrLf & _
+                                              "Only continue if you are sure about what you are doing as severe data loss may occur if you havn't backed up regularly." & vbCrLf & vbCrLf & _
                                               "Select " & Chr(34) & "Confirm" & Chr(34) & " to restore the backup file or " & Chr(34) & "Cancel" & Chr(34) & " to abort.."
         YesNoD2Style.ShowDialog()
 
@@ -664,15 +635,11 @@ Public Class Form1
             Dim tempname = myarray(0) & ".bak"
             myarray = Split(tempname, "\")
             tempname = myarray(myarray.Length - 1)
-
             If My.Computer.FileSystem.FileExists(BackupPath & tempname) = True Then
 
                 'found a backup file and copying it over to replace current database file, then reload it
                 My.Computer.FileSystem.DeleteFile(Databasefile) 'delete old dbase file
                 My.Computer.FileSystem.CopyFile(BackupPath & tempname, Databasefile, True) ' copy over new dbase file and rename it
-
-
-
                 OpenDatabaseRoutine(Databasefile) 'refresh new database file to the lists
 
                 'SELECT MAIN LIST BOX AFTER BACKUP RESTORE
@@ -694,10 +661,8 @@ Public Class Form1
     'Closing Form1 (exit Application) Event Handler. Throws To exit confirmation message. also handles saves and backups if set to do so
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         ClosingAppForm.ShowDialog()
-
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.No Then e.Cancel = True : Return
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.Yes Then
-
             If saveonexit = True Then SaveItems()
             If backuponexit = True Then Module1.BackupDatabase()
         End If
@@ -711,26 +676,6 @@ Public Class Form1
 
     'CREATE NEW DATABASE OPTION FOR MULTIPLE DATABASES-------> NEEDS TO BE RESOLVED YET <-------------------------------------------[FINISH THIS ALREADY ROB]
     Private Sub NewToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles NewToolStripMenuItem1.Click
-
-        '---OLD CODE FOR HANDLER-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        'YesNoD2Style.Text = "Confirm New Database"
-        'YesNoD2Style.YesNoHeaderLABEL.Text = "PLEASE READ BEFOR CREATING A NEW DATABASE"
-        'YesNoD2Style.YesNoMessageLABEL.Text = "The Beat version does not support multiple databases. Creating a new database will totally destroy the current one." & vbCrLf & "Are you sure you want to contine?"
-        'YesNoD2Style.ShowDialog()
-        'If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.Yes Then
-        'If My.Computer.FileSystem.FileExists(Application.StartupPath + "\DataBase\Default.txt") = False Then
-        'My.Computer.FileSystem.DeleteFile(Application.StartupPath + "\DataBase\Default.txt")
-        'Else
-        'Dim file As System.IO.StreamWriter
-        'file = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath + "\DataBase\Default.txt", False)
-        'file.Close()
-        'Mymessages = "Default Data base file created" : MyMessageBox()
-        'OpenDatabaseRoutine(Databasefile) 'refresh new database file to the lists
-        'End If
-        'End If
-        'SkipNewDatabase:
-        '----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
         If LoggerRunning = True Then ' dont try to create file if auto logger is working - will cause app crash
             Mymessages = "Please wait File in use, Logger Running" : MyMessageBox()
             Return
@@ -841,8 +786,6 @@ Public Class Form1
                 Objects.RemoveAt(a)
 
                 'Removes Item From Search Listbox & Ref List
-                'If SearchReferenceList.Contains(a) = True Then
-
                 Dim count As Integer = SearchReferenceList.Count - 1
                 For Each item In SearchReferenceList
 
@@ -853,7 +796,6 @@ Public Class Form1
                         For x = a To SearchReferenceList.Count - 1
                             SearchReferenceList(x) = SearchReferenceList(x) - 1
                         Next
-
                         Exit For
                     End If
                     count = count - 1
@@ -916,18 +858,14 @@ Public Class Form1
         ImportTimer.Stop()
 
         If AllItemsInDatabaseListBox.SelectedIndices.Count > 0 Then
-            'RichTextBox3.Clear()
-
             Dim a As Integer = 0
             Dim count As Integer = 0
             DupeCountProgressForm.Show() : DupeCountProgressForm.DupePROGRESSBAR.Value = 0 'show and reset progress bar
-
             For index = 0 To AllItemsInDatabaseListBox.SelectedIndices.Count - 1
 
                 'CALCULATE PROGRESS BAR
                 DupeCountProgressForm.DupePROGRESSBAR.Value = Int((count / AllItemsInDatabaseListBox.Items.Count) * 100)
                 count = count + 1
-
                 a = AllItemsInDatabaseListBox.SelectedIndices(index)
 
                 Dim Temp = Objects(a).ItemName
@@ -1062,13 +1000,10 @@ Public Class Form1
                 If arr(i) = arr(x) Then arr(x) = "" : count(i) += 1
             Next
         Next
-
         RichTextBox3.Clear() 'clear list
-
         For x = 0 To UBound(arr) ' re - sort and put back
             If count(x) > 1 Then arr(x) = arr(x) & " (" & count(x) & ")"
         Next
-
         Array.Sort(arr)
 
         For x = 0 To UBound(arr) ' re - sort and put back
@@ -1112,7 +1047,6 @@ Public Class Form1
 
     End Sub
 
-    
     'starts search routine from enter keypress   
     Private Sub SearchBUTTON_KeyDown(sender As Object, e As KeyEventArgs) Handles SearchBUTTON.KeyDown
         If e.KeyCode = Keys.Enter Then
@@ -1195,16 +1129,7 @@ Public Class Form1
         SearchLISTBOX.SelectedIndex = FocusOnExit
     End Sub
 
-    'Selects all items in the search list - NOTE: dont like this routine much but could not find a select all option for listboxes anywhere
-    Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        'OLD SLOW AS SELECT ALL
-        'For Count = 0 To SearchLISTBOX.Items.Count - 1
-        'SearchLISTBOX.SetSelected(Count, True)
-        'Next
-
-        'SendMessage(SearchLISTBOX.Handle, &H185, 1, -1) 'COMMENT OUT FOR DEBUG
-    End Sub
-    'REMOVE MULTIPLE ITEMS FROM SEARCH ITEM LIST - DOES NOT DELETE ITMES ONLY REMOVES THEM FROM THE SEARCH LIST
+   'REMOVE MULTIPLE ITEMS FROM SEARCH ITEM LIST - DOES NOT DELETE ITMES ONLY REMOVES THEM FROM THE SEARCH LIST
     Private Sub RemoveSelectedItemssFromSearchListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveSelectedItemssFromSearchListToolStripMenuItem.Click
         If LoggerRunning = True Then '                                                                      CHECK FOR RUNNING AUTOLOG ROUTINE
             Mymessages = "Please wait Import in progress" : MyMessageBox()
@@ -1230,6 +1155,7 @@ Public Class Form1
 
         If Button3.Text = "Timer Stop" Then ImportTimer.Start() '                                              RESTART LOGGER
     End Sub
+
     'CLEARS ALL ITEMS OUT OF THE SEARCH LIST
     Private Sub ClearSearchListToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles ClearSearchListToolStripMenuItem.Click
         SearchLISTBOX.Items.Clear()

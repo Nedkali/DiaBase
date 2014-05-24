@@ -1,8 +1,6 @@
 ﻿Public Class AddItemForm
-
     Private Sub AddItemClearAllBUTTON_Click(sender As Object, e As EventArgs) Handles AddItemClearAllBUTTON.Click
         ClearAddForm()
-
     End Sub
 
     'HANDLES [TAB] AND [ENTER] Controlls tabbing textbox foucus for Add form
@@ -21,11 +19,6 @@
             Me.ProcessTabKey(True)
         End If
     End Sub
-
-
-   
-
-
 
     Private Sub ClearAddForm()
         AddItemNameTEXTBOX.Clear()
@@ -72,11 +65,9 @@
         AddItemMuleAccountCOMBOBOX.Text = ""
         AddItemMulePassCOMBOBOX.Text = ""
         AddItemPickitBotCOMBOBOX.Text = ""
-
     End Sub
     Private Sub AddItemCancelBUTTON_Click(sender As Object, e As EventArgs) Handles AddItemCancelBUTTON.Click
         Me.Close()
-
     End Sub
 
     Private Sub AddItemSaveBUTTON_Click(sender As Object, e As EventArgs) Handles AddItemSaveBUTTON.Click
@@ -85,16 +76,10 @@
             Return
         End If
 
-
         'check for backup on edits set to true if so then backup now
         If Settings.BackupOnEditsCHECKBOX.Checked = True Then Module1.BackupDatabase()
-
-
-
-
         Dim count As Integer = Objects.Count
         Dim AddObject As New ItemObjects
-
         AddObject.ItemName = AddItemNameTEXTBOX.Text
         AddObject.ItemBase = AddItemBaseCOMBOBOX.Text
         AddObject.ItemQuality = AddItemQualityCOMBOBOX.Text
@@ -157,7 +142,6 @@
 
     'Load Add Form Event Handler - Initiates every time add form is Loaded
     Private Sub AddItemForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         AddItemMuleAccountCOMBOBOX.Items.Clear()
         AddItemMuleNameCOMBOBOX.Items.Clear()
         AddItemMulePassCOMBOBOX.Items.Clear()
@@ -166,24 +150,19 @@
         AddItemAttackClassCOMBOBOX.Items.Clear()
         AddItemPickitBotCOMBOBOX.Items.Clear()
 
-
         For Each ItemObjectItem As ItemObjects In Objects
             If ItemObjectItem.MuleName <> "" Then
                 If AddItemMuleNameCOMBOBOX.Items.Contains(ItemObjectItem.MuleName) = False Then AddItemMuleNameCOMBOBOX.Items.Add(ItemObjectItem.MuleName)
             End If
-
             If ItemObjectItem.MuleAccount <> "" Then
                 If AddItemMuleAccountCOMBOBOX.Items.Contains(ItemObjectItem.MuleAccount) = False Then AddItemMuleAccountCOMBOBOX.Items.Add(ItemObjectItem.MuleAccount)
             End If
-
             If ItemObjectItem.MulePass <> "" Then
                 If AddItemMulePassCOMBOBOX.Items.Contains(ItemObjectItem.MulePass) = False Then AddItemMulePassCOMBOBOX.Items.Add(ItemObjectItem.MulePass)
             End If
-
             If ItemObjectItem.AttackClass <> "" Then
                 If AddItemAttackClassCOMBOBOX.Items.Contains(ItemObjectItem.AttackClass) = False Then AddItemAttackClassCOMBOBOX.Items.Add(ItemObjectItem.AttackClass)
             End If
-
             If ItemObjectItem.ItemBase <> "" Then
                 If AddItemBaseCOMBOBOX.Items.Contains(ItemObjectItem.ItemBase) = False Then AddItemBaseCOMBOBOX.Items.Add(ItemObjectItem.ItemBase)
             End If
@@ -193,11 +172,7 @@
             If ItemObjectItem.PickitBot <> "" Then
                 If AddItemPickitBotCOMBOBOX.Items.Contains(ItemObjectItem.PickitBot) = False Then AddItemPickitBotCOMBOBOX.Items.Add(ItemObjectItem.PickitBot)
             End If
-
         Next
-
-
-
     End Sub
 
     Private Sub AddItemImageBUTTON_Click(sender As Object, e As EventArgs) Handles AddItemImageBUTTON.Click

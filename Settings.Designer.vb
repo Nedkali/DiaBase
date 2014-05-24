@@ -76,7 +76,7 @@ Partial Class Settings
         Me.Label4.BackColor = System.Drawing.SystemColors.WindowText
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label4.Location = New System.Drawing.Point(331, 163)
+        Me.Label4.Location = New System.Drawing.Point(319, 163)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(151, 16)
         Me.Label4.TabIndex = 28

@@ -1,4 +1,5 @@
 ﻿Public Class ItemObjects
+    'Define Global Database Fields
     Public ItemName As String
     Public ItemBase As String
     Public ItemQuality As String
@@ -44,5 +45,4 @@
     Public PickitBot As String
     Public UserReference As String
     Public ItemImage As String
-
 End Class

@@ -1,8 +1,5 @@
 ﻿Imports System.Text.RegularExpressions
-
 Module Tradelist
-
-
     Public Sub SendToTradeList(ByVal x)
         Dim temp As String = ""
 

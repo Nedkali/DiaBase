@@ -290,8 +290,6 @@
     <None Include="Resources\Baalfadeout.wav" />
     <None Include="Resources\CurrentFileBackground.PNG" />
     <None Include="Resources\BigSettings.bmp" />
-    <Content Include="sword_and_Shield.ico" />
-    <Content Include="sword_and_Shield_Xparent.ico" />
     <Content Include="Treasure_Chest.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

@@ -14,11 +14,9 @@
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles EtalPathBrowseBUTTON.Click
-
         FolderBrowserDialog1.ShowDialog()
         EtalPathTEXTBOX.Text = FolderBrowserDialog1.SelectedPath
         SettingsChecker()
-
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles DefaultDatabaseBrowseBUTTON.Click
@@ -52,9 +50,9 @@
         file.WriteLine(EtalPathTEXTBOX.Text)
         file.WriteLine(DatabaseFileTEXTBOX.Text)
         file.WriteLine(NumericUpDown1.Value)
-        file.WriteLine(CheckBox3.Checked) : KeepPassPrivate = CheckBox3.CheckState '<-------------------------------Display Password Fix rev 12 (AussieHack)
-        file.WriteLine(AutoBackupImportsCHECKBOX.Checked) ' added this for auto backup on import setting
-        file.WriteLine(BackupOnEditsCHECKBOX.Checked)   ' added this for auto backup on edits setting
+        file.WriteLine(CheckBox3.Checked) : KeepPassPrivate = CheckBox3.CheckState '<---------- Display Password Fix rev 12 (AussieHack)
+        file.WriteLine(AutoBackupImportsCHECKBOX.Checked) '                                     added this for auto backup on import setting
+        file.WriteLine(BackupOnEditsCHECKBOX.Checked)   '                                       added this for auto backup on edits setting
         file.WriteLine(DupeCheckBox1.Checked) : RemoveDupeMule = DupeCheckBox1.CheckState
         file.Close()
         EtalPath = EtalPathTEXTBOX.Text
@@ -79,7 +77,6 @@
     End Sub
 
     Private Sub SettingsChecker()
-
         If My.Computer.FileSystem.DirectoryExists(EtalPathTEXTBOX.Text) = True Then
             Dim temp = Split(EtalPathTEXTBOX.Text, "\")
             If temp(temp.Length - 1) = "D2NT" Then PictureBox1.Visible = True
@@ -88,7 +85,6 @@
         If My.Computer.FileSystem.FileExists(DatabaseFileTEXTBOX.Text) = True Then PictureBox2.Visible = True
     End Sub
 
-    
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles DupeCheckBox1.CheckedChanged
         If DupeCheckBox1.Checked = True Then
             RemoveDupeMule = True

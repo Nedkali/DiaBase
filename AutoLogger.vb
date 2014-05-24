@@ -1,26 +1,17 @@
 ﻿Imports System.IO
-
-
-
 Module AutoLogger
-
-
     Public Sub ImportLogFiles()
 
-
-        'these variables maybe better placed in module1 ????
         MuleLogPath = EtalPath + "\scripts\AMS\MuleInventory\"
         DataBasePath = Application.StartupPath + "\DataBase\"
         MuleDataPath = EtalPath + "\scripts\AMS\MuleLogs\"
         ArchiveFolder = Application.StartupPath + "\Archive\"
 
         'Check folders exist and path information is correct
-
         If My.Computer.FileSystem.DirectoryExists(MuleDataPath) = False Then
             MessageBox.Show("Error with Logs Path", "Folder  Error")
             Return
         End If
-
         If My.Computer.FileSystem.DirectoryExists(DataBasePath) = False Then
             MessageBox.Show("Error with Database Path", "Folder  Error")
             Return
@@ -29,7 +20,6 @@ Module AutoLogger
             MessageBox.Show("Error with Etal Path", "Folder  Error")
             Return
         End If
-
         If My.Computer.FileSystem.DirectoryExists(ArchiveFolder) = False Then
             MessageBox.Show("Error with Backup Path", "Folder  Error")
             Return
@@ -47,36 +37,29 @@ Module AutoLogger
 
         If Settings.AutoBackupImportsCHECKBOX.Checked = True Then
 
-
             'get Backup directory path
             Dim BackupPath = Application.StartupPath + "\DataBase\Backup\" ' set path to backup folder
 
             'get name of database name fron databasefile path string
-            Dim DBaseName = DatabaseFile.Replace(Application.StartupPath + "\DataBase\", "")
-
+            Dim DBaseName = Databasefile.Replace(Application.StartupPath + "\DataBase\", "")
 
             'if an old backup of this database exists here already then this deletes it
             If My.Computer.FileSystem.FileExists(BackupPath + DBaseName) = True Then My.Computer.FileSystem.DeleteFile(BackupPath + DBaseName)
 
             'This saves the new database backup file
-            My.Computer.FileSystem.CopyFile(DatabaseFile, BackupPath + DBaseName)
-
+            My.Computer.FileSystem.CopyFile(Databasefile, BackupPath + DBaseName)
             Form1.RichTextBox1.AppendText(DBaseName & " Backup Successful" & vbCrLf) '  logger event window entry backup message, REMOVE THIS IF YOU LIKE
-
         End If
-
-
-
 
         Form1.RichTextBox1.AppendText("Logs to import = " & LogFilesList.Count & vbCrLf)
         Pretotal = Objects.Count
 
         ProcessLogFiles() 'moved rest to a separate sub to cut down on coded lines in a single sub
-
         Form1.SaveItems()
         Form1.Display_Items()
 
     End Sub
+
     Sub GetLogFiles()
 
         Dim Tally As Integer = 0
@@ -88,16 +71,14 @@ Module AutoLogger
                 If Replace(LogFiles(Tally), ".txt", "").IndexOf("_") > -1 Then
                     LogFilesList.Add(LogFiles(Tally))                               'ADD LOG FILE NAME TO LogFilesList()
                 End If
-
             End If
             Tally = Tally + 1
         Loop
-
     End Sub
+
     Sub GetmuleaccountFiles()
         Dim Tally As Integer = 0
         PassFiles.Clear()
-
         Dim AllFiles As String() = (Directory.GetFiles(MuleDataPath, "*")).Select(Function(p) Path.GetFileName(p)).ToArray() ' gets file and crops path
         For Each item In AllFiles
             If AllFiles(Tally).IndexOf("_muleaccount.txt") > -1 Then PassFiles.Add(AllFiles(Tally))
@@ -105,7 +86,6 @@ Module AutoLogger
         Next
 
     End Sub
-
 
     Function GetMulePass(ByVal accname)
         GetmuleaccountFiles()
@@ -130,10 +110,7 @@ Module AutoLogger
             End While
             counter = counter + 1
         Next
-
-
         Return (",")
-
     End Function
 
     Private Sub ProcessLogFiles()
@@ -144,10 +121,8 @@ Module AutoLogger
         Dim myarray As Array
 
         Do Until Tally = LogFilesList.Count
-
             If My.Computer.FileSystem.FileExists(MuleLogPath & LogFilesList(Tally)) = True Then 'Verify the log Exists
                 Dim LogFile = My.Computer.FileSystem.OpenTextFileReader(MuleLogPath & LogFilesList(Tally))
-
 
                 Dim thispickbot = LogFile.ReadLine() 'these lines should exist for each log
                 Dim thislogmuleacc = LogFile.ReadLine()
@@ -199,8 +174,6 @@ Module AutoLogger
                     temp = LogFile.ReadLine() : myarray = Split(temp, " ")
                     NewObject.ItemImage = myarray(2)
                     NewObject.RuneWord = LogFile.ReadLine()
-
-
 
                     While LogFile.EndOfStream = False   'attempt to read item added information and exit if end of stream/file
                         temp = LogFile.ReadLine()
@@ -264,7 +237,6 @@ Module AutoLogger
                             Case Else
                                 found = False
 
-
                         End Select
 
                         ' if not basic item stat then we need to set it to stat1 stat2 etc
@@ -324,8 +296,6 @@ Module AutoLogger
                                 NewObject.AttackSpeed = LTrim(myarray(1))
                                 Continue While
                             End If
-
-
                             If found = False And NewObject.Stat1 = "" Then NewObject.Stat1 = temp : found = True
                             If found = False And NewObject.Stat2 = "" Then NewObject.Stat2 = temp : found = True
                             If found = False And NewObject.Stat3 = "" Then NewObject.Stat3 = temp : found = True
@@ -341,11 +311,7 @@ Module AutoLogger
                             If found = False And NewObject.Stat13 = "" Then NewObject.Stat13 = temp : found = True
                             If found = False And NewObject.Stat14 = "" Then NewObject.Stat14 = temp : found = True
                             If found = False And NewObject.Stat15 = "" Then NewObject.Stat15 = temp : found = True
-
-
                         End If
-
-
                     End While
 
                     ' fixes area - correcting item imports
@@ -389,49 +355,21 @@ Module AutoLogger
                     Objects.Add(NewObject)
 
                 Loop Until LogFile.EndOfStream
-
-
-
                 LogFile.Close()
-
-
-                'Dim filecheck = My.Computer.FileSystem.FileExists(ArchiveFolder & LogFilesList(Tally))
-                'Dim filecount As Integer = 0
-                'If filecheck = False Then
                 My.Computer.FileSystem.MoveFile(MuleLogPath & LogFilesList(Tally), ArchiveFolder & LogFilesList(Tally), True)
-                'End If
-
-                'If filecheck = True Then
-                '    myarray = Split(LogFilesList(Tally), ".txt", 0)
-                '    Dim tempname = myarray(0)
-                '    Do Until filecheck = False
-                '        temp = tempname & filecount & ".txt"
-                '        filecheck = My.Computer.FileSystem.FileExists(ArchiveFolder & temp)
-                '        filecount = filecount + 1
-                '    Loop
-                '    My.Computer.FileSystem.MoveFile(MuleLogPath & LogFilesList(Tally), ArchiveFolder & temp, True)
-                'End If
-
-
             End If
-
             Tally = Tally + 1
         Loop
-
     End Sub
-
 
     Private Sub SaveLoggedItems(ByVal itemstart)
 
-        Form1.RichTextBox1.AppendText("Saving to file " & DataBaseFile & vbCrLf)
+        Form1.RichTextBox1.AppendText("Saving to file " & Databasefile & vbCrLf)
         Form1.RichTextBox1.AppendText("Items to be saved = " & Objects.Count - itemstart & vbCrLf)
         Dim count = 0
         Try
-
-            Dim LogWriter = My.Computer.FileSystem.OpenTextFileWriter(DataBaseFile, True)
-
+            Dim LogWriter = My.Computer.FileSystem.OpenTextFileWriter(Databasefile, True)
             For x = itemstart To Objects.Count - 1
-
                 LogWriter.WriteLine("--------------------")
                 LogWriter.WriteLine(Objects(x).ItemName)
                 LogWriter.WriteLine(Objects(x).ItemBase)
@@ -480,7 +418,6 @@ Module AutoLogger
                 LogWriter.WriteLine(Objects(x).ItemImage)
                 count = count + 1
             Next
-
             LogWriter.Close()
 
         Catch ex As Exception
@@ -488,12 +425,12 @@ Module AutoLogger
 
         End Try
         Form1.RichTextBox1.AppendText("Items Saved = " & count & vbCrLf)
-
         For y = itemstart To Objects.Count - 1
             Form1.AllItemsInDatabaseListBox.Items.Add(Objects(y).ItemName)
         Next
         Form1.ItemTallyTEXTBOX.Text = Objects.Count & " Items"
     End Sub
+
     Function GetRunes(ByVal runename)
         Dim runestats As String = ""
         Select Case runename
@@ -609,8 +546,6 @@ Module AutoLogger
                 runestats = "69, Weapons:, Indestructable, Armour:, Indestructable, Helmets:, Indestructable, Shields:, Indestructable, , , "
 
         End Select
-
-
         Return runestats
     End Function
     Function GetGemsStats(ByVal gemname)
@@ -639,7 +574,6 @@ Module AutoLogger
             Case "Chipped Skull"
                 gemstats = "1,Weapons: 2% Life Stolen Per Hit, 1% Mana Stolen Per Hit, Armor: Regenerate Mana 8%, Replenish life +2, Helms: Regenerate Mana 8%, Replenish life +2, Shields: Attacker Takes Damage of 4"
 
-
             Case "Flawed Diamond"
                 gemstats = "5,Weapons: +34% Damage to Undead, Armor: +40 to Attack Rating, Helms: +40 to Attack Rating, Shields: All Resistances 8"
 
@@ -660,7 +594,6 @@ Module AutoLogger
 
             Case "Flawed Skull"
                 gemstats = "5,Weapons: 2% Life Stolen Per Hit, 2% Mana Stolen Per Hit, Armor: Regenerate Mana 8%, Replenish life +3, Helms: Regenerate Mana 8%, Replenish life +3, Shields: Attacker Takes Damage of 8"
-
 
             Case "Diamond"
                 gemstats = "12,Weapons: +44% Damage to Undead, Armor: +60 to Attack Rating, Helms: +60 to Attack Rating, Shields: All Resistances 11"
@@ -683,7 +616,6 @@ Module AutoLogger
             Case "Skull"
                 gemstats = "12,Weapons: 3% Life Stolen Per Hit, 2% Mana Stolen Per Hit, Armor: Regenerate Mana 12%, Replenish life +3, Helms: Regenerate Mana 12%, Replenish life +3, Shields: Attacker Takes Damage of 12"
 
-
             Case "Flawless Diamond"
                 gemstats = "15,Weapons: +54% Damage to Undead, Armor: +80 to Attack Rating, Helms: +80 to Attack Rating, Shields: All Resistances 14"
 
@@ -704,7 +636,6 @@ Module AutoLogger
 
             Case "Flawless Skull"
                 gemstats = "15,Weapons: 3% Life Stolen Per Hit, 3% Mana Stolen Per Hit, Armor: Regenerate Mana 12%, Replenish life +4, Helms: Regenerate Mana 12%, Replenish life +4, Shields: Attacker Takes Damage of 16"
-
 
             Case "Perfect Diamond"
                 gemstats = "18,Weapons: +68% Damage to Undead, Armor: +100 to Attack Rating, Helms: +100 to Attack Rating, Shields: All Resistances 19"
@@ -727,12 +658,8 @@ Module AutoLogger
             Case "Perfect Skull"
                 gemstats = "18,Weapons: 4% Life Stolen Per Hit, 3% Mana Stolen Per Hit, Armor: Regenerate Mana 19%, Replenish life +5, Helms: Regenerate Mana 19%, Replenish life +5, Shields: Attacker Takes Damage of 20"
 
-
         End Select
-
         If gemstats = "" Then gemstats = "18, Weapons: N/A, Armor: N/A, Helms: N/A, Shields: N/A"
         Return gemstats
     End Function
-
-
 End Module
