@@ -216,11 +216,15 @@
 
             'confirmation popup box
             YesNoD2Style.Text = "Confirm To Copy Edits To All Selected Items"
-            YesNoD2Style.YesNoHeaderLABEL.Text = "Copy To All Selected Items"
-            YesNoD2Style.YesNoMessageLABEL.Text = "Select Confirm to copy edited field values to all currently selected items. " & vbCrLf & "NOTE: This will permanently replace the edited field values for all other items currently selected." & vbCrLf & vbCrLf & "Select Cancel to only edit the first selected item."
+            YesNoD2Style.YesNoHeaderLABEL.Text = "Copy Edits To All Selected Items"
+            YesNoD2Style.YesNoMessageLABEL.Text = "Select " & Chr(34) & "Yes" & Chr(34) & " to copy edited field values to all currently selected items. " & vbCrLf & vbCrLf & "NOTE: This will permanently replace the edited field values for all other items currently selected." & vbCrLf & vbCrLf & "Select " & Chr(34) & "No" & Chr(34) & " to only edit the first selected item."
+            YesNoD2Style.YesNoCANCELBUTTON.Text = "No"
+            YesNoD2Style.YesNoCONFIRMBUTTON.Text = "Yes"
 
             'confirm results...
             ConfirmResult = YesNoD2Style.ShowDialog
+            YesNoD2Style.YesNoCANCELBUTTON.Text = "Cancel"
+            YesNoD2Style.YesNoCONFIRMBUTTON.Text = "Confirm"
             If ConfirmResult = Windows.Forms.DialogResult.Yes Then
 
                 'apply edits to all selected items
@@ -275,7 +279,8 @@
                         If item = "EditItemUserReferenceTEXTBOX" Then Objects(iEdit).UserReference = EditItemUserReferenceTEXTBOX.Text
                         'If item = "" Then Objects(iEdit). = .Text
                     Next
-                     Next
+                Next
+
                 'reselects items to refresh item stats display
                 Form1.AllItemsInDatabaseListBox.SelectedIndex = -1
                 For Each item In AllSelected
@@ -290,7 +295,6 @@
                     For Each item In AllSelected
                         Form1.AllItemsInDatabaseListBox.SetSelected(item, True)
                     Next
-
                 End If
             End If
         Else
@@ -303,6 +307,8 @@
         End If
         Me.Close()
     End Sub
+
+    'Save routine for single selection edits and when edits are only applied to the first selected item
     Sub UpdateItemToDatabase()
         Objects(iEdit).ItemName = EditItemNameTEXTBOX.Text
         Objects(iEdit).ItemBase = EditItemBaseCOMBOBOX.Text

@@ -407,25 +407,25 @@ Partial Class Form1
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(140, 22)
         Me.ToolStripMenuItem1.Text = "Backup "
         '
         'CloseToolStripMenuItem
         '
         Me.CloseToolStripMenuItem.Name = "CloseToolStripMenuItem"
-        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CloseToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.CloseToolStripMenuItem.Text = "Save"
         '
         'OpenToolStripMenuItem
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.OpenToolStripMenuItem.Text = "Open"
         '
         'ItemFileToolStripMenuItem
@@ -442,24 +442,24 @@ Partial Class Form1
         'NewToolStripMenuItem1
         '
         Me.NewToolStripMenuItem1.Name = "NewToolStripMenuItem1"
-        Me.NewToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.NewToolStripMenuItem1.Size = New System.Drawing.Size(140, 22)
         Me.NewToolStripMenuItem1.Text = "Create New"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(137, 6)
         '
         'RestoreBackupToolStripMenuItem
         '
         Me.RestoreBackupToolStripMenuItem.Name = "RestoreBackupToolStripMenuItem"
-        Me.RestoreBackupToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.RestoreBackupToolStripMenuItem.Size = New System.Drawing.Size(140, 22)
         Me.RestoreBackupToolStripMenuItem.Text = "Restore"
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(137, 6)
         '
         'MenuStrip1
         '

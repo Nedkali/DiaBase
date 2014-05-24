@@ -11,7 +11,7 @@ Module Module1
     Public RevisionNumber As String = "22"
     '-------------------------------------------------------------------------------------------------------------------
 
-    'DataBase variables
+    'DataBase app variables
     Public iEdit As Integer         'used in item edit form to locate item(array) number being edited
     Public EtalPath As String
     Public DataBasePath As String
@@ -23,8 +23,7 @@ Module Module1
     Public backuponexit As Boolean = False
     Public RemoveDupeMule As String = True
     Public Pretotal As Integer = 0
-    Public DupeReferenceList As List(Of String) = New List(Of String)
-
+   
     ' needs to be set to true when logger is doing log reads/imports and then set to false when completed
     ' Need this to prevent reading database while logger maybe trying to access it - logger will need priority
     ' or will most likely trigger an exception and crash Program
@@ -40,15 +39,16 @@ Module Module1
     Public EditBackups As String
     Public MyCounter As Array
 
+    'Reference array lists and collections
     Public SearchReferenceList As List(Of String) = New List(Of String)
     Public RefineSearchReferenceList As List(Of String) = New List(Of String)
     Public UserListReferenceList As List(Of String) = New List(Of String)
     Public StringMatches As List(Of String) = New List(Of String)
     Public IntegerMatches As List(Of String) = New List(Of String)
     Public OpenDatabaseDropDown As List(Of String) = New List(Of String)
-    Dim GetAllIntegers As List(Of String) = New List(Of String) '.........................This doesnt seem to do anything???
+    Public DupeReferenceList As List(Of String) = New List(Of String)
 
-    'Other Required Crap
+    'Other Required Vars and collections
     Public ItemNamePulldownList As List(Of String) = New List(Of String)
     Public UniqueAttribsPulldownList As List(Of String) = New List(Of String)
     Public UserReferencePulldownList As List(Of String) = New List(Of String)
@@ -57,13 +57,6 @@ Module Module1
     Public LogType As List(Of String) = New List(Of String)
 
     Public pfc As New PrivateFontCollection()                       'Defines Custom Font Collection pfc As Global
-
-    Public Rune As Array = {"Eld", "El", "Tir", "Nef", "Eth", "Ith", "Tal", "Ral", "Ort", "Thul", "Amn", "Sol", "Shael", "Dol", "Hel", "Io",
-         "Lum", "Ko", "Fal", "Lem", "Pul", "Um", "Mal", "Ist", "Gul", "Vex", "Ohm", "Lo", "Sur", "Jah", "Ber", "Cham", "Zod"}
-
-    'Define Global DLL Messaging Function For Listboxes "Select All" Context Menu Action - :) Tyvm For dll Lesson Ned :)
-
-    'Declare Auto Function SendMessage Lib "user32.dll" (ByVal hWnd As IntPtr, ByVal msg As Integer, ByVal wParam As IntPtr, ByVal lParam As IntPtr) As IntPtr 'COMMENT OUT FOR DEBUG
 
     'Calls the UserMessaging 'Okie Dokie' Form As DialogBox
     Public Sub MyMessageBox()
@@ -83,7 +76,6 @@ Module Module1
             Objects.RemoveRange(1, Objects.Count - 1)
             Objects.RemoveAt(0)
         End If
-
         Dim Reader = My.Computer.FileSystem.OpenTextFileReader(DatabaseFile)
         Do
             If Reader.EndOfStream = True Then Exit Do
@@ -158,7 +150,7 @@ Module Module1
         file.Close()
     End Sub
 
-    'Brances to Selected ItemImage listed in each items image field (Is Always Called from Display Item Statistics Routine In Form1 Code Block)
+    'Branches to Selected ItemImage listed in each items image field (Is Always Called from Display Item Statistics Routine In Form1 Code Block)
     Public Function ItemImageList(sender As Integer)
         Dim item As String
         Select Case Int(sender)
