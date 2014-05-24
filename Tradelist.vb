@@ -254,7 +254,7 @@ Module Tradelist
         ' Unique Helms
         '***********************************************
 
-        If Objects(x).ItemBase = "Helm" Then
+        If Objects(x).ItemBase = "Helm" Or Objects(x).ItemBase = "Circlet" Then
             If Objects(x).ItemName = "Andariel's Visage Demonhead" Then Return "Andies, " & Objects(x).Stat4 & ", " & Objects(x).Stat5 & ", " & Objects(x).Stat6
             If Objects(x).ItemName = "Arreat's Face Slayer Guard" Then Return "Arreats, " & Objects(x).Stat4 & " " & Objects(x).Stat5
             If Objects(x).ItemName = "Biggin's Bonnet Cap" Then Return "Biggins, " & Objects(x).Stat3
@@ -388,12 +388,33 @@ Module Tradelist
         '***********************************************
         'Shields
         '***********************************************
-        If Objects(x).ItemBase = "Shield" Or Objects(x).ItemBase = "Auric Shield" Then
-            If Objects(x).ItemName = "Herald of Zakarum Gilded Shield" Then Return "Hoz " & " Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Steelclash Kite Shield" Then Return "Steelclash " & " Def " & Objects(x).Defense
-            If Objects(x).ItemName = "Lidless Wall Grim Shield" Then Return "Lidless Shield" & " Def " & Objects(x).Defense
-
-            Return temp
+        If Objects(x).ItemBase = "Shield" Or Objects(x).ItemBase = "Auric Shield" Or Objects(x).ItemBase = "Voodoo Heads" Then
+            If Objects(x).ItemName = "Alma Negra Sacred Rondache" Then Return "Alma Negra, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Blackoak Shield Luna" Then Return "Blackoak Shield, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Boneflame Succubus Skull" Then Return "Boneflame, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Bverrit Keep Tower Shield" Then Return "Bverrit Keep, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Darkforce Spawn Bloodlord Skull" Then Return "Darkforce, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Dragonscale Zakarum Shield" Then Return "Dragonscale, Def " & Objects(x).Defense & ", " & Objects(x).Stat5 & ", " & Objects(x).Stat7
+            If Objects(x).ItemName = "Gerke's Sanctuary Pavise" Then Return "Gerke's Sanctuary, Def " & Objects(x).Defense & ", " & Objects(x).Stat4
+            If Objects(x).ItemName = "Head Hunter's Glory Troll Nest" Then Return "Head Hunter's Glory, Def " & Objects(x).Defense & ", " & Objects(x).Stat3
+            If Objects(x).ItemName = "Herald of Zakarum Gilded Shield" Then Return "Hoz, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Homunculus Hierophant Trophy" Then Return "Homunculus, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Lance Guard Barbed Shield" Then Return "Lance Guard, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Lidless Wall Grim Shield" Then Return "Lidless Shield, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Medusa's Gaze Aegis" Then Return "Medusa's Gaze, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Moser's Blessed Circle Round Shield" Then Return "Moser's Blessed Circle, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Pelta Lunata Buckler" Then Return "Pelta Lunata, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Spike Thorn Blade Barrier" Then Return "Pelta Lunata, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Spirit Ward Ward" Then Return "Spirit Ward, Def " & Objects(x).Defense & ", " & Objects(x).Stat3 & ", " & Objects(x).Stat5
+            If Objects(x).ItemName = "Steelclash Kite Shield" Then Return "Steelclash, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Stormguild Large Shield" Then Return "Stormguild, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Stormshield Monarch" Then Return "Stormshield, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Swordback Hold Spiked Shield" Then Return "Swordback Hold, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "The Ward Gothic Shield" Then Return "The Ward, Def " & Objects(x).Defense & ", " & Objects(x).Stat5
+            If Objects(x).ItemName = "Tiamat's Rebuke Dragon Shield" Then Return "Tiamat's Rebuke, Def " & Objects(x).Defense & ", " & Objects(x).Stat8
+            If Objects(x).ItemName = "Umbral Disk Small Shield" Then Return "Umbral Disk, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Visceratuant Defender" Then Return "Visceratuant, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Wall of the Eyeless Bone Shield" Then Return "Wall of the Eyeless, Def " & Objects(x).Defense
         End If
 
         '***********************************************
