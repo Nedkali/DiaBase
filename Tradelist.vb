@@ -39,9 +39,13 @@ Module Tradelist
         End If
 
         ' if Identified & set item go to Unique function
-        If Objects(x).ItemQuality = "Unique" And Objects(x).Stat1.IndexOf("Unid") = -1 Then temp = Uniq_items(x) : If Objects(x).EtherealItem = True Then temp = temp & " Eth"
+        If Objects(x).ItemQuality = "Unique" And Objects(x).Stat1.IndexOf("Unid") = -1 Then
+            temp = Uniq_items(x) : If Objects(x).Sockets <> "" Then temp = temp & ", Socs " & Objects(x).Sockets
+            If Objects(x).EtherealItem = True Then temp = temp & ", Eth"
+        End If
 
-        If Objects(x).RuneWord = "True" Then temp = RuneWord_items(x) : If Objects(x).EtherealItem = True Then temp = temp & " Eth"
+
+        If Objects(x).RuneWord = "True" Then temp = RuneWord_items(x) : If Objects(x).EtherealItem = True Then temp = temp & ", Eth"
 
 
         '***********************************************
@@ -95,6 +99,7 @@ Module Tradelist
         temp = temp.Replace("Faster Block Rate", "Fbr")
         temp = temp.Replace("Increased Attack Speed", "Ias")
         temp = temp.Replace("Strength", "Str")
+        temp = temp.Replace("Vitality", "Vit")
         temp = temp.Replace("Life stolen per hit", "Loh")
         temp = temp.Replace("Regenerate Mana", "Mana Regen")
         temp = temp.Replace("Life stolen per hit", "Loh")
@@ -189,6 +194,7 @@ Module Tradelist
         '***********************************************
         If Objects(x).ItemBase = "Shield" Then
             If Objects(x).ItemName.IndexOf("Spirit") > -1 Then Return Objects(x).ItemName & " Def " & Objects(x).Defense & Objects(x).Stat2
+            If Objects(x).ItemName.IndexOf("Splendor") > -1 Then Return Objects(x).ItemName & " Def " & Objects(x).Defense
         End If
 
         '***********************************************
@@ -470,11 +476,14 @@ Module Tradelist
         '***********************************************
         'Weapons Claws
         '***********************************************
-        If Objects(x).ItemBase = "Claws" Then
+        If Objects(x).ItemBase = "Assassin Claw" Then
             If Objects(x).ItemName = "Bartuc's Cut-Throat Greater Talons" Then Return "Bartuc's, " & Objects(x).Stat4 & ", " & Objects(x).Stat7
             If Objects(x).ItemName = "Firelizard's Talons Feral Claws" Then Return "Firelizard's, " & Objects(x).Stat3 & ", " & Objects(x).Stat7
             If Objects(x).ItemName = "Jade Talon Wrist Sword" Then Return "Jade Talon, " & Objects(x).Stat4 & ", " & Objects(x).Stat5 & ", " & Objects(x).Stat6
             If Objects(x).ItemName = "Shadow Killer Battle Cestus" Then Return "Shadow Killer, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Shadow Killer Battle Cestus" Then Return "Shadow Killer, " & Objects(x).Stat3
+
+
         End If
 
         '***********************************************
@@ -556,7 +565,7 @@ Module Tradelist
         '***********************************************
         'Weapons Polearms
         '***********************************************
-        If Objects(x).ItemBase = "Polearm" Then
+        If Objects(x).ItemBase = "polearm" Then
             If Objects(x).ItemName = "Bonehew Ogre Axe" Then Return "Bonehew, " & Objects(x).Stat3
             If Objects(x).ItemName = "Dimoak's Hew " Then Return "Dimoak's Hew, "
             If Objects(x).ItemName = "Pierre Tombale Couant Partizan" Then Return "Pierre Tombale, " & Objects(x).Stat3
@@ -568,6 +577,21 @@ Module Tradelist
             If Objects(x).ItemName = "The Reaper's Toll Thresher" Then Return "Reaper's Toll, " & Objects(x).Stat2 & ", " & Objects(x).Stat5
             If Objects(x).ItemName = "Tomb Reaver Cryptic Axe" Then Return "Tomb Reaver, " & Objects(x).Stat2 & ", " & Objects(x).Stat5 & ", " & Objects(x).Stat8
             If Objects(x).ItemName = "Woestave Halberd" Then Return "Woestave, " & Objects(x).Stat1
+        End If
+
+        '***********************************************
+        'Weapons Sceptors
+        '***********************************************
+        If Objects(x).ItemBase = "Scepter" Then
+            If Objects(x).ItemName = "Astreon's Iron Ward Caduceus" Then Return "Astreon's Iron Ward, " & Objects(x).Stat1 & ", " & Objects(x).Stat3 & ", " & Objects(x).Stat9
+            If Objects(x).ItemName = "Hand of Blessed Light Divine Sceptor" Then Return "Hand of Blessed Light, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Heaven's Light Mighty Scepter" Then Return "Heaven's Light, " & Objects(x).Stat1 & ", " & Objects(x).Stat3
+            If Objects(x).ItemName = "Knell Striker Scepter" Then Return "Knell Striker, " & Objects(x).Stat1
+            If Objects(x).ItemName = "Rusthandle Grand Scepter" Then Return "Rusthandle, " & Objects(x).Stat2 & ", " & Objects(x).Stat4
+            If Objects(x).ItemName = "Stormeye War Scepter" Then Return "Stormeye, " & Objects(x).Stat1 & ", " & Objects(x).Stat6
+            If Objects(x).ItemName = "The Fetid Sprinkler Holy Water Sprinkler" Then Return "The Fetid Sprinkler, " & Objects(x).Stat4 & ", " & Objects(x).Stat6
+            If Objects(x).ItemName = "The Redeemer Mighty Scepter" Then Return "The Redeemer, " & Objects(x).Stat2 & ", " & Objects(x).Stat6 & ", " & Objects(x).Stat7
+            If Objects(x).ItemName = "Zakarum Hand Rune Scepter" Then Return "Zakarum Hand, " & Objects(x).Stat3
         End If
 
         '***********************************************
