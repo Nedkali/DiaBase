@@ -119,12 +119,14 @@ Public Class MoveItems
 
                 'clean out old items from the last loaded database
                 Form1.SearchLISTBOX.Items.Clear()
+                SearchReferenceList.Clear()
                 Form1.RichTextBox3.Text = Nothing
                 Form1.ClearStats()
 
                 'load up destination one and display first item and set current database label in top right of form1
                 Databasefile = Application.StartupPath + "\Database\" + DatabaseFilenameTEXTBOX.Text + ".txt"
                 OpenDatabaseRoutine(Databasefile)
+
                 Form1.Display_Items()
                 Form1.CurrentDatabaseLABEL.Text = DatabaseFilenameTEXTBOX.Text
 

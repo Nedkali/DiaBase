@@ -784,7 +784,6 @@ Public Class Form1
                 Dim a As Integer = AllItemsInDatabaseListBox.SelectedIndices(index)
                 AllItemsInDatabaseListBox.Items.RemoveAt(a)
                 Objects.RemoveAt(a)
-
                 'Removes Item From Search Listbox & Ref List
                 Dim count As Integer = SearchReferenceList.Count - 1
                 For Each item In SearchReferenceList

@@ -91,6 +91,7 @@ Public Class D2StyleOpenFileDialog
 
                     'Clean out old items from the last loaded database
                     Form1.SearchLISTBOX.Items.Clear()
+                    SearchReferenceList.Clear()
                     Form1.RichTextBox3.Text = Nothing
                     Form1.ClearStats()
 
