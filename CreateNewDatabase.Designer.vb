@@ -121,7 +121,7 @@ Partial Class CreateNewDatabase
         'NewDatabaseAutoOpenCHECKBOX
         '
         Me.NewDatabaseAutoOpenCHECKBOX.AutoSize = True
-        Me.NewDatabaseAutoOpenCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.NewDatabaseAutoOpenCHECKBOX.BackColor = System.Drawing.Color.Black
         Me.NewDatabaseAutoOpenCHECKBOX.Checked = True
         Me.NewDatabaseAutoOpenCHECKBOX.CheckState = System.Windows.Forms.CheckState.Checked
         Me.NewDatabaseAutoOpenCHECKBOX.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
@@ -152,7 +152,7 @@ Partial Class CreateNewDatabase
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.Setting
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(407, 250)
+        Me.ClientSize = New System.Drawing.Size(415, 261)
         Me.ControlBox = False
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.NewDatabaseAutoOpenCHECKBOX)

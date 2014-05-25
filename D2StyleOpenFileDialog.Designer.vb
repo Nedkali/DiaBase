@@ -204,7 +204,7 @@ Partial Class D2StyleOpenFileDialog
         'SaveBeforeOpeningCHECKBOX
         '
         Me.SaveBeforeOpeningCHECKBOX.AutoSize = True
-        Me.SaveBeforeOpeningCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.SaveBeforeOpeningCHECKBOX.BackColor = System.Drawing.Color.Black
         Me.SaveBeforeOpeningCHECKBOX.Checked = True
         Me.SaveBeforeOpeningCHECKBOX.CheckState = System.Windows.Forms.CheckState.Checked
         Me.SaveBeforeOpeningCHECKBOX.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
@@ -250,7 +250,7 @@ Partial Class D2StyleOpenFileDialog
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.BigSettings
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(490, 517)
+        Me.ClientSize = New System.Drawing.Size(498, 528)
         Me.ControlBox = False
         Me.Controls.Add(Me.SaveBeforeOpeningCHECKBOX)
         Me.Controls.Add(Me.Label10)

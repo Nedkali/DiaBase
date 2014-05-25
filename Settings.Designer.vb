@@ -62,7 +62,7 @@ Partial Class Settings
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label5.BackColor = System.Drawing.Color.Black
         Me.Label5.ForeColor = System.Drawing.Color.BurlyWood
         Me.Label5.Location = New System.Drawing.Point(407, 188)
         Me.Label5.Name = "Label5"
@@ -344,7 +344,7 @@ Partial Class Settings
         'AutoBackupImportsCHECKBOX
         '
         Me.AutoBackupImportsCHECKBOX.AutoSize = True
-        Me.AutoBackupImportsCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.AutoBackupImportsCHECKBOX.BackColor = System.Drawing.Color.Black
         Me.AutoBackupImportsCHECKBOX.Checked = True
         Me.AutoBackupImportsCHECKBOX.CheckState = System.Windows.Forms.CheckState.Checked
         Me.AutoBackupImportsCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
@@ -358,7 +358,7 @@ Partial Class Settings
         'BackupOnEditsCHECKBOX
         '
         Me.BackupOnEditsCHECKBOX.AutoSize = True
-        Me.BackupOnEditsCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.BackupOnEditsCHECKBOX.BackColor = System.Drawing.Color.Black
         Me.BackupOnEditsCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
         Me.BackupOnEditsCHECKBOX.Location = New System.Drawing.Point(42, 244)
         Me.BackupOnEditsCHECKBOX.Name = "BackupOnEditsCHECKBOX"

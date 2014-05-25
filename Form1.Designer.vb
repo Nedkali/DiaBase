@@ -163,7 +163,7 @@ Partial Class Form1
         '
         Me.Label3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label3.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label3.BackColor = System.Drawing.Color.Black
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.BurlyWood
         Me.Label3.Location = New System.Drawing.Point(465, 27)
@@ -215,9 +215,9 @@ Partial Class Form1
         Me.StatusStrip1.BackgroundImage = Global.DiaBase.My.Resources.Resources.menubar
         Me.StatusStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripProgressBar1, Me.ToolStripStatusLabel2})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 538)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 549)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(794, 24)
+        Me.StatusStrip1.Size = New System.Drawing.Size(802, 24)
         Me.StatusStrip1.TabIndex = 20
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -238,7 +238,7 @@ Partial Class Form1
         'SearchOperatorLABEL
         '
         Me.SearchOperatorLABEL.AutoSize = True
-        Me.SearchOperatorLABEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.SearchOperatorLABEL.BackColor = System.Drawing.Color.Black
         Me.SearchOperatorLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.SearchOperatorLABEL.Location = New System.Drawing.Point(174, 54)
         Me.SearchOperatorLABEL.Name = "SearchOperatorLABEL"
@@ -272,7 +272,7 @@ Partial Class Form1
         'SearchValueLABEL
         '
         Me.SearchValueLABEL.AutoSize = True
-        Me.SearchValueLABEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.SearchValueLABEL.BackColor = System.Drawing.Color.Black
         Me.SearchValueLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.SearchValueLABEL.Location = New System.Drawing.Point(221, 103)
         Me.SearchValueLABEL.Name = "SearchValueLABEL"
@@ -469,7 +469,7 @@ Partial Class Form1
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ItemFileToolStripMenuItem, Me.ItemsToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(794, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(802, 24)
         Me.MenuStrip1.TabIndex = 14
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -516,7 +516,7 @@ Partial Class Form1
         'SearchLABEL
         '
         Me.SearchLABEL.AutoSize = True
-        Me.SearchLABEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.SearchLABEL.BackColor = System.Drawing.Color.Black
         Me.SearchLABEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.SearchLABEL.Location = New System.Drawing.Point(29, 55)
         Me.SearchLABEL.Name = "SearchLABEL"
@@ -544,7 +544,7 @@ Partial Class Form1
         '
         'RichTextBox1
         '
-        Me.RichTextBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RichTextBox1.BackColor = System.Drawing.Color.Black
         Me.RichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.RichTextBox1.ForeColor = System.Drawing.Color.White
         Me.RichTextBox1.Location = New System.Drawing.Point(468, 62)
@@ -629,7 +629,7 @@ Partial Class Form1
         'ExactMatchCHECKBOX
         '
         Me.ExactMatchCHECKBOX.AutoSize = True
-        Me.ExactMatchCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.ExactMatchCHECKBOX.BackColor = System.Drawing.Color.Black
         Me.ExactMatchCHECKBOX.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.ExactMatchCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
         Me.ExactMatchCHECKBOX.Location = New System.Drawing.Point(315, 68)
@@ -668,7 +668,7 @@ Partial Class Form1
         'HideDuplicatesCHECKBOX
         '
         Me.HideDuplicatesCHECKBOX.AutoSize = True
-        Me.HideDuplicatesCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.HideDuplicatesCHECKBOX.BackColor = System.Drawing.Color.Black
         Me.HideDuplicatesCHECKBOX.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.HideDuplicatesCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
         Me.HideDuplicatesCHECKBOX.Location = New System.Drawing.Point(33, 154)
@@ -681,7 +681,7 @@ Partial Class Form1
         'StringSearchLABEEL
         '
         Me.StringSearchLABEEL.AutoSize = True
-        Me.StringSearchLABEEL.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.StringSearchLABEEL.BackColor = System.Drawing.Color.Black
         Me.StringSearchLABEEL.ForeColor = System.Drawing.Color.BurlyWood
         Me.StringSearchLABEEL.Location = New System.Drawing.Point(31, 103)
         Me.StringSearchLABEEL.Name = "StringSearchLABEEL"
@@ -692,7 +692,7 @@ Partial Class Form1
         'RefineSearchCHECKBOX
         '
         Me.RefineSearchCHECKBOX.AutoSize = True
-        Me.RefineSearchCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.RefineSearchCHECKBOX.BackColor = System.Drawing.Color.Black
         Me.RefineSearchCHECKBOX.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.RefineSearchCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
         Me.RefineSearchCHECKBOX.Location = New System.Drawing.Point(315, 87)
@@ -949,7 +949,7 @@ Partial Class Form1
         Me.Label29.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label29.AutoSize = True
-        Me.Label29.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label29.BackColor = System.Drawing.Color.Black
         Me.Label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label29.ForeColor = System.Drawing.Color.BurlyWood
         Me.Label29.Location = New System.Drawing.Point(28, 26)
@@ -1268,7 +1268,7 @@ Partial Class Form1
         Me.BackColor = System.Drawing.Color.Black
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.D2Data
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.ClientSize = New System.Drawing.Size(794, 562)
+        Me.ClientSize = New System.Drawing.Size(802, 573)
         Me.Controls.Add(Me.CurrentDatabaseLABEL)
         Me.Controls.Add(Me.TradesListControlTabBUTTON)
         Me.Controls.Add(Me.Label40)

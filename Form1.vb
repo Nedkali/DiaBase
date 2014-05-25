@@ -774,7 +774,6 @@ Public Class Form1
             Return
         End If
         ImportTimer.Stop()
-
         Dim FocusOnExit As Integer = AllItemsInDatabaseListBox.SelectedIndex
 
         'check for backup on edits set to true if so then backup now

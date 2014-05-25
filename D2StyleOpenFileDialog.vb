@@ -139,7 +139,6 @@ ErrorSkipPoint:
         UserInputForm.UserInputNoBUTTON.Text = "Cancel"
         UserInputForm.UserInputTEXTBOX.Text = SavedDatabasesLISTBOX.SelectedItem
         UserInputForm.UserInputTEXTBOX.Select()
-
         DialogResult = UserInputForm.ShowDialog
 
         If DialogResult = Windows.Forms.DialogResult.Yes Then
@@ -247,7 +246,6 @@ ErrorSkipPoint:
             'Repopulate saved database list after namechange
             SavedDatabasesLISTBOX.Items.Clear() : Dim AllSavedDatabasesFileNames As Array
             AllSavedDatabasesFileNames = Directory.GetFiles(Application.StartupPath + "\Database\", "*").Select(Function(p) Path.GetFileName(p)).ToArray()
-
             For Each item In AllSavedDatabasesFileNames
                 SavedDatabasesLISTBOX.Items.Add(Replace(item, ".txt", ""))
             Next

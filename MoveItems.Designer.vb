@@ -139,7 +139,7 @@ Partial Class MoveItems
         '
         'DeleteItemsCHECKBOX
         '
-        Me.DeleteItemsCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.DeleteItemsCHECKBOX.BackColor = System.Drawing.Color.Black
         Me.DeleteItemsCHECKBOX.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.DeleteItemsCHECKBOX.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DeleteItemsCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
@@ -152,7 +152,7 @@ Partial Class MoveItems
         '
         'OpenDatabaseCHECKBOX
         '
-        Me.OpenDatabaseCHECKBOX.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.OpenDatabaseCHECKBOX.BackColor = System.Drawing.Color.Black
         Me.OpenDatabaseCHECKBOX.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.OpenDatabaseCHECKBOX.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OpenDatabaseCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
@@ -211,7 +211,7 @@ Partial Class MoveItems
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.Setting
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(634, 403)
+        Me.ClientSize = New System.Drawing.Size(642, 414)
         Me.ControlBox = False
         Me.Controls.Add(Me.NewDatabaseLABEL)
         Me.Controls.Add(Me.Label7)

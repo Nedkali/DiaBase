@@ -62,7 +62,7 @@ Partial Class YesNoD2Style
         Me.YesNoMessageLABEL.BackColor = System.Drawing.Color.Black
         Me.YesNoMessageLABEL.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.YesNoMessageLABEL.ForeColor = System.Drawing.Color.White
-        Me.YesNoMessageLABEL.Location = New System.Drawing.Point(39, 76)
+        Me.YesNoMessageLABEL.Location = New System.Drawing.Point(39, 75)
         Me.YesNoMessageLABEL.Name = "YesNoMessageLABEL"
         Me.YesNoMessageLABEL.Size = New System.Drawing.Size(353, 124)
         Me.YesNoMessageLABEL.TabIndex = 2
@@ -86,7 +86,7 @@ Partial Class YesNoD2Style
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.Setting
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(431, 275)
+        Me.ClientSize = New System.Drawing.Size(439, 286)
         Me.ControlBox = False
         Me.Controls.Add(Me.YesNoHeaderLABEL)
         Me.Controls.Add(Me.YesNoMessageLABEL)

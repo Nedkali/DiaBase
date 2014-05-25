@@ -42,7 +42,7 @@ Partial Class SearchProgressForm
         '
         'SearchProgressLABEL1
         '
-        Me.SearchProgressLABEL1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.SearchProgressLABEL1.BackColor = System.Drawing.Color.Black
         Me.SearchProgressLABEL1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SearchProgressLABEL1.ForeColor = System.Drawing.Color.BurlyWood
         Me.SearchProgressLABEL1.Location = New System.Drawing.Point(38, 60)
@@ -54,7 +54,7 @@ Partial Class SearchProgressForm
         '
         'SearchProgressLABEL2
         '
-        Me.SearchProgressLABEL2.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.SearchProgressLABEL2.BackColor = System.Drawing.Color.Black
         Me.SearchProgressLABEL2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SearchProgressLABEL2.ForeColor = System.Drawing.Color.BurlyWood
         Me.SearchProgressLABEL2.Location = New System.Drawing.Point(200, 60)
@@ -103,7 +103,7 @@ Partial Class SearchProgressForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.mbox
-        Me.ClientSize = New System.Drawing.Size(441, 110)
+        Me.ClientSize = New System.Drawing.Size(449, 121)
         Me.ControlBox = False
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label19)

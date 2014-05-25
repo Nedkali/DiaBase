@@ -123,7 +123,7 @@ Partial Class ItemImageSelector
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.d2graphicselect
-        Me.ClientSize = New System.Drawing.Size(350, 220)
+        Me.ClientSize = New System.Drawing.Size(358, 231)
         Me.ControlBox = False
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label8)
