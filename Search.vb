@@ -1,10 +1,8 @@
 ﻿Module Search
     Sub SearchRoutine()
-
         RefineSearchReferenceList.Clear()                       'Clear out old refine list
-       
         If Form1.SearchLISTBOX.Items.Count > 0 Then             'Can only run a refined search if items exist already in the search lisbox
-             For Each item In SearchReferenceList
+            For Each item In SearchReferenceList
                 RefineSearchReferenceList.Add(item)             'Create a reference list of each items object location in database that have 
                 '                                               'Already been matched and are right now still in the matched search list....
                 '                                               'Refine searches will use this list to look for matches as opposed all items list
@@ -235,6 +233,23 @@
                     For count = 0 To RefineSearchReferenceList.Count - 1
                         ProgressBar1(count)
                         MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).RequiredLevel))
+                    Next
+                End If
+
+            Case "Sockets"
+                'Normal Searches - Sockets
+                If Form1.RefineSearchCHECKBOX.Checked = False Then
+                    For count = 0 To Objects.Count - 1
+                        ProgressBar1(count)
+                        MyDecipher(count, Val(Objects(count).Sockets))
+                    Next
+                End If
+
+                'Refining Searches - Sockets
+                If Form1.RefineSearchCHECKBOX.Checked = True Then
+                    For count = 0 To RefineSearchReferenceList.Count - 1
+                        ProgressBar1(count)
+                        MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).Sockets))
                     Next
                 End If
 
