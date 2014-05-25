@@ -11,5 +11,7 @@
         TextBox1.Text = Mymessages
         Mymessages = ""
         TextBox1.TextAlign = HorizontalAlignment.Center
+
+        My.Computer.Audio.Play(My.Resources.d2Dong, AudioPlayMode.Background) 'plays d2 thunk alert sound
     End Sub
 End Class
