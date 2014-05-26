@@ -384,6 +384,7 @@ Module Tradelist
             If Objects(x).ItemName = "The Spirit Shroud Ghost Armor" Then Return "Spirit Shroud,  " & Objects(x).Defense
             If Objects(x).ItemName = "Toothrow Sharktooth Armor" Then Return "Toothrow,  " & Objects(x).Defense
             If Objects(x).ItemName = "Twitchthroe Studded Leather" Then Return "Twitchthroe,  " & Objects(x).Defense
+            If Objects(x).ItemName = "Twitchthroe Wire Fleece" Then Return "Twitchthroe,  " & Objects(x).Defense
             If Objects(x).ItemName = "Tyrael's Might Sacred Armor" Then Return "Tyrael's Might,  " & Objects(x).Defense & ", " & Objects(x).Stat6 & ", " & Objects(x).Stat7
             If Objects(x).ItemName = "Venom Ward Breast Plate" Then Return "Venom Ward,  " & Objects(x).Defense
         End If
@@ -687,9 +688,40 @@ Module Tradelist
             If Objects(x).ItemName = "Ume's Lament Grim Wand" Then Return "Ume's Lament"
         End If
 
-        Return Objects(x).ItemName & " Not found"
+        Return Objects(x).ItemName & " " & IfNotFoundGetAllStats(x) & " [NOTFOUND] "
+
     End Function
 
+    'This will send most used item fields to the trade list if a stat abbreviation cannot be found for the selected item.
+    Function IfNotFoundGetAllStats(ItemRef)
+        Dim TempAbrev As String = Nothing
+        If Objects(ItemRef).EtherealItem = True Then TempAbrev = TempAbrev + "Eth, "
+        If Objects(ItemRef).Sockets <> Nothing Then TempAbrev = TempAbrev + "Soc(" + Objects(ItemRef).Sockets + "), "
+        If Objects(ItemRef).OneHandDamageMin <> Nothing Then TempAbrev = TempAbrev + "1HD " + Objects(ItemRef).OneHandDamageMin + "-" + Objects(ItemRef).OneHandDamageMax + ", "
+        If Objects(ItemRef).TwoHandDamageMin <> Nothing Then TempAbrev = TempAbrev + "2HD " + Objects(ItemRef).TwoHandDamageMin + "-" + Objects(ItemRef).TwoHandDamageMax + ", "
+        If Objects(ItemRef).ThrowDamageMin <> Nothing Then TempAbrev = TempAbrev + "ThD " + Objects(ItemRef).ThrowDamageMin + "-" + Objects(ItemRef).ThrowDamageMin + ", "
+        If Objects(ItemRef).Defense <> Nothing Then TempAbrev = TempAbrev + "Def " + Objects(ItemRef).Defense + ", "
+        If Objects(ItemRef).ChanceToBlock <> Nothing Then TempAbrev = TempAbrev + "CTB " + Objects(ItemRef).ChanceToBlock + ", "
+        If Objects(ItemRef).RequiredLevel <> Nothing Then TempAbrev = TempAbrev + "Lev " + Objects(ItemRef).RequiredLevel + ", "
+        If Objects(ItemRef).RequiredStrength <> Nothing Then TempAbrev = TempAbrev + "Str " + Objects(ItemRef).RequiredStrength + ", "
+        If Objects(ItemRef).RequiredDexterity <> Nothing Then TempAbrev = TempAbrev + "Dex " + Objects(ItemRef).RequiredDexterity + ", "
+        If Objects(ItemRef).Stat1 <> Nothing Then TempAbrev = TempAbrev + Objects(ItemRef).Stat1 + ", "
+        If Objects(ItemRef).Stat2 <> Nothing Then TempAbrev = TempAbrev + Objects(ItemRef).Stat2 + ", "
+        If Objects(ItemRef).Stat3 <> Nothing Then TempAbrev = TempAbrev + Objects(ItemRef).Stat3 + ", "
+        If Objects(ItemRef).Stat4 <> Nothing Then TempAbrev = TempAbrev + Objects(ItemRef).Stat4 + ", "
+        If Objects(ItemRef).Stat5 <> Nothing Then TempAbrev = TempAbrev + Objects(ItemRef).Stat5 + ", "
+        If Objects(ItemRef).Stat6 <> Nothing Then TempAbrev = TempAbrev + Objects(ItemRef).Stat6 + ", "
+        If Objects(ItemRef).Stat7 <> Nothing Then TempAbrev = TempAbrev + Objects(ItemRef).Stat7 + ", "
+        If Objects(ItemRef).Stat8 <> Nothing Then TempAbrev = TempAbrev + Objects(ItemRef).Stat8 + ", "
+        If Objects(ItemRef).Stat9 <> Nothing Then TempAbrev = TempAbrev + Objects(ItemRef).Stat9 + ", "
+        If Objects(ItemRef).Stat10 <> Nothing Then TempAbrev = TempAbrev + Objects(ItemRef).Stat10 + ", "
+        If Objects(ItemRef).Stat11 <> Nothing Then TempAbrev = TempAbrev + Objects(ItemRef).Stat11 + ", "
+        If Objects(ItemRef).Stat12 <> Nothing Then TempAbrev = TempAbrev + Objects(ItemRef).Stat12 + ", "
+        If Objects(ItemRef).Stat13 <> Nothing Then TempAbrev = TempAbrev + Objects(ItemRef).Stat13 + ", "
+        If Objects(ItemRef).Stat14 <> Nothing Then TempAbrev = TempAbrev + Objects(ItemRef).Stat14 + ", "
+        If Objects(ItemRef).Stat15 <> Nothing Then TempAbrev = TempAbrev + Objects(ItemRef).Stat15 + ", "
+        Return TempAbrev
+    End Function
 
     Function Set_items(ByVal x)
         Dim temp As String = ""
@@ -735,7 +767,7 @@ Module Tradelist
             If Objects(x).ItemName = "Tal Rasha's Horadric Crest Death Mask" Then Return "Tals Mask, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Tancred's Skull Bone Helm" Then Return "Tancred's Helm, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Trang-Ouls' Guise Bone Visage" Then Return "Trang-Ouls Visage, Def " & Objects(x).Defense
-            Return Objects(x).ItemName & " Not Listed"
+            Return Objects(x).ItemName & " " & IfNotFoundGetAllStats(x) & " [NOTLISTED] "
         End If
 
         '***********************************************
@@ -764,7 +796,7 @@ Module Tradelist
             If Objects(x).ItemName = "Tancred's Spine Full Plate Mail" Then Return "Tancred's Armor, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Trang-Oul's Scales Chaos Armor" Then Return "Trang-Oul's Armor, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Vidala's Ambush Leather Armor" Then Return "Vidala's, Def " & Objects(x).Defense
-            Return Objects(x).ItemName & " Not Listed"
+            Return Objects(x).ItemName & " " & IfNotFoundGetAllStats(x) & " [NOTLISTED] "
         End If
 
         '***********************************************
@@ -781,7 +813,7 @@ Module Tradelist
             If Objects(x).ItemName = "Taebaek's Glory Ward" Then Return "Taebaek's Shield, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Trang-Oul's Wing Cantor Trophy" Then Return "Trang-Oul's Trophy, Def " & Objects(x).Defense & " " & Objects(x).Stat5
             If Objects(x).ItemName = "Whitstan's Guard Round Shield" Then Return "Whitstan's Shield, Def " & Objects(x).Defense
-            Return Objects(x).ItemName & " Not Listed"
+            Return Objects(x).ItemName & " " & IfNotFoundGetAllStats(x) & " [NOTLISTED] "
         End If
 
         '***********************************************
@@ -799,7 +831,7 @@ Module Tradelist
             If Objects(x).ItemName = "Sander's Taboo Heavy Gloves" Then Return "Sander's Gloves, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Sigon's Gage Gauntlets" Then Return "Sigon's Gloves, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Trang-Oul's Claws Heavy Bracers" Then Return "Trang-Oul's Bracers, Def " & Objects(x).Defense
-            Return Objects(x).ItemName & " Not Listed"
+            Return Objects(x).ItemName & " " & IfNotFoundGetAllStats(x) & " [NOTLISTED] "
         End If
 
         '***********************************************
@@ -819,7 +851,7 @@ Module Tradelist
             If Objects(x).ItemName = "Tal Rasha's Fine-Spun Cloth Mesh Belt" Then Return "Tal's Belt, Def" & Objects(x).Defense & ", " & Objects(x).Stat4
             If Objects(x).ItemName = "Trang-Oul's Girth Troll Belt" Then Return "Trang-Oul's Belt, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Wilhelm's Pride Battle Belt" Then Return "Wilhelm's Belt, Def " & Objects(x).Defense
-            Return Objects(x).ItemName & " Not Listed"
+            Return Objects(x).ItemName & " " & IfNotFoundGetAllStats(x) & " [NOTLISTED] "
         End If
 
         '***********************************************
@@ -835,50 +867,50 @@ Module Tradelist
             If Objects(x).ItemName = "Sigon's Sabot Greaves" Then Return "Sigon's Greaves, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Tancred's Hobnails Boots" Then Return "Tancred's Boots, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Vidala's Fetlock Light Plated Boots" Then Return "Vidala's Boots, Def " & Objects(x).Defense
-            Return Objects(x).ItemName & " Not Listed"
+            Return Objects(x).ItemName & " " & IfNotFoundGetAllStats(x) & " [NOTLISTED] "
         End If
 
         If Objects(x).ItemBase = "Axe" Then
             If Objects(x).ItemName = "Berserker's Hatchet Double Axe" Then Return "Berserker's Axe"
             If Objects(x).ItemName = "Tancred's Crowbill Military Pick" Then Return "Tancred's Pick"
-            Return Objects(x).ItemName & " Not Listed"
+            Return Objects(x).ItemName & " " & IfNotFoundGetAllStats(x) & " [NOTLISTED] "
         End If
 
         If Objects(x).ItemBase = "Bow" Or Objects(x).ItemBase = "Amazon Bow" Then
             If Objects(x).ItemName = "Arctic Horn Short War Bow" Then Return "Arctic Bow"
             If Objects(x).ItemName = "M'avina's Caster Grand Matron Bow" Then Return "M'avina's Bow"
             If Objects(x).ItemName = "Vidala's Barb Long Battle Bow" Then Return "Vidala's Bow"
-            Return Objects(x).ItemName & " Not Listed"
+            Return Objects(x).ItemName & " " & IfNotFoundGetAllStats(x) & " [NOTLISTED] "
         End If
 
 
         If Objects(x).ItemBase = "Claw" Then
             If Objects(x).ItemName = "Natalya's Mark Scissors Suwayyah" Then Return "Natalya's Mark"
-            Return Objects(x).ItemName & " Not Listed"
+            Return Objects(x).ItemName & " " & IfNotFoundGetAllStats(x) & " [NOTLISTED] "
         End If
 
         If Objects(x).ItemBase = "Mace" Or Objects(x).ItemBase = "Hammer" Then
             If Objects(x).ItemName = "Aldur's Rhythm Jagged Star" Then Return "Aldur's Star"
             If Objects(x).ItemName = "Dangoon's Teaching Reinforced Mace" Then Return "Dangoon's Mace"
             If Objects(x).ItemName = "Immortal King's Stone Crusher Ogre Maul" Then Return "IK Maul, " & Objects(x).Stat7
-            Return Objects(x).ItemName & " Not Listed"
+            Return Objects(x).ItemName & " " & IfNotFoundGetAllStats(x) & " [NOTLISTED] "
         End If
 
         If Objects(x).ItemBase = "Orb" Then
             If Objects(x).ItemName = "Tal Rasha's Lidless Eye Swirling Crystal" Then Return "Tal's Lidless"
-            Return Objects(x).ItemName & " Not Listed"
+            Return Objects(x).ItemName & " " & IfNotFoundGetAllStats(x) & " [NOTLISTED] "
         End If
 
         If Objects(x).ItemBase = "polearm" Then
             If Objects(x).ItemName = "Hwanin's Justice Bill" Then Return "Hwanin's Justice"
-            Return Objects(x).ItemName & " Not Listed"
+            Return Objects(x).ItemName & " " & IfNotFoundGetAllStats(x) & " [NOTLISTED] "
         End If
 
         If Objects(x).ItemBase = "Staff" Then
             If Objects(x).ItemName = "Arcanna's Deathwand War Staff" Then Return "Arcanna's Staff"
             If Objects(x).ItemName = "Cathan's Rule Battle Staff" Then Return "Cathan's Staff"
             If Objects(x).ItemName = "Naj's Puzzler Elder Staff" Then Return "Naj's Staff"
-            Return Objects(x).ItemName & " Not Listed"
+            Return Objects(x).ItemName & " " & IfNotFoundGetAllStats(x) & " [NOTLISTED] "
         End If
 
         If Objects(x).ItemBase = "Sword" Then
@@ -889,18 +921,18 @@ Module Tradelist
             If Objects(x).ItemName = "Death's Touch War Sword" Then Return "Death's Touch Sword"
             If Objects(x).ItemName = "Isenhart's Lightbrand Broad Sword" Then Return "Isenhart's Sword"
             If Objects(x).ItemName = "Sazabi's Cobalt Redeemer Cryptic Sword" Then Return "Sazabi's Sword"
-            Return Objects(x).ItemName & " Not Listed"
+            Return Objects(x).ItemName & " " & IfNotFoundGetAllStats(x) & " [NOTLISTED] "
         End If
 
         If Objects(x).ItemBase = "Scepter" Then
             If Objects(x).ItemName = "Civerb's Cudgel Grand Scepter" Then Return "Civerb's Scepter"
             If Objects(x).ItemName = "Milabrega's Rod War Scepter" Then Return "Milabrega's Scepter"
-            Return Objects(x).ItemName & " Not Listed"
+            Return Objects(x).ItemName & " " & IfNotFoundGetAllStats(x) & " [NOTLISTED] "
         End If
 
         If Objects(x).ItemName = "Infernal Torch Grim Wand" Then Return "Infernal Wand"
         If Objects(x).ItemName = "Sander's Superstition Bone Wand" Then Return "Sander's Wand"
-        Return Objects(x).ItemName & " Not Listed"
+        Return Objects(x).ItemName & " " & IfNotFoundGetAllStats(x) & " [NOTLISTED] "
 
     End Function
 
