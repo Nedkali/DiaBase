@@ -203,8 +203,8 @@ Module Tradelist
         '***********************************************
         ' Runeword Shields
         '***********************************************
-        If Objects(x).ItemBase = "Shield" Then
-            If Objects(x).ItemName.IndexOf("Spirit") > -1 Then Return Objects(x).ItemName & " Def " & Objects(x).Defense & Objects(x).Stat2
+        If Objects(x).ItemBase = "Shield" Or Objects(x).ItemBase = "Auric Shield" Then
+            If Objects(x).ItemName.IndexOf("Spirit") > -1 Then Return Objects(x).ItemName & " Def " & Objects(x).Defense & ", " & Objects(x).Stat2
             If Objects(x).ItemName.IndexOf("Splendor") > -1 Then Return Objects(x).ItemName & " Def " & Objects(x).Defense
         End If
 
@@ -212,13 +212,26 @@ Module Tradelist
         ' Runeword Weapons
         '***********************************************
         If Objects(x).ItemBase = "polearm" Or Objects(x).ItemBase = "Sword" Or Objects(x).ItemBase = "Mace" Or Objects(x).ItemBase = "Axe" Then
+            If Objects(x).ItemName.IndexOf("Beast") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat4 & ", " & Objects(x).Stat10
+            If Objects(x).ItemName.IndexOf("Breath") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat5 & ", " & Objects(x).Stat10 & ", " & Objects(x).Stat11
             If Objects(x).ItemName.IndexOf("Insight") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat2
             If Objects(x).ItemName.IndexOf("Spirit") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat3
-            If Objects(x).ItemName.IndexOf("Oak") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat12
+            If Objects(x).ItemName.IndexOf("Oak") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat11
             If Objects(x).ItemName.IndexOf("Arms") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat6 & ", " & Objects(x).Stat7 & ", " & Objects(x).Stat8
             If Objects(x).ItemName.IndexOf("Grief") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat2
             If Objects(x).ItemName.IndexOf("Infinity") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat6
             If Objects(x).ItemName.IndexOf("Last Wish") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat8
+            If Objects(x).ItemName.IndexOf("Obedience") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat4 & ", " & Objects(x).Stat12
+            If Objects(x).ItemName.IndexOf("Oath") > -1 Then
+                If Objects(x).Stat2 = "Indestructible" Then Return Objects(x).ItemName & ", " & Objects(x).Stat5 & ", " & Objects(x).Stat10
+                Return Objects(x).ItemName & Objects(x).Stat6 & ", " & Objects(x).Stat11
+            End If
+            If Objects(x).ItemName.IndexOf("Justice") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat6
+
+        End If
+
+        If Objects(x).ItemBase = "Staff" Then
+            If Objects(x).ItemName.IndexOf("Memory") > -1 Then Return Objects(x).ItemName & ", " & Objects(x).Stat6 & ", " & Objects(x).Stat7
 
         End If
 
@@ -397,7 +410,7 @@ Module Tradelist
             If Objects(x).ItemName = "Heavenly Garb Light Plate" Then Return "Heavenly Garb, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Iceblink Splint Mail" Then Return "Iceblink, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Leviathan Kraken Shell" Then Return "Leviathan, Def " & Objects(x).Defense & ", " & Objects(x).Stat4
-            If Objects(x).ItemName = "Ormus' Robe Dusk Shroud" Then Return "Ormus Robes, " & Stats_items(x)
+            If Objects(x).ItemName = "Ormus' Robes Dusk Shroud" Then Return "Ormus Robes, " & Stats_items(x)
             If Objects(x).ItemName = "Que-Hegan's Wisdom Mage Plate" Then Return "Que-Hegan's, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Rattlecage Gothic Plate" Then Return "Rattlecage, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Rockfleece Field Plate" Then Return "Rockfleece, Def " & Objects(x).Defense
