@@ -127,7 +127,6 @@ Module Module1
             NewObject.PickitBot = Reader.ReadLine
             NewObject.UserReference = Reader.ReadLine
             NewObject.ItemImage = Reader.ReadLine
-
             Objects.Add(NewObject)
         Loop Until Reader.EndOfStream
         Reader.Close()
