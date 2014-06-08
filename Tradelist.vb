@@ -19,6 +19,7 @@ Module Tradelist
         If Objects(x).ItemName.IndexOf("Hellfire Torch") > -1 Then
             If Objects(x).Stat2.IndexOf("Ama") > -1 Then temp = "Zon "
             If Objects(x).Stat2.IndexOf("Druid") > -1 Then temp = "Druid "
+            If Objects(x).Stat2.IndexOf("Barb") > -1 Then temp = "Barb "
             If Objects(x).Stat2.IndexOf("Pal") > -1 Then temp = "Pala "
             If Objects(x).Stat2.IndexOf("Sorceress") > -1 Then temp = "Sorc "
             If Objects(x).Stat2.IndexOf("Necro") > -1 Then temp = "Necro "
