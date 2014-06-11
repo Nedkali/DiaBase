@@ -23,7 +23,7 @@ Module Module1
     Public backuponexit As Boolean = False
     Public RemoveDupeMule As String = True
     Public Pretotal As Integer = 0
-   
+
     ' needs to be set to true when logger is doing log reads/imports and then set to false when completed
     ' Need this to prevent reading database while logger maybe trying to access it - logger will need priority
     ' or will most likely trigger an exception and crash Program

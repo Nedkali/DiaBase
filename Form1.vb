@@ -307,6 +307,7 @@ Public Class Form1
         ImportTimer.Stop()
         ImportLogFiles()
         RichTextBox1.AppendText("AutoLogging is Idle")
+        Timercount = 0
         If Button3.Text = "Timer Stop" Then ImportTimer.Start()
     End Sub
 
@@ -1064,8 +1065,12 @@ Public Class Form1
     Private Sub SearchWordCOMBOBOX_KeyDown(sender As Object, e As KeyEventArgs) Handles SearchWordCOMBOBOX.KeyDown
         If e.KeyCode = Keys.Enter Then
             e.SuppressKeyPress = True
-            SearchBUTTON.Select()
+            If UCase(SearchOperatorCOMBOBOX.Text) = "EQUAL TO" Or UCase(SearchOperatorCOMBOBOX.Text) = "NOT EQUAL TO" Or UCase(SearchOperatorCOMBOBOX.Text) = "GREATER THAN" Or UCase(SearchOperatorCOMBOBOX.Text) = "LESS THAN" Then
+                SearchRoutine() ' If all is good and search seems valid then branch to the search routine sub in Module1
+            End If
+            If SearchLISTBOX.Items.Count > 0 Then SearchLISTBOX.Focus() Else AllItemsInDatabaseListBox.Focus() ' ensure focus is returned to the relevant item list after search
         End If
+
     End Sub
 
     'SWITCHES FOCUS FROM  VALUE ENTRY NUMERIC UP DOWN BOX TO SEARCH BUTTON ON ENTER KEYPRESS
@@ -1159,6 +1164,8 @@ Public Class Form1
         SearchLISTBOX.Items.Clear()
         ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Items"
     End Sub
+
+
 End Class
 
 

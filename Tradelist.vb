@@ -252,7 +252,7 @@ Module Tradelist
             If Objects(x).ItemName = "Bul-Kathos' Wedding Band Ring" Then Return "BK Ring " & Objects(x).Stat2
             If Objects(x).ItemName = "Nagelring Ring" Then Return "Nagel Ring, " & Objects(x).Stat4
             If Objects(x).ItemName = "The Stone of Jordan Ring" Then Return "Soj"
-            If Objects(x).ItemName = "Carrion Wind Ring" Then Return "Nagel Ring, " & Objects(x).Stat3
+            If Objects(x).ItemName = "Carrion Wind Ring" Then Return "Carrion Ring, " & Objects(x).Stat3
             If Objects(x).ItemName = "Dwarf Star Ring" Then Return Objects(x).ItemName
             If Objects(x).ItemName = "Manald Heal Ring" Then Return "Manald Heal Ring, "
             If Objects(x).ItemName = "Raven Frost Ring" Then Return "Raven Frost, " & Objects(x).Stat1 & ", " & Objects(x).Stat3
@@ -264,7 +264,7 @@ Module Tradelist
         '***********************************************
         If Objects(x).ItemBase = "Amulet" Then
             If Objects(x).ItemName = "Atma's Scarab Amulet" Then Return "Atma's Amulet, "
-            If Objects(x).ItemName = "Cresent Moon Amulet" Then Return "Cresent Amulet, "
+            If Objects(x).ItemName = "Crescent Moon Amulet" Then Return "Cresent Amulet, "
             If Objects(x).ItemName = "Highlord's Wrath Amulet" Then Return "Highlord's Amulet, "
             If Objects(x).ItemName = "Mara's Kaleidoscope Amulet" Then Return "Mara's, " & Objects(x).Stat3
             If Objects(x).ItemName = "Metalgrid Amulet" Then Return "Metal Grid Amulet, "
@@ -280,7 +280,7 @@ Module Tradelist
         ' Unique Helms
         '***********************************************
 
-        If Objects(x).ItemBase = "Helm" Or Objects(x).ItemBase = "Circlet" Or Objects(x).ItemBase = "Primal Helm" Then
+        If Objects(x).ItemBase = "Helm" Or Objects(x).ItemBase = "Circlet" Or Objects(x).ItemBase = "Primal Helm" Or Objects(x).ItemBase = "Pelt" Then
             If Objects(x).ItemName = "Andariel's Visage Demonhead" Then Return "Andies, " & Objects(x).Stat4 & ", " & Objects(x).Stat5 & ", " & Objects(x).Stat6
             If Objects(x).ItemName = "Arreat's Face Slayer Guard" Then Return "Arreats, " & Objects(x).Stat4 & " " & Objects(x).Stat5
             If Objects(x).ItemName = "Arreat's Face Guardian Crown" Then Return "Arreats, " & Objects(x).Stat4 & " " & Objects(x).Stat5
@@ -310,6 +310,7 @@ Module Tradelist
             If Objects(x).ItemName = "Steelskull Casque" Then Return "Steelskull, Def " & Objects(x).Defense & ", " & Objects(x).Stat6
             If Objects(x).ItemName = "Steel Shade Armet" Then Return "Steel Shade, Def " & Objects(x).Defense & ", " & Objects(x).Stat1 & ", " & Objects(x).Stat3
             If Objects(x).ItemName = "The Face of Horror Mask" Then Return "Face of Horror, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Tarnhelm Skull Cap" Then Return "Tarnhelm, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Undead Crown Crown" Then Return "Undead Crown, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Valkyrie Wing Winged Helm" Then Return "Valkyrie, Def " & Objects(x).Defense & ", " & Objects(x).Stat1
             If Objects(x).ItemName = "Vampire Gaze Grim Helm" Then Return "Vampire Gaze, Def " & Objects(x).Defense & ", " & Objects(x).Stat1 & ", " & Objects(x).Stat3
@@ -410,6 +411,7 @@ Module Tradelist
             If Objects(x).ItemName = "Hawkmail Loricated Mail" Then Return "Hawkmail, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Heavenly Garb Light Plate" Then Return "Heavenly Garb, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Iceblink Splint Mail" Then Return "Iceblink, Def " & Objects(x).Defense
+            If Objects(x).ItemName = "Iron Pelt Trellised Armor" Then Return "Iron Pelt, Def " & Objects(x).Defense
             If Objects(x).ItemName = "Leviathan Kraken Shell" Then Return "Leviathan, Def " & Objects(x).Defense & ", " & Objects(x).Stat4
             If Objects(x).ItemName = "Ormus' Robes Dusk Shroud" Then Return "Ormus Robes, " & Stats_items(x)
             If Objects(x).ItemName = "Que-Hegan's Wisdom Mage Plate" Then Return "Que-Hegan's, Def " & Objects(x).Defense
@@ -511,10 +513,11 @@ Module Tradelist
         '***********************************************
         'Weapons Bows
         '***********************************************
-        If Objects(x).ItemBase = "Bow" Then
+        If Objects(x).ItemBase = "Amazon Bow" Or Objects(x).ItemBase = "Bow" Or Objects(x).ItemBase = "Crossbow" Then
             If Objects(x).ItemName = "Blastbark Long War Bow" Then Return "Blastbark, " & Objects(x).Stat2
             If Objects(x).ItemName = "Blood Raven's Charge Matriarchal Bow" Then Return "Blood Raven's Charge, " & Objects(x).Stat1 & ", " & Objects(x).Stat3
             If Objects(x).ItemName = "Cliffkiller Large Siege Bow" Then Return "Cliffkiller, " & Objects(x).Stat2
+            If Objects(x).ItemName = "Demon Machine Chu-Ko-Nu" Then Return "Chu-Ko-Nu, " & Objects(x).Stat2
             If Objects(x).ItemName = "Eaglehorn Crusader Bow" Then Return "Eaglehorn, " & Objects(x).Stat2
             If Objects(x).ItemName = "Goldstrike Arch Gothic Bow" Then Return "Goldstrike, " & Objects(x).Stat3 & ", " & Objects(x).Stat4
             If Objects(x).ItemName = "Hellclap Short War Bow" Then Return "Hellclap, " & Objects(x).Stat3 & ", " & Objects(x).Stat4
@@ -587,7 +590,12 @@ Module Tradelist
             If Objects(x).ItemName = "Titan's Revenge Matriarchal Javelin" Then Return "Titan's Revenge MJ, " & Objects(x).Stat4 & ", " & Objects(x).Stat6
             If Objects(x).ItemName = "Wraith Flight Ghost Glaive" Then Return "Wraith Flight, " & Objects(x).Stat1 & ", " & Objects(x).Stat2
         End If
-
+        '***********************************************
+        'Weapons Maces
+        '***********************************************
+        If Objects(x).ItemBase = "Knife" Then
+            If Objects(x).ItemName = "Wizardspike Bone Knife" Then Return "Wizardspike"
+        End If
         '***********************************************
         'Weapons Maces
         '***********************************************
