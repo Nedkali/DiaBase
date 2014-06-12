@@ -306,7 +306,7 @@ Public Class Form1
         RichTextBox1.Text = "Checking for new Logs" & vbCrLf
         ImportTimer.Stop()
         ImportLogFiles()
-        RichTextBox1.AppendText("AutoLogging is Idle")
+        RichTextBox1.AppendText("AutoLogging is Idle" & vbCrLf)
         Timercount = 0
         If Button3.Text = "Timer Stop" Then ImportTimer.Start()
     End Sub
