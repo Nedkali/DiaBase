@@ -54,6 +54,7 @@ Partial Class Settings
         Me.DupeCheckBox1 = New System.Windows.Forms.CheckBox()
         Me.AutoBackupImportsCHECKBOX = New System.Windows.Forms.CheckBox()
         Me.BackupOnEditsCHECKBOX = New System.Windows.Forms.CheckBox()
+        Me.DisableSearchProgressBarCHECKBOX = New System.Windows.Forms.CheckBox()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -76,7 +77,7 @@ Partial Class Settings
         Me.Label4.BackColor = System.Drawing.SystemColors.WindowText
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label4.Location = New System.Drawing.Point(319, 163)
+        Me.Label4.Location = New System.Drawing.Point(335, 163)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(151, 16)
         Me.Label4.TabIndex = 28
@@ -188,7 +189,7 @@ Partial Class Settings
         '
         Me.NumericUpDown1.BackColor = System.Drawing.Color.Black
         Me.NumericUpDown1.ForeColor = System.Drawing.Color.White
-        Me.NumericUpDown1.Location = New System.Drawing.Point(335, 185)
+        Me.NumericUpDown1.Location = New System.Drawing.Point(341, 185)
         Me.NumericUpDown1.Minimum = New Decimal(New Integer() {5, 0, 0, 0})
         Me.NumericUpDown1.Name = "NumericUpDown1"
         Me.NumericUpDown1.Size = New System.Drawing.Size(56, 20)
@@ -200,11 +201,11 @@ Partial Class Settings
         Me.CheckBox3.AutoSize = True
         Me.CheckBox3.BackColor = System.Drawing.SystemColors.WindowText
         Me.CheckBox3.ForeColor = System.Drawing.Color.BurlyWood
-        Me.CheckBox3.Location = New System.Drawing.Point(42, 164)
+        Me.CheckBox3.Location = New System.Drawing.Point(29, 174)
         Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(212, 17)
+        Me.CheckBox3.Size = New System.Drawing.Size(204, 17)
         Me.CheckBox3.TabIndex = 34
-        Me.CheckBox3.Text = "Make Mule Account Password Invisible"
+        Me.CheckBox3.Text = "Dont Display Mule Account Password"
         Me.CheckBox3.UseVisualStyleBackColor = False
         '
         'PictureBox1
@@ -296,7 +297,7 @@ Partial Class Settings
         'Label11
         '
         Me.Label11.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label11.Location = New System.Drawing.Point(389, 184)
+        Me.Label11.Location = New System.Drawing.Point(395, 184)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(2, 21)
         Me.Label11.TabIndex = 877
@@ -304,7 +305,7 @@ Partial Class Settings
         'Label12
         '
         Me.Label12.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label12.Location = New System.Drawing.Point(334, 184)
+        Me.Label12.Location = New System.Drawing.Point(340, 184)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(2, 21)
         Me.Label12.TabIndex = 876
@@ -312,7 +313,7 @@ Partial Class Settings
         'Label13
         '
         Me.Label13.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label13.Location = New System.Drawing.Point(336, 184)
+        Me.Label13.Location = New System.Drawing.Point(342, 184)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(55, 2)
         Me.Label13.TabIndex = 875
@@ -320,7 +321,7 @@ Partial Class Settings
         'Label14
         '
         Me.Label14.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label14.Location = New System.Drawing.Point(336, 203)
+        Me.Label14.Location = New System.Drawing.Point(342, 203)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(55, 2)
         Me.Label14.TabIndex = 874
@@ -332,13 +333,13 @@ Partial Class Settings
         Me.DupeCheckBox1.Checked = True
         Me.DupeCheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
         Me.DupeCheckBox1.ForeColor = System.Drawing.Color.BurlyWood
-        Me.DupeCheckBox1.Location = New System.Drawing.Point(42, 187)
-        Me.DupeCheckBox1.MaximumSize = New System.Drawing.Size(165, 17)
-        Me.DupeCheckBox1.MinimumSize = New System.Drawing.Size(165, 17)
+        Me.DupeCheckBox1.Location = New System.Drawing.Point(29, 200)
+        Me.DupeCheckBox1.MaximumSize = New System.Drawing.Size(260, 17)
+        Me.DupeCheckBox1.MinimumSize = New System.Drawing.Size(260, 17)
         Me.DupeCheckBox1.Name = "DupeCheckBox1"
-        Me.DupeCheckBox1.Size = New System.Drawing.Size(165, 17)
+        Me.DupeCheckBox1.Size = New System.Drawing.Size(260, 17)
         Me.DupeCheckBox1.TabIndex = 884
-        Me.DupeCheckBox1.Text = "Remove duplicated mule logs"
+        Me.DupeCheckBox1.Text = "Remove Duplicated Mule Logs During Imports"
         Me.DupeCheckBox1.UseVisualStyleBackColor = False
         '
         'AutoBackupImportsCHECKBOX
@@ -348,11 +349,11 @@ Partial Class Settings
         Me.AutoBackupImportsCHECKBOX.Checked = True
         Me.AutoBackupImportsCHECKBOX.CheckState = System.Windows.Forms.CheckState.Checked
         Me.AutoBackupImportsCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
-        Me.AutoBackupImportsCHECKBOX.Location = New System.Drawing.Point(42, 221)
+        Me.AutoBackupImportsCHECKBOX.Location = New System.Drawing.Point(29, 226)
         Me.AutoBackupImportsCHECKBOX.Name = "AutoBackupImportsCHECKBOX"
-        Me.AutoBackupImportsCHECKBOX.Size = New System.Drawing.Size(216, 17)
+        Me.AutoBackupImportsCHECKBOX.Size = New System.Drawing.Size(218, 17)
         Me.AutoBackupImportsCHECKBOX.TabIndex = 37
-        Me.AutoBackupImportsCHECKBOX.Text = "Backup Database Before Importng Logs"
+        Me.AutoBackupImportsCHECKBOX.Text = "Backup Database Before Importing Logs"
         Me.AutoBackupImportsCHECKBOX.UseVisualStyleBackColor = False
         '
         'BackupOnEditsCHECKBOX
@@ -360,12 +361,26 @@ Partial Class Settings
         Me.BackupOnEditsCHECKBOX.AutoSize = True
         Me.BackupOnEditsCHECKBOX.BackColor = System.Drawing.Color.Black
         Me.BackupOnEditsCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
-        Me.BackupOnEditsCHECKBOX.Location = New System.Drawing.Point(42, 244)
+        Me.BackupOnEditsCHECKBOX.Location = New System.Drawing.Point(29, 244)
         Me.BackupOnEditsCHECKBOX.Name = "BackupOnEditsCHECKBOX"
-        Me.BackupOnEditsCHECKBOX.Size = New System.Drawing.Size(209, 17)
+        Me.BackupOnEditsCHECKBOX.Size = New System.Drawing.Size(215, 17)
         Me.BackupOnEditsCHECKBOX.TabIndex = 878
-        Me.BackupOnEditsCHECKBOX.Text = "Backup Database Before Editing Items"
+        Me.BackupOnEditsCHECKBOX.Text = "Backup Database Before Applying Edits"
         Me.BackupOnEditsCHECKBOX.UseVisualStyleBackColor = False
+        '
+        'DisableSearchProgressBarCHECKBOX
+        '
+        Me.DisableSearchProgressBarCHECKBOX.AutoSize = True
+        Me.DisableSearchProgressBarCHECKBOX.BackColor = System.Drawing.SystemColors.WindowText
+        Me.DisableSearchProgressBarCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
+        Me.DisableSearchProgressBarCHECKBOX.Location = New System.Drawing.Point(29, 156)
+        Me.DisableSearchProgressBarCHECKBOX.MaximumSize = New System.Drawing.Size(300, 17)
+        Me.DisableSearchProgressBarCHECKBOX.MinimumSize = New System.Drawing.Size(300, 17)
+        Me.DisableSearchProgressBarCHECKBOX.Name = "DisableSearchProgressBarCHECKBOX"
+        Me.DisableSearchProgressBarCHECKBOX.Size = New System.Drawing.Size(300, 17)
+        Me.DisableSearchProgressBarCHECKBOX.TabIndex = 885
+        Me.DisableSearchProgressBarCHECKBOX.Text = "Dont Display Search Progress Popup (Faster Searches)"
+        Me.DisableSearchProgressBarCHECKBOX.UseVisualStyleBackColor = False
         '
         'Settings
         '
@@ -373,6 +388,7 @@ Partial Class Settings
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.Setting
         Me.ClientSize = New System.Drawing.Size(511, 295)
+        Me.Controls.Add(Me.DisableSearchProgressBarCHECKBOX)
         Me.Controls.Add(Me.DupeCheckBox1)
         Me.Controls.Add(Me.BackupOnEditsCHECKBOX)
         Me.Controls.Add(Me.Label11)
@@ -446,4 +462,5 @@ Partial Class Settings
     Friend WithEvents DupeCheckBox1 As System.Windows.Forms.CheckBox
     Friend WithEvents AutoBackupImportsCHECKBOX As System.Windows.Forms.CheckBox
     Friend WithEvents BackupOnEditsCHECKBOX As System.Windows.Forms.CheckBox
+    Friend WithEvents DisableSearchProgressBarCHECKBOX As System.Windows.Forms.CheckBox
 End Class

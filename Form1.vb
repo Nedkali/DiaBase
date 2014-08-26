@@ -13,11 +13,6 @@ Public Class Form1
         Me.Text = "DiaBASE Beta - Version " & VersionNumber & "  Revision " & RevisionNumber
         '------------------------------------------------------------------------------------------------------------------
 
-        If My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "\DataBase\Backup") = False Then
-            My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "\DataBase\Backup")
-            Mymessages = "Database & Backup Folder created" : MyMessageBox()
-        End If
-
         If My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "\Archive") = False Then
             My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "\Archive")
             Mymessages = "Archive Folder created" : MyMessageBox()
@@ -32,7 +27,7 @@ Public Class Form1
         If My.Computer.FileSystem.FileExists(Application.StartupPath + "\Settings.cfg") = False Then
             Dim file As System.IO.StreamWriter
             file = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath + "\Settings.cfg", False)
-            file.WriteLine("C\D2NT")
+            file.WriteLine("C:\D2NT")
             file.WriteLine(Application.StartupPath + "\DataBase\Default.txt")
             file.WriteLine("30")
             file.WriteLine("True")
@@ -42,7 +37,7 @@ Public Class Form1
             file.Close()
             Mymessages = "Settings file created" : MyMessageBox()
         End If
-
+       
         'Next bit setup up diablo 2 heading text and game text true type fonts (.ttf) 
         'Applying these fonts here and now will overwrite any value set in the from designer properties window
         'Setup pfc as our font collestion label, then assign the .ttf font fileas the font to use (should be in extras folder)
@@ -107,11 +102,22 @@ Public Class Form1
             ItemImageSelector.AddSelectImageBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             ItemImageSelector.AddSelectImageCancelBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
         End If
+
+        If My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "\DataBase\Backup") = False Then
+            My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "\DataBase\Backup")
+            Mymessages = "Database & Backup Folder created" : MyMessageBox()
+        End If
+
+       
+
+
     End Sub
 
     'Stuff to run after program starts
     Private Sub Form1_Shown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Shown
         LoadConfigFile()
+        Me.CurrentDatabaseLABEL.Text = "Loading Default Database File, Please Wait... "
+        Me.Refresh()
         OpenDatabaseRoutine(Databasefile)
         Me.CurrentDatabaseLABEL.Text = Replace(My.Computer.FileSystem.GetName(Databasefile), ".txt", "")
 
@@ -124,6 +130,7 @@ Public Class Form1
 
         SearchFieldCOMBOBOX.Text = "Item Name"
         AllItemsInDatabaseListBox.Select() ' focuses control on main listbox on startup
+
     End Sub
 
     'DEFINES THE ImportTimer AS A GLOBAL SYSTEM TIMER (ONLY FOR AUTO IMPORTS)
@@ -948,6 +955,7 @@ Public Class Form1
             Dim Counter As Integer = 0
             Dim count As Integer = 0
             DupeCountProgressForm.Show() : DupeCountProgressForm.DupePROGRESSBAR.Value = 0 'show and reset progress bar
+            DupeCountProgressForm.Refresh() ' Not Sure Why But Golden Border Around Dupe Progress bar (LABELS) Wont Work Unless I Refresh Form Again Now..??
 
             For Each ITEM In SearchLISTBOX.Items
 
@@ -1159,13 +1167,18 @@ Public Class Form1
         If Button3.Text = "Timer Stop" Then ImportTimer.Start() '                                              RESTART LOGGER
     End Sub
 
-    'CLEARS ALL ITEMS OUT OF THE SEARCH LIST
+    'CLEARS ALL ITEMS OUT OF THE SEARCH LIST - CONTEXT MENU OPTION
     Private Sub ClearSearchListToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles ClearSearchListToolStripMenuItem.Click
         SearchLISTBOX.Items.Clear()
         ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Items"
     End Sub
 
+    'CLEARS ALL ITEMS OUT OF THE SEARCH LIST - MENUBAR MENU OPTION
+    Private Sub ClearSearchListToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ClearSearchListToolStripMenuItem1.Click
+        SearchLISTBOX.Items.Clear()
+        ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Items"
 
+    End Sub
 End Class
 
 

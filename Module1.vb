@@ -8,8 +8,17 @@ Module Module1
     'Version Variables (displayed in form1 titlebar) - UPDATE FOR EACH COMMIT PLS SO APP VERSION MATCHES REVISION NUMBER
     '-------------------------------------------------------------------------------------------------------------------
     Public VersionNumber As String = "9.0"
-    Public RevisionNumber As String = "27"
+    Public RevisionNumber As String = "28"
     '-------------------------------------------------------------------------------------------------------------------
+
+    'ROB DID THIS IN REV 28...(Dont Worry I can take it all out if its not viable)
+    '---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    Public ShowSearchProgress As Boolean = True ' Added this config var as trial to help speed up searches for larger databases. When bool is False Search.vb proceedure wont show
+    '                                             the progress bar popup form or count stats which considerably speeds up searches for 10000 plus item Datafiles.
+    '                                             Instead adjusted routine now puts a "Searching..." message in the Form1.ItemTotalTEXTBOX. Added new checkbox in settings to config it
+    '                                             BOOL VAR CANNOT BE SAVED TO CONFIG FILE YET SO AS DEFAULT IT IS SET TO ALWAYS SHOW THE SEARCH PROGRESS POPUP TIL CHECKED EACH RUNTIME
+    '---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
     'DataBase app variables
     Public iEdit As Integer         'used in item edit form to locate item(array) number being edited
@@ -23,7 +32,7 @@ Module Module1
     Public backuponexit As Boolean = False
     Public RemoveDupeMule As String = True
     Public Pretotal As Integer = 0
-
+    
     ' needs to be set to true when logger is doing log reads/imports and then set to false when completed
     ' Need this to prevent reading database while logger maybe trying to access it - logger will need priority
     ' or will most likely trigger an exception and crash Program
@@ -33,6 +42,7 @@ Module Module1
     'Logging Variables
     Public MuleLogPath As String
     Public Databasefile As String
+    Public DefaultDatabaseFile As String
     Public MuleDataPath As String
     Public ArchiveFolder As String
     Public AutoBackups As String
@@ -56,7 +66,7 @@ Module Module1
     Public PassFiles As List(Of String) = New List(Of String)       'Holds all _muleaccount.txt file used to get mule pass and mule account
     Public LogType As List(Of String) = New List(Of String)
 
-    Public pfc As New PrivateFontCollection()                       'Defines Custom Font Collection pfc As Global
+    Public pfc As New PrivateFontCollection()                       'Defines Custom Font Collection pfc As Global (Diablo Game Font)
 
     'Calls the UserMessaging 'Okie Dokie' Form As DialogBox
     Public Sub MyMessageBox()
@@ -140,7 +150,7 @@ Module Module1
         Dim file As System.IO.StreamReader
         file = My.Computer.FileSystem.OpenTextFileReader(Application.StartupPath + "\Settings.cfg")
         EtalPath = file.ReadLine() : Settings.EtalPathTEXTBOX.Text = EtalPath
-        Databasefile = file.ReadLine() : Settings.DatabaseFileTEXTBOX.Text = Databasefile
+        Databasefile = file.ReadLine() : Settings.DatabaseFileTEXTBOX.Text = Databasefile : DefaultDatabaseFile = Databasefile
         TimerMins = file.ReadLine() : Settings.NumericUpDown1.Value = TimerMins
         KeepPassPrivate = file.ReadLine() : If KeepPassPrivate = True Then Settings.CheckBox3.Checked = True
         AutoBackups = file.ReadLine() : If AutoBackups = True Then Settings.AutoBackupImportsCHECKBOX.Checked = True ' added this for auto backup setting

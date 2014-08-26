@@ -83,6 +83,11 @@ Public Class D2StyleOpenFileDialog
                 FileVerify.Close()
                 If OpenError = True Then GoTo ErrorSkipPoint
 
+                'After File Is Verified...
+                Form1.CurrentDatabaseLABEL.Text = DatabaseFilenameCOMBOBOX.Text
+                Me.Hide() ' close form once file has been verified
+                Form1.Refresh()
+
                 'CHECKS THE SAVE CURRENT CHECKBOX AND SAVES THE CURRENT DATABASE BEFORE LOADING THE NEW ONE IF SET TO DO SO (DEFAULT IT CHECKED)
                 If SaveBeforeOpeningCHECKBOX.Checked = True Then
 
@@ -94,12 +99,12 @@ Public Class D2StyleOpenFileDialog
                     SearchReferenceList.Clear()
                     Form1.RichTextBox3.Text = Nothing
                     Form1.ClearStats()
-
+                  
                     'Branch to routine to load the selected dbase and display first item and set current database label in top right of form1
                     OpenDatabaseRoutine(Application.StartupPath + "\Database\" + DatabaseFilenameCOMBOBOX.Text + ".txt")
                     Form1.Display_Items()
-                    Form1.CurrentDatabaseLABEL.Text = DatabaseFilenameCOMBOBOX.Text
                     Databasefile = Application.StartupPath + "\Database\" + SavedDatabasesLISTBOX.SelectedItem + ".txt"
+                 
 
                     'setlect main list and prep form1
                     Form1.ListboxTABCONTROL.SelectTab(0)
@@ -110,8 +115,7 @@ Public Class D2StyleOpenFileDialog
 
                     'after successfull save this puts the database name into the combobox dropdown menu if its not already there
                     If OpenDatabaseDropDown.Contains(DatabaseFilenameCOMBOBOX.Text) = False Then OpenDatabaseDropDown.Add(DatabaseFilenameCOMBOBOX.Text)
-                    Me.Close() ' close form once file has been verified
-
+                  
                 End If
             Else
                 'If the entered file does not exist then do this

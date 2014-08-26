@@ -103,7 +103,7 @@ Partial Class SearchProgressForm
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.mbox
-        Me.ClientSize = New System.Drawing.Size(449, 121)
+        Me.ClientSize = New System.Drawing.Size(441, 110)
         Me.ControlBox = False
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label19)
@@ -113,7 +113,6 @@ Partial Class SearchProgressForm
         Me.Controls.Add(Me.SearchProgressLABEL1)
         Me.Controls.Add(Me.SearchPROGRESSBAR)
         Me.MaximizeBox = False
-        Me.MaximumSize = New System.Drawing.Size(457, 148)
         Me.MinimizeBox = False
         Me.MinimumSize = New System.Drawing.Size(457, 148)
         Me.Name = "SearchProgressForm"

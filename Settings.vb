@@ -29,8 +29,9 @@
         OpenFileDialog1.FilterIndex = 2
         OpenFileDialog1.RestoreDirectory = True
         OpenFileDialog1.ShowDialog()
-        DatabaseFileTEXTBOX.Text = openFileDialog1.FileName
+        DatabaseFileTEXTBOX.Text = openFileDialog1.FileName : DatabaseFileTEXTBOX.Refresh()
         DataBasePath = openFileDialog1.FileName
+        DefaultDatabaseFile = DataBasePath
         SettingsChecker()
     End Sub
 
@@ -60,19 +61,29 @@
         TimerSecs = TimerMins * 60
         Me.Close()
 
+        '------------------------------------------------------------------------------------------------------------------------------------------------
+        'Apply Search Progress checkbox Setting To Global Config bool "ShowSearchProgress" 
+        'THIS SETTING CANT BE SAVED YET (not included in config file yet) AND BY DEFAULT IS SET TO SHOW THE PROGRESS BAR FORM WHEN SEARCHING
+        If DisableSearchProgressBarCHECKBOX.Checked = True Then ShowSearchProgress = False
+        If DisableSearchProgressBarCHECKBOX.Checked = False Then ShowSearchProgress = True
+        '------------------------------------------------------------------------------------------------------------------------------------------------
+
     End Sub
 
     Private Sub Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Left = Form1.Left + 150
         Me.Top = Form1.Top + 100
         EtalPathTEXTBOX.Text = EtalPath
-        DatabaseFileTEXTBOX.Text = DatabaseFile
+        DatabaseFileTEXTBOX.Text = DefaultDatabaseFile
         NumericUpDown1.Value = TimerMins
         CheckBox3.Checked = KeepPassPrivate
         AutoBackupImportsCHECKBOX.Checked = AutoBackups
         BackupOnEditsCHECKBOX.Checked = EditBackups
         DupeCheckBox1.Checked = RemoveDupeMule
         SettingsChecker()
+        'APPLY THE TRIAL "DONT DISPLAY SEARCH PROGRESS BAR" CHECKBOX FROM ITS GLOBAL CONFIG VAR (NOT SAVED IN ACTUAL CONFIG FILE YET) - REV 28
+        If ShowSearchProgress = True Then DisableSearchProgressBarCHECKBOX.Checked = False
+        If ShowSearchProgress = False Then DisableSearchProgressBarCHECKBOX.Checked = True
 
     End Sub
 
