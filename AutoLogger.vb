@@ -141,18 +141,32 @@ Module AutoLogger
                     End If
                 End If
 
-                If RemoveDupeMule = True Then ' adding in remove duplicated mule option
-                    For mc = Objects.Count - 1 To 0 Step -1
-                        'MsgBox("Curent index = " & mc)
-                        If Pretotal > 0 And Objects(mc).MuleName = thislogmulename Then
-                            Objects.RemoveAt(mc)
-                            Pretotal = Pretotal - 1
-                            If Form1.AllItemsInDatabaseListBox.Items.Count > 0 Then ' remove item from list if there
-                                Form1.AllItemsInDatabaseListBox.Items.RemoveAt(mc)
+                '------------------------------------------------------------------------------------------------------------------------------------------------
+                'ROB DEBUG MESSAGE: \/\/ This has thrown an error for Sig. Seems to remove the dupes ok but then if import fails and database is then
+                'saved the dupes remain removed. I think this is causing the error on a second attampt to re-log aborterd imports as the dupe was removed 
+                'first import attempt so crashes when it attempts to re-remove. So I added Try command. NOT TOTALLY SURE ABOUT THIS THOUGH, JUST A HUNCH?
+
+                'Maybe we could move this down a little to after the log imports successfully, could possibly be a better way to fix issue?
+
+                If RemoveDupeMule = True Then                                               'Adding in remove duplicated mule option (Ned)
+                    Try
+                        For mc = Objects.Count - 1 To 0 Step -1
+                            'MsgBox("Curent index = " & mc)
+                            If Pretotal > 0 And Objects(mc).MuleName = thislogmulename Then
+                                Objects.RemoveAt(mc)
+                                Pretotal = Pretotal - 1
+                                If Form1.AllItemsInDatabaseListBox.Items.Count > 0 Then     'Remove item from list if there
+                                    Form1.AllItemsInDatabaseListBox.Items.RemoveAt(mc)
+                                End If
                             End If
-                        End If
-                    Next
+                        Next
+                    Catch ex As Exception
+                        'Mymessages = "Could Not Removed Duped Mule..." : MyMessageBox()    'Fail Message to notify user - Is probably not really nessicary
+                        '                                                                   'saying something that wasnt there wasnt removed, lol.
+                        '                                                                   'Will Comment This Out For Now :)
+                    End Try
                 End If
+                '------------------------------------------------------------------------------------------------------------------------------------------------
 
                 Do
                     Dim NewObject As New ItemObjects

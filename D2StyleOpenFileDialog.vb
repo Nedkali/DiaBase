@@ -84,7 +84,6 @@ Public Class D2StyleOpenFileDialog
                 If OpenError = True Then GoTo ErrorSkipPoint
 
                 'After File Is Verified...
-                Form1.CurrentDatabaseLABEL.Text = DatabaseFilenameCOMBOBOX.Text
                 Me.Hide() ' close form once file has been verified
                 Form1.Refresh()
 
@@ -124,6 +123,8 @@ Public Class D2StyleOpenFileDialog
                 DatabaseFilenameCOMBOBOX.Select()
                 OpenError = True
             End If
+            Form1.CurrentDatabaseLABEL.Text = DatabaseFilenameCOMBOBOX.Text
+
             If OpenError = True Then GoTo ErrorSkipPoint 'Error flag to skip irrelevant code when an error occurs
 
             'catch open file errors exception handler

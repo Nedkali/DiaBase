@@ -2329,7 +2329,9 @@ Partial Class EditItemForm
         Me.ForeColor = System.Drawing.SystemColors.ControlLight
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(568, 633)
         Me.MinimizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(568, 633)
         Me.Name = "EditItemForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Edit Item"

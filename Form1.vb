@@ -40,7 +40,7 @@ Public Class Form1
        
         'Next bit setup up diablo 2 heading text and game text true type fonts (.ttf) 
         'Applying these fonts here and now will overwrite any value set in the from designer properties window
-        'Setup pfc as our font collestion label, then assign the .ttf font fileas the font to use (should be in extras folder)
+        'Setup pfc as our font collection label, then assign the .ttf font file as the font to use (should be in extras folder)
 
         'This adds Diablo2 Heading Text font as 0
         If My.Computer.FileSystem.FileExists(Application.StartupPath + "\Extras\DiabloFont1.ttf") = True Then
@@ -184,7 +184,7 @@ Public Class Form1
         For x = 0 To Objects.Count - 1
             AllItemsInDatabaseListBox.Items.Add(Objects(x).ItemName)
         Next
-        ListboxTABCONTROL.SelectTab(0) ' ensure listboxTABCONTROL itset to all items list for repopuleate
+        ListboxTABCONTROL.SelectTab(0) ' ensure listboxTABCONTROL is set to all items list for repopuleate
         ItemTallyTEXTBOX.Text = Objects.Count & " - Total Items"
 
         If AllItemsInDatabaseListBox.Items.Count > 0 Then AllItemsInDatabaseListBox.SelectedIndex = 0
