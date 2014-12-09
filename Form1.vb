@@ -17,13 +17,18 @@ Public Class Form1
             My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "\Archive")
             Mymessages = "Archive Folder created" : MyMessageBox()
         End If
+        If My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "\DataBase\Backup") = False Then
+            My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "\DataBase\Backup")
+            Mymessages = "Database & Backup Folder created" : MyMessageBox()
+        End If
+
         If My.Computer.FileSystem.FileExists(Application.StartupPath + "\DataBase\Default.txt") = False Then
             Dim file As System.IO.StreamWriter
             file = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath + "\DataBase\Default.txt", False)
             file.Close()
             Mymessages = "Default Data base file created" : MyMessageBox()
-
         End If
+
         If My.Computer.FileSystem.FileExists(Application.StartupPath + "\Settings.cfg") = False Then
             Dim file As System.IO.StreamWriter
             file = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath + "\Settings.cfg", False)
@@ -103,10 +108,7 @@ Public Class Form1
             ItemImageSelector.AddSelectImageCancelBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
         End If
 
-        If My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "\DataBase\Backup") = False Then
-            My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "\DataBase\Backup")
-            Mymessages = "Database & Backup Folder created" : MyMessageBox()
-        End If
+
 
        
 

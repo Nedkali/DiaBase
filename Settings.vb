@@ -88,9 +88,11 @@
     End Sub
 
     Private Sub SettingsChecker()
-        If My.Computer.FileSystem.DirectoryExists(EtalPathTEXTBOX.Text) = True Then
-            Dim temp = Split(EtalPathTEXTBOX.Text, "\")
-            If temp(temp.Length - 1) = "D2NT" Then PictureBox1.Visible = True
+        If My.Computer.FileSystem.DirectoryExists(EtalPathTEXTBOX.Text & "\scripts\AMS\MuleInventory") = True Then
+            PictureBox1.Visible = True
+        End If
+        If My.Computer.FileSystem.DirectoryExists(EtalPathTEXTBOX.Text & "\scripts\AMS\MuleInventory") = False Then
+            PictureBox1.Visible = False
         End If
 
         If My.Computer.FileSystem.FileExists(DatabaseFileTEXTBOX.Text) = True Then PictureBox2.Visible = True
