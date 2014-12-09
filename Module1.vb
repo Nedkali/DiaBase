@@ -8,7 +8,7 @@ Module Module1
     'Version Variables (displayed in form1 titlebar) - UPDATE FOR EACH COMMIT PLS SO APP VERSION MATCHES REVISION NUMBER
     '-------------------------------------------------------------------------------------------------------------------
     Public VersionNumber As String = "9.0"
-    Public RevisionNumber As String = "29"
+    Public RevisionNumber As String = "28"
     '-------------------------------------------------------------------------------------------------------------------
 
     'ROB DID THIS IN REV 28...(Dont Worry I can take it all out if its not viable)
