@@ -154,6 +154,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="OpenContainingDatabase.Designer.vb">
+      <DependentUpon>OpenContainingDatabase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="OpenContainingDatabase.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Search.vb" />
     <Compile Include="SearchProgressForm.Designer.vb">
       <DependentUpon>SearchProgressForm.vb</DependentUpon>
@@ -180,6 +186,7 @@
     <Compile Include="UserMessaging.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UserObjects.vb" />
     <Compile Include="YesNoD2StyleDialog.Designer.vb">
       <DependentUpon>YesNoD2StyleDialog.vb</DependentUpon>
     </Compile>
@@ -223,6 +230,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenContainingDatabase.resx">
+      <DependentUpon>OpenContainingDatabase.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SearchProgressForm.resx">
       <DependentUpon>SearchProgressForm.vb</DependentUpon>

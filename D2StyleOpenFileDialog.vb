@@ -110,11 +110,16 @@ Public Class D2StyleOpenFileDialog
                     Form1.ListControlTabBUTTON.BackColor = Color.DimGray
                     Form1.SearchListControlTabBUTTON.BackColor = Color.Black
                     Form1.TradesListControlTabBUTTON.BackColor = Color.Black
+                    Form1.UserRefControlTabBUTTON.BackColor = Color.Black
                     Form1.ItemTallyTEXTBOX.Text = Form1.AllItemsInDatabaseListBox.Items.Count & " - Total Items"
 
                     'after successfull save this puts the database name into the combobox dropdown menu if its not already there
                     If OpenDatabaseDropDown.Contains(DatabaseFilenameCOMBOBOX.Text) = False Then OpenDatabaseDropDown.Add(DatabaseFilenameCOMBOBOX.Text)
-                  
+
+                    'ensure dabase filename is hidden for focusing on main list box
+                    Form1.ItemsDatabaseHeadingTEXTBOX.Hide()
+                    Form1.ItemsDatabaseFileNameTEXTBOX.Hide()
+
                 End If
             Else
                 'If the entered file does not exist then do this
@@ -160,11 +165,14 @@ ErrorSkipPoint:
                 End If
 
                 'Update default database setting in settings and its var if its the one that was just renamed
-                If Settings.DatabaseFileTEXTBOX.Text = Application.StartupPath + "\Database\" + SavedDatabasesLISTBOX.SelectedItem + ".txt" Then
+                MessageBox.Show(Settings.DatabaseFileTEXTBOX.Text & "         " & Application.StartupPath + "\DataBase\" + SavedDatabasesLISTBOX.SelectedItem + ".txt")
 
-                    Settings.DatabaseFileTEXTBOX.Text = Application.StartupPath + "\Database\" + UserInputForm.UserInputTEXTBOX.Text + ".txt"
-                    Settings.DatabaseFileTEXTBOX.Text = Application.StartupPath + "\Database\" + UserInputForm.UserInputTEXTBOX.Text + ".txt"
-                    Databasefile = Application.StartupPath + "\Database\" + UserInputForm.UserInputTEXTBOX.Text + ".txt"
+
+                If UCase(Settings.DatabaseFileTEXTBOX.Text) = UCase(Application.StartupPath + "\DataBase\" + SavedDatabasesLISTBOX.SelectedItem + ".txt") Then
+
+                    Settings.DatabaseFileTEXTBOX.Text = Application.StartupPath + "\DataBase\" + UserInputForm.UserInputTEXTBOX.Text + ".txt"
+                    Databasefile = Application.StartupPath + "\DataBase\" + UserInputForm.UserInputTEXTBOX.Text + ".txt"
+                    SaveConfigFile()
                 End If
 
                 'Update current database label in top right corner of form1 if its the one that was just renamed

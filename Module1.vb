@@ -2,26 +2,22 @@
 
 Module Module1
     'Sets up new list of class items for database
-    Public Objects As List(Of ItemObjects) = New List(Of ItemObjects)
+    Public Objects As List(Of ItemObjects) = New List(Of ItemObjects) '                       'Class objects to hold all stats for currently loaded database
+
+    Public UserListDatabase As List(Of UserObjects) = New List(Of UserObjects) '<-------------[Rev 29] Robs...Class to hold all stats for items in user list
+    '                                                                                         'By keeping the user list seperate from the main database the 
+    '                                                                                         'the app can reference items that are in closed databases. This
+    '                                                                                         'will allow the user list to be used across mutiple databases
 
     '-------------------------------------------------------------------------------------------------------------------
     'Version Variables (displayed in form1 titlebar) - UPDATE FOR EACH COMMIT PLS SO APP VERSION MATCHES REVISION NUMBER
     '-------------------------------------------------------------------------------------------------------------------
     Public VersionNumber As String = "9.0"
-    Public RevisionNumber As String = "28"
+    Public RevisionNumber As String = "30"
     '-------------------------------------------------------------------------------------------------------------------
 
-    'ROB DID THIS IN REV 28...(Dont Worry I can take it all out if its not viable)
-    '---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    Public ShowSearchProgress As Boolean = True ' Added this config var as trial to help speed up searches for larger databases. When bool is False Search.vb proceedure wont show
-    '                                             the progress bar popup form or count stats which considerably speeds up searches for 10000 plus item Datafiles.
-    '                                             Instead adjusted routine now puts a "Searching..." message in the Form1.ItemTotalTEXTBOX. Added new checkbox in settings to config it
-    '                                             BOOL VAR CANNOT BE SAVED TO CONFIG FILE YET SO AS DEFAULT IT IS SET TO ALWAYS SHOW THE SEARCH PROGRESS POPUP TIL CHECKED EACH RUNTIME
-    '---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
     'DataBase app variables
-    Public iEdit As Integer         'used in item edit form to locate item(array) number being edited
+    Public iEdit As Integer                         'used in item edit form to locate item(array) number being edited
     Public EtalPath As String
     Public DataBasePath As String
     Public TimerMins As Integer
@@ -32,8 +28,9 @@ Module Module1
     Public backuponexit As Boolean = False
     Public RemoveDupeMule As String = True
     Public Pretotal As Integer = 0
-    
-    ' needs to be set to true when logger is doing log reads/imports and then set to false when completed
+    Public ShowSearchProgress As Boolean = True     'Rev 28 - Robs - Added this config var as trial to help speed up searches for larger databases.
+
+    ' (Ned) needs to be set to true when logger is doing log reads/imports and then set to false when completed
     ' Need this to prevent reading database while logger maybe trying to access it - logger will need priority
     ' or will most likely trigger an exception and crash Program
     Public LoggerRunning As Boolean = False
@@ -48,6 +45,7 @@ Module Module1
     Public AutoBackups As String
     Public EditBackups As String
     Public MyCounter As Array
+    Public HideSearchPopup As Boolean = False
 
     'Reference array lists and collections
     Public SearchReferenceList As List(Of String) = New List(Of String)
@@ -82,7 +80,9 @@ Module Module1
         Form1.RichTextBox2.Text = ""
         Form1.PictureBox1.Image = Nothing
         Form1.AllItemsInDatabaseListBox.Items.Clear()   ' clears items listed
-        If Objects.Count > 0 Then                       ' had to be done this way - havent figured out a better way for now
+
+        If Objects.Count > 0 Then                       ' had to be done this way - havent figured out a better way for now 
+            '                                           ' ROB: Objects.clear ?
             Objects.RemoveRange(1, Objects.Count - 1)
             Objects.RemoveAt(0)
         End If
@@ -145,6 +145,12 @@ Module Module1
         Form1.Display_Items()
     End Sub
 
+  
+
+
+
+
+
     'Load up the app configuration Values from \InstallDir\Settings.cfg file
     Sub LoadConfigFile()
         Dim file As System.IO.StreamReader
@@ -156,6 +162,9 @@ Module Module1
         AutoBackups = file.ReadLine() : If AutoBackups = True Then Settings.AutoBackupImportsCHECKBOX.Checked = True ' added this for auto backup setting
         EditBackups = file.ReadLine() : If AutoBackups = True Then Settings.AutoBackupImportsCHECKBOX.Checked = True ' added this for backup befor saving item edits
         RemoveDupeMule = file.ReadLine()
+        HideSearchPopup = file.ReadLine
+        If HideSearchPopup = True Then Settings.DisableSearchProgressBarCHECKBOX.Checked = True : ShowSearchProgress = False
+        If HideSearchPopup = False Then Settings.DisableSearchProgressBarCHECKBOX.Checked = False : ShowSearchProgress = True
         file.Close()
     End Sub
 
@@ -1491,17 +1500,22 @@ Module Module1
 
     'this backsup the current database from menu selection and when closing app
     Sub BackupDatabase()
-        Dim BackupPath = Application.StartupPath & "\Database\Backup\"
-        Dim temp As String = ""
-        Dim myarray = Split(Databasefile, ".txt", 0)
-        Dim tempname = myarray(0) & ".bak"
-        myarray = Split(tempname, "\")
-        tempname = myarray(myarray.Length - 1)
 
-        If My.Computer.FileSystem.FileExists(BackupPath & tempname) = True Then
-            My.Computer.FileSystem.DeleteFile(BackupPath & tempname)
-        End If
-        My.Computer.FileSystem.CopyFile(Databasefile, BackupPath & tempname)
+        'new easier system ROB Rev 29
+        My.Computer.FileSystem.CopyFile(Application.StartupPath & "\DataBase\" & Databasefile & ".txt", Application.StartupPath & "\DataBase\Backup\" & Databasefile & ".bak", True)
+
+        'Old system
+        'Dim BackupPath = Application.StartupPath & "\DataBase\Backup\"
+        'Dim temp As String = ""
+        'Dim myarray = Split(Databasefile, ".txt", 0)
+        'Dim tempname = myarray(0) & ".bak"
+        'myarray = Split(tempname, "\")
+        'tempname = myarray(myarray.Length - 1)
+
+        'If My.Computer.FileSystem.FileExists(BackupPath & tempname) = True Then
+        ' My.Computer.FileSystem.DeleteFile(BackupPath & tempname)
+        ' End If
+        ' My.Computer.FileSystem.CopyFile(Databasefile, BackupPath & tempname)
 
     End Sub
 
@@ -1535,4 +1549,52 @@ Module Module1
 
         Return DupeCount
     End Function
+
+    'saves config files to file
+    Sub SaveConfigFile()
+        Dim file As System.IO.StreamWriter
+        file = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath + "\Settings.cfg", False)
+        file.WriteLine(Settings.EtalPathTEXTBOX.Text)
+        file.WriteLine(Settings.DatabaseFileTEXTBOX.Text)
+        file.WriteLine(Settings.NumericUpDown1.Value)
+        file.WriteLine(Settings.CheckBox3.Checked) : KeepPassPrivate = Settings.CheckBox3.CheckState '<---------- Display Password Fix rev 12 (AussieHack)
+        file.WriteLine(Settings.AutoBackupImportsCHECKBOX.Checked) '                                     added this for auto backup on import setting
+        file.WriteLine(Settings.BackupOnEditsCHECKBOX.Checked)   '                                       added this for auto backup on edits setting
+        file.WriteLine(Settings.DupeCheckBox1.Checked) : RemoveDupeMule = Settings.DupeCheckBox1.CheckState
+        HideSearchPopup = Settings.DisableSearchProgressBarCHECKBOX.CheckState : file.WriteLine(HideSearchPopup) '<-------Added to hide search popup to temp fix non responsive issues during long searches
+        file.Close()
+
+        'setup a few relevant things
+        If HideSearchPopup = True Then ShowSearchProgress = False Else If HideSearchPopup = False Then ShowSearchProgress = True ' Not  Sure why I have two bools tbh?
+        EtalPath = Settings.EtalPathTEXTBOX.Text
+        TimerMins = Settings.NumericUpDown1.Value
+        TimerSecs = TimerMins * 60
+
+
+    End Sub
+
+
+    Function LocateUserListItem(ByRef UserListIndex)
+        Dim MatchTally As Integer = 0
+        Dim MainDatabaseIndex As Integer = -1
+        Dim CheckIndex As Integer
+        Do Until CheckIndex = Form1.AllItemsInDatabaseListBox.Items.Count - 1
+
+            If Objects(CheckIndex).ItemName = UserListDatabase(UserListIndex).ItemName Then MatchTally = MatchTally + 1
+            If Objects(CheckIndex).ItemBase = UserListDatabase(UserListIndex).ItemBase Then MatchTally = MatchTally + 1
+            If Objects(CheckIndex).ItemQuality = UserListDatabase(UserListIndex).ItemQuality Then MatchTally = MatchTally + 1
+
+
+
+            CheckIndex = CheckIndex + 1
+
+        Loop
+        'MainDatabaseIndex = CheckIndex
+        Return MainDatabaseIndex
+    End Function
+
+
+
+
+
 End Module

@@ -3,6 +3,16 @@ Imports System.Drawing.Text
 
 Public Class Form1
 
+
+
+    'Trial - Setup Select All Function and support vars
+    Declare Auto Function SendMessage Lib "user32.dll" (ByVal hWnd As IntPtr, ByVal msg As Integer, ByVal wParam As IntPtr, ByVal lParam As IntPtr) As IntPtr
+
+    Private TriggerUpdate = GetType(ListBox.SelectedObjectCollection).GetField("stateDirty", 32 Or 4)
+    Dim TriggerIndexChanged = GetType(ListBox).GetMethod("OnSelectedIndexChanged", 32 Or 4)
+
+
+
     'FORM1 LOAD EVENT - PLAYS AUDIO LAUGH AND GETS FILE CONFIG VALUES AND SETS UP APPLICATION ELEMENTS AND OPENS THE DEFAULT DATABASE
     'ROUTINE ALSO SETS UP REQURED FILES ECT ON FIRST RUN (INSTALLS APP)
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load 'check if required folders exist on startup and create if necessary
@@ -13,10 +23,19 @@ Public Class Form1
         Me.Text = "DiaBASE Beta - Version " & VersionNumber & "  Revision " & RevisionNumber
         '------------------------------------------------------------------------------------------------------------------
 
+        ItemsDatabaseHeadingTEXTBOX.Hide() : ItemsDatabaseFileNameTEXTBOX.Hide() 'HIDE USER LIST FIELD REV 29
+
         If My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "\Archive") = False Then
             My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "\Archive")
             Mymessages = "Archive Folder created" : MyMessageBox()
         End If
+
+        If My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "\DataBase\Backup") = False Then
+            My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "\DataBase\Backup")
+            Mymessages = "Database & Backup Folder created" : MyMessageBox()
+        End If
+
+
         If My.Computer.FileSystem.FileExists(Application.StartupPath + "\DataBase\Default.txt") = False Then
             Dim file As System.IO.StreamWriter
             file = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath + "\DataBase\Default.txt", False)
@@ -24,6 +43,8 @@ Public Class Form1
             Mymessages = "Default Data base file created" : MyMessageBox()
 
         End If
+
+
         If My.Computer.FileSystem.FileExists(Application.StartupPath + "\Settings.cfg") = False Then
             Dim file As System.IO.StreamWriter
             file = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath + "\Settings.cfg", False)
@@ -37,7 +58,38 @@ Public Class Form1
             file.Close()
             Mymessages = "Settings file created" : MyMessageBox()
         End If
-       
+
+        '                   -------------------------------------------------------------------------------------------------------------
+        '                   - ROB DID THIS PROCEEDURE MUST NOT BE REMOVED OR COMMENTED OUT AFTER REVISION 29 IS RENDERED OBSOLETE - ROB -
+        '                   -------------------------------------------------------------------------------------------------------------
+
+        '----------------------------------------------------------------------------------------------------------------------------------------------------
+        ' ROB ADDED \/\/ IN REV - 29. I opted to append a new global config var for the "Settings.cfg" file to save the "Hide The Search Popup" checkstate. '
+        ' ATM its checkstate canot be saved. I have added a command for the new global config in the the settings.cfg read file routine for its checkstate. '                     '
+        '                                                                                                                                                   '
+        ' IMPORTANT NOTE: As a failsafe, so this only runs the fist time on first statup after updating the proceedure will count how many lines exist in   '
+        ' the "Settings.cfg" file. If the extra line has already been appended the proceedure will be skipped until it is removed or commented out for      '
+        ' future later unforseen updates. Complete update can easily be included in the next public release - ROB                                           '
+        '----------------------------------------------------------------------------------------------------------------------------------------------------
+
+        Dim LineCountChecksum As Integer = 0
+        Dim CountSettingsFileLines = My.Computer.FileSystem.OpenTextFileReader(Application.StartupPath + "\Settings.cfg")
+        Do Until CountSettingsFileLines.EndOfStream = True
+            CountSettingsFileLines.ReadLine() : LineCountChecksum = LineCountChecksum + 1
+        Loop
+        CountSettingsFileLines.Close()
+
+
+        'Append the new Config Variable if the line cound checksum vale fails with a value of 7 ( only 7 lines means then new settings.cfg config var has not been edited.
+        If LineCountChecksum = 7 Then
+
+            Dim FixSettingsFile = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath + "\Settings.cfg", True)
+
+            FixSettingsFile.WriteLine("False") 'Appends a new config variable to settings.cfg file to save show or hide search progress checkstate
+            FixSettingsFile.Close()
+            Mymessages = "Settings File Updated For Revision 29" : MyMessageBox()
+        End If
+        '=====================================================================================================================================================
         'Next bit setup up diablo 2 heading text and game text true type fonts (.ttf) 
         'Applying these fonts here and now will overwrite any value set in the from designer properties window
         'Setup pfc as our font collection label, then assign the .ttf font file as the font to use (should be in extras folder)
@@ -55,9 +107,10 @@ Public Class Form1
             'BUTTONS (9 point size)
             ListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             SearchListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            UserRefControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             TradesListControlTabBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             SearchBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
-               Button3.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
+            Button3.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
 
             'DialogResult Form Buttons (9 point size)
             YesNoD2Style.YesNoCONFIRMBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
@@ -102,15 +155,6 @@ Public Class Form1
             ItemImageSelector.AddSelectImageBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
             ItemImageSelector.AddSelectImageCancelBUTTON.Font = New Font(pfc.Families(0), 9, FontStyle.Regular)
         End If
-
-        If My.Computer.FileSystem.DirectoryExists(Application.StartupPath + "\DataBase\Backup") = False Then
-            My.Computer.FileSystem.CreateDirectory(Application.StartupPath + "\DataBase\Backup")
-            Mymessages = "Database & Backup Folder created" : MyMessageBox()
-        End If
-
-       
-
-
     End Sub
 
     'Stuff to run after program starts
@@ -202,6 +246,18 @@ Public Class Form1
 
     'ALL ITEMS LISTBOX SELECTED INDEX CHANGE HANDLER
     Private Sub AllItemsInDatabaseListBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles AllItemsInDatabaseListBox.SelectedIndexChanged
+
+        'Sets Item Total as TallyLabel value when only 1 item is selected else it sets TallyLabel value as SelectedItems.count
+        If AllItemsInDatabaseListBox.Focused = True Then
+            If AllItemsInDatabaseListBox.SelectedItems.Count <= 1 Then
+                ItemTallyTEXTBOX.Text = (AllItemsInDatabaseListBox.Items.Count & " - Total Items")
+            ElseIf AllItemsInDatabaseListBox.SelectedItems.Count > 1 Then
+                ItemTallyTEXTBOX.Text = (AllItemsInDatabaseListBox.SelectedItems.Count & " - Selected")
+            End If
+        End If
+
+
+
         If AllItemsInDatabaseListBox.SelectedIndex <> -1 Then
             Dim RowNumber As Integer = AllItemsInDatabaseListBox.SelectedIndex
             If RowNumber = -1 Then Return ' do nothing
@@ -394,14 +450,17 @@ Public Class Form1
 
     End Sub
 
-    'Refreshes selected database when selected from menu bar
+    'Refreshes selected database backup file when "Backup Curent" is selected from the menu bar
     Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
         YesNoD2Style.Text = "Backup Database"
         YesNoD2Style.YesNoHeaderLABEL.Text = "CONFIRM BACKUP"
-        YesNoD2Style.YesNoMessageLABEL.Text = "You are about to backup the " & My.Computer.FileSystem.GetName(Databasefile) & " database file. This will replace any backup file that already exists for this database." & vbCrLf & vbCrLf & _
-                                              "Select " & Chr(34) & "Confirm" & Chr(34) & " to replace the old backup file or " & Chr(34) & "Cancel" & Chr(34) & " to abort.."
+        YesNoD2Style.YesNoMessageLABEL.Text = "You are about to re-save then backup the " & Chr(34) & My.Computer.FileSystem.GetName(Databasefile) & Chr(34) & " database file..." & vbCrLf & vbCrLf & " This will update the current main save file as well as refresh the backup file for this database. A new backup will be created if one does not already exist." & vbCrLf & vbCrLf & _
+                                              "Select " & Chr(34) & "Confirm" & Chr(34) & " to continue, or select " & Chr(34) & "Cancel" & Chr(34) & " to abort the function..."
         YesNoD2Style.ShowDialog()
-        If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.Yes Then Module1.BackupDatabase()
+        If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.Yes Then
+            Databasefile = Application.StartupPath & "\DataBase\" & CurrentDatabaseLABEL.Text & ".txt" : SaveItems() 'Refresh Main save File ready to copy for creating  backup (.bak) file in backup dir
+            Databasefile = CurrentDatabaseLABEL.Text : Module1.BackupDatabase() 'Refresh or create the actual backup file 
+        End If
     End Sub
 
     'SHOW HELP FILE
@@ -443,6 +502,14 @@ Public Class Form1
             For Each item In ItemNamePulldownList
                 If item <> Nothing Then SearchWordCOMBOBOX.Items.Add(item)
             Next
+            SearchWordCOMBOBOX.Select()
+        End If
+
+        'populate for Ethereal Search Field combobox dropdown
+        If UCase(SearchFieldCOMBOBOX.Text) = "ETHEREAL" Then
+            SearchWordCOMBOBOX.Items.Clear()
+            SearchWordCOMBOBOX.Items.Add("True")
+            SearchWordCOMBOBOX.Items.Add("False")
             SearchWordCOMBOBOX.Select()
         End If
 
@@ -547,6 +614,15 @@ Public Class Form1
 
     'INDEX CHANGED HANDLER FOR THE SEARCH LISTBOX - SELECTS THE SAME ITEM IN THE ALL ITEMS LISTBOX SO STATS WILL DISPLAY FOR THE SELECTED SEARCHed ITEM
     Private Sub SearchLISTBOX_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SearchLISTBOX.SelectedIndexChanged
+
+        'Sets Total Matches as TallyLabel value when only 1 item is selected else it sets TallyLabel value as SelectedItems.count
+        If SearchLISTBOX.SelectedItems.Count <= 1 Then
+            ItemTallyTEXTBOX.Text = (SearchLISTBOX.Items.Count & " - Total Matches")
+        ElseIf SearchLISTBOX.SelectedItems.Count > 1 Then
+            ItemTallyTEXTBOX.Text = (SearchLISTBOX.SelectedItems.Count & " - Selected")
+        End If
+
+
         AllItemsInDatabaseListBox.SelectedIndex = -1 'Clears mutiple selection(s) from AllItemsListbox otherwise it only seems to foucus on the topmost item 
 
         'FIX POTENTIAL BUG FOR WHEN NOTHING IS SELECTED
@@ -561,6 +637,161 @@ Public Class Form1
             MulePassTextbox.Text = Nothing
             MuleNameTextbox.Text = Nothing
         End If
+    End Sub
+
+
+    'Sets the UserListbox.SelectedItem the same as the AllItemsInDatabaseListbox.SelectedItems to trigger the items stats to be displayed
+    Private Sub UserLISTBOX_SelectedIndexChanged(sender As Object, e As EventArgs) Handles UserLISTBOX.SelectedIndexChanged
+
+        'Sets User Items as TallyLabel value when only 1 item is selected else it sets TallyLabel value as SelectedItems.count
+        If UserLISTBOX.SelectedItems.Count <= 1 Then
+            ItemTallyTEXTBOX.Text = (UserLISTBOX.Items.Count & " - User Items")
+        ElseIf UserLISTBOX.SelectedItems.Count > 1 Then
+            ItemTallyTEXTBOX.Text = (UserLISTBOX.SelectedItems.Count & " - Selected")
+        End If
+
+
+        'enables or disables the open containing database function is user list contet menu 
+        If UserLISTBOX.SelectedItems.Count = 1 Then
+            If UserListDatabase(UserLISTBOX.SelectedIndex).DatabaseFileName <> CurrentDatabaseLABEL.Text Then OpenContainingDatabaseToolStripMenuItem.Enabled = True Else OpenContainingDatabaseToolStripMenuItem.Enabled = False
+        Else
+            OpenContainingDatabaseToolStripMenuItem.Enabled = False
+        End If
+
+        'enables or disables send to trade list depending if current database holds the selected item
+        If UserLISTBOX.SelectedIndex <> -1 Then If CurrentDatabaseLABEL.Text = UserListDatabase(UserLISTBOX.SelectedIndex).DatabaseFileName Then SendToTradeListToolStripMenuItem1.Enabled = True Else SendToTradeListToolStripMenuItem1.Enabled = False
+
+        'enables or disables delete depending if current database holds the selected item
+        If UserLISTBOX.SelectedIndex <> -1 Then If CurrentDatabaseLABEL.Text = UserListDatabase(UserLISTBOX.SelectedIndex).DatabaseFileName Then DeleteItemsToolStripMenuItem1.Enabled = True Else DeleteItemsToolStripMenuItem1.Enabled = False
+
+        'enables or disables export items depending if current database holds the selected item
+        If UserLISTBOX.SelectedIndex <> -1 Then If CurrentDatabaseLABEL.Text = UserListDatabase(UserLISTBOX.SelectedIndex).DatabaseFileName Then ExportItemsToolStripMenuItem.Enabled = True Else ExportItemsToolStripMenuItem.Enabled = False
+
+
+
+
+
+        'New method like main listbox to draw stats from user list database (as i apply them to test) rev 29
+        '----------------------------------------------------------------------------------------------
+        If UserLISTBOX.SelectedIndex <> -1 Then
+            Dim RowNumber As Integer = UserLISTBOX.SelectedIndex
+            If RowNumber = -1 Then Return ' do nothing
+            If RowNumber >= 0 Then
+                RichTextBox2.Text = ""  'clears form has been some overlap of listings occur - wierd behaviour
+
+                ' MuleInfoRICHTEXTBOX.Clear() 'clears mule info textbox
+                MuleAccountTextbox.Clear()
+                MuleNameTextbox.Clear()
+                MulePassTextbox.Clear()
+
+                Dim DisplayType As String = UserListDatabase(RowNumber).ItemQuality
+                Dim count As Integer = UserListDatabase(RowNumber).ItemQuality.Length
+                If DisplayType = "Normal" Or DisplayType = "Superior" Then
+                    If UserListDatabase(RowNumber).ItemBase = "Rune" Then
+                        RichTextBox2.SelectionColor = Color.Orange
+                        RichTextBox2.SelectedText = UserListDatabase(RowNumber).ItemName & vbCrLf
+                    End If
+
+                    If UserListDatabase(RowNumber).ItemBase = "Quest" Then
+                        RichTextBox2.SelectionColor = Color.Orange
+                        RichTextBox2.SelectedText = UserListDatabase(RowNumber).ItemName & vbCrLf
+                    End If
+
+                    If UserListDatabase(RowNumber).ItemName.IndexOf("Rune") = -1 And UserListDatabase(RowNumber).ItemBase <> "Quest" Then
+                        RichTextBox2.SelectionColor = Color.White
+                        RichTextBox2.SelectedText = UserListDatabase(RowNumber).ItemName & vbCrLf
+                    End If
+                End If
+                If DisplayType = "Magic" Then
+                    RichTextBox2.SelectionColor = Color.DodgerBlue
+                    RichTextBox2.SelectedText = UserListDatabase(RowNumber).ItemName & vbCrLf
+                End If
+                If DisplayType = "Rare" Then
+                    RichTextBox2.SelectionColor = Color.Yellow
+                    RichTextBox2.SelectedText = UserListDatabase(RowNumber).ItemName & vbCrLf
+                End If
+                If DisplayType = "Crafted" Then
+                    RichTextBox2.SelectionColor = Color.DarkGoldenrod
+                    RichTextBox2.SelectedText = UserListDatabase(RowNumber).ItemName & vbCrLf
+                End If
+                If DisplayType = "Set" Then
+                    RichTextBox2.SelectionColor = Color.Green
+                    RichTextBox2.SelectedText = UserListDatabase(RowNumber).ItemName & vbCrLf
+                End If
+                If DisplayType = "Unique" Then
+                    RichTextBox2.SelectionColor = Color.BurlyWood
+                    RichTextBox2.SelectedText = UserListDatabase(RowNumber).ItemName & vbCrLf
+                End If
+
+                RichTextBox2.AppendText(vbCrLf) ' add a spacing line between item name and item stats (looks neater) ROBS EDIT
+
+                count = RichTextBox2.TextLength
+                'from this point we want to add white text for basic item info
+                If UserListDatabase(RowNumber).Defense <> Nothing Then RichTextBox2.AppendText("Defense: " & UserListDatabase(RowNumber).Defense & vbCrLf)
+                If UserListDatabase(RowNumber).ChanceToBlock <> Nothing Then RichTextBox2.AppendText("ChanceToBlock: " & UserListDatabase(RowNumber).ChanceToBlock & vbCrLf)
+                If UserListDatabase(RowNumber).OneHandDamageMax <> Nothing Then RichTextBox2.AppendText("OneHandDamage: " & UserListDatabase(RowNumber).OneHandDamageMin & " To " & UserListDatabase(RowNumber).OneHandDamageMax & vbCrLf)
+                If UserListDatabase(RowNumber).TwoHandDamageMax <> Nothing Then RichTextBox2.AppendText("TwoHandDamage: " & UserListDatabase(RowNumber).TwoHandDamageMin & " To " & UserListDatabase(RowNumber).TwoHandDamageMax & vbCrLf)
+                If UserListDatabase(RowNumber).DurabilityMin <> Nothing Then RichTextBox2.AppendText("Durability: " & UserListDatabase(RowNumber).DurabilityMin & " of " & UserListDatabase(RowNumber).DurabilityMax & vbCrLf)
+                If UserListDatabase(RowNumber).RequiredStrength <> Nothing Then RichTextBox2.AppendText("Required Strength: " & UserListDatabase(RowNumber).RequiredStrength & vbCrLf)
+                If UserListDatabase(RowNumber).RequiredDexterity <> Nothing Then RichTextBox2.AppendText("Required Dexterity: " & UserListDatabase(RowNumber).RequiredDexterity & vbCrLf)
+                If UserListDatabase(RowNumber).RequiredLevel <> Nothing Then RichTextBox2.AppendText("Required Level: " & UserListDatabase(RowNumber).RequiredLevel & vbCrLf)
+
+                'ROBS EDIT - includes attack class in the main stat display  as opposed to the unique attibutes block?
+                If UserListDatabase(RowNumber).AttackClass <> Nothing Then RichTextBox2.AppendText(UserListDatabase(RowNumber).AttackClass & " Class") : If UserListDatabase(RowNumber).AttackSpeed <> Nothing Then RichTextBox2.AppendText(" - " & UserListDatabase(RowNumber).AttackSpeed & vbCrLf) Else RichTextBox2.AppendText(vbCrLf)
+
+                RichTextBox2.AppendText(vbCrLf) ' add a spacing line between item stats and unique attributes (looks neater) ROBS EDIT
+
+                Dim count2 As Integer = RichTextBox2.TextLength - count
+                RichTextBox2.Select(count, count2)
+                RichTextBox2.SelectionColor = Color.White
+
+                'from this point we dont need to add colors - Default Blue
+                If UserListDatabase(RowNumber).Stat1 <> Nothing Then RichTextBox2.AppendText(UserListDatabase(RowNumber).Stat1 & vbCrLf)
+                If UserListDatabase(RowNumber).Stat2 <> Nothing Then RichTextBox2.AppendText(UserListDatabase(RowNumber).Stat2 & vbCrLf)
+                If UserListDatabase(RowNumber).Stat3 <> Nothing Then RichTextBox2.AppendText(UserListDatabase(RowNumber).Stat3 & vbCrLf)
+                If UserListDatabase(RowNumber).Stat4 <> Nothing Then RichTextBox2.AppendText(UserListDatabase(RowNumber).Stat4 & vbCrLf)
+                If UserListDatabase(RowNumber).Stat5 <> Nothing Then RichTextBox2.AppendText(UserListDatabase(RowNumber).Stat5 & vbCrLf)
+                If UserListDatabase(RowNumber).Stat6 <> Nothing Then RichTextBox2.AppendText(UserListDatabase(RowNumber).Stat6 & vbCrLf)
+                If UserListDatabase(RowNumber).Stat7 <> Nothing Then RichTextBox2.AppendText(UserListDatabase(RowNumber).Stat7 & vbCrLf)
+                If UserListDatabase(RowNumber).Stat8 <> Nothing Then RichTextBox2.AppendText(UserListDatabase(RowNumber).Stat8 & vbCrLf)
+                If UserListDatabase(RowNumber).Stat9 <> Nothing Then RichTextBox2.AppendText(UserListDatabase(RowNumber).Stat9 & vbCrLf)
+                If UserListDatabase(RowNumber).Stat10 <> Nothing Then RichTextBox2.AppendText(UserListDatabase(RowNumber).Stat10 & vbCrLf)
+                If UserListDatabase(RowNumber).Stat11 <> Nothing Then RichTextBox2.AppendText(UserListDatabase(RowNumber).Stat11 & vbCrLf)
+                If UserListDatabase(RowNumber).Stat12 <> Nothing Then RichTextBox2.AppendText(UserListDatabase(RowNumber).Stat12 & vbCrLf)
+                If UserListDatabase(RowNumber).Stat13 <> Nothing Then RichTextBox2.AppendText(UserListDatabase(RowNumber).Stat13 & vbCrLf)
+                If UserListDatabase(RowNumber).Stat14 <> Nothing Then RichTextBox2.AppendText(UserListDatabase(RowNumber).Stat14 & vbCrLf)
+                If UserListDatabase(RowNumber).Stat15 <> Nothing Then RichTextBox2.AppendText(UserListDatabase(RowNumber).Stat15 & vbCrLf)
+                MuleAccountTextbox.Text = UserListDatabase(RowNumber).MuleAccount
+                MuleNameTextbox.Text = UserListDatabase(RowNumber).MuleName
+                ItemsDatabaseFileNameTEXTBOX.Text = UserListDatabase(RowNumber).DatabaseFileName
+
+                'converts pass to '***' with function if hide pass is set
+                If KeepPassPrivate = True Then MulePassTextbox.Text = HidePass(UserListDatabase(RowNumber).MulePass) Else MulePassTextbox.Text = UserListDatabase(RowNumber).MulePass
+
+            End If
+            RichTextBox2.SelectAll()
+            RichTextBox2.SelectionAlignment = HorizontalAlignment.Center
+            PictureBox1.Load("Skins\" + ItemImageList(UserListDatabase(RowNumber).ItemImage) + ".jpg")
+        End If
+
+
+
+
+
+
+        'Old Method Used To Ref current database
+        '-----------------------------------------------------------------------------------------------
+        'AllItemsInDatabaseListBox.SelectedIndex = -1
+        'If UserLISTBOX.SelectedIndex <> -1 Then
+        'AllItemsInDatabaseListBox.SelectedIndex = UserListReferenceList(UserLISTBOX.SelectedIndex)
+        'Else
+        'CLEAN OUT OLD ITEM STATS
+        'PictureBox1.Image = Nothing
+        'RichTextBox2.Text = Nothing
+        'MuleAccountTextbox.Text = Nothing
+        'MulePassTextbox.Text = Nothing
+        'MuleNameTextbox.Text = Nothing
+        'End If
     End Sub
 
     'PAUSE AND RESTART AUTO IMPORT TIMER HANDLER
@@ -578,6 +809,7 @@ Public Class Form1
         End If
     End Sub
 
+    'Neds Secret Audo ditty...
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
         My.Computer.Audio.Play(My.Resources.diablotaunt1, AudioPlayMode.Background)
         PictureBox2.Visible = False
@@ -595,7 +827,13 @@ Public Class Form1
         ListControlTabBUTTON.BackColor = Color.DimGray
         SearchListControlTabBUTTON.BackColor = Color.Black
         TradesListControlTabBUTTON.BackColor = Color.Black
+        UserRefControlTabBUTTON.BackColor = Color.Black
         ItemTallyTEXTBOX.Text = AllItemsInDatabaseListBox.Items.Count & " - Total Items"
+
+        'ensure dabase filename is hidden for focusing on main list box
+        ItemsDatabaseHeadingTEXTBOX.Hide()
+        ItemsDatabaseFileNameTEXTBOX.Hide()
+
     End Sub
 
     'this button selects tab page 1 and colors button to show all search listbox on page 1 and displays total search matches value to textbox2
@@ -604,16 +842,28 @@ Public Class Form1
         SearchListControlTabBUTTON.BackColor = Color.DimGray
         ListControlTabBUTTON.BackColor = Color.Black
         TradesListControlTabBUTTON.BackColor = Color.Black
+        UserRefControlTabBUTTON.BackColor = Color.Black
         ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Matches"
+
+        'ensure dabase filename is hidden for focusing on main list box
+        ItemsDatabaseHeadingTEXTBOX.Hide()
+        ItemsDatabaseFileNameTEXTBOX.Hide()
+
     End Sub
 
-    'selects user list tab
+    'selects Tradelist list tab
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles TradesListControlTabBUTTON.Click
         ListboxTABCONTROL.SelectTab(2)
         SearchListControlTabBUTTON.BackColor = Color.Black
         ListControlTabBUTTON.BackColor = Color.Black
+        UserRefControlTabBUTTON.BackColor = Color.Black
         TradesListControlTabBUTTON.BackColor = Color.DimGray
 
+        'ensure dabase filename is hidden for focusing on main list box
+        ItemsDatabaseHeadingTEXTBOX.Hide()
+        ItemsDatabaseFileNameTEXTBOX.Hide()
+
+        
         'SHORT ROUTINE TO COUNT TRADE ITEMS IN RICHTEXT3 BY COUNTING THE GAPS BETWEEN THE ITEMS (SUBTRACTS 1 DUE TO EMPTY LINE AT END OF TEXT) 
         Dim TradeItemCounter As Integer = 0
         For Each item In RichTextBox3.Lines
@@ -623,8 +873,30 @@ Public Class Form1
         ItemTallyTEXTBOX.Text = (TradeItemCounter - 1) & " - Trade Entries"
     End Sub
 
+    'Selects User List tab
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles UserRefControlTabBUTTON.Click
+        ListboxTABCONTROL.SelectTab(3)
+        SearchListControlTabBUTTON.BackColor = Color.Black
+        ListControlTabBUTTON.BackColor = Color.Black
+        TradesListControlTabBUTTON.BackColor = Color.Black
+        UserRefControlTabBUTTON.BackColor = Color.DimGray
+        ItemTallyTEXTBOX.Text = (UserLISTBOX.Items.Count & " - User Entries")
+
+        ItemsDatabaseHeadingTEXTBOX.Show()
+        ItemsDatabaseFileNameTEXTBOX.Show()
+
+    End Sub
+
     ' This restores the database from its backup file (if there is one ofc)
     Private Sub RestoreBackupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RestoreBackupToolStripMenuItem.Click
+
+        If LoggerRunning = True Then
+            Mymessages = "Please wait File in use, Logger Running" : MyMessageBox()
+            Return
+        End If
+        ImportTimer.Stop()
+
+
         'SET D2 DIALOG TITLE AND MESSAGES
         YesNoD2Style.Text = "Restore Database From Backup"
         YesNoD2Style.YesNoHeaderLABEL.Text = "CONFIRM TO RESTORE BACKUP"
@@ -664,6 +936,7 @@ Public Class Form1
         'cancel backup restoration
         If YesNoD2Style.DialogResult = Windows.Forms.DialogResult.No Then
         End If
+        ImportTimer.Start()
     End Sub
 
     'Closing Form1 (exit Application) Event Handler. Throws To exit confirmation message. also handles saves and backups if set to do so
@@ -671,8 +944,14 @@ Public Class Form1
         ClosingAppForm.ShowDialog()
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.No Then e.Cancel = True : Return
         If ClosingAppForm.DialogResult = Windows.Forms.DialogResult.Yes Then
-            If saveonexit = True Then SaveItems()
-            If backuponexit = True Then Module1.BackupDatabase()
+
+            'This little ditty takes the current open database filename from the form 1 label (Top Right mewnu bar) and adds relevant filepath 
+            'The Databasefile Var is used as a floating user reference not an app file system  Var so taking the  filename from label is safer 
+            'method when working with multiple database especially as new loads alter Databasefile differently than the standard "open Database" proceedure
+            'ROB (Ammended Rev29)
+
+            If saveonexit = True Then Databasefile = Application.StartupPath & "\DataBase\" & CurrentDatabaseLABEL.Text & ".txt" : SaveItems()
+            If backuponexit = True Then Databasefile = CurrentDatabaseLABEL.Text : Module1.BackupDatabase()
         End If
 
     End Sub
@@ -707,11 +986,12 @@ Public Class Form1
 
     'This Does The Sort Database Command From Pull Down "items" Menu
     Private Sub ToolStripMenuItem3_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem3.Click
+        ItemTallyTEXTBOX.Text = ("Sorting A to Z)")
         Objects.Sort(Function(x, y) x.ItemName.CompareTo(y.ItemName))
         Display_Items()
     End Sub
 
-    'ALL ITEMS LISTBOX CONTEXT MENU STRIP DISPLAY ROUTINE
+    'ALL ITEMS LISTBOX CONTEXT MENU WHITE SPACE ROUTINE (only dispays context menu when pointer is right clicked on a selected item)
     Private Sub AllItemsInDatabaseListBox_MouseDown(sender As Object, e As MouseEventArgs) Handles AllItemsInDatabaseListBox.MouseDown
         If e.Button = Windows.Forms.MouseButtons.Right Then
             If AllItemsInDatabaseListBox.SelectedIndex > -1 Then
@@ -723,7 +1003,7 @@ Public Class Form1
         End If
     End Sub
 
-    'Search Listbox Context MenuStrip display routine 
+    'Search Listbox Context MenuStrip White Space Routine (only dispays context menu when pointer is right clicked on a selected item) 
     Private Sub SearchLISTBOX_MouseDown(sender As Object, e As MouseEventArgs) Handles SearchLISTBOX.MouseDown
         If e.Button = Windows.Forms.MouseButtons.Right Then
             If SearchLISTBOX.Items.Count > 0 Then
@@ -732,7 +1012,7 @@ Public Class Form1
         End If
     End Sub
 
-    'trade entries Context MenuStrip display routine 
+    'Trade Entries Context MenuStrip White Space Routine (only dispays context menu when pointer is right clicked on a selected item) 
     Private Sub RichTextBox3_MouseDown(sender As Object, e As MouseEventArgs) Handles RichTextBox3.MouseDown
         If e.Button = Windows.Forms.MouseButtons.Right Then
             If RichTextBox3.Text <> Nothing Then
@@ -740,6 +1020,16 @@ Public Class Form1
             End If
         End If
     End Sub
+
+    'User List Context MenuStrip White Space Routine (only dispays context menu when pointer is right clicked on a selected item) 
+    Private Sub UserLISTBOX_MouseDown(sender As Object, e As MouseEventArgs) Handles UserLISTBOX.MouseDown
+        If e.Button = Windows.Forms.MouseButtons.Right Then
+            If UserLISTBOX.Items.Count > 0 Then
+                Me.UserListCONTEXTMENUSTRIP.Show(Control.MousePosition)
+            End If
+        End If
+    End Sub
+
 
     'BUTTON CLICK HANDLERS FOR ALL ITEMS CONTEXT POPUP MENU OPTIONS
 
@@ -749,12 +1039,12 @@ Public Class Form1
     End Sub
 
     'Edit Item Menu Option All Items Context Menu
-    Private Sub EditItemToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditItemToolStripMenuItem.Click
+    Private Sub EditToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EditToolStripMenuItem.Click
         EditItem()
     End Sub
 
     'Delete Item(s) Menu Option
-    Private Sub DeleteItemToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DeleteItemToolStripMenuItem1.Click
+    Private Sub DeleteToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem1.Click
         If LoggerRunning = True Then
             Mymessages = "Please wait Import in progress" : MyMessageBox()
             Return
@@ -762,13 +1052,17 @@ Public Class Form1
         ImportTimer.Stop()
         DeleteItem()
         If Button3.Text = "Timer Stop" Then ImportTimer.Start()
+
     End Sub
 
-    Private Sub SortToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SortToolStripMenuItem.Click
+
+    'All Items context menu sort function
+    Private Sub SortListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SortListToolStripMenuItem.Click
+        ItemTallyTEXTBOX.Text = ("Sorting A to Z)")
         Objects.Sort(Function(x, y) x.ItemName.CompareTo(y.ItemName))
-        Display_Items() ' refresh list after sorting
-    End Sub
+        Display_Items()
 
+    End Sub
     'CLEARS THE SEARCH LIST SELECTIONS (HIGHLIGHTED ITEMS IN SEARCHLIST)
     Private Sub ClearSearchListToolStripMenuItem_Click(sender As Object, e As EventArgs)
         SearchLISTBOX.SelectedItem = -1
@@ -787,6 +1081,7 @@ Public Class Form1
         'check for backup on edits set to true if so then backup now
         If Settings.BackupOnEditsCHECKBOX.Checked = True Then Module1.BackupDatabase()
         If AllItemsInDatabaseListBox.SelectedIndices.Count > 0 Then
+
             For index = AllItemsInDatabaseListBox.SelectedIndices.Count - 1 To 0 Step -1
                 Dim a As Integer = AllItemsInDatabaseListBox.SelectedIndices(index)
                 AllItemsInDatabaseListBox.Items.RemoveAt(a)
@@ -821,7 +1116,7 @@ Public Class Form1
     End Sub
 
     'Deletes items form search list by selecting each item and deleting it from the main list
-    Private Sub DeleteItemsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteItemsToolStripMenuItem.Click
+    Private Sub DeleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteToolStripMenuItem.Click
         If LoggerRunning = True Then
             Mymessages = "Please wait Import in progress" : MyMessageBox()
             Return
@@ -829,6 +1124,7 @@ Public Class Form1
         ImportTimer.Stop()
         DeleteSearchItems() 'branch to searchdete sub
         If Button3.Text = "Timer Stop" Then ImportTimer.Start()
+
     End Sub
 
     'EDIT ITEM BUTTON CLICK HANDLER - BRANCHES TO EDIT ITEM FORM
@@ -855,7 +1151,7 @@ Public Class Form1
     End Sub
 
     'SENDS HIGHLIGHTED ITEMS TO THE TRADE LIST
-    Private Sub AddToUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddToUserListToolStripMenuItem.Click
+    Private Sub SendToTradeListToolStripMenuItem3_Click(sender As Object, e As EventArgs) Handles SendToTradeListToolStripMenuItem3.Click
 
         If LoggerRunning = True Then
             Mymessages = "Please wait Import in progress" : MyMessageBox()
@@ -902,25 +1198,43 @@ Public Class Form1
         If TradeItemCounter = 0 Then TradeItemCounter = 1
         ItemTallyTEXTBOX.Text = (TradeItemCounter - 1) & " - Trade Entries"
         If Button3.Text = "Timer Stop" Then ImportTimer.Start()
+
     End Sub
+    'ADD THE SELECTED ITEM(s) TO THE TRADE LIST FROM SEARCH LIST
 
-    'ADD THE SELECTED ITEM TO THE TRADE LIST FROM SEARCH LIST
-    Private Sub AddItemToTradeListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddItemToTradeListToolStripMenuItem.Click
 
-        'CHECK FOR LOGGER ACTIVE
+    Private Sub SendToTradeListToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles SendToTradeListToolStripMenuItem2.Click
+
+
         If LoggerRunning = True Then
             Mymessages = "Please wait Import in progress" : MyMessageBox()
             Return
         End If
-
         ImportTimer.Stop()
-        If SearchLISTBOX.Items.Count > 0 Then
 
-            'ADD THE SELECTED ITEM
-            Dim a = SearchReferenceList(SearchLISTBOX.SelectedIndex)
-            SendToTradeList(a)
+        If SearchLISTBOX.SelectedIndices.Count > 0 Then
+            Dim a As Integer = 0
+            Dim count As Integer = 0
+            DupeCountProgressForm.Show() : DupeCountProgressForm.DupePROGRESSBAR.Value = 0 'show and reset progress bar
+            For index = 0 To SearchLISTBOX.SelectedIndices.Count - 1
+
+                'CALCULATE PROGRESS BAR
+                DupeCountProgressForm.DupePROGRESSBAR.Value = Int((count / SearchLISTBOX.Items.Count) * 100)
+                count = count + 1
+                a = SearchLISTBOX.SelectedIndices(index)
+
+                Dim Temp = Objects(a).ItemName
+                If Objects(a).ItemBase = "Rune" Or Objects(a).ItemBase = "Gem" Or Objects(a).ItemName.IndexOf("Token") > -1 Or Objects(a).ItemName.IndexOf("Key of") > -1 Or Objects(a).ItemName.IndexOf("Essence") > -1 Then
+                    If Objects(a).ItemName.IndexOf("Token") > -1 Then Temp = "Token"
+                    RichTextBox3.AppendText(Temp & vbCrLf & vbCrLf)
+                Else
+                    SendToTradeList(a)
+                End If
+            Next
+            'SearchLISTBOX.SelectedIndex = -1 'why?
         End If
-        AllItemsInDatabaseListBox.SelectedIndex = -1
+
+        DupeCountProgressForm.Close()
         DupesList()
 
         'SET TRADELIST HIGHLIGHT AND SELECT TRADE LIST TAB
@@ -937,10 +1251,17 @@ Public Class Form1
         If TradeItemCounter = 0 Then TradeItemCounter = 1
         ItemTallyTEXTBOX.Text = (TradeItemCounter - 1) & " - Trade Entries"
         If Button3.Text = "Timer Stop" Then ImportTimer.Start()
+
+
+
+     
+
+
     End Sub
 
+
     'ADD ALL ITEMS TO TRADE LIST FROM SEARCH LIST
-    Private Sub AddAllItemsToUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddAllItemsToUserListToolStripMenuItem.Click
+    Private Sub AddAllItemsToUserListToolStripMenuItem_Click(sender As Object, e As EventArgs)
 
         'CHECK FOR LOGGER ACTIVE
         If LoggerRunning = True Then
@@ -1020,7 +1341,13 @@ Public Class Form1
         Next
     End Sub
 
-    'clears the trade RICHTEXT on items menu bar selection
+    'Clears the User List on Menu Bar selection
+    Private Sub ClearUserListToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ClearUserListToolStripMenuItem1.Click
+        UserLISTBOX.Items.Clear()
+    End Sub
+
+
+    'clears the trade RICHTEXT on menu bar selection
     Private Sub ClearTradeListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearTradeListToolStripMenuItem.Click
         RichTextBox3.Clear()
     End Sub
@@ -1101,7 +1428,7 @@ Public Class Form1
     End Sub
 
     'MOVES SELECECTED ITEMS IN SEARCH MATCHES LIST OVER TO A NEW DATABASE OR CREATE A NEW ONE (NOS SURE WHAT WORDING WAS BETTER: "EXPORT ITEM(S)" OR "MOVE ITEM(S)"
-    Private Sub ExportSelectedItemsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExportSelectedItemsToolStripMenuItem.Click
+    Private Sub ExportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExportToolStripMenuItem.Click
 
         If LoggerRunning = True Then 'Check for logger running .... as usual lol
             Mymessages = "Please wait Import in progress" : MyMessageBox()
@@ -1111,6 +1438,7 @@ Public Class Form1
         ImportTimer.Stop()
         If SearchLISTBOX.SelectedIndex <> -1 Then MoveItems.ShowDialog() ' MOVE/EXPORT ROUTINES ARE ALL IN THE "MoveItems" CODE FORM
         If Button3.Text = "Timer Stop" Then ImportTimer.Start()
+
     End Sub
 
     'DELETES SELECTED ITEMS FROM THE SEARCH LIST
@@ -1140,8 +1468,8 @@ Public Class Form1
         SearchLISTBOX.SelectedIndex = FocusOnExit
     End Sub
 
-   'REMOVE MULTIPLE ITEMS FROM SEARCH ITEM LIST - DOES NOT DELETE ITMES ONLY REMOVES THEM FROM THE SEARCH LIST
-    Private Sub RemoveSelectedItemssFromSearchListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RemoveSelectedItemssFromSearchListToolStripMenuItem.Click
+    'REMOVES MULTIPLE ITEMS FROM SEARCH ITEM LIST - DOES NOT DELETE ITMES ONLY REMOVES THEM FROM THE SEARCH LIST
+    Private Sub ClearToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ClearToolStripMenuItem1.Click
         If LoggerRunning = True Then '                                                                      CHECK FOR RUNNING AUTOLOG ROUTINE
             Mymessages = "Please wait Import in progress" : MyMessageBox()
             Return
@@ -1165,8 +1493,8 @@ Public Class Form1
         ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Items"
 
         If Button3.Text = "Timer Stop" Then ImportTimer.Start() '                                              RESTART LOGGER
-    End Sub
 
+    End Sub
     'CLEARS ALL ITEMS OUT OF THE SEARCH LIST - CONTEXT MENU OPTION
     Private Sub ClearSearchListToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles ClearSearchListToolStripMenuItem.Click
         SearchLISTBOX.Items.Clear()
@@ -1177,6 +1505,412 @@ Public Class Form1
     Private Sub ClearSearchListToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ClearSearchListToolStripMenuItem1.Click
         SearchLISTBOX.Items.Clear()
         ItemTallyTEXTBOX.Text = SearchLISTBOX.Items.Count & " - Total Items"
+
+    End Sub
+
+
+    'Sets up SEARCH LIST context menu commands to enable or disable relevant to when they are usable such as enable delete only if items exist and are selected
+    Private Sub SearchListboxCONTEXTMENUSTRIP_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles SearchListboxCONTEXTMENUSTRIP.Opening
+
+        'Search -> Selected items
+        If SearchLISTBOX.SelectedIndex = -1 Then SelectedItemsToolStripMenuItem.Enabled = False
+        If SearchLISTBOX.SelectedIndex > -1 Then SelectedItemsToolStripMenuItem.Enabled = True
+
+        'Search -> Send All To trade List
+        'If SearchLISTBOX.Items.Count = 0 Then AddAllItemsToUserListToolStripMenuItem.Enabled = False
+        'If SearchLISTBOX.Items.Count > 0 Then AddAllItemsToUserListToolStripMenuItem.Enabled = True
+
+        'Search -> Clear Search List
+        If SearchLISTBOX.Items.Count = 0 Then ClearSearchListToolStripMenuItem.Enabled = False
+        If SearchLISTBOX.Items.Count > 0 Then ClearSearchListToolStripMenuItem.Enabled = True
+    End Sub
+
+    'Sets up USER LIST context menu commands to enable or disable relevant to when they are usable
+    Private Sub UserListCONTEXTMENUSTRIP_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles UserListCONTEXTMENUSTRIP.Opening
+
+        'User List -> Clear User List
+        If UserLISTBOX.Items.Count = 0 Then ClearItemsToolStripMenuItem.Enabled = False
+        If UserLISTBOX.Items.Count > 0 Then ClearItemsToolStripMenuItem.Enabled = True
+
+        'User List -> Selected Items
+        If UserLISTBOX.Items.Count = 0 Then SendToTradeListToolStripMenuItem.Enabled = False
+        If UserLISTBOX.Items.Count > 0 Then SendToTradeListToolStripMenuItem.Enabled = True
+
+    End Sub
+
+    'Sets up DATABASE context menu commands to enable or disable relevant to when they are usable
+    Private Sub ItemFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ItemFileToolStripMenuItem.Click
+
+        ' Database -> Save
+        If CurrentDatabaseLABEL.Text = Nothing Then CloseToolStripMenuItem.Enabled = False
+        If CurrentDatabaseLABEL.Text <> Nothing Then CloseToolStripMenuItem.Enabled = True
+    End Sub
+
+
+    'Sends selected items to users reference list (: sigs pluck list :)
+    Private Sub SendToUserListToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SendToUserListToolStripMenuItem.Click
+
+        'CHECK FOR LOGGER ACTIVE
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+        ImportTimer.Stop()
+
+        If SearchLISTBOX.Items.Count > 0 And SearchLISTBOX.SelectedIndex <> -1 Then 'Check items exist in the search list - Only does the following if they do
+            For Each ItemIndex In SearchLISTBOX.SelectedIndices                    'Setup Loop to 
+                UserLISTBOX.Items.Add(SearchLISTBOX.Items(ItemIndex))               'Add item name to new User List
+                UserListReferenceList.Add(SearchReferenceList(ItemIndex))           'Add Item index value(in object database) for stats reference
+
+                Dim AddToUserList As New UserObjects
+
+                AddToUserList.ItemName = Objects(SearchReferenceList(ItemIndex)).ItemName
+                AddToUserList.ItemBase = Objects(SearchReferenceList(ItemIndex)).ItemBase
+                AddToUserList.ItemQuality = Objects(SearchReferenceList(ItemIndex)).ItemQuality
+                AddToUserList.RequiredCharacter = Objects(SearchReferenceList(ItemIndex)).RequiredCharacter
+                AddToUserList.EtherealItem = Objects(SearchReferenceList(ItemIndex)).EtherealItem
+                AddToUserList.Sockets = Objects(SearchReferenceList(ItemIndex)).Sockets
+                AddToUserList.RuneWord = Objects(SearchReferenceList(ItemIndex)).RuneWord
+                AddToUserList.ThrowDamageMin = Objects(SearchReferenceList(ItemIndex)).ThrowDamageMin
+                AddToUserList.ThrowDamageMax = Objects(SearchReferenceList(ItemIndex)).ThrowDamageMax
+                AddToUserList.OneHandDamageMin = Objects(SearchReferenceList(ItemIndex)).OneHandDamageMin
+                AddToUserList.OneHandDamageMax = Objects(SearchReferenceList(ItemIndex)).OneHandDamageMax
+                AddToUserList.TwoHandDamageMin = Objects(SearchReferenceList(ItemIndex)).TwoHandDamageMin
+                AddToUserList.TwoHandDamageMax = Objects(SearchReferenceList(ItemIndex)).TwoHandDamageMax
+                AddToUserList.Defense = Objects(SearchReferenceList(ItemIndex)).Defense
+                AddToUserList.ChanceToBlock = Objects(SearchReferenceList(ItemIndex)).ChanceToBlock
+                AddToUserList.QuantityMin = Objects(SearchReferenceList(ItemIndex)).QuantityMin
+                AddToUserList.QuantityMax = Objects(SearchReferenceList(ItemIndex)).QuantityMax
+                AddToUserList.DurabilityMin = Objects(SearchReferenceList(ItemIndex)).DurabilityMin
+                AddToUserList.DurabilityMax = Objects(SearchReferenceList(ItemIndex)).DurabilityMax
+                AddToUserList.RequiredStrength = Objects(SearchReferenceList(ItemIndex)).RequiredStrength
+                AddToUserList.RequiredDexterity = Objects(SearchReferenceList(ItemIndex)).RequiredDexterity
+                AddToUserList.RequiredLevel = Objects(SearchReferenceList(ItemIndex)).RequiredLevel
+                AddToUserList.AttackClass = Objects(SearchReferenceList(ItemIndex)).AttackClass
+                AddToUserList.AttackSpeed = Objects(SearchReferenceList(ItemIndex)).AttackSpeed
+                AddToUserList.Stat1 = Objects(SearchReferenceList(ItemIndex)).Stat1
+                AddToUserList.Stat2 = Objects(SearchReferenceList(ItemIndex)).Stat2
+                AddToUserList.Stat3 = Objects(SearchReferenceList(ItemIndex)).Stat3
+                AddToUserList.Stat4 = Objects(SearchReferenceList(ItemIndex)).Stat4
+                AddToUserList.Stat5 = Objects(SearchReferenceList(ItemIndex)).Stat5
+                AddToUserList.Stat6 = Objects(SearchReferenceList(ItemIndex)).Stat6
+                AddToUserList.Stat7 = Objects(SearchReferenceList(ItemIndex)).Stat7
+                AddToUserList.Stat8 = Objects(SearchReferenceList(ItemIndex)).Stat8
+                AddToUserList.Stat9 = Objects(SearchReferenceList(ItemIndex)).Stat9
+                AddToUserList.Stat10 = Objects(SearchReferenceList(ItemIndex)).Stat10
+                AddToUserList.Stat11 = Objects(SearchReferenceList(ItemIndex)).Stat11
+                AddToUserList.Stat12 = Objects(SearchReferenceList(ItemIndex)).Stat12
+                AddToUserList.Stat13 = Objects(SearchReferenceList(ItemIndex)).Stat13
+                AddToUserList.Stat14 = Objects(SearchReferenceList(ItemIndex)).Stat14
+                AddToUserList.Stat15 = Objects(SearchReferenceList(ItemIndex)).Stat15
+                AddToUserList.MuleName = Objects(SearchReferenceList(ItemIndex)).MuleName
+                AddToUserList.MuleAccount = Objects(SearchReferenceList(ItemIndex)).MuleAccount
+                AddToUserList.MulePass = Objects(SearchReferenceList(ItemIndex)).MulePass
+                AddToUserList.PickitBot = Objects(SearchReferenceList(ItemIndex)).PickitBot
+                AddToUserList.UserReference = Objects(SearchReferenceList(ItemIndex)).UserReference
+                AddToUserList.ItemImage = Objects(SearchReferenceList(ItemIndex)).ItemImage
+                AddToUserList.DatabaseFileName = CurrentDatabaseLABEL.Text
+
+                UserListDatabase.Add(AddToUserList)
+            Next
+
+            UserLISTBOX.SelectedItem = SearchLISTBOX.SelectedItem                   'Select first moved item placed in user list
+            ListboxTABCONTROL.SelectTab(3)                                          'Auto Select User List Tab
+            SearchListControlTabBUTTON.BackColor = Color.Black                      'Next 4 lines sets button colors to suit Auto User Tab Selection
+            ListControlTabBUTTON.BackColor = Color.Black
+            TradesListControlTabBUTTON.BackColor = Color.Black
+            UserRefControlTabBUTTON.BackColor = Color.DimGray
+
+            ItemsDatabaseHeadingTEXTBOX.Show()
+            ItemsDatabaseFileNameTEXTBOX.Show()
+
+        End If
+        ImportTimer.Start()
+    End Sub
+
+  
+
+
+    Private Sub SendAllToUserListToolStripMenuItem_Click(sender As Object, e As EventArgs)
+        'CHECK FOR LOGGER ACTIVE
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+        ImportTimer.Stop()
+
+        If SearchLISTBOX.Items.Count > 0 Then 'Check items exist in the search list 
+            Dim ItemIndex As Integer = 0                                            'Setup a variable to count each item location (cant remember iterator method)
+            'For Each Item In SearchLISTBOX.Items                                    'Setup Loop to 
+            Do Until ItemIndex = SearchLISTBOX.Items.Count
+                Dim AddToUserList As New UserObjects
+
+                AddToUserList.ItemName = Objects(SearchReferenceList(ItemIndex)).ItemName
+                AddToUserList.ItemBase = Objects(SearchReferenceList(ItemIndex)).ItemBase
+                AddToUserList.ItemQuality = Objects(SearchReferenceList(ItemIndex)).ItemQuality
+                AddToUserList.RequiredCharacter = Objects(SearchReferenceList(ItemIndex)).RequiredCharacter
+                AddToUserList.EtherealItem = Objects(SearchReferenceList(ItemIndex)).EtherealItem
+                AddToUserList.Sockets = Objects(SearchReferenceList(ItemIndex)).Sockets
+                AddToUserList.RuneWord = Objects(SearchReferenceList(ItemIndex)).RuneWord
+                AddToUserList.ThrowDamageMin = Objects(SearchReferenceList(ItemIndex)).ThrowDamageMin
+                AddToUserList.ThrowDamageMax = Objects(SearchReferenceList(ItemIndex)).ThrowDamageMax
+                AddToUserList.OneHandDamageMin = Objects(SearchReferenceList(ItemIndex)).OneHandDamageMin
+                AddToUserList.OneHandDamageMax = Objects(SearchReferenceList(ItemIndex)).OneHandDamageMax
+                AddToUserList.TwoHandDamageMin = Objects(SearchReferenceList(ItemIndex)).TwoHandDamageMin
+                AddToUserList.TwoHandDamageMax = Objects(SearchReferenceList(ItemIndex)).TwoHandDamageMax
+                AddToUserList.Defense = Objects(SearchReferenceList(ItemIndex)).Defense
+                AddToUserList.ChanceToBlock = Objects(SearchReferenceList(ItemIndex)).ChanceToBlock
+                AddToUserList.QuantityMin = Objects(SearchReferenceList(ItemIndex)).QuantityMin
+                AddToUserList.QuantityMax = Objects(SearchReferenceList(ItemIndex)).QuantityMax
+                AddToUserList.DurabilityMin = Objects(SearchReferenceList(ItemIndex)).DurabilityMin
+                AddToUserList.DurabilityMax = Objects(SearchReferenceList(ItemIndex)).DurabilityMax
+                AddToUserList.RequiredStrength = Objects(SearchReferenceList(ItemIndex)).RequiredStrength
+                AddToUserList.RequiredDexterity = Objects(SearchReferenceList(ItemIndex)).RequiredDexterity
+                AddToUserList.RequiredLevel = Objects(SearchReferenceList(ItemIndex)).RequiredLevel
+                AddToUserList.AttackClass = Objects(SearchReferenceList(ItemIndex)).AttackClass
+                AddToUserList.AttackSpeed = Objects(SearchReferenceList(ItemIndex)).AttackSpeed
+                AddToUserList.Stat1 = Objects(SearchReferenceList(ItemIndex)).Stat1
+                AddToUserList.Stat2 = Objects(SearchReferenceList(ItemIndex)).Stat2
+                AddToUserList.Stat3 = Objects(SearchReferenceList(ItemIndex)).Stat3
+                AddToUserList.Stat4 = Objects(SearchReferenceList(ItemIndex)).Stat4
+                AddToUserList.Stat5 = Objects(SearchReferenceList(ItemIndex)).Stat5
+                AddToUserList.Stat6 = Objects(SearchReferenceList(ItemIndex)).Stat6
+                AddToUserList.Stat7 = Objects(SearchReferenceList(ItemIndex)).Stat7
+                AddToUserList.Stat8 = Objects(SearchReferenceList(ItemIndex)).Stat8
+                AddToUserList.Stat9 = Objects(SearchReferenceList(ItemIndex)).Stat9
+                AddToUserList.Stat10 = Objects(SearchReferenceList(ItemIndex)).Stat10
+                AddToUserList.Stat11 = Objects(SearchReferenceList(ItemIndex)).Stat11
+                AddToUserList.Stat12 = Objects(SearchReferenceList(ItemIndex)).Stat12
+                AddToUserList.Stat13 = Objects(SearchReferenceList(ItemIndex)).Stat13
+                AddToUserList.Stat14 = Objects(SearchReferenceList(ItemIndex)).Stat14
+                AddToUserList.Stat15 = Objects(SearchReferenceList(ItemIndex)).Stat15
+                AddToUserList.MuleName = Objects(SearchReferenceList(ItemIndex)).MuleName
+                AddToUserList.MuleAccount = Objects(SearchReferenceList(ItemIndex)).MuleAccount
+                AddToUserList.MulePass = Objects(SearchReferenceList(ItemIndex)).MulePass
+                AddToUserList.PickitBot = Objects(SearchReferenceList(ItemIndex)).PickitBot
+                AddToUserList.UserReference = Objects(SearchReferenceList(ItemIndex)).UserReference
+                AddToUserList.ItemImage = Objects(SearchReferenceList(ItemIndex)).ItemImage
+                AddToUserList.DatabaseFileName = CurrentDatabaseLABEL.Text
+
+                UserListDatabase.Add(AddToUserList)
+                ItemIndex = ItemIndex + 1
+            Loop
+            'Next
+
+            'UserListDatabase.Sort(Function(x, y) x.ItemName.CompareTo(y.ItemName)) 'sort list alphabetically after assigning objects
+
+
+            For x = 0 To UserListDatabase.Count - 1
+                UserLISTBOX.Items.Add(UserListDatabase(x).ItemName)
+            Next
+
+
+
+            UserLISTBOX.SelectedIndex = 0                                           'Select first item placed in user list
+            ListboxTABCONTROL.SelectTab(3)                                          'Auto Select User List Tab
+            SearchListControlTabBUTTON.BackColor = Color.Black                      'Next 4 lines sets button colors to suit Auto User Tab Selection
+            ListControlTabBUTTON.BackColor = Color.Black
+            TradesListControlTabBUTTON.BackColor = Color.Black
+            UserRefControlTabBUTTON.BackColor = Color.DimGray
+
+            ItemsDatabaseHeadingTEXTBOX.Show()
+            ItemsDatabaseFileNameTEXTBOX.Show()
+
+        End If
+
+    End Sub
+
+    'Opens the database containing the selected item
+    Private Sub OpenContainingDatabaseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenContainingDatabaseToolStripMenuItem.Click
+        OpenContainingDatabase.OpenContainingLABEL.Text = "You are about to close the " & CurrentDatabaseLABEL.Text & " Database file." & vbCrLf & vbCrLf & "Select " & Chr(34) & "Continue" & Chr(34) & " to open the database containing the selected item, or select " & Chr(34) & "Cancel" & Chr(34) & " to return to the current database."
+        OpenContainingDatabase.ShowDialog()
+    End Sub
+
+    'select all fuction for the search matches listbox
+    Private Sub SelectAllToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem.Click
+        SendMessage(SearchLISTBOX.Handle, &H185, New IntPtr(1), New IntPtr(-1))
+        TriggerUpdate.SetValue(SearchLISTBOX.SelectedItems, True)
+        TriggerIndexChanged.Invoke(SearchLISTBOX, New Object() {New EventArgs})
+
+    End Sub
+
+    ' select all function for main (all items) listbox
+    Private Sub SelectAllToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem1.Click
+        SendMessage(AllItemsInDatabaseListBox.Handle, &H185, New IntPtr(1), New IntPtr(-1))
+        TriggerUpdate.SetValue(AllItemsInDatabaseListBox.SelectedItems, True)
+        TriggerIndexChanged.Invoke(AllItemsInDatabaseListBox, New Object() {New EventArgs})
+
+    End Sub
+
+    'select all function for User Listbox
+    Private Sub SelectAllToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles SelectAllToolStripMenuItem2.Click
+        SendMessage(UserLISTBOX.Handle, &H185, New IntPtr(1), New IntPtr(-1))
+        TriggerUpdate.SetValue(UserLISTBOX.SelectedItems, True)
+        TriggerIndexChanged.Invoke(UserLISTBOX, New Object() {New EventArgs})
+
+    End Sub
+
+
+    'Send Selected Items In the Main List To The User List
+    Private Sub SendToUserListToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SendToUserListToolStripMenuItem1.Click
+        'CHECK FOR LOGGER ACTIVE
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+        ImportTimer.Stop()
+
+        If AllItemsInDatabaseListBox.Items.Count > 0 And AllItemsInDatabaseListBox.SelectedIndex <> -1 Then
+            For Each ItemIndex In AllItemsInDatabaseListBox.SelectedIndices
+                UserLISTBOX.Items.Add(AllItemsInDatabaseListBox.Items(ItemIndex))
+
+                Dim AddToUserList As New UserObjects
+
+                AddToUserList.ItemName = Objects((ItemIndex)).ItemName
+                AddToUserList.ItemBase = Objects((ItemIndex)).ItemBase
+                AddToUserList.ItemQuality = Objects((ItemIndex)).ItemQuality
+                AddToUserList.RequiredCharacter = Objects((ItemIndex)).RequiredCharacter
+                AddToUserList.Sockets = Objects((ItemIndex)).Sockets
+                AddToUserList.RuneWord = Objects((ItemIndex)).RuneWord
+                AddToUserList.ThrowDamageMin = Objects((ItemIndex)).ThrowDamageMin
+                AddToUserList.ThrowDamageMax = Objects((ItemIndex)).ThrowDamageMax
+                AddToUserList.OneHandDamageMin = Objects((ItemIndex)).OneHandDamageMin
+                AddToUserList.OneHandDamageMax = Objects((ItemIndex)).OneHandDamageMax
+                AddToUserList.TwoHandDamageMin = Objects((ItemIndex)).TwoHandDamageMin
+                AddToUserList.TwoHandDamageMax = Objects((ItemIndex)).TwoHandDamageMax
+                AddToUserList.Defense = Objects((ItemIndex)).Defense
+                AddToUserList.QuantityMin = Objects((ItemIndex)).QuantityMin
+                AddToUserList.QuantityMax = Objects((ItemIndex)).QuantityMax
+                AddToUserList.DurabilityMin = Objects((ItemIndex)).DurabilityMin
+                AddToUserList.DurabilityMax = Objects((ItemIndex)).DurabilityMax
+                AddToUserList.RequiredStrength = Objects((ItemIndex)).RequiredStrength
+                AddToUserList.RequiredDexterity = Objects((ItemIndex)).RequiredDexterity
+                AddToUserList.RequiredLevel = Objects((ItemIndex)).RequiredLevel
+                AddToUserList.AttackClass = Objects((ItemIndex)).AttackClass
+                AddToUserList.AttackSpeed = Objects((ItemIndex)).AttackSpeed
+                AddToUserList.Stat1 = Objects((ItemIndex)).Stat1
+                AddToUserList.Stat2 = Objects((ItemIndex)).Stat2
+                AddToUserList.Stat3 = Objects((ItemIndex)).Stat3
+                AddToUserList.Stat4 = Objects((ItemIndex)).Stat4
+                AddToUserList.Stat5 = Objects((ItemIndex)).Stat5
+                AddToUserList.Stat6 = Objects((ItemIndex)).Stat6
+                AddToUserList.Stat7 = Objects((ItemIndex)).Stat7
+                AddToUserList.Stat8 = Objects((ItemIndex)).Stat8
+                AddToUserList.Stat9 = Objects((ItemIndex)).Stat9
+                AddToUserList.Stat10 = Objects((ItemIndex)).Stat10
+                AddToUserList.Stat11 = Objects((ItemIndex)).Stat11
+                AddToUserList.Stat12 = Objects((ItemIndex)).Stat12
+                AddToUserList.Stat13 = Objects((ItemIndex)).Stat13
+                AddToUserList.Stat14 = Objects((ItemIndex)).Stat14
+                AddToUserList.Stat15 = Objects((ItemIndex)).Stat15
+                AddToUserList.MuleName = Objects((ItemIndex)).MuleName
+                AddToUserList.MuleAccount = Objects((ItemIndex)).MuleAccount
+                AddToUserList.MulePass = Objects((ItemIndex)).MulePass
+                AddToUserList.PickitBot = Objects((ItemIndex)).PickitBot
+                AddToUserList.UserReference = Objects((ItemIndex)).UserReference
+                AddToUserList.ItemImage = Objects((ItemIndex)).ItemImage
+                AddToUserList.DatabaseFileName = CurrentDatabaseLABEL.Text
+
+                UserListDatabase.Add(AddToUserList)
+            Next
+
+            UserLISTBOX.SelectedItem = SearchLISTBOX.SelectedItem                   'Select first moved item placed in user list
+            ListboxTABCONTROL.SelectTab(3)                                          'Auto Select User List Tab
+            SearchListControlTabBUTTON.BackColor = Color.Black                      'Next 4 lines sets button colors to suit Auto User Tab Selection
+            ListControlTabBUTTON.BackColor = Color.Black
+            TradesListControlTabBUTTON.BackColor = Color.Black
+            UserRefControlTabBUTTON.BackColor = Color.DimGray
+
+            ItemsDatabaseHeadingTEXTBOX.Show()
+            ItemsDatabaseFileNameTEXTBOX.Show()
+
+            ItemTallyTEXTBOX.Text = (UserLISTBOX.Items.Count & " - User Items")
+
+        End If
+        ImportTimer.Start()
+    End Sub
+
+    Private Sub ClearItemsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearItemsToolStripMenuItem.Click
+        'Clear all items from User Ref List When Selected from context menu
+
+        Dim ReturnLocation As Integer = -1
+
+        If UserLISTBOX.SelectedIndex > 0 Then ReturnLocation = UserLISTBOX.SelectedIndex ' puts the highlight bar one above the fist item deleted in the 
+        '                                                                                   '  block after clear is finished for easier user refrence
+        '                                                                                   '  if there is only one item before delete no item is highlighted
+        If UserLISTBOX.SelectedIndices.Count = 1 Then
+            UserListDatabase.RemoveAt(UserLISTBOX.SelectedIndex)
+            UserLISTBOX.Items.RemoveAt(UserLISTBOX.SelectedIndex)
+        Else
+            For ItemIndex = UserLISTBOX.SelectedIndices.Count - 1 To 0 Step -1
+                UserListDatabase.RemoveAt(ItemIndex)
+                UserLISTBOX.Items.RemoveAt(ItemIndex)
+            Next
+        End If
+
+
+        If UserLISTBOX.SelectedIndex = -1 Then
+            MuleNameTextbox.Text = ""
+            MulePassTextbox.Text = ""
+            RichTextBox2.Text = ""
+            PictureBox1.Image = Nothing
+            ItemsDatabaseFileNameTEXTBOX.Text = ""
+        End If
+        UserLISTBOX.SelectedIndex = -1
+        UserLISTBOX.SelectedIndex = ReturnLocation
+
+    End Sub
+
+    Private Sub SendToTradeListToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles SendToTradeListToolStripMenuItem1.Click
+
+
+        If LoggerRunning = True Then
+            Mymessages = "Please wait Import in progress" : MyMessageBox()
+            Return
+        End If
+        ImportTimer.Stop()
+
+        If UserLISTBOX.SelectedIndices.Count > 0 Then
+            Dim a As Integer = 0
+            Dim count As Integer = 0
+            DupeCountProgressForm.Show() : DupeCountProgressForm.DupePROGRESSBAR.Value = 0 'show and reset progress bar
+            For index = 0 To UserLISTBOX.SelectedIndices.Count - 1
+
+                'CALCULATE PROGRESS BAR
+                DupeCountProgressForm.DupePROGRESSBAR.Value = Int((count / UserLISTBOX.Items.Count) * 100)
+                count = count + 1
+                a = UserLISTBOX.SelectedIndices(index)
+
+                Dim Temp = Objects(a).ItemName
+                If Objects(a).ItemBase = "Rune" Or Objects(a).ItemBase = "Gem" Or Objects(a).ItemName.IndexOf("Token") > -1 Or Objects(a).ItemName.IndexOf("Key of") > -1 Or Objects(a).ItemName.IndexOf("Essence") > -1 Then
+                    If Objects(a).ItemName.IndexOf("Token") > -1 Then Temp = "Token"
+                    RichTextBox3.AppendText(Temp & vbCrLf & vbCrLf)
+                Else
+                    SendToTradeList(a)
+                End If
+            Next
+            UserLISTBOX.SelectedIndex = -1
+        End If
+
+        DupeCountProgressForm.Close()
+        DupesList()
+
+        'SET TRADELIST HIGHLIGHT AND SELECT TRADE LIST TAB
+        ListControlTabBUTTON.BackColor = Color.Black
+        SearchListControlTabBUTTON.BackColor = Color.Black
+        TradesListControlTabBUTTON.BackColor = Color.DimGray
+        ListboxTABCONTROL.SelectTab(2)
+
+        'SHORT ROUTINE TO COUNT TRADE ITEMS IN RICHTEXT3 BY COUNTING THE GAPS BETWEEN THE ITEMS (SUBTRACTS 1 DUE TO EMPTY LINE AT END OF TEXT) 
+        Dim TradeItemCounter As Integer = 0
+        For Each item In RichTextBox3.Lines
+            If item = Nothing Then TradeItemCounter = TradeItemCounter + 1
+        Next
+        If TradeItemCounter = 0 Then TradeItemCounter = 1
+        ItemTallyTEXTBOX.Text = (TradeItemCounter - 1) & " - Trade Entries"
+        If Button3.Text = "Timer Stop" Then ImportTimer.Start()
+
+
 
     End Sub
 End Class

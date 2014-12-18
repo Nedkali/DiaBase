@@ -136,6 +136,11 @@ Public Class MoveItems
                 Form1.TradesListControlTabBUTTON.BackColor = Color.Black
                 Form1.ItemTallyTEXTBOX.Text = Form1.AllItemsInDatabaseListBox.Items.Count & " - Total Items"
 
+                'ensure dabase filename is hidden for focusing on main list box
+                Form1.ItemsDatabaseHeadingTEXTBOX.Hide()
+                Form1.ItemsDatabaseFileNameTEXTBOX.Hide()
+
+
             End If
             Me.Close()
         Else

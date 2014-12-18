@@ -145,8 +145,9 @@ Module AutoLogger
                 'ROB DEBUG MESSAGE: \/\/ This has thrown an error for Sig. Seems to remove the dupes ok but then if import fails and database is then
                 'saved the dupes remain removed. I think this is causing the error on a second attampt to re-log aborterd imports as the dupe was removed 
                 'first import attempt so crashes when it attempts to re-remove. So I added Try command. NOT TOTALLY SURE ABOUT THIS THOUGH, JUST A HUNCH?
+                '------------------------------------------------------------------------------------------------------------------------------------------------
 
-                'Maybe we could move this down a little to after the log imports successfully, could possibly be a better way to fix issue?
+                'Maybe we could move this down a little too, after the log imports successfully, possibly cld be a better way to fix this issue rather than my band aid fix?
 
                 If RemoveDupeMule = True Then                                               'Adding in remove duplicated mule option (Ned)
                     Try

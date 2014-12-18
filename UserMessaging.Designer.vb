@@ -64,7 +64,7 @@ Partial Class UserMessaging
         Me.MaximumSize = New System.Drawing.Size(455, 143)
         Me.MinimumSize = New System.Drawing.Size(455, 143)
         Me.Name = "UserMessaging"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "DiaBase Alert Message"
         Me.ResumeLayout(False)
         Me.PerformLayout()

@@ -87,7 +87,7 @@ Partial Class MoveItems
         Me.Label1.BackColor = System.Drawing.Color.Black
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label1.Location = New System.Drawing.Point(94, 41)
+        Me.Label1.Location = New System.Drawing.Point(94, 37)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(442, 23)
         Me.Label1.TabIndex = 879
@@ -99,9 +99,9 @@ Partial Class MoveItems
         Me.NewDatabaseLABEL.BackColor = System.Drawing.Color.Black
         Me.NewDatabaseLABEL.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NewDatabaseLABEL.ForeColor = System.Drawing.Color.SeaShell
-        Me.NewDatabaseLABEL.Location = New System.Drawing.Point(39, 69)
+        Me.NewDatabaseLABEL.Location = New System.Drawing.Point(39, 61)
         Me.NewDatabaseLABEL.Name = "NewDatabaseLABEL"
-        Me.NewDatabaseLABEL.Size = New System.Drawing.Size(560, 74)
+        Me.NewDatabaseLABEL.Size = New System.Drawing.Size(560, 82)
         Me.NewDatabaseLABEL.TabIndex = 880
         Me.NewDatabaseLABEL.Text = resources.GetString("NewDatabaseLABEL.Text")
         '
@@ -143,7 +143,7 @@ Partial Class MoveItems
         Me.DeleteItemsCHECKBOX.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.DeleteItemsCHECKBOX.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DeleteItemsCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
-        Me.DeleteItemsCHECKBOX.Location = New System.Drawing.Point(347, 190)
+        Me.DeleteItemsCHECKBOX.Location = New System.Drawing.Point(347, 195)
         Me.DeleteItemsCHECKBOX.Name = "DeleteItemsCHECKBOX"
         Me.DeleteItemsCHECKBOX.Size = New System.Drawing.Size(249, 52)
         Me.DeleteItemsCHECKBOX.TabIndex = 883
@@ -156,7 +156,7 @@ Partial Class MoveItems
         Me.OpenDatabaseCHECKBOX.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.OpenDatabaseCHECKBOX.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OpenDatabaseCHECKBOX.ForeColor = System.Drawing.Color.BurlyWood
-        Me.OpenDatabaseCHECKBOX.Location = New System.Drawing.Point(347, 131)
+        Me.OpenDatabaseCHECKBOX.Location = New System.Drawing.Point(347, 136)
         Me.OpenDatabaseCHECKBOX.Name = "OpenDatabaseCHECKBOX"
         Me.OpenDatabaseCHECKBOX.Size = New System.Drawing.Size(249, 60)
         Me.OpenDatabaseCHECKBOX.TabIndex = 884
@@ -168,7 +168,7 @@ Partial Class MoveItems
         Me.SavedDatabasesLISTBOX.BackColor = System.Drawing.Color.Black
         Me.SavedDatabasesLISTBOX.ForeColor = System.Drawing.Color.White
         Me.SavedDatabasesLISTBOX.FormattingEnabled = True
-        Me.SavedDatabasesLISTBOX.Location = New System.Drawing.Point(42, 148)
+        Me.SavedDatabasesLISTBOX.Location = New System.Drawing.Point(42, 153)
         Me.SavedDatabasesLISTBOX.Name = "SavedDatabasesLISTBOX"
         Me.SavedDatabasesLISTBOX.Size = New System.Drawing.Size(288, 173)
         Me.SavedDatabasesLISTBOX.TabIndex = 885
@@ -176,7 +176,7 @@ Partial Class MoveItems
         'Label3
         '
         Me.Label3.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label3.Location = New System.Drawing.Point(44, 148)
+        Me.Label3.Location = New System.Drawing.Point(44, 153)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(285, 3)
         Me.Label3.TabIndex = 886
@@ -184,7 +184,7 @@ Partial Class MoveItems
         'Label5
         '
         Me.Label5.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label5.Location = New System.Drawing.Point(44, 318)
+        Me.Label5.Location = New System.Drawing.Point(44, 323)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(285, 3)
         Me.Label5.TabIndex = 887
@@ -192,7 +192,7 @@ Partial Class MoveItems
         'Label6
         '
         Me.Label6.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label6.Location = New System.Drawing.Point(327, 148)
+        Me.Label6.Location = New System.Drawing.Point(327, 153)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(3, 173)
         Me.Label6.TabIndex = 888
@@ -200,7 +200,7 @@ Partial Class MoveItems
         'Label7
         '
         Me.Label7.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label7.Location = New System.Drawing.Point(42, 148)
+        Me.Label7.Location = New System.Drawing.Point(42, 153)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(3, 173)
         Me.Label7.TabIndex = 889
@@ -211,7 +211,7 @@ Partial Class MoveItems
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.Setting
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(642, 414)
+        Me.ClientSize = New System.Drawing.Size(634, 403)
         Me.ControlBox = False
         Me.Controls.Add(Me.NewDatabaseLABEL)
         Me.Controls.Add(Me.Label7)
@@ -232,7 +232,7 @@ Partial Class MoveItems
         Me.MaximumSize = New System.Drawing.Size(650, 441)
         Me.MinimumSize = New System.Drawing.Size(650, 441)
         Me.Name = "MoveItems"
-        Me.Text = "Export Items To A Second Database"
+        Me.Text = "Export Items To A Destination Database"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

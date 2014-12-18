@@ -24,11 +24,11 @@
         Dim openFileDialog1 As New OpenFileDialog()
         DatabaseFileTEXTBOX.Text = ""
         PictureBox2.Visible = False
-        OpenFileDialog1.InitialDirectory = Application.StartupPath + "\DataBase"
-        OpenFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"
-        OpenFileDialog1.FilterIndex = 2
-        OpenFileDialog1.RestoreDirectory = True
-        OpenFileDialog1.ShowDialog()
+        openFileDialog1.InitialDirectory = Application.StartupPath + "\DataBase"
+        openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"
+        openFileDialog1.FilterIndex = 2
+        openFileDialog1.RestoreDirectory = True
+        openFileDialog1.ShowDialog()
         DatabaseFileTEXTBOX.Text = openFileDialog1.FileName : DatabaseFileTEXTBOX.Refresh()
         DataBasePath = openFileDialog1.FileName
         DefaultDatabaseFile = DataBasePath
@@ -45,28 +45,9 @@
             Mymessages = "Must Set Database file" : MyMessageBox()
             Return
         End If
+        SaveConfigFile() 'branch to save config sub in module1
 
-        Dim file As System.IO.StreamWriter
-        file = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath + "\Settings.cfg", False)
-        file.WriteLine(EtalPathTEXTBOX.Text)
-        file.WriteLine(DatabaseFileTEXTBOX.Text)
-        file.WriteLine(NumericUpDown1.Value)
-        file.WriteLine(CheckBox3.Checked) : KeepPassPrivate = CheckBox3.CheckState '<---------- Display Password Fix rev 12 (AussieHack)
-        file.WriteLine(AutoBackupImportsCHECKBOX.Checked) '                                     added this for auto backup on import setting
-        file.WriteLine(BackupOnEditsCHECKBOX.Checked)   '                                       added this for auto backup on edits setting
-        file.WriteLine(DupeCheckBox1.Checked) : RemoveDupeMule = DupeCheckBox1.CheckState
-        file.Close()
-        EtalPath = EtalPathTEXTBOX.Text
-        TimerMins = NumericUpDown1.Value
-        TimerSecs = TimerMins * 60
-        Me.Close()
-
-        '------------------------------------------------------------------------------------------------------------------------------------------------
-        'Apply Search Progress checkbox Setting To Global Config bool "ShowSearchProgress" 
-        'THIS SETTING CANT BE SAVED YET (not included in config file yet) AND BY DEFAULT IS SET TO SHOW THE PROGRESS BAR FORM WHEN SEARCHING
-        If DisableSearchProgressBarCHECKBOX.Checked = True Then ShowSearchProgress = False
-        If DisableSearchProgressBarCHECKBOX.Checked = False Then ShowSearchProgress = True
-        '------------------------------------------------------------------------------------------------------------------------------------------------
+           Me.Close()
 
     End Sub
 
@@ -80,19 +61,16 @@
         AutoBackupImportsCHECKBOX.Checked = AutoBackups
         BackupOnEditsCHECKBOX.Checked = EditBackups
         DupeCheckBox1.Checked = RemoveDupeMule
+        DisableSearchProgressBarCHECKBOX.Checked = HideSearchPopup
         SettingsChecker()
-        'APPLY THE TRIAL "DONT DISPLAY SEARCH PROGRESS BAR" CHECKBOX FROM ITS GLOBAL CONFIG VAR (NOT SAVED IN ACTUAL CONFIG FILE YET) - REV 28
-        If ShowSearchProgress = True Then DisableSearchProgressBarCHECKBOX.Checked = False
-        If ShowSearchProgress = False Then DisableSearchProgressBarCHECKBOX.Checked = True
+
 
     End Sub
 
     Private Sub SettingsChecker()
-        If My.Computer.FileSystem.DirectoryExists(EtalPathTEXTBOX.Text) = True Then
-            Dim temp = Split(EtalPathTEXTBOX.Text, "\")
-            If temp(temp.Length - 1) = "D2NT" Then PictureBox1.Visible = True
-        End If
-
+        Me.PictureBox1.Visible = False
+        PictureBox2.Visible = False
+        If (My.Computer.FileSystem.DirectoryExists(String.Concat(Me.EtalPathTEXTBOX.Text, "\scripts\AMS\MuleInventory"))) Then Me.PictureBox1.Visible = True
         If My.Computer.FileSystem.FileExists(DatabaseFileTEXTBOX.Text) = True Then PictureBox2.Visible = True
     End Sub
 

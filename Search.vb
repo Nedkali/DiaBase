@@ -21,389 +21,433 @@
         '--------------------------------------------------------------------------------------------------------------------------------------------
 
         'SELECT CASE FOR THE FIELD BEING SEARCHED - NOTE: UNIQUE ATTRIBUTES HAS ITS OWN SEARCH ENGINE SUB ROUTINE
-        Select Case Form1.SearchFieldCOMBOBOX.Text
 
-            Case "Item Name"
-                'Normal Searches - Item Name
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count) 'Rob added "if/Then" on this line to trial skipping search progress bar idea
-                        TextDecipher(count, Objects(count).ItemName)
-                    Next
-                End If
-
-                'Refining Searches - Item Name
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count) 'Rob added "if/Then" on this line to trial skipping search progress bar idea
-                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).ItemName)
-                    Next
-                End If
-
-            Case "Item Base"
-                'Normal Searches - Item Base
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count) 'Rob added "if/Then" on this line to trial skipping search progress bar idea
-                        TextDecipher(count, Objects(count).ItemBase)
-                    Next
-                End If
-
-                'Refining Searches - Item Base
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count) 'Rob added "if/Then" on this line to trial skipping search progress bar idea
-                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).ItemBase)
-                    Next
-                End If
-
-            Case "Item Quality"
-                'Normal Searches - Quality
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count) 'Rob added "if/Then" on this line to trial skipping search progress bar idea
-                        TextDecipher(count, Objects(count).ItemQuality)
-                    Next
-                End If
-
-                'Refining Searches - Quality
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count) 'Rob added "if/Then" on this line to trial skipping search progress bar idea
-                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).ItemQuality)
-                    Next
-                End If
-
-            Case "Item Defense"
-                'Normal Searches - Defense
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        If Val(Objects(count).Defense) > 0 Then MyDecipher(count, Val(Objects(count).Defense))
-                    Next
-                End If
-
-                'Refining Searches - Defense
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        If Val(Objects(RefineSearchReferenceList(count)).Defense) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).Defense))
-                    Next
-                End If
+        Try 'ROB FIX TO AVOID ALL SEARCH ERRORS
 
 
 
-            Case "RuneWord"
-                'Normal Searches - Runeword
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        'If Objects(count).RuneWord = True Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count)
-                        TextDecipher(count, Objects(count).RuneWord) ' ROB BUG FIX - REV 28-  Made runeword search string based (TextDeciperSUB) instead of boolean based to avoid crashes from RuneWord fields that dont have a valid true or false value
-                    Next
-                End If
+            Select Case Form1.SearchFieldCOMBOBOX.Text
 
-                'Refining Searches - Runeword
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        'If Objects(RefineSearchReferenceList(count)).RuneWord = True Then Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count))
-                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).RuneWord) ' ROB BUG FIX - REV 28 - Made runeword search string based (TextDeciperSUB) instead of boolean based to avoid crashes from RuneWord fields that dont have a vaild true or false value
-                    Next
-                End If
+                Case "Item Name"
+                    'Normal Searches - Item Name
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count) 'Rob added "if/Then" on this line to trial skipping search progress bar idea
+                            TextDecipher(count, Objects(count).ItemName)
+                        Next
+                    End If
 
-            Case "Chance To Block"
-                'Normal Searches - Runeword
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        MyDecipher(count, Val(Objects(count).ChanceToBlock))
-                    Next
-                End If
+                    'Refining Searches - Item Name
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count) 'Rob added "if/Then" on this line to trial skipping search progress bar idea
+                            TextDecipher(count, Objects(RefineSearchReferenceList(count)).ItemName)
+                        Next
+                    End If
 
-                'Refining Searches - Runeword
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).ChanceToBlock))
-                    Next
-                End If
+                Case "Item Base"
+                    'Normal Searches - Item Base
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count) 'Rob added "if/Then" on this line to trial skipping search progress bar idea
+                            TextDecipher(count, Objects(count).ItemBase)
+                        Next
+                    End If
 
-            Case "One Hand Damage Max"
-                'Normal Searches - One Hand Damage Max
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        If Val(Objects(count).OneHandDamageMax) > 0 Then MyDecipher(count, Val(Objects(count).OneHandDamageMax))
-                    Next
-                End If
+                    'Refining Searches - Item Base
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count) 'Rob added "if/Then" on this line to trial skipping search progress bar idea
+                            TextDecipher(count, Objects(RefineSearchReferenceList(count)).ItemBase)
+                        Next
+                    End If
 
-                'Refining Searches - One Hand Damage Max
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        If Val(Objects(RefineSearchReferenceList(count)).OneHandDamageMax) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).OneHandDamageMax))
-                    Next
-                End If
+                Case "Item Quality"
+                    'Normal Searches - Quality
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count) 'Rob added "if/Then" on this line to trial skipping search progress bar idea
+                            TextDecipher(count, Objects(count).ItemQuality)
+                        Next
+                    End If
 
-            Case "One Hand Damage Min"
-                'Normal Searches - One Hand Damage Min
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        If Val(Objects(count).OneHandDamageMin) > 0 Then MyDecipher(count, Val(Objects(count).OneHandDamageMin))
-                    Next
-                End If
+                    'Refining Searches - Quality
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count) 'Rob added "if/Then" on this line to trial skipping search progress bar idea
+                            TextDecipher(count, Objects(RefineSearchReferenceList(count)).ItemQuality)
+                        Next
+                    End If
 
-                'Refining Searches - One Hand Damage Min
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        If Val(Objects(RefineSearchReferenceList(count)).OneHandDamageMin) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).OneHandDamageMin))
-                    Next
-                End If
+                Case "Item Defense"
+                    'Normal Searches - Defense
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            If Val(Objects(count).Defense) > 0 Then MyDecipher(count, Val(Objects(count).Defense))
+                        Next
+                    End If
 
-            Case "Two Hand Damage Max"
-                'Normal Searches - Two Hand Damage Max
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        If Val(Objects(count).TwoHandDamageMax) > 0 Then MyDecipher(count, Val(Objects(count).TwoHandDamageMax))
-                    Next
-                End If
+                    'Refining Searches - Defense
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            If Val(Objects(RefineSearchReferenceList(count)).Defense) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).Defense))
+                        Next
+                    End If
 
-                'Refining Searches - Two Hand Damage Max
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        If Val(Objects(RefineSearchReferenceList(count)).TwoHandDamageMax) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).TwoHandDamageMax))
-                    Next
-                End If
 
-            Case "Two Hand Damage Min"
-                'Normal Searches - Two Hand Damage Min
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        If Val(Objects(count).TwoHandDamageMin) > 0 Then MyDecipher(count, Val(Objects(count).TwoHandDamageMin))
-                    Next
-                End If
-                'Refining Searches - Two Hand Damage Min
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        If Val(Objects(RefineSearchReferenceList(count)).TwoHandDamageMin) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).TwoHandDamageMin))
-                    Next
-                End If
 
-            Case "Throw Damage Max"
-                'Normal Searches - Throw Damage Max
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        If Val(Objects(count).ThrowDamageMax) > 0 Then MyDecipher(count, Val(Objects(count).ThrowDamageMax))
-                    Next
-                End If
-                'Refining Searches - Throw Damage Max
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        If Val(Objects(RefineSearchReferenceList(count)).ThrowDamageMax) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).ThrowDamageMax))
-                    Next
-                End If
+                Case "RuneWord"
+                    'Normal Searches - Runeword
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            'If Objects(count).RuneWord = True Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count)
+                            TextDecipher(count, Objects(count).RuneWord) ' ROB BUG FIX - REV 28-  Made runeword search string based (TextDeciperSUB) instead of boolean based to avoid crashes from RuneWord fields that dont have a valid true or false value
+                        Next
+                    End If
 
-            Case "Throw Damage Min"
-                'Normal Searches - Throw Damage Min
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        If Val(Objects(count).ThrowDamageMin) > 0 Then MyDecipher(count, Val(Objects(count).ThrowDamageMin))
-                    Next
-                End If
+                    'Refining Searches - Runeword
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            'If Objects(RefineSearchReferenceList(count)).RuneWord = True Then Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count))
+                            TextDecipher(count, Objects(RefineSearchReferenceList(count)).RuneWord) ' ROB BUG FIX - REV 28 - Made runeword search string based (TextDeciperSUB) instead of boolean based to avoid crashes from RuneWord fields that dont have a vaild true or false value
+                        Next
+                    End If
 
-                'Refiening Searches - Throw Damage Min
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        If Val(Objects(RefineSearchReferenceList(count)).ThrowDamageMin) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).ThrowDamageMin))
-                    Next
-                End If
 
-            Case "Required Level"
-                'Normal Searches - Required Level
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        MyDecipher(count, Val(Objects(count).RequiredLevel))
-                    Next
-                End If
 
-                'Refining Searches - Required Level
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).RequiredLevel))
-                    Next
-                End If
 
-            Case "Sockets"
-                'Normal Searches - Sockets
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        MyDecipher(count, Val(Objects(count).Sockets))
-                    Next
-                End If
+                    'Whoops we forgot this one ROB Rev 29
+                    '------------------------------------
+                Case "Ethereal"
+                    'Normal Searches - Ethereal
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            'If Objects(count).EtherealItem = True Then Form1.SearchLISTBOX.Items.Add(Objects(count).ItemName) : SearchReferenceList.Add(count)
+                            TextDecipher(count, Objects(count).EtherealItem) ' ' ROB BUG FIX - REV 29 - Added Ethereal Field as string regardles of it being a bool (minimise chance of crashes)
+                        Next
+                    End If
 
-                'Refining Searches - Sockets
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).Sockets))
-                    Next
-                End If
+                    'Refining Searches - Runeword
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            'If Objects(RefineSearchReferenceList(count)).EtherealItem = True Then Form1.SearchLISTBOX.Items.Add(Objects(RefineSearchReferenceList(count)).ItemName) : SearchReferenceList.Add(RefineSearchReferenceList(count))
+                            TextDecipher(count, Objects(RefineSearchReferenceList(count)).EtherealItem) ' ROB BUG FIX - REV 29 - Added Ethereal Field as string regardles of it being a bool (minimise chance of crashes)
+                        Next
+                    End If
 
-            Case "Required Strength"
-                'Normal Searches - Required Strength
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        MyDecipher(count, Val(Objects(count).RequiredStrength))
-                    Next
-                End If
+                Case "Chance To Block"
+                    'Normal Searches - Runeword
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            MyDecipher(count, Val(Objects(count).ChanceToBlock))
+                        Next
+                    End If
 
-                'Refining Searches - Required Strength
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).RequiredStrength))
-                    Next
-                End If
+                    'Refining Searches - Runeword
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).ChanceToBlock))
+                        Next
+                    End If
 
-            Case "Required Dexterity"
-                'Normal Searches - Required Dextreity
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        MyDecipher(count, Val(Objects(count).RequiredDexterity))
-                    Next
-                End If
+                Case "One Hand Damage Max"
+                    'Normal Searches - One Hand Damage Max
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            If Val(Objects(count).OneHandDamageMax) > 0 Then MyDecipher(count, Val(Objects(count).OneHandDamageMax))
+                        Next
+                    End If
 
-                'Refining Searches - Required Dextreity
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).RequiredDexterity))
-                    Next
-                End If
+                    'Refining Searches - One Hand Damage Max
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            If Val(Objects(RefineSearchReferenceList(count)).OneHandDamageMax) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).OneHandDamageMax))
+                        Next
+                    End If
 
-            Case "Attack Class"
-                'Normal Searches - Attack Class
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        TextDecipher(count, Objects(count).AttackClass)
-                    Next
-                End If
+                Case "One Hand Damage Min"
+                    'Normal Searches - One Hand Damage Min
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            If Val(Objects(count).OneHandDamageMin) > 0 Then MyDecipher(count, Val(Objects(count).OneHandDamageMin))
+                        Next
+                    End If
 
-                'Refining Searches - Attack Class
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).AttackClass)
-                    Next
-                End If
+                    'Refining Searches - One Hand Damage Min
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            If Val(Objects(RefineSearchReferenceList(count)).OneHandDamageMin) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).OneHandDamageMin))
+                        Next
+                    End If
 
-            Case "Attack Speed"
-                'Normal Searches - Attack Speed
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        TextDecipher(count, Objects(count).AttackSpeed)
-                    Next
-                End If
+                Case "Two Hand Damage Max"
+                    'Normal Searches - Two Hand Damage Max
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            If Val(Objects(count).TwoHandDamageMax) > 0 Then MyDecipher(count, Val(Objects(count).TwoHandDamageMax))
+                        Next
+                    End If
 
-                'Refining Searches - Attack Speed
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).AttackSpeed)
-                    Next
-                End If
+                    'Refining Searches - Two Hand Damage Max
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            If Val(Objects(RefineSearchReferenceList(count)).TwoHandDamageMax) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).TwoHandDamageMax))
+                        Next
+                    End If
 
-            Case "Mule Name"
-                'Normal Searches - Mule Name
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        TextDecipher(count, Objects(count).MuleName)
-                    Next
-                End If
+                Case "Two Hand Damage Min"
+                    'Normal Searches - Two Hand Damage Min
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            If Val(Objects(count).TwoHandDamageMin) > 0 Then MyDecipher(count, Val(Objects(count).TwoHandDamageMin))
+                        Next
+                    End If
+                    'Refining Searches - Two Hand Damage Min
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            If Val(Objects(RefineSearchReferenceList(count)).TwoHandDamageMin) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).TwoHandDamageMin))
+                        Next
+                    End If
 
-                'Refining Searches - Mule Name
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).MuleName)
-                    Next
-                End If
+                Case "Throw Damage Max"
+                    'Normal Searches - Throw Damage Max
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            If Val(Objects(count).ThrowDamageMax) > 0 Then MyDecipher(count, Val(Objects(count).ThrowDamageMax))
+                        Next
+                    End If
+                    'Refining Searches - Throw Damage Max
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            If Val(Objects(RefineSearchReferenceList(count)).ThrowDamageMax) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).ThrowDamageMax))
+                        Next
+                    End If
 
-            Case "Mule Account"
-                'Normal Searches - Mule Account
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        TextDecipher(count, Objects(count).MuleAccount)
-                    Next
-                End If
+                Case "Throw Damage Min"
+                    'Normal Searches - Throw Damage Min
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            If Val(Objects(count).ThrowDamageMin) > 0 Then MyDecipher(count, Val(Objects(count).ThrowDamageMin))
+                        Next
+                    End If
 
-                'Refining Searches - Mule Account
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).MuleAccount)
-                    Next
-                End If
+                    'Refiening Searches - Throw Damage Min
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            If Val(Objects(RefineSearchReferenceList(count)).ThrowDamageMin) > 0 Then MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).ThrowDamageMin))
+                        Next
+                    End If
 
-            Case "Mule Pass"
-                'Normal Searches - Mule Account Password
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        TextDecipher(count, Objects(count).MulePass)
-                    Next
-                End If
+                Case "Required Level"
+                    'Normal Searches - Required Level
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            MyDecipher(count, Val(Objects(count).RequiredLevel))
+                        Next
+                    End If
 
-                'Refining Searches - Mule Account Password
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).MulePass)
-                    Next
-                End If
+                    'Refining Searches - Required Level
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).RequiredLevel))
+                        Next
+                    End If
 
-            Case "User Reference"
-                'Normal Searches - Users Reference Field
-                If Form1.RefineSearchCHECKBOX.Checked = False Then
-                    For count = 0 To Objects.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        TextDecipher(count, Objects(count).UserReference)
-                    Next
-                End If
+                Case "Sockets"
+                    'Normal Searches - Sockets
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            MyDecipher(count, Val(Objects(count).Sockets))
+                        Next
+                    End If
 
-                'Refining Searches - Users Reference Field
-                If Form1.RefineSearchCHECKBOX.Checked = True Then
-                    For count = 0 To RefineSearchReferenceList.Count - 1
-                        If ShowSearchProgress = True Then ProgressBar1(count)
-                        TextDecipher(count, Objects(RefineSearchReferenceList(count)).UserReference)
-                    Next
-                End If
+                    'Refining Searches - Sockets
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).Sockets))
+                        Next
+                    End If
 
-            Case "Unique Attributes"
-                'Seperate Routine For Searching Unique Attribs Block
-                SearchUniqueAttributes()
+                Case "Required Strength"
+                    'Normal Searches - Required Strength
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            MyDecipher(count, Val(Objects(count).RequiredStrength))
+                        Next
+                    End If
 
-        End Select
+                    'Refining Searches - Required Strength
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).RequiredStrength))
+                        Next
+                    End If
+
+                Case "Required Dexterity"
+                    'Normal Searches - Required Dextreity
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            MyDecipher(count, Val(Objects(count).RequiredDexterity))
+                        Next
+                    End If
+
+                    'Refining Searches - Required Dextreity
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            MyDecipher(count, Val(Objects(RefineSearchReferenceList(count)).RequiredDexterity))
+                        Next
+                    End If
+
+                Case "Attack Class"
+                    'Normal Searches - Attack Class
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            TextDecipher(count, Objects(count).AttackClass)
+                        Next
+                    End If
+
+                    'Refining Searches - Attack Class
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            TextDecipher(count, Objects(RefineSearchReferenceList(count)).AttackClass)
+                        Next
+                    End If
+
+                Case "Attack Speed"
+                    'Normal Searches - Attack Speed
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            TextDecipher(count, Objects(count).AttackSpeed)
+                        Next
+                    End If
+
+                    'Refining Searches - Attack Speed
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            TextDecipher(count, Objects(RefineSearchReferenceList(count)).AttackSpeed)
+                        Next
+                    End If
+
+                Case "Mule Name"
+                    'Normal Searches - Mule Name
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            TextDecipher(count, Objects(count).MuleName)
+                        Next
+                    End If
+
+                    'Refining Searches - Mule Name
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            TextDecipher(count, Objects(RefineSearchReferenceList(count)).MuleName)
+                        Next
+                    End If
+
+                Case "Mule Account"
+                    'Normal Searches - Mule Account
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            TextDecipher(count, Objects(count).MuleAccount)
+                        Next
+                    End If
+
+                    'Refining Searches - Mule Account
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            TextDecipher(count, Objects(RefineSearchReferenceList(count)).MuleAccount)
+                        Next
+                    End If
+
+                Case "Mule Pass"
+                    'Normal Searches - Mule Account Password
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            TextDecipher(count, Objects(count).MulePass)
+                        Next
+                    End If
+
+                    'Refining Searches - Mule Account Password
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            TextDecipher(count, Objects(RefineSearchReferenceList(count)).MulePass)
+                        Next
+                    End If
+
+                Case "User Reference"
+                    'Normal Searches - Users Reference Field
+                    If Form1.RefineSearchCHECKBOX.Checked = False Then
+                        For count = 0 To Objects.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            TextDecipher(count, Objects(count).UserReference)
+                        Next
+                    End If
+
+                    'Refining Searches - Users Reference Field
+                    If Form1.RefineSearchCHECKBOX.Checked = True Then
+                        For count = 0 To RefineSearchReferenceList.Count - 1
+                            If ShowSearchProgress = True Then ProgressBar1(count)
+                            TextDecipher(count, Objects(RefineSearchReferenceList(count)).UserReference)
+                        Next
+                    End If
+
+                Case "Unique Attributes"
+                    'Seperate Routine For Searching Unique Attribs Block
+                    SearchUniqueAttributes()
+
+
+            End Select
+
+        Catch ex As Exception
+
+            Mymessages = "Search Error. Check Criteria." : UserMessaging.ShowDialog()
+            ex = Nothing
+            Return
+
+        End Try
+
+
+
+
+
+
         SearchProgressForm.Close()
 
         If SearchReferenceList.Count > 0 Then
@@ -412,7 +456,7 @@
             Form1.SearchListControlTabBUTTON.BackColor = Color.DimGray
             Form1.ListControlTabBUTTON.BackColor = Color.Black
             Form1.TradesListControlTabBUTTON.BackColor = Color.Black
-         
+
             'POPULATES SEARCHES QUICK SELECTION DROP DOWN COLLECTIONS after successful search entries (Item Name, User Reference, Unique Attribs Strings) <-----------ROBS REV20
             If UCase(Form1.SearchFieldCOMBOBOX.Text) = "ITEM NAME" And Form1.SearchWordCOMBOBOX.Text <> "" And ItemNamePulldownList.Contains(Form1.SearchWordCOMBOBOX.Text) = False Then ItemNamePulldownList.Add(Form1.SearchWordCOMBOBOX.Text) : Form1.SearchWordCOMBOBOX.Items.Add(Form1.SearchWordCOMBOBOX.Text)
             If UCase(Form1.SearchFieldCOMBOBOX.Text) = "UNIQUE ATTRIBUTES" And Form1.SearchWordCOMBOBOX.Text <> "" And UniqueAttribsPulldownList.Contains(Form1.SearchWordCOMBOBOX.Text) = False Then UniqueAttribsPulldownList.Add(Form1.SearchWordCOMBOBOX.Text) : Form1.SearchWordCOMBOBOX.Items.Add(Form1.SearchWordCOMBOBOX.Text)
@@ -1319,15 +1363,21 @@
         Return myvalue
     End Function
 
-    'runs search progress bar
+    'Runs Search Progress Bar Popup Form - Closes When Search Completes 
     Sub ProgressBar1(ByRef count)
         If SearchProgressForm.Enabled = False Then Return
-        SearchProgressForm.SearchPROGRESSBAR.Value = Int((count / Form1.AllItemsInDatabaseListBox.Items.Count) * 100)
+        Dim CurrentProgressValue = SearchProgressForm.SearchPROGRESSBAR.Value
+        Dim NewProgressValue = Int((count / Form1.AllItemsInDatabaseListBox.Items.Count) * 100)
+        If CurrentProgressValue <> NewProgressValue Or (count = Form1.AllItemsInDatabaseListBox.Items.Count) Then
 
-        SearchProgressForm.SearchProgressLABEL1.Text = Form1.SearchLISTBOX.Items.Count & " Matches"
-        SearchProgressForm.SearchProgressLABEL1.Refresh()
+            SearchProgressForm.SearchPROGRESSBAR.Value = NewProgressValue
 
-        SearchProgressForm.SearchProgressLABEL2.Text = "Searching " & count & " of " & Form1.AllItemsInDatabaseListBox.Items.Count & " Item Records..."
-        SearchProgressForm.SearchProgressLABEL2.Refresh()
+            SearchProgressForm.SearchProgressLABEL1.Text = Form1.SearchLISTBOX.Items.Count & " Matches"
+            SearchProgressForm.SearchProgressLABEL1.Refresh()
+
+            SearchProgressForm.SearchProgressLABEL2.Text = "Searching " & count & " of " & Form1.AllItemsInDatabaseListBox.Items.Count & " Item Records..."
+            SearchProgressForm.SearchProgressLABEL2.Refresh()
+
+        End If
     End Sub
 End Module

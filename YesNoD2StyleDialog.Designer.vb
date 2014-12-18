@@ -36,7 +36,7 @@ Partial Class YesNoD2Style
         Me.YesNoCANCELBUTTON.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.YesNoCANCELBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.YesNoCANCELBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.YesNoCANCELBUTTON.Location = New System.Drawing.Point(319, 214)
+        Me.YesNoCANCELBUTTON.Location = New System.Drawing.Point(319, 220)
         Me.YesNoCANCELBUTTON.Name = "YesNoCANCELBUTTON"
         Me.YesNoCANCELBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.YesNoCANCELBUTTON.TabIndex = 0
@@ -50,7 +50,7 @@ Partial Class YesNoD2Style
         Me.YesNoCONFIRMBUTTON.FlatAppearance.BorderColor = System.Drawing.Color.BurlyWood
         Me.YesNoCONFIRMBUTTON.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.YesNoCONFIRMBUTTON.ForeColor = System.Drawing.Color.BurlyWood
-        Me.YesNoCONFIRMBUTTON.Location = New System.Drawing.Point(222, 214)
+        Me.YesNoCONFIRMBUTTON.Location = New System.Drawing.Point(222, 220)
         Me.YesNoCONFIRMBUTTON.Name = "YesNoCONFIRMBUTTON"
         Me.YesNoCONFIRMBUTTON.Size = New System.Drawing.Size(75, 23)
         Me.YesNoCONFIRMBUTTON.TabIndex = 1
@@ -62,18 +62,18 @@ Partial Class YesNoD2Style
         Me.YesNoMessageLABEL.BackColor = System.Drawing.Color.Black
         Me.YesNoMessageLABEL.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.YesNoMessageLABEL.ForeColor = System.Drawing.Color.White
-        Me.YesNoMessageLABEL.Location = New System.Drawing.Point(39, 75)
+        Me.YesNoMessageLABEL.Location = New System.Drawing.Point(39, 54)
         Me.YesNoMessageLABEL.Name = "YesNoMessageLABEL"
-        Me.YesNoMessageLABEL.Size = New System.Drawing.Size(353, 124)
+        Me.YesNoMessageLABEL.Size = New System.Drawing.Size(353, 154)
         Me.YesNoMessageLABEL.TabIndex = 2
-        Me.YesNoMessageLABEL.Text = "YesNoMessageLABEL - Set at runtime"
+        Me.YesNoMessageLABEL.Text = "Set at runtime"
         '
         'YesNoHeaderLABEL
         '
         Me.YesNoHeaderLABEL.BackColor = System.Drawing.Color.Black
         Me.YesNoHeaderLABEL.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.YesNoHeaderLABEL.ForeColor = System.Drawing.Color.BurlyWood
-        Me.YesNoHeaderLABEL.Location = New System.Drawing.Point(36, 38)
+        Me.YesNoHeaderLABEL.Location = New System.Drawing.Point(36, 25)
         Me.YesNoHeaderLABEL.Name = "YesNoHeaderLABEL"
         Me.YesNoHeaderLABEL.Size = New System.Drawing.Size(356, 23)
         Me.YesNoHeaderLABEL.TabIndex = 3
@@ -86,7 +86,7 @@ Partial Class YesNoD2Style
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.Setting
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(439, 286)
+        Me.ClientSize = New System.Drawing.Size(431, 275)
         Me.ControlBox = False
         Me.Controls.Add(Me.YesNoHeaderLABEL)
         Me.Controls.Add(Me.YesNoMessageLABEL)

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="AppCloseCancelBUTTONButton1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="YesNoCONFIRMBUTTON.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAATUAAABWCAYAAACuCAFEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAACfpSURBVHhe7d0tt6THlaZhQwEBAwEBAQEBAQMBAQEBAwMD
@@ -295,7 +295,7 @@
         rkJggg==
 </value>
   </data>
-  <data name="AppCloseConfirmBUTTON.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Button1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAATUAAABWCAYAAACuCAFEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAACfpSURBVHhe7d0tt6THlaZhQwEBAwEBAQEBAQMBAQEBAwMD
@@ -471,10 +471,5 @@
         MWaixmPP6aF2PGZ9L7V7qS2QoTMCsy9Os64dj7yTY0F+9pP/f36p/f4//i+B9PCqRygdrQAAAABJRU5E
         rkJggg==
 </value>
-  </data>
-  <data name="CloseAppInfoLABEL.Text" xml:space="preserve">
-    <value>To aviod possible data loss please ensure your database is saved and, or backed up before you exit the application ...
-
-If you wish to save and backup please check the appropriate checkboxes below before exiting</value>
   </data>
 </root>

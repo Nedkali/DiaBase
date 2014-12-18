@@ -118,7 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="NewDatabaseLABEL.Text" xml:space="preserve">
-    <value>To move the selected items to a second database please select the destination database from the list, or enter the file name into the textbox (do not include path or file extension).
+    <value>To move the selected items to another database please select the name of the destination database from the list below, or enter the file name, or a new file name into the textbox below.
+(do not include path or file extension).
 
 A new database will be created if the entered database file name does not exist.</value>
   </data>

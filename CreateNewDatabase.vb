@@ -37,6 +37,19 @@ Public Class CreateNewDatabase
                     Form1.Display_Items()
                     Form1.CurrentDatabaseLABEL.Text = Replace(My.Computer.FileSystem.GetName(Databasefile), ".txt", "")
                     Me.Close()
+
+                    Form1.ListboxTABCONTROL.SelectTab(0)
+                    Form1.ListControlTabBUTTON.BackColor = Color.DimGray
+                    Form1.SearchListControlTabBUTTON.BackColor = Color.Black
+                    Form1.TradesListControlTabBUTTON.BackColor = Color.Black
+                    Form1.UserRefControlTabBUTTON.BackColor = Color.Black
+                    Form1.ItemTallyTEXTBOX.Text = Form1.AllItemsInDatabaseListBox.Items.Count & " - Total Items"
+
+                    'ensure dabase filename is hidden for focusing on main list box
+                    Form1.ItemsDatabaseHeadingTEXTBOX.Hide()
+                    Form1.ItemsDatabaseFileNameTEXTBOX.Hide()
+                    Form1.UserLISTBOX.SelectedIndex = -1
+
                 End If
             End If
             If DialogResult = Windows.Forms.DialogResult.No Then

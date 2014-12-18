@@ -87,7 +87,7 @@ Partial Class DupeCountProgressForm
         Me.MaximumSize = New System.Drawing.Size(457, 148)
         Me.MinimumSize = New System.Drawing.Size(457, 148)
         Me.Name = "DupeCountProgressForm"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Checking For Duped Items, Please Wait..."
         Me.ResumeLayout(False)
 
