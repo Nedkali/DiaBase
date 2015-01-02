@@ -81,11 +81,9 @@ Module Module1
         Form1.PictureBox1.Image = Nothing
         Form1.AllItemsInDatabaseListBox.Items.Clear()   ' clears items listed
 
-        If Objects.Count > 0 Then                       ' had to be done this way - havent figured out a better way for now 
-            '                                           ' ROB: Objects.clear ?
-            Objects.RemoveRange(1, Objects.Count - 1)
-            Objects.RemoveAt(0)
-        End If
+        Objects.Clear()
+
+
         Dim Reader = My.Computer.FileSystem.OpenTextFileReader(DatabaseFile)
         Do
             If Reader.EndOfStream = True Then Exit Do

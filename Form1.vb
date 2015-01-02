@@ -87,7 +87,7 @@ Public Class Form1
 
             FixSettingsFile.WriteLine("False") 'Appends a new config variable to settings.cfg file to save show or hide search progress checkstate
             FixSettingsFile.Close()
-            Mymessages = "Settings File Updated For Revision 29" : MyMessageBox()
+            Mymessages = "Settings File Updated For ver9.1 Revision 1" : MyMessageBox()
         End If
         '=====================================================================================================================================================
         'Next bit setup up diablo 2 heading text and game text true type fonts (.ttf) 
@@ -1226,8 +1226,7 @@ Public Class Form1
                 'CALCULATE PROGRESS BAR
                 DupeCountProgressForm.DupePROGRESSBAR.Value = Int((count / SearchLISTBOX.Items.Count) * 100)
                 count = count + 1
-                a = SearchLISTBOX.SelectedIndices(index)
-
+                a = SearchReferenceList(SearchLISTBOX.SelectedIndices(index))
                 Dim Temp = Objects(a).ItemName
                 If Objects(a).ItemBase = "Rune" Or Objects(a).ItemBase = "Gem" Or Objects(a).ItemName.IndexOf("Token") > -1 Or Objects(a).ItemName.IndexOf("Key of") > -1 Or Objects(a).ItemName.IndexOf("Essence") > -1 Then
                     If Objects(a).ItemName.IndexOf("Token") > -1 Then Temp = "Token"
@@ -1236,7 +1235,7 @@ Public Class Form1
                     SendToTradeList(a)
                 End If
             Next
-            'SearchLISTBOX.SelectedIndex = -1 'why?
+
         End If
 
         DupeCountProgressForm.Close()
@@ -1247,19 +1246,8 @@ Public Class Form1
         SearchListControlTabBUTTON.BackColor = Color.Black
         TradesListControlTabBUTTON.BackColor = Color.DimGray
         ListboxTABCONTROL.SelectTab(2)
-
-        'SHORT ROUTINE TO COUNT TRADE ITEMS IN RICHTEXT3 BY COUNTING THE GAPS BETWEEN THE ITEMS (SUBTRACTS 1 DUE TO EMPTY LINE AT END OF TEXT) 
-        Dim TradeItemCounter As Integer = 0
-        For Each item In RichTextBox3.Lines
-            If item = Nothing Then TradeItemCounter = TradeItemCounter + 1
-        Next
-        If TradeItemCounter = 0 Then TradeItemCounter = 1
-        ItemTallyTEXTBOX.Text = (TradeItemCounter - 1) & " - Trade Entries"
+        ItemTallyTEXTBOX.Text = SearchReferenceList.Count & " - Trade Entries" ' simpler way to indicate count
         If Button3.Text = "Timer Stop" Then ImportTimer.Start()
-
-
-
-     
 
 
     End Sub
