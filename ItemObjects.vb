@@ -1,6 +1,8 @@
 ﻿Public Class ItemObjects
     'Define Global Database Fields
     Public ItemName As String
+    Public ItemRealm As String
+    Public Ilevel As String
     Public ItemBase As String
     Public ItemQuality As String
     Public RequiredCharacter As String

@@ -265,6 +265,7 @@ Public Class Form1
                 RichTextBox2.Text = ""  'clears form has been some overlap of listings occur - wierd behaviour
 
                 ' MuleInfoRICHTEXTBOX.Clear() 'clears mule info textbox
+                MuleRealmTextbox.Clear()
                 MuleAccountTextbox.Clear()
                 MuleNameTextbox.Clear()
                 MulePassTextbox.Clear()
@@ -346,8 +347,10 @@ Public Class Form1
                 If Objects(RowNumber).Stat13 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat13 & vbCrLf)
                 If Objects(RowNumber).Stat14 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat14 & vbCrLf)
                 If Objects(RowNumber).Stat15 <> Nothing Then RichTextBox2.AppendText(Objects(RowNumber).Stat15 & vbCrLf)
+                RichTextBox2.AppendText(vbCrLf & "Item Level = " & Objects(RowNumber).Ilevel & vbCrLf)
                 MuleAccountTextbox.Text = Objects(RowNumber).MuleAccount
                 MuleNameTextbox.Text = Objects(RowNumber).MuleName
+                MuleRealmTextbox.Text = Objects(RowNumber).ItemRealm
 
                 'converts pass to '***' with function if hide pass is set
                 If KeepPassPrivate = True Then MulePassTextbox.Text = HidePass(Objects(RowNumber).MulePass) Else MulePassTextbox.Text = Objects(RowNumber).MulePass
@@ -397,6 +400,7 @@ Public Class Form1
             For x = 0 To Objects.Count - 1
                 LogWriter.WriteLine("--------------------")
                 LogWriter.WriteLine(Objects(x).ItemName)
+                LogWriter.WriteLine(Objects(x).Ilevel)
                 LogWriter.WriteLine(Objects(x).ItemBase)
                 LogWriter.WriteLine(Objects(x).ItemQuality)
                 LogWriter.WriteLine(Objects(x).RequiredCharacter)
@@ -439,6 +443,7 @@ Public Class Form1
                 LogWriter.WriteLine(Objects(x).MuleAccount)
                 LogWriter.WriteLine(Objects(x).MulePass)
                 LogWriter.WriteLine(Objects(x).PickitBot)
+                LogWriter.WriteLine(Objects(x).ItemRealm)
                 LogWriter.WriteLine(Objects(x).UserReference)
                 LogWriter.WriteLine(Objects(x).ItemImage)
             Next

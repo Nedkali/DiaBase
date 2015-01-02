@@ -128,6 +128,7 @@ Module AutoLogger
                 Dim thislogmuleacc = LogFile.ReadLine()
                 Dim thislogmulename = LogFile.ReadLine()
                 Dim thislogpass = LogFile.ReadLine()
+                Dim ThislogRealm = LogFile.ReadLine()
                 LogFile.ReadLine()
 
                 If (thispickbot = "Unknown" Or thislogpass = "Unknown") Then 'lets try to find them
@@ -175,6 +176,7 @@ Module AutoLogger
                     NewObject.MuleAccount = thislogmuleacc
                     NewObject.MuleName = thislogmulename
                     NewObject.MulePass = thislogpass
+                    NewObject.ItemRealm = ThislogRealm
 
                     For x = 0 To 4 '     just in case of extra blank lines
                         If LogFile.EndOfStream = True Then Exit Do
@@ -183,12 +185,15 @@ Module AutoLogger
                     Next
                     NewObject.ItemName = temp 'these 5 lines should exist for each item
                     temp = LogFile.ReadLine()
+                    NewObject.Ilevel = temp.Replace("Item Level ", "")
+                    temp = LogFile.ReadLine()
                     NewObject.ItemBase = temp.Replace("Item Base ", "")
                     temp = LogFile.ReadLine() : myarray = Split(temp, " ")
                     NewObject.ItemQuality = myarray(2)
                     temp = LogFile.ReadLine() : myarray = Split(temp, " ")
                     NewObject.ItemImage = myarray(2)
                     NewObject.RuneWord = LogFile.ReadLine()
+
 
                     While LogFile.EndOfStream = False   'attempt to read item added information and exit if end of stream/file
                         temp = LogFile.ReadLine()
@@ -387,6 +392,7 @@ Module AutoLogger
             For x = itemstart To Objects.Count - 1
                 LogWriter.WriteLine("--------------------")
                 LogWriter.WriteLine(Objects(x).ItemName)
+                LogWriter.WriteLine(Objects(x).Ilevel)
                 LogWriter.WriteLine(Objects(x).ItemBase)
                 LogWriter.WriteLine(Objects(x).ItemQuality)
                 LogWriter.WriteLine(Objects(x).RequiredCharacter)
@@ -429,6 +435,7 @@ Module AutoLogger
                 LogWriter.WriteLine(Objects(x).MuleAccount)
                 LogWriter.WriteLine(Objects(x).MulePass)
                 LogWriter.WriteLine(Objects(x).PickitBot)
+                LogWriter.WriteLine(Objects(x).ItemRealm)
                 LogWriter.WriteLine(Objects(x).UserReference)
                 LogWriter.WriteLine(Objects(x).ItemImage)
                 count = count + 1

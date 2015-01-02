@@ -123,7 +123,9 @@
         EditItemStat13TEXTBOX.Text = Objects(iEdit).Stat13
         EditItemStat14TEXTBOX.Text = Objects(iEdit).Stat14
         EditItemStat15TEXTBOX.Text = Objects(iEdit).Stat15
+        EditItemIlevel.Text = Objects(iEdit).Ilevel
         EditItemMuleNameCOMBOBOX.Text = Objects(iEdit).MuleName
+        EditItemRealmComboBox.Text = Objects(iEdit).ItemRealm
         EditItemMuleAccountCOMBOBOX.Text = Objects(iEdit).MuleAccount
         If KeepPassPrivate = True Then EditItemMulePassCOMBOBOX.Text = HidePass(Objects(iEdit).MulePass) Else EditItemMulePassCOMBOBOX.Text = Objects(iEdit).MulePass
         'EditItemMulePassCOMBOBOX.Text = Objects(iEdit).MulePass

@@ -158,11 +158,13 @@ Partial Class Form1
         Me.SendToTradeListToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.DeleteItemsToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExportItemsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ClearItemsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SelectAllToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpenContainingDatabaseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ItemsDatabaseFileNameTEXTBOX = New System.Windows.Forms.TextBox()
         Me.ItemsDatabaseHeadingTEXTBOX = New System.Windows.Forms.Label()
-        Me.ClearItemsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MuleRealmTextbox = New System.Windows.Forms.TextBox()
+        Me.Label41 = New System.Windows.Forms.Label()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SearchValueNUMERICUPDWN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
@@ -203,7 +205,7 @@ Partial Class Form1
         Me.AllItemsInDatabaseListBox.Margin = New System.Windows.Forms.Padding(0)
         Me.AllItemsInDatabaseListBox.Name = "AllItemsInDatabaseListBox"
         Me.AllItemsInDatabaseListBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
-        Me.AllItemsInDatabaseListBox.Size = New System.Drawing.Size(367, 260)
+        Me.AllItemsInDatabaseListBox.Size = New System.Drawing.Size(367, 330)
         Me.AllItemsInDatabaseListBox.TabIndex = 22
         '
         'Timer1
@@ -235,7 +237,7 @@ Partial Class Form1
         Me.StatusStrip1.BackgroundImage = Global.DiaBase.My.Resources.Resources.menubar
         Me.StatusStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripProgressBar1, Me.ToolStripStatusLabel2})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 549)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 619)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(794, 24)
         Me.StatusStrip1.TabIndex = 20
@@ -528,7 +530,7 @@ Partial Class Form1
         Me.RichTextBox2.Location = New System.Drawing.Point(551, 251)
         Me.RichTextBox2.Name = "RichTextBox2"
         Me.RichTextBox2.ReadOnly = True
-        Me.RichTextBox2.Size = New System.Drawing.Size(219, 282)
+        Me.RichTextBox2.Size = New System.Drawing.Size(219, 352)
         Me.RichTextBox2.TabIndex = 0
         Me.RichTextBox2.Text = ""
         '
@@ -599,7 +601,7 @@ Partial Class Form1
         Me.ListboxTABCONTROL.Name = "ListboxTABCONTROL"
         Me.ListboxTABCONTROL.Padding = New System.Drawing.Point(0, 0)
         Me.ListboxTABCONTROL.SelectedIndex = 0
-        Me.ListboxTABCONTROL.Size = New System.Drawing.Size(381, 292)
+        Me.ListboxTABCONTROL.Size = New System.Drawing.Size(381, 362)
         Me.ListboxTABCONTROL.TabIndex = 0
         '
         'TabPage1
@@ -610,7 +612,7 @@ Partial Class Form1
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(373, 266)
+        Me.TabPage1.Size = New System.Drawing.Size(373, 336)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Item List"
         '
@@ -770,7 +772,7 @@ Partial Class Form1
         Me.Label5.BackColor = System.Drawing.Color.BurlyWood
         Me.Label5.Location = New System.Drawing.Point(26, 255)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(4, 272)
+        Me.Label5.Size = New System.Drawing.Size(4, 342)
         Me.Label5.TabIndex = 0
         '
         'Label6
@@ -779,7 +781,7 @@ Partial Class Form1
         Me.Label6.BackColor = System.Drawing.Color.BurlyWood
         Me.Label6.Location = New System.Drawing.Point(403, 256)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(4, 272)
+        Me.Label6.Size = New System.Drawing.Size(4, 342)
         Me.Label6.TabIndex = 0
         '
         'Label7
@@ -795,7 +797,7 @@ Partial Class Form1
         '
         Me.Label8.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.Label8.BackColor = System.Drawing.Color.BurlyWood
-        Me.Label8.Location = New System.Drawing.Point(26, 524)
+        Me.Label8.Location = New System.Drawing.Point(26, 594)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(382, 4)
         Me.Label8.TabIndex = 0
@@ -839,7 +841,7 @@ Partial Class Form1
         Me.Label11.BackColor = System.Drawing.Color.DimGray
         Me.Label11.Location = New System.Drawing.Point(401, 259)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(2, 264)
+        Me.Label11.Size = New System.Drawing.Size(2, 334)
         Me.Label11.TabIndex = 139
         '
         'Label12
@@ -848,7 +850,7 @@ Partial Class Form1
         Me.Label12.BackColor = System.Drawing.Color.Khaki
         Me.Label12.Location = New System.Drawing.Point(30, 259)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(3, 265)
+        Me.Label12.Size = New System.Drawing.Size(3, 335)
         Me.Label12.TabIndex = 0
         '
         'Label13
@@ -864,7 +866,7 @@ Partial Class Form1
         '
         Me.Label14.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.Label14.BackColor = System.Drawing.Color.DarkGoldenrod
-        Me.Label14.Location = New System.Drawing.Point(31, 523)
+        Me.Label14.Location = New System.Drawing.Point(31, 593)
         Me.Label14.Name = "Label14"
         Me.Label14.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.Label14.Size = New System.Drawing.Size(373, 1)
@@ -1016,7 +1018,7 @@ Partial Class Form1
         '
         Me.Label30.BackColor = System.Drawing.Color.Black
         Me.Label30.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label30.Location = New System.Drawing.Point(440, 395)
+        Me.Label30.Location = New System.Drawing.Point(446, 426)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(116, 13)
         Me.Label30.TabIndex = 0
@@ -1027,7 +1029,7 @@ Partial Class Form1
         '
         Me.Label31.BackColor = System.Drawing.Color.Black
         Me.Label31.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label31.Location = New System.Drawing.Point(440, 470)
+        Me.Label31.Location = New System.Drawing.Point(446, 458)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(116, 13)
         Me.Label31.TabIndex = 0
@@ -1039,7 +1041,7 @@ Partial Class Form1
         Me.MuleAccountTextbox.BackColor = System.Drawing.SystemColors.WindowText
         Me.MuleAccountTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.MuleAccountTextbox.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.MuleAccountTextbox.Location = New System.Drawing.Point(440, 411)
+        Me.MuleAccountTextbox.Location = New System.Drawing.Point(446, 442)
         Me.MuleAccountTextbox.Name = "MuleAccountTextbox"
         Me.MuleAccountTextbox.ReadOnly = True
         Me.MuleAccountTextbox.Size = New System.Drawing.Size(116, 13)
@@ -1051,7 +1053,7 @@ Partial Class Form1
         Me.MuleNameTextbox.BackColor = System.Drawing.SystemColors.WindowText
         Me.MuleNameTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.MuleNameTextbox.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.MuleNameTextbox.Location = New System.Drawing.Point(440, 486)
+        Me.MuleNameTextbox.Location = New System.Drawing.Point(446, 474)
         Me.MuleNameTextbox.Name = "MuleNameTextbox"
         Me.MuleNameTextbox.ReadOnly = True
         Me.MuleNameTextbox.Size = New System.Drawing.Size(116, 13)
@@ -1063,7 +1065,7 @@ Partial Class Form1
         Me.MulePassTextbox.BackColor = System.Drawing.SystemColors.WindowText
         Me.MulePassTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.MulePassTextbox.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.MulePassTextbox.Location = New System.Drawing.Point(440, 449)
+        Me.MulePassTextbox.Location = New System.Drawing.Point(446, 507)
         Me.MulePassTextbox.Name = "MulePassTextbox"
         Me.MulePassTextbox.ReadOnly = True
         Me.MulePassTextbox.Size = New System.Drawing.Size(116, 13)
@@ -1074,7 +1076,7 @@ Partial Class Form1
         '
         Me.Label32.BackColor = System.Drawing.Color.Black
         Me.Label32.ForeColor = System.Drawing.Color.BurlyWood
-        Me.Label32.Location = New System.Drawing.Point(440, 433)
+        Me.Label32.Location = New System.Drawing.Point(446, 491)
         Me.Label32.Name = "Label32"
         Me.Label32.Size = New System.Drawing.Size(116, 13)
         Me.Label32.TabIndex = 0
@@ -1121,7 +1123,7 @@ Partial Class Form1
         Me.Label37.BackColor = System.Drawing.Color.Khaki
         Me.Label37.Location = New System.Drawing.Point(406, 255)
         Me.Label37.Name = "Label37"
-        Me.Label37.Size = New System.Drawing.Size(2, 273)
+        Me.Label37.Size = New System.Drawing.Size(2, 343)
         Me.Label37.TabIndex = 0
         '
         'Label38
@@ -1130,7 +1132,7 @@ Partial Class Form1
         Me.Label38.BackColor = System.Drawing.Color.DimGray
         Me.Label38.Location = New System.Drawing.Point(26, 255)
         Me.Label38.Name = "Label38"
-        Me.Label38.Size = New System.Drawing.Size(2, 273)
+        Me.Label38.Size = New System.Drawing.Size(2, 343)
         Me.Label38.TabIndex = 0
         '
         'Label39
@@ -1147,7 +1149,7 @@ Partial Class Form1
         '
         Me.Label40.Anchor = System.Windows.Forms.AnchorStyles.Bottom
         Me.Label40.BackColor = System.Drawing.Color.DarkGoldenrod
-        Me.Label40.Location = New System.Drawing.Point(26, 528)
+        Me.Label40.Location = New System.Drawing.Point(26, 598)
         Me.Label40.Name = "Label40"
         Me.Label40.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.Label40.Size = New System.Drawing.Size(382, 1)
@@ -1358,7 +1360,7 @@ Partial Class Form1
         '
         Me.UserListCONTEXTMENUSTRIP.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SendToTradeListToolStripMenuItem, Me.SelectAllToolStripMenuItem2, Me.OpenContainingDatabaseToolStripMenuItem})
         Me.UserListCONTEXTMENUSTRIP.Name = "UserListCONTEXTMENUSTRIP"
-        Me.UserListCONTEXTMENUSTRIP.Size = New System.Drawing.Size(221, 92)
+        Me.UserListCONTEXTMENUSTRIP.Size = New System.Drawing.Size(221, 70)
         '
         'SendToTradeListToolStripMenuItem
         '
@@ -1389,6 +1391,12 @@ Partial Class Form1
         Me.ExportItemsToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
         Me.ExportItemsToolStripMenuItem.Text = "Export Items"
         '
+        'ClearItemsToolStripMenuItem
+        '
+        Me.ClearItemsToolStripMenuItem.Name = "ClearItemsToolStripMenuItem"
+        Me.ClearItemsToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
+        Me.ClearItemsToolStripMenuItem.Text = "Clear Items"
+        '
         'SelectAllToolStripMenuItem2
         '
         Me.SelectAllToolStripMenuItem2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
@@ -1409,7 +1417,7 @@ Partial Class Form1
         Me.ItemsDatabaseFileNameTEXTBOX.BackColor = System.Drawing.SystemColors.WindowText
         Me.ItemsDatabaseFileNameTEXTBOX.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.ItemsDatabaseFileNameTEXTBOX.ForeColor = System.Drawing.SystemColors.ControlLight
-        Me.ItemsDatabaseFileNameTEXTBOX.Location = New System.Drawing.Point(440, 523)
+        Me.ItemsDatabaseFileNameTEXTBOX.Location = New System.Drawing.Point(446, 554)
         Me.ItemsDatabaseFileNameTEXTBOX.Name = "ItemsDatabaseFileNameTEXTBOX"
         Me.ItemsDatabaseFileNameTEXTBOX.ReadOnly = True
         Me.ItemsDatabaseFileNameTEXTBOX.Size = New System.Drawing.Size(116, 13)
@@ -1420,18 +1428,35 @@ Partial Class Form1
         '
         Me.ItemsDatabaseHeadingTEXTBOX.BackColor = System.Drawing.Color.Black
         Me.ItemsDatabaseHeadingTEXTBOX.ForeColor = System.Drawing.Color.BurlyWood
-        Me.ItemsDatabaseHeadingTEXTBOX.Location = New System.Drawing.Point(440, 507)
+        Me.ItemsDatabaseHeadingTEXTBOX.Location = New System.Drawing.Point(446, 538)
         Me.ItemsDatabaseHeadingTEXTBOX.Name = "ItemsDatabaseHeadingTEXTBOX"
         Me.ItemsDatabaseHeadingTEXTBOX.Size = New System.Drawing.Size(116, 13)
         Me.ItemsDatabaseHeadingTEXTBOX.TabIndex = 182
         Me.ItemsDatabaseHeadingTEXTBOX.Text = "Database File Name"
         Me.ItemsDatabaseHeadingTEXTBOX.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'ClearItemsToolStripMenuItem
+        'MuleRealmTextbox
         '
-        Me.ClearItemsToolStripMenuItem.Name = "ClearItemsToolStripMenuItem"
-        Me.ClearItemsToolStripMenuItem.Size = New System.Drawing.Size(176, 22)
-        Me.ClearItemsToolStripMenuItem.Text = "Clear Items"
+        Me.MuleRealmTextbox.BackColor = System.Drawing.SystemColors.WindowText
+        Me.MuleRealmTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.MuleRealmTextbox.ForeColor = System.Drawing.SystemColors.ControlLight
+        Me.MuleRealmTextbox.Location = New System.Drawing.Point(446, 410)
+        Me.MuleRealmTextbox.Name = "MuleRealmTextbox"
+        Me.MuleRealmTextbox.ReadOnly = True
+        Me.MuleRealmTextbox.Size = New System.Drawing.Size(116, 13)
+        Me.MuleRealmTextbox.TabIndex = 183
+        Me.MuleRealmTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label41
+        '
+        Me.Label41.BackColor = System.Drawing.Color.Black
+        Me.Label41.ForeColor = System.Drawing.Color.BurlyWood
+        Me.Label41.Location = New System.Drawing.Point(446, 394)
+        Me.Label41.Name = "Label41"
+        Me.Label41.Size = New System.Drawing.Size(116, 13)
+        Me.Label41.TabIndex = 184
+        Me.Label41.Text = "Mule Realm"
+        Me.Label41.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Form1
         '
@@ -1440,7 +1465,9 @@ Partial Class Form1
         Me.BackColor = System.Drawing.Color.BlanchedAlmond
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.D2Data
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.ClientSize = New System.Drawing.Size(794, 573)
+        Me.ClientSize = New System.Drawing.Size(794, 643)
+        Me.Controls.Add(Me.MuleRealmTextbox)
+        Me.Controls.Add(Me.Label41)
         Me.Controls.Add(Me.ItemsDatabaseFileNameTEXTBOX)
         Me.Controls.Add(Me.ItemsDatabaseHeadingTEXTBOX)
         Me.Controls.Add(Me.UserRefControlTabBUTTON)
@@ -1680,6 +1707,8 @@ Partial Class Form1
     Friend WithEvents SelectAllToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SendToUserListToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ClearItemsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MuleRealmTextbox As System.Windows.Forms.TextBox
+    Friend WithEvents Label41 As System.Windows.Forms.Label
 
 
 End Class

@@ -12,8 +12,8 @@ Module Module1
     '-------------------------------------------------------------------------------------------------------------------
     'Version Variables (displayed in form1 titlebar) - UPDATE FOR EACH COMMIT PLS SO APP VERSION MATCHES REVISION NUMBER
     '-------------------------------------------------------------------------------------------------------------------
-    Public VersionNumber As String = "9.0"
-    Public RevisionNumber As String = "30"
+    Public VersionNumber As String = "9.1"
+    Public RevisionNumber As String = "1"
     '-------------------------------------------------------------------------------------------------------------------
 
     'DataBase app variables
@@ -93,6 +93,7 @@ Module Module1
             If Reader.EndOfStream = True Then Exit Do
             Dim NewObject As New ItemObjects
             NewObject.ItemName = Reader.ReadLine
+            NewObject.Ilevel = Reader.ReadLine
             NewObject.ItemBase = Reader.ReadLine
             NewObject.ItemQuality = Reader.ReadLine
             NewObject.RequiredCharacter = Reader.ReadLine
@@ -135,6 +136,7 @@ Module Module1
             NewObject.MuleAccount = Reader.ReadLine
             NewObject.MulePass = Reader.ReadLine
             NewObject.PickitBot = Reader.ReadLine
+            NewObject.ItemRealm = Reader.ReadLine
             NewObject.UserReference = Reader.ReadLine
             NewObject.ItemImage = Reader.ReadLine
             Objects.Add(NewObject)
