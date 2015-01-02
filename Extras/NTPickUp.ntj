@@ -189,7 +189,8 @@ function TLI_MuledIt(verbose) {
 				_file.WriteLine(me.account);//Pickitbot
 				_file.WriteLine(muleAccount);//
 				_file.WriteLine(me.name);//Mules name
-				_file.WriteLine(mypass);//			
+				_file.WriteLine(mypass);//
+				_file.WriteLine(me.realm);//
 				_file.WriteLine("");//Blank line
 				for (var i = 0; i < logged.length; i++)
 					TLI_LogItem(_file, logged[i], verbose);
@@ -332,7 +333,8 @@ function Log_DoIt(verbose) {
 			_file.WriteLine(me.account);//Pickitbot
 			_file.WriteLine(muleAccount);//
 			_file.WriteLine(me.name);//Mules name
-			_file.WriteLine(mypass);//			
+			_file.WriteLine(mypass);//
+			_file.WriteLine(me.realm);//
 			_file.WriteLine("");//Blank line
 			
 				for (var i = 0; i < logged.length; i++)
@@ -357,6 +359,7 @@ function ItemDecipher(file, item, verbose)
 	
 	name = name.replace(/\n/g, " ");
 	file.WriteLine(name);
+	file.WriteLine("Item Level " + item.itemlevel);
 	if(item.itemtype >= 91 && item.itemtype <= 102)
 		file.WriteLine("Item Base Gem");
 	else
