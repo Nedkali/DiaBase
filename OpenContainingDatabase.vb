@@ -22,7 +22,7 @@
 
             If My.Computer.FileSystem.FileExists(Application.StartupPath + "\DataBase\" & UserListDatabase(Form1.UserLISTBOX.SelectedIndex).DatabaseFileName + ".txt") = True Then
 
-                OpenDatabaseRoutine(Application.StartupPath + "\DataBase\" + UserListDatabase(Form1.UserLISTBOX.SelectedIndex).DatabaseFileName + ".txt")
+                ReadData(Application.StartupPath + "\DataBase\" + UserListDatabase(Form1.UserLISTBOX.SelectedIndex).DatabaseFileName + ".txt", False)
                 Form1.Display_Items()
 
                 Databasefile = Application.StartupPath & "\DataBase\" & UserListDatabase(Form1.UserLISTBOX.SelectedIndex).DatabaseFileName + ".txt"

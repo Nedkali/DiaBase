@@ -125,7 +125,7 @@ Public Class MoveItems
 
                 'load up destination one and display first item and set current database label in top right of form1
                 Databasefile = Application.StartupPath + "\Database\" + DatabaseFilenameTEXTBOX.Text + ".txt"
-                OpenDatabaseRoutine(Databasefile)
+                ReadData(Databasefile, False)
 
                 Form1.Display_Items()
                 Form1.CurrentDatabaseLABEL.Text = DatabaseFilenameTEXTBOX.Text

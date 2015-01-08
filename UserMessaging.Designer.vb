@@ -66,6 +66,7 @@ Partial Class UserMessaging
         Me.Name = "UserMessaging"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "DiaBase Alert Message"
+        Me.TopMost = True
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

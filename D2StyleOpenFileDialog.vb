@@ -100,10 +100,21 @@ Public Class D2StyleOpenFileDialog
                     Form1.ClearStats()
                   
                     'Branch to routine to load the selected dbase and display first item and set current database label in top right of form1
-                    OpenDatabaseRoutine(Application.StartupPath + "\Database\" + DatabaseFilenameCOMBOBOX.Text + ".txt")
+                    'ReadData(Application.StartupPath + "\Database\" + DatabaseFilenameCOMBOBOX.Text + ".txt", False)
+                    If ReadData(Application.StartupPath + "\Database\" + DatabaseFilenameCOMBOBOX.Text + ".txt", False) = False Then
+                        Mymessages = "appears to be an older database - retrying"
+                        MyMessageBox()
+                        If ReadData(Application.StartupPath + "\Database\" + DatabaseFilenameCOMBOBOX.Text + ".txt", True) = False Then
+                            Mymessages = "Unable to read file"
+                            MyMessageBox()
+                        End If
+                    End If
+
+
+
                     Form1.Display_Items()
                     Databasefile = Application.StartupPath + "\Database\" + SavedDatabasesLISTBOX.SelectedItem + ".txt"
-                 
+
 
                     'setlect main list and prep form1
                     Form1.ListboxTABCONTROL.SelectTab(0)

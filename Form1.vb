@@ -56,39 +56,10 @@ Public Class Form1
             file.WriteLine("False") 'added for backup before item edits 
             file.WriteLine("False") 'added for remove mule dupe
             file.Close()
-            Mymessages = "Settings file created" : MyMessageBox()
+            
         End If
 
-        '                   -------------------------------------------------------------------------------------------------------------
-        '                   - ROB DID THIS PROCEEDURE MUST NOT BE REMOVED OR COMMENTED OUT AFTER REVISION 29 IS RENDERED OBSOLETE - ROB -
-        '                   -------------------------------------------------------------------------------------------------------------
 
-        '----------------------------------------------------------------------------------------------------------------------------------------------------
-        ' ROB ADDED \/\/ IN REV - 29. I opted to append a new global config var for the "Settings.cfg" file to save the "Hide The Search Popup" checkstate. '
-        ' ATM its checkstate canot be saved. I have added a command for the new global config in the the settings.cfg read file routine for its checkstate. '                     '
-        '                                                                                                                                                   '
-        ' IMPORTANT NOTE: As a failsafe, so this only runs the fist time on first statup after updating the proceedure will count how many lines exist in   '
-        ' the "Settings.cfg" file. If the extra line has already been appended the proceedure will be skipped until it is removed or commented out for      '
-        ' future later unforseen updates. Complete update can easily be included in the next public release - ROB                                           '
-        '----------------------------------------------------------------------------------------------------------------------------------------------------
-
-        Dim LineCountChecksum As Integer = 0
-        Dim CountSettingsFileLines = My.Computer.FileSystem.OpenTextFileReader(Application.StartupPath + "\Settings.cfg")
-        Do Until CountSettingsFileLines.EndOfStream = True
-            CountSettingsFileLines.ReadLine() : LineCountChecksum = LineCountChecksum + 1
-        Loop
-        CountSettingsFileLines.Close()
-
-
-        'Append the new Config Variable if the line cound checksum vale fails with a value of 7 ( only 7 lines means then new settings.cfg config var has not been edited.
-        If LineCountChecksum = 7 Then
-
-            Dim FixSettingsFile = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath + "\Settings.cfg", True)
-
-            FixSettingsFile.WriteLine("False") 'Appends a new config variable to settings.cfg file to save show or hide search progress checkstate
-            FixSettingsFile.Close()
-            Mymessages = "Settings File Updated For ver9.1 Revision 1" : MyMessageBox()
-        End If
         '=====================================================================================================================================================
         'Next bit setup up diablo 2 heading text and game text true type fonts (.ttf) 
         'Applying these fonts here and now will overwrite any value set in the from designer properties window
@@ -160,17 +131,26 @@ Public Class Form1
     'Stuff to run after program starts
     Private Sub Form1_Shown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Shown
         LoadConfigFile()
+        If My.Computer.FileSystem.DirectoryExists(EtalPath) = False Then
+            Settings.ShowDialog()
+        End If
+
         Me.CurrentDatabaseLABEL.Text = "Loading Default Database File, Please Wait... "
         Me.Refresh()
-        OpenDatabaseRoutine(Databasefile)
+        'ReadData(Databasefile, True)
+        If ReadData(Databasefile, False) = False Then
+            Mymessages = "appears to be an older database - retrying"
+            MyMessageBox()
+            If ReadData(Databasefile, True) = False Then
+                Mymessages = "Unable to read file"
+                MyMessageBox()
+            End If
+        End If
         Me.CurrentDatabaseLABEL.Text = Replace(My.Computer.FileSystem.GetName(Databasefile), ".txt", "")
 
         StartTimer()
         If LoggerRunning = False Then RichTextBox1.Text = "AutoLogging is Idle" & vbCrLf
-        If My.Computer.FileSystem.DirectoryExists(EtalPath) = False Then
-            Dim MySettings As New Settings
-            MySettings.Show()
-        End If
+
 
         SearchFieldCOMBOBOX.Text = "Item Name"
         AllItemsInDatabaseListBox.Select() ' focuses control on main listbox on startup
@@ -925,7 +905,7 @@ Public Class Form1
                 'found a backup file and copying it over to replace current database file, then reload it
                 My.Computer.FileSystem.DeleteFile(Databasefile) 'delete old dbase file
                 My.Computer.FileSystem.CopyFile(BackupPath & tempname, Databasefile, True) ' copy over new dbase file and rename it
-                OpenDatabaseRoutine(Databasefile) 'refresh new database file to the lists
+                ReadData(Databasefile, False) 'refresh new database file to the lists
 
                 'SELECT MAIN LIST BOX AFTER BACKUP RESTORE
                 ListControlTabBUTTON.BackColor = Color.DimGray

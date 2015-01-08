@@ -71,102 +71,6 @@ Module Module1
         UserMessaging.ShowDialog()
     End Sub
 
-    'This Reads the database from file and puts it in the object database (moved from form1 to allow it to be used at startup to load default database)
-    Sub OpenDatabaseRoutine(DatabaseFile)
-        Form1.SearchLISTBOX.Items.Clear()               ' clears out search lists and other stat windows
-        Form1.MuleAccountTextbox.Text = ""
-        Form1.MuleNameTextbox.Text = ""
-        Form1.MulePassTextbox.Text = ""
-        Form1.RichTextBox2.Text = ""
-        Form1.PictureBox1.Image = Nothing
-        Form1.AllItemsInDatabaseListBox.Items.Clear()   ' clears items listed
-
-        Objects.Clear()
-
-
-        Dim Reader = My.Computer.FileSystem.OpenTextFileReader(DatabaseFile)
-        Do
-            If Reader.EndOfStream = True Then Exit Do
-            Reader.ReadLine()
-            If Reader.EndOfStream = True Then Exit Do
-            Dim NewObject As New ItemObjects
-            NewObject.ItemName = Reader.ReadLine
-            NewObject.Ilevel = Reader.ReadLine
-            NewObject.ItemBase = Reader.ReadLine
-            NewObject.ItemQuality = Reader.ReadLine
-            NewObject.RequiredCharacter = Reader.ReadLine
-            NewObject.EtherealItem = Reader.ReadLine
-            NewObject.Sockets = Reader.ReadLine
-            NewObject.RuneWord = Reader.ReadLine
-            NewObject.ThrowDamageMin = Reader.ReadLine
-            NewObject.ThrowDamageMax = Reader.ReadLine
-            NewObject.OneHandDamageMin = Reader.ReadLine
-            NewObject.OneHandDamageMax = Reader.ReadLine
-            NewObject.TwoHandDamageMin = Reader.ReadLine
-            NewObject.TwoHandDamageMax = Reader.ReadLine
-            NewObject.Defense = Reader.ReadLine
-            NewObject.ChanceToBlock = Reader.ReadLine
-            NewObject.QuantityMin = Reader.ReadLine
-            NewObject.QuantityMax = Reader.ReadLine
-            NewObject.DurabilityMin = Reader.ReadLine
-            NewObject.DurabilityMax = Reader.ReadLine
-            NewObject.RequiredStrength = Reader.ReadLine
-            NewObject.RequiredDexterity = Reader.ReadLine
-            NewObject.RequiredLevel = Reader.ReadLine
-            NewObject.AttackClass = Reader.ReadLine
-            NewObject.AttackSpeed = Reader.ReadLine
-            NewObject.Stat1 = Reader.ReadLine
-            NewObject.Stat2 = Reader.ReadLine
-            NewObject.Stat3 = Reader.ReadLine
-            NewObject.Stat4 = Reader.ReadLine
-            NewObject.Stat5 = Reader.ReadLine
-            NewObject.Stat6 = Reader.ReadLine
-            NewObject.Stat7 = Reader.ReadLine
-            NewObject.Stat8 = Reader.ReadLine
-            NewObject.Stat9 = Reader.ReadLine
-            NewObject.Stat10 = Reader.ReadLine
-            NewObject.Stat11 = Reader.ReadLine
-            NewObject.Stat12 = Reader.ReadLine
-            NewObject.Stat13 = Reader.ReadLine
-            NewObject.Stat14 = Reader.ReadLine
-            NewObject.Stat15 = Reader.ReadLine
-            NewObject.MuleName = Reader.ReadLine
-            NewObject.MuleAccount = Reader.ReadLine
-            NewObject.MulePass = Reader.ReadLine
-            NewObject.PickitBot = Reader.ReadLine
-            NewObject.ItemRealm = Reader.ReadLine
-            NewObject.UserReference = Reader.ReadLine
-            NewObject.ItemImage = Reader.ReadLine
-            Objects.Add(NewObject)
-        Loop Until Reader.EndOfStream
-        Reader.Close()
-
-        Objects.Sort(Function(x, y) x.ItemName.CompareTo(y.ItemName)) 'sort list alphabetically after assigning objects
-        Form1.Display_Items()
-    End Sub
-
-  
-
-
-
-
-
-    'Load up the app configuration Values from \InstallDir\Settings.cfg file
-    Sub LoadConfigFile()
-        Dim file As System.IO.StreamReader
-        file = My.Computer.FileSystem.OpenTextFileReader(Application.StartupPath + "\Settings.cfg")
-        EtalPath = file.ReadLine() : Settings.EtalPathTEXTBOX.Text = EtalPath
-        Databasefile = file.ReadLine() : Settings.DatabaseFileTEXTBOX.Text = Databasefile : DefaultDatabaseFile = Databasefile
-        TimerMins = file.ReadLine() : Settings.NumericUpDown1.Value = TimerMins
-        KeepPassPrivate = file.ReadLine() : If KeepPassPrivate = True Then Settings.CheckBox3.Checked = True
-        AutoBackups = file.ReadLine() : If AutoBackups = True Then Settings.AutoBackupImportsCHECKBOX.Checked = True ' added this for auto backup setting
-        EditBackups = file.ReadLine() : If AutoBackups = True Then Settings.AutoBackupImportsCHECKBOX.Checked = True ' added this for backup befor saving item edits
-        RemoveDupeMule = file.ReadLine()
-        HideSearchPopup = file.ReadLine
-        If HideSearchPopup = True Then Settings.DisableSearchProgressBarCHECKBOX.Checked = True : ShowSearchProgress = False
-        If HideSearchPopup = False Then Settings.DisableSearchProgressBarCHECKBOX.Checked = False : ShowSearchProgress = True
-        file.Close()
-    End Sub
 
     'Branches to Selected ItemImage listed in each items image field (Is Always Called from Display Item Statistics Routine In Form1 Code Block)
     Public Function ItemImageList(sender As Integer)
@@ -1550,11 +1454,11 @@ Module Module1
         Return DupeCount
     End Function
 
-    'saves config files to file
+    'saves config settings to file
     Sub SaveConfigFile()
         Dim file As System.IO.StreamWriter
         file = My.Computer.FileSystem.OpenTextFileWriter(Application.StartupPath + "\Settings.cfg", False)
-        file.WriteLine(Settings.EtalPathTEXTBOX.Text)
+        file.WriteLine(EtalPath)
         file.WriteLine(Settings.DatabaseFileTEXTBOX.Text)
         file.WriteLine(Settings.NumericUpDown1.Value)
         file.WriteLine(Settings.CheckBox3.Checked) : KeepPassPrivate = Settings.CheckBox3.CheckState '<---------- Display Password Fix rev 12 (AussieHack)
@@ -1594,7 +1498,74 @@ Module Module1
     End Function
 
 
+    Sub readold()
 
+        Objects.Clear()
+
+        Try
+            Dim Reader = My.Computer.FileSystem.OpenTextFileReader(Databasefile)
+            Do
+                If Reader.EndOfStream = True Then Exit Do
+                Reader.ReadLine()
+                If Reader.EndOfStream = True Then Exit Do
+                Dim NewObject As New ItemObjects
+                NewObject.ItemName = Reader.ReadLine
+                NewObject.Ilevel = "0"
+                NewObject.ItemBase = Reader.ReadLine
+                NewObject.ItemQuality = Reader.ReadLine
+                NewObject.RequiredCharacter = Reader.ReadLine
+                NewObject.EtherealItem = Reader.ReadLine
+                NewObject.Sockets = Reader.ReadLine
+                NewObject.RuneWord = Reader.ReadLine
+                NewObject.ThrowDamageMin = Reader.ReadLine
+                NewObject.ThrowDamageMax = Reader.ReadLine
+                NewObject.OneHandDamageMin = Reader.ReadLine
+                NewObject.OneHandDamageMax = Reader.ReadLine
+                NewObject.TwoHandDamageMin = Reader.ReadLine
+                NewObject.TwoHandDamageMax = Reader.ReadLine
+                NewObject.Defense = Reader.ReadLine
+                NewObject.ChanceToBlock = Reader.ReadLine
+                NewObject.QuantityMin = Reader.ReadLine
+                NewObject.QuantityMax = Reader.ReadLine
+                NewObject.DurabilityMin = Reader.ReadLine
+                NewObject.DurabilityMax = Reader.ReadLine
+                NewObject.RequiredStrength = Reader.ReadLine
+                NewObject.RequiredDexterity = Reader.ReadLine
+                NewObject.RequiredLevel = Reader.ReadLine
+                NewObject.AttackClass = Reader.ReadLine
+                NewObject.AttackSpeed = Reader.ReadLine
+                NewObject.Stat1 = Reader.ReadLine
+                NewObject.Stat2 = Reader.ReadLine
+                NewObject.Stat3 = Reader.ReadLine
+                NewObject.Stat4 = Reader.ReadLine
+                NewObject.Stat5 = Reader.ReadLine
+                NewObject.Stat6 = Reader.ReadLine
+                NewObject.Stat7 = Reader.ReadLine
+                NewObject.Stat8 = Reader.ReadLine
+                NewObject.Stat9 = Reader.ReadLine
+                NewObject.Stat10 = Reader.ReadLine
+                NewObject.Stat11 = Reader.ReadLine
+                NewObject.Stat12 = Reader.ReadLine
+                NewObject.Stat13 = Reader.ReadLine
+                NewObject.Stat14 = Reader.ReadLine
+                NewObject.Stat15 = Reader.ReadLine
+                NewObject.MuleName = Reader.ReadLine
+                NewObject.MuleAccount = Reader.ReadLine
+                NewObject.MulePass = Reader.ReadLine
+                NewObject.PickitBot = Reader.ReadLine
+                NewObject.ItemRealm = "Unknown"
+                NewObject.UserReference = Reader.ReadLine
+                NewObject.ItemImage = Reader.ReadLine
+                Objects.Add(NewObject)
+            Loop Until Reader.EndOfStream
+            Reader.Close()
+        Catch ex As Exception
+            Mymessages = "Unable to read file"
+            'Reader.Close()
+            MyMessageBox()
+        End Try
+
+    End Sub
 
 
 End Module

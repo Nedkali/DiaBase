@@ -33,7 +33,7 @@ Public Class CreateNewDatabase
                     Form1.SearchLISTBOX.Items.Clear() '                                                   clean out old search matches
                     Form1.PictureBox1.BackgroundImage = DiaBase.My.Resources.Resources.ImageBackground '  clean out old image
                     Form1.ClearStats()
-                    OpenDatabaseRoutine(Databasefile)
+                    ReadData(Databasefile, False)
                     Form1.Display_Items()
                     Form1.CurrentDatabaseLABEL.Text = Replace(My.Computer.FileSystem.GetName(Databasefile), ".txt", "")
                     Me.Close()

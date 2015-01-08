@@ -1,18 +1,5 @@
 ﻿Public Class Settings
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles CancelDefaultsBUTTON.Click
-        If PictureBox1.Visible = False Then
-            Mymessages = "Must set correct Etal folder" : MyMessageBox()
-            Return
-        End If
-        If PictureBox2.Visible = False Then
-            Mymessages = "Must Set Database file" : MyMessageBox()
-            Return
-        End If
-
-        Me.Close()
-    End Sub
-
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles EtalPathBrowseBUTTON.Click
         FolderBrowserDialog1.ShowDialog()
         EtalPathTEXTBOX.Text = FolderBrowserDialog1.SelectedPath
@@ -45,9 +32,19 @@
             Mymessages = "Must Set Database file" : MyMessageBox()
             Return
         End If
+
+
+        'setup a few relevant things
+        If HideSearchPopup = True Then ShowSearchProgress = False Else If HideSearchPopup = False Then ShowSearchProgress = True ' Not  Sure why I have two bools tbh?
+        EtalPath = EtalPathTEXTBOX.Text
+        TimerMins = NumericUpDown1.Value
+        TimerSecs = TimerMins * 60
+
+
         SaveConfigFile() 'branch to save config sub in module1
 
-           Me.Close()
+
+        Me.Close()
 
     End Sub
 
@@ -78,5 +75,9 @@
         If DupeCheckBox1.Checked = True Then
             RemoveDupeMule = True
         End If
+    End Sub
+
+    Private Sub CancelDefaultsBUTTON_Click(sender As Object, e As EventArgs) Handles CancelDefaultsBUTTON.Click
+
     End Sub
 End Class

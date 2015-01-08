@@ -384,6 +384,7 @@ Partial Class Settings
         '
         'Settings
         '
+        Me.AcceptButton = Me.SaveDefaultsBUTTON
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = Global.DiaBase.My.Resources.Resources.Setting
